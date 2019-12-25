@@ -1,0 +1,24 @@
+
+#https://home-assistant.io/components/camera/
+
+####################################################
+#                                                  #
+#                 WEATHER RADAR                    #
+#                                                  #
+####################################################
+
+#  - platform: generic
+#    name: Wetterradar
+#    still_image_url: http://www.dwd.de/DWD/wetter/radar/radfilm_baw_akt.gif
+#    content_type: 'image/gif+xml'
+
+#  - platform: generic
+#    name: Meteogram
+#    still_image_url: https://www.yr.no/place/Germany/Baden-W%C3%BCrttemberg/Kraichtal/meteogram.svg
+#    content_type: 'image/svg+xml'
+
+####################################################
+#                                                  #
+#            END OF CONFIGURATION FILE             #
+#                                                  #
+####################################################

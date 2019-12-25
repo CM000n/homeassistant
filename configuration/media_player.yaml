@@ -1,0 +1,46 @@
+
+#https://home-assistant.io/components/media_player/
+
+####################################################
+#                                                  #
+#                   CHROMECAST                     #
+#                                                  #
+####################################################
+
+#https://home-assistant.io/components/media_player.cast/
+
+#cast:
+#  media_player:
+#  - host: 192.168.178.9
+
+####################################################
+#                                                  #
+#                      SONOS                       #
+#                                                  #
+####################################################
+
+#https://home-assistant.io/components/media_player.sonos/
+
+#sonos:
+#  media_player:
+#    hosts:
+#      - 192.168.178.10
+#      - 192.168.178.11
+#      - 192.168.178.12
+
+####################################################
+#                                                  #
+#                  PHILIPS TV                      #
+#                                                  #
+####################################################
+
+#https://home-assistant.io/components/media_player.philips_js/
+
+#  - platform: philips_js
+#    host: 192.168.178.13
+
+####################################################
+#                                                  #
+#           END OF CONFIGURATION FILE              #
+#                                                  #
+####################################################

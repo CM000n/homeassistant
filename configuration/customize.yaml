@@ -1,0 +1,263 @@
+input_number.lamp_bright:
+  icon: mdi:brightness-5
+input_number.lamp_temp:
+  icon: mdi:thermometer-lines
+light.deckenlampe_buro:
+  friendly_name: Deckenlampe Büro
+  icon: mdi:ceiling-light
+light.deckenlampen_flur:
+  friendly_name: Deckenlampen Flur
+  icon: mdi:ceiling-light
+light.deckenlampe_flur_1:
+  friendly_name: Deckenlampe Flur 1
+  icon: mdi:ceiling-light
+light.deckenlampe_flur_2:
+  friendly_name: Deckenlampe Flur 2
+  icon: mdi:ceiling-light
+light.stehlampe_flur:
+  friendly_name: Stehlampe Flur
+  icon: mdi:lava-lamp
+light.stehlampe_flur_1:
+  friendly_name: Stehlampe Flur 1
+  icon: mdi:lava-lamp
+light.stehlampe_flur_2:
+  friendly_name: Stehlampe Flur 2
+  icon: mdi:lava-lamp
+light.deckenlampe_bad:
+  friendly_name: Deckenlampe Bad
+  icon: mdi:ceiling-light
+light.spiegellampe_bad:
+  friendly_name: Spiegellampe Bad
+  icon: mdi:spotlight
+light.deckenlampe_herd:
+  friendly_name: Deckenlampe Herd
+  icon: mdi:ceiling-light
+light.schirmlampe_kueche:
+  friendly_name: Schirmlampe Küche
+  icon: mdi:lamp
+light.deckenlampe_schlafzimmer:
+  friendly_name: Deckenlampe Schlafzimmer
+  icon: mdi:ceiling-light
+light.nachttischlampe_simon:
+  friendly_name: Nachttischlampe Simon
+  icon: mdi:lamp
+light.nachttischlampe_lisa:
+  friendly_name: Nachttischlampe Lisa
+  icon: mdi:lamp
+light.deckenlampe_ankleide:
+  friendly_name: Deckenlampe Ankleide
+  icon: mdi:ceiling-light
+light.schreibtischlampe_lisa:
+  friendly_name: Schreibtischlampe Lisa
+  icon: mdi:spotlight
+light.deckenlampe_wohnzimmer:
+  friendly_name: Deckenlampe Wohnzimmer
+  icon: mdi:ceiling-light
+light.wandlampen_treppenhaus:
+  friendly_name: Wandlampen Treppenhaus
+  icon: mdi:spotlight
+sensor.fritz_netmonitor:
+  friendly_name: Netmonitor
+sensor.since_last_boot_templated:
+  friendly_name: Letzer Bootvorgang
+  icon: mdi:clock
+sensor.myipopendnscom:
+  friendly_name: IPV4
+  icon: mdi:wallet-membership
+sensor.ha_uptime:
+  friendly_name: HA Betriebszeit
+  icon: mdi:timetable
+sensor.connected_clients:
+  friendly_name: Verbundene Clients
+  icon: mdi:lan-connect
+sensor.chromecast_wohnzimmer_state:
+  friendly_name: Chromecast Wohnzimmer
+  icon: mdi:cast
+sensor.tv_wohnzimmer_state:
+  friendly_name: Fernseher Wohnzimmer
+  icon: mdi:television-classic
+sensor.sonos_wohnzimmer_state:
+  friendly_name: Sonos Wohnzimmer
+  icon: mdi:music-circle
+sensor.sonos_schlafzim_state:
+  friendly_name: Sonos Schlafzimmer
+  icon: mdi:music-circle
+sensor.sonos_bad_state:
+  friendly_name: Sonos Badezimmer
+  icon: mdi:music-circle
+sensor.munzesheim_to_karlsruhe_hbf:
+  friendly_name: Münzesheim --> Karlsruhe
+  icon: mdi:tram
+sensor.munzesheim_to_menzingenbaden:
+  friendly_name: Münzesheim --> Menzingen
+  icon: mdi:tram
+binary_sensor.device_tracker_ping_omv:
+  friendly_name: Openmediavault Server
+sensor.e10mue:
+  friendly_name: E10 - Münzesheim
+  icon: mdi:gas-station
+sensor.luftdaten_pm10:
+  friendly_name: PM10 Feinstaubwert
+  icon: mdi:biohazard
+sensor.luftdaten_pm25:
+  friendly_name: PM2.5 Feinstaubwert
+  icon: mdi:biohazard
+sensor.luftdaten_temperature:
+  friendly_name: Außentemperatur
+  icon: mdi:thermometer
+sensor.luftdaten_humidity:
+  friendly_name: Luftfeuchtigkeit
+  icon: mdi:water-percent
+sun.sun:
+  friendly_name: Sonnenstand
+sensor.time:
+  friendly_name: Uhrzeit
+sensor.date:
+  friendly_name: Datum
+sensor.darksky_cloud_coverage:
+  friendly_name: Bewölkung
+  icon: mdi:weather-cloudy
+sensor.wetter_fog:
+  friendly_name: Nebel
+  icon: mdi:weather-fog
+sensor.darksky_humidity:
+  friendly_name: Luftfeuchtigkeit
+  icon: mdi:water-percent
+sensor.darksky_precip_probability:
+  friendly_name: Niederschlagswahrscheinlichkeit
+  icon: mdi:weather-pouring
+sensor.darksky_pressure:
+  friendly_name: Luftdruck
+  icon: mdi:chart-line
+sensor.wetter_symbol:
+  friendly_name: Wetter
+  hidden: true
+sensor.darksky_temperature:
+  friendly_name: Außentemperatur
+sensor.darksky_wind_bearing:
+  friendly_name: Windrichtung
+  icon: mdi:compass
+sensor.darksky_wind_speed:
+  friendly_name: Windgeschwindigkeit
+  icon: mdi:weather-windy
+sensor.darksky_visibility:
+  friendly_name: Sichtweite
+switch.simonpc:
+  friendly_name: Simon-PC
+  icon: mdi:desktop-classic
+switch.automatische_lichtstimmung:
+  icon: mdi:playlist-play
+switch.wohnzimmer:
+  friendly_name: Wohnzimmer
+  icon: mdi:sofa
+switch.kueche:
+  friendly_name: Küche
+  icon: mdi:food-fork-drink
+switch.schlafzimmer:
+  friendly_name: Schlafzimmer
+  icon: mdi:hotel
+switch.badezimmer:
+  friendly_name: Badezimmer
+  icon: mdi:hot-tub
+switch.buero:
+  friendly_name: Büro
+  icon: mdi:briefcase
+switch.flur:
+  friendly_name: Flur
+  icon: mdi:floor-plan
+switch.ankleide:
+  friendly_name: Ankleide
+  icon: mdi:tshirt-v
+switch.ventilator:
+  friendly_name: Ventilator
+  icon: mdi:fan
+script.nachtlicht_an:
+  friendly_name: Nachtlicht
+  icon: mdi:weather-night
+  assumed_state: false
+script.alle_lichter_aus:
+  friendly_name: Alle Lichter aus
+  icon: mdi:lightbulb
+  assumed_state: false
+sensor.status_spuelmaschine:
+  icon: mdi:dishwasher
+sensor.status_trockner:
+  icon: mdi:tumble-dryer
+sensor.status_waschmaschine:
+  icon: mdi:washing-machine
+switch.steckdose_spulmaschine:
+  icon: mdi:power-socket-eu
+switch.steckdose_trockner:
+  icon: mdi:power-socket-eu
+switch.steckdose_waschmaschine:
+  icon: mdi:power-socket-eu
+switch.steckdose_kuche_mehrfachstecker:
+  icon: mdi:power-socket-eu
+switch.steckdose_wohnzimmer_ecke:
+  icon: mdi:power-socket-eu
+switch.steckdose_wohnzimmer_lowboard:
+  icon: mdi:power-socket-eu
+sensor.stromverbrauch_spuehlmaschine:
+  icon: mdi:flash
+sensor.stromverbrauch_trockner:
+  icon: mdi:flash
+sensor.stromverbrauch_waschmaschine:
+  icon: mdi:flash
+sensor.stromverbrauch_kueche_mehrfachstecker:
+  icon: mdi:flash
+sensor.stromverbrauch_wohnzimmer_ecke:
+  icon: mdi:flash
+sensor.stromverbrauch_wohnzimmer_lowboard:
+  icon: mdi:flash
+sensor.gesamtverbrauch_spuehlmaschine:
+  icon: mdi:sigma
+sensor.gesamtverbrauch_trockner:
+  icon: mdi:sigma
+sensor.gesamtverbrauch_waschmaschine:
+  icon: mdi:sigma
+sensor.gesamtverbrauch_kueche_mehrfachstecker:
+  icon: mdi:sigma
+sensor.gesamtverbrauch_wohnzimmer_ecke:
+  icon: mdi:sigma
+sensor.gesamtverbrauch_wohnzimmer_lowboard:
+  icon: mdi:sigma
+input_text.reminder_simon:
+  icon: mdi:calendar-edit
+input_text.reminder_lisa:
+  icon: mdi:calendar-edit
+sensor.google_travel_time_driving:
+  friendly_name: Fahrtzeit Arbeit --> Zu Hause
+  icon: mdi:map-clock-outline
+sensor.google_travel_time_driving_2:
+  friendly_name: Fahrtzeit Zu Hause --> Arbeit
+  icon: mdi:map-clock-outline
+weblink.home_assistant_chat:
+  friendly_name: Home Assistant Chat
+  hidden: false
+weblink.home_assistant_forum:
+  friendly_name: Home Assistant Forum
+  hidden: false
+weblink.home_assistant_webpage:
+  friendly_name: Home Assistant Webpage
+  hidden: false
+weblink.router:
+  friendly_name: Router
+  hidden: false
+weblink.repeater:
+  friendly_name: Repeater
+  hidden: false
+media_player.sonos_schlafzimmer:
+  friendly_name: Sonos Schlafzimmer
+  icon: mdi:music-circle
+media_player.sonos_wohnzimmer:
+  friendly_name: Sonos Wohnzimmer
+  icon: mdi:music-circle
+media_player.sonos_bad:
+  friendly_name: Sonos Bad
+  icon: mdi:music-circle
+media_player.sonos_buero:
+  friendly_name: Sonos Büro
+  icon: mdi:music-circle
+group.anwesenheit_simon:
+  friendly_name: Simon
+  entity_picture: /local/cropped-sp1.png

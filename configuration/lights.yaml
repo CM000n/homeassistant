@@ -1,0 +1,52 @@
+
+#https://home-assistant.io/components/light/
+
+####################################################
+#                                                  #
+#            REDUCE HUE SCAN INTERVA               #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/docs/configuration/platform_options/
+
+  - platform: hue
+    scan_interval: 5
+
+####################################################
+#                                                  #
+#                   LIGHTGROUPS                    #
+#                                                  #
+####################################################
+
+#https://home-assistant.io/components/light.group/
+
+  - platform: group
+    name: Deckenlampen Flur
+    entities:
+      - light.deckenlampe_flur_1
+      - light.deckenlampe_flur_2
+
+  - platform: group
+    name: Stehlampe Wohnzimmer Links
+    entities:
+      - light.stehlampe_wohnzimmer_1
+      - light.stehlampe_wohnzimmer_2
+
+  - platform: group
+    name: Spiegellampe Bad
+    entities:
+      - light.badspiegel_1
+      - light.badspiegel_2
+
+  - platform: group
+    name: Wandlampen Treppenhaus
+    entities:
+      - light.wandlampe_treppenhaus_1
+      - light.wandlampe_treppenhaus_2
+      - light.wandlampe_treppenhaus_3
+
+#########################################################
+#                                                       #
+#            END OF CONFIGURATION FILE                  #
+#                                                       #
+#########################################################

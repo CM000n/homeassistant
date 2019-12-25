@@ -1,0 +1,130 @@
+#https://home-assistant.io/components/group/
+
+####################################################
+#                                                  #
+#                     VIEWS                        #
+#                                                  #
+####################################################
+
+#No longer needed since lovelace
+
+####################################################
+#                                                  #
+#                    GROUPS                        #
+#                                                  #
+####################################################
+
+####################################################
+#                  ANWESENHEIT                     #
+####################################################
+
+anwesenheit:
+  entities:
+  - person.lisa
+  - person.simon
+
+####################################################
+#                  SCHALTUNGEN                     #
+####################################################
+
+schaltung_kueche:
+  entities:
+  - light.deckenlampe_herd
+  - light.schirmlampe_kueche
+
+schaltung_wohnzimmer:
+  entities:
+  - light.deckenlampe_wohnzimmer
+  - light.lightstrip_wohnzimmer
+  - media_player.sonos_wohnzimmer
+  - media_player.chromecast_wohnzimmer
+
+schaltung_schlafzimmer:
+  entities:
+  - light.deckenlampe_schlafzimmer
+  - light.nachttischlampe_simon
+  - light.nachttischlampe_lisa
+  - media_player.sonos_schlafzimmer
+
+schaltung_badezimmer:
+  entities:
+  - light.deckenlampe_bad
+  - light.spiegellampe_bad
+  - media_player.sonos_bad
+
+schaltung_buero:
+  entities:
+  - light.deckenlampe_buro
+  - switch.simonpc
+
+schaltung_flur:
+  entities:
+  - light.deckenlampen_flur
+  - light.stehlampe_flur
+  - light.wandlampen_treppenhaus
+
+schaltung_ankleide:
+  entities:
+  - light.deckenlampe_ankleide
+  - light.schreibtischlampe_lisa
+
+Schalter:
+  entities:
+  - switch.ventilator
+
+####################################################
+#                    LICHTER                       #
+####################################################
+
+Lichter Wohnzimmer:
+  - light.deckenlampe_wohnzimmer
+  - light.lightstrip_wohnzimmer
+
+Lichter Küche:
+  - light.deckenlampe_herd
+  - light.schirmlampe_kueche
+
+Lichter Schlafzimmer:
+  - light.deckenlampe_schlafzimmer
+  - light.nachttischlampe_simon
+  - light.nachttischlampe_lisa
+
+Lichter Flur:
+  - light.deckenlampen_flur
+  - light.stehlampe_flur
+
+Lichter Büro:
+  - light.deckenlampe_buro
+
+Lichter Bad:
+  - light.deckenlampe_bad
+  - light.spiegellampe_bad
+
+Lichter Ankleide:
+  - light.deckenlampe_ankleide
+  - light.schreibtischlampe_lisa
+
+####################################################
+#                Autofarbtemperatur                #
+####################################################
+
+Automatische Farbtemparatur:  
+  - switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
+  - switch.circadian_lighting_autofarbtemperatur_deckenlampe_schlafzimmer
+  - switch.circadian_lighting_autofarbtemperatur_wohnzimmer
+  - switch.circadian_lighting_autofarbtemperatur_deckenlampen_flur
+
+####################################################
+#                   FLOORPLAN                      #
+####################################################
+
+#  floorplan:
+#    name: Gebäudeplan
+#    entities:
+#      - binary_sensor.floorplan
+
+####################################################
+#                                                  #
+#           END OF CONFIGURATION FILE              #
+#                                                  #
+####################################################

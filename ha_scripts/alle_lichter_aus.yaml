@@ -1,0 +1,8 @@
+
+alle_lichter_aus:
+  alias: Alle Lichter aus
+  sequence:
+    service: light.turn_off
+    data:
+      entity_id:
+      - group.all_lights

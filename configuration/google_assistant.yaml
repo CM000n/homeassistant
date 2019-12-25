@@ -1,0 +1,70 @@
+#https://home-assistant.io/components/google_assistant/
+
+####################################################
+#                                                  #
+#       GOOGLE ASSISTANT MANUAL CONFIG              #
+#                                                  #
+####################################################
+
+  project_id: !secret assistant_project_id
+  api_key: !secret assistant_api_key
+  expose_by_default: false
+  exposed_domains:
+    - climate
+    - light
+    - script
+    - switch
+    - input_boolean
+  entity_config:
+    light.deckenlampen_flur:
+      expose: true
+    light.stehlampe_flur:
+      expose: true
+    light.wandlampen_treppenhaus:
+      expose: true
+    light.deckenlampe_ankleide:
+      expose: true
+    light.deckenlampe_bad:
+      expose: true
+    light.deckenlampe_buro:
+      expose: true
+    light.deckenlampe_herd:
+      expose: true
+    light.deckenlampe_schlafzimmer:
+      expose: true
+    light.deckenlampe_wohnzimmer:
+      expose: true
+    light.nachttischlampe_lisa:
+      expose: true
+    light.nachttischlampe_simon:
+      expose: true
+    light.schirmlampe_kueche:
+      expose: true
+    light.schreibtischlampe_lisa:
+      expose: true
+    light.spiegellampe_bad:
+      expose: true
+    light.lightstrip_wohnzimmer:
+      expose: true
+    script.nachtlicht_an:
+      expose: true
+    climate.heizungbad:
+      expose: true
+    climate.heizungburo:
+      expose: true
+    switch.simonpc:
+      expose: true
+    switch.ventilator:
+      expose: false
+    input_boolean.switch_wohnzimmer_beleuchtung_automatik:
+      expose: true
+    input_boolean.switch_wohnzimmer_beleuchtung_gemuetlich:
+      expose: true
+    input_boolean.switch_wohnzimmer_beleuchtung_hell:
+      expose: true
+
+#########################################################
+#                                                       #
+#            END OF CONFIGURATION FILE                  #
+#                                                       #
+#########################################################

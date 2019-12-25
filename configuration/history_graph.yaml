@@ -1,0 +1,28 @@
+
+#https://home-assistant.io/components/history_graph/
+
+####################################################
+#                                                  #
+#                   LUFTDATEN                      #
+#                                                  #
+####################################################
+
+#  gr1:
+#    name: Temperatur Graph
+#    entities:
+#      - sensor.luftdaten_temperature
+#    hours_to_show: 72
+#    refresh: 10
+
+#  gr2:
+#    name: Luftfeuchtigkeit Graph
+#    entities:
+#      - sensor.luftdaten_humidity
+#    hours_to_show: 72
+#    refresh: 10
+
+####################################################
+#                                                  #
+#            END OF CONFIGURATION FILE             #
+#                                                  #
+####################################################

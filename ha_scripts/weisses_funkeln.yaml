@@ -1,0 +1,42 @@
+
+weisses_funkeln:
+  sequence:
+  - service: script.weihnachtsbeleuchtung_farbe
+    data_template:
+      light_id: >-
+        {% set i = (range(1,6)|random) %}
+        {% if i == 1 %}
+          {% set chosen_light = "light.deckenlampe_wohnzimmer" %}
+        {% elif i == 2 %}
+          {% set chosen_light = "light.lightstrip_wohnzimmer" %}
+        {% elif i == 3 %}
+          {% set chosen_light = "light.schirmlampe_kuche" %}
+        {% elif i == 4 %}
+          {% set chosen_light = "light.stehlampe_flur_1" %}
+        {% elif i == 5 %}
+          {% set chosen_light = "light.stehlampe_flur_2" %}
+        {% endif %}
+        {{ chosen_light }}
+      color_name: >-  
+        {%- set i = (range(1,6)|random) %}  
+        {%- if i == 1 %}  
+          {% set color = "saddle brown" %}  
+        {%- elif i == 2 %}  
+          {% set color = "sienna" %}  
+        {%- elif i == 3 %}  
+          {% set color = "chocolate" %}  
+        {%- elif i == 4 %}  
+          {% set color = "peru" %}  
+        {%- elif i == 5 %}  
+          {% set color = "sandy brown" %}  
+        {%- endif %}  
+        {{ color }}  
+
+weisses_funkeln_farbe:
+  sequence:
+  - service: light.turn_on
+    data_template:
+      entity_id: '{{ light_id }}'
+      color_name: '{{ color_name }}'
+      brightness: 150
+      transition: 10

@@ -1,0 +1,52 @@
+
+#https://home-assistant.io/components/zone/
+
+####################################################
+#                                                  #
+#                     HOME                         #
+#                                                  #
+####################################################
+
+  - name: Home
+    latitude: !secret latitude
+    longitude: !secret longitude
+    radius: 50
+
+####################################################
+#                                                  #
+#                 Simon Arbeit                     #
+#                                                  #
+####################################################
+
+  - name: Simon Arbeit
+    latitude: !secret simon_arbeit_latitude
+    longitude: !secret simon_arbeit_longitude
+    radius: 350
+
+####################################################
+#                                                  #
+#                 Lisa Arbeit                      #
+#                                                  #
+####################################################
+
+  - name: Lisa Arbeit
+    latitude: !secret lisa_arbeit_latitude
+    longitude: !secret lisa_arbeit_longitude
+    radius: 200
+
+####################################################
+#                                                  #
+#                   Karlsruhe                      #
+#                                                  #
+####################################################
+
+  - name: Karlsruhe
+    latitude: !secret ka_latitude
+    longitude: !secret ka_longitude
+    radius: 4500
+
+####################################################
+#                                                  #
+#            END OF CONFIGURATION FILE             #
+#                                                  #
+####################################################

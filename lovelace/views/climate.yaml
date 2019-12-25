@@ -1,0 +1,190 @@
+title: Klima
+path: climate
+cards:
+  - type: vertical-stack
+    cards:
+      - type: custom:decluttering-card
+        template: header_text
+        variables:
+          - content: 'Klimakontrolle'
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px
+          - type: custom:decluttering-card
+            template: climate_card
+            variables:
+              - entity: climate.heizung_bad
+              - ambient_temperature: sensor.temperatur_climate_bad
+          - type: custom:decluttering-card
+            template: climate_card
+            variables:
+              - entity: climate.heizung_buro
+              - ambient_temperature: sensor.temperatur_climate_buero
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px
+          - type: custom:decluttering-card
+            template: switch_button_card
+            variables:
+              - entity: input_boolean.heizung_bad
+              - name: Bad
+              - icon: radiator
+              - color: var(--primary-background-color)
+              - aspect_ratio: 2/1
+              - show_label: false
+              - margin-right: 120px
+              - size: 15%
+          - type: custom:decluttering-card
+            template: switch_button_card
+            variables:
+              - entity: input_boolean.heizung_buero
+              - name: Büro
+              - icon: radiator
+              - color: var(--primary-background-color)
+              - aspect_ratio: 2/1
+              - show_label: false
+              - margin-right: 120px
+              - size: 15%
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px
+
+  - type: vertical-stack
+    cards:
+      - type: custom:decluttering-card
+        template: header_text
+        variables:
+          - content: 'Temperaturen'
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px 
+          - type: custom:decluttering-card
+            template: mini_graph_card
+            variables:
+              - entity: temperatur_wohnzimmer_lowboard
+              - name: Wohnzimmer
+              - line_color: '#ffb414'
+          - type: custom:decluttering-card
+            template: mini_graph_card
+            variables:
+              - entity: temperatur_climate_bad
+              - name: Bad
+              - line_color: '#ffb414'
+          - type: custom:decluttering-card
+            template: mini_graph_card
+            variables:
+              - entity: temperatur_climate_buero
+              - name: Büro
+              - line_color: '#ffb414'
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px 
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px 
+          - type: custom:decluttering-card
+            template: mini_graph_card
+            variables:
+              - entity: temperatur_keller
+              - name: Keller
+              - line_color: '#ffb414'
+          - type: custom:decluttering-card
+            template: mini_graph_card
+            variables:
+              - entity: darksky_temperature
+              - name: Außen
+              - line_color: '#ffb414'
+          - type: custom:button-card
+            color_type: blank-card
+            aspect_ratio: 1/1
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px 
+      - type: custom:decluttering-card
+        template: header_text
+        variables:
+          - content: 'Luftfeuchtigkeit'
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px 
+          - type: custom:decluttering-card
+            template: mini_graph_card
+            variables:
+              - entity: darksky_humidity
+              - name: Außen
+              - line_color: '#1427ff'
+          - type: custom:button-card
+            color_type: blank-card
+            aspect_ratio: 1/1
+          - type: custom:button-card
+            color_type: blank-card
+            aspect_ratio: 1/1
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px
+      - type: custom:decluttering-card
+        template: header_text
+        variables:
+          - content: 'Luftdruck'
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px 
+          - type: custom:decluttering-card
+            template: mini_graph_card
+            variables:
+              - entity: darksky_pressure
+              - name: Außen
+              - line_color: '#00d8ff'
+          - type: custom:button-card
+            color_type: blank-card
+            aspect_ratio: 1/1
+          - type: custom:button-card
+            color_type: blank-card
+            aspect_ratio: 1/1
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px
+      - type: 'custom:button-card'
+        color_type: blank-card
+        styles:
+          card:
+            - height: 10px

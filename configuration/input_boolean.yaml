@@ -1,0 +1,71 @@
+
+#https://www.home-assistant.io/components/input_boolean/
+
+####################################################
+#                                                  #
+#             SONOS RADIO STATIONEN                #
+#                                                  #
+####################################################
+    
+  switch_weihnachtsbeleuchtung:
+    name: Weihnachtsbeleuchtung
+    initial: off
+    icon: mdi:pine-tree
+
+  switch_weisses_funkeln:
+    name: Weisses Funkeln
+    initial: off
+    icon: mdi:star-circle-outline
+
+  switch_wohnzimmer_beleuchtung_hell:
+    name: Hell
+    initial: off
+    icon: mdi:brightness-5
+
+  switch_wohnzimmer_beleuchtung_gemuetlich:
+    name: Gemütlich
+    initial: off
+    icon: mdi:brightness-6
+
+  switch_wohnzimmer_beleuchtung_automatik:
+    name: Automatik
+    initial: on
+    icon: mdi:brightness-auto
+
+  switch_wohnzimmer_beleuchtung_aus:
+    name: Aus
+    initial: off
+    icon: mdi:power
+
+####################################################
+#                                                  #
+#            LOVELACE DUMMY BOOLEANS               #
+#                                                  #
+####################################################
+
+  lovelace_now_on:
+    initial: on
+  lovelace_automation:
+    initial: on
+  lovelace_maintenance:
+    initial: on
+  lovelace_climate:
+    initial: on
+  lovelace_remote:
+    initial: on
+  lovelace_scenes:
+    initial: on
+  dummy_cl_1:
+    initial: on
+  dummy_cl_2:
+    initial: on
+  heizung_bad:
+    initial: off
+  heizung_buero:
+    initial: off
+
+####################################################
+#                                                  #
+#            END OF CONFIGURATION FILE             #
+#                                                  #
+####################################################

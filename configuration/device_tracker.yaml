@@ -1,0 +1,45 @@
+#https://home-assistant.io/components/device_tracker/
+
+####################################################
+#                                                  #
+#           DEVICE TRACKER - FRITZBOX              #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/device_tracker.fritz/
+
+ - platform: fritz
+   host: 192.168.178.1
+   username: !secret fritz_devicetracker_username
+   password: !secret fritz_devicetracker_password
+   interval_seconds: 10
+   consider_home: 180
+   track_new_devices: True
+
+####################################################
+#                                                  #
+#            DEVICE TRACKER - GOOGLE MAPS          #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/device_tracker.google_maps/
+
+ - platform: google_maps
+   username: !secret notification_username
+
+####################################################
+#                                                  #
+#            GOOGLE MAPS CUSTOM COMPONENT          #
+#                                                  #
+####################################################
+
+#https://github.com/dennyreiter/hass-gmaps
+
+# - platform: gmaps
+#   username: !secret notification_username
+
+####################################################
+#                                                  #
+#            END OF CONFIGUATION FILE              #
+#                                                  #
+####################################################

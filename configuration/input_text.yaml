@@ -1,0 +1,19 @@
+
+#https://www.home-assistant.io/components/input_text/
+
+####################################################
+#                                                  #
+#         INPUT TEXT BENACHRICHTIGUNGEN            #
+#                                                  #
+####################################################
+
+  reminder_simon:
+    name: Reminder
+  reminder_lisa:
+    name: Reminder
+
+####################################################
+#                                                  #
+#            END OF CONFIGURATION FILE             #
+#                                                  #
+####################################################

@@ -1,0 +1,16 @@
+
+nachtlicht_an:
+  alias: Nachtlicht - Einschalten
+  sequence:
+    service: script.turn_on
+    data:
+      entity_id: script.nachtlicht_aus
+nachtlicht_aus:
+  alias: Nachtlicht - Ausschalten
+  sequence:
+  - data:
+      delay: '30'
+      entity_id:
+      - light.stehlampe_flur
+      - light.nachttischlampe_simon
+    service: light.turn_off

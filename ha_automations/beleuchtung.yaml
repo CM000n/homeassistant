@@ -1,0 +1,325 @@
+########################################################
+#                                                       #
+#              ERZWINGEN VON SENSORUPDATES              #
+#                                                       #
+#########################################################
+
+- id: '1545994542919'
+  alias: Beleuchtung - Lichter an wenn anwesend
+  trigger:
+  - entity_id: group.anwesenheit
+    platform: state
+    to: home
+  action:
+  - data:
+      entity_id:
+      - light.deckenlampe_ankleide
+      - light.deckenlampe_bad
+      - light.deckenlampe_buro
+      - light.deckenlampe_herd
+      - light.deckenlampe_schlafzimmer
+      - light.deckenlampe_wohnzimmer
+      - light.deckenlampen_flur
+      - light.schirmlampe_kuche
+      - light.schreibtischlampe_lisa
+      - light.spiegellampe_bad
+      - light.wandlampen_treppenhaus
+    service: light.turn_on
+
+
+- id: '1545994456466'
+  alias: Beleuchtung - Lichter aus wenn abwesend
+  trigger:
+  - entity_id: group.anwesenheit
+    platform: state
+    to: not_home
+  action:
+  - data:
+      entity_id:
+      - light.deckenlampe_ankleide
+      - light.deckenlampe_bad
+      - light.deckenlampe_buro
+      - light.deckenlampe_herd
+      - light.deckenlampe_schlafzimmer
+      - light.deckenlampe_wohnzimmer
+      - light.deckenlampen_flur
+      - light.lightstrip_wohnzimmer
+      - light.nachttischlampe_lisa
+      - light.nachttischlampe_simon
+      - light.schirmlampe_kuche
+      - light.schreibtischlampe_lisa
+      - light.spiegellampe_bad
+      - light.stehlampe_flur
+      - light.wandlampen_treppenhaus
+    service: light.turn_off
+
+
+- id: '1545990092919'
+  alias: Beleuchtung - Verkehrslicht an
+  trigger:
+  - minutes: /1
+    seconds: 0
+    platform: time_pattern
+  condition:
+  - after: 06:00:00
+    before: 07:30:00
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    condition: time
+  action:
+  - data_template:
+      entity_id: light.stehlampe_wohnzimmer_links
+    service: python_script.traffic
+
+
+- id: '1545990932542'
+  alias: Beleuchtung - Verkehrslicht aus
+  trigger:
+  - at: 07:31:00
+    platform: time
+  condition:
+  - after: 07:30:00
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    condition: time
+  action:
+  - data:
+      entity_id: light.stehlampe_wohnzimmer_links
+    service: light.turn_off
+
+- id: '1545998630493'
+  alias: Beleuchtung - Autofarbtemparaturen an bei Start
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition: []
+  action:
+  - data:
+      entity_id: 
+      - switch.circadian_lighting_autofarbtemperatur_deckenlampe_ankleide
+      - switch.circadian_lighting_autofarbtemperatur_deckenlampe_bad
+      - switch.circadian_lighting_autofarbtemperatur_licht_badspiegel
+      - switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
+      - switch.circadian_lighting_autofarbtemperatur_deckenlampe_herd
+      - switch.circadian_lighting_autofarbtemperatur_deckenlampe_schlafzimmer
+      - switch.circadian_lighting_autofarbtemperatur_wohnzimmer
+      - switch.circadian_lighting_autofarbtemperatur_deckenlampen_flur
+    service: homeassistant.turn_on
+
+
+- id: '1545998760983'
+  alias: Beleuchtung - Flurlicht an bei Sonnenuntergang
+  trigger:
+  - event: sunset
+    platform: sun
+  condition:
+  - after: sunset
+    condition: sun
+  - condition: state
+    entity_id: group.anwesenheit
+    state: home
+  action:
+  - data:
+      entity_id: light.deckenlampen_flur
+    service: light.turn_on
+
+
+- id: '1545999542049'
+  alias: Beleuchtung - Lightstrip Wohnzimmer mit Deckenlampe an
+  trigger:
+  - entity_id: light.deckenlampe_wohnzimmer
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      brightness: 55
+      color_temp: 440
+      entity_id: light.lightstrip_wohnzimmer
+      transition: 180
+    service: light.turn_on
+
+
+- id: '1545999684297'
+  alias: Beleuchtung - Lightstrip Wohnzimmer mit Deckenlampe aus
+  trigger:
+  - entity_id: light.deckenlampe_wohnzimmer
+    from: 'on'
+    platform: state
+  condition: []
+  action:
+  - data:
+      entity_id: light.lightstrip_wohnzimmer
+      transition: 15
+    service: light.turn_off
+
+
+- id: '1546006391342'
+  alias: Beleuchtung - Weihnachtsbeleuchtung einschalten
+  trigger:
+  - seconds: /5
+    platform: time_pattern
+  condition:
+  - condition: state
+    entity_id: input_boolean.switch_weihnachtsbeleuchtung
+    state: 'on'
+  action:
+  - data:
+      entity_id: switch.circadian_lighting_circadian_lighting
+    service: switch.turn_off
+  - data:
+      entity_id: script.weihnachtsbeleuchtung
+    service: script.turn_on
+
+
+- id: '1546006473473'
+  alias: Beleuchtung - Weihanchtsbeleuchtung ausschalten
+  trigger:
+  - entity_id: input_boolean.switch_weihnachtsbeleuchtung
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.circadian_lighting_circadian_lighting
+    service: switch.turn_on
+  - data:
+      entity_id: script.weihnachtsbeleuchtung
+    service: script.turn_off
+
+
+- id: '1546442391342'
+  alias: Beleuchtung - Weisses Funkeln einschalten
+  trigger:
+  - seconds: /5
+    platform: time_pattern
+  condition:
+  - condition: state
+    entity_id: input_boolean.switch_weisses_funkeln
+    state: 'on'
+  action:
+  - data:
+      entity_id: switch.circadian_lighting_circadian_lighting
+    service: switch.turn_off
+  - data:
+      entity_id: script.weisses_funkeln
+    service: script.turn_on
+
+
+- id: '15460064737856'
+  alias: Beleuchtung - Weisses Funkeln ausschalten
+  trigger:
+  - entity_id: input_boolean.switch_weisses_funkeln
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.circadian_lighting_circadian_lighting
+    service: switch.turn_on
+  - data:
+      entity_id: script.weisses_funkeln
+    service: script.turn_off
+
+
+- id: '1546651455642'
+  alias: Beleuchtung - Helle Beleuchtung Wohnzimmer ein
+  trigger:
+  - platform: state
+    entity_id: input_boolean.switch_wohnzimmer_beleuchtung_hell
+    to: 'on'
+  action:
+  - data:
+      entity_id: 
+      - input_boolean.switch_wohnzimmer_beleuchtung_gemuetlich
+      - input_boolean.switch_wohnzimmer_beleuchtung_automatik
+      - input_boolean.switch_wohnzimmer_beleuchtung_aus
+      - switch.circadian_lighting_autofarbtemperatur_wohnzimmer
+    service: homeassistant.turn_off
+  - data:
+      profile: energize
+      entity_id:
+      - light.deckenlampe_wohnzimmer
+      - light.stehlampe_wohnzimmer_links
+      - light.lightstrip_wohnzimmer
+    service: light.turn_on
+
+- id: '1546651445645642'
+  alias: Beleuchtung - Gemütliche Beleuchtung Wohnzimmer ein
+  trigger:
+  - platform: state
+    entity_id: input_boolean.switch_wohnzimmer_beleuchtung_gemuetlich
+    to: 'on'
+  action:
+  - data:
+      entity_id: 
+      - input_boolean.switch_wohnzimmer_beleuchtung_hell
+      - input_boolean.switch_wohnzimmer_beleuchtung_automatik
+      - input_boolean.switch_wohnzimmer_beleuchtung_aus
+      - switch.circadian_lighting_autofarbtemperatur_wohnzimmer
+    service: homeassistant.turn_off
+  - data:
+      profile: relax
+      entity_id:
+      - light.deckenlampe_wohnzimmer
+      - light.stehlampe_wohnzimmer_links
+      - light.lightstrip_wohnzimmer
+    service: light.turn_on
+
+- id: '1546659456445645642'
+  alias: Beleuchtung - Automatische Beleuchtung Wohnzimmer ein
+  trigger:
+  - platform: state
+    entity_id: input_boolean.switch_wohnzimmer_beleuchtung_automatik
+    to: 'on'
+  action:
+  - data:
+      entity_id: 
+      - input_boolean.switch_wohnzimmer_beleuchtung_hell
+      - input_boolean.switch_wohnzimmer_beleuchtung_gemuetlich
+      - input_boolean.switch_wohnzimmer_beleuchtung_aus
+    service: homeassistant.turn_off
+  - data:
+      entity_id: switch.circadian_lighting_autofarbtemperatur_wohnzimmer
+    service: homeassistant.turn_on
+  - data:
+      entity_id:
+      - light.deckenlampe_wohnzimmer
+      - light.stehlampe_wohnzimmer_links
+      - light.lightstrip_wohnzimmer
+    service: light.turn_on
+
+- id: '1546654564495845642'
+  alias: Beleuchtung - Beleuchtung Wohnzimmer aus
+  trigger:
+  - platform: state
+    entity_id: input_boolean.switch_wohnzimmer_beleuchtung_aus
+    to: 'on'
+  action:
+  - data:
+      entity_id: 
+      - input_boolean.switch_wohnzimmer_beleuchtung_hell
+      - input_boolean.switch_wohnzimmer_beleuchtung_gemuetlich
+      - input_boolean.switch_wohnzimmer_beleuchtung_automatik
+      - switch.circadian_lighting_autofarbtemperatur_wohnzimmer
+    service: homeassistant.turn_off
+  - data:
+      entity_id: 
+      - light.deckenlampe_wohnzimmer
+      - light.stehlampe_wohnzimmer_links
+      - light.lightstrip_wohnzimmer
+    service: light.turn_off
+
+########################################################
+#                                                       #
+#            END OF CONFIGURATION FILE                  #
+#                                                       #
+#########################################################

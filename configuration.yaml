@@ -1,0 +1,310 @@
+####################################################
+#                                                  #
+#                 HOME ASSISTANT                   #
+#                                                  #
+####################################################
+
+# https://home-assistant.io/docs/configuration/basic/
+
+homeassistant:
+  name: Home
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: 194
+  unit_system: metric
+  time_zone: !secret time_zone
+  customize: !include configuration/customize.yaml
+  auth_providers:
+   - type: homeassistant
+
+####################################################
+#                                                  #
+#                     GENERAL                      #
+#                                                  #
+####################################################
+
+# https://www.home-assistant.io/lovelace/yaml-mode/
+lovelace:
+  mode: yaml
+# https://home-assistant.io/components/frontend/
+frontend: !include configuration/frontend.yaml
+# https://home-assistant.io/components/config/
+config:
+# https://home-assistant.io/components/sun/
+sun:
+# https://home-assistant.io/components/http/
+http:
+# https://home-assistant.io/components/updater/
+updater:
+# https://home-assistant.io/components/discovery/
+discovery:
+# https://home-assistant.io/components/conversation/
+conversation:
+# https://home-assistant.io/components/recorder/
+recorder: !include configuration/recorder.yaml
+# https://home-assistant.io/components/history/
+history:
+# https://home-assistant.io/components/tts/
+tts:
+ - platform: google_translate
+   language: 'de'
+# https://home-assistant.io/components/python_script/
+python_script:
+# https://www.home-assistant.io/docs/mqtt/broker#embedded-broker
+mqtt:
+  broker: 192.168.178.3
+  port: 1883
+  discovery: true
+  discovery_prefix: homeassistant
+# https://www.home-assistant.io/components/system_health/
+system_health:
+# https://www.home-assistant.io/components/person/
+person:
+
+####################################################
+#                                                  #
+#      LINKS TO INDIVUAL CONFIGURATION FILES       #
+#                                                  #
+####################################################
+
+# https://home-assistant.io/docs/configuration/splitting_configuration/
+
+group: !include configuration/groups.yaml
+automation: !include_dir_merge_list ha_automations/
+script: !include_dir_merge_named ha_scripts/
+device_tracker: !include configuration/device_tracker.yaml
+notify: !include configuration/notification.yaml
+switch: !include configuration/switches.yaml
+climate: !include configuration/climate.yaml
+sensor: !include configuration/sensors.yaml
+shell_command: !include configuration/shell_commands.yaml
+logbook: !include configuration/logbook.yaml
+light: !include configuration/lights.yaml
+zone: !include configuration/zones.yaml
+camera: !include configuration/camera.yaml
+media_player: !include configuration/media_player.yaml
+input_boolean: !include configuration/input_boolean.yaml
+input_select: !include configuration/input_select.yaml
+input_text: !include configuration/input_text.yaml
+history_graph: !include configuration/history_graph.yaml
+google_assistant: !include configuration/google_assistant.yaml
+binary_sensor: !include configuration/binary_sensor.yaml
+
+####################################################
+#                                                  #
+#                PANEL IFRAME                      #
+#                                                  #
+####################################################
+
+# https://www.home-assistant.io/components/panel_iframe/
+
+panel_iframe:
+  grafana:
+    title: 'Grafana'
+    icon: mdi:graphql
+    url: 'https://grafana.oberackergaul.de'
+  traefik:
+    title: 'Traefik'
+    icon: mdi:ip-network
+    url: 'https://traefik.oberackergaul.de'
+  portainer:
+    title: 'Portainer'
+    icon: mdi:docker
+    url: 'https://portainer.oberackergaul.de'
+
+####################################################
+#                                                  #
+#                PHILIPS HUE                       #
+#                                                  #
+####################################################
+
+# https://home-assistant.io/components/hue/
+
+hue:
+  bridges:
+    - host: 192.168.178.4
+      allow_unreachable: false
+      allow_hue_groups: false
+
+####################################################
+#                                                  #
+#                  FRITZ HOME                      #
+#                                                  #
+####################################################
+
+# https://github.com/hthiery/homeassistant
+
+fritzbox:
+  devices:
+    - host: 192.168.178.1
+      username: !secret fritzbox_username
+      password: !secret fritzbox_password
+
+####################################################
+#                                                  #
+#                  GOOGLE CALENDAR                 #
+#                                                  #
+####################################################
+
+# https://www.home-assistant.io/components/calendar.google/
+
+google:
+  client_id: !secret gcalendar_client_id
+  client_secret: !secret gcalendar_client_secret
+
+####################################################
+#                                                  #
+#                      SONOS                       #
+#                                                  #
+####################################################
+
+# https://home-assistant.io/components/media_player.sonos/
+
+sonos:
+  media_player:
+    hosts:
+      - 192.168.178.10
+      - 192.168.178.11
+      - 192.168.178.12
+      - 192.168.178.13
+      - 192.168.178.14
+
+####################################################
+#                                                  #
+#                   CHROMECAST                     #
+#                                                  #
+####################################################
+
+# https://home-assistant.io/components/media_player.cast/
+
+cast:
+  media_player:
+  - host: 192.168.178.9
+
+####################################################
+#                                                  #
+#                    INFLUXDB                      #
+#                                                  #
+####################################################
+
+# https://www.home-assistant.io/components/influxdb/
+
+#influxdb:
+#  host: 192.168.178.3
+#  port: 8086
+
+####################################################
+#                                                  #
+#                    SPEEDTEST                     #
+#                                                  #
+####################################################
+
+# https://www.home-assistant.io/components/speedtestdotnet/
+
+speedtestdotnet:
+  server_id: 6601
+  monitored_conditions:
+    - download
+    - upload
+    - ping
+
+####################################################
+#                                                  #
+#                CIRCADIAN LIGHTS                  #
+#                                                  #
+####################################################
+
+# https://community.home-assistant.io/t/circadian-lighting-custom-component/61246
+
+circadian_lighting:
+  min_colortemp: 2000
+  max_colortemp: 6000
+
+####################################################
+#                                                  #
+#                    DARKSKY                       #
+#                                                  #
+####################################################
+
+# https://www.home-assistant.io/components/weather.darksky/
+
+weather:
+  - platform: darksky
+    api_key: !secret dsky_api
+
+####################################################
+#                                                  #
+#                    LUFTDATEN                     #
+#                                                  #
+####################################################
+
+# https://www.home-assistant.io/components/luftdaten/
+
+luftdaten:
+  sensor_id: 19194
+  show_on_map: false
+  sensors:
+    monitored_conditions:
+      - temperature
+      - humidity
+      - P1
+      - P2
+
+####################################################
+#                                                  #
+#                       HACS                       #
+#                                                  #
+####################################################
+
+# https://custom-components.github.io/hacs/
+
+hacs:
+  token: !secret github_token
+  options:
+    release_limit: 5
+
+####################################################
+#                                                  #
+#                 MOBILE APP                       #
+#                                                  #
+####################################################
+
+# https://www.home-assistant.io/integrations/mobile_app/
+
+mobile_app:
+
+####################################################
+#                                                  #
+#               TIMESCALE LTSS                     #
+#                                                  #
+####################################################
+
+# https://github.com/freol35241/ltss
+
+ltss:
+    db_url: !secret ltss_url
+    include:
+        domains:
+        - sensor
+        - binary_sensor
+        - media_player
+        - climate
+        - light
+        - switch
+        entities:
+        - person.lisa
+        - person.simon
+    exclude:
+        entities:
+        - sensor.time
+        - sensor.time_2
+        - sensor.time_date
+        - sensor.time_utc
+        - sensor.date_time
+        - sensor.date_time_iso
+
+####################################################
+#                                                  #
+#            END OF CONFIGURATION FILE             #
+#                                                  #
+####################################################

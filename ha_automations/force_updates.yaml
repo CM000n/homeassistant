@@ -1,0 +1,43 @@
+########################################################
+#                                                       #
+#              ERZWINGEN VON SENSORUPDATES              #
+#                                                       #
+#########################################################
+
+# https://community.home-assistant.io/t/update-record-of-sensor-template-every-5-min/37463/5
+
+#- action:
+#  - data:
+#      entity_id: sensor.stromverbrauch_spuehlmaschine
+#    service: python_script.force_update_strom_spuehlmaschine
+#  alias: System - Erzwinge Minütliches Update Strom Spülmaschine
+#  trigger:
+#  - minutes: /1
+#    seconds: 0
+#    platform: time
+
+#- action:
+#  - data:
+#      entity_id: sensor.stromverbrauch_waschmaschine
+#    service: python_script.force_update_strom_waschmaschine
+#  alias: System - Erzwinge Minütliches Update Strom Waschmaschine
+#  trigger:
+#  - minutes: /1
+#    seconds: 0
+#    platform: time
+
+#- action:
+#  - data:
+#      entity_id: sensor.stromverbrauch_trockner
+#    service: python_script.force_update_strom_trockner
+#  alias: System - Erzwinge Minütliches Update Strom Trockner
+#  trigger:
+#  - minutes: /1
+#    seconds: 0
+#    platform: time
+
+########################################################
+#                                                       #
+#            END OF CONFIGURATION FILE                  #
+#                                                       #
+#########################################################

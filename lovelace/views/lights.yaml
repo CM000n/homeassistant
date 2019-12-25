@@ -1,0 +1,256 @@
+title: Licht
+path:  lights
+popup_cards:
+  !include ../popup-cards/light-popup.yaml
+
+cards:
+  - type: vertical-stack
+    cards:
+      - type: custom:decluttering-card
+        template: header_text
+        variables:
+          - content: 'Wohn- / Esszimmer'
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px
+          - type: custom:decluttering-card
+            template: light_button_card
+            variables:
+              - entity: light.deckenlampe_wohnzimmer
+              - name: Wohnzimmer
+              - icon: ceiling-light
+          - type: custom:decluttering-card
+            template: light_button_card
+            variables:
+              - entity: light.lightstrip_wohnzimmer
+              - name: Lightstrip
+              - icon: led-strip
+              - lock: true
+          - type: custom:decluttering-card
+            template: light_button_card
+            variables:
+              - entity: light.deckenlampe_herd
+              - name: Herd
+              - icon: ceiling-light
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px
+          - type: custom:decluttering-card
+            template: light_button_card
+            variables:
+              - entity: light.stehlampe_wohnzimmer_links
+              - name: Stehlampe Links
+              - icon: floor-lamp
+          - type: custom:decluttering-card
+            template: light_button_card
+            variables:
+              - entity: switch.ventilator
+              - name: Stehlampe Rechts
+              - icon: floor-lamp
+          - type: custom:button-card
+            color_type: blank-card
+            aspect_ratio: 1/1
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px
+      - type: custom:decluttering-card
+        template: header_text
+        variables:
+          - content: 'Schlafzimmer / Ankleide'
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px
+          - type: custom:decluttering-card
+            template: light_button_card
+            variables:
+              - entity: light.deckenlampe_schlafzimmer
+              - name: Schlafzimmer
+              - icon: ceiling-light
+          - type: custom:decluttering-card
+            template: light_button_card
+            variables:
+              - entity: light.nachttischlampe_lisa
+              - name: Lisa
+              - icon: lamp
+          - type: custom:decluttering-card
+            template: light_button_card
+            variables:
+              - entity: light.nachttischlampe_simon
+              - name: Simon
+              - icon: lamp
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px
+          - type: custom:decluttering-card
+            template: light_button_card
+            variables:
+              - entity: light.deckenlampe_ankleide
+              - name: Ankleide
+              - icon: ceiling-light
+          - type: custom:decluttering-card
+            template: light_button_card
+            variables:
+              - entity: light.schreibtischlampe_lisa
+              - name: Schreibtisch
+              - icon: desk-lamp
+          - type: custom:button-card
+            color_type: blank-card
+            aspect_ratio: 1/1
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px
+      - type: custom:decluttering-card
+        template: header_text
+        variables:
+          - content: 'Badezimmer'
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px
+          - type: custom:decluttering-card
+            template: light_button_card
+            variables:
+              - entity: light.deckenlampe_bad
+              - name: Deckenlampe
+              - icon: ceiling-light
+          - type: custom:decluttering-card
+            template: light_button_card
+            variables:
+              - entity: light.spiegellampe_bad
+              - name: Spiegellampe
+              - icon: led-strip
+          - type: custom:button-card
+            color_type: blank-card
+            aspect_ratio: 1/1
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px
+  - type: vertical-stack
+    cards:
+      - type: custom:decluttering-card
+        template: header_text
+        variables:
+          - content: 'Büro'
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px
+          - type: custom:decluttering-card
+            template: light_button_card
+            variables:
+              - entity: light.deckenlampe_buro
+              - name: Deckenlampe
+              - icon: ceiling-light
+          - type: custom:decluttering-card
+            template: switch_button_card
+            variables:
+              - entity: light.schirmlampe_buero
+              - name: Schirmlampe
+              - icon: lamp
+          - type: custom:button-card
+            color_type: blank-card
+            aspect_ratio: 1/1
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px
+      - type: custom:decluttering-card
+        template: header_text
+        variables:
+          - content: 'Flur'
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px
+          - type: custom:decluttering-card
+            template: switch_button_card
+            variables:
+              - entity: light.deckenlampen_flur
+              - name: Flur
+              - icon: ceiling-light
+          - type: custom:button-card
+            color_type: blank-card
+            aspect_ratio: 1/1
+          - type: custom:button-card
+            color_type: blank-card
+            aspect_ratio: 1/1
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px
+      - type: custom:decluttering-card
+        template: header_text
+        variables:
+          - content: 'Sonstige'
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px
+          - type: custom:decluttering-card
+            template: switch_button_card
+            variables:
+              - entity: light.wandlampen_treppenhaus
+              - name: Wandlampen
+              - icon: spotlight
+          - type: custom:button-card
+            color_type: blank-card
+            aspect_ratio: 1/1
+          - type: custom:button-card
+            color_type: blank-card
+            aspect_ratio: 1/1
+          - type: 'custom:button-card'
+            color_type: blank-card
+            styles:
+              card:
+                - width: 10px
+      - type: 'custom:button-card'
+        color_type: blank-card
+        styles:
+          card:
+            - height: 10px

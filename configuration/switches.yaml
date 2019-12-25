@@ -1,0 +1,229 @@
+
+#https://home-assistant.io/components/switch/
+
+####################################################
+#                                                  #
+#             WAKE ON LAN SWITCHES                 #
+#                                                  #
+####################################################
+
+#https://home-assistant.io/components/switch.wake_on_lan/
+
+  - platform: wake_on_lan
+    name: "Simon-PC"
+    mac: 74:d4:35:b0:e5:f7
+    host: 192.168.178.5
+    turn_off:
+      service: shell_command.sleep_simon_pc
+
+####################################################
+#                                                  #
+#               CIRCADIAN LIGHTING                 #
+#                                                  #
+####################################################
+
+#https://community.home-assistant.io/t/circadian-lighting-custom-component/61246
+
+  - platform: circadian_lighting
+    name: Autofarbtemperatur Deckenlampe Büro
+    lights_ct:
+     - light.deckenlampe_buro
+    min_brightness: 50
+    max_brightness: 100
+
+  - platform: circadian_lighting
+    name: Autofarbtemperatur Deckenlampe Schlafzimmer
+    lights_ct:
+     - light.deckenlampe_schlafzimmer
+    min_brightness: 50
+    max_brightness: 100
+
+  - platform: circadian_lighting
+    name: Autofarbtemperatur Wohnzimmer
+    lights_ct:
+     - light.deckenlampe_wohnzimmer
+     - light.stehlampe_wohnzimmer_links
+     - light.lightstrip_wohnzimmer
+    min_brightness: 25
+    max_brightness: 100
+
+  - platform: circadian_lighting
+    name: Autofarbtemperatur Deckenlampen Flur
+    lights_ct:
+     - light.deckenlampe_flur_1
+     - light.deckenlampe_flur_2
+    min_brightness: 50
+    max_brightness: 100
+
+  - platform: circadian_lighting
+    name: Autofarbtemperatur Deckenlampe Ankleide
+    lights_ct:
+     - light.deckenlampe_ankleide
+    min_brightness: 100
+    max_brightness: 100
+    sleep_entity: group.all_switches
+    sleep_state: 'on'
+    sleep_colortemp: 6500
+
+  - platform: circadian_lighting
+    name: Autofarbtemperatur Deckenlampe Herd
+    lights_ct:
+     - light.deckenlampe_herd
+    min_brightness: 100
+    max_brightness: 100
+    sleep_entity: group.all_switches
+    sleep_state: 'on'
+    sleep_colortemp: 6500
+
+  - platform: circadian_lighting
+    name: Autofarbtemperatur Deckenlampe Bad
+    lights_ct:
+     - light.deckenlampe_bad
+    min_brightness: 100
+    max_brightness: 100
+    sleep_entity: group.all_switches
+    sleep_state: 'on'
+    sleep_colortemp: 6500
+
+  - platform: circadian_lighting
+    name: Autofarbtemperatur Licht Badspiegel
+    lights_ct:
+     - light.badspiegel_1
+     - light.badspiegel_2
+    min_brightness: 100
+    max_brightness: 100
+    sleep_entity: group.all_switches
+    sleep_state: 'on'
+    sleep_colortemp: 6500
+
+####################################################
+#                                                  #
+#                      Räume                       #
+#                                                  #
+####################################################
+
+#https://home-assistant.io/components/switch.template/
+
+  - platform: template
+    switches:
+      wohnzimmer:
+        value_template: "{{ is_state('group.schaltung_wohnzimmer', 'on') }}"
+        turn_on:
+          service: homeassistant.turn_on
+          data:
+            entity_id: group.schaltung_wohnzimmer
+        turn_off:
+          service: homeassistant.turn_off
+          data:
+            entity_id: group.schaltung_wohnzimmer
+
+  - platform: template
+    switches:
+      kueche:
+        value_template: "{{ is_state('group.schaltung_kueche', 'on') }}"
+        turn_on:
+          service: homeassistant.turn_on
+          data:
+            entity_id: group.schaltung_kueche
+        turn_off:
+          service: homeassistant.turn_off
+          data:
+            entity_id: group.schaltung_kueche
+
+  - platform: template
+    switches:
+      schlafzimmer:
+        value_template: "{{ is_state('group.schaltung_schlafzimmer', 'on') }}"
+        turn_on:
+          service: homeassistant.turn_on
+          data:
+            entity_id: group.schaltung_schlafzimmer
+        turn_off:
+          service: homeassistant.turn_off
+          data:
+            entity_id: group.schaltung_schlafzimmer
+
+  - platform: template
+    switches:
+      badezimmer:
+        value_template: "{{ is_state('group.schaltung_badezimmer', 'on') }}"
+        turn_on:
+          service: homeassistant.turn_on
+          data:
+            entity_id: group.schaltung_badezimmer
+        turn_off:
+          service: homeassistant.turn_off
+          data:
+            entity_id: group.schaltung_badezimmer
+
+  - platform: template
+    switches:
+      buero:
+        value_template: "{{ is_state('group.schaltung_buero', 'on') }}"
+        turn_on:
+          service: homeassistant.turn_on
+          data:
+            entity_id: group.schaltung_buero
+        turn_off:
+          service: homeassistant.turn_off
+          data:
+            entity_id: group.schaltung_buero
+
+  - platform: template
+    switches:
+      flur:
+        value_template: "{{ is_state('group.schaltung_flur', 'on') }}"
+        turn_on:
+          service: homeassistant.turn_on
+          data:
+            entity_id: group.schaltung_flur
+        turn_off:
+          service: homeassistant.turn_off
+          data:
+            entity_id: group.schaltung_flur
+
+  - platform: template
+    switches:
+      ankleide:
+        value_template: "{{ is_state('group.schaltung_ankleide', 'on') }}"
+        turn_on:
+          service: homeassistant.turn_on
+          data:
+            entity_id: group.schaltung_ankleide
+        turn_off:
+          service: homeassistant.turn_off
+          data:
+            entity_id: group.schaltung_ankleide
+
+  - platform: template
+    switches:
+      ventilator:
+        value_template: "{{ is_state('switch.steckdose_ventilator', 'on') }}"
+        turn_on:
+          service: homeassistant.turn_on
+          data:
+            entity_id: switch.steckdose_ventilator
+        turn_off:
+          service: homeassistant.turn_off
+          data:
+            entity_id: switch.steckdose_ventilator
+
+  - platform: template
+    switches:
+      autofarbtemparatur:
+        friendly_name: Automatische Farbtemparatur
+        value_template: "{{ is_state('group.automatische_farbtemparatur', 'on') }}"
+        turn_on:
+          service: homeassistant.turn_on
+          data:
+            entity_id: group.automatische_farbtemparatur
+        turn_off:
+          service: homeassistant.turn_off
+          data:
+            entity_id: group.automatische_farbtemparatur
+
+####################################################
+#                                                  #
+#           END OF CONFIGURATION FILE              #
+#                                                  #
+####################################################

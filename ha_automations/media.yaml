@@ -1,0 +1,30 @@
+########################################################
+#                                                       #
+#        SONOS GERÄTE JEDEN MORGEN ZURÜCKSETZEN         #
+#                                                       #
+#########################################################
+
+# https://www.home-assistant.io/components/media_player.sonos/
+
+- alias: "Media - Sonos Player jeden Morgen zurücksetzen"
+  initial_state: 'on'
+  trigger:
+    - platform: time
+      at: '06:00'
+  action:
+    - service: media_player.sonos_unjoin
+      entity_id:
+        - media_player.wohnzimmer
+        - media_player.sonos_schlafzim
+        - media_player.sonos_bad
+    - service: media_player.clear_playlist
+      entity_id:
+        - media_player.wohnzimmer
+        - media_player.sonos_schlafzim
+        - media_player.sonos_bad
+
+########################################################
+#                                                       #
+#            END OF CONFIGURATION FILE                  #
+#                                                       #
+#########################################################

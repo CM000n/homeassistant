@@ -1,0 +1,24 @@
+
+#https://home-assistant.io/components/shell_command/
+
+####################################################
+#                                                  #
+#              SHUTDOWN COMPUTERS                  #
+#                                                  #
+####################################################
+
+  sleep_simon_pc: !secret sleep_simon_pc
+
+#  update_homeassistant: sh /opt/homeassistant/config/sh_scripts/update_homeassistant.sh
+
+#Above removed as they contain personal information.  Commmand should be formatted as:
+# "net rpc shutdown -I IPADDRESS -U USERNAME%PASSWORD"
+# IP is the IP address of the machine you are trying to shutdown
+# USERNAME is the Windows assigned username.  Got to C:\Users to find your username.  (windows may have truncated the name you provided) 
+# PASSWORD is the password you use to log into windows
+
+####################################################
+#                                                  #
+#          END OF CONFIGURATION FILE               #
+#                                                  #
+#################################################### 

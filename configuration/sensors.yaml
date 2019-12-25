@@ -1,0 +1,795 @@
+
+#https://home-assistant.io/components/sensor/
+
+####################################################
+#                                                  #
+#            SERVER & HA INFORMATIONEN             #
+#                                                  #
+####################################################
+
+#https://home-assistant.io/components/sensor.command_line/
+
+  - platform: command_line
+    command: python3 -c "import requests; print(requests.get('https://pypi.python.org/pypi/homeassistant/json').json()['info']['version'])"
+    name: Aktuellste HA Version
+    scan_interval: 3600
+
+  - platform: version
+    name: Installierte HA Version
+
+  - platform: systemmonitor
+    resources:
+      - type: last_boot
+
+#  - platform: command_line
+#    command: "apt list --upgradable"
+#    name: HA - Verfügbare Updates
+#    scan_interval: 3600
+
+####################################################
+#                                                  #
+#                   DARKSKY                        #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/sensor.darksky/
+
+  - platform: darksky
+    api_key: c1b5d48496e36e4a25a6be95c8949766
+    name: darksky
+    language: de
+    monitored_conditions:
+      - temperature
+      - icon
+      - precip_probability
+      - wind_speed
+      - pressure
+      - wind_bearing
+      - humidity
+      - visibility
+      - cloud_cover
+
+####################################################
+#                                                  #
+#                 TIME & DATE                      #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/time_date/
+
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+      - 'date_time'
+      - 'date_time_iso'
+      - 'time_date'
+      - 'time_utc'
+      - 'beat'
+
+####################################################
+#                                                  #
+#           Fritz!Box Online Monitor               #
+#                                                  #
+####################################################
+
+#https://home-assistant.io/components/sensor.fritzbox_netmonitor/
+
+  - platform: fritzbox_netmonitor
+    host: 192.168.178.1
+
+####################################################
+#                                                  #
+#                  Travel Time                     #
+#                                                  #
+####################################################
+
+#https://home-assistant.io/components/sensor.google_travel_time/
+
+  - platform: google_travel_time
+    name: 'Von Zu Hause zur Arbeit'
+    api_key: !secret google_travel_api_key
+    origin: !secret google_travel_origin
+    destination: !secret google_travel_destination
+    scan_interval: 1800
+
+  - platform: google_travel_time
+    name: 'Von der Arbeit nach Hause'
+    api_key: !secret google_travel_api_key
+    origin: !secret google_travel_destination
+    destination: !secret google_travel_origin
+    scan_interval: 1800
+
+  - platform: google_travel_time
+    name: 'Von Simon nach Hause'
+    api_key: !secret google_travel_api_key
+    origin: person.simon
+    destination: !secret google_travel_origin
+    scan_interval: 1800
+
+  - platform: google_travel_time
+    name: 'Von Simon zur Arbeit'
+    api_key: !secret google_travel_api_key
+    origin: person.simon
+    destination: !secret google_travel_destination
+    scan_interval: 1800
+
+####################################################
+#                                                  #
+#                DEUTSCHE BAHN                     #
+#                                                  #
+####################################################
+
+#https://home-assistant.io/components/sensor.deutsche_bahn/
+
+  - platform: deutsche_bahn
+#    name: Zug Münzesheim --> Karlsruhe
+    from: !secret db_travel_origin
+    to: !secret db_travel_destination
+
+  - platform: deutsche_bahn
+#    name: Zug Münzesheim --> Menzingen
+    from: !secret db_travel_origin
+    to: !secret db_travel_destination2
+
+####################################################
+#                                                  #
+#               EXTERNAL IP ADDRESS                #
+#                                                  #
+####################################################
+
+#https://home-assistant.io/components/sensor.dnsip/
+
+  - platform: dnsip
+
+####################################################
+#                                                  #
+#                    Attributes                    #
+#                                                  #
+####################################################
+
+#https://github.com/pilotak/homeassistant-attributes
+
+  - platform: attributes
+    friendly_name: "Batterien"
+    attribute: battery_level
+    unit_of_measurement: "%"
+    entities:
+      - climate.heizung_bad
+      - climate.heizung_buro
+      - device_tracker.google_maps_113462452053772321900
+
+####################################################
+#                                                  #
+#                  TEMPLATE SENSORS                #
+#                                                  #
+####################################################
+
+  - platform: template
+    sensors:
+      sonos_wohnzimmer_state:
+        value_template: '{{ states("media_player.wohnzimmer") }}'
+        friendly_name: 'Status'
+      sonos_schlafzim_state:
+        value_template: '{{ states("media_player.sonos_schlafzim") }}'
+        friendly_name: 'Status'
+      sonos_bad_state:
+        value_template: '{{ states("media_player.sonos_bad") }}'
+        friendly_name: 'Status'
+      chromecast_wohnzimmer_state:
+        value_template: '{{ states("media_player.chromecast_wohnzimmer") }}'
+        friendly_name: 'Status'
+      tv_wohnzimmer_state:
+        value_template: '{{ states("binary_sensor.device_tracker_philipstv") }}'
+        friendly_name: 'Status'
+
+      stromverbrauch_spuehlmaschine:
+        value_template: '{{ state_attr("switch.steckdose_spulmaschine", "current_power_w") }}'
+        unit_of_measurement: 'W'
+        friendly_name: 'Stromverbrauch Spülmaschine'
+      stromverbrauch_waschmaschine:
+        value_template: '{{ state_attr("switch.steckdose_waschmaschine", "current_power_w") }}'
+        unit_of_measurement: 'W'
+        friendly_name: 'Stromverbrauch Waschmaschine'
+      stromverbrauch_trockner:
+        value_template: '{{ state_attr("switch.steckdose_trockner", "current_power_w") }}'
+        unit_of_measurement: 'W'
+        friendly_name: 'Stromverbrauch Trockner'
+      stromverbrauch_wohnzimmer_lowboard:
+        value_template: '{{ state_attr("switch.steckdose_wohnzimmer_lowboard", "current_power_w") }}'
+        unit_of_measurement: 'W'
+        friendly_name: 'Stromverbrauch Wohnzimmer Lowboard'
+      stromverbrauch_kueche_mehrfachstecker:
+        value_template: '{{ state_attr("switch.steckdose_kuche_mehrfachstecker", "current_power_w") }}'
+        unit_of_measurement: 'W'
+        friendly_name: 'Stromverbrauch Küche Mehrfachstecker'
+      gesamtverbrauch_spuehlmaschine:
+        value_template: '{{ state_attr("switch.steckdose_spulmaschine", "total_consumption") }}'
+        unit_of_measurement: 'kWh'
+        friendly_name: 'Gesamtvebrauch Spülmaschine'
+      gesamtverbrauch_waschmaschine:
+        value_template: '{{ state_attr("switch.steckdose_waschmaschine", "total_consumption") }}'
+        unit_of_measurement: 'kWh'
+        friendly_name: 'Gesamtverbrauch Waschmaschine'
+      gesamtverbrauch_trockner:
+        value_template: '{{ state_attr("switch.steckdose_trockner", "total_consumption") }}'
+        unit_of_measurement: 'kWh'
+        friendly_name: 'Gesamtvebrauch Trockner'
+      gesamtverbrauch_wohnzimmer_lowboard:
+        value_template: '{{ state_attr("switch.steckdose_wohnzimmer_lowboard", "total_consumption") }}'
+        unit_of_measurement: 'kWh'
+        friendly_name: 'Gesamtvebrauch Wohnzimmer Lowboard'
+      gesamtverbrauch_kueche_mehrfachstecker:
+        value_template: '{{ state_attr("switch.steckdose_kuche_mehrfachstecker", "total_consumption") }}'
+        unit_of_measurement: 'kWh'
+        friendly_name: 'Gesamtvebrauch Küche Mehrfachstecker'
+      temperatur_wohness:
+        value_template: '{{ state_attr("switch.steckdose_spulmaschine", "temperature") }}'
+        unit_of_measurement: '°C'
+        friendly_name: 'Temperatur Küche Spüle'
+      temperatur_keller:
+        value_template: '{{ state_attr("switch.steckdose_waschmaschine", "temperature") }}'
+        unit_of_measurement: '°C'
+        friendly_name: 'Temperatur Keller'
+      temperatur_wohnzimmer_lowboard:
+        value_template: '{{ state_attr("switch.steckdose_wohnzimmer_lowboard", "temperature") }}'
+        unit_of_measurement: '°C'
+        friendly_name: 'Temperatur Wohnzimmer Lowboard'
+      temperatur_kueche_mehrfachstecker:
+        value_template: '{{ state_attr("switch.steckdose_kuche_mehrfachstecker", "temperature") }}'
+        unit_of_measurement: '°C'
+        friendly_name: 'Temperatur Küche Mehrfachstecker'
+      temperatur_climate_bad:
+        value_template: '{{ state_attr("climate.heizung_bad", "current_temperature") }}'
+        unit_of_measurement: '°C'
+        friendly_name: 'Temperatur Bad'
+      temperatur_climate_buero:
+        value_template: '{{ state_attr("climate.heizung_buro", "current_temperature") }}'
+        unit_of_measurement: '°C'
+        friendly_name: 'Temperatur Büro'
+
+      status_spuelmaschine:
+        friendly_name: 'Spülmaschine'
+        value_template: >-
+          {% if states('sensor.stromverbrauch_spuehlmaschine')|float <= 0 %}
+            Aus
+          {% elif states('sensor.stromverbrauch_spuehlmaschine')|float < 100 %}
+            Spült
+          {% elif states('sensor.stromverbrauch_spuehlmaschine')|float >= 100 %}
+            Trocknet
+          {% else %}
+            PRÜFEN!
+          {% endif %}
+      status_waschmaschine:
+        friendly_name: 'Waschmaschine'
+        value_template: >-
+          {% if states('sensor.stromverbrauch_waschmaschine')|float <= 0 %}
+            Aus
+          {% elif states('sensor.stromverbrauch_waschmaschine')|float <= 3.9 %}
+            Fertig
+          {% elif states('sensor.stromverbrauch_waschmaschine')|float > 3.9 %}
+            Wäscht
+          {% else %}
+            PRÜFEN!
+          {% endif %}
+      status_trockner:
+        friendly_name: 'Trockner'
+        value_template: >-
+          {% if states('sensor.stromverbrauch_trockner')|float <= 0 %}
+            Aus
+          {% elif states('sensor.stromverbrauch_trockner')|float <= 7 %}
+            Fertig
+          {% elif states('sensor.stromverbrauch_trockner')|float > 7 %}
+            Trocknet
+          {% else %}
+            PRÜFEN!
+          {% endif %}
+
+      fritzbox_uptime:
+        value_template: '{{ states.sensor.fritz_netmonitor.attributes["uptime"] | replace("s", "") }}'
+        unit_of_measurement: 's'
+        friendly_name: 'Fritzbox Uptime'
+      fritzbox_bytes_sent:
+        value_template: '{{ states.sensor.fritz_netmonitor.attributes["bytes_sent"] | replace("B", "") }}'
+        unit_of_measurement: 'B'
+        friendly_name: 'Fritzbox Bytes sent'
+      fritzbox_bytes_received:
+        value_template: '{{ states.sensor.fritz_netmonitor.attributes["bytes_received"] | replace("B", "") }}'
+        unit_of_measurement: 'B'
+        friendly_name: 'Fritzbox Bytes received'
+      fritzbox_transmission_rate_up:
+        value_template: '{{ states.sensor.fritz_netmonitor.attributes["transmission_rate_up"] | replace("B/s", "") }}'
+        unit_of_measurement: 'B/s'
+        friendly_name: 'Fritzbox Current Upstream Speed'
+      fritzbox_transmission_rate_down:
+        value_template: '{{ states.sensor.fritz_netmonitor.attributes["transmission_rate_down"] | replace("B/s", "") }}'
+        unit_of_measurement: 'B/s'
+        friendly_name: 'Fritzbox Current Downstream Speed'
+      fritzbox_max_byte_rate_up:
+        value_template: '{{ states.sensor.fritz_netmonitor.attributes["max_byte_rate_up"] | replace("B/s", "") }}'
+        unit_of_measurement: 'B/s'
+        friendly_name: 'Fritzbox Maximum Upstream-Rate'
+      fritzbox_max_byte_rate_down:
+        value_template: '{{ states.sensor.fritz_netmonitor.attributes["max_byte_rate_down"] | replace("B/s", "") }}'
+        unit_of_measurement: 'B/s'
+        friendly_name: 'Fritzbox Maximum Downstream-Rate'
+      fritzbox_is_connected:
+        friendly_name: 'Fritzbox Connection Status'
+        value_template: >-
+          {% if is_state('sensor.fritzbox_is_connected2', 'True') %}
+            1
+          {% else %}
+            0
+          {% endif %}
+      fritzbox_is_linked:
+        friendly_name: 'Fritzbox Link Status'
+        value_template: >-
+          {% if is_state('sensor.fritzbox_is_linked2', 'True') %}
+            1
+          {% else %}
+            0
+          {% endif %}
+      fritzbox_is_connected2:
+        value_template: '{{ states.sensor.fritz_netmonitor.attributes["is_connected"] }}'
+        friendly_name: 'Fritzbox Connection Status'
+      fritzbox_is_linked2:
+        value_template: '{{ states.sensor.fritz_netmonitor.attributes["is_linked"] }}'
+        friendly_name: 'Fritzbox Link Status'
+
+      stromverbrauch_light_badspiegel_1:
+        unit_of_measurement: "W"
+        entity_id: light.badspiegel_1
+        value_template: >-
+          {% if is_state('light.badspiegel_1', 'on') %}
+            9.5
+          {% else %}
+            0
+          {% endif %}
+      stromverbrauch_light_badspiegel_2:
+        unit_of_measurement: "W"
+        entity_id: light.badspiegel_2
+        value_template: >-
+          {% if is_state('light.badspiegel_2', 'on') %}
+            9.5
+          {% else %}
+            0
+          {% endif %}
+      stromverbrauch_light_deckenlampe_ankleide:
+        unit_of_measurement: "W"
+        entity_id: light.deckenlampe_ankleide
+        value_template: >-
+          {% if is_state('light.deckenlampe_ankleide', 'on') %}
+            9.5
+          {% else %}
+            0
+          {% endif %}
+      stromverbrauch_light_deckenlampe_bad:
+        unit_of_measurement: "W"
+        entity_id: light.deckenlampe_bad
+        value_template: >-
+          {% if is_state('light.deckenlampe_bad', 'on') %}
+            9.5
+          {% else %}
+            0
+          {% endif %}
+      stromverbrauch_light_deckenlampe_buro:
+        unit_of_measurement: "W"
+        entity_id: light.deckenlampe_buro
+        value_template: >-
+          {% if is_state('light.deckenlampe_buro', 'on') %}
+            9.5
+          {% else %}
+            0
+          {% endif %}
+      stromverbrauch_light_deckenlampe_flur_1:
+        unit_of_measurement: "W"
+        entity_id: light.deckenlampe_flur_1
+        value_template: >-
+          {% if is_state('light.deckenlampe_flur_1', 'on') %}
+            9.5
+          {% else %}
+            0
+          {% endif %}
+      stromverbrauch_light_deckenlampe_flur_2:
+        unit_of_measurement: "W"
+        entity_id: light.deckenlampe_flur_2
+        value_template: >-
+          {% if is_state('light.deckenlampe_flur_2', 'on') %}
+            9.5
+          {% else %}
+            0
+          {% endif %}
+      stromverbrauch_light_deckenlampe_herd:
+        unit_of_measurement: "W"
+        entity_id: light.deckenlampe_herd
+        value_template: >-
+          {% if is_state('light.deckenlampe_herd', 'on') %}
+            9.5
+          {% else %}
+            0
+          {% endif %}
+      stromverbrauch_light_deckenlampe_schlafzimmer:
+        unit_of_measurement: "W"
+        entity_id: light.deckenlampe_schlafzimmer
+        value_template: >-
+          {% if is_state('light.deckenlampe_schlafzimmer', 'on') %}
+            9.5
+          {% else %}
+            0
+          {% endif %}
+      stromverbrauch_light_deckenlampe_wohnzimmer:
+        unit_of_measurement: "W"
+        entity_id: light.deckenlampe_wohnzimmer
+        value_template: >-
+          {% if is_state('light.deckenlampe_wohnzimmer', 'on') %}
+            9.5
+          {% else %}
+            0
+          {% endif %}
+      stromverbrauch_light_lightstrip_wohnzimmer:
+        unit_of_measurement: "W"
+        entity_id: light.lightstrip_wohnzimmer
+        value_template: >-
+          {% if is_state('light.lightstrip_wohnzimmer', 'on') %}
+            9.5
+          {% else %}
+            0
+          {% endif %}
+      stromverbrauch_light_nachttischlampe_lisa:
+        unit_of_measurement: "W"
+        entity_id: light.nachttischlampe_lisa
+        value_template: >-
+          {% if is_state('light.nachttischlampe_lisa', 'on') %}
+            9.5
+          {% else %}
+            0
+          {% endif %}
+      stromverbrauch_light_nachttischlampe_simon:
+        unit_of_measurement: "W"
+        entity_id: light.nachttischlampe_simon
+        value_template: >-
+          {% if is_state('light.nachttischlampe_simon', 'on') %}
+            9.5
+          {% else %}
+            0
+          {% endif %}
+      stromverbrauch_light_schreibtischlampe_lisa:
+        unit_of_measurement: "W"
+        entity_id: light.schreibtischlampe_lisa
+        value_template: >-
+          {% if is_state('light.schreibtischlampe_lisa', 'on') %}
+            9.5
+          {% else %}
+            0
+          {% endif %}
+      stromverbrauch_light_stehlampe_flur_1:
+        unit_of_measurement: "W"
+        entity_id: light.stehlampe_flur_1
+        value_template: >-
+          {% if is_state('light.stehlampe_flur_1', 'on') %}
+            9.5
+          {% else %}
+            0
+          {% endif %}
+      stromverbrauch_light_stehlampe_flur_2:
+        unit_of_measurement: "W"
+        entity_id: light.stehlampe_flur_2
+        value_template: >-
+          {% if is_state('light.stehlampe_flur_2', 'on') %}
+            9.5
+          {% else %}
+            0
+          {% endif %}
+      stromverbrauch_light_wandlampe_treppenhaus_1:
+        unit_of_measurement: "W"
+        entity_id: light.wandlampe_treppenhaus_1
+        value_template: >-
+          {% if is_state('light.wandlampe_treppenhaus_1', 'on') %}
+            9.5
+          {% else %}
+            0
+          {% endif %}
+      stromverbrauch_light_wandlampe_treppenhaus_2:
+        unit_of_measurement: "W"
+        entity_id: light.wandlampe_treppenhaus_2
+        value_template: >-
+          {% if is_state('light.wandlampe_treppenhaus_2', 'on') %}
+            9.5
+          {% else %}
+            0
+          {% endif %}
+      stromverbrauch_light_wandlampe_treppenhaus_3:
+        unit_of_measurement: "W"
+        entity_id: light.wandlampe_treppenhaus_3
+        value_template: >-
+          {% if is_state('light.wandlampe_treppenhaus_3', 'on') %}
+            9.5
+          {% else %}
+            0
+          {% endif %}
+      stromverbrauch_beleuchtung:
+        value_template: "{{ (states('sensor.stromverbrauch_light_badspiegel_1')|float * 1) + (states('sensor.stromverbrauch_light_badspiegel_2')|float * 1) + (states('sensor.stromverbrauch_light_deckenlampe_ankleide')|float * 1) + (states('sensor.stromverbrauch_light_deckenlampe_bad')|float * 1) + (states('sensor.stromverbrauch_light_deckenlampe_buro')|float * 1) + (states('sensor.stromverbrauch_light_deckenlampe_flur_1')|float * 1) + (states('sensor.stromverbrauch_light_deckenlampe_flur_2')|float * 1) + (states('sensor.stromverbrauch_light_deckenlampe_herd')|float * 1) + (states('sensor.stromverbrauch_light_deckenlampe_schlafzimmer')|float * 1) + (states('sensor.stromverbrauch_light_deckenlampe_wohnzimmer')|float * 1) + (states('sensor.stromverbrauch_light_lightstrip_wohnzimmer')|float * 1) + (states('sensor.stromverbrauch_light_nachttischlampe_lisa')|float * 1) + (states('sensor.stromverbrauch_light_nachttischlampe_simon')|float * 1) + (states('sensor.stromverbrauch_light_stehlampe_flur_1')|float * 1) + (states('sensor.stromverbrauch_light_stehlampe_flur_2')|float * 1) + (states('sensor.stromverbrauch_light_wandlampe_treppenhaus_1')|float * 1) + (states('sensor.stromverbrauch_light_wandlampe_treppenhaus_2')|float * 1) + (states('sensor.stromverbrauch_light_wandlampe_treppenhaus_3')|float * 1) }}"
+        friendly_name: 'Stromverbrauch Beleuchtung'
+        unit_of_measurement: 'W'
+
+      gesamtverbrauch_light_deckenlampe_ankleide:
+        value_template: '{{ states.sensor.deckenlampe_ankleide_an_jahr.state | multiply(0.0095) | round(2)}}'
+        unit_of_measurement: 'kWh'
+        friendly_name: 'Gesamtverbrauch Deckenlampe Ankleide'
+      gesamtverbrauch_light_deckenlampe_bad:
+        value_template: '{{ states.sensor.deckenlampe_bad_an_jahr.state | multiply(0.0095) | round(2)}}'
+        unit_of_measurement: 'kWh'
+        friendly_name: 'Gesamtverbrauch Deckenlampe Bad'
+      gesamtverbrauch_light_deckenlampe_buro:
+        value_template: '{{ states.sensor.deckenlampe_buro_an_jahr.state | multiply(0.0095) | round(2)}}'
+        unit_of_measurement: 'kWh'
+        friendly_name: 'Gesamtverbrauch Deckenlampe Büro'
+      gesamtverbrauch_light_deckenlampe_herd:
+        value_template: '{{ states.sensor.deckenlampe_herd_an_jahr.state | multiply(0.0095) | round(2)}}'
+        unit_of_measurement: 'kWh'
+        friendly_name: 'Gesamtverbrauch Deckenlampe Herd'
+      gesamtverbrauch_light_deckenlampe_schlafzimmer:
+        value_template: '{{ states.sensor.deckenlampe_schlafzimmer_an_jahr.state | multiply(0.0095) | round(2)}}'
+        unit_of_measurement: 'kWh'
+        friendly_name: 'Gesamtverbrauch Deckenlampe Schlafzimmer'
+      gesamtverbrauch_light_deckenlampe_wohnzimmer:
+        value_template: '{{ states.sensor.deckenlampe_wohnzimmer_an_jahr.state | multiply(0.0095) | round(2)}}'
+        unit_of_measurement: 'kWh'
+        friendly_name: 'Gesamtverbrauch Deckenlampe Wohnzimmer'
+      gesamtverbrauch_light_lightstrip_wohnzimmer:
+        value_template: '{{ states.sensor.lightstrip_wohnzimmer_an_jahr.state | multiply(0.0095) | round(2)}}'
+        unit_of_measurement: 'kWh'
+        friendly_name: 'Gesamtverbrauch Lightstrip Wohnzimmer'
+      gesamtverbrauch_light_deckenlampen_flur:
+        value_template: '{{ states.sensor.deckenlampen_flur_an_jahr.state | multiply(0.019) | round(2)}}'
+        unit_of_measurement: 'kWh'
+        friendly_name: 'Gesamtverbrauch Deckenlampen Flur'
+      gesamtverbrauch_light_nachttischlampe_simon:
+        value_template: '{{ states.sensor.nachttischlampe_simon_an_jahr.state | multiply(0.0095) | round(2)}}'
+        unit_of_measurement: 'kWh'
+        friendly_name: 'Gesamtverbrauch Nachttischlampe Simon'
+      gesamtverbrauch_light_nachttischlampe_lisa:
+        value_template: '{{ states.sensor.nachttischlampe_lisa_an_jahr.state | multiply(0.0095) | round(2)}}'
+        unit_of_measurement: 'kWh'
+        friendly_name: 'Gesamtverbrauch Nachttischlampe Lisa'
+      gesamtverbrauch_light_schreibtischlampe_lisa:
+        value_template: '{{ states.sensor.schreibtischlampe_lisa_an_jahr.state | multiply(0.0095) | round(2)}}'
+        unit_of_measurement: 'kWh'
+        friendly_name: 'Gesamtverbrauch Schreibtischlampe Lisa'
+      gesamtverbrauch_light_spiegellampe_bad:
+        value_template: '{{ states.sensor.spiegellampe_bad_an_jahr.state | multiply(0.019) | round(2)}}'
+        unit_of_measurement: 'kWh'
+        friendly_name: 'Gesamtverbrauch Spiegellampe Bad'
+      gesamtverbrauch_light_stehlampe_flur:
+        value_template: '{{ states.sensor.stehlampe_flur_an_jahr.state | multiply(0.019) | round(2)}}'
+        unit_of_measurement: 'kWh'
+        friendly_name: 'Gesamtverbrauch Stehlampe Flur'
+      gesamtverbrauch_light_wandlampen_treppenhaus:
+        value_template: '{{ states.sensor.wandlampen_treppenhaus_an_jahr.state | multiply(0.0288) | round(2)}}'
+        unit_of_measurement: 'kWh'
+        friendly_name: 'Gesamtverbrauch Wandlampen Treppenhaus'
+      gesamtverbrauch_beleuchtung:
+        value_template: "{{ states('sensor.gesamtverbrauch_light_deckenlampe_ankleide')|float + states('sensor.gesamtverbrauch_light_deckenlampe_bad')|float + states('sensor.gesamtverbrauch_light_deckenlampe_buro')|float + states('sensor.gesamtverbrauch_light_deckenlampe_herd')|float + states('sensor.gesamtverbrauch_light_deckenlampe_schlafzimmer')|float + states('sensor.gesamtverbrauch_light_deckenlampe_wohnzimmer')|float + states('sensor.gesamtverbrauch_light_deckenlampen_flur')|float + states('sensor.gesamtverbrauch_light_lightstrip_wohnzimmer')|float + states('sensor.gesamtverbrauch_light_nachttischlampe_lisa')|float + states('sensor.gesamtverbrauch_light_nachttischlampe_simon')|float + states('sensor.gesamtverbrauch_light_schreibtischlampe_lisa')|float + states('sensor.gesamtverbrauch_light_spiegellampe_bad')|float + states('sensor.gesamtverbrauch_light_stehlampe_flur')|float + states('sensor.gesamtverbrauch_light_wandlampen_treppenhaus')|float }}"
+        friendly_name: 'Gesamtverbrauch Beleuchtung'
+        unit_of_measurement: 'kWh'
+
+
+      simons_handy_batterie_ladestatus:
+        friendly_name: 'Simons Handy Batterie Ladestatus'
+        value_template: '{{states.device_tracker.life360_simon_horrle.attributes.battery_charging}}'
+
+      arbeitszeit_heute:
+        value_template: "{{ (states('sensor.auf_der_arbeit_heute')|float * 1) + (states('sensor.im_homeoffice_heute')|float * 1) }}"
+        friendly_name: 'Arbeitszeit Heute'
+        unit_of_measurement: 'h'
+      arbeitszeit_diese_woche:
+        value_template: "{{ (states('sensor.auf_der_arbeit_diese_woche')|float * 1) + (states('sensor.im_homeoffice_diese_woche')|float * 1) }}"
+        friendly_name: 'Arbeitszeit diese Woche'
+        unit_of_measurement: 'h'
+
+
+      batteriestand_simon_handy:
+        friendly_name: 'Batteriestand Simon Handy'
+        value_template: >-
+          {% if states('sensor.google_maps_113462452053772321900_battery_level')|float <= 10 %}
+            Niedrig
+          {% else %}
+            Ok
+          {% endif %}
+      batteriestand_heizung_bad:
+        friendly_name: 'Batteriestand Heizung Bad'
+        value_template: >-
+          {% if states('sensor.heizung_bad_battery_level')|float <= 10 %}
+            Niedrig
+          {% else %}
+            Ok
+          {% endif %}
+      batteriestand_heizung_buro:
+        friendly_name: 'Batteriestand Heizung Büro'
+        value_template: >-
+          {% if states('sensor.heizung_buro_battery_level')|float <= 10 %}
+            Niedrig
+          {% else %}
+            Ok
+          {% endif %}
+
+####################################################
+#                                                  #
+#                  HISTORY STATS                   #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/sensor.history_stats/
+
+  - platform: history_stats
+    name: Deckenlampe Ankleide AN Jahr
+    entity_id: light.deckenlampe_ankleide
+    state: 'on'
+    type: time
+    start: '{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: Deckenlampe Bad AN Jahr
+    entity_id: light.deckenlampe_bad
+    state: 'on'
+    type: time
+    start: '{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: Deckenlampe Büro AN Jahr
+    entity_id: light.deckenlampe_buro
+    state: 'on'
+    type: time
+    start: '{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: Deckenlampen Flur AN Jahr
+    entity_id: light.deckenlampen_flur
+    state: 'on'
+    type: time
+    start: '{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: Deckenlampe Herd AN Jahr
+    entity_id: light.deckenlampe_herd
+    state: 'on'
+    type: time
+    start: '{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: Deckenlampe Schlafzimmer AN Jahr
+    entity_id: light.deckenlampe_schlafzimmer
+    state: 'on'
+    type: time
+    start: '{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: Deckenlampe Wohnzimmer AN Jahr
+    entity_id: light.deckenlampe_wohnzimmer
+    state: 'on'
+    type: time
+    start: '{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: Lightstrip Wohnzimmer AN Jahr
+    entity_id: light.lightstrip_wohnzimmer
+    state: 'on'
+    type: time
+    start: '{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: Nachttischlampe Lisa AN Jahr
+    entity_id: light.nachttischlampe_lisa
+    state: 'on'
+    type: time
+    start: '{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: Nachttischlampe Simon AN Jahr
+    entity_id: light.nachttischlampe_simon
+    state: 'on'
+    type: time
+    start: '{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: Schreibtischlampe Lisa AN Jahr
+    entity_id: light.schreibtischlampe_lisa
+    state: 'on'
+    type: time
+    start: '{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: Spiegellampe Bad AN Jahr
+    entity_id: light.spiegellampe_bad
+    state: 'on'
+    type: time
+    start: '{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: Stehlampe Flur AN Jahr
+    entity_id: light.stehlampe_flur
+    state: 'on'
+    type: time
+    start: '{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: Wandlampen Treppenhaus AN Jahr
+    entity_id: light.wandlampen_treppenhaus
+    state: 'on'
+    type: time
+    start: '{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: Auf der Arbeit heute
+    entity_id: person.simon
+    state: 'Simon Arbeit'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: Auf der Arbeit diese Woche
+    entity_id: person.simon
+    state: 'Simon Arbeit'
+    type: time
+    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: Im Homeoffice heute
+    entity_id: calendar.arbeit
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: Im Homeoffice diese Woche
+    entity_id: calendar.arbeit
+    state: 'on'
+    type: time
+    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+    end: '{{ now() }}'
+
+####################################################
+#                                                  #
+#                   TANKERKOENIG                   #
+#                                                  #
+####################################################
+
+#https://community.home-assistant.io/t/gas-price-via-tankerkonig-germany/14980
+
+  - platform: rest
+    resource: https://creativecommons.tankerkoenig.de/json/prices.php?apikey=a79687ec-4b8d-9881-bd15-05b57e900dc7&ids=84fd0cb2-b1b8-447a-b3f7-33f5113144c3
+    name: e10mue
+    unit_of_measurement: '€'
+    value_template: '{{ value_json.prices["84fd0cb2-b1b8-447a-b3f7-33f5113144c3"].e10 }}'
+    scan_interval: 900
+
+####################################################
+#                                                  #
+#                DATUM & UHRZEIT                   #
+#                                                  #
+####################################################
+
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+####################################################
+#                                                  #
+#                  IMAP E-MAIL                     #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/imap/
+
+  - platform: imap
+    server: imap.gmail.com
+    port: 993
+    username: !secret vapid_mail
+    password: !secret ha_gmail_pw2
+
+####################################################
+#                                                  #
+#            END OF CONFIGURATION FILE             #
+#                                                  #
+####################################################

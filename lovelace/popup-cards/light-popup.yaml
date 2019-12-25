@@ -1,0 +1,164 @@
+  light.deckenlampe_ankleide:
+    title: Ankleide Decke
+    style:
+      border-radius: 12px
+      background: var(--primary-background-color)
+    card:
+      type: custom:decluttering-card
+      template: light_popup_card
+      variables:
+        - entity: light.deckenlampe_ankleide
+
+  light.deckenlampe_bad:
+    title: Bad Decke
+    style:
+      border-radius: 12px
+      background: var(--primary-background-color)
+    card:
+      type: custom:decluttering-card
+      template: light_popup_card
+      variables:
+        - entity: light.deckenlampe_bad
+
+  light.deckenlampe_buro:
+    title: Büro Decke
+    style:
+      border-radius: 12px
+      background: var(--primary-background-color)
+    card:
+      type: custom:decluttering-card
+      template: light_popup_card
+      variables:
+        - entity: light.deckenlampe_buro
+
+  light.deckenlampe_herd:
+    title: Herd Decke
+    style:
+      border-radius: 12px
+      background: var(--primary-background-color)
+    card:
+      type: custom:decluttering-card
+      template: light_popup_card
+      variables:
+        - entity: light.deckenlampe_herd
+
+  light.deckenlampe_schlafzimmer:
+    title: Schlafzimmer Decke
+    style:
+      border-radius: 12px
+      background: var(--primary-background-color)
+    card:
+      type: custom:decluttering-card
+      template: light_popup_card
+      variables:
+        - entity: light.deckenlampe_schlafzimmer
+
+  light.deckenlampe_wohnzimmer:
+    title: Wohnzimmer Decke
+    style:
+      border-radius: 12px
+      background: var(--primary-background-color)
+    card:
+      type: custom:decluttering-card
+      template: light_popup_card
+      variables:
+        - entity: light.deckenlampe_wohnzimmer
+
+  light.deckenlampen_flur:
+    title: Flur Decke
+    style:
+      border-radius: 12px
+      background: var(--primary-background-color)
+    card:
+      type: custom:decluttering-card
+      template: light_popup_card
+      variables:
+        - entity: light.deckenlampen_flur
+
+  light.lightstrip_wohnzimmer:
+    title: Wohnzimmer LED Schlauch
+    style:
+      border-radius: 12px
+      background: var(--primary-background-color)
+    card:
+      type: custom:decluttering-card
+      template: light_popup_card
+      variables:
+        - entity: light.lightstrip_wohnzimmer
+
+  light.nachttischlampe_lisa:
+    title: Nachttisch Lisa
+    style:
+      border-radius: 12px
+      background: var(--primary-background-color)
+    card:
+      type: custom:decluttering-card
+      template: light_popup_card
+      variables:
+        - entity: light.nachttischlampe_lisa
+
+  light.nachttischlampe_simon:
+    title: Nachttisch Simon
+    style:
+      border-radius: 12px
+      background: var(--primary-background-color)
+    card:
+      type: custom:decluttering-card
+      template: light_popup_card
+      variables:
+        - entity: light.nachttischlampe_simon
+
+  light.schirmlampe_kuche:
+    title: Büro Schirmlampe
+    style:
+      border-radius: 12px
+      background: var(--primary-background-color)
+    card:
+      type: custom:decluttering-card
+      template: light_popup_card
+      variables:
+        - entity: light.schirmlampe_kuche
+
+  light.schreibtischlampe_lisa:
+    title: Schreibtisch Lisa
+    style:
+      border-radius: 12px
+      background: var(--primary-background-color)
+    card:
+      type: custom:decluttering-card
+      template: light_popup_card
+      variables:
+        - entity: light.schreibtischlampe_lisa
+
+  light.spiegellampe_bad:
+    title: Bad Spiegel
+    style:
+      border-radius: 12px
+      background: var(--primary-background-color)
+    card:
+      type: custom:decluttering-card
+      template: light_popup_card
+      variables:
+        - entity: light.spiegellampe_bad
+
+  light.stehlampe_flur:
+    title: Flur Stehlampe
+    style:
+      border-radius: 12px
+      background: var(--primary-background-color)
+    card:
+      type: custom:decluttering-card
+      template: light_popup_card
+      variables:
+        - entity: light.stehlampe_flur
+
+  light.wandlampen_treppenhaus:
+    title: Treppenhaus Wand
+    style:
+      border-radius: 12px
+      background: var(--primary-background-color)
+    card:
+      type: custom:decluttering-card
+      template: light_popup_card
+      variables:
+        - entity: light.wandlampen_treppenhaus

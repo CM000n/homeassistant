@@ -1,0 +1,34 @@
+# Custom Card Resources
+resources:
+  !include lovelace/resources/resources.yaml
+
+# Custom Header
+custom_header:
+  compact_mode: true
+  menu_hide: true
+  options_hide: true
+  voice_hide: true
+  chevrons: false
+  notify_indicator_color: "#e80000"
+  swipe: true
+  swipe_animate: swipe
+  swipe_wrap: false
+  background: var(--primary-background-color)
+  active_tab_color: var(--primary-text-color)
+  inactive_tab_color: var(--primary-text-color)
+  all_tabs_color: var(--primary-text-color)
+  tab_indicator_color: var(--primary-text-color)
+  default_tab: 0
+
+# Decluttering Templates
+decluttering_templates:
+  !include lovelace/decluttering_templates/decluttering_templates.yaml
+
+# Views
+title: Home
+background: var(--background-image)
+views:
+  - !include lovelace/views/main_view.yaml
+  - !include lovelace/views/lights.yaml
+  - !include lovelace/views/devices.yaml
+  - !include lovelace/views/climate.yaml

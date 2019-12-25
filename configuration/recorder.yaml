@@ -1,0 +1,102 @@
+##https://home-assistant.io/components/recorder/
+
+####################################################
+#                                                  #
+#                 RECORDER.YAML                    #
+#                                                  #
+####################################################
+
+  purge_interval: 1
+  purge_keep_days: 7
+  db_url: !secret db_url
+  include:
+    domains:
+      - sensor
+      - binary_sensor
+      - media_player
+      - climate
+      - light
+    entities:
+      - switch.simon_pc
+      - switch.ventilator
+      - switch.wasserpumpe
+      - person.lisa
+      - person.simon
+      - calendar.arbeit
+  exclude:
+    entities:
+      - sensor.aktuellste_ha_version
+      - sensor.chromecast_wohnzimmer_state
+      - sensor.date
+      - sensor.ha_datenbankgrosse
+      - sensor.installierte_ha_version
+      - sensor.last_boot
+      - sensor.munzesheim_to_karlsruhe_hbf
+      - sensor.munzesheim_to_menzingenbaden
+      - sensor.myipopendnscom
+      - sensor.fritz_netmonitor
+      - sensor.fritzbox_is_connected2
+      - sensor.fritzbox_is_linked2
+      - sensor.since_last_boot
+      - sensor.sonos_bad_state
+      - sensor.sonos_schlafzim_state
+      - sensor.sonos_wohnzimmer_state
+      - sensor.time
+      - sensor.tv_wohnzimmer_state
+      - sensor.wetter_symbol
+      - sensor.darksky_icon
+      - light.badspiegel_1
+      - light.badspiegel_2
+      - light.deckenlampe_flur_1
+      - light.deckenlampe_flur_2
+      - light.ersatzlampe1
+      - light.ersatzlampe2
+      - light.stehlampe_flur_1
+      - light.stehlampe_flur_2
+      - light.wandlampe_treppenhaus_1
+      - light.wandlampe_treppenhaus_2
+      - light.wandlampe_treppenhaus_3
+      - sensor.deckenlampe_ankleide_an_jahr
+      - sensor.deckenlampe_bad_an_jahr
+      - sensor.deckenlampe_buro_an_jahr
+      - sensor.deckenlampe_herd_an_jahr
+      - sensor.deckenlampe_schlafzimmer_an_jahr
+      - sensor.deckenlampe_wohnzimmer_an_jahr
+      - sensor.deckenlampen_flur_an_jahr
+      - sensor.nachttischlampe_lisa_an_jahr
+      - sensor.nachttischlampe_simon_an_jahr
+      - sensor.schreibtischlampe_lisa_an_jahr
+      - sensor.spiegellampe_bad_an_jahr
+      - sensor.stehlampe_flur_an_jahr
+      - sensor.wandlampen_treppenhaus_an_jahr
+      - sensor.lightstrip_wohnzimmer_an_jahr
+      - sensor.animals_hannelore_buersten_visible
+      - sensor.animals_hannelore_entwurmen_visible
+      - sensor.animals_hannelore_flohtropfen_visible
+      - sensor.animals_hannelore_impfungen_visible
+      - sensor.animals_hannelore_trimmen_visible
+      - sensor.animals_sissi_buersten_visible
+      - sensor.animals_sissi_entwurmen_visible
+      - sensor.animals_sissi_flohtropfen_visible
+      - sensor.animals_sissi_impfungen_visible
+      - sensor.animals_sissi_trimmen_visible
+      - sensor.badezimmer_visible
+      - sensor.bettenmachen_visible
+      - sensor.fenster_visible
+      - sensor.matratzenlueften_visible
+      - sensor.polster_visible
+      - sensor.staubsaugen_visible
+      - sensor.toilette_clean_visible
+      - sensor.toyota_oel_visible
+      - sensor.toyota_putzen_visible
+      - sensor.toyota_reifen_visible
+      - sensor.toyota_waschen_visible
+      - sensor.toyota_wischwasser_visible
+      - sensor.vorhaenge_visible
+      - sensor.wischen_visible
+
+####################################################
+#                                                  #
+#           END OF CONFIGURATION FILE              #
+#                                                  #
+####################################################

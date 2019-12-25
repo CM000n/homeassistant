@@ -94,6 +94,12 @@
       - sensor.toyota_wischwasser_visible
       - sensor.vorhaenge_visible
       - sensor.wischen_visible
+      - sensor.time
+      - sensor.time_2
+      - sensor.time_date
+      - sensor.time_utc
+      - sensor.date_time
+      - sensor.date_time_iso
 
 ####################################################
 #                                                  #

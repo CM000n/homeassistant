@@ -4,48 +4,6 @@
 #                                                       #
 #########################################################
 
-- alias: Benachrichtigung - Willkommen zurück Simon
-  trigger:
-    platform: state
-    from: not_home
-    to: home
-    entity_id: device_tracker.simonmotog4plus
-  action:
-  - service: media_player.sonos_snapshot
-    data_template:
-      entity_id:
-      - media_player.sonos_wohnzimmer
-      - media_player.sonos_schlafzim
-      - media_player.sonos_bad
-  - service: media_player.volume_set
-    data_template:
-      entity_id:
-      - media_player.sonos_wohnzimmer
-      - media_player.sonos_schlafzim
-      - media_player.sonos_bad
-      volume_level: '0.6'
-  - service: tts.google_say
-    data_template:
-      entity_id:
-      - media_player.sonos_wohnzimmer
-      - media_player.sonos_schlafzim
-      - media_player.sonos_bad
-      message: Willkommen zurück Simon.
-  - delay: 00:00:{{ ('0' ~ states.media_player.sonos_wohnzimmer.attributes.media_duration)
-      | reverse | truncate(2, True, '') | reverse }}
-  - delay: 00:00:{{ ('0' ~ states.media_player.sonos_schlafzim.attributes.media_duration)
-      | reverse | truncate(2, True, '') | reverse }}
-  - delay: 00:00:{{ ('0' ~ states.media_player.sonos_bad.attributes.media_duration)
-      | reverse | truncate(2, True, '') | reverse }}
-  - service: media_player.sonos_restore
-    data_template:
-      entity_id:
-      - media_player.sonos_wohnzimmer
-      - media_player.sonos_schlafzim
-      - media_player.sonos_bad
-  id: 63b66e56b989423ca10b3d59240a95b6
-
-
 - id: '1545984584120'
   alias: Benachrichtigung - Waschmaschine fertig
   trigger:
@@ -88,6 +46,7 @@
       title: Spülmaschine fertig
     service: notify.home_assistant_smtp
 
+
 - id: '1545986733209'
   alias: Benachrichtigung - Geburtstag
   trigger:
@@ -100,8 +59,9 @@
     entity_id: 'calendar.contacts'
     state: 'on'
   action:
-  - data:
-      message: '{{ states.calendar.contacts.attributes.message }}'
+  - data_template:
+      message: >
+        '{{ state_attr('calendar.contacts', 'message') }}'
       title: Erinnerung
     service: notify.home_assistant_smtp
 
@@ -148,6 +108,7 @@
       title: Die IP-Adresse hat sich geändert
     service: notify.home_assistant_smtp
 
+
 - id: '1545997863800'
   alias: Reminder for Simon
   trigger:
@@ -158,16 +119,17 @@
     condition: and
     conditions:
       - condition: template
-        value_template: "{{ states.input_text.reminder_simon.state != '' }}"
+        value_template: "{{ states('input_text.reminder_simon') != '' }}"
   action:
   - service: notify.home_assistant_smtp
     data:
       title: Erinnerung
-      message: "{{ states.input_text.reminder_simon.state }}"
+      message: "{{ states('input_text.reminder_simon') }}"
   - service: input_text.set_value
     data_template:
       entity_id: input_text.reminder_simon
       value: ''
+
 
 - id: '154599787693800'
   alias: Reminder for Lisa
@@ -179,16 +141,17 @@
     condition: and
     conditions:
       - condition: template
-        value_template: "{{ states.input_text.reminder_lisa.state != '' }}"
+        value_template: "{{ states('input_text.reminder_lisa') != '' }}"
   action:
   - service: notify.home_assistant_smtp_2
     data:
       title: Erinnerung
-      message: "{{ states.input_text.reminder_lisa.state }}"
+      message: "{{ states('input_text.reminder_lisa') }}"
   - service: input_text.set_value
     data_template:
       entity_id: input_text.reminder_lisa
       value: ''
+
 
 ########################################################
 #                                                       #

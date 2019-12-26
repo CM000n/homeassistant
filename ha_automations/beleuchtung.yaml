@@ -4,7 +4,7 @@
 #                                                       #
 #########################################################
 
-- id: '1545994542919'
+- id: 'a_bl_1'
   alias: Beleuchtung - Lichter an wenn anwesend
   trigger:
   - entity_id: group.anwesenheit
@@ -27,7 +27,7 @@
     service: light.turn_on
 
 
-- id: '1545994456466'
+- id: 'a_bl_2'
   alias: Beleuchtung - Lichter aus wenn abwesend
   trigger:
   - entity_id: group.anwesenheit
@@ -54,7 +54,7 @@
     service: light.turn_off
 
 
-- id: '1545990092919'
+- id: 'a_bl_3'
   alias: Beleuchtung - Verkehrslicht an
   trigger:
   - minutes: /1
@@ -70,13 +70,16 @@
     - thu
     - fri
     condition: time
+  - condition: state
+    entity_id: group.anwesenheit
+    state: home
   action:
   - data_template:
       entity_id: light.stehlampe_wohnzimmer_links
     service: python_script.traffic
 
 
-- id: '1545990932542'
+- id: 'a_bl_4'
   alias: Beleuchtung - Verkehrslicht aus
   trigger:
   - at: 07:31:00
@@ -95,7 +98,7 @@
       entity_id: light.stehlampe_wohnzimmer_links
     service: light.turn_off
 
-- id: '1545998630493'
+- id: 'a_bl_5'
   alias: Beleuchtung - Autofarbtemparaturen an bei Start
   trigger:
   - event: start
@@ -104,18 +107,14 @@
   action:
   - data:
       entity_id: 
-      - switch.circadian_lighting_autofarbtemperatur_deckenlampe_ankleide
-      - switch.circadian_lighting_autofarbtemperatur_deckenlampe_bad
-      - switch.circadian_lighting_autofarbtemperatur_licht_badspiegel
       - switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
-      - switch.circadian_lighting_autofarbtemperatur_deckenlampe_herd
       - switch.circadian_lighting_autofarbtemperatur_deckenlampe_schlafzimmer
       - switch.circadian_lighting_autofarbtemperatur_wohnzimmer
       - switch.circadian_lighting_autofarbtemperatur_deckenlampen_flur
     service: homeassistant.turn_on
 
 
-- id: '1545998760983'
+- id: 'a_bl_6'
   alias: Beleuchtung - Flurlicht an bei Sonnenuntergang
   trigger:
   - event: sunset
@@ -132,7 +131,7 @@
     service: light.turn_on
 
 
-- id: '1545999542049'
+- id: 'a_bl_7'
   alias: Beleuchtung - Lightstrip Wohnzimmer mit Deckenlampe an
   trigger:
   - entity_id: light.deckenlampe_wohnzimmer
@@ -148,21 +147,20 @@
     service: light.turn_on
 
 
-- id: '1545999684297'
+- id: 'a_bl_8'
   alias: Beleuchtung - Lightstrip Wohnzimmer mit Deckenlampe aus
   trigger:
   - entity_id: light.deckenlampe_wohnzimmer
-    from: 'on'
     platform: state
+    from: 'on'
   condition: []
   action:
   - data:
       entity_id: light.lightstrip_wohnzimmer
-      transition: 15
     service: light.turn_off
 
 
-- id: '1546006391342'
+- id: 'a_bl_9'
   alias: Beleuchtung - Weihnachtsbeleuchtung einschalten
   trigger:
   - seconds: /5
@@ -180,7 +178,7 @@
     service: script.turn_on
 
 
-- id: '1546006473473'
+- id: 'a_bl_10'
   alias: Beleuchtung - Weihanchtsbeleuchtung ausschalten
   trigger:
   - entity_id: input_boolean.switch_weihnachtsbeleuchtung
@@ -196,7 +194,7 @@
     service: script.turn_off
 
 
-- id: '1546442391342'
+- id: 'a_bl_11'
   alias: Beleuchtung - Weisses Funkeln einschalten
   trigger:
   - seconds: /5
@@ -214,7 +212,7 @@
     service: script.turn_on
 
 
-- id: '15460064737856'
+- id: 'a_bl_12'
   alias: Beleuchtung - Weisses Funkeln ausschalten
   trigger:
   - entity_id: input_boolean.switch_weisses_funkeln
@@ -230,7 +228,7 @@
     service: script.turn_off
 
 
-- id: '1546651455642'
+- id: 'a_bl_13'
   alias: Beleuchtung - Helle Beleuchtung Wohnzimmer ein
   trigger:
   - platform: state
@@ -252,7 +250,7 @@
       - light.lightstrip_wohnzimmer
     service: light.turn_on
 
-- id: '1546651445645642'
+- id: 'a_bl_14'
   alias: Beleuchtung - Gemütliche Beleuchtung Wohnzimmer ein
   trigger:
   - platform: state
@@ -274,7 +272,7 @@
       - light.lightstrip_wohnzimmer
     service: light.turn_on
 
-- id: '1546659456445645642'
+- id: 'a_bl_15'
   alias: Beleuchtung - Automatische Beleuchtung Wohnzimmer ein
   trigger:
   - platform: state
@@ -297,7 +295,7 @@
       - light.lightstrip_wohnzimmer
     service: light.turn_on
 
-- id: '1546654564495845642'
+- id: 'a_bl_16'
   alias: Beleuchtung - Beleuchtung Wohnzimmer aus
   trigger:
   - platform: state
@@ -317,6 +315,71 @@
       - light.stehlampe_wohnzimmer_links
       - light.lightstrip_wohnzimmer
     service: light.turn_off
+
+- id: 'a_bl_17'
+  alias: Deckenlampe Herd auf Kaltweis bei Start
+  trigger:
+    - platform: state
+      entity_id: light.deckenlampe_herd
+      to: 'on'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.deckenlampe_herd
+        brightness: 255
+        kelvin: 6500
+
+- id: 'a_bl_18'
+  alias: Deckenlampe Bad auf Kaltweis bei Start
+  trigger:
+    - platform: state
+      entity_id: light.deckenlampe_bad
+      to: 'on'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.deckenlampe_bad
+        brightness: 255
+        kelvin: 6500
+
+- id: 'a_bl_19'
+  alias: Spiegellampe Bad auf Kaltweis bei Start
+  trigger:
+    - platform: state
+      entity_id: light.spiegellampe_bad
+      to: 'on'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.spiegellampe_bad
+        brightness: 255
+        kelvin: 6500
+
+- id: 'a_bl_20'
+  alias: Deckenlampe Ankleide auf Kaltweis bei Start
+  trigger:
+    - platform: state
+      entity_id: light.deckenlampe_ankleide
+      to: 'on'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.deckenlampe_ankleide
+        brightness: 255
+        kelvin: 6500
+
+- id: 'a_bl_21'
+  alias: Schreibtischlampe Ankleide auf Kaltweis bei Start
+  trigger:
+    - platform: state
+      entity_id: light.schreibtischlampe_lisa
+      to: 'on'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.schreibtischlampe_lisa
+        brightness: 255
+        kelvin: 6500
 
 ########################################################
 #                                                       #

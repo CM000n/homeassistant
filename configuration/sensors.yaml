@@ -286,37 +286,43 @@
           {% endif %}
 
       fritzbox_uptime:
-        value_template: '{{ states.sensor.fritz_netmonitor.attributes["uptime"] | replace("s", "") }}'
+        value_template: '{{ state_attr("sensor.fritz_netmonitor", "uptime") }}'
         unit_of_measurement: 's'
         friendly_name: 'Fritzbox Uptime'
       fritzbox_bytes_sent:
-        value_template: '{{ states.sensor.fritz_netmonitor.attributes["bytes_sent"] | replace("B", "") }}'
+        value_template: '{{ state_attr("sensor.fritz_netmonitor", "bytes_sent") }}'
         unit_of_measurement: 'B'
         friendly_name: 'Fritzbox Bytes sent'
       fritzbox_bytes_received:
-        value_template: '{{ states.sensor.fritz_netmonitor.attributes["bytes_received"] | replace("B", "") }}'
+        value_template: '{{ state_attr("sensor.fritz_netmonitor", "bytes_received") }}'
         unit_of_measurement: 'B'
         friendly_name: 'Fritzbox Bytes received'
       fritzbox_transmission_rate_up:
-        value_template: '{{ states.sensor.fritz_netmonitor.attributes["transmission_rate_up"] | replace("B/s", "") }}'
+        value_template: '{{ state_attr("sensor.fritz_netmonitor", "transmission_rate_up") }}'
         unit_of_measurement: 'B/s'
         friendly_name: 'Fritzbox Current Upstream Speed'
       fritzbox_transmission_rate_down:
-        value_template: '{{ states.sensor.fritz_netmonitor.attributes["transmission_rate_down"] | replace("B/s", "") }}'
+        value_template: '{{ state_attr("sensor.fritz_netmonitor", "transmission_rate_down") }}'
         unit_of_measurement: 'B/s'
         friendly_name: 'Fritzbox Current Downstream Speed'
       fritzbox_max_byte_rate_up:
-        value_template: '{{ states.sensor.fritz_netmonitor.attributes["max_byte_rate_up"] | replace("B/s", "") }}'
+        value_template: '{{ state_attr("sensor.fritz_netmonitor", "max_byte_rate_up") }}'
         unit_of_measurement: 'B/s'
         friendly_name: 'Fritzbox Maximum Upstream-Rate'
       fritzbox_max_byte_rate_down:
-        value_template: '{{ states.sensor.fritz_netmonitor.attributes["max_byte_rate_down"] | replace("B/s", "") }}'
+        value_template: '{{ state_attr("sensor.fritz_netmonitor", "max_byte_rate_down") }}'
         unit_of_measurement: 'B/s'
         friendly_name: 'Fritzbox Maximum Downstream-Rate'
+      fritzbox_is_connected_boolean:
+        value_template: '{{ state_attr("sensor.fritz_netmonitor", "is_connected") }}'
+        friendly_name: 'Fritzbox Connection Status'
+      fritzbox_is_linked_boolean:
+        value_template: '{{ state_attr("sensor.fritz_netmonitor", "is_linked") }}'
+        friendly_name: 'Fritzbox Link Status'
       fritzbox_is_connected:
         friendly_name: 'Fritzbox Connection Status'
         value_template: >-
-          {% if is_state('sensor.fritzbox_is_connected2', 'True') %}
+          {% if is_state('sensor.fritzbox_is_connected_boolean', "True") %}
             1
           {% else %}
             0
@@ -324,17 +330,11 @@
       fritzbox_is_linked:
         friendly_name: 'Fritzbox Link Status'
         value_template: >-
-          {% if is_state('sensor.fritzbox_is_linked2', 'True') %}
+          {% if is_state('sensor.fritzbox_is_linked_boolean', "True") %}
             1
           {% else %}
             0
           {% endif %}
-      fritzbox_is_connected2:
-        value_template: '{{ states.sensor.fritz_netmonitor.attributes["is_connected"] }}'
-        friendly_name: 'Fritzbox Connection Status'
-      fritzbox_is_linked2:
-        value_template: '{{ states.sensor.fritz_netmonitor.attributes["is_linked"] }}'
-        friendly_name: 'Fritzbox Link Status'
 
       stromverbrauch_light_badspiegel_1:
         unit_of_measurement: "W"
@@ -513,70 +513,65 @@
         unit_of_measurement: 'W'
 
       gesamtverbrauch_light_deckenlampe_ankleide:
-        value_template: '{{ states.sensor.deckenlampe_ankleide_an_jahr.state | multiply(0.0095) | round(2)}}'
+        value_template: '{{ states("sensor.deckenlampe_ankleide_an_jahr") | multiply(0.0095) | round(2)}}'
         unit_of_measurement: 'kWh'
         friendly_name: 'Gesamtverbrauch Deckenlampe Ankleide'
       gesamtverbrauch_light_deckenlampe_bad:
-        value_template: '{{ states.sensor.deckenlampe_bad_an_jahr.state | multiply(0.0095) | round(2)}}'
+        value_template: '{{ states("sensor.deckenlampe_bad_an_jahr") | multiply(0.0095) | round(2)}}'
         unit_of_measurement: 'kWh'
         friendly_name: 'Gesamtverbrauch Deckenlampe Bad'
       gesamtverbrauch_light_deckenlampe_buro:
-        value_template: '{{ states.sensor.deckenlampe_buro_an_jahr.state | multiply(0.0095) | round(2)}}'
+        value_template: '{{ states("sensor.deckenlampe_buro_an_jahr") | multiply(0.0095) | round(2)}}'
         unit_of_measurement: 'kWh'
         friendly_name: 'Gesamtverbrauch Deckenlampe Büro'
       gesamtverbrauch_light_deckenlampe_herd:
-        value_template: '{{ states.sensor.deckenlampe_herd_an_jahr.state | multiply(0.0095) | round(2)}}'
+        value_template: '{{ states("sensor.deckenlampe_herd_an_jahr") | multiply(0.0095) | round(2)}}'
         unit_of_measurement: 'kWh'
         friendly_name: 'Gesamtverbrauch Deckenlampe Herd'
       gesamtverbrauch_light_deckenlampe_schlafzimmer:
-        value_template: '{{ states.sensor.deckenlampe_schlafzimmer_an_jahr.state | multiply(0.0095) | round(2)}}'
+        value_template: '{{ states("sensor.deckenlampe_schlafzimmer_an_jahr") | multiply(0.0095) | round(2)}}'
         unit_of_measurement: 'kWh'
         friendly_name: 'Gesamtverbrauch Deckenlampe Schlafzimmer'
       gesamtverbrauch_light_deckenlampe_wohnzimmer:
-        value_template: '{{ states.sensor.deckenlampe_wohnzimmer_an_jahr.state | multiply(0.0095) | round(2)}}'
+        value_template: '{{ states("sensor.deckenlampe_wohnzimmer_an_jahr") | multiply(0.0095) | round(2)}}'
         unit_of_measurement: 'kWh'
         friendly_name: 'Gesamtverbrauch Deckenlampe Wohnzimmer'
       gesamtverbrauch_light_lightstrip_wohnzimmer:
-        value_template: '{{ states.sensor.lightstrip_wohnzimmer_an_jahr.state | multiply(0.0095) | round(2)}}'
+        value_template: '{{ states("sensor.lightstrip_wohnzimmer_an_jahr") | multiply(0.0095) | round(2)}}'
         unit_of_measurement: 'kWh'
         friendly_name: 'Gesamtverbrauch Lightstrip Wohnzimmer'
       gesamtverbrauch_light_deckenlampen_flur:
-        value_template: '{{ states.sensor.deckenlampen_flur_an_jahr.state | multiply(0.019) | round(2)}}'
+        value_template: '{{ states("sensor.deckenlampen_flur_an_jahr") | multiply(0.019) | round(2)}}'
         unit_of_measurement: 'kWh'
         friendly_name: 'Gesamtverbrauch Deckenlampen Flur'
       gesamtverbrauch_light_nachttischlampe_simon:
-        value_template: '{{ states.sensor.nachttischlampe_simon_an_jahr.state | multiply(0.0095) | round(2)}}'
+        value_template: '{{ states("sensor.nachttischlampe_simon_an_jahr") | multiply(0.0095) | round(2)}}'
         unit_of_measurement: 'kWh'
         friendly_name: 'Gesamtverbrauch Nachttischlampe Simon'
       gesamtverbrauch_light_nachttischlampe_lisa:
-        value_template: '{{ states.sensor.nachttischlampe_lisa_an_jahr.state | multiply(0.0095) | round(2)}}'
+        value_template: '{{ states("sensor.nachttischlampe_lisa_an_jahr") | multiply(0.0095) | round(2)}}'
         unit_of_measurement: 'kWh'
         friendly_name: 'Gesamtverbrauch Nachttischlampe Lisa'
       gesamtverbrauch_light_schreibtischlampe_lisa:
-        value_template: '{{ states.sensor.schreibtischlampe_lisa_an_jahr.state | multiply(0.0095) | round(2)}}'
+        value_template: '{{ states("sensor.schreibtischlampe_lisa_an_jahr") | multiply(0.0095) | round(2)}}'
         unit_of_measurement: 'kWh'
         friendly_name: 'Gesamtverbrauch Schreibtischlampe Lisa'
       gesamtverbrauch_light_spiegellampe_bad:
-        value_template: '{{ states.sensor.spiegellampe_bad_an_jahr.state | multiply(0.019) | round(2)}}'
+        value_template: '{{ states("sensor.spiegellampe_bad_an_jahr") | multiply(0.019) | round(2)}}'
         unit_of_measurement: 'kWh'
         friendly_name: 'Gesamtverbrauch Spiegellampe Bad'
       gesamtverbrauch_light_stehlampe_flur:
-        value_template: '{{ states.sensor.stehlampe_flur_an_jahr.state | multiply(0.019) | round(2)}}'
+        value_template: '{{ states("sensor.stehlampe_flur_an_jahr") | multiply(0.019) | round(2)}}'
         unit_of_measurement: 'kWh'
         friendly_name: 'Gesamtverbrauch Stehlampe Flur'
       gesamtverbrauch_light_wandlampen_treppenhaus:
-        value_template: '{{ states.sensor.wandlampen_treppenhaus_an_jahr.state | multiply(0.0288) | round(2)}}'
+        value_template: '{{ states("sensor.wandlampen_treppenhaus_an_jahr") | multiply(0.0288) | round(2)}}'
         unit_of_measurement: 'kWh'
         friendly_name: 'Gesamtverbrauch Wandlampen Treppenhaus'
       gesamtverbrauch_beleuchtung:
         value_template: "{{ states('sensor.gesamtverbrauch_light_deckenlampe_ankleide')|float + states('sensor.gesamtverbrauch_light_deckenlampe_bad')|float + states('sensor.gesamtverbrauch_light_deckenlampe_buro')|float + states('sensor.gesamtverbrauch_light_deckenlampe_herd')|float + states('sensor.gesamtverbrauch_light_deckenlampe_schlafzimmer')|float + states('sensor.gesamtverbrauch_light_deckenlampe_wohnzimmer')|float + states('sensor.gesamtverbrauch_light_deckenlampen_flur')|float + states('sensor.gesamtverbrauch_light_lightstrip_wohnzimmer')|float + states('sensor.gesamtverbrauch_light_nachttischlampe_lisa')|float + states('sensor.gesamtverbrauch_light_nachttischlampe_simon')|float + states('sensor.gesamtverbrauch_light_schreibtischlampe_lisa')|float + states('sensor.gesamtverbrauch_light_spiegellampe_bad')|float + states('sensor.gesamtverbrauch_light_stehlampe_flur')|float + states('sensor.gesamtverbrauch_light_wandlampen_treppenhaus')|float }}"
         friendly_name: 'Gesamtverbrauch Beleuchtung'
         unit_of_measurement: 'kWh'
-
-
-      simons_handy_batterie_ladestatus:
-        friendly_name: 'Simons Handy Batterie Ladestatus'
-        value_template: '{{states.device_tracker.life360_simon_horrle.attributes.battery_charging}}'
 
       arbeitszeit_heute:
         value_template: "{{ (states('sensor.auf_der_arbeit_heute')|float * 1) + (states('sensor.im_homeoffice_heute')|float * 1) }}"

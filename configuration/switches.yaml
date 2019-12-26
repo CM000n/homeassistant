@@ -55,47 +55,6 @@
     min_brightness: 50
     max_brightness: 100
 
-  - platform: circadian_lighting
-    name: Autofarbtemperatur Deckenlampe Ankleide
-    lights_ct:
-     - light.deckenlampe_ankleide
-    min_brightness: 100
-    max_brightness: 100
-    sleep_entity: group.all_switches
-    sleep_state: 'on'
-    sleep_colortemp: 6500
-
-  - platform: circadian_lighting
-    name: Autofarbtemperatur Deckenlampe Herd
-    lights_ct:
-     - light.deckenlampe_herd
-    min_brightness: 100
-    max_brightness: 100
-    sleep_entity: group.all_switches
-    sleep_state: 'on'
-    sleep_colortemp: 6500
-
-  - platform: circadian_lighting
-    name: Autofarbtemperatur Deckenlampe Bad
-    lights_ct:
-     - light.deckenlampe_bad
-    min_brightness: 100
-    max_brightness: 100
-    sleep_entity: group.all_switches
-    sleep_state: 'on'
-    sleep_colortemp: 6500
-
-  - platform: circadian_lighting
-    name: Autofarbtemperatur Licht Badspiegel
-    lights_ct:
-     - light.badspiegel_1
-     - light.badspiegel_2
-    min_brightness: 100
-    max_brightness: 100
-    sleep_entity: group.all_switches
-    sleep_state: 'on'
-    sleep_colortemp: 6500
-
 ####################################################
 #                                                  #
 #                      Räume                       #

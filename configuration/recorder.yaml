@@ -100,6 +100,7 @@
       - sensor.time_utc
       - sensor.date_time
       - sensor.date_time_iso
+      - sensor.internet_time
 
 ####################################################
 #                                                  #

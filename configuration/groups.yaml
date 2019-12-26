@@ -68,7 +68,7 @@ schaltung_ankleide:
   - light.deckenlampe_ankleide
   - light.schreibtischlampe_lisa
 
-Schalter:
+schalter:
   entities:
   - switch.ventilator
 
@@ -76,31 +76,31 @@ Schalter:
 #                    LICHTER                       #
 ####################################################
 
-Lichter Wohnzimmer:
+lichter_wohnzimmer:
   - light.deckenlampe_wohnzimmer
   - light.lightstrip_wohnzimmer
 
-Lichter Küche:
+lichter_kueche:
   - light.deckenlampe_herd
   - light.schirmlampe_kueche
 
-Lichter Schlafzimmer:
+lichter_schlafzimmer:
   - light.deckenlampe_schlafzimmer
   - light.nachttischlampe_simon
   - light.nachttischlampe_lisa
 
-Lichter Flur:
+lichter_flur:
   - light.deckenlampen_flur
   - light.stehlampe_flur
 
-Lichter Büro:
+lichter_buero:
   - light.deckenlampe_buro
 
-Lichter Bad:
+lichter_bad:
   - light.deckenlampe_bad
   - light.spiegellampe_bad
 
-Lichter Ankleide:
+lichter_ankleide:
   - light.deckenlampe_ankleide
   - light.schreibtischlampe_lisa
 
@@ -108,7 +108,7 @@ Lichter Ankleide:
 #                Autofarbtemperatur                #
 ####################################################
 
-Automatische Farbtemparatur:  
+automatische_farbtemparatur:
   - switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
   - switch.circadian_lighting_autofarbtemperatur_deckenlampe_schlafzimmer
   - switch.circadian_lighting_autofarbtemperatur_wohnzimmer

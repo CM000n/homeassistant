@@ -1,0 +1,65 @@
+title: Testing
+path:  testing
+panel: true
+
+cards:
+  - type: "custom:homekit-card"
+    entities:
+      - title: Wohn- / Esszimmer
+        popup:
+          type: custom:custom-light-popup-card
+          scenesInARow: 2
+          brightnessWidth: 130px
+          brightnessHeight: 350px
+          switchWidth: 110px
+          switchHeight: 300px
+        entities: 
+          - entity: light.deckenlampe_wohnzimmer
+            popupExtend:
+              scenes:
+                - scene: scene.ontspannen
+                  color: "#FDCA64"
+                  name: ontspannen
+                - scene: scene.helder
+                  color: "#FFE7C0"
+                  name: helder
+                - scene: scene.concentreren
+                  color: "#BBEEF3"
+                  name: concentreren
+                - scene: scene.energie
+                  color: "#8BCBDD"
+                  name: energie
+          - entity: light.lightstrip_wohnzimmer
+          - entity: light.stehlampe_wohnzimmer_links
+          - entity: switch.ventilator
+          - entity: light.deckenlampe_herd
+      - title: Schlafzimmer / Ankleide
+        entities:
+          - entity: light.deckenlampe_schlafzimmer
+            name: "Lalelu"
+            popup:
+              type: custom:custom-light-popup-card
+              switchWidth: 110px
+              switchHeight: 300px
+          - entity: light.nachttischlampe_lisa
+          - entity: light.nachttischlampe_simon
+          - entity: light.deckenlampe_ankleide
+          - entity: light.schreibtischlampe_lisa
+      - title: Badezimmer
+        entities:
+          - entity: light.deckenlampe_bad
+          - entity: light.spiegellampe_bad
+      - title: Büro
+        entities:
+          - entity: light.deckenlampe_buro
+          - entity: light.schirmlampe_buero
+      - title: Flur / Treppenhaus
+        entities:
+          - entity: light.deckenlampen_flur
+          - entity: light.wandlampen_treppenhaus
+      - title: Sensoren
+        entities:
+          - entity: sensor.temperatur_climate_bad
+            name: "Temp Bad"
+          - entity: sensor.temperatur_climate_buero
+            name: "Temp Büro"

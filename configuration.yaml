@@ -229,12 +229,10 @@ weather:
 # https://www.home-assistant.io/components/luftdaten/
 
 luftdaten:
-  sensor_id: 19194
+  sensor_id: 19149
   show_on_map: false
   sensors:
     monitored_conditions:
-      - temperature
-      - humidity
       - P1
       - P2
 

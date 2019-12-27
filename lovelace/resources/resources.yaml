@@ -18,6 +18,8 @@
     type: module
   - url: /community_plugin/vertical-stack-in-card/vertical-stack-in-card.js
     type: js
+  - url: /community_plugin/lovelace-swipe-navigation/swipe-navigation.js
+    type: js
   - url: /community_plugin/lovelace-markdown-mod/markdown-mod.js
     type: module
   - url: /community_plugin/lovelace-card-mod/card-mod.js
@@ -34,4 +36,7 @@
     type: js
   - url: /community_plugin/thermostat-card/thermostat-card.js
     type: module
-
+  - url: /community_plugin/homekit-panel-card/homekit-panel-card.js
+    type: module
+  - url: /community_plugin/custom-light-popup-card/custom-light-popup-card.js
+    type: module

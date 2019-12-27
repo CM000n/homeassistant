@@ -248,7 +248,7 @@ light_button_card:
     aspect_ratio: '[[aspect_ratio]]'
     entity: '[[entity]]'
     label_template: >
-      var bri = Math.round(entity.attributes.brightness / 2.55);
+      var bri = Math.round(state_attr("[[entity]]", "brightness") / 2.55);
       return (bri ? bri : '0') + '%';
     show_state: '[[show_state]]'
     show_label: '[[show_label]]'
@@ -264,11 +264,11 @@ light_button_card:
         - border-radius: 12px
         - --paper-card-background-color: var(--homekit-white)
       label:
-        - color: var(--primary-background-color)
-        - font-size: 11px
-        - font-family: Open Sans
-        - padding: 0px 10px
         - justify-self: start
+        - padding-left: 10px
+        - font-weight: bold
+        - font-family: Open Sans
+        - font-size: 11px
       state:
         - font-size: 11px
         - font-family: Open Sans
@@ -289,11 +289,11 @@ light_button_card:
         - justify-self: start
         - padding-left: 10px
         - font-weight: bold
-        - font-family: Open Sans 
+        - font-family: Open Sans
         - font-size: 13px
     state:
       - value: "on" 
-        spin: '[[spin]]'  
+        spin: '[[spin]]'
         styles:
           name:
             - color: var(--primary-background-color)

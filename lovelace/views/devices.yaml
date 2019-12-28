@@ -248,7 +248,8 @@ cards:
               - entity: switch.wasserpumpe
               - name: Bewässerung
               - icon: leaf
-              - color: var(--primary-background-color)
+              - color: var(--primary-background-color)'
+              - label: "[[[ if (states['binary_sensor.wasserstand'].state == 'off') return 'Wasserstand: OK'; else return 'Wasserstand: NIEDRIG!'; ]]]"
           - type: 'custom:button-card'
             color_type: blank-card
             styles:
@@ -267,4 +268,3 @@ cards:
         styles:
           card:
             - height: 10px
-

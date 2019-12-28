@@ -23,6 +23,7 @@ cards:
               - entity: light.deckenlampe_wohnzimmer
               - name: Wohnzimmer
               - icon: ceiling-light
+              - label: !include ../includes/brightness-label.yaml
           - type: custom:decluttering-card
             template: light_button_card
             variables:
@@ -30,12 +31,14 @@ cards:
               - name: Lightstrip
               - icon: led-strip
               - lock: true
+              - label: !include ../includes/brightness-label.yaml
           - type: custom:decluttering-card
             template: light_button_card
             variables:
               - entity: light.deckenlampe_herd
               - name: Herd
               - icon: ceiling-light
+              - label: !include ../includes/brightness-label.yaml
           - type: 'custom:button-card'
             color_type: blank-card
             styles:
@@ -54,12 +57,14 @@ cards:
               - entity: light.stehlampe_wohnzimmer_links
               - name: Lampe Links
               - icon: floor-lamp
+              - label: !include ../includes/brightness-label.yaml
           - type: custom:decluttering-card
             template: light_button_card
             variables:
               - entity: switch.ventilator
               - name: Lampe Rechts
               - icon: floor-lamp
+              - label: !include ../includes/brightness-label.yaml
           - type: custom:button-card
             color_type: blank-card
             aspect_ratio: 1/1
@@ -85,18 +90,21 @@ cards:
               - entity: light.deckenlampe_schlafzimmer
               - name: Schlafzimmer
               - icon: ceiling-light
+              - label: !include ../includes/brightness-label.yaml
           - type: custom:decluttering-card
             template: light_button_card
             variables:
               - entity: light.nachttischlampe_lisa
               - name: Lisa
               - icon: lamp
+              - label: !include ../includes/brightness-label.yaml
           - type: custom:decluttering-card
             template: light_button_card
             variables:
               - entity: light.nachttischlampe_simon
               - name: Simon
               - icon: lamp
+              - label: !include ../includes/brightness-label.yaml
           - type: 'custom:button-card'
             color_type: blank-card
             styles:
@@ -115,12 +123,14 @@ cards:
               - entity: light.deckenlampe_ankleide
               - name: Ankleide
               - icon: ceiling-light
+              - label: !include ../includes/brightness-label.yaml
           - type: custom:decluttering-card
             template: light_button_card
             variables:
               - entity: light.schreibtischlampe_lisa
               - name: Schreibtisch
               - icon: desk-lamp
+              - label: !include ../includes/brightness-label.yaml
           - type: custom:button-card
             color_type: blank-card
             aspect_ratio: 1/1
@@ -146,12 +156,14 @@ cards:
               - entity: light.deckenlampe_bad
               - name: Deckenlampe
               - icon: ceiling-light
+              - label: !include ../includes/brightness-label.yaml
           - type: custom:decluttering-card
             template: light_button_card
             variables:
               - entity: light.spiegellampe_bad
               - name: Spiegellampe
               - icon: led-strip
+              - label: !include ../includes/brightness-label.yaml
           - type: custom:button-card
             color_type: blank-card
             aspect_ratio: 1/1
@@ -179,12 +191,14 @@ cards:
               - entity: light.deckenlampe_buro
               - name: Deckenlampe
               - icon: ceiling-light
+              - label: !include ../includes/brightness-label.yaml
           - type: custom:decluttering-card
             template: light_button_card
             variables:
               - entity: light.schirmlampe_buero
               - name: Schirmlampe
               - icon: lamp
+              - label: !include ../includes/brightness-label.yaml
           - type: custom:button-card
             color_type: blank-card
             aspect_ratio: 1/1
@@ -210,12 +224,14 @@ cards:
               - entity: light.deckenlampen_flur
               - name: Flur
               - icon: ceiling-light
+              - label: !include ../includes/brightness-label.yaml
           - type: custom:decluttering-card
             template: light_button_card
             variables:
               - entity: light.wandlampen_treppenhaus
               - name: Wandlampen
               - icon: spotlight
+              - label: !include ../includes/brightness-label.yaml
           - type: custom:button-card
             color_type: blank-card
             aspect_ratio: 1/1

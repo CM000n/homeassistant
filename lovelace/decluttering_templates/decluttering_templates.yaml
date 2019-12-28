@@ -35,6 +35,7 @@ person_elements:
         border-radius: 12px;
         overflow: hidden;
         background: var(--homekit-white);
+        color: var(--primary-background-color);
       }
     image: '[[image]]'
     elements:
@@ -136,6 +137,7 @@ person_elements_lisa:
         border-radius: 12px;
         overflow: hidden;
         background: var(--homekit-white);
+        color: var(--primary-background-color);
       }
     image: '[[image]]'
     elements:
@@ -194,6 +196,7 @@ climate_card:
       ha-card {
         border-radius: 12px;
         background: var(--homekit-white);
+        color: var(--primary-background-color);
       }
     ambient_temperature: '[[ambient_temperature]]'
     chevron_size: 100
@@ -247,9 +250,7 @@ light_button_card:
     lock: '[[lock]]'
     aspect_ratio: '[[aspect_ratio]]'
     entity: '[[entity]]'
-    label_template: >
-      var bri = Math.round(state_attr("[[entity]]", "brightness") / 2.55);
-      return (bri ? bri : '0') + '%';
+    label: '[[label]]'
     show_state: '[[show_state]]'
     show_label: '[[show_label]]'
     show_last_changed: '[[show_last_changed]]'
@@ -299,6 +300,8 @@ light_button_card:
             - color: var(--primary-background-color)
           state:
             - color: var(--primary-background-color)
+          label:
+            - color: var(--primary-background-color)
           lock:
             - color: var(--primary-background-color)
       - value: "off"
@@ -311,6 +314,8 @@ light_button_card:
             - color: gray
           state:
             - color: gray
+          label:
+            - color: gray
           lock:
             - color: black
       - value: "unavailable"
@@ -320,6 +325,8 @@ light_button_card:
           icon:
             - color: gray
           state:
+            - color: gray
+          label:
             - color: gray
           name:
             - color: gray
@@ -414,6 +421,8 @@ switch_button_card:
             - color: var(--primary-background-color)
           lock:
             - color: var(--primary-background-color)
+          label:
+            - color: var(--primary-background-color)
       - value: "playing"
         '[[variable]]': '[[spin]]'
         styles:
@@ -422,6 +431,8 @@ switch_button_card:
           state:
             - color: var(--primary-background-color)
           lock:
+            - color: var(--primary-background-color)
+          label:
             - color: var(--primary-background-color)
       - value: "Spült"
         '[[variable]]': '[[spin]]'
@@ -432,6 +443,8 @@ switch_button_card:
             - color: var(--primary-background-color)
           lock:
             - color: var(--primary-background-color)
+          label:
+            - color: var(--primary-background-color)
       - value: "Trocknet"
         '[[variable]]': '[[spin]]'
         styles:
@@ -440,6 +453,8 @@ switch_button_card:
           state:
             - color: var(--primary-background-color)
           lock:
+            - color: var(--primary-background-color)
+          label:
             - color: var(--primary-background-color)
       - value: "Wäscht"
         '[[variable]]': '[[spin]]'
@@ -450,6 +465,8 @@ switch_button_card:
             - color: var(--primary-background-color)
           lock:
             - color: var(--primary-background-color)
+          label:
+            - color: var(--primary-background-color)
       - value: "off"
         styles:
           card:
@@ -459,6 +476,8 @@ switch_button_card:
           name:
             - color: '[[off_name_color]]'
           state:
+            - color: '[[off_state_color]]'
+          label:
             - color: '[[off_state_color]]'
           lock:
             - color: black
@@ -502,6 +521,8 @@ switch_button_card:
             - color: '[[off_name_color]]'
           state:
             - color: '[[off_state_color]]'
+          label:
+            - color: '[[off_state_color]]'
           lock:
             - color: black
       - value: "unavailable"
@@ -511,6 +532,8 @@ switch_button_card:
           icon:
             - color: gray
           state:
+            - color: gray
+          label:
             - color: gray
           name:
             - color: gray
@@ -530,7 +553,6 @@ switch_button_card:
             - color: black
           state:
             - color: gray
-            - 
           icon:
             - color: red
             - animation: blink 2s ease infinite

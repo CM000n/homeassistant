@@ -49,8 +49,8 @@
       - light.schirmlampe_kuche
       - light.schreibtischlampe_lisa
       - light.spiegellampe_bad
-      - light.stehlampe_flur
-      - light.wandlampen_treppenhaus
+      - light.stehlampe_wohnzimmer_rechts
+      - light.stehlampe_wohnzimmer_links
     service: light.turn_off
 
 
@@ -381,7 +381,7 @@
         brightness: 255
         kelvin: 6500
 
-########################################################
+#########################################################
 #                                                       #
 #            END OF CONFIGURATION FILE                  #
 #                                                       #

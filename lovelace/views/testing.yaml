@@ -1,9 +1,12 @@
-title: Testing
-path:  testing
+title: Licht_t
+path:  lichtt
 panel: true
 
 cards:
   - type: "custom:homekit-card"
+    useBrightness: true
+    useTemperature: true
+    breakOnMobile: true
     entities:
       - title: Wohn- / Esszimmer
         popup:
@@ -31,35 +34,52 @@ cards:
                   name: energie
           - entity: light.lightstrip_wohnzimmer
           - entity: light.stehlampe_wohnzimmer_links
-          - entity: switch.ventilator
+          - entity: light.stehlampe_wohnzimmer_rechts
           - entity: light.deckenlampe_herd
       - title: Schlafzimmer / Ankleide
+        popup:
+          type: custom:custom-light-popup-card
+          scenesInARow: 2
+          brightnessWidth: 130px
+          brightnessHeight: 350px
+          switchWidth: 110px
+          switchHeight: 300px
         entities:
           - entity: light.deckenlampe_schlafzimmer
-            name: "Lalelu"
-            popup:
-              type: custom:custom-light-popup-card
-              switchWidth: 110px
-              switchHeight: 300px
           - entity: light.nachttischlampe_lisa
           - entity: light.nachttischlampe_simon
           - entity: light.deckenlampe_ankleide
           - entity: light.schreibtischlampe_lisa
       - title: Badezimmer
+        popup:
+          type: custom:custom-light-popup-card
+          scenesInARow: 2
+          brightnessWidth: 130px
+          brightnessHeight: 350px
+          switchWidth: 110px
+          switchHeight: 300px
         entities:
           - entity: light.deckenlampe_bad
           - entity: light.spiegellampe_bad
       - title: Büro
+        popup:
+          type: custom:custom-light-popup-card
+          scenesInARow: 2
+          brightnessWidth: 130px
+          brightnessHeight: 350px
+          switchWidth: 110px
+          switchHeight: 300px
         entities:
           - entity: light.deckenlampe_buro
           - entity: light.schirmlampe_buero
       - title: Flur / Treppenhaus
+        popup:
+          type: custom:custom-light-popup-card
+          scenesInARow: 2
+          brightnessWidth: 130px
+          brightnessHeight: 350px
+          switchWidth: 110px
+          switchHeight: 300px
         entities:
           - entity: light.deckenlampen_flur
           - entity: light.wandlampen_treppenhaus
-      - title: Sensoren
-        entities:
-          - entity: sensor.temperatur_climate_bad
-            name: "Temp Bad"
-          - entity: sensor.temperatur_climate_buero
-            name: "Temp Büro"

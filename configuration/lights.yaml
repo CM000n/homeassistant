@@ -45,6 +45,18 @@
       - light.wandlampe_treppenhaus_2
       - light.wandlampe_treppenhaus_3
 
+####################################################
+#                                                  #
+#                   LIGHTSWITCH                    #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/integrations/light.switch/
+
+  - platform: switch
+    name: Stehlampe Wohnzimmer Rechts
+    entity_id: switch.steckdose_wohnzimmer_ecke
+
 #########################################################
 #                                                       #
 #            END OF CONFIGURATION FILE                  #

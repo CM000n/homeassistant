@@ -33,3 +33,5 @@ views:
   - !include lovelace/views/devices.yaml
   - !include lovelace/views/climate.yaml
   - !include lovelace/views/testing.yaml
+  - !include lovelace/views/testing2.yaml
+  

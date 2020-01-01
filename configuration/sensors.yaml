@@ -252,7 +252,7 @@
         friendly_name: 'Spülmaschine'
         value_template: >-
           {% if states('sensor.stromverbrauch_spuehlmaschine')|float <= 0 %}
-            Aus
+            off
           {% elif states('sensor.stromverbrauch_spuehlmaschine')|float < 100 %}
             Spült
           {% elif states('sensor.stromverbrauch_spuehlmaschine')|float >= 100 %}
@@ -264,7 +264,7 @@
         friendly_name: 'Waschmaschine'
         value_template: >-
           {% if states('sensor.stromverbrauch_waschmaschine')|float <= 0 %}
-            Aus
+            off
           {% elif states('sensor.stromverbrauch_waschmaschine')|float <= 3.9 %}
             Fertig
           {% elif states('sensor.stromverbrauch_waschmaschine')|float > 3.9 %}
@@ -276,7 +276,7 @@
         friendly_name: 'Trockner'
         value_template: >-
           {% if states('sensor.stromverbrauch_trockner')|float <= 0 %}
-            Aus
+            off
           {% elif states('sensor.stromverbrauch_trockner')|float <= 7 %}
             Fertig
           {% elif states('sensor.stromverbrauch_trockner')|float > 7 %}

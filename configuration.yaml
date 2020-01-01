@@ -206,7 +206,7 @@ speedtestdotnet:
 
 circadian_lighting:
   min_colortemp: 2000
-  max_colortemp: 6000
+  max_colortemp: 6500
 
 ####################################################
 #                                                  #

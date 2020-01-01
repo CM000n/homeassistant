@@ -1,61 +1,79 @@
+#########################################################
+#                                                       #
+#                       LIGHTS                          #
+#                                                       #
+#########################################################
+
+light.deckenlampe_wohnzimmer:
+  friendly_name: Wohnzimmer
+  icon: mdi:ceiling-light
+light.lightstrip_wohnzimmer:
+  friendly_name: Lowboard
+  icon: mdi:led-strip-variant
+light.stehlampe_wohnzimmer_links:
+  friendly_name: Lampe links
+  icon: mdi:floor-lamp
+light.stehlampe_wohnzimmer_rechts:
+  friendly_name: Lampe rechts
+  icon: mdi:floor-lamp
+light.deckenlampe_herd:
+  friendly_name: Herd
+  icon: mdi:ceiling-light
+
+light.deckenlampe_schlafzimmer:
+  friendly_name: Schlafzimmer
+  icon: mdi:ceiling-light
+light.nachttischlampe_lisa:
+  friendly_name: Lisa
+  icon: mdi:lava-lamp
+light.nachttischlampe_simon:
+  friendly_name: Simon
+  icon: mdi:lava-lamp
+light.deckenlampe_ankleide:
+  friendly_name: Ankleide
+  icon: mdi:ceiling-light
+light.schreibtischlampe_lisa:
+  friendly_name: Schreibtisch
+  icon: mdi:desk-lamp
+
+light.deckenlampe_bad:
+  friendly_name: Bad
+  icon: mdi:ceiling-light
+light.spiegellampe_bad:
+  friendly_name: Spiegel
+  icon: mdi:led-strip
+
+light.deckenlampe_buro:
+  friendly_name: Büro
+  icon: mdi:ceiling-light
+light.schirmlampe_buero:
+  friendly_name: Schreibtisch
+  icon: mdi:lamp
+
+light.deckenlampen_flur:
+  friendly_name: Flur
+  icon: mdi:ceiling-light
+light.wandlampen_treppenhaus:
+  friendly_name: Treppenhaus
+  icon: mdi:track-light
+
+#########################################################
+#                                                       #
+#                  INPUT NUMBERS                        #
+#                                                       #
+#########################################################
+
 input_number.lamp_bright:
   icon: mdi:brightness-5
 input_number.lamp_temp:
   icon: mdi:thermometer-lines
-light.deckenlampe_buro:
-  friendly_name: Deckenlampe Büro
-  icon: mdi:ceiling-light
-light.deckenlampen_flur:
-  friendly_name: Deckenlampen Flur
-  icon: mdi:ceiling-light
-light.deckenlampe_flur_1:
-  friendly_name: Deckenlampe Flur 1
-  icon: mdi:ceiling-light
-light.deckenlampe_flur_2:
-  friendly_name: Deckenlampe Flur 2
-  icon: mdi:ceiling-light
-light.stehlampe_flur:
-  friendly_name: Stehlampe Flur
-  icon: mdi:lava-lamp
-light.stehlampe_flur_1:
-  friendly_name: Stehlampe Flur 1
-  icon: mdi:lava-lamp
-light.stehlampe_flur_2:
-  friendly_name: Stehlampe Flur 2
-  icon: mdi:lava-lamp
-light.deckenlampe_bad:
-  friendly_name: Deckenlampe Bad
-  icon: mdi:ceiling-light
-light.spiegellampe_bad:
-  friendly_name: Spiegellampe Bad
-  icon: mdi:spotlight
-light.deckenlampe_herd:
-  friendly_name: Deckenlampe Herd
-  icon: mdi:ceiling-light
-light.schirmlampe_kueche:
-  friendly_name: Schirmlampe Küche
-  icon: mdi:lamp
-light.deckenlampe_schlafzimmer:
-  friendly_name: Deckenlampe Schlafzimmer
-  icon: mdi:ceiling-light
-light.nachttischlampe_simon:
-  friendly_name: Nachttischlampe Simon
-  icon: mdi:lamp
-light.nachttischlampe_lisa:
-  friendly_name: Nachttischlampe Lisa
-  icon: mdi:lamp
-light.deckenlampe_ankleide:
-  friendly_name: Deckenlampe Ankleide
-  icon: mdi:ceiling-light
-light.schreibtischlampe_lisa:
-  friendly_name: Schreibtischlampe Lisa
-  icon: mdi:spotlight
-light.deckenlampe_wohnzimmer:
-  friendly_name: Deckenlampe Wohnzimmer
-  icon: mdi:ceiling-light
-light.wandlampen_treppenhaus:
-  friendly_name: Wandlampen Treppenhaus
-  icon: mdi:spotlight
+
+#########################################################
+#                                                       #
+#                      SENSORS                          #
+#                                                       #
+#########################################################
+
 sensor.fritz_netmonitor:
   friendly_name: Netmonitor
 sensor.since_last_boot_templated:
@@ -91,8 +109,6 @@ sensor.munzesheim_to_karlsruhe_hbf:
 sensor.munzesheim_to_menzingenbaden:
   friendly_name: Münzesheim --> Menzingen
   icon: mdi:tram
-binary_sensor.device_tracker_ping_omv:
-  friendly_name: Openmediavault Server
 sensor.e10mue:
   friendly_name: E10 - Münzesheim
   icon: mdi:gas-station
@@ -142,7 +158,66 @@ sensor.darksky_wind_speed:
   icon: mdi:weather-windy
 sensor.darksky_visibility:
   friendly_name: Sichtweite
-switch.simonpc:
+sensor.stromverbrauch_spuehlmaschine:
+  icon: mdi:flash
+sensor.stromverbrauch_trockner:
+  icon: mdi:flash
+sensor.stromverbrauch_waschmaschine:
+  icon: mdi:flash
+sensor.stromverbrauch_kueche_mehrfachstecker:
+  icon: mdi:flash
+sensor.stromverbrauch_wohnzimmer_ecke:
+  icon: mdi:flash
+sensor.stromverbrauch_wohnzimmer_lowboard:
+  icon: mdi:flash
+sensor.gesamtverbrauch_spuehlmaschine:
+  icon: mdi:sigma
+sensor.gesamtverbrauch_trockner:
+  icon: mdi:sigma
+sensor.gesamtverbrauch_waschmaschine:
+  icon: mdi:sigma
+sensor.gesamtverbrauch_kueche_mehrfachstecker:
+  icon: mdi:sigma
+sensor.gesamtverbrauch_wohnzimmer_ecke:
+  icon: mdi:sigma
+sensor.gesamtverbrauch_wohnzimmer_lowboard:
+  icon: mdi:sigma
+sensor.status_spuelmaschine:
+  icon: mdi:dishwasher
+sensor.status_trockner:
+  icon: mdi:tumble-dryer
+sensor.status_waschmaschine:
+  icon: mdi:washing-machine
+sensor.google_travel_time_driving:
+  friendly_name: Fahrtzeit Arbeit --> Zu Hause
+  icon: mdi:map-clock-outline
+sensor.google_travel_time_driving_2:
+  friendly_name: Fahrtzeit Zu Hause --> Arbeit
+  icon: mdi:map-clock-outline
+
+#########################################################
+#                                                       #
+#                   BINARY SENSORS                      #
+#                                                       #
+#########################################################
+
+binary_sensor.philipstv:
+  friendly_name: TV
+  icon: mdi:television
+binary_sensor.openmediavault:
+  friendly_name: Server
+  icon: mdi:server
+binary_sensor.simondrucker:
+  friendly_name: Drucker
+  icon: mdi:printer
+
+#########################################################
+#                                                       #
+#                     SWITCHES                          #
+#                                                       #
+#########################################################
+
+switch.simon_pc:
   friendly_name: Simon-PC
   icon: mdi:desktop-classic
 switch.automatische_lichtstimmung:
@@ -168,23 +243,6 @@ switch.flur:
 switch.ankleide:
   friendly_name: Ankleide
   icon: mdi:tshirt-v
-switch.ventilator:
-  friendly_name: Ventilator
-  icon: mdi:fan
-script.nachtlicht_an:
-  friendly_name: Nachtlicht
-  icon: mdi:weather-night
-  assumed_state: false
-script.alle_lichter_aus:
-  friendly_name: Alle Lichter aus
-  icon: mdi:lightbulb
-  assumed_state: false
-sensor.status_spuelmaschine:
-  icon: mdi:dishwasher
-sensor.status_trockner:
-  icon: mdi:tumble-dryer
-sensor.status_waschmaschine:
-  icon: mdi:washing-machine
 switch.steckdose_spulmaschine:
   icon: mdi:power-socket-eu
 switch.steckdose_trockner:
@@ -197,43 +255,42 @@ switch.steckdose_wohnzimmer_ecke:
   icon: mdi:power-socket-eu
 switch.steckdose_wohnzimmer_lowboard:
   icon: mdi:power-socket-eu
-sensor.stromverbrauch_spuehlmaschine:
-  icon: mdi:flash
-sensor.stromverbrauch_trockner:
-  icon: mdi:flash
-sensor.stromverbrauch_waschmaschine:
-  icon: mdi:flash
-sensor.stromverbrauch_kueche_mehrfachstecker:
-  icon: mdi:flash
-sensor.stromverbrauch_wohnzimmer_ecke:
-  icon: mdi:flash
-sensor.stromverbrauch_wohnzimmer_lowboard:
-  icon: mdi:flash
-sensor.gesamtverbrauch_spuehlmaschine:
-  icon: mdi:sigma
-sensor.gesamtverbrauch_trockner:
-  icon: mdi:sigma
-sensor.gesamtverbrauch_waschmaschine:
-  icon: mdi:sigma
-sensor.gesamtverbrauch_kueche_mehrfachstecker:
-  icon: mdi:sigma
-sensor.gesamtverbrauch_wohnzimmer_ecke:
-  icon: mdi:sigma
-sensor.gesamtverbrauch_wohnzimmer_lowboard:
-  icon: mdi:sigma
+
+#########################################################
+#                                                       #
+#                      SCRIPTS                          #
+#                                                       #
+#########################################################
+
+script.nachtlicht_an:
+  friendly_name: Nachtlicht
+  icon: mdi:weather-night
+  assumed_state: false
+script.alle_lichter_aus:
+  friendly_name: Alle Lichter aus
+  icon: mdi:lightbulb
+  assumed_state: false
+
+#########################################################
+#                                                       #
+#                      INPUT TEXT                       #
+#                                                       #
+#########################################################
+
 input_text.reminder_simon:
   icon: mdi:calendar-edit
 input_text.reminder_lisa:
   icon: mdi:calendar-edit
-sensor.google_travel_time_driving:
-  friendly_name: Fahrtzeit Arbeit --> Zu Hause
-  icon: mdi:map-clock-outline
-sensor.google_travel_time_driving_2:
-  friendly_name: Fahrtzeit Zu Hause --> Arbeit
-  icon: mdi:map-clock-outline
 weblink.home_assistant_chat:
   friendly_name: Home Assistant Chat
   hidden: false
+
+#########################################################
+#                                                       #
+#                        WEBLINK                        #
+#                                                       #
+#########################################################
+
 weblink.home_assistant_forum:
   friendly_name: Home Assistant Forum
   hidden: false
@@ -246,18 +303,25 @@ weblink.router:
 weblink.repeater:
   friendly_name: Repeater
   hidden: false
-media_player.sonos_schlafzimmer:
-  friendly_name: Sonos Schlafzimmer
-  icon: mdi:music-circle
-media_player.sonos_wohnzimmer:
-  friendly_name: Sonos Wohnzimmer
-  icon: mdi:music-circle
+
+#########################################################
+#                                                       #
+#                      MEDIA PLAYER                     #
+#                                                       #
+#########################################################
+
 media_player.sonos_bad:
   friendly_name: Sonos Bad
-  icon: mdi:music-circle
+  icon: mdi:speaker
 media_player.sonos_buero:
   friendly_name: Sonos Büro
-  icon: mdi:music-circle
-group.anwesenheit_simon:
-  friendly_name: Simon
-  entity_picture: /local/cropped-sp1.png
+  icon: mdi:speaker
+media_player.sonos_schlafzimmer:
+  friendly_name: Sonos Schlafzimmer
+  icon: mdi:speaker
+media_player.sonos_wohnzimmer:
+  friendly_name: Sonos Wohnzimmer
+  icon: mdi:speaker
+media_player.chromecast_wohnzimmer:
+  friendly_name: Chromecast
+  icon: mdi:cast

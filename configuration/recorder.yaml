@@ -18,7 +18,6 @@
       - light
     entities:
       - switch.simon_pc
-      - switch.ventilator
       - switch.wasserpumpe
       - person.lisa
       - person.simon
@@ -53,6 +52,8 @@
       - light.ersatzlampe2
       - light.stehlampe_flur_1
       - light.stehlampe_flur_2
+      - light.stehlampe_wohnzimmer_1
+      - light.stehlampe_wohnzimmer_2
       - light.wandlampe_treppenhaus_1
       - light.wandlampe_treppenhaus_2
       - light.wandlampe_treppenhaus_3
@@ -82,10 +83,16 @@
       - sensor.animals_sissi_trimmen_visible
       - sensor.badezimmer_visible
       - sensor.bettenmachen_visible
+      - sensor.geocoded_location
       - sensor.fenster_visible
       - sensor.matratzenlueften_visible
+      - sensor.last_update_trigger
+      - sensor.ssid
+      - sensor.bssid
+      - sensor.connection_type
       - sensor.polster_visible
       - sensor.staubsaugen_visible
+      - sensor.simon_hoerrle_gmail_com
       - sensor.toilette_clean_visible
       - sensor.toyota_oel_visible
       - sensor.toyota_putzen_visible

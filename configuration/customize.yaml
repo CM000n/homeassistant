@@ -314,6 +314,21 @@ climate.heizung_buro:
   friendly_name: Büro
   icon: mdi:calendar-edit
 
+#########################################################
+#                                                       #
+#                      AUTOMATIONS                      #
+#                                                       #
+#########################################################
+
+automation.benachrichtigung_spulmaschine_fertig:
+  friendly_name: Spülmaschine fertig
+  icon: mdi:bell-ring
+automation.benachrichtigung_waschmaschine_fertig:
+  friendly_name: Waschmaschine fertig
+  icon: mdi:bell-ring
+automation.benachrichtigung_trockner_fertig:
+  friendly_name: Trockner fertig
+  icon: mdi:bell-ring
 
 #########################################################
 #                                                       #

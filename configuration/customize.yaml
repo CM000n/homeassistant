@@ -20,26 +20,26 @@ light.deckenlampe_herd:
   friendly_name: Herd
   icon: mdi:ceiling-light
 
-light.deckenlampe_schlafzimmer:
+light.schlafzimmer_deckenlampe_light:
   friendly_name: Schlafzimmer
   icon: mdi:ceiling-light
-light.nachttischlampe_lisa:
+light.schlafzimmer_nachttisch_lisa_light:
   friendly_name: Lisa
   icon: mdi:lava-lamp
-light.nachttischlampe_simon:
+light.schlafzimmer_nachttisch_simon_light:
   friendly_name: Simon
   icon: mdi:lava-lamp
-light.deckenlampe_ankleide:
+light.ankleide_deckenlampe_light:
   friendly_name: Ankleide
   icon: mdi:ceiling-light
-light.schreibtischlampe_lisa:
+light.ankleide_schreibtisch_light:
   friendly_name: Schreibtisch
   icon: mdi:desk-lamp
 
-light.deckenlampe_bad:
+light.shelly_deckenlampe_bad:
   friendly_name: Bad
   icon: mdi:ceiling-light
-light.spiegellampe_bad:
+light.shelly_badspiegel:
   friendly_name: Spiegel
   icon: mdi:led-strip
 
@@ -136,20 +136,12 @@ sensor.darksky_cloud_coverage:
 sensor.wetter_fog:
   friendly_name: Nebel
   icon: mdi:weather-fog
-sensor.darksky_humidity:
-  friendly_name: Luftfeuchtigkeit
-  icon: mdi:water-percent
 sensor.darksky_precip_probability:
   friendly_name: Niederschlagswahrscheinlichkeit
   icon: mdi:weather-pouring
-sensor.darksky_pressure:
-  friendly_name: Luftdruck
-  icon: mdi:chart-line
 sensor.wetter_symbol:
   friendly_name: Wetter
   hidden: true
-sensor.darksky_temperature:
-  friendly_name: Außentemperatur
 sensor.darksky_wind_bearing:
   friendly_name: Windrichtung
   icon: mdi:compass
@@ -194,6 +186,30 @@ sensor.google_travel_time_driving:
 sensor.google_travel_time_driving_2:
   friendly_name: Fahrtzeit Zu Hause --> Arbeit
   icon: mdi:map-clock-outline
+
+sensor.temperatur_wohnzimmer_lowboard:
+  friendly_name: Wohnzimmer
+  icon: mdi:thermometer
+sensor.temperatur_climate_bad:
+  friendly_name: Bad
+  icon: mdi:thermometer
+sensor.temperatur_climate_buero:
+  friendly_name: Büro
+  icon: mdi:thermometer
+sensor.temperatur_keller:
+  friendly_name: Keller
+  icon: mdi:thermometer
+sensor.darksky_temperature:
+  friendly_name: Außen
+  icon: mdi:thermometer
+
+sensor.darksky_humidity:
+  friendly_name: Außen
+  icon: mdi:water-percent
+
+sensor.darksky_pressure:
+  friendly_name: Außen
+  icon: mdi:chart-line
 
 #########################################################
 #                                                       #
@@ -284,6 +300,20 @@ input_text.reminder_lisa:
 weblink.home_assistant_chat:
   friendly_name: Home Assistant Chat
   hidden: false
+
+#########################################################
+#                                                       #
+#                       CLIMATE                         #
+#                                                       #
+#########################################################
+
+climate.heizung_bad:
+  friendly_name: Bad
+  icon: mdi:calendar-edit
+climate.heizung_buro:
+  friendly_name: Büro
+  icon: mdi:calendar-edit
+
 
 #########################################################
 #                                                       #

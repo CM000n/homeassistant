@@ -23,8 +23,8 @@
   - platform: group
     name: Deckenlampen Flur
     entities:
-      - light.deckenlampe_flur_1
-      - light.deckenlampe_flur_2
+      - light.flur_deckenlampe1_light
+      - light.flur_deckenlampe2_light
 
   - platform: group
     name: Stehlampe Wohnzimmer Links
@@ -56,6 +56,12 @@
   - platform: switch
     name: Stehlampe Wohnzimmer Rechts
     entity_id: switch.steckdose_wohnzimmer_ecke
+  - platform: switch
+    name: Shelly Deckenlampe Bad
+    entity_id: switch.shelly1pm_76d8e1_relay_0
+  - platform: switch
+    name: Shelly Badspiegel
+    entity_id: switch.shelly1pm_76da84_relay_0
 
 #########################################################
 #                                                       #

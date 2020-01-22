@@ -13,13 +13,14 @@
   action:
   - data:
       entity_id:
-      - light.deckenlampe_ankleide
-      - light.deckenlampe_bad
+      - light.ankleide_deckenlampe_light
+      - light.ankleide_schreibtisch_light
       - light.deckenlampe_buro
       - light.deckenlampe_herd
-      - light.deckenlampe_schlafzimmer
+      - light.schlafzimmer_deckenlampe_light
       - light.deckenlampe_wohnzimmer
-      - light.deckenlampen_flur
+      - light.flur_deckenlampe1_light
+      - light.flur_deckenlampe2_light
       - light.schirmlampe_kuche
       - light.schreibtischlampe_lisa
       - light.spiegellampe_bad
@@ -36,18 +37,19 @@
   action:
   - data:
       entity_id:
-      - light.deckenlampe_ankleide
+      - light.ankleide_deckenlampe_light
       - light.deckenlampe_bad
       - light.deckenlampe_buro
       - light.deckenlampe_herd
-      - light.deckenlampe_schlafzimmer
+      - light.schlafzimmer_deckenlampe_light
       - light.deckenlampe_wohnzimmer
-      - light.deckenlampen_flur
+      - light.flur_deckenlampe1_light
+      - light.flur_deckenlampe2_light
       - light.lightstrip_wohnzimmer
-      - light.nachttischlampe_lisa
-      - light.nachttischlampe_simon
+      - light.schlafzimmer_nachttisch_lisa_light
+      - light.schlafzimmer_nachttisch_simon_light
       - light.schirmlampe_kuche
-      - light.schreibtischlampe_lisa
+      - light.ankleide_schreibtisch_light
       - light.spiegellampe_bad
       - light.stehlampe_wohnzimmer_rechts
       - light.stehlampe_wohnzimmer_links
@@ -330,41 +332,37 @@
         kelvin: 6500
 
 - id: 'a_bl_18'
-  alias: Deckenlampe Bad auf Kaltweis bei Start
+  alias: Deckenlampe Bad mit Deckenlampe an
   trigger:
     - platform: state
-      entity_id: light.deckenlampe_bad
+      entity_id: light.shelly_deckenlampe_bad
       to: 'on'
   action:
     - service: light.turn_on
       data:
-        entity_id: light.deckenlampe_bad
-        brightness: 255
-        kelvin: 6500
+        entity_id: light.shelly_badspiegel
 
 - id: 'a_bl_19'
-  alias: Spiegellampe Bad auf Kaltweis bei Start
+  alias: Spiegellampe Bad mit Deckenlampe aus
   trigger:
     - platform: state
-      entity_id: light.spiegellampe_bad
-      to: 'on'
+      entity_id: light.shelly_deckenlampe_bad
+      from: 'on'
   action:
-    - service: light.turn_on
+    - service: light.turn_off
       data:
-        entity_id: light.spiegellampe_bad
-        brightness: 255
-        kelvin: 6500
+        entity_id: light.shelly_badspiegel
 
 - id: 'a_bl_20'
   alias: Deckenlampe Ankleide auf Kaltweis bei Start
   trigger:
     - platform: state
-      entity_id: light.deckenlampe_ankleide
+      entity_id: light.ankleide_deckenlampe_light
       to: 'on'
   action:
     - service: light.turn_on
       data:
-        entity_id: light.deckenlampe_ankleide
+        entity_id: light.ankleide_deckenlampe_light
         brightness: 255
         kelvin: 6500
 
@@ -372,12 +370,12 @@
   alias: Schreibtischlampe Ankleide auf Kaltweis bei Start
   trigger:
     - platform: state
-      entity_id: light.schreibtischlampe_lisa
+      entity_id: light.ankleide_schreibtisch_light
       to: 'on'
   action:
     - service: light.turn_on
       data:
-        entity_id: light.schreibtischlampe_lisa
+        entity_id: light.ankleide_schreibtisch_light
         brightness: 255
         kelvin: 6500
 

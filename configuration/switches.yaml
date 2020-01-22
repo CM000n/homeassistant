@@ -33,14 +33,14 @@
   - platform: circadian_lighting
     name: Autofarbtemperatur Deckenlampe Schlafzimmer
     lights_ct:
-     - light.deckenlampe_schlafzimmer
+     - light.schlafzimmer_deckenlampe_light
     disable_brightness_adjust: true
 
   - platform: circadian_lighting
     name: Autofarbtemperatur Deckenlampen Flur
     lights_ct:
-     - light.deckenlampe_flur_1
-     - light.deckenlampe_flur_2
+     - light.flur_deckenlampe1_light
+     - light.flur_deckenlampe2_light
     disable_brightness_adjust: true
 
   - platform: circadian_lighting

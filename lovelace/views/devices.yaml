@@ -1,270 +1,44 @@
 title: Geräte
-path: devices
+path:  devices
+panel: true
+
 cards:
-  - type: vertical-stack
-    cards:
-      - type: custom:decluttering-card
-        template: header_text
-        variables:
-          - content: 'Wohn- / Esszimmer'
-      - type: horizontal-stack
-        cards:
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-                - width: 10px
-          - type: custom:decluttering-card
-            template: switch_button_card
-            variables:
-              - entity: binary_sensor.philipstv
-              - name: TV
-              - icon: television
-              - color: var(--primary-background-color)
-          - type: custom:decluttering-card
-            template: switch_button_card
-            variables:
-              - entity: media_player.chromecast_wohnzimmer
-              - name: Chromecast
-              - icon: cast
-              - color: var(--primary-background-color)
-          - type: custom:decluttering-card
-            template: switch_button_card
-            variables:
-              - entity: media_player.sonos_wohnzimmer
-              - name: Sonos
-              - icon: speaker
-              - color: var(--primary-background-color)
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-                - width: 10px
-      - type: horizontal-stack
-        cards:
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-                - width: 10px
-          - type: custom:decluttering-card
-            template: switch_button_card
-            variables:
-              - entity: switch.steckdose_wohnzimmer_lowboard
-              - name: Lowboard
-              - icon: power-socket-eu
-              - color: var(--primary-background-color)
-          - type: custom:decluttering-card
-            template: switch_button_card
-            variables:
-              - entity: sensor.status_spuelmaschine
-              - name: Spülmaschine
-              - icon: dishwasher
-              - color: var(--primary-background-color)
-          - type: custom:button-card
-            color_type: blank-card
-            aspect_ratio: 1/1
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-                - width: 10px
-      - type: custom:decluttering-card
-        template: header_text
-        variables:
-          - content: 'Schlafzimmer'
-      - type: horizontal-stack
-        cards:
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-                - width: 10px
-          - type: custom:decluttering-card
-            template: switch_button_card
-            variables:
-              - entity: media_player.sonos_schlafzimmer
-              - name: Sonos
-              - icon: speaker
-              - color: var(--primary-background-color)
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-                - width: 10px
-      - type: custom:decluttering-card
-        template: header_text
-        variables:
-          - content: 'Badezimmer'
-      - type: horizontal-stack
-        cards:
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-                - width: 10px
-          - type: custom:decluttering-card
-            template: switch_button_card
-            variables:
-              - entity: media_player.sonos_bad
-              - name: Sonos
-              - icon: speaker
-              - color: var(--primary-background-color)
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-                - width: 10px
-  - type: vertical-stack
-    cards:
-      - type: custom:decluttering-card
-        template: header_text
-        variables:
-          - content: 'Büro'
-      - type: horizontal-stack
-        cards:
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-                - width: 10px
-          - type: custom:decluttering-card
-            template: switch_button_card
-            variables:
-              - entity: switch.simon_pc
-              - name: Simon PC
-              - icon: desktop-classic
-              - color: var(--primary-background-color)
-          - type: custom:decluttering-card
-            template: switch_button_card
-            variables:
-              - entity: binary_sensor.openmediavault
-              - name: Server
-              - icon: server
-              - color: var(--primary-background-color)
-          - type: custom:decluttering-card
-            template: switch_button_card
-            variables:
-              - entity: binary_sensor.simondrucker
-              - name: Drucker
-              - icon: printer
-              - color: var(--primary-background-color)
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-                - width: 10px
-      - type: horizontal-stack
-        cards:
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-                - width: 10px
-          - type: custom:decluttering-card
-            template: switch_button_card
-            variables:
-              - entity: media_player.sonos_buero
-              - name: Sonos
-              - icon: speaker
-              - color: var(--primary-background-color)
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-                - width: 10px
-      - type: custom:decluttering-card
-        template: header_text
-        variables:
-          - content: 'Keller'
-      - type: horizontal-stack
-        cards:
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-                - width: 10px
-          - type: custom:decluttering-card
-            template: switch_button_card
-            variables:
-              - entity: sensor.status_waschmaschine
-              - name: Waschmaschine
-              - icon: washing-machine
-              - color: var(--primary-background-color)
-          - type: custom:decluttering-card
-            template: switch_button_card
-            variables:
-              - entity: sensor.status_trockner
-              - name: Trockner
-              - icon: tumble-dryer
-              - color: var(--primary-background-color)
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-                - width: 10px
-      - type: custom:decluttering-card
-        template: header_text
-        variables:
-          - content: 'Sonstiges'
-      - type: horizontal-stack
-        cards:
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-                - width: 10px
-          - type: custom:decluttering-card
-            template: switch_button_card
-            variables:
-              - entity: switch.wasserpumpe
-              - name: Bewässerung
-              - icon: leaf
-              - color: var(--primary-background-color)'
-              - label: "[[[ if (states['binary_sensor.wasserstand'].state == 'off') return 'Wasserstand: OK'; else return 'Wasserstand: NIEDRIG!'; ]]]"
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-          - type: 'custom:button-card'
-            color_type: blank-card
-            styles:
-              card:
-                - width: 10px
-      - type: 'custom:button-card'
-        color_type: blank-card
-        styles:
-          card:
-            - height: 10px
+  - type: "custom:homekit-card"
+    useBrightness: true
+    useTemperature: true
+    breakOnMobile: true
+    entities:
+      - title: Wohn- / Esszimmer
+        entities: 
+          - entity: binary_sensor.philipstv
+          - entity: media_player.chromecast_wohnzimmer
+          - entity: media_player.sonos_wohnzimmer
+            offStates:
+              - "paused"
+          - entity: switch.steckdose_wohnzimmer_lowboard
+          - entity: sensor.status_spuelmaschine
+      - title: Schlafzimmer / Ankleide
+        entities:
+          - entity: media_player.sonos_schlafzimmer
+            offStates:
+              - "paused"
+      - title: Badezimmer
+        entities:
+          - entity: media_player.sonos_bad
+            offStates:
+              - "paused"
+      - title: Büro
+        entities:
+          - entity: binary_sensor.openmediavault
+          - entity: binary_sensor.simondrucker
+          - entity: switch.simon_pc
+          - entity: media_player.sonos_buero
+            offStates:
+              - "paused"
+      - title: Keller
+        entities:
+          - entity: sensor.status_waschmaschine
+          - entity: sensor.status_trockner
+      - title: Außen
+        entities:
+          - entity: switch.wasserpumpe

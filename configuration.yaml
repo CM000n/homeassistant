@@ -27,7 +27,8 @@ homeassistant:
 lovelace:
   mode: yaml
 # https://home-assistant.io/components/frontend/
-frontend: !include configuration/frontend.yaml
+frontend:
+  themes: !include_dir_merge_named themes
 # https://home-assistant.io/components/config/
 config:
 # https://home-assistant.io/components/sun/
@@ -56,6 +57,12 @@ mqtt:
   port: 1883
   discovery: true
   discovery_prefix: homeassistant
+  birth_message:
+    topic: 'hass/status'
+    payload: 'online'
+  will_message:
+    topic: 'hass/status'
+    payload: 'offline'
 # https://www.home-assistant.io/components/system_health/
 system_health:
 # https://www.home-assistant.io/components/person/

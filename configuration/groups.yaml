@@ -2,14 +2,6 @@
 
 ####################################################
 #                                                  #
-#                     VIEWS                        #
-#                                                  #
-####################################################
-
-#No longer needed since lovelace
-
-####################################################
-#                                                  #
 #                    GROUPS                        #
 #                                                  #
 ####################################################
@@ -27,82 +19,11 @@ anwesenheit:
 #                  SCHALTUNGEN                     #
 ####################################################
 
-schaltung_kueche:
-  entities:
-  - light.deckenlampe_herd
-  - light.schirmlampe_kueche
-
-schaltung_wohnzimmer:
-  entities:
-  - light.deckenlampe_wohnzimmer
-  - light.lightstrip_wohnzimmer
-  - media_player.sonos_wohnzimmer
-  - media_player.chromecast_wohnzimmer
-
-schaltung_schlafzimmer:
-  entities:
-  - light.deckenlampe_schlafzimmer
-  - light.nachttischlampe_simon
-  - light.nachttischlampe_lisa
-  - media_player.sonos_schlafzimmer
-
-schaltung_badezimmer:
-  entities:
-  - light.deckenlampe_bad
-  - light.spiegellampe_bad
-  - media_player.sonos_bad
-
-schaltung_buero:
-  entities:
-  - light.deckenlampe_buro
-  - switch.simonpc
-
-schaltung_flur:
-  entities:
-  - light.deckenlampen_flur
-  - light.stehlampe_flur
-  - light.wandlampen_treppenhaus
-
-schaltung_ankleide:
-  entities:
-  - light.deckenlampe_ankleide
-  - light.schreibtischlampe_lisa
-
-schalter:
-  entities:
-  - switch.ventilator
 
 ####################################################
 #                    LICHTER                       #
 ####################################################
 
-lichter_wohnzimmer:
-  - light.deckenlampe_wohnzimmer
-  - light.lightstrip_wohnzimmer
-
-lichter_kueche:
-  - light.deckenlampe_herd
-  - light.schirmlampe_kueche
-
-lichter_schlafzimmer:
-  - light.deckenlampe_schlafzimmer
-  - light.nachttischlampe_simon
-  - light.nachttischlampe_lisa
-
-lichter_flur:
-  - light.deckenlampen_flur
-  - light.stehlampe_flur
-
-lichter_buero:
-  - light.deckenlampe_buro
-
-lichter_bad:
-  - light.deckenlampe_bad
-  - light.spiegellampe_bad
-
-lichter_ankleide:
-  - light.deckenlampe_ankleide
-  - light.schreibtischlampe_lisa
 
 ####################################################
 #                Autofarbtemperatur                #

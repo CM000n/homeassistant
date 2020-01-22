@@ -6,6 +6,17 @@ panel: true
 cards:
   - type: "custom:homekit-card"
     home: true
+    rules: |
+      {% if "Spült" in states('sensor.status_spuelmaschine') %} <li>Die Spülmaschine befindet sich im Spülvorgang</li> {% endif %}
+      {% if "Trocknet" in states('sensor.status_spuelmaschine') %} <li>Die Spülmaschine befindet sich im Trockenvorgang</li> {% endif %}
+      {% if "Fertig" in states('sensor.status_spuelmaschine') %} <li>Die Spülmaschine hat den Spülvorgang beendet und kann ausgeräumt werden</li> {% endif %}
+      {% if "Trocknet" in states('sensor.status_trockner') %} <li>Der Tockner befindet sich im Trockenvorgang</li> {% endif %}
+      {% if "Fertig" in states('sensor.status_trockner') %} <li>Der Trockner hat den Trockenvorgang beendet und kann ausgeräumt werden</li> {% endif %}
+      {% if "Wäscht" in states('sensor.status_waschmaschine') %} <li>Die Waschmaschine befindet sich im Waschvorgang</li> {% endif %}
+      {% if "Fertig" in states('sensor.status_waschmaschine') %} <li>Die Waschmaschine hat den Waschvorgang beendet und kann ausgeräumt werden</li> {% endif %}
+      {% if states('sensor.current_lights_on') | float == 1 %} <li>{{states('sensor.current_lights_on')}} Licht an</li> {% endif %}
+      {% if states('sensor.current_lights_on') | float > 1 %} <li>{{states('sensor.current_lights_on')}} Lichter an</li> {% endif %}
+    title: "Zu Hause"
     useBrightness: true
     useTemperature: true
     breakOnMobile: true

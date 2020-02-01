@@ -1,0 +1,23 @@
+########################################################
+#                                                       #
+#                   SET THEME AT START                 #
+#                                                       #
+#########################################################
+
+# https://www.home-assistant.io/integrations/frontend/
+
+- id: ha1
+  alias: 'Set theme at startup'
+  trigger:
+   - platform: homeassistant
+     event: start
+  action:
+    service: frontend.set_theme
+    data:
+      name: noctis-grey
+
+########################################################
+#                                                       #
+#            END OF CONFIGURATION FILE                  #
+#                                                       #
+#########################################################

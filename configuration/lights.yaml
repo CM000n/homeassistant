@@ -3,7 +3,7 @@
 
 ####################################################
 #                                                  #
-#            REDUCE HUE SCAN INTERVA               #
+#            REDUCE HUE SCAN INTERVAL              #
 #                                                  #
 ####################################################
 
@@ -23,27 +23,21 @@
   - platform: group
     name: Deckenlampen Flur
     entities:
-      - light.flur_deckenlampe1_light
-      - light.flur_deckenlampe2_light
+      - light.flur_deckenlampe1
+      - light.flur_deckenlampe2
 
   - platform: group
     name: Stehlampe Wohnzimmer Links
     entities:
-      - light.stehlampe_wohnzimmer_1
-      - light.stehlampe_wohnzimmer_2
-
-  - platform: group
-    name: Spiegellampe Bad
-    entities:
-      - light.badspiegel_1
-      - light.badspiegel_2
+      - light.wohnzimmer_stehlampe_links1
+      - light.wohnzimmer_stehlampe_links2
 
   - platform: group
     name: Wandlampen Treppenhaus
     entities:
-      - light.wandlampe_treppenhaus_1
-      - light.wandlampe_treppenhaus_2
-      - light.wandlampe_treppenhaus_3
+      - light.treppenhaus_wandlampe1
+      - light.treppenhaus_wandlampe2
+      - light.treppenhaus_wandlampe3
 
 ####################################################
 #                                                  #
@@ -56,9 +50,11 @@
   - platform: switch
     name: Stehlampe Wohnzimmer Rechts
     entity_id: switch.steckdose_wohnzimmer_ecke
+
   - platform: switch
     name: Shelly Deckenlampe Bad
     entity_id: switch.shelly1pm_76d8e1_relay_0
+
   - platform: switch
     name: Shelly Badspiegel
     entity_id: switch.shelly1pm_76da84_relay_0

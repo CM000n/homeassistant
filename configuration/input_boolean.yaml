@@ -39,33 +39,6 @@
 
 ####################################################
 #                                                  #
-#            LOVELACE DUMMY BOOLEANS               #
-#                                                  #
-####################################################
-
-  lovelace_now_on:
-    initial: on
-  lovelace_automation:
-    initial: on
-  lovelace_maintenance:
-    initial: on
-  lovelace_climate:
-    initial: on
-  lovelace_remote:
-    initial: on
-  lovelace_scenes:
-    initial: on
-  dummy_cl_1:
-    initial: on
-  dummy_cl_2:
-    initial: on
-  heizung_bad:
-    initial: off
-  heizung_buero:
-    initial: off
-
-####################################################
-#                                                  #
 #            END OF CONFIGURATION FILE             #
 #                                                  #
 ####################################################

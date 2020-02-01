@@ -7,38 +7,81 @@ cards:
     useBrightness: true
     useTemperature: true
     breakOnMobile: true
+    statePositionTop: true
     entities:
       - title: Wohn- / Esszimmer
         entities: 
           - entity: binary_sensor.philipstv
+            tap_action:
+              action: more-info
+              entity: binary_sensor.philipstv
           - entity: media_player.chromecast_wohnzimmer
+            tap_action:
+              action: more-info
+              entity: media_player.chromecast_wohnzimmer
           - entity: media_player.sonos_wohnzimmer
             offStates:
               - "paused"
+            tap_action:
+              action: more-info
+              entity: media_player.sonos_wohnzimmer
           - entity: switch.steckdose_wohnzimmer_lowboard
+            tap_action:
+              action: more-info
+              entity: switch.steckdose_wohnzimmer_lowboard
           - entity: sensor.status_spuelmaschine
+            tap_action:
+              action: more-info
+              entity: sensor.status_spuelmaschine
       - title: Schlafzimmer / Ankleide
         entities:
           - entity: media_player.sonos_schlafzimmer
             offStates:
               - "paused"
+            tap_action:
+              action: more-info
+              entity: media_player.sonos_schlafzimmer
       - title: Badezimmer
         entities:
           - entity: media_player.sonos_bad
             offStates:
               - "paused"
+            tap_action:
+              action: more-info
+              entity: media_player.sonos_bad
       - title: Büro
         entities:
           - entity: binary_sensor.openmediavault
+            tap_action:
+              action: more-info
+              entity: binary_sensor.openmediavault
           - entity: binary_sensor.simondrucker
+            tap_action:
+              action: more-info
+              entity: binary_sensor.simondrucker
           - entity: switch.simon_pc
+            tap_action:
+              action: more-info
+              entity: switch.simon_pc
           - entity: media_player.sonos_buero
             offStates:
               - "paused"
+            tap_action:
+              action: more-info
+              entity: media_player.sonos_buero
       - title: Keller
         entities:
           - entity: sensor.status_waschmaschine
+            tap_action:
+              action: more-info
+              entity: sensor.status_waschmaschine
           - entity: sensor.status_trockner
+            tap_action:
+              action: more-info
+              entity: sensor.status_trockner
       - title: Außen
         entities:
           - entity: switch.wasserpumpe
+            tap_action:
+              action: more-info
+              entity: switch.wasserpumpe

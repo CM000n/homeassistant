@@ -7,7 +7,6 @@
 ####################################################
 
   project_id: !secret assistant_project_id
-  api_key: !secret assistant_api_key
   expose_by_default: false
   exposed_domains:
     - climate

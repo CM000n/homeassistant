@@ -5,36 +5,100 @@ panel: true
 cards:
   - type: "custom:homekit-card"
     breakOnMobile: true
+    statePositionTop: true
     entities:
       - title: Klimakontrolle
-        popup:
-          type: custom:thermostat-popup-card
         entities: 
           - entity: climate.heizung_bad
+            tap_action:
+              action: call-service
+              service: browser_mod.popup
+              service_data:
+                  title: Bad
+                  style:
+                    position: fixed
+                    z-index: 999
+                    top: 0
+                    left: 0
+                    height: 100%
+                    width: 100%
+                    display: block
+                    align-items: center
+                    justify-content: center
+                    background: rgba(0, 0, 0, 0.8)
+                    flex-direction: column
+                    margin: 0
+                    "--iron-icon-fill-color": "#FFF"
+                  card:
+                    type: custom:thermostat-popup-card
+                    entity: climate.heizung_bad
+                    fullscreen: false
+                  deviceID:
+                    - this
           - entity: climate.heizung_buro
+            tap_action:
+              action: call-service
+              service: browser_mod.popup
+              service_data:
+                  title: Büro
+                  style:
+                    position: fixed
+                    z-index: 999
+                    top: 0
+                    left: 0
+                    height: 100%
+                    width: 100%
+                    display: block
+                    align-items: center
+                    justify-content: center
+                    background: rgba(0, 0, 0, 0.8)
+                    flex-direction: column
+                    margin: 0
+                    "--iron-icon-fill-color": "#FFF"
+                  card:
+                    type: custom:thermostat-popup-card
+                    entity: climate.heizung_buro
+                    fullscreen: false
+                  deviceID:
+                    - this
       - title: Temperaturen
         entities:
           - card: custom:mini-graph-card
+            tap_action:
+              action: more-info
+              entity: sensor.temperatur_wohnzimmer_lowboard
             noPadding: true
             cardOptions:
               entities:
                 - sensor.temperatur_wohnzimmer_lowboard
           - card: custom:mini-graph-card
+            tap_action:
+              action: more-info
+              entity: sensor.temperatur_climate_bad
             noPadding: true
             cardOptions:
               entities:
                 - sensor.temperatur_climate_bad
           - card: custom:mini-graph-card
+            tap_action:
+              action: more-info
+              entity: sensor.temperatur_climate_buero
             noPadding: true
             cardOptions:
               entities:
                 - sensor.temperatur_climate_buero
           - card: custom:mini-graph-card
+            tap_action:
+              action: more-info
+              entity: sensor.temperatur_keller
             noPadding: true
             cardOptions:
               entities:
                 - sensor.temperatur_keller
           - card: custom:mini-graph-card
+            tap_action:
+              action: more-info
+              entity: sensor.darksky_temperature
             noPadding: true
             cardOptions:
               entities:
@@ -42,6 +106,9 @@ cards:
       - title: Luftfeuchtigkeit
         entities:
           - card: custom:mini-graph-card
+            tap_action:
+              action: more-info
+              entity: sensor.darksky_humidity
             noPadding: true
             cardOptions:
               entities:
@@ -49,6 +116,9 @@ cards:
       - title: Luftfruck
         entities:
           - card: custom:mini-graph-card
+            tap_action:
+              action: more-info
+              entity: sensor.darksky_pressure
             noPadding: true
             cardOptions:
               entities:

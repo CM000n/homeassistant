@@ -172,21 +172,21 @@
         unit_of_measurement: 'on'
         value_template: >
           {% set lights = [
-            states.light.ankleide_deckenlampe_light
-            , states.light.deckenlampe_bad
-            , states.light.deckenlampe_buro
-            , states.light.deckenlampe_herd
-            , states.light.schlafzimmer_deckenlampe_light
-            , states.light.flur_deckenlampe1_light
-            , states.light.flur_deckenlampe2_light
-            , states.light.lightstrip_wohnzimmer
-            , states.light.schlafzimmer_nachttisch_lisa_light
-            , states.light.schlafzimmer_nachttisch_simon_light
-            , states.light.schirmlampe_kuche
-            , states.light.ankleide_schreibtisch_light
-            , states.light.spiegellampe_bad
-            , states.light.stehlampe_wohnzimmer_rechts
-            , states.light.stehlampe_wohnzimmer_links
+            states.light.ankleide_deckenlampe_light,
+            states.light.deckenlampe_bad,
+            states.light.deckenlampe_buro,
+            states.light.schlafzimmer_deckenlampe_light,
+            states.light.flur_deckenlampe1_light,
+            states.light.flur_deckenlampe2_light,
+            states.light.lightstrip_wohnzimmer,
+            states.light.schlafzimmer_nachttisch_lisa_light,
+            states.light.schlafzimmer_nachttisch_simon_light,
+            states.light.schirmlampe_kuche,
+            states.light.ankleide_schreibtisch_light,
+            states.light.spiegellampe_bad,
+            states.light.stehlampe_wohnzimmer_rechts,
+            states.light.stehlampe_wohnzimmer_links,
+            states.light.kueche_herd_light
             ] %}
           {{ lights | selectattr('state','eq','on') | list | count }}
 
@@ -782,6 +782,13 @@
     value_template: '{{ value_json.prices["84fd0cb2-b1b8-447a-b3f7-33f5113144c3"].e10 }}'
     scan_interval: 900
 
+
+  - platform: rest
+    resource: !secret hue_livingroom_light
+    name: Deckenlampe Wohnzimmer REST REACHABLE
+    value_template: '{{ value_json.state.reachable }}'
+    scan_interval: 1
+
 ####################################################
 #                                                  #
 #                DATUM & UHRZEIT                   #
@@ -792,19 +799,6 @@
     display_options:
       - 'time'
       - 'date'
-####################################################
-#                                                  #
-#                  IMAP E-MAIL                     #
-#                                                  #
-####################################################
-
-#https://www.home-assistant.io/components/imap/
-
-  - platform: imap
-    server: imap.gmail.com
-    port: 993
-    username: !secret vapid_mail
-    password: !secret ha_gmail_pw2
 
 ####################################################
 #                                                  #

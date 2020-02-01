@@ -8,6 +8,7 @@
 ####################################################
 
   sleep_simon_pc: !secret sleep_simon_pc
+  sleep_on_lan_desktop: !secret sleep_pc_simon
 
 #  update_homeassistant: sh /opt/homeassistant/config/sh_scripts/update_homeassistant.sh
 

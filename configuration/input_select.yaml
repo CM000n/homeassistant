@@ -1,33 +1,7 @@
 
 #https://www.home-assistant.io/components/input_select/
 
-####################################################
-#                                                  #
-#             LOVELACE DUMMY SELECT                #
-#                                                  #
-####################################################
 
-  simon:
-    options:
-      - Agenda
-      - Standort
-      - Allgemein
-  lisa:
-    options:
-      - Standort
-      - Allgemein
-  wartung:
-    options:
-      - Putzen
-      - Hund
-      - Katze
-      - Auto
-  allgemein:
-    options:
-      - Home
-      - Klima
-      - Datum
-      - Energie
 
 ####################################################
 #                                                  #

@@ -11,10 +11,10 @@
 
   - platform: wake_on_lan
     name: "Simon-PC"
-    mac: 74:d4:35:b0:e5:f7
+    mac: "74:d4:35:b0:e5:f7"
     host: 192.168.178.5
     turn_off:
-      service: shell_command.sleep_simon_pc
+      service: shell_command.sleep_on_lan_desktop
 
 ####################################################
 #                                                  #
@@ -27,28 +27,27 @@
   - platform: circadian_lighting
     name: Autofarbtemperatur Deckenlampe Büro
     lights_ct:
-     - light.deckenlampe_buro
+     - light.buro_deckenlampe
     disable_brightness_adjust: true
 
   - platform: circadian_lighting
     name: Autofarbtemperatur Deckenlampe Schlafzimmer
     lights_ct:
-     - light.schlafzimmer_deckenlampe_light
+     - light.schlafzimmer_deckenlampe
     disable_brightness_adjust: true
 
   - platform: circadian_lighting
     name: Autofarbtemperatur Deckenlampen Flur
     lights_ct:
-     - light.flur_deckenlampe1_light
-     - light.flur_deckenlampe2_light
+     - light.deckenlampen_flur
     disable_brightness_adjust: true
 
   - platform: circadian_lighting
     name: Autofarbtemperatur Wohnzimmer
     lights_ct:
-     - light.deckenlampe_wohnzimmer
+     - light.wohnzimmer_deckenlampe
+     - light.wohnzimmer_lightstrip
      - light.stehlampe_wohnzimmer_links
-     - light.lightstrip_wohnzimmer
     min_brightness: 20
     max_brightness: 100
 

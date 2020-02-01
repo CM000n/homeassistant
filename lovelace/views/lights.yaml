@@ -7,6 +7,7 @@ cards:
     useBrightness: true
     useTemperature: true
     breakOnMobile: true
+    statePositionTop: true
     entities:
       - title: Wohn- / Esszimmer
         popup:
@@ -17,7 +18,7 @@ cards:
           switchWidth: 110px
           switchHeight: 300px
         entities: 
-          - entity: light.deckenlampe_wohnzimmer
+          - entity: light.wohnzimmer_deckenlampe
             popupExtend:
               actions:
                 - service: homeassistant.turn_on
@@ -35,11 +36,11 @@ cards:
                     entity_id: input_boolean.switch_wohnzimmer_beleuchtung_automatik
                   color: "#FFE7C0"
                   name: Automatik
-          - entity: light.lightstrip_wohnzimmer
+          - entity: light.wohnzimmer_lightstrip
           - entity: light.stehlampe_wohnzimmer_links
           - entity: light.stehlampe_wohnzimmer_rechts
-          - entity: light.deckenlampe_herd
-      - title: Schlafzimmer / Ankleide
+          - entity: light.kuche_herd
+      - title: Schlafzimmer
         popup:
           type: custom:light-popup-card
           scenesInARow: 2
@@ -48,11 +49,23 @@ cards:
           switchWidth: 110px
           switchHeight: 300px
         entities:
-          - entity: light.schlafzimmer_deckenlampe_light
-          - entity: light.schlafzimmer_nachttisch_lisa_light
-          - entity: light.schlafzimmer_nachttisch_simon_light
-          - entity: light.ankleide_deckenlampe_light
-          - entity: light.ankleide_schreibtisch_light
+          - entity: light.schlafzimmer_deckenlampe
+          - entity: light.schlafzimmer_nachttisch_lisa
+          - entity: light.schlafzimmer_nachttisch_simon
+      - title: Ankleide
+        popup:
+          type: custom:light-popup-card
+          scenesInARow: 2
+          brightnessWidth: 130px
+          brightnessHeight: 350px
+          switchWidth: 110px
+          switchHeight: 300px
+        entities:
+          - entity: light.ankleide_deckenlampe
+          - entity: light.ankleide_schreibtisch
+          - entity: light.ankleide_nahtisch_wand
+          - entity: light.ankleide_nahtisch_links
+          - entity: light.ankleide_nahtisch_rechts
       - title: Badezimmer
         popup:
           type: custom:light-popup-card
@@ -73,8 +86,8 @@ cards:
           switchWidth: 110px
           switchHeight: 300px
         entities:
-          - entity: light.deckenlampe_buro
-          - entity: light.schirmlampe_buero
+          - entity: light.buro_deckenlampe
+          - entity: light.buro_schreibtisch
       - title: Flur / Treppenhaus
         popup:
           type: custom:light-popup-card

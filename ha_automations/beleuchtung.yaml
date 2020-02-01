@@ -15,13 +15,13 @@
       entity_id:
       - light.ankleide_deckenlampe_light
       - light.ankleide_schreibtisch_light
-      - light.deckenlampe_buro
-      - light.deckenlampe_herd
+      - light.buero_deckenlampe_light
+      - light.buero_schreibtisch_light
+      - light.kueche_herd_light
       - light.schlafzimmer_deckenlampe_light
       - light.deckenlampe_wohnzimmer
       - light.flur_deckenlampe1_light
       - light.flur_deckenlampe2_light
-      - light.schirmlampe_kuche
       - light.schreibtischlampe_lisa
       - light.spiegellampe_bad
       - light.wandlampen_treppenhaus
@@ -39,8 +39,9 @@
       entity_id:
       - light.ankleide_deckenlampe_light
       - light.deckenlampe_bad
-      - light.deckenlampe_buro
-      - light.deckenlampe_herd
+      - light.buero_deckenlampe_light
+      - light.buero_schreibtisch_light
+      - light.kueche_herd_light
       - light.schlafzimmer_deckenlampe_light
       - light.deckenlampe_wohnzimmer
       - light.flur_deckenlampe1_light
@@ -48,7 +49,6 @@
       - light.lightstrip_wohnzimmer
       - light.schlafzimmer_nachttisch_lisa_light
       - light.schlafzimmer_nachttisch_simon_light
-      - light.schirmlampe_kuche
       - light.ankleide_schreibtisch_light
       - light.spiegellampe_bad
       - light.stehlampe_wohnzimmer_rechts
@@ -136,15 +136,18 @@
 - id: 'a_bl_7'
   alias: Beleuchtung - Lightstrip Wohnzimmer mit Deckenlampe an
   trigger:
-  - entity_id: light.deckenlampe_wohnzimmer
+  - entity_id: light.wohnzimmer_deckenlampe
     platform: state
     to: 'on'
+  - entity_id: sensor.deckenlampe_wohnzimmer_rest_reachable
+    platform: state
+    to: 'True'
   condition: []
   action:
   - data:
       brightness: 55
       color_temp: 440
-      entity_id: light.lightstrip_wohnzimmer
+      entity_id: light.wohnzimmer_lightstrip
       transition: 180
     service: light.turn_on
 
@@ -152,13 +155,16 @@
 - id: 'a_bl_8'
   alias: Beleuchtung - Lightstrip Wohnzimmer mit Deckenlampe aus
   trigger:
-  - entity_id: light.deckenlampe_wohnzimmer
+  - entity_id: light.wohnzimmer_deckenlampe
     platform: state
     from: 'on'
+  - entity_id: sensor.deckenlampe_wohnzimmer_rest_reachable
+    platform: state
+    to: 'False'
   condition: []
   action:
   - data:
-      entity_id: light.lightstrip_wohnzimmer
+      entity_id: light.wohnzimmer_lightstrip
     service: light.turn_off
 
 
@@ -247,9 +253,9 @@
   - data:
       profile: energize
       entity_id:
-      - light.deckenlampe_wohnzimmer
+      - light.wohnzimmer_deckenlampe
+      - light.wohnzimmer_lightstrip
       - light.stehlampe_wohnzimmer_links
-      - light.lightstrip_wohnzimmer
     service: light.turn_on
 
 - id: 'a_bl_14'
@@ -269,9 +275,9 @@
   - data:
       profile: relax
       entity_id:
-      - light.deckenlampe_wohnzimmer
+      - light.wohnzimmer_deckenlampe
+      - light.wohnzimmer_lightstrip
       - light.stehlampe_wohnzimmer_links
-      - light.lightstrip_wohnzimmer
     service: light.turn_on
 
 - id: 'a_bl_15'
@@ -292,9 +298,9 @@
     service: homeassistant.turn_on
   - data:
       entity_id:
-      - light.deckenlampe_wohnzimmer
+      - light.wohnzimmer_deckenlampe
+      - light.wohnzimmer_lightstrip
       - light.stehlampe_wohnzimmer_links
-      - light.lightstrip_wohnzimmer
     service: light.turn_on
 
 - id: 'a_bl_16'
@@ -313,21 +319,22 @@
     service: homeassistant.turn_off
   - data:
       entity_id: 
-      - light.deckenlampe_wohnzimmer
+      - light.wohnzimmer_deckenlampe
+      - light.wohnzimmer_lightstrip
       - light.stehlampe_wohnzimmer_links
-      - light.lightstrip_wohnzimmer
+      - light.stehlampe_wohnzimmer_rechts
     service: light.turn_off
 
 - id: 'a_bl_17'
   alias: Deckenlampe Herd auf Kaltweis bei Start
   trigger:
     - platform: state
-      entity_id: light.deckenlampe_herd
+      entity_id: light.kuche_herd
       to: 'on'
   action:
     - service: light.turn_on
       data:
-        entity_id: light.deckenlampe_herd
+        entity_id: light.kuche_herd
         brightness: 255
         kelvin: 6500
 
@@ -357,12 +364,12 @@
   alias: Deckenlampe Ankleide auf Kaltweis bei Start
   trigger:
     - platform: state
-      entity_id: light.ankleide_deckenlampe_light
+      entity_id: light.ankleide_deckenlampe
       to: 'on'
   action:
     - service: light.turn_on
       data:
-        entity_id: light.ankleide_deckenlampe_light
+        entity_id: light.ankleide_deckenlampe
         brightness: 255
         kelvin: 6500
 
@@ -370,12 +377,51 @@
   alias: Schreibtischlampe Ankleide auf Kaltweis bei Start
   trigger:
     - platform: state
-      entity_id: light.ankleide_schreibtisch_light
+      entity_id: light.ankleide_schreibtisch
       to: 'on'
   action:
     - service: light.turn_on
       data:
-        entity_id: light.ankleide_schreibtisch_light
+        entity_id: light.ankleide_schreibtisch
+        brightness: 255
+        kelvin: 6500
+
+- id: 'a_bl_22'
+  alias: Ankleide Nähtisch Wand auf Kaltweis bei Start
+  trigger:
+    - platform: state
+      entity_id: light.ankleide_nahtisch_wand
+      to: 'on'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.ankleide_nahtisch_wand
+        brightness: 255
+        kelvin: 6500
+
+- id: 'a_bl_23'
+  alias: Ankleide Nähtisch Links auf Kaltweis bei Start
+  trigger:
+    - platform: state
+      entity_id: light.ankleide_nahtisch_links
+      to: 'on'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.ankleide_nahtisch_links
+        brightness: 255
+        kelvin: 6500
+
+- id: 'a_bl_24'
+  alias: Ankleide Nähtisch Rechts auf Kaltweis bei Start
+  trigger:
+    - platform: state
+      entity_id: light.ankleide_nahtisch_rechts
+      to: 'on'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.ankleide_nahtisch_rechts
         brightness: 255
         kelvin: 6500
 

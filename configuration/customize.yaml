@@ -4,49 +4,60 @@
 #                                                       #
 #########################################################
 
-light.deckenlampe_wohnzimmer:
+light.wohnzimmer_deckenlampe:
   friendly_name: Wohnzimmer
   icon: mdi:ceiling-light
-light.lightstrip_wohnzimmer:
+light.wohnzimmer_lightstrip:
   friendly_name: Lowboard
   icon: mdi:led-strip-variant
 light.stehlampe_wohnzimmer_links:
-  friendly_name: Lampe links
+  friendly_name: Lampe L.
   icon: mdi:floor-lamp
 light.stehlampe_wohnzimmer_rechts:
-  friendly_name: Lampe rechts
+  friendly_name: Lampe R.
   icon: mdi:floor-lamp
-light.deckenlampe_herd:
+light.kuche_herd:
   friendly_name: Herd
   icon: mdi:ceiling-light
 
-light.schlafzimmer_deckenlampe_light:
-  friendly_name: Schlafzimmer
+light.schlafzimmer_deckenlampe:
+  friendly_name: Decke
   icon: mdi:ceiling-light
-light.schlafzimmer_nachttisch_lisa_light:
+light.schlafzimmer_nachttisch_lisa:
   friendly_name: Lisa
   icon: mdi:lava-lamp
-light.schlafzimmer_nachttisch_simon_light:
+light.schlafzimmer_nachttisch_simon:
   friendly_name: Simon
   icon: mdi:lava-lamp
-light.ankleide_deckenlampe_light:
-  friendly_name: Ankleide
+
+light.ankleide_deckenlampe:
+  friendly_name: Decke
   icon: mdi:ceiling-light
-light.ankleide_schreibtisch_light:
+light.ankleide_schreibtisch:
   friendly_name: Schreibtisch
   icon: mdi:desk-lamp
+light.ankleide_nahtisch_wand:
+  friendly_name: Nähtisch W.
+  icon: mdi:track-light
+light.ankleide_nahtisch_links:
+  friendly_name: Nähtisch L.
+  icon: mdi:track-light
+light.ankleide_nahtisch_rechts:
+  friendly_name: Nähtisch R.
+  icon: mdi:track-light
+
 
 light.shelly_deckenlampe_bad:
-  friendly_name: Bad
+  friendly_name: Decke
   icon: mdi:ceiling-light
 light.shelly_badspiegel:
   friendly_name: Spiegel
   icon: mdi:led-strip
 
-light.deckenlampe_buro:
-  friendly_name: Büro
+light.buro_deckenlampe:
+  friendly_name: Decke
   icon: mdi:ceiling-light
-light.schirmlampe_buero:
+light.buro_schreibtisch:
   friendly_name: Schreibtisch
   icon: mdi:lamp
 
@@ -229,6 +240,16 @@ binary_sensor.simondrucker:
 
 #########################################################
 #                                                       #
+#                        WEATHER                        #
+#                                                       #
+#########################################################
+
+weather.dark_sky:
+  friendly_name: Kraichtal
+  icon: mdi:weather-partly-cloudy
+
+#########################################################
+#                                                       #
 #                     SWITCHES                          #
 #                                                       #
 #########################################################
@@ -321,13 +342,13 @@ climate.heizung_buro:
 #########################################################
 
 automation.benachrichtigung_spulmaschine_fertig:
-  friendly_name: Spülmaschine fertig
+  friendly_name: Spülmaschine
   icon: mdi:bell-ring
 automation.benachrichtigung_waschmaschine_fertig:
-  friendly_name: Waschmaschine fertig
+  friendly_name: Waschmaschine
   icon: mdi:bell-ring
 automation.benachrichtigung_trockner_fertig:
-  friendly_name: Trockner fertig
+  friendly_name: Trockner
   icon: mdi:bell-ring
 
 #########################################################

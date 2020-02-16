@@ -7,6 +7,34 @@
 #                                                  #
 ####################################################
 
+  include:
+    entities:
+      - light.ankleide_deckenlampe
+      - light.ankleide_nahtisch_links
+      - light.ankleide_nahtisch_rechts
+      - light.ankleide_nahtisch_wand
+      - light.ankleide_schreibtisch
+      - light.buro_deckenlampe
+      - light.buro_schreibtisch
+      - light.deckenlampen_flur
+      - light.kuche_herd
+      - light.schlafzimmer_deckenlampe
+      - light.schlafzimmer_nachttisch_lisa
+      - light.schlafzimmer_nachttisch_simon
+      - light.shelly_badspiegel
+      - light.shelly_deckenlampe_bad
+      - light.stehlampe_wohnzimmer_links
+      - light.stehlampe_wohnzimmer_rechts
+      - light.wandlampen_treppenhaus
+      - light.wohnzimmer_deckenlampe
+      - light.wohnzimmer_lightstrip
+      - media_player.chromecast_wohnzimmer
+      - media_player.sonos_bad
+      - media_player.sonos_buero
+      - media_player.sonos_schlafzimmer
+      - media_player.sonos_wohnzimmer
+      - person.lisa
+      - person.simon
 
 ####################################################
 #                                                  #

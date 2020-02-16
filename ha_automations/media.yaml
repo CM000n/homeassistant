@@ -10,18 +10,22 @@
   initial_state: 'on'
   trigger:
     - platform: time
-      at: '06:00'
+      at: '05:00'
   action:
-    - service: media_player.sonos_unjoin
-      entity_id:
-        - media_player.wohnzimmer
-        - media_player.sonos_schlafzim
+    - service: sonos.unjoin
+      data:
+        entity_id:
         - media_player.sonos_bad
+        - media_player.sonos_buero
+        - media_player.sonos_schlafzimmer
+        - media_player.sonos_wohnzimmer
     - service: media_player.clear_playlist
-      entity_id:
-        - media_player.wohnzimmer
-        - media_player.sonos_schlafzim
+      data:
+        entity_id:
         - media_player.sonos_bad
+        - media_player.sonos_buero
+        - media_player.sonos_schlafzimmer
+        - media_player.sonos_wohnzimmer
 
 ########################################################
 #                                                       #

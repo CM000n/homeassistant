@@ -8,6 +8,7 @@ cards:
     useTemperature: true
     breakOnMobile: true
     statePositionTop: true
+    tileHoldAnimation: true
     entities:
       - title: Wohn- / Esszimmer
         popup:

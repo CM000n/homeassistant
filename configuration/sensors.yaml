@@ -14,18 +14,6 @@
     name: Aktuellste HA Version
     scan_interval: 3600
 
-  - platform: version
-    name: Installierte HA Version
-
-  - platform: systemmonitor
-    resources:
-      - type: last_boot
-
-#  - platform: command_line
-#    command: "apt list --upgradable"
-#    name: HA - Verfügbare Updates
-#    scan_interval: 3600
-
 ####################################################
 #                                                  #
 #                   DARKSKY                        #
@@ -172,21 +160,25 @@
         unit_of_measurement: 'on'
         value_template: >
           {% set lights = [
-            states.light.ankleide_deckenlampe_light,
-            states.light.deckenlampe_bad,
-            states.light.deckenlampe_buro,
-            states.light.schlafzimmer_deckenlampe_light,
-            states.light.flur_deckenlampe1_light,
-            states.light.flur_deckenlampe2_light,
-            states.light.lightstrip_wohnzimmer,
-            states.light.schlafzimmer_nachttisch_lisa_light,
-            states.light.schlafzimmer_nachttisch_simon_light,
-            states.light.schirmlampe_kuche,
-            states.light.ankleide_schreibtisch_light,
-            states.light.spiegellampe_bad,
-            states.light.stehlampe_wohnzimmer_rechts,
+            states.light.ankleide_deckenlampe,
+            states.light.ankleide_nahtisch_links,
+            states.light.ankleide_nahtisch_rechts,
+            states.light.ankleide_nahtisch_wand,
+            states.light.ankleide_schreibtisch,
+            states.light.buro_deckenlampe,
+            states.light.buro_schreibtisch,
+            states.light.deckenlampen_flur,
+            states.light.kuche_herd,
+            states.light.schlafzimmer_deckenlampe,
+            states.light.schlafzimmer_nachttisch_lisa,
+            states.light.schlafzimmer_nachttisch_simon,
+            states.light.shelly_badspiegel,
+            states.light.shelly_deckenlampe_bad,
             states.light.stehlampe_wohnzimmer_links,
-            states.light.kueche_herd_light
+            states.light.stehlampe_wohnzimmer_rechts,
+            states.light.wandlampen_treppenhaus,
+            states.light.wohnzimmer_deckenlampe,
+            states.light.wohnzimmer_lightstrip,
             ] %}
           {{ lights | selectattr('state','eq','on') | list | count }}
 

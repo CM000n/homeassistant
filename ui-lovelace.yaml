@@ -1,6 +1,6 @@
 # Custom Card Resources
 resources:
-  !include lovelace/resources/resources.yaml
+  !include ha_lovelace/resources/resources.yaml
 
 # Custom Header
 custom_header:
@@ -20,15 +20,11 @@ custom_header:
   tab_indicator_color: var(--primary-text-color)
   default_tab: 0
 
-# Decluttering Templates
-decluttering_templates:
-  !include lovelace/decluttering_templates/decluttering_templates.yaml
-
 # Views
 title: Home
 background: var(--background-image)
 views:
-  - !include lovelace/views/main.yaml
-  - !include lovelace/views/lights.yaml
-  - !include lovelace/views/devices.yaml
-  - !include lovelace/views/climate.yaml
+  - !include ha_lovelace/views/main.yaml
+  - !include ha_lovelace/views/lights.yaml
+  - !include ha_lovelace/views/devices.yaml
+  - !include ha_lovelace/views/climate.yaml

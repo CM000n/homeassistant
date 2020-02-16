@@ -326,7 +326,7 @@
     service: light.turn_off
 
 - id: 'a_bl_17'
-  alias: Deckenlampe Herd auf Kaltweis bei Start
+  alias: Beleuchtung -Deckenlampe Herd auf Kaltweis bei Start
   trigger:
     - platform: state
       entity_id: light.kuche_herd
@@ -339,7 +339,7 @@
         kelvin: 6500
 
 - id: 'a_bl_18'
-  alias: Deckenlampe Bad mit Deckenlampe an
+  alias: Beleuchtung -Deckenlampe Bad mit Deckenlampe an
   trigger:
     - platform: state
       entity_id: light.shelly_deckenlampe_bad
@@ -350,7 +350,7 @@
         entity_id: light.shelly_badspiegel
 
 - id: 'a_bl_19'
-  alias: Spiegellampe Bad mit Deckenlampe aus
+  alias: Beleuchtung -Spiegellampe Bad mit Deckenlampe aus
   trigger:
     - platform: state
       entity_id: light.shelly_deckenlampe_bad
@@ -361,7 +361,7 @@
         entity_id: light.shelly_badspiegel
 
 - id: 'a_bl_20'
-  alias: Deckenlampe Ankleide auf Kaltweis bei Start
+  alias: Beleuchtung -Deckenlampe Ankleide auf Kaltweis bei Start
   trigger:
     - platform: state
       entity_id: light.ankleide_deckenlampe
@@ -374,7 +374,7 @@
         kelvin: 6500
 
 - id: 'a_bl_21'
-  alias: Schreibtischlampe Ankleide auf Kaltweis bei Start
+  alias: Beleuchtung -Schreibtischlampe Ankleide auf Kaltweis bei Start
   trigger:
     - platform: state
       entity_id: light.ankleide_schreibtisch
@@ -387,7 +387,7 @@
         kelvin: 6500
 
 - id: 'a_bl_22'
-  alias: Ankleide Nähtisch Wand auf Kaltweis bei Start
+  alias: Beleuchtung - Ankleide Nähtisch Wand auf Kaltweis bei Start
   trigger:
     - platform: state
       entity_id: light.ankleide_nahtisch_wand
@@ -400,7 +400,7 @@
         kelvin: 6500
 
 - id: 'a_bl_23'
-  alias: Ankleide Nähtisch Links auf Kaltweis bei Start
+  alias: Beleuchtung - Ankleide Nähtisch Links auf Kaltweis bei Start
   trigger:
     - platform: state
       entity_id: light.ankleide_nahtisch_links
@@ -413,7 +413,7 @@
         kelvin: 6500
 
 - id: 'a_bl_24'
-  alias: Ankleide Nähtisch Rechts auf Kaltweis bei Start
+  alias: Beleuchtung - Ankleide Nähtisch Rechts auf Kaltweis bei Start
   trigger:
     - platform: state
       entity_id: light.ankleide_nahtisch_rechts

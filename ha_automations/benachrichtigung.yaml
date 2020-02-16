@@ -34,7 +34,7 @@
 
 
 - id: '1545985877047'
-  alias: Benachrichtigung  - Spülmaschine fertig
+  alias: Benachrichtigung - Spülmaschine fertig
   trigger:
   - entity_id: sensor.status_spuelmaschine
     platform: state
@@ -110,7 +110,7 @@
 
 
 - id: '1545997863800'
-  alias: Reminder for Simon
+  alias: Benachrichtigung - Reminder for Simon
   trigger:
   - platform: state
     entity_id: device_tracker.google_maps_113462452053772321900
@@ -132,7 +132,7 @@
 
 
 - id: '154599787693800'
-  alias: Reminder for Lisa
+  alias: Benachrichtigung - Reminder for Lisa
   trigger:
   - platform: state
     entity_id: device_tracker.lisa_handy

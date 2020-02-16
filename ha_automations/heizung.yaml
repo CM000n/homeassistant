@@ -4,38 +4,17 @@
 #                                                       #
 #########################################################
 
-- id: '1546000965348'
-  alias: Heizung - Auf Comfort wenn anwesend
-  trigger:
-  - at: 04:00:00
-    platform: time
-  condition:
-  - condition: state
-    entity_id: group.anwesenheit
-    state: home
-  - below: 20
-    condition: numeric_state
-    entity_id: sensor.darksky_temperature
-  action:
-  - data:
-      entity_id:
-      - climate.heizung_buro
-      - climate.heizung_bad
-      temperature: 22
-    service: climate.set_temperature
-
-
-- id: '1546001208895'
+- id: 'a_hz_1'
   alias: Heizung - Auf Comfort beim heimkommen
   trigger:
   - entity_id: group.anwesenheit
     platform: state
     to: home
   condition:
-  - after: 04:00:00
-    before: 00:00:00
+  - before: 00:00:00
+    after: 04:00:00
     condition: time
-  - below: 20
+  - below: 18
     condition: numeric_state
     entity_id: sensor.darksky_temperature
   action:
@@ -47,7 +26,7 @@
     service: climate.set_temperature
 
 
-- id: '1546001296638'
+- id: 'a_hz_2'
   alias: Heizung - Auf Eco wenn abwesend
   trigger:
   - entity_id: group.anwesenheit
@@ -63,25 +42,10 @@
     service: climate.set_temperature
 
 
-- id: '1546001360529'
-  alias: Heizung - Auf Eco ab Mitternacht
+- id: 'a_hz_3'
+  alias: Heizung - Auß bei zu hoher Außentemperatur
   trigger:
-  - at: 00:01:00
-    platform: time
-  condition: []
-  action:
-  - data:
-      entity_id:
-      - climate.heizung_buro
-      - climate.heizung_bad
-      temperature: 18
-    service: climate.set_temperature
-
-
-- id: '1546001428363'
-  alias: Heizung - Auf Eco bei zu hoher Außentemperatur
-  trigger:
-  - above: 20
+  - above: 18
     entity_id: sensor.darksky_temperature
     platform: numeric_state
   condition: []
@@ -90,55 +54,8 @@
       entity_id:
       - climate.heizung_buro
       - climate.heizung_bad
-      temperature: 18
-    service: climate.set_temperature
+    service: climate.turn_off
 
-# Tado Heating
-- alias: Heizung - Bad auf heizen
-  initial_state: 'true'
-  trigger:
-  - platform: state
-    entity_id: input_boolean.heizung_bad
-    to: 'on'
-  action:
-  - service: climate.set_hvac_mode
-    data:
-      entity_id: climate.heizung_bad
-      hvac_mode: heat
-- alias: Heizung - Bad auf aus
-  initial_state: 'true'
-  trigger:
-  - platform: state
-    entity_id: input_boolean.heizung_bad
-    to: 'off'
-  action:
-  - service: climate.set_hvac_mode
-    data:
-      entity_id: climate.heizung_bad
-      hvac_mode: "off"
-
-- alias: Heizung - Büro auf heizen
-  initial_state: 'true'
-  trigger:
-  - platform: state
-    entity_id: input_boolean.heizung_buero
-    to: 'on'
-  action:
-  - service: climate.set_hvac_mode
-    data:
-      entity_id: climate.heizung_buro
-      hvac_mode: heat
-- alias: Heizung - Büro auf aus
-  initial_state: 'true'
-  trigger:
-  - platform: state
-    entity_id: input_boolean.heizung_buero
-    to: 'off'
-  action:
-  - service: climate.set_hvac_mode
-    data:
-      entity_id: climate.heizung_buro
-      hvac_mode: "off"
 
 ########################################################
 #                                                       #

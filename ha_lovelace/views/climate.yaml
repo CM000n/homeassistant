@@ -14,7 +14,7 @@ cards:
               action: call-service
               service: browser_mod.popup
               service_data:
-                  title: Bad
+                  title: Thermostat
                   style:
                     position: fixed
                     z-index: 999
@@ -40,7 +40,7 @@ cards:
               action: call-service
               service: browser_mod.popup
               service_data:
-                  title: Büro
+                  title: Thermostat
                   style:
                     position: fixed
                     z-index: 999

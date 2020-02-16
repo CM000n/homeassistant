@@ -288,15 +288,13 @@ ltss:
     db_url: !secret ltss_url
     include:
         domains:
-        - sensor
         - binary_sensor
-        - media_player
         - climate
         - light
+        - media_player
+        - person
+        - sensor
         - switch
-        entities:
-        - person.lisa
-        - person.simon
     exclude:
         entities:
         - sensor.time

@@ -7,54 +7,69 @@
 ####################################################
 
   project_id: !secret assistant_project_id
+  service_account: !include GA_SERVICE_ACCOUNT.json
+  report_state: true
   expose_by_default: false
   exposed_domains:
     - climate
     - light
     - script
     - switch
+    - sensor
     - input_boolean
   entity_config:
+    light.ankleide_deckenlampe:
+      expose: true
+    light.ankleide_nahtisch_links:
+      expose: true
+    light.ankleide_nahtisch_rechts:
+      expose: true
+    light.ankleide_nahtisch_wand:
+      expose: true
+    light.ankleide_schreibtisch:
+      expose: true
+    light.buro_deckenlampe:
+      expose: true
+    light.buro_schreibtisch:
+      expose: true
     light.deckenlampen_flur:
       expose: true
-    light.stehlampe_flur:
+    light.kuche_herd:
+      expose: true
+    light.schlafzimmer_deckenlampe:
+      expose: true
+    light.schlafzimmer_nachttisch_lisa:
+      expose: true
+    light.schlafzimmer_nachttisch_simon:
+      expose: true
+    light.shelly_badspiegel:
+      expose: true
+    light.shelly_deckenlampe_bad:
+      expose: true
+    light.stehlampe_wohnzimmer_links:
+      expose: true
+    light.stehlampe_wohnzimmer_rechts:
       expose: true
     light.wandlampen_treppenhaus:
       expose: true
-    light.deckenlampe_ankleide:
+    light.wohnzimmer_deckenlampe:
       expose: true
-    light.deckenlampe_bad:
-      expose: true
-    light.deckenlampe_buro:
-      expose: true
-    light.deckenlampe_herd:
-      expose: true
-    light.deckenlampe_schlafzimmer:
-      expose: true
-    light.deckenlampe_wohnzimmer:
-      expose: true
-    light.nachttischlampe_lisa:
-      expose: true
-    light.nachttischlampe_simon:
-      expose: true
-    light.schirmlampe_kueche:
-      expose: true
-    light.schreibtischlampe_lisa:
-      expose: true
-    light.spiegellampe_bad:
-      expose: true
-    light.lightstrip_wohnzimmer:
+    light.wohnzimmer_lightstrip:
       expose: true
     script.nachtlicht_an:
       expose: true
-    climate.heizungbad:
+    climate.heizung_bad:
       expose: true
-    climate.heizungburo:
+    climate.heizung_buro:
+      expose: true
+    sensor.temperatur_wohness:
+      expose: true
+    sensor.temperatur_keller:
+      expose: true
+    sensor.temperatur_wohnzimmer_avg:
       expose: true
     switch.simonpc:
       expose: true
-    switch.ventilator:
-      expose: false
     input_boolean.switch_wohnzimmer_beleuchtung_automatik:
       expose: true
     input_boolean.switch_wohnzimmer_beleuchtung_gemuetlich:

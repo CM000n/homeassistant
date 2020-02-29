@@ -200,19 +200,37 @@ sensor.google_travel_time_driving_2:
 
 sensor.temperatur_wohnzimmer_lowboard:
   friendly_name: Wohnzimmer
+  device_class: temperature
+  icon: mdi:thermometer
+sensor.temperatur_wohnzimmer_ecke:
+  friendly_name: Wohnzimmer Ecke
+  device_class: temperature
+  icon: mdi:thermometer
+sensor.temperatur_wohnzimmer_avg:
+  friendly_name: Wohnzimmer Durchschnitt
+  device_class: temperature
   icon: mdi:thermometer
 sensor.temperatur_climate_bad:
   friendly_name: Bad
+  device_class: temperature
   icon: mdi:thermometer
 sensor.temperatur_climate_buero:
   friendly_name: Büro
+  device_class: temperature
   icon: mdi:thermometer
 sensor.temperatur_keller:
   friendly_name: Keller
+  device_class: temperature
+  icon: mdi:thermometer
+sensor.temperatur_wohness:
+  friendly_name: Esszimmer
+  device_class: temperature
   icon: mdi:thermometer
 sensor.darksky_temperature:
   friendly_name: Außen
+  device_class: temperature
   icon: mdi:thermometer
+
 
 sensor.darksky_humidity:
   friendly_name: Außen

@@ -26,6 +26,36 @@
         - media_player.sonos_buero
         - media_player.sonos_schlafzimmer
         - media_player.sonos_wohnzimmer
+    - service: media_player.volume_set
+      data:
+        entity_id:
+        - media_player.sonos_bad
+        - media_player.sonos_buero
+        - media_player.sonos_schlafzimmer
+        - media_player.sonos_wohnzimmer
+        volume_level: 0.25
+
+- alias: "Media - Sonos Player Büro mit PC an"
+  initial_state: 'on'
+  trigger:
+  - entity_id: switch.simon_pc
+    platform: state
+    to: 'on'
+  action:
+    - service: sonos.unjoin
+      data:
+        entity_id: media_player.sonos_buero
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.sonos_buero
+        volume_level: 0.5
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.sonos_buero
+        source: 'Line-in'
+    - service: media_player.media_play
+      data:
+        entity_id: media_player.sonos_buero
 
 ########################################################
 #                                                       #

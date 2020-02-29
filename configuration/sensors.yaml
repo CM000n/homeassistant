@@ -214,10 +214,10 @@
         value_template: '{{ state_attr("switch.steckdose_wohnzimmer_lowboard", "current_power_w") }}'
         unit_of_measurement: 'W'
         friendly_name: 'Stromverbrauch Wohnzimmer Lowboard'
-      stromverbrauch_kueche_mehrfachstecker:
-        value_template: '{{ state_attr("switch.steckdose_kuche_mehrfachstecker", "current_power_w") }}'
+      stromverbrauch_wohnzimmer_ecke:
+        value_template: '{{ state_attr("switch.steckdose_wohnzimmer_ecke", "current_power_w") }}'
         unit_of_measurement: 'W'
-        friendly_name: 'Stromverbrauch Küche Mehrfachstecker'
+        friendly_name: 'Stromverbrauch Wohnzimmer Ecke'
       gesamtverbrauch_spuehlmaschine:
         value_template: '{{ state_attr("switch.steckdose_spulmaschine", "total_consumption") }}'
         unit_of_measurement: 'kWh'
@@ -234,10 +234,10 @@
         value_template: '{{ state_attr("switch.steckdose_wohnzimmer_lowboard", "total_consumption") }}'
         unit_of_measurement: 'kWh'
         friendly_name: 'Gesamtvebrauch Wohnzimmer Lowboard'
-      gesamtverbrauch_kueche_mehrfachstecker:
-        value_template: '{{ state_attr("switch.steckdose_kuche_mehrfachstecker", "total_consumption") }}'
+      gesamtverbrauch_wohnzimmer_ecke:
+        value_template: '{{ state_attr("switch.steckdose_wohnzimmer_ecke", "total_consumption") }}'
         unit_of_measurement: 'kWh'
-        friendly_name: 'Gesamtvebrauch Küche Mehrfachstecker'
+        friendly_name: 'Gesamtvebrauch Wohnzimmer Ecke'
       temperatur_wohness:
         value_template: '{{ state_attr("switch.steckdose_spulmaschine", "temperature") }}'
         unit_of_measurement: '°C'
@@ -250,10 +250,14 @@
         value_template: '{{ state_attr("switch.steckdose_wohnzimmer_lowboard", "temperature") }}'
         unit_of_measurement: '°C'
         friendly_name: 'Temperatur Wohnzimmer Lowboard'
-      temperatur_kueche_mehrfachstecker:
-        value_template: '{{ state_attr("switch.steckdose_kuche_mehrfachstecker", "temperature") }}'
+      temperatur_wohnzimmer_ecke:
+        value_template: '{{ state_attr("switch.steckdose_wohnzimmer_ecke", "temperature") }}'
         unit_of_measurement: '°C'
-        friendly_name: 'Temperatur Küche Mehrfachstecker'
+        friendly_name: 'Temperatur Wohnzimmer Ecke'
+      temperatur_wohnzimmer_avg:
+        value_template: '{{ (float( float(state_attr("switch.steckdose_wohnzimmer_ecke", "temperature")) + float(state_attr("switch.steckdose_wohnzimmer_lowboard", "temperature")) )/2)|round(2) }}'
+        unit_of_measurement: '°C'
+        friendly_name: 'Temperatur Wohnzimmer AVG'
       temperatur_climate_bad:
         value_template: '{{ state_attr("climate.heizung_bad", "current_temperature") }}'
         unit_of_measurement: '°C'
@@ -270,7 +274,7 @@
             off
           {% elif states('sensor.stromverbrauch_spuehlmaschine')|float < 100 %}
             Spült
-          {% elif states('sensor.stromverbrauch_spuehlmaschine')|float >= 100 %}
+          {% elif states('sensor.stromverbrauch_spuehlmaschine')|float >= 100 %} 
             Trocknet
           {% else %}
             PRÜFEN!
@@ -278,7 +282,7 @@
       status_waschmaschine:
         friendly_name: 'Waschmaschine'
         value_template: >-
-          {% if states('sensor.stromverbrauch_waschmaschine')|float <= 0 %}
+          {% if states('sensor.stromverbrauch_waschmaschine')|float <= 0.8 %}
             off
           {% elif states('sensor.stromverbrauch_waschmaschine')|float <= 3.9 %}
             Fertig

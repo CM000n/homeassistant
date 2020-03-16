@@ -20,62 +20,168 @@
   entity_config:
     light.ankleide_deckenlampe:
       expose: true
+      room: 04 Ankleide
+      name: Deckenlampe
+      aliases:
+        - Deckenlampe Ankleide
     light.ankleide_nahtisch_links:
       expose: true
+      room: 04 Ankleide
+      name: Nähtischlampe links
+      aliases:
+        - linke Nähtischlampe
     light.ankleide_nahtisch_rechts:
       expose: true
+      room: 04 Ankleide
+      name: Nähtischlampe rechts
+      aliases:
+        - rechte Nähtischlampe
     light.ankleide_nahtisch_wand:
       expose: true
+      room: 04 Ankleide
+      name: Nähtischlampe Wand
+      aliases:
+        - Nähtischlampe and der Wand
     light.ankleide_schreibtisch:
       expose: true
+      room: 04 Ankleide
+      name: Schreibtischlampe
+      aliases:
+        - Schreibtischlampe Ankleide
     light.buro_deckenlampe:
       expose: true
+      room: 05 Büro
+      name: Deckenlampe
+      aliases:
+        - Deckenlampe Ankleide
     light.buro_schreibtisch:
       expose: true
+      room: 05 Büro
+      name: Schreibtischlampe
+      aliases:
+        - Schreibtischlampe Büro
     light.deckenlampen_flur:
       expose: true
+      room: 07 Flur
+      name: Deckenlampen
+      aliases:
+        - Deckenlampe
+        - Deckenlampe Flur
     light.kuche_herd:
       expose: true
+      room: 06 Küche
+      name: Herdlampe
+      aliases:
+        - Deckenlampe Herd
     light.schlafzimmer_deckenlampe:
       expose: true
+      room: 02 Schlafzimmer
+      name: Deckenlampe
+      aliases:
+        - Deckenlampe Schlafzimmer
     light.schlafzimmer_nachttisch_lisa:
       expose: true
+      room: 02 Schlafzimmer
+      name: Nachttischlampe Lisa
+      aliases:
+        - Lisas Nachttischlampe
     light.schlafzimmer_nachttisch_simon:
       expose: true
+      room: 02 Schlafzimmer
+      name: Nachttischlampe Simon
+      aliases:
+        - Simons Nachttischlampe
     light.shelly_badspiegel:
       expose: true
+      room: 03 Badezimmer
+      name: Spiegellampe
+      aliases:
+        - Spiegellampe Bad
+        - Spiegelleuchte
     light.shelly_deckenlampe_bad:
       expose: true
+      room: 03 Badezimmer
+      name: Deckenlampe
+      aliases:
+        - Deckenlampe Bad
     light.stehlampe_wohnzimmer_links:
       expose: true
+      room: 01 Wohnzimmer
+      name: Stehlampe links
+      aliases:
+        - Linke Stehlampe
     light.stehlampe_wohnzimmer_rechts:
       expose: true
+      room: 01 Wohnzimmer
+      name: Stehlampe rechts
+      aliases:
+        - Rechte Stehlampe
     light.wandlampen_treppenhaus:
       expose: true
+      room: 08 Treppenhaus
+      name: Wandlampen
+      aliases:
+        - Wandlampen Treppenhaus
     light.wohnzimmer_deckenlampe:
       expose: true
+      room: 01 Wohnzimmer
+      name: Deckenlampe
+      aliases:
+        - Deckenlampe Wohnzimmer
     light.wohnzimmer_lightstrip:
       expose: true
-    script.nachtlicht_an:
-      expose: true
+      room: 01 Wohnzimmer
+      name: Lightstrip
+      aliases:
+        - Lichtschlauch
     climate.heizung_bad:
       expose: true
+      room: 03 Badezimmer
+      name: Heizung Bad
+      aliases:
+        - Badheizung
     climate.heizung_buro:
       expose: true
+      room: 05 Büro
+      name: Heizung Büro
+      aliases:
+        - Büroheizung
     sensor.temperatur_wohness:
       expose: true
+      room: 06 Küche
+      name: Temperatur
     sensor.temperatur_keller:
       expose: true
+      room: 09 Keller
+      name: Temperatur
     sensor.temperatur_wohnzimmer_avg:
       expose: true
-    switch.simonpc:
+      room: 01 Wohnzimmer
+      name: Temperatur
+    switch.simon_pc:
       expose: true
+      room: 05 Büro
+      name: Simon-PC
+      aliases:
+        - Simons PC
+        - Simons Computer
+        - Computer Simon
+    switch.wasserpumpe:
+      expose: true
+      room: 10 Außen
+      name: Balkonbewässerung
     input_boolean.switch_wohnzimmer_beleuchtung_automatik:
       expose: true
+      room: 01 Wohnzimmer
+      name: Automatisches Licht
     input_boolean.switch_wohnzimmer_beleuchtung_gemuetlich:
       expose: true
+      room: 01 Wohnzimmer
+      name: Gemütliches Licht
     input_boolean.switch_wohnzimmer_beleuchtung_hell:
       expose: true
+      room: 01 Wohnzimmer
+      name: Helles Licht
 
 #########################################################
 #                                                       #

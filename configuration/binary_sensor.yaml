@@ -40,6 +40,56 @@
         value_template: >-
           {{ not is_state('sensor.status_spuelmaschine', 'Aus') }}
 
+
+####################################################
+#                                                  #
+#             Binary Window Sensor                 #
+#                                                  #
+####################################################
+
+# https://home-assistant.io/components/binary_sensor/
+
+  - platform: template
+    sensors:
+      heizung_bad_window_open:
+        friendly_name: "Fenster Bad"
+        value_template: >-
+          {{ state_attr('climate.heizung_bad', 'window_open') }}
+      heizung_buro_window_open:
+        friendly_name: "Fesnter Büro"
+        value_template: >-
+          {{ state_attr('climate.heizung_buro', 'window_open') }}
+
+####################################################
+#                                                  #
+#                    Presence                      #
+#                                                  #
+####################################################
+
+# https://home-assistant.io/components/binary_sensor/
+
+  - platform: template
+    sensors:
+      presence:
+        friendly_name: "Anwesenheit"
+        value_template: >-
+          {{ is_state('group.anwesenheit', 'home') }}
+
+####################################################
+#                                                  #
+#                    Climate ON                    #
+#                                                  #
+####################################################
+
+# https://home-assistant.io/components/binary_sensor/
+
+  - platform: template
+    sensors:
+      all_climates_on:
+        friendly_name: "Alle Heizungen an"
+        value_template: >-
+          {{ state_attr('weather.dark_sky', 'temperature')|float < 21 }}
+
 ####################################################
 #                                                  #
 #                Workday Sensor                    #

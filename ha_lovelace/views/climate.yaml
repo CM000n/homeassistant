@@ -61,16 +61,18 @@ cards:
                     fullscreen: false
                   deviceID:
                     - this
-      - title: Temperaturen
+      - title: Fenster
         entities:
-          - card: custom:mini-graph-card
+          - entity: binary_sensor.heizung_bad_window_open
             tap_action:
               action: more-info
-              entity: sensor.temperatur_wohnzimmer_lowboard
-            noPadding: true
-            cardOptions:
-              entities:
-                - sensor.temperatur_wohnzimmer_lowboard
+              entity: binary_sensor.heizung_bad_window_open
+          - entity: binary_sensor.heizung_buro_window_open
+            tap_action:
+              action: more-info
+              entity: binary_sensor.heizung_buro_window_open
+      - title: Temperaturen
+        entities:
           - card: custom:mini-graph-card
             tap_action:
               action: more-info
@@ -87,6 +89,14 @@ cards:
             cardOptions:
               entities:
                 - sensor.temperatur_climate_buero
+          - card: custom:mini-graph-card
+            tap_action:
+              action: more-info
+              entity: sensor.temperatur_wohnzimmer_lowboard
+            noPadding: true
+            cardOptions:
+              entities:
+                - sensor.temperatur_wohnzimmer_lowboard
           - card: custom:mini-graph-card
             tap_action:
               action: more-info

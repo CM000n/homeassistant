@@ -4,57 +4,55 @@
 #                                                       #
 #########################################################
 
-- id: 'a_hz_1'
-  alias: Heizung - Auf Comfort beim heimkommen
+- id: 'a_hz_01'
+  alias: Heizung  - Bad
   trigger:
-  - entity_id: group.anwesenheit
-    platform: state
-    to: home
-  condition:
-  - before: 00:00:00
-    after: 04:00:00
-    condition: time
-  - below: 18
-    condition: numeric_state
-    entity_id: sensor.darksky_temperature
-  action:
-  - data:
-      entity_id:
-      - climate.heizung_buro
-      - climate.heizung_bad
-      temperature: 22
-    service: climate.set_temperature
-
-
-- id: 'a_hz_2'
-  alias: Heizung - Auf Eco wenn abwesend
-  trigger:
-  - entity_id: group.anwesenheit
-    from: home
-    platform: state
+    - hours: "*"
+      minutes: "1"
+      platform: time_pattern
+    - entity_id: binary_sensor.presence
+      platform: state
+    - entity_id: binary_sensor.heizung_bad_window_open
+      platform: state
+    - entity_id: binary_sensor.all_climates_on
+      platform: state
   condition: []
   action:
-  - data:
-      entity_id:
-      - climate.heizung_buro
-      - climate.heizung_bad
-      temperature: 18
-    service: climate.set_temperature
+    - data:
+        entity_id: climate.heizung_bad
+        windows:
+          - binary_sensor.heizung_bad_window_open
+        sensors_off:
+          - binary_sensor.all_climates_on
+        sensor_presence: binary_sensor.presence
+        heating_from_hour: 8
+        heating_to_hour: 23
+      service: python_script.update_climate
 
-
-- id: 'a_hz_3'
-  alias: Heizung - Auß bei zu hoher Außentemperatur
+- id: 'a_hz_02'
+  alias: Heizung - Büro
   trigger:
-  - above: 18
-    entity_id: sensor.darksky_temperature
-    platform: numeric_state
+    - hours: "*"
+      minutes: "1"
+      platform: time_pattern
+    - entity_id: binary_sensor.presence
+      platform: state
+    - entity_id: binary_sensor.heizung_buro_window_open
+      platform: state
+    - entity_id: binary_sensor.all_climates_on
+      platform: state
   condition: []
   action:
-  - data:
-      entity_id:
-      - climate.heizung_buro
-      - climate.heizung_bad
-    service: climate.turn_off
+    - data:
+        entity_id: climate.heizung_buro
+        windows:
+          - binary_sensor.heizung_buro_window_open
+        sensors_off:
+          - binary_sensor.all_climates_on
+        sensor_presence: binary_sensor.presence
+        heating_from_hour: 8
+        heating_to_hour: 23
+      service: python_script.update_climate
 
 
 ########################################################

@@ -231,6 +231,15 @@ sensor.darksky_temperature:
   device_class: temperature
   icon: mdi:thermometer
 
+binary_sensor.heizung_bad_window_open:
+  friendly_name: Fenster Bad
+  device_class: window
+  icon: mdi:window-closed-variant
+binary_sensor.heizung_buro_window_open:
+  friendly_name: Fenster Büro
+  device_class: window
+  icon: mdi:window-closed-variant
+
 
 sensor.darksky_humidity:
   friendly_name: Außen

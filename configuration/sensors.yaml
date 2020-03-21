@@ -176,7 +176,7 @@
             states.light.shelly_badspiegel,
             states.light.shelly_deckenlampe_bad,
             states.light.stehlampe_wohnzimmer_links,
-            states.light.stehlampe_wohnzimmer_rechts,
+            states.light.wohnzimmer_stehlampe_rechts,
             states.light.wandlampen_treppenhaus,
             states.light.wohnzimmer_deckenlampe,
             states.light.wohnzimmer_lightstrip,

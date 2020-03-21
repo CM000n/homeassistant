@@ -231,16 +231,6 @@ sensor.darksky_temperature:
   device_class: temperature
   icon: mdi:thermometer
 
-binary_sensor.heizung_bad_window_open:
-  friendly_name: Fenster Bad
-  device_class: window
-  icon: mdi:window-closed-variant
-binary_sensor.heizung_buro_window_open:
-  friendly_name: Fenster Büro
-  device_class: window
-  icon: mdi:window-closed-variant
-
-
 sensor.darksky_humidity:
   friendly_name: Außen
   icon: mdi:water-percent
@@ -257,13 +247,32 @@ sensor.darksky_pressure:
 
 binary_sensor.philipstv:
   friendly_name: TV
+  device_class: connectivity
   icon: mdi:television
 binary_sensor.openmediavault:
   friendly_name: Server
+  device_class: connectivity
   icon: mdi:server
 binary_sensor.simondrucker:
   friendly_name: Drucker
+  device_class: connectivity
   icon: mdi:printer
+binary_sensor.heizung_bad_window_open:
+  friendly_name: Fenster Bad
+  device_class: window
+  icon: mdi:window-closed-variant
+binary_sensor.heizung_buro_window_open:
+  friendly_name: Fenster Büro
+  device_class: window
+  icon: mdi:window-closed-variant
+binary_sensor.presence:
+  friendly_name: Anwesenheit
+  device_class: presence
+  icon: mdi:account-check
+binary_sensor.all_climates_on:
+  friendly_name: Heizungen freigeschaltet
+  device_class: lock
+  icon: mdi:lock
 
 #########################################################
 #                                                       #

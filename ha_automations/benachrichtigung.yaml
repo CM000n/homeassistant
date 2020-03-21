@@ -9,8 +9,11 @@
   trigger:
   - entity_id: sensor.status_waschmaschine
     platform: state
-    to: Fertig
-  condition: []
+    from: 'Wäscht'
+  condition:
+  - condition: time
+    after: '08:00:00'
+    before: '22:30:00'
   action:
   - data:
       message: Die Waschmaschine hat den Waschvorgang beendet und kann ausgeräumt
@@ -19,9 +22,10 @@
     service: notify.home_assistant_smtp
   - service: script.sonos_say
     data:
-      sonos_entity: media_player.sonos_bad, media_player.sonos_buero, media_player.sonos_schlafzimmer, media_player.sonos_wohnzimmer
+      sonos_entity: media_player.sonos_wohnzimmer
       volume: 0.3
       message: 'Die Waschmaschine hat den Waschvorgang beendet'
+      delay: '00:00:05'
 
 
 - id: '1545985715098'
@@ -29,8 +33,11 @@
   trigger:
   - entity_id: sensor.status_trockner
     platform: state
-    to: Fertig
-  condition: []
+    from: 'Trocknet'
+  condition:
+  - condition: time
+    after: '08:00:00'
+    before: '22:30:00'
   action:
   - data:
       message: Der Trockner hat den Trockenvorgang beendet und kann ausgeräumt werden
@@ -38,9 +45,10 @@
     service: notify.home_assistant_smtp
   - service: script.sonos_say
     data:
-      sonos_entity: media_player.sonos_bad, media_player.sonos_buero, media_player.sonos_schlafzimmer, media_player.sonos_wohnzimmer
+      sonos_entity: media_player.sonos_wohnzimmer
       volume: 0.3
       message: 'Der Trockner hat den Trockenvorgang beendet'
+      delay: '00:00:05'
 
 
 - id: '1545985877047'
@@ -48,8 +56,11 @@
   trigger:
   - entity_id: sensor.status_spuelmaschine
     platform: state
-    to: Aus
-  condition: []
+    to: 'off'
+  condition:
+  - condition: time
+    after: '08:00:00'
+    before: '22:30:00'
   action:
   - data:
       message: Die Spülmaschine hat den Spülvorgang beendet und kann ausgeräumt werden
@@ -57,9 +68,10 @@
     service: notify.home_assistant_smtp
   - service: script.sonos_say
     data:
-      sonos_entity: media_player.sonos_bad, media_player.sonos_buero, media_player.sonos_schlafzimmer, media_player.sonos_wohnzimmer
+      sonos_entity: media_player.sonos_wohnzimmer
       volume: 0.3
       message: 'Die Spülmaschine hat den Spülvorgang beendet'
+      delay: '00:00:05'
 
 
 - id: '1545986733209'

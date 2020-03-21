@@ -95,7 +95,6 @@ media_player: !include configuration/media_player.yaml
 input_boolean: !include configuration/input_boolean.yaml
 input_select: !include configuration/input_select.yaml
 input_text: !include configuration/input_text.yaml
-history_graph: !include configuration/history_graph.yaml
 google_assistant: !include configuration/google_assistant.yaml
 binary_sensor: !include configuration/binary_sensor.yaml
 
@@ -277,6 +276,20 @@ mobile_app:
 # https://github.com/thomasloven/hass-browser_mod
 
 browser_mod:
+
+####################################################
+#                                                  #
+#                   TANKERKOENIG                   #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/integrations/tankerkoenig/
+
+tankerkoenig:
+  api_key: !secret tanker_api
+  radius: 10
+  fuel_types:
+    - "e10"
 
 ####################################################
 #                                                  #

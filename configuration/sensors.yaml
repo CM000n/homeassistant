@@ -765,19 +765,9 @@
 
 ####################################################
 #                                                  #
-#                   TANKERKOENIG                   #
+#                      REST                        #
 #                                                  #
 ####################################################
-
-#https://community.home-assistant.io/t/gas-price-via-tankerkonig-germany/14980
-
-  - platform: rest
-    resource: https://creativecommons.tankerkoenig.de/json/prices.php?apikey=a79687ec-4b8d-9881-bd15-05b57e900dc7&ids=84fd0cb2-b1b8-447a-b3f7-33f5113144c3
-    name: e10mue
-    unit_of_measurement: '€'
-    value_template: '{{ value_json.prices["84fd0cb2-b1b8-447a-b3f7-33f5113144c3"].e10 }}'
-    scan_interval: 900
-
 
   - platform: rest
     resource: !secret hue_livingroom_light

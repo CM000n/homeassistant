@@ -39,8 +39,9 @@ cards:
                   name: Automatik
           - entity: light.wohnzimmer_lightstrip
           - entity: light.stehlampe_wohnzimmer_links
-          - entity: light.stehlampe_wohnzimmer_rechts
+          - entity: light.wohnzimmer_stehlampe_rechts
           - entity: light.kuche_herd
+          - entity: light.kuche_esstisch
       - title: Schlafzimmer
         popup:
           type: custom:light-popup-card

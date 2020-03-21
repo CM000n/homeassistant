@@ -48,10 +48,6 @@
 #https://www.home-assistant.io/integrations/light.switch/
 
   - platform: switch
-    name: Stehlampe Wohnzimmer Rechts
-    entity_id: switch.steckdose_wohnzimmer_ecke
-
-  - platform: switch
     name: Shelly Deckenlampe Bad
     entity_id: switch.shelly1pm_76d8e1_relay_0
 

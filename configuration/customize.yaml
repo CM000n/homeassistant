@@ -13,11 +13,14 @@ light.wohnzimmer_lightstrip:
 light.stehlampe_wohnzimmer_links:
   friendly_name: Lampe L.
   icon: mdi:floor-lamp
-light.stehlampe_wohnzimmer_rechts:
+light.wohnzimmer_stehlampe_rechts:
   friendly_name: Lampe R.
   icon: mdi:floor-lamp
 light.kuche_herd:
   friendly_name: Herd
+  icon: mdi:ceiling-light
+light.kuche_esstisch:
+  friendly_name: Esstisch
   icon: mdi:ceiling-light
 
 light.schlafzimmer_deckenlampe:

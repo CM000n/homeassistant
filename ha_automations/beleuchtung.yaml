@@ -13,18 +13,9 @@
   action:
   - data:
       entity_id:
-      - light.ankleide_deckenlampe_light
-      - light.ankleide_schreibtisch_light
-      - light.buero_deckenlampe_light
-      - light.buero_schreibtisch_light
-      - light.kueche_herd_light
-      - light.schlafzimmer_deckenlampe_light
-      - light.deckenlampe_wohnzimmer
-      - light.flur_deckenlampe1_light
-      - light.flur_deckenlampe2_light
-      - light.schreibtischlampe_lisa
-      - light.spiegellampe_bad
-      - light.wandlampen_treppenhaus
+      - light.kuche_esstisch
+      - light.deckenlampen_flur
+      - light.wohnzimmer_deckenlampe
     service: light.turn_on
 
 
@@ -36,23 +27,7 @@
     to: not_home
   action:
   - data:
-      entity_id:
-      - light.ankleide_deckenlampe_light
-      - light.deckenlampe_bad
-      - light.buero_deckenlampe_light
-      - light.buero_schreibtisch_light
-      - light.kueche_herd_light
-      - light.schlafzimmer_deckenlampe_light
-      - light.deckenlampe_wohnzimmer
-      - light.flur_deckenlampe1_light
-      - light.flur_deckenlampe2_light
-      - light.lightstrip_wohnzimmer
-      - light.schlafzimmer_nachttisch_lisa_light
-      - light.schlafzimmer_nachttisch_simon_light
-      - light.ankleide_schreibtisch_light
-      - light.spiegellampe_bad
-      - light.stehlampe_wohnzimmer_rechts
-      - light.stehlampe_wohnzimmer_links
+      entity_id: all
     service: light.turn_off
 
 - id: 'a_bl_33'
@@ -448,6 +423,33 @@
         entity_id: light.ankleide_nahtisch_rechts
         brightness: 255
         kelvin: 6500
+
+- id: 'a_bl_25'
+  alias: Beleuchtung - Deckenlampe Esstisch auf Warmweis bei Start
+  trigger:
+    - platform: state
+      entity_id: light.kuche_esstisch
+      to: 'on'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.kuche_esstisch
+        brightness: 180
+        kelvin: 1800
+
+
+- id: 'a_bl_25'
+  alias: Beleuchtung - Stehlampe Wohnzimmer rechts auf Warmweis bei Start
+  trigger:
+    - platform: state
+      entity_id: light.wohnzimmer_stehlampe_rechts
+      to: 'on'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.wohnzimmer_stehlampe_rechts
+        brightness: 255
+        kelvin: 2100
 
 #########################################################
 #                                                       #

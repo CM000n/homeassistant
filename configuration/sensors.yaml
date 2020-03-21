@@ -169,6 +169,7 @@
             states.light.buro_schreibtisch,
             states.light.deckenlampen_flur,
             states.light.kuche_herd,
+            states.light.kuche_esstisch,
             states.light.schlafzimmer_deckenlampe,
             states.light.schlafzimmer_nachttisch_lisa,
             states.light.schlafzimmer_nachttisch_simon,

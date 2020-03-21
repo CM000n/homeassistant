@@ -73,6 +73,14 @@
       name: Herdlampe
       aliases:
         - Deckenlampe Herd
+    light.kuche_esstisch:
+      expose: true
+      room: 06 Küche
+      name: Esstischlampe
+      aliases:
+        - Deckenlampe Esstisch
+        - Licht Esstisch
+        - Esstischlicht
     light.schlafzimmer_deckenlampe:
       expose: true
       room: 02 Schlafzimmer
@@ -110,7 +118,7 @@
       name: Stehlampe links
       aliases:
         - Linke Stehlampe
-    light.stehlampe_wohnzimmer_rechts:
+    light.wohnzimmer_stehlampe_rechts:
       expose: true
       room: 01 Wohnzimmer
       name: Stehlampe rechts

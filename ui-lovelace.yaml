@@ -1,7 +1,3 @@
-# Custom Card Resources
-resources:
-  !include ha_lovelace/resources/resources.yaml
-
 # Custom Header
 custom_header:
   compact_mode: true

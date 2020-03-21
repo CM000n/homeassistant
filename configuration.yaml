@@ -26,6 +26,35 @@ homeassistant:
 # https://www.home-assistant.io/lovelace/yaml-mode/
 lovelace:
   mode: yaml
+  resources:
+    - url: 'https://fonts.googleapis.com/css?family=Raleway'
+      type: css
+    - url: /local/popup-background.js
+      type: js
+    - url: /hacsfiles/thermostat-card/thermostat-card.js
+      type: module
+    - url: /hacsfiles/lovelace-card-tools/card-tools.js
+      type: js
+    - url: /hacsfiles/check-button-card/check-button-card.js
+      type: module
+    - url: /hacsfiles/lovelace-swipe-navigation/swipe-navigation.js
+      type: js
+    - url: /hacsfiles/lovelace-card-mod/card-mod.js
+      type: module
+    - url: /hacsfiles/decluttering-card/decluttering-card.js
+      type: module
+    - url: /hacsfiles/custom-header/custom-header.js
+      type: module
+    - url: /hacsfiles/mini-graph-card/mini-graph-card.js
+      type: module
+    - url: /hacsfiles/thermostat-card/thermostat-card.js
+      type: module
+    - url: /hacsfiles/Homekit-panel-card/homekit-panel-card.js
+      type: module
+    - url: /hacsfiles/light-popup-card/light-popup-card.js
+      type: module
+    - url: /hacsfiles/thermostat-popup-card/thermostat-popup-card.js
+      type: module
 # https://home-assistant.io/components/frontend/
 frontend:
   themes: !include_dir_merge_named themes

@@ -162,7 +162,7 @@
       expose: true
       room: 09 Keller
       name: Temperatur
-    sensor.temperatur_wohnzimmer_avg:
+    sensor.temperatur_wohnzimmer_lowboard:
       expose: true
       room: 01 Wohnzimmer
       name: Temperatur

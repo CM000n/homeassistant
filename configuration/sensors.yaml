@@ -255,10 +255,6 @@
         value_template: '{{ state_attr("switch.steckdose_wohnzimmer_ecke", "temperature") }}'
         unit_of_measurement: '°C'
         friendly_name: 'Temperatur Wohnzimmer Ecke'
-      temperatur_wohnzimmer_avg:
-        value_template: '{{ (float( float(state_attr("switch.steckdose_wohnzimmer_ecke", "temperature")) + float(state_attr("switch.steckdose_wohnzimmer_lowboard", "temperature")) )/2)|round(2) }}'
-        unit_of_measurement: '°C'
-        friendly_name: 'Temperatur Wohnzimmer AVG'
       temperatur_climate_bad:
         value_template: '{{ state_attr("climate.heizung_bad", "current_temperature") }}'
         unit_of_measurement: '°C'

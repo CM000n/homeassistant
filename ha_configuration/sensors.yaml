@@ -762,18 +762,6 @@
 
 ####################################################
 #                                                  #
-#                      REST                        #
-#                                                  #
-####################################################
-
-  - platform: rest
-    resource: !secret hue_livingroom_light
-    name: Deckenlampe Wohnzimmer REST REACHABLE
-    value_template: '{{ value_json.state.reachable }}'
-    scan_interval: 1
-
-####################################################
-#                                                  #
 #                DATUM & UHRZEIT                   #
 #                                                  #
 ####################################################

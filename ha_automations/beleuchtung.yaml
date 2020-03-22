@@ -138,9 +138,6 @@
   - entity_id: light.wohnzimmer_deckenlampe
     platform: state
     to: 'on'
-  - entity_id: sensor.deckenlampe_wohnzimmer_rest_reachable
-    platform: state
-    to: 'True'
   condition: []
   action:
   - data:
@@ -157,9 +154,6 @@
   - entity_id: light.wohnzimmer_deckenlampe
     platform: state
     from: 'on'
-  - entity_id: sensor.deckenlampe_wohnzimmer_rest_reachable
-    platform: state
-    to: 'False'
   condition: []
   action:
   - data:

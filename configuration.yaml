@@ -4,7 +4,7 @@
 #                                                  #
 ####################################################
 
-# https://home-assistant.io/docs/configuration/basic/
+# https://home-assistant.io/docs/ha_configuration/basic/
 
 homeassistant:
   name: Home
@@ -13,7 +13,7 @@ homeassistant:
   elevation: 194
   unit_system: metric
   time_zone: !secret time_zone
-  customize: !include configuration/customize.yaml
+  customize: !include ha_configuration/customize.yaml
   auth_providers:
    - type: homeassistant
 
@@ -71,7 +71,7 @@ discovery:
 # https://home-assistant.io/components/conversation/
 conversation:
 # https://home-assistant.io/components/recorder/
-recorder: !include configuration/recorder.yaml
+recorder: !include ha_configuration/recorder.yaml
 # https://home-assistant.io/components/history/
 history:
 # https://home-assistant.io/components/tts/
@@ -105,27 +105,27 @@ person:
 #                                                  #
 ####################################################
 
-# https://home-assistant.io/docs/configuration/splitting_configuration/
+# https://home-assistant.io/docs/ha_configuration/splitting_ha_configuration/
 
-group: !include configuration/groups.yaml
+group: !include ha_configuration/groups.yaml
 automation: !include_dir_merge_list ha_automations/
 script: !include_dir_merge_named ha_scripts/
-device_tracker: !include configuration/device_tracker.yaml
-notify: !include configuration/notification.yaml
-switch: !include configuration/switches.yaml
-climate: !include configuration/climate.yaml
-sensor: !include configuration/sensors.yaml
-shell_command: !include configuration/shell_commands.yaml
-logbook: !include configuration/logbook.yaml
-light: !include configuration/lights.yaml
-zone: !include configuration/zones.yaml
-camera: !include configuration/camera.yaml
-media_player: !include configuration/media_player.yaml
-input_boolean: !include configuration/input_boolean.yaml
-input_select: !include configuration/input_select.yaml
-input_text: !include configuration/input_text.yaml
-google_assistant: !include configuration/google_assistant.yaml
-binary_sensor: !include configuration/binary_sensor.yaml
+device_tracker: !include ha_configuration/device_tracker.yaml
+notify: !include ha_configuration/notification.yaml
+switch: !include ha_configuration/switches.yaml
+climate: !include ha_configuration/climate.yaml
+sensor: !include ha_configuration/sensors.yaml
+shell_command: !include ha_configuration/shell_commands.yaml
+logbook: !include ha_configuration/logbook.yaml
+light: !include ha_configuration/lights.yaml
+zone: !include ha_configuration/zones.yaml
+camera: !include ha_configuration/camera.yaml
+media_player: !include ha_configuration/media_player.yaml
+input_boolean: !include ha_configuration/input_boolean.yaml
+input_select: !include ha_configuration/input_select.yaml
+input_text: !include ha_configuration/input_text.yaml
+google_assistant: !include ha_configuration/google_assistant.yaml
+binary_sensor: !include ha_configuration/binary_sensor.yaml
 
 ####################################################
 #                                                  #

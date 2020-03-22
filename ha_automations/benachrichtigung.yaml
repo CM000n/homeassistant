@@ -24,7 +24,7 @@
     data:
       sonos_entity: media_player.sonos_wohnzimmer
       volume: 0.3
-      message: 'Die Waschmaschine hat den Waschvorgang beendet'
+      message: 'Die Waschmaschine ist fertig'
       delay: '00:00:05'
 
 
@@ -47,7 +47,7 @@
     data:
       sonos_entity: media_player.sonos_wohnzimmer
       volume: 0.3
-      message: 'Der Trockner hat den Trockenvorgang beendet'
+      message: 'Der Trockner ist fertig'
       delay: '00:00:05'
 
 
@@ -70,7 +70,7 @@
     data:
       sonos_entity: media_player.sonos_wohnzimmer
       volume: 0.3
-      message: 'Die Spülmaschine hat den Spülvorgang beendet'
+      message: 'Die Spülmaschine ist fertig'
       delay: '00:00:05'
 
 

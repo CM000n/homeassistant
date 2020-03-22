@@ -77,6 +77,10 @@ history:
 # https://home-assistant.io/components/tts/
 tts:
  - platform: google_translate
+   cache: true
+   cache_dir: /tts
+   time_memory: 300
+   base_url: http://192.168.178.3:8123
    language: 'de'
 # https://home-assistant.io/components/python_script/
 python_script:
@@ -316,7 +320,7 @@ browser_mod:
 
 tankerkoenig:
   api_key: !secret tanker_api
-  radius: 10
+  radius: 6
   fuel_types:
     - "e10"
 

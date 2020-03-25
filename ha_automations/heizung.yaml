@@ -26,7 +26,9 @@
           - binary_sensor.all_climates_on
         sensor_presence: binary_sensor.presence
         heating_from_hour: 8
-        heating_to_hour: 23
+        heating_to_hour: 22
+        hvac_active: heat
+        preset_away: eco
       service: python_script.update_climate
 
 - id: 'a_hz_02'
@@ -51,7 +53,9 @@
           - binary_sensor.all_climates_on
         sensor_presence: binary_sensor.presence
         heating_from_hour: 8
-        heating_to_hour: 23
+        heating_to_hour: 22
+        hvac_active: heat
+        preset_away: eco
       service: python_script.update_climate
 
 

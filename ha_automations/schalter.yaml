@@ -1,0 +1,98 @@
+########################################################
+#                                                       #
+#        FRIENDS OF HUE SWITCHED OVER deCONZ            #
+#                                                       #
+#########################################################
+
+# https://community.home-assistant.io/t/deconz-official-thread/100504/84?u=cm000n
+
+- id: 'a_sw_1_1'
+  alias: 'Schalter - Büro - Deckenlampe toggle'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: friends_of_hue_schalter
+      event: 3002
+  action:
+    service: light.toggle
+    entity_id: light.buro_deckenlampe
+- id: 'a_sw_1_2'
+  alias: 'Schalter - Büro - Deckenlampe heller'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: friends_of_hue_schalter
+      event: 3001
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.buro_deckenlampe
+        brightness_step_pct: 10
+- id: 'a_sw_1_3'
+  alias: 'Schalter - Büro - Deckenlampe dunkler'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: friends_of_hue_schalter
+      event: 4001
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.buro_deckenlampe
+        brightness_step_pct: -10
+
+
+
+- id: 'a_sw_2_1'
+  alias: 'Schalter - Büro - Schreibtischlampe toggle'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: friends_of_hue_schalter
+      event: 1002
+  action:
+    service: light.toggle
+    entity_id: light.buro_schreibtisch
+- id: 'a_sw_2_2'
+  alias: 'Schalter - Büro - Schreibtischlampe heller'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: friends_of_hue_schalter
+      event: 1001
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.buro_schreibtisch
+        brightness_step_pct: 10
+- id: 'a_sw_2_3'
+  alias: 'Schalter - Büro - Schreibtischlampe dunkler'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: friends_of_hue_schalter
+      event: 2001
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.buro_schreibtisch
+        brightness_step_pct: -10
+
+
+########################################################
+#                                                       #
+#            END OF CONFIGURATION FILE                  #
+#                                                       #
+#########################################################

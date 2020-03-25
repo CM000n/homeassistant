@@ -432,7 +432,7 @@
         kelvin: 1800
 
 
-- id: 'a_bl_25'
+- id: 'a_bl_26'
   alias: Beleuchtung - Stehlampe Wohnzimmer rechts auf Warmweis bei Start
   trigger:
     - platform: state

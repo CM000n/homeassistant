@@ -1,0 +1,96 @@
+########################################################
+#                                                       #
+#             AUTOMATIKEN BELEUCHTUNG BÜRO              #
+#                                                       #
+#########################################################
+
+- id: 'a_bl_buero_dl_1'
+  alias: Beleuchtung - Büro Deckenlampe Automatische Lichtstimmung
+  trigger:
+  - platform: state
+    entity_id: input_select.buero_deckenlampe_lichtstimmung
+    to: 'Automatik'
+  action:
+  - data:
+      entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
+    service: homeassistant.turn_on
+  - data:
+      entity_id:
+      - light.buro_deckenlampe
+    service: light.turn_on
+
+- id: 'a_bl_buero_dl_2'
+  alias: Beleuchtung - Büro Deckenlampe Energie tanken Lichtstimmung
+  trigger:
+  - platform: state
+    entity_id: input_select.buero_deckenlampe_lichtstimmung
+    to: 'Energie tanken'
+  action:
+  - data:
+      entity_id: 
+      - switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
+    service: homeassistant.turn_off
+  - data:
+      profile: energize
+      entity_id:
+      - light.buro_deckenlampe
+    service: light.turn_on
+
+- id: 'a_bl_buero_dl_3'
+  alias: Beleuchtung - Büro Deckenlampe Lesen Lichtstimmung
+  trigger:
+  - platform: state
+    entity_id: input_select.buero_deckenlampe_lichtstimmung
+    to: 'Lesen'
+  action:
+  - data:
+      entity_id: 
+      - switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
+    service: homeassistant.turn_off
+  - data:
+      profile: reading
+      entity_id:
+      - light.buro_deckenlampe
+    service: light.turn_on
+
+- id: 'a_bl_buero_dl_4'
+  alias: Beleuchtung - Büro Deckenlampe Konzentrieren Lichtstimmung
+  trigger:
+  - platform: state
+    entity_id: input_select.buero_deckenlampe_lichtstimmung
+    to: 'Konzentrieren'
+  action:
+  - data:
+      entity_id: 
+      - switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
+    service: homeassistant.turn_off
+  - data:
+      profile: concentrate
+      entity_id:
+      - light.buro_deckenlampe
+    service: light.turn_on
+
+- id: 'a_bl_buero_dl_5'
+  alias: Beleuchtung - Büro Deckenlampe Entspannen Lichtstimmung
+  trigger:
+  - platform: state
+    entity_id: input_select.buero_deckenlampe_lichtstimmung
+    to: 'Entspannen'
+  action:
+  - data:
+      entity_id: 
+      - switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
+    service: homeassistant.turn_off
+  - data:
+      profile: relax
+      entity_id:
+      - light.buro_deckenlampe
+    service: light.turn_on
+
+
+
+#########################################################
+#                                                       #
+#            END OF CONFIGURATION FILE                  #
+#                                                       #
+#########################################################

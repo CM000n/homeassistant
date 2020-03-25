@@ -31,6 +31,12 @@
     disable_brightness_adjust: true
 
   - platform: circadian_lighting
+    name: Autofarbtemperatur Schreibtischlampe Büro
+    lights_ct:
+      - light.buro_schreibtisch
+    disable_brightness_adjust: true
+
+  - platform: circadian_lighting
     name: Autofarbtemperatur Deckenlampe Schlafzimmer
     lights_ct:
       - light.schlafzimmer_deckenlampe

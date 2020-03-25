@@ -72,6 +72,19 @@
     - service: script.turn_off
       data:
         entity_id: script.buero_schalter_deckenlampe_dimm_down_loop
+- id: 'a_sw_1_6'
+  alias: 'Schalter - Büro - Deckenlampe Lichtstimmung wechseln'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: buro_schalter
+      event: 4002
+  action:
+    - service: input_select.select_next
+      data:
+        entity_id: input_select.buero_deckenlampe_lichtstimmung
 
 
 
@@ -141,6 +154,19 @@
     - service: script.turn_off
       data:
         entity_id: script.buero_schalter_schreibtischlampe_dimm_down_loop
+- id: 'a_sw_2_6'
+  alias: 'Schalter - Büro - Schreibtischlampe Lichtstimmung wechseln'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: buro_schalter
+      event: 2002
+  action:
+    - service: input_select.select_next
+      data:
+        entity_id: input_select.buero_schreibtischlampe_lichtstimmung
 
 
 ########################################################

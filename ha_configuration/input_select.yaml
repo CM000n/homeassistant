@@ -1,6 +1,31 @@
 
 #https://www.home-assistant.io/components/input_select/
 
+####################################################
+#                                                  #
+#          START OF CONFIGURATION FILE             #
+#                                                  #
+####################################################
+
+buero_deckenlampe_lichtstimmung:
+  name: Büro Deckenlampe Lichtstimmung
+  options:
+    - Automatik
+    - Energie tanken
+    - Lesen
+    - Konzentrieren
+    - Entspannen
+  initial: Automatik
+
+buero_schreibtischlampe_lichtstimmung:
+  name: Büro Schreibtischlampe Lichtstimmung
+  options:
+    - Automatik
+    - Energie tanken
+    - Lesen
+    - Konzentrieren
+    - Entspannen
+  initial: Automatik
 
 
 ####################################################

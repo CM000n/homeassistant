@@ -28,11 +28,24 @@
       id: buro_schalter
       event: 3001
   action:
-    - service: light.turn_on
-      data:
-        entity_id: light.buro_deckenlampe
-        brightness_step_pct: 10
+    - service: script.buero_schalter_deckenlampe_dimm_up
 - id: 'a_sw_1_3'
+  alias: 'Schalter - Büro - Deckenlampe stop dimming up'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: buro_schalter
+      event: 3003
+  action:
+    - service: script.turn_off
+      data:
+        entity_id: script.buero_schalter_deckenlampe_dimm_up
+    - service: script.turn_off
+      data:
+        entity_id: script.buero_schalter_deckenlampe_dimm_up_loop
+- id: 'a_sw_1_4'
   alias: 'Schalter - Büro - Deckenlampe start dimming down'
   initial_state: 'on'
   trigger:
@@ -42,10 +55,23 @@
       id: buro_schalter
       event: 4001
   action:
-    - service: light.turn_on
+    - service: script.buero_schalter_deckenlampe_dimm_down
+- id: 'a_sw_1_5'
+  alias: 'Schalter - Büro - Deckenlampe stop dimming down'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: buro_schalter
+      event: 4003
+  action:
+    - service: script.turn_off
       data:
-        entity_id: light.buro_deckenlampe
-        brightness_step_pct: -10
+        entity_id: script.buero_schalter_deckenlampe_dimm_down
+    - service: script.turn_off
+      data:
+        entity_id: script.buero_schalter_deckenlampe_dimm_down_loop
 
 
 
@@ -71,11 +97,24 @@
       id: buro_schalter
       event: 1001
   action:
-    - service: light.turn_on
-      data:
-        entity_id: light.buro_schreibtisch
-        brightness_step_pct: 10
+    - service: script.buero_schalter_schreibtischlampe_dimm_up
 - id: 'a_sw_2_3'
+  alias: 'Schalter - Büro - Schreibtischlampe stop dimming up'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: buro_schalter
+      event: 1003
+  action:
+    - service: script.turn_off
+      data:
+        entity_id: script.buero_schalter_schreibtischlampe_dimm_up
+    - service: script.turn_off
+      data:
+        entity_id: script.buero_schalter_schreibtischlampe_dimm_up_loop
+- id: 'a_sw_2_4'
   alias: 'Schalter - Büro - Schreibtischlampe start dimming down'
   initial_state: 'on'
   trigger:
@@ -85,10 +124,23 @@
       id: buro_schalter
       event: 2001
   action:
-    - service: light.turn_on
+    - service: script.buero_schalter_schreibtischlampe_dimm_down
+- id: 'a_sw_2_5'
+  alias: 'Schalter - Büro - Schreibtischlampe stop dimming down'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: buro_schalter
+      event: 2003
+  action:
+    - service: script.turn_off
       data:
-        entity_id: light.buro_schreibtisch
-        brightness_step_pct: -10
+        entity_id: script.buero_schalter_schreibtischlampe_dimm_down
+    - service: script.turn_off
+      data:
+        entity_id: script.buero_schalter_schreibtischlampe_dimm_down_loop
 
 
 ########################################################

@@ -1,0 +1,37 @@
+buero_schalter_schreibtischlampe_dimm_up:
+  alias: 'Schalter - Büro - schreibtischlampe dimm up'
+  sequence:
+    - service: light.turn_on
+      data:
+        entity_id: light.buro_schreibtisch
+        brightness_step_pct: 10
+    - service: script.turn_on
+      data:
+        entity_id: script.buero_schalter_schreibtischlampe_dimm_up_loop
+buero_schalter_schreibtischlampe_dimm_up_loop:
+  alias: 'Schalter - Büro - schreibtischlampe dimm up loop'
+  sequence:
+    - delay:
+        milliseconds: 1
+    - service: script.turn_on
+      data:
+        entity_id: script.buero_schalter_schreibtischlampe_dimm_up
+
+buero_schalter_schreibtischlampe_dimm_down:
+  alias: 'Schalter - Büro - schreibtischlampe dimm down'
+  sequence:
+    - service: light.turn_on
+      data:
+        entity_id: light.buro_schreibtisch
+        brightness_step_pct: -10
+    - service: script.turn_on
+      data:
+        entity_id: script.buero_schalter_schreibtischlampe_dimm_down_loop
+buero_schalter_schreibtischlampe_dimm_down_loop:
+  alias: 'Schalter - Büro - schreibtischlampe dimm down loop'
+  sequence:
+    - delay:
+        milliseconds: 1
+    - service: script.turn_on
+      data:
+        entity_id: script.buero_schalter_schreibtischlampe_dimm_down

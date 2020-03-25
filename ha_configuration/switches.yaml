@@ -27,29 +27,29 @@
   - platform: circadian_lighting
     name: Autofarbtemperatur Deckenlampe Büro
     lights_ct:
-     - light.buro_deckenlampe
+      - light.buro_deckenlampe
     disable_brightness_adjust: true
 
   - platform: circadian_lighting
     name: Autofarbtemperatur Deckenlampe Schlafzimmer
     lights_ct:
-     - light.schlafzimmer_deckenlampe
+      - light.schlafzimmer_deckenlampe
     disable_brightness_adjust: true
 
   - platform: circadian_lighting
     name: Autofarbtemperatur Deckenlampen Flur
     lights_ct:
-     - light.flur_deckenlampe1
-     - light.flur_deckenlampe2
+      - light.flur_deckenlampe_1
+      - light.flur_deckenlampe_2
     disable_brightness_adjust: true
 
   - platform: circadian_lighting
     name: Autofarbtemperatur Wohnzimmer
     lights_ct:
-     - light.wohnzimmer_deckenlampe
-     - light.wohnzimmer_lightstrip
-     - light.wohnzimmer_stehlampe_links1
-     - light.wohnzimmer_stehlampe_links2
+      - light.wohnzimmer_deckenlampe
+      - light.wohnzimmer_lightstrip
+      - light.wohnzimmer_stehlampe_links1
+      - light.wohnzimmer_stehlampe_links2
     min_brightness: 20
     max_brightness: 100
 

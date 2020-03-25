@@ -12,8 +12,8 @@
   - platform: group
     name: Deckenlampen Flur
     entities:
-      - light.flur_deckenlampe1
-      - light.flur_deckenlampe2
+      - light.flur_deckenlampe_1
+      - light.flur_deckenlampe_2
 
   - platform: group
     name: Stehlampe Wohnzimmer Links
@@ -24,9 +24,9 @@
   - platform: group
     name: Wandlampen Treppenhaus
     entities:
-      - light.treppenhaus_wandlampe1
-      - light.treppenhaus_wandlampe2
-      - light.treppenhaus_wandlampe3
+      - light.treppenhaus_wandlampe_1
+      - light.treppenhaus_wandlampe_2
+      - light.treppenhaus_wandlampe_3
 
 ####################################################
 #                                                  #

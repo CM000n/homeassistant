@@ -15,24 +15,24 @@
     - service: sonos.unjoin
       data:
         entity_id:
-        - media_player.sonos_bad
-        - media_player.sonos_buero
-        - media_player.sonos_schlafzimmer
-        - media_player.sonos_wohnzimmer
+        - media_player.bad
+        - media_player.buro
+        - media_player.schlafzimmer
+        - media_player.wohnzimmer
     - service: media_player.clear_playlist
       data:
         entity_id:
-        - media_player.sonos_bad
-        - media_player.sonos_buero
-        - media_player.sonos_schlafzimmer
-        - media_player.sonos_wohnzimmer
+        - media_player.bad
+        - media_player.buro
+        - media_player.schlafzimmer
+        - media_player.wohnzimmer
     - service: media_player.volume_set
       data:
         entity_id:
-        - media_player.sonos_bad
-        - media_player.sonos_buero
-        - media_player.sonos_schlafzimmer
-        - media_player.sonos_wohnzimmer
+        - media_player.bad
+        - media_player.buro
+        - media_player.schlafzimmer
+        - media_player.wohnzimmer
         volume_level: 0.25
 
 - alias: "Media - Sonos Player Büro mit PC an"
@@ -44,18 +44,18 @@
   action:
     - service: sonos.unjoin
       data:
-        entity_id: media_player.sonos_buero
+        entity_id: media_player.buro
     - service: media_player.volume_set
       data:
-        entity_id: media_player.sonos_buero
+        entity_id: media_player.buro
         volume_level: 0.5
     - service: media_player.select_source
       data:
-        entity_id: media_player.sonos_buero
+        entity_id: media_player.buro
         source: 'Line-in'
     - service: media_player.media_play
       data:
-        entity_id: media_player.sonos_buero
+        entity_id: media_player.buro
 
 ########################################################
 #                                                       #

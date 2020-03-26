@@ -108,15 +108,6 @@ sensor.chromecast_wohnzimmer_state:
 sensor.tv_wohnzimmer_state:
   friendly_name: Fernseher Wohnzimmer
   icon: mdi:television-classic
-sensor.sonos_wohnzimmer_state:
-  friendly_name: Sonos Wohnzimmer
-  icon: mdi:music-circle
-sensor.sonos_schlafzim_state:
-  friendly_name: Sonos Schlafzimmer
-  icon: mdi:music-circle
-sensor.sonos_bad_state:
-  friendly_name: Sonos Badezimmer
-  icon: mdi:music-circle
 sensor.munzesheim_to_karlsruhe_hbf:
   friendly_name: Münzesheim --> Karlsruhe
   icon: mdi:tram
@@ -415,18 +406,18 @@ weblink.repeater:
 #                                                       #
 #########################################################
 
-media_player.sonos_bad:
+media_player.bad:
   friendly_name: Sonos Bad
   icon: mdi:speaker
-media_player.sonos_buero:
+media_player.buro:
   friendly_name: Sonos Büro
   icon: mdi:speaker
-media_player.sonos_schlafzimmer:
+media_player.schlafzimmer:
   friendly_name: Sonos Schlafzimmer
   icon: mdi:speaker
-media_player.sonos_wohnzimmer:
+media_player.wohnzimmer:
   friendly_name: Sonos Wohnzimmer
   icon: mdi:speaker
-media_player.chromecast_wohnzimmer:
+media_player.chromecast:
   friendly_name: Chromecast
   icon: mdi:cast

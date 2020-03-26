@@ -145,7 +145,6 @@
     entities:
       - climate.heizung_bad
       - climate.heizung_buro
-      - device_tracker.google_maps_113462452053772321900
 
 ####################################################
 #                                                  #
@@ -183,18 +182,6 @@
             ] %}
           {{ lights | selectattr('state','eq','on') | list | count }}
 
-      sonos_wohnzimmer_state:
-        value_template: '{{ states("media_player.wohnzimmer") }}'
-        friendly_name: 'Status'
-      sonos_schlafzim_state:
-        value_template: '{{ states("media_player.sonos_schlafzim") }}'
-        friendly_name: 'Status'
-      sonos_bad_state:
-        value_template: '{{ states("media_player.sonos_bad") }}'
-        friendly_name: 'Status'
-      chromecast_wohnzimmer_state:
-        value_template: '{{ states("media_player.chromecast_wohnzimmer") }}'
-        friendly_name: 'Status'
       tv_wohnzimmer_state:
         value_template: '{{ states("binary_sensor.device_tracker_philipstv") }}'
         friendly_name: 'Status'

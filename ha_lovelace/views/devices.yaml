@@ -15,16 +15,16 @@ cards:
             tap_action:
               action: more-info
               entity: binary_sensor.philipstv
-          - entity: media_player.chromecast_wohnzimmer
+          - entity: media_player.chromecast
             tap_action:
               action: more-info
-              entity: media_player.chromecast_wohnzimmer
-          - entity: media_player.sonos_wohnzimmer
+              entity: media_player.chromecast
+          - entity: media_player.wohnzimmer
             offStates:
               - "paused"
             tap_action:
               action: more-info
-              entity: media_player.sonos_wohnzimmer
+              entity: media_player.wohnzimmer
           - entity: switch.steckdose_wohnzimmer_lowboard
             tap_action:
               action: more-info
@@ -35,20 +35,20 @@ cards:
               entity: sensor.status_spuelmaschine
       - title: Schlafzimmer / Ankleide
         entities:
-          - entity: media_player.sonos_schlafzimmer
+          - entity: media_player.schlafzimmer
             offStates:
               - "paused"
             tap_action:
               action: more-info
-              entity: media_player.sonos_schlafzimmer
+              entity: media_player.schlafzimmer
       - title: Badezimmer
         entities:
-          - entity: media_player.sonos_bad
+          - entity: media_player.bad
             offStates:
               - "paused"
             tap_action:
               action: more-info
-              entity: media_player.sonos_bad
+              entity: media_player.bad
       - title: Büro
         entities:
           - entity: binary_sensor.openmediavault
@@ -63,12 +63,12 @@ cards:
             tap_action:
               action: more-info
               entity: switch.simon_pc
-          - entity: media_player.sonos_buero
+          - entity: media_player.buro
             offStates:
               - "paused"
             tap_action:
               action: more-info
-              entity: media_player.sonos_buero
+              entity: media_player.buro
       - title: Keller
         entities:
           - entity: sensor.status_waschmaschine

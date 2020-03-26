@@ -20,9 +20,9 @@
         werden
       title: Waschmaschine fertig
     service: notify.home_assistant_smtp
-  - service: script.sonos_say
+  - service: script.say
     data:
-      sonos_entity: media_player.sonos_wohnzimmer
+      entity: media_player.wohnzimmer
       volume: 0.3
       message: 'Die Waschmaschine ist fertig'
       delay: '00:00:05'
@@ -43,9 +43,9 @@
       message: Der Trockner hat den Trockenvorgang beendet und kann ausgeräumt werden
       title: Trockner fertig
     service: notify.home_assistant_smtp
-  - service: script.sonos_say
+  - service: script.say
     data:
-      sonos_entity: media_player.sonos_wohnzimmer
+      entity: media_player.wohnzimmer
       volume: 0.3
       message: 'Der Trockner ist fertig'
       delay: '00:00:05'
@@ -66,9 +66,9 @@
       message: Die Spülmaschine hat den Spülvorgang beendet und kann ausgeräumt werden
       title: Spülmaschine fertig
     service: notify.home_assistant_smtp
-  - service: script.sonos_say
+  - service: script.say
     data:
-      sonos_entity: media_player.sonos_wohnzimmer
+      entity: media_player.wohnzimmer
       volume: 0.3
       message: 'Die Spülmaschine ist fertig'
       delay: '00:00:05'

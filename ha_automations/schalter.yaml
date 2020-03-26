@@ -33,11 +33,16 @@
   alias: 'Schalter - Büro - Deckenlampe stop dimming up'
   initial_state: 'on'
   trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: buro_schalter
-      event: 3003
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: buro_schalter
+        event: 3003
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: buro_schalter
+        event: 3002
   action:
     - service: script.turn_off
       data:
@@ -60,11 +65,16 @@
   alias: 'Schalter - Büro - Deckenlampe stop dimming down'
   initial_state: 'on'
   trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: buro_schalter
-      event: 4003
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: buro_schalter
+        event: 4003
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: buro_schalter
+        event: 3002
   action:
     - service: script.turn_off
       data:
@@ -115,11 +125,16 @@
   alias: 'Schalter - Büro - Schreibtischlampe stop dimming up'
   initial_state: 'on'
   trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: buro_schalter
-      event: 1003
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: buro_schalter
+        event: 1003
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: buro_schalter
+        event: 1002
   action:
     - service: script.turn_off
       data:
@@ -142,11 +157,16 @@
   alias: 'Schalter - Büro - Schreibtischlampe stop dimming down'
   initial_state: 'on'
   trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: buro_schalter
-      event: 2003
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: buro_schalter
+        event: 2003
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: buro_schalter
+        event: 1002
   action:
     - service: script.turn_off
       data:

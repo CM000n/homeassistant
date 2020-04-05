@@ -13,7 +13,7 @@
     switches:
       simon_pc:
         friendly_name: "Simon-PC"
-        value_template: "{{ is_state('binary_sensor.simon_pc_power_status', 'on') }}"
+        value_template: "{{ is_state('binary_sensor.simonpc', 'on') }}"
         turn_on:
           service: script.simon_pc_aufwecken
         turn_off:

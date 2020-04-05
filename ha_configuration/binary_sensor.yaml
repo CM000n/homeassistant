@@ -15,6 +15,10 @@
         friendly_name: "Server"
         value_template: >-
           {{ is_state('device_tracker.openmediavault', 'home') }}
+      simonpc:
+        friendly_name: "Simon-PC"
+        value_template: >-
+          {{ is_state('device_tracker.simonpc', 'home') }}
       philipstv:
         friendly_name: "Philips-TV"
         value_template: >-

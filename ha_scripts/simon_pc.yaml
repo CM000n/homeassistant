@@ -1,0 +1,18 @@
+
+simon_pc_aufwecken:
+  # To enable see https://www.home-assistant.io/components/wake_on_lan/
+  alias: "Simon PC - Aufwecken"
+  sequence:
+    - service: wake_on_lan.send_magic_packet
+      data:
+        mac: "74-D4-35-B0-E5-F7"
+        broadcast_address: 192.168.178.255
+
+
+simon_pc_herunterfahren:
+  alias: "Simon PC - Herunterfahren"
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "iotlink/workgroup/simon-pc/commands/shutdown"
+        payload: ""

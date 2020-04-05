@@ -9,12 +9,17 @@
 
 #https://home-assistant.io/components/switch.wake_on_lan/
 
-  - platform: wake_on_lan
-    name: "Simon-PC"
-    mac: "74:d4:35:b0:e5:f7"
-    host: 192.168.178.5
-    turn_off:
-      service: script.simon_pc_herunterfahren
+  - platform: template
+    switches:
+      simon_pc:
+        friendly_name: "Simon-PC"
+        value_template: "{{ is_state('binary_sensor.simon_pc_power_status', 'on') }}"
+        turn_on:
+          service: script.simon_pc_aufwecken
+        turn_off:
+          service: script.simon_pc_herunterfahren
+
+
 
 ####################################################
 #                                                  #

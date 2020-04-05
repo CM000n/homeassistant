@@ -1,8 +1,0 @@
-
-simon_pc_herunterfahren:
-  alias: "Simon PC - Herunterfahren"
-  sequence:
-    - service: mqtt.publish
-      data:
-        topic: "iotlink/workgroup/simon-pc/commands/shutdown"
-        payload: ""

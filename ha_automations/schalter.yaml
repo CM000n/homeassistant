@@ -189,6 +189,30 @@
         entity_id: input_select.buero_schreibtischlampe_lichtstimmung
 
 
+- id: 'a_sw_3_1'
+  alias: 'Schalter - Büro - PC Anschalten'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: buro_schalter
+      event: 5002
+  action:
+    - service: script.simon_pc_aufwecken
+- id: 'a_sw_3_2'
+  alias: 'Schalter - Büro - PC Herunterfahren'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: buro_schalter
+      event: 6002
+  action:
+    - service: script.simon_pc_herunterfahren
+
+
 ########################################################
 #                                                       #
 #            END OF CONFIGURATION FILE                  #

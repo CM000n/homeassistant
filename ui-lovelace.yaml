@@ -1,7 +1,13 @@
 # Custom Header
 custom_header:
   compact_mode: true
-  menu_hide: true
+  menu_hide: false
+  exceptions:
+    - conditions:
+        user_agent: Mobile
+      config:
+        menu_hide: true
+  disable_sidebar: false
   options_hide: true
   voice_hide: true
   chevrons: false

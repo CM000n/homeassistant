@@ -15,40 +15,74 @@ cards:
             tap_action:
               action: more-info
               entity: binary_sensor.philipstv
-          - entity: media_player.chromecast
+          - card: media-control
             tap_action:
               action: more-info
               entity: media_player.chromecast
-          - entity: media_player.wohnzimmer
-            offStates:
-              - "paused"
+            noPadding: true
+            wider: true
+            cardOptions:
+              entity: media_player.chromecast
+            cardStyle: |
+              ha-card {
+                height:100%;
+              }
+              .ratio {
+                padding-bottom: 70%!important;
+              }
+          - card: media-control
             tap_action:
               action: more-info
               entity: media_player.wohnzimmer
-          - entity: switch.steckdose_wohnzimmer_lowboard
-            tap_action:
-              action: more-info
-              entity: switch.steckdose_wohnzimmer_lowboard
+            noPadding: true
+            wider: true
+            cardOptions:
+              entity: media_player.wohnzimmer
+            cardStyle: |
+              ha-card {
+                height:100%;
+              }
+              .ratio {
+                padding-bottom: 70%!important;
+              }
           - entity: sensor.status_spuelmaschine
             tap_action:
               action: more-info
               entity: sensor.status_spuelmaschine
       - title: Schlafzimmer / Ankleide
         entities:
-          - entity: media_player.schlafzimmer
-            offStates:
-              - "paused"
+          - card: media-control
             tap_action:
               action: more-info
               entity: media_player.schlafzimmer
+            noPadding: true
+            wider: true
+            cardOptions:
+              entity: media_player.schlafzimmer
+            cardStyle: |
+              ha-card {
+                height:100%;
+              }
+              .ratio {
+                padding-bottom: 70%!important;
+              }
       - title: Badezimmer
         entities:
-          - entity: media_player.bad
-            offStates:
-              - "paused"
+          - card: media-control
             tap_action:
               action: more-info
               entity: media_player.bad
+            noPadding: true
+            wider: true
+            cardOptions:
+              entity: media_player.bad
+            cardStyle: |
+              ha-card {
+                height:100%;
+              }
+              .ratio {
+                padding-bottom: 70%!important;
+              }
       - title: Büro
         entities:
           - entity: binary_sensor.openmediavault
@@ -63,12 +97,21 @@ cards:
             tap_action:
               action: more-info
               entity: switch.simon_pc
-          - entity: media_player.buro
-            offStates:
-              - "paused"
+          - card: media-control
             tap_action:
               action: more-info
               entity: media_player.buro
+            noPadding: true
+            wider: true
+            cardOptions:
+              entity: media_player.buro
+            cardStyle: |
+              ha-card {
+                height:100%;
+              }
+              .ratio {
+                padding-bottom: 70%!important;
+              }
       - title: Keller
         entities:
           - entity: sensor.status_waschmaschine

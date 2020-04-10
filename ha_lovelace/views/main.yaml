@@ -35,8 +35,17 @@ cards:
           - entity: input_boolean.switch_wohnzimmer_beleuchtung_automatik
           - entity: input_boolean.switch_wohnzimmer_beleuchtung_aus
           - entity: script.nachtlicht_an
-      - title: Benachrichtigungen
+      - title: Haushaltsgeräte
         entities: 
-          - entity: automation.benachrichtigung_spulmaschine_fertig
-          - entity: automation.benachrichtigung_waschmaschine_fertig
-          - entity: automation.benachrichtigung_trockner_fertig
+          - entity: sensor.status_spuelmaschine
+            tap_action:
+              action: more-info
+              entity: sensor.status_spuelmaschine
+          - entity: sensor.status_waschmaschine
+            tap_action:
+              action: more-info
+              entity: sensor.status_waschmaschine
+          - entity: sensor.status_trockner
+            tap_action:
+              action: more-info
+              entity: sensor.status_trockner

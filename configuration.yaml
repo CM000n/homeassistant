@@ -55,6 +55,8 @@ lovelace:
       type: module
     - url: /hacsfiles/thermostat-popup-card/thermostat-popup-card.js
       type: module
+    - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
+      type: module
 # https://home-assistant.io/components/frontend/
 frontend:
   themes: !include_dir_merge_named themes
@@ -80,7 +82,7 @@ tts:
    cache: true
    cache_dir: /tts
    time_memory: 300
-   base_url: http://192.168.178.3:8123
+   base_url: http://192.168.178.203:8123
    language: 'de'
 # https://home-assistant.io/components/python_script/
 python_script:
@@ -195,6 +197,16 @@ sonos:
       - 192.168.178.12
       - 192.168.178.13
       - 192.168.178.14
+
+####################################################
+#                                                  #
+#                       WOL                        #
+#                                                  #
+####################################################
+
+# https://www.home-assistant.io/integrations/wake_on_lan
+
+wake_on_lan:
 
 ####################################################
 #                                                  #

@@ -22,7 +22,7 @@
     service: notify.home_assistant_smtp
   - service: script.sonos_say
     data:
-      entity: media_player.wohnzimmer
+      sonos_entity: media_player.wohnzimmer
       volume: 0.3
       message: 'Die Waschmaschine ist fertig'
       delay: '00:00:05'
@@ -45,7 +45,7 @@
     service: notify.home_assistant_smtp
   - service: script.sonos_say
     data:
-      entity: media_player.wohnzimmer
+      sonos_entity: media_player.wohnzimmer
       volume: 0.3
       message: 'Der Trockner ist fertig'
       delay: '00:00:05'
@@ -68,7 +68,7 @@
     service: notify.home_assistant_smtp
   - service: script.sonos_say
     data:
-      entity: media_player.wohnzimmer
+      sonos_entity: media_player.wohnzimmer
       volume: 0.3
       message: 'Die Spülmaschine ist fertig'
       delay: '00:00:05'

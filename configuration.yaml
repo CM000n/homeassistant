@@ -104,6 +104,9 @@ mqtt:
 system_health:
 # https://www.home-assistant.io/components/person/
 person:
+# https://www.home-assistant.io/integrations/logger
+logger:
+  default: error
 
 ####################################################
 #                                                  #

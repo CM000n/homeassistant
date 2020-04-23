@@ -24,8 +24,8 @@
 
 #https://www.home-assistant.io/components/device_tracker.google_maps/
 
- - platform: google_maps
-   username: !secret notification_username
+# - platform: google_maps
+#   username: !secret notification_username
 
 ####################################################
 #                                                  #

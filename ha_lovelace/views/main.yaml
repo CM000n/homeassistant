@@ -5,17 +5,33 @@ panel: true
 
 cards:
   - type: "custom:homekit-card"
-    home: true
-    rules: |
-      {% if "Spült" in states('sensor.status_spuelmaschine') %} <li>Spülmaschine: Spült</li> {% endif %}
-      {% if "Trocknet" in states('sensor.status_spuelmaschine') %} <li>Spülmaschine: Trocknet</li> {% endif %}
-      {% if "Fertig" in states('sensor.status_spuelmaschine') %} <li>Spülmaschine: Fertig</li> {% endif %}
-      {% if "Trocknet" in states('sensor.status_trockner') %} <li>Tockner: Trocknet</li> {% endif %}
-      {% if "Fertig" in states('sensor.status_trockner') %} <li>Trockner: Fertig</li> {% endif %}
-      {% if "Wäscht" in states('sensor.status_waschmaschine') %} <li>Waschmaschine: Wäscht</li> {% endif %}
-      {% if "Fertig" in states('sensor.status_waschmaschine') %} <li>Waschmaschine: Fertig</li> {% endif %}
-      {% if states('sensor.current_lights_on') | float == 1 %} <li>{{states('sensor.current_lights_on')}} Licht an</li> {% endif %}
-      {% if states('sensor.current_lights_on') | float > 1 %} <li>{{states('sensor.current_lights_on')}} Lichter an</li> {% endif %}
+    style: |
+      :host {
+        --tile-background: rgba(255, 255, 255, 0.3);
+        --tile-border-radius: 12px;
+        --tile-width: 100px;
+        --tile-height: 100px;
+        --tile-on-background: rgba(255, 255, 255, 0.8);
+        
+        --tile-name-text-color: rgba(0, 0, 0, 0.4);
+        --tile-on-name-text-color: rgba(0, 0, 0, 1);
+        
+        --tile-state-text-color: rgba(0, 0, 0, 0.4);
+        --tile-on-state-text-color: rgba(0, 0, 0, 1);
+        
+        --tile-state-changed-text-color: rgb(134, 134, 134);
+        --tile-unavailable-state-text-color: rgba(255, 255, 255, 0.0);
+        
+        --tile-value-text-color: rgba(255, 0, 0, 1);
+        
+        
+        --tile-icon-color: rgba(0, 0, 0, 0.3);
+        --tile-on-icon-color: #24587d;
+        
+        
+        --tile-width-mobile: 90px;
+        --tile-height-mobile: 90px;
+      }
     title: "Zu Hause"
     useBrightness: true
     useTemperature: true

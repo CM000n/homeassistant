@@ -36,7 +36,6 @@ lovelace:
       , {'url':'/hacsfiles/lovelace-card-mod/card-mod.js',                      'type':'module'}
       , {'url':'/hacsfiles/lovelace-card-preloader/lovelace-card-preloader.js', 'type':'module'}
       , {'url':'/hacsfiles/lovelace-layout-card/layout-card.js',                'type':'module'}
-      , {'url':'/hacsfiles/lovelace-slider-entity-row/slider-entity-row.js',    'type':'module'}
       , {'url':'/hacsfiles/mini-graph-card/mini-graph-card-bundle.js',          'type':'module'}
       , {'url':'/hacsfiles/mini-media-player/mini-media-player-bundle.js',      'type':'module'}
       , {'url':'/hacsfiles/stack-in-card/stack-in-card.js',                     'type':'module'}
@@ -53,6 +52,7 @@ lovelace:
       , {'url':'/hacsfiles/Homekit-panel-card/homekit-panel-card.js',           'type':'module'}
       , {'url':'/hacsfiles/light-popup-card/light-popup-card.js',               'type':'module'}
       , {'url':'/hacsfiles/thermostat-popup-card/thermostat-popup-card.js',     'type':'module'}
+      , {'url':'/hacsfiles/sidebar-card/sidebar-card.js',                       'type':'module'}
 
       , {'url':'/hacsfiles/mod/hass-bha-icons.js?v=f015ee3',                    'type':'js'}
       , {'url':'/hacsfiles/mod/light-slider-card.js?v=3.2.3',                   'type':'js'}

@@ -132,6 +132,7 @@
 
   - platform: dnsip
 
+
 ####################################################
 #                                                  #
 #                    Attributes                    #
@@ -204,8 +205,8 @@
         value_template: '{{ state_attr("switch.steckdose_wohnzimmer_lowboard", "current_power_w") }}'
         unit_of_measurement: 'W'
         friendly_name: 'Stromverbrauch Wohnzimmer Lowboard'
-      stromverbrauch_wohnzimmer_ecke:
-        value_template: '{{ state_attr("switch.steckdose_wohnzimmer_ecke", "current_power_w") }}'
+      stromverbrauch_ankleide:
+        value_template: '{{ state_attr("switch.steckdose_ankleide", "current_power_w") }}'
         unit_of_measurement: 'W'
         friendly_name: 'Stromverbrauch Wohnzimmer Ecke'
       gesamtverbrauch_spuehlmaschine:
@@ -224,8 +225,8 @@
         value_template: '{{ state_attr("switch.steckdose_wohnzimmer_lowboard", "total_consumption") }}'
         unit_of_measurement: 'kWh'
         friendly_name: 'Gesamtvebrauch Wohnzimmer Lowboard'
-      gesamtverbrauch_wohnzimmer_ecke:
-        value_template: '{{ state_attr("switch.steckdose_wohnzimmer_ecke", "total_consumption") }}'
+      gesamtverbrauch_ankleide:
+        value_template: '{{ state_attr("switch.steckdose_ankleide", "total_consumption") }}'
         unit_of_measurement: 'kWh'
         friendly_name: 'Gesamtvebrauch Wohnzimmer Ecke'
       temperatur_wohness:
@@ -240,8 +241,8 @@
         value_template: '{{ state_attr("switch.steckdose_wohnzimmer_lowboard", "temperature") }}'
         unit_of_measurement: '°C'
         friendly_name: 'Temperatur Wohnzimmer Lowboard'
-      temperatur_wohnzimmer_ecke:
-        value_template: '{{ state_attr("switch.steckdose_wohnzimmer_ecke", "temperature") }}'
+      temperatur_ankleide:
+        value_template: '{{ state_attr("switch.steckdose_ankleide", "temperature") }}'
         unit_of_measurement: '°C'
         friendly_name: 'Temperatur Wohnzimmer Ecke'
       temperatur_climate_bad:

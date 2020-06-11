@@ -24,6 +24,49 @@ anwesenheit:
 #                    LICHTER                       #
 ####################################################
 
+lichter_wohnzimmer:
+  - light.wohnzimmer_deckenlampe
+  - light.wohnzimmer_lightstrip
+  - light.wohnzimmer_stehlampe_rechts
+  - light.stehlampe_wohnzimmer_links
+lichter_kueche:
+  - light.kuche_esstisch
+  - light.kuche_herd
+lichter_schlafzimmer:
+  - light.schlafzimmer_deckenlampe
+  - light.schlafzimmer_nachttisch_lisa
+  - light.schlafzimmer_nachttisch_simon
+lichter_bad:
+  - light.shelly_deckenlampe_bad
+  - light.shelly_badspiegel
+lichter_buero:
+  - light.buro_deckenlampe
+  - light.buro_schreibtisch
+lichter_ankleide:
+  - light.ankleide_deckenlampe
+  - light.ankleide_nahtisch_links
+  - light.ankleide_nahtisch_rechts
+  - light.ankleide_nahtisch_wand
+  - light.ankleide_schreibtisch
+lichter_flur:
+  - light.deckenlampen_flur
+lichter_treppenhaus:
+  - light.wandlampen_treppenhaus
+
+####################################################
+#                 MEDIA PLAYER                     #
+####################################################
+
+media_player_wohnzimmer:
+  - media_player.chromecast
+  - media_player.wohnzimmer
+media_player_schlafzimmer:
+  - media_player.schlafzimmer
+media_player_bad:
+  - media_player.bad
+media_player_buero:
+  - media_player.buro
+
 
 ####################################################
 #                Autofarbtemperatur                #
@@ -34,15 +77,6 @@ automatische_farbtemparatur:
   - switch.circadian_lighting_autofarbtemperatur_deckenlampe_schlafzimmer
   - switch.circadian_lighting_autofarbtemperatur_wohnzimmer
   - switch.circadian_lighting_autofarbtemperatur_deckenlampen_flur
-
-####################################################
-#                   FLOORPLAN                      #
-####################################################
-
-#  floorplan:
-#    name: Gebäudeplan
-#    entities:
-#      - binary_sensor.floorplan
 
 ####################################################
 #                                                  #

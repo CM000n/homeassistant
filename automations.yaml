@@ -1,0 +1,207 @@
+- id: '1589361820017'
+  alias: Balkonbewässerung - Einschalten
+  description: Diese Automatisierung schaltet jeden morgen die Balkonbewässerung an
+    und wieder aus.
+  trigger:
+  - at: '10:00:00'
+    platform: time
+  condition:
+  - condition: state
+    entity_id: binary_sensor.wasserstand
+    state: 'off'
+  action:
+  - data: {}
+    entity_id: switch.wasserpumpe
+    service: switch.turn_on
+  - delay: 00:08:00
+  - data: {}
+    entity_id: switch.wasserpumpe
+    service: switch.turn_off
+- id: '1590424543641'
+  alias: Balkonbewässerung - Notaus
+  description: Diese Automatisierung schaltet die Balkonbewässerung aus, sobald der
+    Wasserstand zu gering wird.
+  trigger:
+  - entity_id: binary_sensor.wasserstand
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.wasserpumpe
+    service: switch.turn_off
+  - data:
+      message: Der Wasserstand im Behälter für die Balkonbewässerung ist niedrig.
+        Er sollte aufgefüllt werden!
+      title: Wasserstand Balkonbewässerung niedrig
+    service: notify.home_assistant_smtp
+- id: '1590425989636'
+  alias: Shellies - Announce
+  description: ''
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition: []
+  action:
+  - data:
+      payload: announce
+      topic: shellies/command
+    service: mqtt.publish
+- id: '1590426149382'
+  alias: Shellies - Discovery
+  description: ''
+  trigger:
+  - platform: mqtt
+    topic: shellies/announce
+  condition: []
+  action:
+  - data:
+      fw_ver: '{{ trigger.payload_json.fw_ver }}'
+      id: '{{ trigger.payload_json.id }}'
+      mac: '{{ trigger.payload_json.mac }}'
+    service: python_script.shellies_discovery
+- id: '1590475178551'
+  alias: Benachrichtigung - Waschmaschine fertig
+  description: Diese Automatisierung benachrichtig über die Fertigstellung des Waschvorgangs.
+  trigger:
+  - entity_id: sensor.status_waschmaschine
+    from: Wäscht
+    platform: state
+  condition:
+  - after: 08:00:00
+    before: '22:30:00'
+    condition: time
+  action:
+  - data:
+      message: Die Waschmaschine hat den Waschvorgang beendet und kann ausgeräumt
+        werden
+      title: Waschmaschine fertig
+    service: notify.home_assistant_smtp
+  - data:
+      delay: 00:00:05
+      message: Die Waschmaschine ist fertig
+      sonos_entity: media_player.wohnzimmer
+      volume: 0.3
+    service: script.sonos_say
+- id: '1590475368200'
+  alias: Benachrichtigung - Trockner fertig
+  description: Diese Automatisierung benachrichtigt darüber, wenn der Trockner den
+    Trockenvorgang beendet hat.
+  trigger:
+  - entity_id: sensor.status_trockner
+    from: Trocknet
+    platform: state
+  condition:
+  - after: 08:00:00
+    before: '22:30:00'
+    condition: time
+  action:
+  - data:
+      message: Der Trockner hat den Trockenvorgang beendet und kann ausgeräumt werden
+      title: Trockner fertig
+    service: notify.home_assistant_smtp
+  - data:
+      delay: 00:00:05
+      message: Der Trockner ist fertig
+      sonos_entity: media_player.wohnzimmer
+      volume: 0.3
+    service: script.sonos_say
+- id: '1590475588511'
+  alias: Benachrichtigung - Spülmaschine fertig
+  description: Diese Automatisierung benachrichtigt darüber, wenn die Spülmaschine
+    den Spülvorgang beendet hat.
+  trigger:
+  - entity_id: sensor.status_spuelmaschine
+    platform: state
+    to: 'off'
+  condition:
+  - after: 08:00:00
+    before: '22:30:00'
+    condition: time
+  action:
+  - data:
+      message: Die Spülmaschine hat den Spülvorgang beendet und kann ausgeräumt werden
+      title: Spülmaschine fertig
+    service: notify.home_assistant_smtp
+  - data:
+      delay: 00:00:05
+      message: Die Spülmaschine ist fertig
+      sonos_entity: media_player.wohnzimmer
+      volume: 0.3
+    service: script.sonos_say
+- id: '1590475745496'
+  alias: Benachrichtigung - Geburtstag
+  description: Diese Automatisierung benachrichtigt zweimal am Tag darüber, wenn jemand
+    Geburtstag hat.
+  trigger:
+  - at: '12:00:00'
+    platform: time
+  - at: '18:00:00'
+    platform: time
+  condition:
+  - condition: state
+    entity_id: calendar.contacts
+    state: 'on'
+  action:
+  - data_template:
+      message: '''{{ state_attr(''calendar.contacts'', ''message'') }}''
+
+        '
+      title: Geburtstagserinnerung
+    service: notify.home_assistant_smtp
+- id: '1590477492470'
+  alias: Heizung - Bad
+  description: Diese Automatisierung steuert mit Hilfe eine Python Scripts den Heizungsregler
+    im Badezimmer.
+  trigger:
+  - hours: '*'
+    minutes: '1'
+    platform: time_pattern
+  - entity_id: binary_sensor.presence
+    platform: state
+  - entity_id: binary_sensor.heizung_bad_window_open
+    platform: state
+  - entity_id: binary_sensor.all_climates_on
+    platform: state
+  condition: []
+  action:
+  - data:
+      entity_id: climate.heizung_bad
+      heating_from_hour: 8
+      heating_to_hour: 22
+      hvac_active: heat
+      preset_away: eco
+      sensor_presence: binary_sensor.presence
+      sensors_off:
+      - binary_sensor.all_climates_on
+      windows:
+      - binary_sensor.heizung_bad_window_open
+    service: python_script.update_climate
+- id: '1590477639445'
+  alias: Heizung - Büro
+  description: Diese Automatisierung steuert mit Hilfe eine Python Scripts den Heizungsregler
+    im Büro.
+  trigger:
+  - hours: '*'
+    minutes: '1'
+    platform: time_pattern
+  - entity_id: binary_sensor.presence
+    platform: state
+  - entity_id: binary_sensor.heizung_buro_window_open
+    platform: state
+  - entity_id: binary_sensor.all_climates_on
+    platform: state
+  condition: []
+  action:
+  - data:
+      entity_id: climate.heizung_buro
+      heating_from_hour: 8
+      heating_to_hour: 22
+      hvac_active: heat
+      preset_away: eco
+      sensor_presence: binary_sensor.presence
+      sensors_off:
+      - binary_sensor.all_climates_on
+      windows:
+      - binary_sensor.heizung_buro_window_open
+    service: python_script.update_climate

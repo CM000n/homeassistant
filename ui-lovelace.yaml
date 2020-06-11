@@ -1,28 +1,28 @@
 # Custom Header
-custom_header:
-  kiosk_mode: false
-  exceptions:
-    - conditions:
-        user_agent: Mobile
-      config:
-        kiosk_mode: false
-        menu_hide: true
-  compact_mode: true
-  menu_hide: true
-  disable_sidebar: false
-  options_hide: true
-  voice_hide: true
-  chevrons: false
-  notify_indicator_color: "#e80000"
-  swipe: true
-  swipe_animate: swipe
-  swipe_wrap: false
-  background: var(--primary-background-color)
-  active_tab_color: var(--primary-text-color)
-  inactive_tab_color: var(--primary-text-color)
-  all_tabs_color: var(--primary-text-color)
-  tab_indicator_color: var(--primary-text-color)
-  default_tab: 0
+#custom_header:
+#  kiosk_mode: false
+#  exceptions:
+#    - conditions:
+#        user_agent: Mobile
+#      config:
+#        kiosk_mode: false
+#        menu_hide: true
+#  compact_mode: true
+#  menu_hide: true
+#  disable_sidebar: false
+#  options_hide: true
+#  voice_hide: true
+#  chevrons: false
+#  notify_indicator_color: "#e80000"
+#  swipe: true
+#  swipe_animate: swipe
+#  swipe_wrap: false
+#  background: var(--primary-background-color)
+#  active_tab_color: var(--primary-text-color)
+#  inactive_tab_color: var(--primary-text-color)
+#  all_tabs_color: var(--primary-text-color)
+#  tab_indicator_color: var(--primary-text-color)
+#  default_tab: 0
 
 #sidebar:
 #  digitalClock: true
@@ -96,9 +96,9 @@ custom_header:
 #      name: "Klima"
 
 # Views
-title: Home
-views:
-  - !include ha_lovelace/views/main.yaml
-  - !include ha_lovelace/views/lights.yaml
-  - !include ha_lovelace/views/devices.yaml
-  - !include ha_lovelace/views/climate.yaml
+#title: Home
+#views:
+#  - !include ha_lovelace/views/main.yaml
+#  - !include ha_lovelace/views/lights.yaml
+#  - !include ha_lovelace/views/devices.yaml
+#  - !include ha_lovelace/views/climate.yaml

@@ -49,7 +49,7 @@
 
   - platform: circadian_lighting
     name: Autofarbtemperatur Deckenlampen Flur
-    lights_ct:
+    lights_rgb:
       - light.flur_deckenlampe_1
       - light.flur_deckenlampe_2
     disable_brightness_adjust: true

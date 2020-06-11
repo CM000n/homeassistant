@@ -14,7 +14,7 @@
   action:
     service: frontend.set_theme
     data:
-      name: noctis-grey
+      name: dwains-theme-dark
 
 ########################################################
 #                                                       #

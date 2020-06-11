@@ -7,6 +7,7 @@
 # https://home-assistant.io/docs/ha_configuration/basic/
 
 homeassistant:
+  packages: !include_dir_named packages/
   name: Home
   latitude: !secret latitude
   longitude: !secret longitude
@@ -23,29 +24,7 @@ homeassistant:
 #                                                  #
 ####################################################
 
-# https://www.home-assistant.io/lovelace/yaml-mode/
-lovelace:
-  mode: yaml
-  resources:
-    [ 
-      {'url':'/hacsfiles/custom-header/custom-header.js',                     'type':'module'}
-      , {'url':'/hacsfiles/lovelace-card-mod/card-mod.js',                      'type':'module'}
-      , {'url':'/hacsfiles/mini-graph-card/mini-graph-card-bundle.js',          'type':'module'}
-      , {'url':'/hacsfiles/mini-media-player/mini-media-player-bundle.js',      'type':'module'}
-      , {'url':'/hacsfiles/lovelace-swipe-navigation/swipe-navigation.js',      'type':'js'}
-      , {'url':'/local/font.css',                                               'type':'css'}
 
-      , {'url':'/local/popup-background.js',                                    'type':'js'}
-      , {'url':'/hacsfiles/thermostat-card/thermostat-card.js',                 'type':'module'}
-      , {'url':'/hacsfiles/lovelace-card-tools/card-tools.js',                  'type':'js'}
-      , {'url':'/hacsfiles/Homekit-panel-card/homekit-panel-card.js',           'type':'module'}
-      , {'url':'/hacsfiles/light-popup-card/light-popup-card.js',               'type':'module'}
-      , {'url':'/hacsfiles/thermostat-popup-card/thermostat-popup-card.js',     'type':'module'}
-      , {'url':'/hacsfiles/sidebar-card/sidebar-card.js',                       'type':'module'}
-    ]
-# https://home-assistant.io/components/frontend/
-frontend:
-  themes: !include_dir_merge_named themes
 # https://home-assistant.io/components/config/
 config:
 # https://home-assistant.io/components/sun/
@@ -92,7 +71,10 @@ system_health:
 person:
 # https://www.home-assistant.io/integrations/logger
 logger:
-  default: error
+  default: info
+  logs:
+    pydeconz: debug
+    homeassistant.components.deconz: debug
 
 ####################################################
 #                                                  #
@@ -103,7 +85,8 @@ logger:
 # https://home-assistant.io/docs/ha_configuration/splitting_ha_configuration/
 
 group: !include ha_configuration/groups.yaml
-automation: !include_dir_merge_list ha_automations/
+#automation: !include_dir_merge_list ha_automations/
+automation: !include automations.yaml
 script: !include_dir_merge_named ha_scripts/
 device_tracker: !include ha_configuration/device_tracker.yaml
 notify: !include ha_configuration/notification.yaml
@@ -152,11 +135,11 @@ panel_iframe:
 
 # https://github.com/hthiery/homeassistant
 
-fritzbox:
-  devices:
-    - host: 192.168.178.1
-      username: !secret fritzbox_username
-      password: !secret fritzbox_password
+#fritzbox:
+#  devices:
+#    - host: 192.168.178.1
+#      username: !secret fritzbox_username
+#      password: !secret fritzbox_password
 
 ####################################################
 #                                                  #
@@ -294,8 +277,9 @@ mobile_app:
 ####################################################
 
 # https://github.com/thomasloven/hass-browser_mod
+# already used in dwanins theme
 
-browser_mod:
+#browser_mod:
 
 ####################################################
 #                                                  #
@@ -310,6 +294,19 @@ tankerkoenig:
   radius: 6
   fuel_types:
     - "e10"
+
+####################################################
+#                                                  #
+#                     ROBOROCK                     #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/integrations/tankerkoenig/
+
+vacuum:
+  - platform: xiaomi_miio
+    host: 192.168.178.100
+    token: !secret roborock_token
 
 ####################################################
 #                                                  #

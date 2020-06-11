@@ -163,7 +163,7 @@ sensor.stromverbrauch_waschmaschine:
   icon: mdi:flash
 sensor.stromverbrauch_kueche_mehrfachstecker:
   icon: mdi:flash
-sensor.stromverbrauch_wohnzimmer_ecke:
+sensor.stromverbrauch_ankleide:
   icon: mdi:flash
 sensor.stromverbrauch_wohnzimmer_lowboard:
   icon: mdi:flash
@@ -175,7 +175,7 @@ sensor.gesamtverbrauch_waschmaschine:
   icon: mdi:sigma
 sensor.gesamtverbrauch_kueche_mehrfachstecker:
   icon: mdi:sigma
-sensor.gesamtverbrauch_wohnzimmer_ecke:
+sensor.gesamtverbrauch_ankleide:
   icon: mdi:sigma
 sensor.gesamtverbrauch_wohnzimmer_lowboard:
   icon: mdi:sigma
@@ -196,8 +196,8 @@ sensor.temperatur_wohnzimmer_lowboard:
   friendly_name: Wohnzimmer
   device_class: temperature
   icon: mdi:thermometer
-sensor.temperatur_wohnzimmer_ecke:
-  friendly_name: Wohnzimmer Ecke
+sensor.temperatur_ankleide:
+  friendly_name: Ankleide
   device_class: temperature
   icon: mdi:thermometer
 sensor.temperatur_wohnzimmer_avg:
@@ -318,7 +318,7 @@ switch.steckdose_waschmaschine:
   icon: mdi:power-socket-eu
 switch.steckdose_kuche_mehrfachstecker:
   icon: mdi:power-socket-eu
-switch.steckdose_wohnzimmer_ecke:
+switch.steckdose_ankleide:
   icon: mdi:power-socket-eu
 switch.steckdose_wohnzimmer_lowboard:
   icon: mdi:power-socket-eu
@@ -372,13 +372,13 @@ climate.heizung_buro:
 #########################################################
 
 automation.benachrichtigung_spulmaschine_fertig:
-  friendly_name: Spülmaschine
+  friendly_name: Benachrichtigung - Spülmaschine
   icon: mdi:bell-ring
 automation.benachrichtigung_waschmaschine_fertig:
-  friendly_name: Waschmaschine
+  friendly_name: Benachrichtigung - Waschmaschine
   icon: mdi:bell-ring
 automation.benachrichtigung_trockner_fertig:
-  friendly_name: Trockner
+  friendly_name: Benachrichtigung - Trockner
   icon: mdi:bell-ring
 
 #########################################################

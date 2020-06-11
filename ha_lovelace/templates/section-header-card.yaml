@@ -1,0 +1,70 @@
+
+---
+default:
+  #required
+  - name: ''
+  #optional
+  - icon: 'mdi:drag-horizontal-variant'
+  - tap_action: 'none'
+  - navigation_path: 'none'
+
+card:
+  type: custom:vertical-stack-in-card
+  style: |
+    ha-card {
+      box-shadow: none;
+      background-color: transparent;
+      margin: 0px 3px;
+    }
+  cards:
+    - type: markdown
+      style: |
+        ha-card {
+          margin: 0px;
+          box-shadow: none;
+          background-color: transparent;
+        }
+        h1 {
+          color: white;
+          font-size: 22px;
+          font-weight: normal;
+        }
+      content: >
+        # [[name]]
+    - type: markdown
+      style: |
+        ha-card {
+          z-index: 0;
+          position: absolute;
+          top: 0;
+          right: 0;
+          margin: 0px;
+          box-shadow: none;
+          background-color: transparent;
+          margin: 0px 3px;
+        }
+        h1 {
+          color: white;
+          font-size: 22px;
+          font-weight: normal;
+        }
+      content: >
+        # <ha-icon icon="[[icon]]"/>
+    - type: picture
+      style: |
+        ha-card {
+          z-index: 1;
+          position: absolute;
+          top: 0;
+          right: 0;
+          margin: 0px;
+          box-shadow: none;
+          background-color: transparent;
+          margin: 0px 3px;
+          width: 60px;
+          height: 100%;
+        }
+      image: '/local/images/tiles/transparent.png'
+      tap_action:
+        action: '[[tap_action]]'
+        navigation_path: '[[navigation_path]]'

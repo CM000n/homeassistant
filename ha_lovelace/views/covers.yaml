@@ -1,0 +1,45 @@
+    title: Covers
+    icon: 'mdi:blinds'
+    path: covers
+    panel: true
+    cards:
+      - type: custom:homekit-card
+        style: !include ../styles/homekit-card.yaml
+        enableColumns: true
+        rows:
+          - row: 1
+            columns:
+              - column: 1
+                entities:
+                  - title: Downstairs
+                    entities:
+                      - card: custom:decluttering-card
+                        noPadding: true
+                        cardOptions:
+                          template: cover-card
+                          variables:
+                            - entity: cover.master_bedroom
+                      - card: custom:decluttering-card
+                        noPadding: true
+                        cardOptions:
+                          template: cover-card
+                          variables:
+                            - entity: cover.hobby_room
+                      - card: custom:decluttering-card
+                        noPadding: true
+                        cardOptions:
+                          template: cover-card
+                          variables:
+                            - entity: cover.guest_bedroom
+                      - card: custom:decluttering-card
+                        noPadding: true
+                        cardOptions:
+                          template: cover-card
+                          variables:
+                            - entity: cover.dressing_room
+                      - card: custom:decluttering-card
+                        noPadding: true
+                        cardOptions:
+                          template: cover-card
+                          variables:
+                            - entity: cover.hallway

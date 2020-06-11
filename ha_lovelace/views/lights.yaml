@@ -1,103 +1,196 @@
-title: Licht
-path:  lights
+---
+title: Lights
+icon: 'mdi:lightbulb'
+path: lights
 panel: true
-
+popup_cards:
+  light.kitchen_wall:
+    title: ""
+    style:
+      position: fixed
+      z-index: 999
+      top: 0
+      left: 0
+      height: 100%
+      width: 100%
+      display: block
+      align-items: center
+      justify-content: center
+      background: rgba(0, 0, 0, 0.0)
+      flex-direction: column
+      margin: 0
+      "--iron-icon-fill-color": "#FFF"
+    card:
+      type: custom:light-popup-card
+      entity: light.kitchen_wall
+      brightnessWidth: 150px
+      brightnessHeight: 400px
+      switchWidth: 150px
+      switchHeight: 400px
+      sliderColoredByLight: true
 cards:
-  - type: "custom:homekit-card"
-    useBrightness: true
-    useTemperature: true
-    breakOnMobile: true
-    statePositionTop: true
-    tileHoldAnimation: true
-    entities:
-      - title: Wohn- / Esszimmer
-        popup:
-          type: custom:light-popup-card
-          scenesInARow: 2
-          brightnessWidth: 130px
-          brightnessHeight: 350px
-          switchWidth: 110px
-          switchHeight: 300px
-        entities: 
-          - entity: light.wohnzimmer_deckenlampe
-            popupExtend:
-              actions:
-                - service: homeassistant.turn_on
-                  service_data:
-                    entity_id: input_boolean.switch_wohnzimmer_beleuchtung_gemuetlich
-                  color: "#FDCA64"
-                  name: Gemütlich
-                - service: homeassistant.turn_on
-                  service_data:
-                    entity_id: input_boolean.switch_wohnzimmer_beleuchtung_hell
-                  color: "#BBEEF3"
-                  name: Hell
-                - service: homeassistant.turn_on
-                  service_data:
-                    entity_id: input_boolean.switch_wohnzimmer_beleuchtung_automatik
-                  color: "#FFE7C0"
-                  name: Automatik
-          - entity: light.wohnzimmer_lightstrip
-          - entity: light.stehlampe_wohnzimmer_links
-          - entity: light.wohnzimmer_stehlampe_rechts
-          - entity: light.kuche_herd
-          - entity: light.kuche_esstisch
-      - title: Schlafzimmer
-        popup:
-          type: custom:light-popup-card
-          scenesInARow: 2
-          brightnessWidth: 130px
-          brightnessHeight: 350px
-          switchWidth: 110px
-          switchHeight: 300px
-        entities:
-          - entity: light.schlafzimmer_deckenlampe
-          - entity: light.schlafzimmer_nachttisch_lisa
-          - entity: light.schlafzimmer_nachttisch_simon
-      - title: Ankleide
-        popup:
-          type: custom:light-popup-card
-          scenesInARow: 2
-          brightnessWidth: 130px
-          brightnessHeight: 350px
-          switchWidth: 110px
-          switchHeight: 300px
-        entities:
-          - entity: light.ankleide_deckenlampe
-          - entity: light.ankleide_schreibtisch
-          - entity: light.ankleide_nahtisch_wand
-          - entity: light.ankleide_nahtisch_links
-          - entity: light.ankleide_nahtisch_rechts
-      - title: Badezimmer
-        popup:
-          type: custom:light-popup-card
-          scenesInARow: 2
-          brightnessWidth: 130px
-          brightnessHeight: 350px
-          switchWidth: 110px
-          switchHeight: 300px
-        entities:
-          - entity: light.shelly_deckenlampe_bad
-          - entity: light.shelly_badspiegel
-      - title: Büro
-        popup:
-          type: custom:light-popup-card
-          scenesInARow: 2
-          brightnessWidth: 130px
-          brightnessHeight: 350px
-          switchWidth: 110px
-          switchHeight: 300px
-        entities:
-          - entity: light.buro_deckenlampe
-          - entity: light.buro_schreibtisch
-      - title: Flur / Treppenhaus
-        popup:
-          type: custom:light-popup-card
-          scenesInARow: 2
-          brightnessWidth: 130px
-          brightnessHeight: 350px
-          switchWidth: 110px
-          switchHeight: 300px
-        entities:
-          - entity: light.deckenlampen_flur
-          - entity: light.wandlampen_treppenhaus
+  - type: custom:homekit-card
+    style: !include ../styles/homekit-card.yaml
+    enableColumns: true
+    rows:
+      - row: 1
+        columns:
+          - column: 1
+            entities:
+              - title: Wohnzimmer
+                entities: 
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardStyle: !include ../styles/graph-card.yaml
+                    cardOptions:
+                      template: light-card
+                      variables:
+                        - entity: light.wohnzimmer_deckenlampe
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardStyle: !include ../styles/graph-card.yaml
+                    cardOptions:
+                      template: light-card
+                      variables:
+                        - entity: light.wohnzimmer_lightstrip
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardStyle: !include ../styles/graph-card.yaml
+                    cardOptions:
+                      template: light-card
+                      variables:
+                        - entity: light.stehlampe_wohnzimmer_links
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardStyle: !include ../styles/graph-card.yaml
+                    cardOptions:
+                      template: light-card
+                      variables:
+                        - entity: light.wohnzimmer_stehlampe_rechts
+      - row: 2
+        columns:
+          - column: 1
+            entities:
+              - title: Küche
+                entities:
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: light-card
+                      variables:
+                        - entity: light.kuche_herd
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: light-card
+                      variables:
+                        - entity: light.kuche_esstisch
+      - row: 3
+        columns:
+          - column: 1
+            entities:
+              - title: Bad
+                entities:
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: light-card
+                      variables:
+                        - entity: light.shelly_deckenlampe_bad
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: light-card
+                      variables:
+                        - entity: light.shelly_badspiegel
+      - row: 4
+        columns:
+          - column: 1
+            entities:
+              - title: Büro
+                entities:
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: light-card
+                      variables:
+                        - entity: light.buro_deckenlampe
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: light-card
+                      variables:
+                        - entity: light.buro_schreibtisch
+      - row: 5
+        columns:
+          - column: 1
+            entities:
+              - title: Schlafzimmer
+                entities:
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: light-card
+                      variables:
+                        - entity: light.schlafzimmer_deckenlampe
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: light-card
+                      variables:
+                        - entity: light.schlafzimmer_nachttisch_simon
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: light-card
+                      variables:
+                        - entity: light.schlafzimmer_nachttisch_lisa
+      - row: 6
+        columns:
+          - column: 1
+            entities:
+              - title: Ankleide
+                entities:
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: light-card
+                      variables:
+                        - entity: light.ankleide_deckenlampe
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: light-card
+                      variables:
+                        - entity: light.ankleide_schreibtisch
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: light-card
+                      variables:
+                        - entity: light.ankleide_nahtisch_wand
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: light-card
+                      variables:
+                        - entity: light.ankleide_nahtisch_links
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: light-card
+                      variables:
+                        - entity: light.ankleide_nahtisch_rechts
+      - row: 7
+        columns:
+          - column: 1
+            entities:
+              - title: Treppenhaus
+                entities:
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: light-card
+                      variables:
+                        - entity: light.wandlampen_treppenhaus
+

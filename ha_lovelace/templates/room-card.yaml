@@ -1,0 +1,75 @@
+---
+default:
+  #required
+  - room_name: ''
+  - room_devices: ''
+  - navigation_path: ''
+  - background_image: ''
+  #optional
+
+card:
+  type: custom:vertical-stack-in-card
+  style: |
+    ha-card {
+      margin: 20px;
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+    }
+  cards:
+    - type: picture
+      image: '[[background_image]]'
+    - type: markdown
+      style: |
+        ha-card {
+          z-index: 0;
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          background-color: rgba(0, 0, 0, 0.3);
+          color: transparent;
+        }
+      content: >
+        Room
+    - type: markdown
+      style: |
+        ha-card {
+          z-index: 1;
+          position: absolute;
+          top: 40%;
+          left: 5%;
+          width: 100%;
+          background-color: transparent;
+          text-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+          color: white;
+        }
+        h1 {
+          font-size: 22px;
+          font-weight: normal;
+        }
+        h2 {
+          font-size: 16px;
+          font-weight: bold;
+        }
+      content: >
+        # [[room_name]]
+        
+        ## [[room_devices]] devices
+    - type: picture
+      image: '/local/images/tiles/transparent.png'
+      style: |
+        ha-card {
+          z-index: 3;
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          background-color: transparent;
+        }
+      tap_action:
+        action: navigate
+        navigation_path: '[[navigation_path]]'
+      hold_action:
+        action: navigate
+        navigation_path: '[[navigation_path]]'

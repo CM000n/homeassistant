@@ -1,0 +1,17 @@
+---
+default:
+  #required
+  - entity: ''
+
+card:
+  type: vertical-stack
+  cards:
+    - type: picture-entity
+      style: |
+        ha-card {
+          margin: 0px 12px;
+          box-shadow: none;
+        }
+      entity: '[[entity]]'
+      show_name: false
+      show_state: false

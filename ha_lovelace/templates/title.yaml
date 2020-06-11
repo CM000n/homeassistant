@@ -1,0 +1,14 @@
+card:
+  type: markdown
+  style: |
+    ha-card {
+      box-shadow: none;
+      background: rgba(0,0,0,0.0);
+      padding: 0px 0px;
+      font-family: SF Text;
+      font-size: 24px;
+      color: var(--markdown-text-color);
+      margin-top: 15px;
+      margin-bottom: -15px;
+    }
+  content: '[[content]]'

@@ -95,10 +95,20 @@
 #      navigation_path: "/lovelace/climate"
 #      name: "Klima"
 
-# Views
-#title: Home
-#views:
-#  - !include ha_lovelace/views/main.yaml
-#  - !include ha_lovelace/views/lights.yaml
-#  - !include ha_lovelace/views/devices.yaml
-#  - !include ha_lovelace/views/climate.yaml
+decluttering_templates: !include_dir_merge_named ha_lovelace/templates/
+
+#Views
+title: Home
+views:
+  - !include ha_lovelace/views/overview.yaml
+  - !include ha_lovelace/views/lights.yaml
+  - !include ha_lovelace/views/speakers.yaml
+  - !include ha_lovelace/views/media_players.yaml
+  - !include ha_lovelace/views/computers.yaml
+  - !include ha_lovelace/views/temperature_sensors.yaml
+#  - !include ha_lovelace/views/all_devices.yaml
+#  - !include ha_lovelace/views/cameras.yaml
+#  - !include ha_lovelace/views/control_rooms.yaml
+#  - !include ha_lovelace/views/control_rooms.yaml.nkp.yaml
+#  - !include ha_lovelace/views/covers.yaml
+#  - !include ha_lovelace/views/motion_sensors.yaml

@@ -1,0 +1,81 @@
+---
+default:
+  #required
+  - entity: ''
+  #optional
+  - show_last_changed: false
+  - tap_action: toggle
+  - hold_action: more-info
+
+card:
+  type: custom:button-card
+  size: '30%'
+  color: 'auto'
+  lock: 'false'
+  aspect_ratio: '1/1'
+  entity: '[[entity]]'
+  show_state: true
+  show_label: false
+  show_last_changed: '[[show_last_changed]]'
+  tap_action:
+    action: '[[tap_action]]'
+  hold_action:
+    action: '[[hold_action]]'
+  styles:
+    card:
+      - border-radius: var(--ha-card-border-radius)      
+      - box-shadow: var(--button-card-box-shadow)
+      - padding: 10px
+    label:
+      - font-size: 11px
+      - justify-self: start
+    grid:
+      - grid-template-areas: '"i" "n" "s" "l"'
+      - grid-template-columns: 1fr
+      - grid-template-rows: 1fr min-content min-content
+    img_cell:
+      - justify-content: start
+      - align-items: start
+    icon:
+      - width: 35%
+      - height: 50%
+    name:
+      - justify-self: start
+      - font-size: 14px
+      - font-weight: 400
+    state:
+      - justify-self: start
+      - text-transform: capitalize
+      - font-size: 14px
+      - font-weight: 400
+  state:
+    - value: "open"
+      styles:
+        card:
+          - --ha-card-background: var(--button-card-background-color-on)
+          - --ha-card-box-shadow: var(--button-card-box-shadow-on)
+        icon:
+          - color: var(--button-card-icon-color-on)
+        name:
+          - color: var(--button-card-name-color-on)
+        state:
+          - color: var(--button-card-state-color-on)
+        lock:
+          - color: var(--button-card-lock-color-on)
+        label:
+          - color: var(--button-card-label-color-on)
+    - operator: 'default'
+      styles:
+        card:
+          - --ha-card-background: var(--button-card-background-color-off)
+          - --ha-card-box-shadow: var(--button-card-box-shadow-off)
+        icon:
+          - color: var(--button-card-icon-color-off)
+        name:
+          - color: var(--button-card-name-color-off)
+        state:
+          - color: var(--button-card-state-color-off)
+        lock:
+          - color: var(--button-card-lock-color-off)
+        label:
+          - color: var(--button-card-label-color-off)

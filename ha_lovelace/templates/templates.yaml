@@ -1,0 +1,53 @@
+light-card:
+  !include light-card.yaml
+shortcut-card:
+  !include shortcut-card.yaml
+cover-card:
+  !include cover-card.yaml
+binary-sensor-card:
+  !include binary-sensor-card.yaml
+sensor-card:
+  !include sensor-card.yaml
+graph-card:
+  !include graph-card.yaml
+camera-card:
+  !include camera-card.yaml
+speaker-card:
+  !include speaker-card.yaml
+mediaplayer-card:
+  !include mediaplayer-card.yaml
+playstation-card:
+  !include playstation-card.yaml
+person-card:
+  !include person-card.yaml
+fan-card:
+  !include fan-card.yaml
+
+speaker-popup-card:
+  !include speaker-popup-card.yaml
+mediaplayer-popup-card:
+  !include mediaplayer-popup-card.yaml
+camera-popup-card:
+  !include camera-popup-card.yaml
+
+#WIP
+
+#REFACTOR
+television-card:
+  !include television-card.yaml
+light-dimmer-card:
+  !include light-dimmer-card.yaml
+playstation-card:
+  !include playstation-card.yaml
+title:
+  !include title.yaml
+button-card:
+  !include button-card.yaml
+
+#NEW UI
+room-card:
+  !include room-card.yaml
+section-header-card:
+  !include section-header-card.yaml
+device-shortcut-card:
+  !include device-shortcut-card.yaml

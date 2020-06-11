@@ -1,0 +1,76 @@
+---
+title: Speakers
+icon: 'mdi:speaker'
+path: speakers
+panel: true
+badges: []
+popup_cards:
+  media_player.wohnzimmer:
+    title: ""
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: speaker-popup-card
+      variables:
+        - entity: media_player.wohnzimmer
+  media_player.schlafzimmer:
+    title: ""
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: speaker-popup-card
+      variables:
+        - entity: media_player.schlafzimmer
+  media_player.bad:
+    title: ""
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: speaker-popup-card
+      variables:
+        - entity: media_player.bad
+  media_player.buro:
+    title: ""
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: speaker-popup-card
+      variables:
+        - entity: media_player.buro
+
+cards:
+  - type: custom:homekit-card
+    style: !include ../styles/homekit-card.yaml
+    enableColumns: true
+    rows:
+      - row: 1
+        columns:
+          - column: 1
+            tileOnRow: 4
+            entities:
+              - title: Sonos Lautsprecher
+                entities:
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: speaker-card
+                      variables:
+                        - entity: media_player.wohnzimmer
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: speaker-card
+                      variables:
+                        - entity: media_player.schlafzimmer
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: speaker-card
+                      variables:
+                        - entity: media_player.bad
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: speaker-card
+                      variables:
+                        - entity: media_player.buro

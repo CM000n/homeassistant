@@ -1,0 +1,114 @@
+---
+default:
+  #required
+  - entity: ''
+  #optional
+  - show_last_changed: false
+  - tap_action: toggle
+  - hold_action: more-info
+
+card:
+  type: custom:vertical-stack-in-card
+  style: |
+    ha-card {
+      background-color: transparent;
+    }
+  cards:
+    - type: 'custom:circle-sensor-card'
+      entity: sensor.battery_level
+      show_card: true
+      style: |
+        ha-card {
+          position: absolute;
+          width: 30%;
+          z-index: 2;
+          right: 0;
+          padding: 10px 10px 0px 0px;
+          box-shadow: none;
+          background: transparent;
+        }
+      units: '%'
+      fill: '#FFFFFF00'
+      font_style:
+        color: '#7d7e80'
+        font-size: 12px
+        font-weight: 400
+      gradient: true
+      max: 100
+      min: 0
+      stroke_color: '#aaabad'
+      stroke_width: 12
+    - type: custom:button-card
+      size: '30%'
+      color: 'auto'
+      lock: 'false'
+      aspect_ratio: '1/1'
+      entity: '[[entity]]'
+      label_template: >
+        var bri = Math.round(entity.attributes.brightness / 2.55);
+        return (bri ? bri : '0') + '%';
+      show_state: true
+      show_label: true
+      show_last_changed: '[[show_last_changed]]'
+      tap_action:
+        action: '[[tap_action]]'
+      hold_action:
+        action: '[[hold_action]]'
+      styles:
+        card:
+          - border-radius: var(--ha-card-border-radius)      
+          - box-shadow: var(--button-card-box-shadow)
+          - padding: 10px
+        label:
+          - font-size: 11px
+          - justify-self: start
+        grid:
+          - grid-template-areas: '"i" "n" "s" "l"'
+          - grid-template-columns: 1fr
+          - grid-template-rows: 1fr min-content min-content
+        img_cell:
+          - justify-content: start
+          - align-items: start
+        icon:
+          - width: 35%
+          - height: 50%
+        name:
+          - justify-self: start
+          - font-size: 14px
+          - font-weight: 400
+        state:
+          - justify-self: start
+          - text-transform: capitalize
+          - font-size: 14px
+          - font-weight: 400
+      state:
+        - value: "on" 
+          styles:
+            card:
+              - --ha-card-background: var(--button-card-background-color-on)
+              - --ha-card-box-shadow: var(--button-card-box-shadow-on)
+            icon:
+              - color: var(--button-card-icon-color-on)
+            name:
+              - color: var(--button-card-name-color-on)
+            state:
+              - color: var(--button-card-state-color-on)
+            lock:
+              - color: var(--button-card-lock-color-on)
+            label:
+              - color: var(--button-card-label-color-on)
+        - operator: 'default'
+          styles:
+            card:
+              - --ha-card-background: var(--button-card-background-color-off)
+              - --ha-card-box-shadow: var(--button-card-box-shadow-off)
+            icon:
+              - color: var(--button-card-icon-color-off)
+            name:
+              - color: var(--button-card-name-color-off)
+            state:
+              - color: var(--button-card-state-color-off)
+            lock:
+              - color: var(--button-card-lock-color-off)
+            label:
+              - color: var(--button-card-label-color-off)

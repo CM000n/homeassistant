@@ -1,0 +1,69 @@
+default:
+  #required
+  - media_player_entity: ''
+  - media_player_icon: ''
+  - speaker_entity: ''
+  #optional
+  - media_player_artwork: none
+  - speaker_expanded: true
+  - speaker_show_group_count: true
+  - speaker_sync_volume: true
+card:
+  type: vertical-stack
+  cards:
+    - type: custom:mini-media-player
+      style: |
+        ha-card {
+          margin: 0px 12px;
+          box-shadow: none;
+        }
+      entity: '[[media_player_entity]]'
+      icon: 'mdi:[[media_player_icon]]'
+      artwork: '[[media_player_artwork]]'
+      info: scroll
+      source: full
+      hide:
+        volume: true
+#    - type: custom:mini-media-player
+#      style: |
+#        ha-card {
+#          margin: 0px 12px;
+#          background-color: rgba(255,255,255,0.1);
+#          box-shadow: none;
+#        }
+#      entity: '[[speaker_entity]]'
+#      icon: 'mdi:speaker'
+#      artwork: none
+#      source: full
+#      hide:
+#        name: true
+#        icon: true
+#        info: true
+#        power: true
+#        source: false
+#        sound_mode: true
+#        controls: true
+#        play_pause: true
+#        play_stop: true
+#        volume: false
+#        mute: false
+#        progress: true
+#        runtime: true
+#        artwork_border: true
+#        power_state: true
+#        icon_state: true
+#        shuffle: true
+#      speaker_group:
+#        icon: 'mdi:select-group'
+#        expanded: '[[speaker_expanded]]'
+#        show_group_count: '[[speaker_show_group_count]]'
+#        sync_volume: '[[speaker_sync_volume]]'
+#        entities:
+#          - entity_id: media_player.wohnzimmer
+#            name: Wohnzimmer
+#          - entity_id: media_player.schlafzimmer
+#            name: Schlafzimmer
+#          - entity_id: media_player.bad
+#            name: Bad
+#          - entity_id: media_player.buro
+#            name: Büro

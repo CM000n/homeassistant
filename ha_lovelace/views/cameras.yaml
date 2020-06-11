@@ -1,0 +1,189 @@
+---
+title: Cameras
+icon: 'mdi:cctv'
+path: cameras
+panel: true
+popup_cards:
+  camera.driveway:
+    title: ""
+    large: true
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: camera-popup-card
+      variables:
+        - entity: camera.driveway
+  camera.garden_front:
+    title: ""
+    large: true
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: camera-popup-card
+      variables:
+        - entity: camera.garden_front
+  camera.garden_side_1:
+    title: ""
+    large: true
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: camera-popup-card
+      variables:
+        - entity: camera.garden_side_1
+  camera.garden_side_2:
+    title: ""
+    large: true
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: camera-popup-card
+      variables:
+        - entity: camera.garden_side_2
+  camera.garden_back:
+    title: ""
+    large: true
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: camera-popup-card
+      variables:
+        - entity: camera.garden_back
+  camera.kitchen:
+    title: ""
+    large: true
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: camera-popup-card
+      variables:
+        - entity: camera.kitchen
+  camera.bureau:
+    title: ""
+    large: true
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: camera-popup-card
+      variables:
+        - entity: camera.bureau
+  camera.electricity_room:
+    title: ""
+    large: true
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: camera-popup-card
+      variables:
+        - entity: camera.electricity_room
+  camera.dressing_room:
+    title: ""
+    large: true
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: camera-popup-card
+      variables:
+        - entity: camera.dressing_room
+  camera.front_door:
+    title: ""
+    large: true
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: camera-popup-card
+      variables:
+        - entity: camera.front_door
+cards:
+  - type: custom:homekit-card
+    style: !include ../styles/homekit-card.yaml
+    enableColumns: true
+    rows:
+      - row: 1
+        columns:
+          - column: 1
+            entities:
+              - title: Outdoor
+                entities:
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: camera-card
+                      variables:
+                        - entity: camera.driveway
+                        - aspect_ratio: 1.78
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: camera-card
+                      variables:
+                        - entity: camera.garden_front
+                        - aspect_ratio: 1.78
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: camera-card
+                      variables:
+                        - entity: camera.garden_side_1
+                        - aspect_ratio: 1.78
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: camera-card
+                      variables:
+                        - entity: camera.garden_side_2
+                        - aspect_ratio: 1.78
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: camera-card
+                      variables:
+                        - entity: camera.garden_back
+                        - aspect_ratio: 1.78
+      - row: 2
+        columns:
+          - column: 1
+            entities:
+              - title: Indoor
+                entities:
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: camera-card
+                      variables:
+                        - entity: camera.kitchen
+                        - aspect_ratio: 1.78
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: camera-card
+                      variables:
+                        - entity: camera.bureau
+                        - aspect_ratio: 1.78
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: camera-card
+                      variables:
+                        - entity: camera.electricity_room
+                        - aspect_ratio: 1.78
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: camera-card
+                      variables:
+                        - entity: camera.dressing_room
+                        - aspect_ratio: 1.78
+      - row: 3
+        columns:
+          - column: 1
+            entities:
+              - title: Doors
+                entities:
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: camera-card
+                      variables:
+                        - entity: camera.front_door
+                        - resolution: 1.34

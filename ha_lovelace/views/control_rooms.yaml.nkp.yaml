@@ -1,0 +1,58 @@
+    title: Rooms
+    path: control_rooms
+    panel: false
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - content: 'Downstairs'
+          - type: custom:decluttering-card
+            template: room-card
+            variables:
+              - name: Bureau
+              - image: /local/images/rooms/bureau.jpg
+              - navigation_path: bureau
+          - type: custom:decluttering-card
+            template: room-card
+            variables:
+              - name: Dining Room
+              - image: /local/images/rooms/dining_room.jpg
+              - navigation_path: diningroom
+          - type: custom:decluttering-card
+            template: room-card
+            variables:
+              - name: Living Room
+              - image: /local/images/rooms/living_room.jpg
+              - navigation_path: livingroom
+          - type: custom:decluttering-card
+            template: room-card
+            variables:
+              - name: Kitchen
+              - image: /local/images/rooms/kitchen.jpg
+              - navigation_path: kitchen
+      - type: vertical-stack
+        cards:
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - content: 'Upstairs'
+          - type: custom:decluttering-card
+            template: room-card
+            variables:
+              - name: Hallway
+              - image: /local/images/rooms/hallway.jpg
+              - navigation_path: hallway
+      - type: vertical-stack
+        cards:
+          - type: custom:decluttering-card
+            template: title
+            variables:
+              - content: 'Outside'
+          - type: custom:decluttering-card
+            template: room-card
+            variables:
+              - name: Garden
+              - image: /local/images/rooms/garden.jpg
+              - navigation_path: garden

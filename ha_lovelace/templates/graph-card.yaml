@@ -1,0 +1,39 @@
+---
+default:
+  #required
+  - entity: ''
+  #optional
+  - style: line
+  - line_width: 5
+  - line_height: 130
+
+card:
+  style: |
+    :host {
+      height: 100%;
+    }
+    ha-card {
+      background-color: var(--button-card-background-color-off);
+      font-weight: bold;
+      color: var(--button-card-name-color-on);
+      --paper-item-icon-color: var(--button-card-icon-color-off);      
+      box-shadow: var(--graph-card-box-shadow);
+      height: 100%;
+    }
+  height: '[[line_height]]'
+  type: 'custom:mini-graph-card'
+  entities: 
+    - '[[entity]]'
+  hour24: true
+  animate: false
+  points_per_hour: 2
+  show:
+    icon: false
+    graph: '[[style]]'
+    fill: true
+  font_size_header: 9
+  font_size: 70
+  line_color: var(--graph-card-line-color)
+  line_width: '[[line_width]]'
+  name: '[[name]]'
+  lower_bound: 0

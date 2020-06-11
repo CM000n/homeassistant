@@ -1,0 +1,34 @@
+ |
+  :host {
+    --tile-background: rgba(255, 255, 255, 0);
+    --tile-on-background: rgba(255, 255, 255, 0);
+    --tile-width-mobile: 101px;
+    --tile-height-mobile: 101px;
+    --tile-border-radius: var(--ha-card-border-radius)
+  }
+  
+  .card-title {
+    padding: 0px 2px !important;
+    font-family: SF Text;
+    font-size: 24px !important;
+    color: var(--markdown-text-color);
+    margin: 24px auto 5px auto !important;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .header, .homekit-card {
+      width: 389px !important;
+    }
+    .card-title {
+      width: 385px !important; /* Compensate for card-title 2px padding */
+    }
+  }
+
+  .button.no-padding {
+    box-shadow: none;
+    margin: 3px 2px;
+  }
+
+  .row {
+    padding: 0px 10px 7px 10px !important;
+  }

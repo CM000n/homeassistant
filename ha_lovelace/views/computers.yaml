@@ -1,0 +1,21 @@
+    title: Computers
+    icon: 'mdi:laptop-windows'
+    path: computers
+    panel: true
+    cards:
+      - type: custom:homekit-card
+        style: !include ../styles/homekit-card.yaml
+        enableColumns: true
+        rows:
+          - row: 1
+            columns:
+              - column: 1
+                entities:
+                  - title: Downstairs
+                    entities:
+                      - card: custom:decluttering-card
+                        noPadding: true
+                        cardOptions:
+                          template: button-card
+                          variables:
+                            - entity: switch.desktop_computer

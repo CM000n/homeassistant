@@ -1,0 +1,43 @@
+
+- url: /hacsfiles/light-entity-card/light-entity-card.js
+  type: js
+- url: /hacsfiles/lovelace-card-mod/card-mod.js
+  type: js
+- url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
+  type: module
+- url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+  type: module
+- url: /hacsfiles/button-card/button-card.js
+  type: module
+- url: /hacsfiles/decluttering-card/decluttering-card.js
+  type: module
+- url: /hacsfiles/custom-header/custom-header.js
+  type: module
+- url: /hacsfiles/Homekit-panel-card/homekit-panel-card.js
+  type: module
+- url: /hacsfiles/circle-sensor-card/circle-sensor-card.js
+  type: module
+- url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js
+  type: module
+- url: /hacsfiles/config-template-card/config-template-card.js
+  type: module
+- url: /hacsfiles/simple-weather-card/simple-weather-card-bundle.js
+  type: module
+- url: /hacsfiles/lovelace-layout-card/layout-card.js
+  type: module
+- url: /hacsfiles/lovelace-card-tools/card-tools.js
+  type: module
+
+
+- url: 'https://sf.abarba.me/font.css'
+  type: css
+- url: /local/custom_plugin/recently-added.js?v=2.0.1.4924bd
+  type: js
+- url: /local/custom_plugin/light-popup-card.js?v=0.0.2
+  type: module
+- url: /local/custom_plugin/popup-backdrop-filter.js?v=4924b86
+  type: module
+- url: /local/custom_plugin/sidebar-card.js?v=0.0.1.4924b864j
+  type: module
+- url: /local/custom_plugin/popup-card.js
+  type: js

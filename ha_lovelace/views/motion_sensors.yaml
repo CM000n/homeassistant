@@ -1,0 +1,122 @@
+---
+title: Motion
+icon: 'mdi:run-fast'
+path: motion
+panel: true
+cards:
+  - type: custom:homekit-card
+    style: !include ../styles/homekit-card.yaml
+    enableColumns: true
+    rows:
+      - row: 1
+        columns:
+          - column: 1
+            entities:
+              - title: Downstairs
+                entities:
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: binary-sensor-card
+                      variables:
+                        - entity: binary_sensor.hallway_downstairs_motion
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: binary-sensor-card
+                      variables:
+                        - entity: binary_sensor.dining_room_motion
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: binary-sensor-card
+                      variables:
+                        - entity: binary_sensor.toilet_motion
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: binary-sensor-card
+                      variables:
+                        - entity: binary_sensor.storage_room_motion
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: binary-sensor-card
+                      variables:
+                        - entity: binary_sensor.laundry_room_motion
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: binary-sensor-card
+                      variables:
+                        - entity: binary_sensor.shoe_cabinet_motion
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: binary-sensor-card
+                      variables:
+                        - entity: binary_sensor.electricity_room_motion
+      - row: 2
+        columns:
+          - column: 1
+            entities:
+              - title: Upstairs
+                entities:
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: binary-sensor-card
+                      variables:
+                        - entity: binary_sensor.hallway_upstairs_motion
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: binary-sensor-card
+                      variables:
+                        - entity: binary_sensor.guest_bedroom_motion
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: binary-sensor-card
+                      variables:
+                        - entity: binary_sensor.hobby_room_motion
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: binary-sensor-card
+                      variables:
+                        - entity: binary_sensor.bathroom_motion
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: binary-sensor-card
+                      variables:
+                        - entity: binary_sensor.dressing_room_motion
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: binary-sensor-card
+                      variables:
+                        - entity: binary_sensor.master_bedroom_motion
+      - row: 3
+        columns:
+          - column: 1
+            entities:
+              - title: Attic
+                entities:
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: binary-sensor-card
+                      variables:
+                        - entity: binary_sensor.attic_motion
+          - column: 2
+            entities:
+              - title: Outside
+                entities:
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: binary-sensor-card
+                      variables:
+                        - entity: binary_sensor.driveway_motion

@@ -1,0 +1,14 @@
+default:
+  - hide_volume: false
+card:
+  type: custom:mini-media-player
+  artwork: none
+  entity: '[[entity]]'
+  icon: mdi:television
+  hide:
+    volume: '[[hide_volume]]'
+  style: |
+    ha-card {
+      margin: 0px 10px;
+      box-shadow: var(--mediaplayer-card-box-shadow)
+    }

@@ -1,0 +1,79 @@
+    title: Devices
+    icon: 'mdi:gauge-full'
+    path: all_devices
+    panel: true
+    cards:
+      - type: custom:homekit-card
+        style: !include ../styles/homekit-card.yaml
+        enableColumns: true
+        rows:
+          - row: 1
+            columns:
+              - column: 1
+                entities:
+                  - title: Navigation
+                    entities:
+                      - card: custom:decluttering-card
+                        noPadding: true
+                        cardOptions:
+                          template: shortcut-card
+                          variables:
+                            - navigation_path: /lovelace/cameras
+                            - icon: cctv
+                            - name: Cameras
+                      - card: custom:decluttering-card
+                        noPadding: true
+                        cardOptions:
+                          template: shortcut-card
+                          variables:
+                            - navigation_path: /lovelace/lights
+                            - icon: lightbulb
+                            - name: Lights
+                      - card: custom:decluttering-card
+                        noPadding: true
+                        cardOptions:
+                          template: shortcut-card
+                          variables:
+                            - navigation_path: /lovelace/mediaplayers
+                            - icon: television
+                            - name: Media Players
+                      - card: custom:decluttering-card
+                        noPadding: true
+                        cardOptions:
+                          template: shortcut-card
+                          variables:
+                            - navigation_path: /lovelace/speakers
+                            - icon: speaker
+                            - name: Speakers
+                      - card: custom:decluttering-card
+                        noPadding: true
+                        cardOptions:
+                          template: shortcut-card
+                          variables:
+                            - navigation_path: /lovelace/covers
+                            - icon: blinds
+                            - name: Covers
+                      - card: custom:decluttering-card
+                        noPadding: true
+                        cardOptions:
+                          template: shortcut-card
+                          variables:
+                            - navigation_path: /lovelace/motion
+                            - icon: run-fast
+                            - name: Motion Sensors
+                      - card: custom:decluttering-card
+                        noPadding: true
+                        cardOptions:
+                          template: shortcut-card
+                          variables:
+                            - navigation_path: /lovelace/temperature
+                            - icon: temperature-celsius
+                            - name: Temperature
+                      - card: custom:decluttering-card
+                        noPadding: true
+                        cardOptions:
+                          template: shortcut-card
+                          variables:
+                            - navigation_path: /lovelace/computers
+                            - icon: laptop-windows
+                            - name: Computers

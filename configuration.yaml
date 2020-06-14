@@ -17,6 +17,8 @@ homeassistant:
   customize: !include ha_configuration/customize.yaml
   auth_providers:
    - type: homeassistant
+  external_url: !secret external_url
+  internal_url: !secret internal_url
 
 ####################################################
 #                                                  #
@@ -31,7 +33,7 @@ lovelace:
     home-dashboard:
       mode: yaml
       title: Dashboard
-      show_in_sidebar: true
+      show_in_sidebar: false
       require_admin: false
       icon: mdi:dev-to
       filename: ui-lovelace.yaml
@@ -298,9 +300,9 @@ mobile_app:
 ####################################################
 
 # https://github.com/thomasloven/hass-browser_mod
-# already used in dwanins theme
 
-#browser_mod:
+browser_mod:
+  prefix: 'browser_mod_'
 
 ####################################################
 #                                                  #
@@ -360,6 +362,17 @@ ltss:
 
 ####################################################
 #                                                  #
+#                     TRAKT                        #
+#                                                  #
+####################################################
+
+trakt:
+   client_id: !secret trakt_client_id
+   client_secret: !secret trakt_client_secret
+
+####################################################
+#                                                  #
 #            END OF CONFIGURATION FILE             #
 #                                                  #
 ####################################################
+

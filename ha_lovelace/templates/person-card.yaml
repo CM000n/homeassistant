@@ -60,7 +60,7 @@ card:
       - font-size: 14px
       - font-weight: 400
   state:
-    - value: "Home"
+    - value: "home"
       styles:
         card:
           - --ha-card-background: var(--button-card-background-color-on)
@@ -90,7 +90,7 @@ card:
           - color: var(--button-card-lock-color-on)
         label:
           - color: var(--button-card-label-color-on)
-    - operator: 'default'
+    - operator: 'not home'
       styles:
         card:
           - --ha-card-background: var(--button-card-background-color-off)

@@ -37,8 +37,6 @@ television-card:
   !include television-card.yaml
 light-dimmer-card:
   !include light-dimmer-card.yaml
-playstation-card:
-  !include playstation-card.yaml
 title:
   !include title.yaml
 button-card:

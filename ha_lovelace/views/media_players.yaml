@@ -15,6 +15,8 @@ popup_cards:
         - media_player_entity: media_player.tv_living_room
         - media_player_icon: 'television'
         - speaker_entity: media_player.living_room
+    deviceID: 
+      - this
   media_player.chromecast:
     title: ""
     style: !include ../styles/popup.yaml
@@ -26,6 +28,8 @@ popup_cards:
         - media_player_icon: 'cast'
         - media_player_artwork: 'cover'
         - speaker_entity: media_player.wohnzimmer
+    deviceID: 
+      - this
   media_player.playstation_4_pro:
     title: ""
     style: !include ../styles/popup.yaml
@@ -37,6 +41,8 @@ popup_cards:
         - media_player_icon: 'playstation'
         - media_player_artwork: 'cover'
         - speaker_entity: media_player.living_room
+    deviceID: 
+      - this
   media_player.tv_laundry_room:
     title: ""
     style: !include ../styles/popup.yaml
@@ -47,6 +53,10 @@ popup_cards:
         - media_player_entity: media_player.tv_laundry_room
         - media_player_icon: 'television'
         - speaker_entity: media_player.tv_laundry_room
+    deviceID: 
+      - this
+
+
 cards:
   - type: custom:homekit-card
     style: !include ../styles/homekit-card.yaml
@@ -56,16 +66,16 @@ cards:
         columns:
           - column: 1
             entities:
-              - title: Wohnzimmer
+              - title: Mediaplayer Wohnzimmer
                 entities:
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
-                      template: mediaplayer-card
+                      template: button-card
                       variables:
-                        - entity: media_player.tv_living_room
+                        - entity: binary_sensor.philipstv
                         - icon: television
-                        - name: Television
+                        - name: Fernseher
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
@@ -76,216 +86,24 @@ cards:
                         - name: Chromecast
                         #- tap_action: more-info
                         - show_entity_picture: true
-                  - card: custom:decluttering-card
-                    noPadding: true
-                    cardOptions:
-                      template: playstation-card
-                      variables:
-                        - entity: media_player.playstation_4_pro
-          - column: 2
-            entities:
-              - title: Laundry
-                entities:
-                  - card: custom:decluttering-card
-                    noPadding: true
-                    cardOptions:
-                      template: mediaplayer-card
-                      variables:
-                        - entity: media_player.tv_laundry_room
-                        - icon: airplay
-                        - name: Television
-                        - show_entity_picture: true
-          - column: 3
-            entities:
-              - title: Bedroom
-                entities:
-                  - card: custom:decluttering-card
-                    noPadding: true
-                    cardOptions:
-                      template: mediaplayer-card
-                      variables:
-                        - entity: media_player.tv_master_bedroom
-                        - icon: television
-                        - name: Television
-                  - card: custom:decluttering-card
-                    noPadding: true
-                    cardOptions:
-                      template: mediaplayer-card
-                      variables:
-                        - entity: media_player.kodi_master_bedroom
-                        - icon: kodi
-                        - name: Kodi
-                        - tap_action: more-info
-                        - show_entity_picture: true
-                  # - card: custom:decluttering-card
-                  #   noPadding: true
-                  #   cardOptions:
-                  #     template: playstation-card
-                  #     variables:
-                  #       - entity: media_player.playstation_master_bedroom
       - row: 2
         columns:
           - column: 1
             entities:
-              - title: Recent Movies
+              - title: Kommende Episoden
                 entities:
                   - card: custom:upcoming-media-card
                     noPadding: true
                     cardOptions:
-                      entity: sensor.recently_added_movies
+                      entity: sensor.trakt_upcoming_calendar
                       position: 1
                   - card: custom:upcoming-media-card
                     noPadding: true
                     cardOptions:
-                      entity: sensor.recently_added_movies
+                      entity: sensor.trakt_upcoming_calendar
                       position: 2
                   - card: custom:upcoming-media-card
                     noPadding: true
                     cardOptions:
-                      entity: sensor.recently_added_movies
+                      entity: sensor.trakt_upcoming_calendar
                       position: 3
-          - column: 2
-            entities:
-              - title: Recent Episodes
-                entities:
-                  - card: custom:upcoming-media-card
-                    noPadding: true
-                    cardOptions:
-                      entity: sensor.recently_added_series
-                      position: 1
-                  - card: custom:upcoming-media-card
-                    noPadding: true
-                    cardOptions:
-                      entity: sensor.recently_added_series
-                      position: 2
-                  - card: custom:upcoming-media-card
-                    noPadding: true
-                    cardOptions:
-                      entity: sensor.recently_added_series
-                      position: 3
-
-# panel: false
-# cards:
-#   - type: vertical-stack
-#     cards:
-#       - type: vertical-stack
-#         cards:
-#           - type: custom:decluttering-card
-#             template: title
-#             variables:
-#               - content: 'Downstairs'
-#           - type: conditional
-#             conditions:
-#               - entity: media_player.tv_living_room
-#                 state: "on"
-#             card:                          
-#               type: vertical-stack
-#               cards:
-#                 - type: custom:decluttering-card
-#                   template: television-card
-#                   variables:
-#                     - entity: media_player.tv_living_room
-#                     - hide_volume: true
-#                 - type: custom:decluttering-card
-#                   template: speaker-card
-#                   variables:
-#                     - entity: media_player.living_room
-#                     - hide_name: true
-#                     - hide_icon: true
-#                     - hide_info: true
-#                     - hide_power: true
-#                     - hide_source: true
-#                     - hide_controls: true
-#                 - type: custom:decluttering-card
-#                   template: mediaplayer-card
-#                   variables:
-#                     - entity: media_player.kodi_living_room
-#                     - icon: kodi
-#                     - hide_volume: true
-#                 - type: custom:decluttering-card
-#                   template: playstation-card
-#                   variables:
-#                     - entity: media_player.playstation_4_pro
-#                 - type: custom:decluttering-card
-#                   template: mediaplayer-card
-#                   variables:
-#                     - entity: media_player.shield_living_room
-#                     - icon: shield-outline
-#                     - hide_volume: true
-#           - type: conditional
-#             conditions:
-#               - entity: media_player.tv_living_room
-#                 state_not: "on"
-#             card:                          
-#               type: vertical-stack
-#               cards:
-#                 - type: custom:decluttering-card
-#                   template: television-card
-#                   variables:
-#                     - entity: media_player.tv_living_room
-#                     - hide_volume: true
-#           - type: custom:decluttering-card
-#             template: television-card
-#             variables:
-#               - entity: media_player.tv_berging
-#       - type: vertical-stack
-#         cards:
-#           - type: custom:decluttering-card
-#             template: title
-#             variables:
-#               - content: 'Upstairs'
-#           - type: conditional
-#             conditions:
-#               - entity: media_player.tv_master_bedroom
-#                 state: "on"
-#             card:                          
-#               type: vertical-stack
-#               cards:
-#                 - type: custom:decluttering-card
-#                   template: television-card
-#                   variables:
-#                     - entity: media_player.tv_master_bedroom
-#                 - type: custom:decluttering-card
-#                   template: mediaplayer-card
-#                   variables:
-#                     - entity: media_player.kodi_master_bedroom
-#                     - icon: kodi
-#           - type: conditional
-#             conditions:
-#               - entity: media_player.tv_master_bedroom
-#                 state_not: "on"
-#             card:                          
-#               type: vertical-stack
-#               cards:
-#                 - type: custom:decluttering-card
-#                   template: television-card
-#                   variables:
-#                     - entity: media_player.tv_master_bedroom
-#   - type: vertical-stack
-#     cards:
-#       - type: vertical-stack
-#         cards:
-#           - type: custom:decluttering-card
-#             template: title
-#             variables:
-#               - content: 'Recently added movies'
-#           - type: horizontal-stack
-#             cards:
-#               - !include ../includes/blank-card.yaml
-#               - type: custom:upcoming-media-card
-#                 entity: sensor.recently_added_movies
-#                 max: 3
-#               - !include ../includes/blank-card.yaml
-#       - type: vertical-stack
-#         cards:
-#           - type: custom:decluttering-card
-#             template: title
-#             variables:
-#               - content: 'Recently added episodes'
-#           - type: horizontal-stack
-#             cards:
-#               - !include ../includes/blank-card.yaml
-#               - type: custom:upcoming-media-card
-#                 entity: sensor.recently_added_series
-#                 max: 3
-#               - !include ../includes/blank-card.yaml

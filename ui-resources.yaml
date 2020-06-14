@@ -27,6 +27,10 @@
   type: module
 - url: /hacsfiles/lovelace-card-tools/card-tools.js
   type: module
+- url: /hacsfiles/lovelace-swipe-navigation/swipe-navigation.js
+  type: js
+- url: /hacsfiles/upcoming-media-card/upcoming-media-card.js
+  type: js
 
 
 - url: 'https://sf.abarba.me/font.css'
@@ -39,5 +43,5 @@
   type: module
 - url: /local/custom_plugin/sidebar-card.js?v=0.0.1.4924b864j
   type: module
-- url: /local/custom_plugin/popup-card.js
-  type: js
+#- url: /local/custom_plugin/popup-card.js
+#  type: js

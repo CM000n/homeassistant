@@ -6,13 +6,24 @@ panel: true
 badges: []
 popup_cards:
   media_player.wohnzimmer:
-    title: ""
-    style: !include ../styles/popup.yaml
+    title: My popup
     card:
-      type: custom:decluttering-card
-      template: speaker-popup-card
-      variables:
-        - entity: media_player.wohnzimmer
+      type: entities
+      entities:
+        - media_player.wohnzimmer
+        - media_player.schlafzimmer
+        - media_player.bad
+        - media_player.buro
+    deviceID: 
+      - this
+#  media_player.wohnzimmer:
+#    title: "Sonos Wohnzimmer"
+#    style: !include ../styles/popup.yaml
+#    card:
+#      type: custom:decluttering-card
+#      template: speaker-popup-card
+#      variables:
+#        - entity: media_player.wohnzimmer
   media_player.schlafzimmer:
     title: ""
     style: !include ../styles/popup.yaml
@@ -21,6 +32,8 @@ popup_cards:
       template: speaker-popup-card
       variables:
         - entity: media_player.schlafzimmer
+    deviceID: 
+      - this
   media_player.bad:
     title: ""
     style: !include ../styles/popup.yaml
@@ -29,6 +42,8 @@ popup_cards:
       template: speaker-popup-card
       variables:
         - entity: media_player.bad
+    deviceID: 
+      - this
   media_player.buro:
     title: ""
     style: !include ../styles/popup.yaml
@@ -37,6 +52,8 @@ popup_cards:
       template: speaker-popup-card
       variables:
         - entity: media_player.buro
+    deviceID: 
+      - this
 
 cards:
   - type: custom:homekit-card

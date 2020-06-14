@@ -205,3 +205,14 @@
       windows:
       - binary_sensor.heizung_buro_window_open
     service: python_script.update_climate
+- id: '1591903728654'
+  alias: Theme - Standardtheme bei Start setzen
+  description: Stellt das standardmäßig zu verwendende HA Theme bei Systemstart ein.
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition: []
+  action:
+  - data:
+      name: dark
+    service: frontend.set_theme

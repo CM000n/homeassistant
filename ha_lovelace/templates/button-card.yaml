@@ -115,6 +115,22 @@ card:
           - color: var(--button-card-lock-color-on)
         label:
           - color: var(--button-card-label-color-on)
+    - value: "cleaning" 
+      spin: '[[spin]]'  
+      styles:
+        card:
+          - --ha-card-background: var(--button-card-background-color-on)
+          - --ha-card-box-shadow: var(--button-card-box-shadow-on)
+        icon:
+          - color: var(--button-card-icon-color-on)
+        name:
+          - color: var(--button-card-name-color-on)
+        state:
+          - color: var(--button-card-state-color-on)
+        lock:
+          - color: var(--button-card-lock-color-on)
+        label:
+          - color: var(--button-card-label-color-on)
     - value: "off"
       styles:
         card:

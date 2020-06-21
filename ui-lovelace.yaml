@@ -1,99 +1,185 @@
 # Custom Header
-#custom_header:
-#  kiosk_mode: false
-#  exceptions:
-#    - conditions:
-#        user_agent: Mobile
-#      config:
-#        kiosk_mode: false
-#        menu_hide: true
-#  compact_mode: true
-#  menu_hide: true
-#  disable_sidebar: false
-#  options_hide: true
-#  voice_hide: true
-#  chevrons: false
-#  notify_indicator_color: "#e80000"
-#  swipe: true
-#  swipe_animate: swipe
-#  swipe_wrap: false
-#  background: var(--primary-background-color)
-#  active_tab_color: var(--primary-text-color)
-#  inactive_tab_color: var(--primary-text-color)
-#  all_tabs_color: var(--primary-text-color)
-#  tab_indicator_color: var(--primary-text-color)
-#  default_tab: 0
+custom_header:
+  shadow: false
+  compact_mode: true
+  hide_unused: true
+  hide_config: true
+  hide_raw: true
+  show_tabs: 'overview, lights, speakers, mediaplayers, computers, temperature'
+  hidden_tab_redirect: false
+  tab_container_css: 'max-width: 1425px !important; margin: 0 auto !important;'
+  all_tabs_css: "width: 35px !important;"
+  exceptions:
+    - conditions:
+        user_agent: Windows
+      config:
+        footer_mode: false
+        disable_sidebar: false
+        menu_hide: true
+        voice_hide: false
+        chevrons: false
+        indicator_top: true
+        hide_header: true
+        all_tabs_css: "width: calc(20vw - 3.6px) !important; padding: 0px !important;"
+        header_css: 'padding-bottom: 0px !important; padding-left: 0px !important; padding-right: 0px !important;'
+        view_css: 'padding-top: 96px !important;'
+        tab_container_css: "width: auto !important; margin: 0 !important; padding: 0 !important;"
+        options_hide: false
+    - conditions:
+        user_agent: Android
+      config:
+        footer_mode: false
+        disable_sidebar: false
+        menu_hide: true
+        voice_hide: true
+        chevrons: false
+        indicator_top: true
+        all_tabs_css: "width: calc(20vw - 3.6px) !important; padding: 0px !important;"
+        header_css: 'padding-bottom: 0px !important; padding-left: 0px !important; padding-right: 0px !important;'
+        view_css: 'padding-top: 96px !important;'
+        tab_container_css: "width: auto !important; margin: 0 !important; padding: 0 !important;"
+        options_hide: true
+    - conditions:
+        user_agent: Mobile
+      config:
+        footer_mode: false
+        disable_sidebar: false
+        menu_hide: true
+        chevrons: false
+        indicator_top: true
+        all_tabs_css: "width: calc(20vw - 3.6px) !important; padding: 0px !important;"
+        header_css: 'padding-bottom: 20px !important; padding-left: 0px !important; padding-right: 0px !important;'
+        view_css: 'padding-top: 96px !important;'
+        tab_container_css: "width: auto !important; margin: 0 !important; padding: 0 !important;"
+        options_hide: true 
+    - conditions:
+        user_agent: "Home Assistant"
+      config:
+        footer_mode: false
+        disable_sidebar: false
+        menu_hide: true
+        chevrons: false
+        indicator_top: true
+        all_tabs_css: "width: calc(20vw - 3.6px) !important; padding: 0px !important;"
+        header_css: 'padding-bottom: 20px !important; padding-left: 0px !important; padding-right: 0px !important;'
+        view_css: 'padding-top: 96px !important;'
+        tab_container_css: "width: auto !important; margin: 0 !important; padding: 0 !important;"
+        options_hide: true
+  
+sidebar:
+  digitalClock: true
+  date: true
+  style: |
+    :host {
+        --sidebar-background: #1c2127;
+        --sidebar-text-color: #ffffff;
+        --face-color: #0a0b0c;
+        --face-border-color: #191c1e;
+        --clock-hands-color: #ffffff;
+        --clock-seconds-hand-color: #ffffff;
+        --clock-middle-background: #bdbec0;
+        --clock-middle-border: #000;
+    }
+    .digitalClock {
+        text-align: center;
+        padding-bottom: 1px;
+        padding-top: 20px
+        font-size: 205px;
+        line-height: 95px;
+    }
+    .date {
+        text-align: center;
+    }
+    h1 {
+          text-align:center;
+      }
+  bottomCard:
+    type: custom:mini-graph-card
+    cardOptions:
+      entities: 
+        - sensor.darksky_temperature
+      color_thresholds:
+        - value: -20
+          color: "#0846c2"
+        - value: -5
+          color: "#087ec2"
+        - value: 15
+          color: "#eb9c00"
+        - value: 28
+          color: "#c0392b"
+    cardStyle: |
+      :host {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+      ha-card {
+        background: transparent;
+        color: #FFF;
+        overflow: hidden !important;
+        box-shadow: none !important;
+      }
+  width:
+    mobile: 0
+    tablet: 15
+    desktop: 15
+  template: |
+    <li>
+      {% if now().hour  < 5 %} Gute Nacht {{'\U0001F634'}}
+      {% elif now().hour < 12 %} Guten Morgen {{'\u2615\uFE0F'}}
+      {% elif now().hour < 18 %} Guten Tag {{'\U0001F44B\U0001F3FB'}}
+      {% else %} Guten Abend {{'\U0001F44B\U0001F3FB'}}{% endif %}
+    </li>
 
-#sidebar:
-#  digitalClock: true
-#  style: |
-#    :host {
-#        --sidebar-background: #161919;
-#        --sidebar-text-color: #bdbec0;
-#        --face-color: #0a0b0c;
-#        --face-border-color: #0a0b0c;
-#        --clock-hands-color: #bdbec0;
-#        --clock-seconds-hand-color: #bdbec0;
-#        --clock-middle-background: #bdbec0;
-#        --clock-middle-border: #000;
-#    }
-#  width:
-#    mobile: 0
-#    tablet: 15
-#    desktop: 15
-#  template: |
-#    <li>
-#      {% if now().hour  < 5 %} Gute Nacht {{'\U0001F634'}}
-#      {% elif now().hour < 12 %} Guten Morgen {{'\u2615\uFE0F'}}
-#      {% elif now().hour < 18 %} Guten Tag {{'\U0001F44B\U0001F3FB'}}
-#      {% else %} Guten Abend {{'\U0001F44B\U0001F3FB'}}{% endif %}
-#    </li>
-#
-#
-#    <li>
-#      {% if states('sensor.darksky_temperature') == 'unknown' %}
-#      Keine Wetterinformationen verfügbar...
-#      {% else %}
-#        {% if states('sensor.darksky_temperature') | float <= 0.0 %}
-#        Gefühlte Temperatur {{ states('sensor.darksky_apparent_temperature') | round }}° mit 
-#        {{ states('sensor.darksky_precip_probability') | round }}% Schneerisiko {{'\u2744\uFE0F'}}
-#        {% elif states('sensor.darksky_temperature') | float > 0.0 %} 
-#        Gefühlte Temperatur {{ states('sensor.darksky_apparent_temperature') | round }}° mit 
-#        {{ states('sensor.darksky_precip_probability') | round }}% Regenwahrscheinlichkeit 
-#        {% if states('sensor.darksky_precip_probability') | float > 30.0 %} {{'\u2614\uFE0F' }}
-#        {% endif %}
-#        {% elif states('sensor.darksky_temperature') | float > 19.0 and 
-#        states('sensor.darksky_precip_probability') | float < 5.0 %}
-#        Gefühlte Temperatur {{ states('sensor.darksky_apparent_temperature') | round }}° {{'\U0001F60E' }} mit 
-#        {{ states('sensor.darksky_precip_probability') | round }}% Regenwahrscheinlichkeit
-#        {% endif %}
-#      {% endif %}
-#    </li>
-#
-#
-#    {% if "Spült" in states('sensor.status_spuelmaschine') %} <li>Spülmaschine: Spült</li> {% endif %}
-#    {% if "Trocknet" in states('sensor.status_spuelmaschine') %} <li>Spülmaschine: Trocknet</li> {% endif %}
-#    {% if "Fertig" in states('sensor.status_spuelmaschine') %} <li>Spülmaschine: Fertig</li> {% endif %}
-#    {% if "Trocknet" in states('sensor.status_trockner') %} <li>Tockner: Trocknet</li> {% endif %}
-#    {% if "Fertig" in states('sensor.status_trockner') %} <li>Trockner: Fertig</li> {% endif %}
-#    {% if "Wäscht" in states('sensor.status_waschmaschine') %} <li>Waschmaschine: Wäscht</li> {% endif %}
-#    {% if "Fertig" in states('sensor.status_waschmaschine') %} <li>Waschmaschine: Fertig</li> {% endif %}
-#    {% if states('sensor.current_lights_on') | float == 1 %} <li>{{states('sensor.current_lights_on')}} Licht an</li> {% endif %}
-#    {% if states('sensor.current_lights_on') | float > 1 %} <li>{{states('sensor.current_lights_on')}} Lichter an</li> {% endif %}
-#  sidebarMenu:
-#    - action: navigate
-#      navigation_path: "/lovelace/home_simon"
-#      name: "Home"
-#      active: true
-#    - action: navigate
-#      navigation_path: "/lovelace/lights"
-#      name: "Licht"
-#    - action: navigate
-#      navigation_path: "/lovelace/devices"
-#      name: "Geräte"
-#    - action: navigate
-#      navigation_path: "/lovelace/climate"
-#      name: "Klima"
+
+    <li>
+      {% if states('sensor.darksky_temperature') == 'unknown' %}
+      Keine Wetterinformationen verfügbar...
+      {% else %}
+        {% if states('sensor.darksky_temperature') | float <= 0.0 %}
+        Gefühlte Temperatur {{ states('sensor.darksky_apparent_temperature') | round }}° mit 
+        {{ states('sensor.darksky_precip_probability') | round }}% Schneerisiko {{'\u2744\uFE0F'}}
+        {% elif states('sensor.darksky_temperature') | float > 0.0 %} 
+        Gefühlte Temperatur {{ states('sensor.darksky_apparent_temperature') | round }}° mit 
+        {{ states('sensor.darksky_precip_probability') | round }}% Regenwahrscheinlichkeit 
+        {% if states('sensor.darksky_precip_probability') | float > 30.0 %} {{'\u2614\uFE0F' }}
+        {% endif %}
+        {% elif states('sensor.darksky_temperature') | float > 19.0 and 
+        states('sensor.darksky_precip_probability') | float < 5.0 %}
+        Gefühlte Temperatur {{ states('sensor.darksky_apparent_temperature') | round }}° {{'\U0001F60E' }} mit 
+        {{ states('sensor.darksky_precip_probability') | round }}% Regenwahrscheinlichkeit
+        {% endif %}
+      {% endif %}
+    </li>
+
+
+    {% if "Spült" in states('sensor.status_spuelmaschine') %} <li>Spülmaschine: Spült</li> {% endif %}
+    {% if "Trocknet" in states('sensor.status_spuelmaschine') %} <li>Spülmaschine: Trocknet</li> {% endif %}
+    {% if "Fertig" in states('sensor.status_spuelmaschine') %} <li>Spülmaschine: Fertig</li> {% endif %}
+    {% if "Trocknet" in states('sensor.status_trockner') %} <li>Tockner: Trocknet</li> {% endif %}
+    {% if "Fertig" in states('sensor.status_trockner') %} <li>Trockner: Fertig</li> {% endif %}
+    {% if "Wäscht" in states('sensor.status_waschmaschine') %} <li>Waschmaschine: Wäscht</li> {% endif %}
+    {% if "Fertig" in states('sensor.status_waschmaschine') %} <li>Waschmaschine: Fertig</li> {% endif %}
+    {% if states('sensor.current_lights_on') | float == 1 %} <li>{{states('sensor.current_lights_on')}} Licht an</li> {% endif %}
+    {% if states('sensor.current_lights_on') | float > 1 %} <li>{{states('sensor.current_lights_on')}} Lichter an</li> {% endif %}
+  sidebarMenu:
+    - action: navigate
+      navigation_path: "/lovelace/overview"
+      name: "Home"
+      active: true
+    - action: navigate
+      navigation_path: "/lovelace/lights"
+      name: "Licht"
+    - action: navigate
+      navigation_path: "/lovelace/speakers"
+      name: "Lautsprecher"
+    - action: navigate
+      navigation_path: "/lovelace/temperature"
+      name: "Temperatur"
+    - action: navigate
+      navigation_path: "/config/dashboard"
+      name: "Einstellungen"
 
 decluttering_templates: !include_dir_merge_named ha_lovelace/templates/
 

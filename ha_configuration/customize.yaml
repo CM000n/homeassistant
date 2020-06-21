@@ -241,7 +241,6 @@ sensor.darksky_pressure:
 
 binary_sensor.philipstv:
   friendly_name: TV
-  device_class: connectivity
   icon: mdi:television
 binary_sensor.openmediavault:
   friendly_name: Server

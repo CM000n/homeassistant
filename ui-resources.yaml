@@ -31,6 +31,8 @@
   type: js
 - url: /hacsfiles/upcoming-media-card/upcoming-media-card.js
   type: js
+- url: /hacsfiles/sidebar-card/sidebar-card.js
+  type: module
 
 
 - url: 'https://sf.abarba.me/font.css'
@@ -41,7 +43,7 @@
   type: module
 - url: /local/custom_plugin/popup-backdrop-filter.js?v=4924b86
   type: module
-- url: /local/custom_plugin/sidebar-card.js?v=0.0.1.4924b864j
-  type: module
+# - url: /local/custom_plugin/sidebar-card.js?v=0.0.1.4924b864j
+#   type: module
 #- url: /local/custom_plugin/popup-card.js
 #  type: js

@@ -1,5 +1,6 @@
 ---
 title: Overview
+icon: 'mdi:home'
 path: overview
 panel: true
 badges: []
@@ -12,7 +13,7 @@ cards:
         columns:
           - column: 1
             entities:
-              - title: Aktivität
+              - title: Personen
                 entities:
                   - card: custom:decluttering-card
                     noPadding: true
@@ -28,88 +29,122 @@ cards:
                       variables:
                         - entity: person.lisa
                         - entity_picture: /local/images/persons/lisa_center.png
-                  - card: custom:decluttering-card
-                    noPadding: true
-                    cardOptions:
-                      template: button-card
-                      variables:
-                        - entity: vacuum.xiaomi_vacuum_cleaner
       - row: 2
         columns:
           - column: 1
             entities:
-              - title: Solar
+              - title: Aktivität
                 entities:
                   - card: custom:decluttering-card
                     noPadding: true
-                    cardStyle: !include ../styles/graph-card.yaml
                     cardOptions:
-                      template: graph-card
+                      template: sensor-card
                       variables:
-                        - entity: sensor.solar_generating
-                        - name: Generating
-                        - style: bar
+                        - entity: vacuum.xiaomi_vacuum_cleaner
+                        - name: Robi
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: sensor-card
                       variables:
-                        - entity: sensor.solar_installation_comparison_generated
+                        - entity: sensor.status_waschmaschine
+                        - name: Waschmaschine
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: sensor-card
                       variables:
-                        - entity: sensor.owm_cloud_coverage
+                        - entity: sensor.status_trockner
+                        - name: Trockner
                   - card: custom:decluttering-card
                     noPadding: true
-                    cardStyle: !include ../styles/graph-card.yaml
                     cardOptions:
-                      template: graph-card
+                      template: sensor-card
                       variables:
-                        - entity: sensor.solar_generated
-                        - name: Generated
-                        - line_width: 2
-                        - height: 135
+                        - entity: sensor.status_spuehlmaschine
+                        - name: Spülmaschine
+#                  - card: custom:decluttering-card
+#                    noPadding: true
+#                    cardStyle: !include ../styles/graph-card.yaml
+#                    cardOptions:
+#                      template: graph-card
+#                      variables:
+#                        - entity: sensor.solar_generating
+#                        - name: Generating
+#                        - style: bar
+#                  - card: custom:decluttering-card
+#                    noPadding: true
+#                    cardOptions:
+#                      template: sensor-card
+#                      variables:
+#                        - entity: sensor.solar_installation_comparison_generated
+#                  - card: custom:decluttering-card
+#                    noPadding: true
+#                    cardOptions:
+#                      template: sensor-card
+#                      variables:
+#                        - entity: sensor.owm_cloud_coverage
+#                  - card: custom:decluttering-card
+#                    noPadding: true
+#                    cardStyle: !include ../styles/graph-card.yaml
+#                    cardOptions:
+#                      template: graph-card
+#                      variables:
+#                        - entity: sensor.solar_generated
+#                        - name: Generated
+#                        - line_width: 2
+#                        - height: 135
+#                  - card: custom:decluttering-card
+#                    noPadding: true
+#                    cardOptions:
+#                      template: sensor-card
+#                      variables:
+#                        - entity: sun.sun
+      - row: 3
+        columns:
+          - column: 1
+            entities:
+              - title: Klima
+                entities:
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: sensor-card
                       variables:
                         - entity: sun.sun
-      - row: 3
-        columns:
-          - column: 1
-            entities:
-              - title: Climate
-                entities:
+                        - name: Sonnenstand
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: sensor-card
                       variables:
-                        - entity: sensor.owm_rain
+                        - entity: sensor.darksky_temperature
+                        - name: Außentemperatur
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: sensor-card
+                      variables:
+                        - entity: sensor.darksky_precip_probability
+                        - name: Niederschlag
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: sensor-card
                       variables:
                         - entity: sensor.season
+                        - name: Jahreszeit
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: sensor-card
                       variables:
-                        - entity: sensor.owm_wind_speed
+                        - entity: sensor.darksky_wind_speed
+                        - name: Wind
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: sensor-card
                       variables:
-                        - entity: sensor.owm_humidity
-                  - card: custom:decluttering-card
-                    noPadding: true
-                    cardOptions:
-                      template: sensor-card
-                      variables:
-                        - entity: sensor.owm_temperature
+                        - entity: sensor.darksky_humidity
+                        - name: Luftfeuchtigkeit

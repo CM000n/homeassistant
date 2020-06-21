@@ -90,7 +90,7 @@ card:
           - color: var(--button-card-lock-color-on)
         label:
           - color: var(--button-card-label-color-on)
-    - operator: 'not home'
+    - operator: "not_home"
       styles:
         card:
           - --ha-card-background: var(--button-card-background-color-off)

@@ -18,6 +18,9 @@
       - person
       - sensor
       - switch
+    entities:
+      - vacuum.xiaomi_vacuum_cleaner
+      - sun.sun
 
 ####################################################
 #                                                  #

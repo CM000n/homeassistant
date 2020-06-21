@@ -1,4 +1,4 @@
-    title: Computers
+    title: Sonstige Geräte
     icon: 'mdi:laptop-windows'
     path: computers
     panel: true
@@ -11,11 +11,11 @@
             columns:
               - column: 1
                 entities:
-                  - title: Downstairs
+                  - title: Computer & sonstige Geräte
                     entities:
                       - card: custom:decluttering-card
                         noPadding: true
                         cardOptions:
                           template: button-card
                           variables:
-                            - entity: switch.desktop_computer
+                            - entity: switch.simon_pc

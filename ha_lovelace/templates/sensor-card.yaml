@@ -21,6 +21,7 @@ card:
     action: '[[tap_action]]'
   hold_action:
     action: '[[hold_action]]'
+  name: '[[name]]'
   styles:
     card:
       - border-radius: var(--ha-card-border-radius)      
@@ -50,6 +51,66 @@ card:
       - font-weight: 400
   state:
     - value: "above_horizon" 
+      styles:
+        card:
+          - --ha-card-background: var(--button-card-background-color-on)
+          - --ha-card-box-shadow: var(--button-card-box-shadow-on)
+        icon:
+          - color: var(--button-card-icon-color-on)
+        name:
+          - color: var(--button-card-name-color-on)
+        state:
+          - color: var(--button-card-state-color-on)
+        lock:
+          - color: var(--button-card-lock-color-on)
+        label:
+          - color: var(--button-card-label-color-on)
+    - value: "cleaning" 
+      styles:
+        card:
+          - --ha-card-background: var(--button-card-background-color-on)
+          - --ha-card-box-shadow: var(--button-card-box-shadow-on)
+        icon:
+          - color: var(--button-card-icon-color-on)
+        name:
+          - color: var(--button-card-name-color-on)
+        state:
+          - color: var(--button-card-state-color-on)
+        lock:
+          - color: var(--button-card-lock-color-on)
+        label:
+          - color: var(--button-card-label-color-on)
+    - value: "Wäscht" 
+      styles:
+        card:
+          - --ha-card-background: var(--button-card-background-color-on)
+          - --ha-card-box-shadow: var(--button-card-box-shadow-on)
+        icon:
+          - color: var(--button-card-icon-color-on)
+        name:
+          - color: var(--button-card-name-color-on)
+        state:
+          - color: var(--button-card-state-color-on)
+        lock:
+          - color: var(--button-card-lock-color-on)
+        label:
+          - color: var(--button-card-label-color-on)
+    - value: "Trocknet" 
+      styles:
+        card:
+          - --ha-card-background: var(--button-card-background-color-on)
+          - --ha-card-box-shadow: var(--button-card-box-shadow-on)
+        icon:
+          - color: var(--button-card-icon-color-on)
+        name:
+          - color: var(--button-card-name-color-on)
+        state:
+          - color: var(--button-card-state-color-on)
+        lock:
+          - color: var(--button-card-lock-color-on)
+        label:
+          - color: var(--button-card-label-color-on)
+    - value: "Spült" 
       styles:
         card:
           - --ha-card-background: var(--button-card-background-color-on)

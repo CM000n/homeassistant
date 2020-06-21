@@ -185,12 +185,17 @@ cards:
         columns:
           - column: 1
             entities:
-              - title: Treppenhaus
+              - title: Flur & Treppenhaus
                 entities:
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: light-card
                       variables:
+                        - entity: light.deckenlampen_flur
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: light-card
+                      variables:
                         - entity: light.wandlampen_treppenhaus
-

@@ -61,7 +61,7 @@ cards:
                     cardOptions:
                       template: sensor-card
                       variables:
-                        - entity: sensor.status_spuehlmaschine
+                        - entity: sensor.status_spuelmaschine
                         - name: Spülmaschine
 #                  - card: custom:decluttering-card
 #                    noPadding: true

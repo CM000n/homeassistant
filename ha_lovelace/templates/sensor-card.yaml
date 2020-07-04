@@ -10,6 +10,12 @@ default:
 card:
   type: custom:button-card
   size: '30%'
+  extra_styles: |
+    @keyframes wiggle {
+      0%, 100% {transform: translateX(0);} 
+      10%, 30%, 50%, 70%, 90% {transform: translateX(-1px);} 
+      20%, 40%, 60%, 80% {transform: translateX(1px);} 
+    }
   color: 'auto'
   lock: 'false'
   aspect_ratio: '1/1'
@@ -71,6 +77,7 @@ card:
           - --ha-card-background: var(--button-card-background-color-on)
           - --ha-card-box-shadow: var(--button-card-box-shadow-on)
         icon:
+          - animation: wiggle 0.5s infinite
           - color: var(--button-card-icon-color-on)
         name:
           - color: var(--button-card-name-color-on)
@@ -86,6 +93,7 @@ card:
           - --ha-card-background: var(--button-card-background-color-on)
           - --ha-card-box-shadow: var(--button-card-box-shadow-on)
         icon:
+          - animation: wiggle 0.5s infinite
           - color: var(--button-card-icon-color-on)
         name:
           - color: var(--button-card-name-color-on)
@@ -101,6 +109,7 @@ card:
           - --ha-card-background: var(--button-card-background-color-on)
           - --ha-card-box-shadow: var(--button-card-box-shadow-on)
         icon:
+          - animation: wiggle 0.5s infinite
           - color: var(--button-card-icon-color-on)
         name:
           - color: var(--button-card-name-color-on)
@@ -116,6 +125,7 @@ card:
           - --ha-card-background: var(--button-card-background-color-on)
           - --ha-card-box-shadow: var(--button-card-box-shadow-on)
         icon:
+          - animation: wiggle 0.5s infinite
           - color: var(--button-card-icon-color-on)
         name:
           - color: var(--button-card-name-color-on)

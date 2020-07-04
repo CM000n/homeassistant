@@ -1,0 +1,14 @@
+---
+title: Speakers
+icon: 'mdi:speaker'
+path: speakers
+panel: true
+badges: []
+cards:
+  - type: "custom:sonos-card"
+    name: "Sonos"
+    entities:
+      - media_player.wohnzimmer
+      - media_player.schlafzimmer
+      - media_player.bad
+      - media_player.buro

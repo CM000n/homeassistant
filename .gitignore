@@ -25,6 +25,8 @@ custom_components/*/
 !custom_components/dwains_theme
 custom_components/dwains_theme/__pycache__/
 www/*/
+tts/*/
+tts/*
 !www/dwains-theme
 www/dwains-theme/images/
 www/dwains-theme/fonts/fontawesome/hass-fontawesome-light.html

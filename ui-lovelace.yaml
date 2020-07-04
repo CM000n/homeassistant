@@ -107,6 +107,9 @@ sidebar:
           color: "#eb9c00"
         - value: 28
           color: "#c0392b"
+      show:
+        icon: false
+        labels: false
     cardStyle: |
       :host {
         width: 100%;

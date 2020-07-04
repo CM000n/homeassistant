@@ -6,24 +6,15 @@ panel: true
 badges: []
 popup_cards:
   media_player.wohnzimmer:
-    title: My popup
+    title: ""
+    style: !include ../styles/popup.yaml
     card:
-      type: entities
-      entities:
-        - media_player.wohnzimmer
-        - media_player.schlafzimmer
-        - media_player.bad
-        - media_player.buro
+      type: custom:decluttering-card
+      template: speaker-popup-card
+      variables:
+        - entity: media_player.wohnzimmer
     deviceID: 
       - this
-#  media_player.wohnzimmer:
-#    title: "Sonos Wohnzimmer"
-#    style: !include ../styles/popup.yaml
-#    card:
-#      type: custom:decluttering-card
-#      template: speaker-popup-card
-#      variables:
-#        - entity: media_player.wohnzimmer
   media_player.schlafzimmer:
     title: ""
     style: !include ../styles/popup.yaml

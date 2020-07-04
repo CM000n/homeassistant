@@ -33,6 +33,8 @@
   type: js
 - url: /hacsfiles/sidebar-card/sidebar-card.js
   type: module
+- url: /hacsfiles/sonos-card/sonos-card.js
+  type: module
 
 
 - url: 'https://sf.abarba.me/font.css'

@@ -29,8 +29,6 @@
   type: module
 - url: /hacsfiles/lovelace-swipe-navigation/swipe-navigation.js
   type: js
-- url: /hacsfiles/upcoming-media-card/upcoming-media-card.js
-  type: js
 - url: /hacsfiles/sidebar-card/sidebar-card.js
   type: module
 - url: /hacsfiles/sonos-card/sonos-card.js

@@ -1,0 +1,7 @@
+nachtlicht_einschalten:
+  alias: Nachtlicht - Einschalten
+  mode: single
+  sequence:
+  - data:
+      entity_id: script.nachtlicht_aus
+    service: script.turn_on

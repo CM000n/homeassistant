@@ -41,12 +41,15 @@
   trigger:
   - event: start
     platform: homeassistant
+  - hours: /6
+    platform: time_pattern
   condition: []
   action:
   - data:
       payload: announce
       topic: shellies/command
     service: mqtt.publish
+  mode: restart
 - id: '1590426149382'
   alias: Shellies - Discovery
   description: ''
@@ -60,7 +63,8 @@
       id: '{{ trigger.payload_json.id }}'
       mac: '{{ trigger.payload_json.mac }}'
     service: python_script.shellies_discovery
-  mode: restart
+  mode: queued
+  max: 999
 - id: '1590475178551'
   alias: Benachrichtigung - Waschmaschine fertig
   description: Diese Automatisierung benachrichtig über die Fertigstellung des Waschvorgangs.
@@ -272,6 +276,9 @@
   - condition: state
     entity_id: group.anwesenheit
     state: home
+  - condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'on'
   action:
   - data:
       entity_id: light.stehlampe_wohnzimmer_links

@@ -43,6 +43,7 @@ card:
           show:
             labels: false
             name: false
+            extrema: true
         - type: custom:mini-graph-card
           style: |
             ha-card {
@@ -62,3 +63,4 @@ card:
             graph: bar
             labels: false
             name: false
+            extrema: true

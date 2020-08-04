@@ -11,7 +11,7 @@ card:
     - type: custom:mini-media-player
       style: |
         ha-card {
-          margin: 0px 12px;
+          margin: 10px 10px;
           box-shadow: none;
         }
       entity: '[[entity]]'

@@ -125,7 +125,7 @@ sidebar:
       }
   width:
     mobile: 0
-    tablet: 15
+    tablet: 0
     desktop: 15
   template: |
     <li>

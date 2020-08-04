@@ -4,6 +4,8 @@ icon: 'mdi:television'
 path: devices
 panel: true
 badges: []
+
+
 popup_cards:
   media_player.chromecast:
     title: ""

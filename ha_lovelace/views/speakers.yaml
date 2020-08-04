@@ -4,6 +4,8 @@ icon: 'mdi:speaker'
 path: speakers
 panel: true
 badges: []
+
+
 cards:
   - type: "custom:sonos-card"
     name: "Sonos"

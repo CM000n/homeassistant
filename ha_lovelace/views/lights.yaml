@@ -3,6 +3,9 @@ title: Lichter
 icon: 'mdi:lightbulb'
 path: lights
 panel: true
+badges: []
+
+
 popup_cards:
   light.kitchen_wall:
     title: ""
@@ -28,6 +31,8 @@ popup_cards:
       switchWidth: 150px
       switchHeight: 400px
       sliderColoredByLight: true
+
+
 cards:
   - type: custom:homekit-card
     style: !include ../styles/homekit-card.yaml

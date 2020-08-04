@@ -1,78 +1,79 @@
-    title: Temperaturen
-    icon: 'mdi:temperature-celsius'
-    path: temperature
-    panel: true
-    badges: []
-    cards:
-      - type: custom:homekit-card
-        style: !include ../styles/homekit-card.yaml
-        enableColumns: true
-        rows:
-          - row: 1
-            columns:
-              - column: 1
+---
+title: Temperaturen
+icon: 'mdi:temperature-celsius'
+path: temperature
+panel: true
+badges: []
+cards:
+  - type: custom:homekit-card
+    style: !include ../styles/homekit-card.yaml
+    enableColumns: true
+    rows:
+      - row: 1
+        columns:
+          - column: 1
+            entities:
+              - title: Wohnung
                 entities:
-                  - title: Wohnung
-                    entities:
-                      - card: custom:decluttering-card
-                        noPadding: true
-                        cardStyle: !include ../styles/graph-card.yaml
-                        cardOptions:
-                          template: graph-card
-                          variables:
-                            - entity: sensor.temperatur_wohnzimmer_lowboard
-                            - name: Wohnzimmer
-                      - card: custom:decluttering-card
-                        noPadding: true
-                        cardStyle: !include ../styles/graph-card.yaml
-                        cardOptions:
-                          template: graph-card
-                          variables:
-                            - entity: sensor.temperatur_wohness
-                            - name: Küche
-                      - card: custom:decluttering-card
-                        noPadding: true
-                        cardStyle: !include ../styles/graph-card.yaml
-                        cardOptions:
-                          template: graph-card
-                          variables:
-                            - entity: sensor.temperatur_climate_bad
-                            - name: Bad
-                      - card: custom:decluttering-card
-                        noPadding: true
-                        cardStyle: !include ../styles/graph-card.yaml
-                        cardOptions:
-                          template: graph-card
-                          variables:
-                            - entity: sensor.temperatur_climate_buero
-                            - name: Büro
-                      - card: custom:decluttering-card
-                        noPadding: true
-                        cardStyle: !include ../styles/graph-card.yaml
-                        cardOptions:
-                          template: graph-card
-                          variables:
-                            - entity: sensor.temperatur_ankleide
-                            - name: Ankleide
-                      - card: custom:decluttering-card
-                        noPadding: true
-                        cardStyle: !include ../styles/graph-card.yaml
-                        cardOptions:
-                          template: graph-card
-                          variables:
-                            - entity: sensor.temperatur_keller
-                            - name: Keller
-          - row: 2
-            columns:
-              - column: 1
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardStyle: !include ../styles/graph-card.yaml
+                    cardOptions:
+                      template: graph-card
+                      variables:
+                        - entity: sensor.temperatur_wohnzimmer_lowboard
+                        - name: Wohnzimmer
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardStyle: !include ../styles/graph-card.yaml
+                    cardOptions:
+                      template: graph-card
+                      variables:
+                        - entity: sensor.temperatur_wohness
+                        - name: Küche
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardStyle: !include ../styles/graph-card.yaml
+                    cardOptions:
+                      template: graph-card
+                      variables:
+                        - entity: sensor.temperatur_climate_bad
+                        - name: Bad
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardStyle: !include ../styles/graph-card.yaml
+                    cardOptions:
+                      template: graph-card
+                      variables:
+                        - entity: sensor.temperatur_climate_buero
+                        - name: Büro
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardStyle: !include ../styles/graph-card.yaml
+                    cardOptions:
+                      template: graph-card
+                      variables:
+                        - entity: sensor.temperatur_ankleide
+                        - name: Ankleide
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardStyle: !include ../styles/graph-card.yaml
+                    cardOptions:
+                      template: graph-card
+                      variables:
+                        - entity: sensor.temperatur_keller
+                        - name: Keller
+      - row: 2
+        columns:
+          - column: 1
+            entities:
+              - title: Außen
                 entities:
-                  - title: Außen
-                    entities:
-                      - card: custom:decluttering-card
-                        noPadding: true
-                        cardStyle: !include ../styles/graph-card.yaml
-                        cardOptions:
-                          template: graph-card
-                          variables:
-                            - entity: sensor.darksky_temperature
-                            - name: Außen
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardStyle: !include ../styles/graph-card.yaml
+                    cardOptions:
+                      template: graph-card
+                      variables:
+                        - entity: sensor.darksky_temperature
+                        - name: Außen

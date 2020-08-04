@@ -5,6 +5,47 @@ path: overview
 panel: true
 badges: []
 
+popup_cards:
+  sensor.status_waschmaschine:
+    title: "Waschmaschine"
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: domestic-appliances-popup-card
+      variables:
+        - domestic_appliance_state: sensor.status_waschmaschine
+        - domestic_appliance_notification: automation.benachrichtigung_waschmaschine_fertig
+        - domestic_appliance_power: sensor.stromverbrauch_waschmaschine
+        - domestic_appliance_energy: sensor.gesamtverbrauch_waschmaschine
+    deviceID: 
+      - this
+  sensor.status_spuelmaschine:
+    title: "Spülmaschine"
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: domestic-appliances-popup-card
+      variables:
+        - domestic_appliance_state: sensor.status_spuelmaschine
+        - domestic_appliance_notification: automation.benachrichtigung_spulmaschine_fertig
+        - domestic_appliance_power: sensor.stromverbrauch_spuehlmaschine
+        - domestic_appliance_energy: sensor.gesamtverbrauch_spuehlmaschine
+    deviceID: 
+      - this
+  sensor.status_trockner:
+    title: "Trockner"
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: domestic-appliances-popup-card
+      variables:
+        - domestic_appliance_state: sensor.status_trockner
+        - domestic_appliance_notification: automation.benachrichtigung_trockner_fertig
+        - domestic_appliance_power: sensor.stromverbrauch_trockner
+        - domestic_appliance_energy: sensor.gesamtverbrauch_trockner
+    deviceID: 
+      - this
+
 
 cards:
   - type: custom:homekit-card

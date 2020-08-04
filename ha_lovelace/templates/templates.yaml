@@ -49,3 +49,5 @@ section-header-card:
   !include section-header-card.yaml
 device-shortcut-card:
   !include device-shortcut-card.yaml
+domestic-appliances-popup-card:
+  !include domestic-appliances-popup-card.yaml

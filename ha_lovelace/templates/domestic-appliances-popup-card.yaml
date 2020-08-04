@@ -1,0 +1,64 @@
+default:
+  #required
+  - domestic_appliance_state: ''
+  - domestic_appliance_notification: ''
+  - domestic_appliance_power: ''
+  - domestic_appliance_energy: ''
+card:
+  type: vertical-stack
+  style: |
+    ha-card {
+      margin: 10px 10px;
+      box-shadow: none;
+    }
+  cards:
+    - type: entities
+      style: |
+        ha-card {
+          border: none;
+          box-shadow: none;
+        }
+      show_header_toggle: false
+      entities:
+        - entity: '[[domestic_appliance_state]]'
+          secondary_info: last-changed
+        - entity: '[[domestic_appliance_notification]]'
+    - type: horizontal-stack
+      cards:
+        - type: custom:mini-graph-card
+          style: |
+            ha-card {
+              border: none;
+              box-shadow: none;
+            }
+          entities:
+            - entity: '[[domestic_appliance_power]]'
+          name: Leistung
+          tap_action: none
+          hours_to_show: 24
+          show_points: false
+          lower_bound: 0
+          points_per_hour: 25
+          hour24: true
+          show:
+            labels: false
+            name: false
+        - type: custom:mini-graph-card
+          style: |
+            ha-card {
+              border: none;
+              box-shadow: none;
+            }
+          entities:
+            - entity: '[[domestic_appliance_energy]]'
+          name: Energie
+          tap_action: none
+          hours_to_show: 24
+          show_points: false
+          aggregate_func: max
+          group_by: hour
+          hour24: true
+          show:
+            graph: bar
+            labels: false
+            name: false

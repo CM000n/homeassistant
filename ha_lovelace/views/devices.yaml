@@ -1,0 +1,139 @@
+---
+title: Sonstige Geräte
+icon: 'mdi:television'
+path: devices
+panel: true
+badges: []
+popup_cards:
+  media_player.chromecast:
+    title: ""
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: mediaplayer-popup-card
+      variables:
+        - media_player_entity: media_player.chromecast
+        - media_player_icon: 'cast'
+        - media_player_artwork: 'cover'
+        - speaker_entity: media_player.wohnzimmer
+    deviceID: 
+      - this
+  media_player.wohnzimmer:
+    title: ""
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: speaker-popup-card
+      variables:
+        - entity: media_player.wohnzimmer
+    deviceID: 
+      - this
+  media_player.schlafzimmer:
+    title: ""
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: speaker-popup-card
+      variables:
+        - entity: media_player.schlafzimmer
+    deviceID: 
+      - this
+  media_player.bad:
+    title: ""
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: speaker-popup-card
+      variables:
+        - entity: media_player.bad
+    deviceID: 
+      - this
+  media_player.buro:
+    title: ""
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: speaker-popup-card
+      variables:
+        - entity: media_player.buro
+    deviceID: 
+      - this
+
+
+cards:
+  - type: custom:homekit-card
+    style: !include ../styles/homekit-card.yaml
+    enableColumns: true
+    rows:
+      - row: 1
+        columns:
+          - column: 1
+            entities:
+              - title: Wohnzimmer
+                entities:
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: button-card
+                      variables:
+                        - entity: binary_sensor.philipstv
+                        - icon: television
+                        - name: Fernseher
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: mediaplayer-card
+                      variables:
+                        - entity: media_player.chromecast
+                        - icon: cast
+                        - name: Chromecast
+                        #- tap_action: more-info
+                        - show_entity_picture: true
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: speaker-card
+                      variables:
+                        - entity: media_player.wohnzimmer
+      - row: 2
+        columns:
+          - column: 1
+            entities:
+              - title: Büro
+                entities:
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: button-card
+                      variables:
+                        - entity: switch.simon_pc
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: speaker-card
+                      variables:
+                        - entity: media_player.buro
+      - row: 3
+        columns:
+          - column: 1
+            entities:
+              - title: Bad
+                entities:
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: speaker-card
+                      variables:
+                        - entity: media_player.bad
+      - row: 4
+        columns:
+          - column: 1
+            entities:
+              - title: Schlafzimmer
+                entities:
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: speaker-card
+                      variables:
+                        - entity: media_player.schlafzimmer

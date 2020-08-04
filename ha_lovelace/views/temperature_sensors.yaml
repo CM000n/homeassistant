@@ -1,4 +1,4 @@
-    title: Temperature
+    title: Temperaturen
     icon: 'mdi:temperature-celsius'
     path: temperature
     panel: true

@@ -4,6 +4,8 @@ default:
   - entity: ''
   #optional
   - show_last_changed: true
+  - tap_action: more-info
+  - hold_action: more-info
 
 card:
   type: custom:button-card
@@ -19,9 +21,10 @@ card:
   show_label: true
   show_last_changed: '[[show_last_changed]]'
   tap_action:
-    action: 'more-info'
+    action: '[[tap_action]]'
   hold_action:
-    action: 'more-info'
+    action: '[[hold_action]]'
+  name: '[[name]]'
   styles:
     card:
       - border-radius: var(--ha-card-border-radius)      

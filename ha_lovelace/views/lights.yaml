@@ -190,7 +190,7 @@ cards:
         columns:
           - column: 1
             entities:
-              - title: Flur & Treppenhaus
+              - title: Flur, Treppenhaus & Eingangstür
                 entities:
                   - card: custom:decluttering-card
                     noPadding: true
@@ -204,3 +204,9 @@ cards:
                       template: light-card
                       variables:
                         - entity: light.wandlampen_treppenhaus
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: light-card
+                      variables:
+                        - entity: light.eingangstuer_decke

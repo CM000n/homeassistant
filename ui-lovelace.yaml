@@ -129,8 +129,8 @@ sidebar:
     tablet: 0.5
     desktop: 15
   breakpoints:
-    mobile: 1700
-    tablet: 1800
+    mobile: 1100
+    tablet: 1220
   template: |
     <li>
       {% if now().hour  < 5 %} Gute Nacht {{'\U0001F634'}}

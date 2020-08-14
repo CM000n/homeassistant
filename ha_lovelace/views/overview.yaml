@@ -81,6 +81,13 @@ cards:
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
+                      template: binary-sensor-card
+                      variables:
+                        - entity: binary_sensor.eingangstuer_bewegungsmelder_motion
+                        - name: Eingangstür
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
                       template: sensor-card
                       variables:
                         - entity: vacuum.xiaomi_vacuum_cleaner

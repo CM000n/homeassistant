@@ -4,12 +4,35 @@ icon: 'mdi:temperature-celsius'
 path: temperature
 panel: true
 badges: []
+
 cards:
   - type: custom:homekit-card
     style: !include ../styles/homekit-card.yaml
     enableColumns: true
     rows:
       - row: 1
+        columns:
+          - column: 1
+            entities:
+              - title: Thermostate
+                entities:
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardStyle: !include ../styles/graph-card.yaml
+                    cardOptions:
+                      template: thermostat-card
+                      variables:
+                        - entity: climate.heizung_buro
+                        - name: Büro
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardStyle: !include ../styles/graph-card.yaml
+                    cardOptions:
+                      template: thermostat-card
+                      variables:
+                        - entity: climate.heizung_bad
+                        - name: Bad
+      - row: 2
         columns:
           - column: 1
             entities:
@@ -63,7 +86,7 @@ cards:
                       variables:
                         - entity: sensor.temperatur_keller
                         - name: Keller
-      - row: 2
+      - row: 3
         columns:
           - column: 1
             entities:

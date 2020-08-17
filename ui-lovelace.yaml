@@ -5,7 +5,7 @@ custom_header:
   hide_unused: true
   hide_config: true
   hide_raw: true
-  show_tabs: 'overview, lights, devices, speakers, temperature'
+  show_tabs: 'overview, lights, devices, sonos, temperature'
   hidden_tab_redirect: false
   tab_container_css: 'max-width: 1425px !important; margin: 0 auto !important;'
   all_tabs_css: "width: 35px !important;"
@@ -182,7 +182,7 @@ sidebar:
       navigation_path: "/lovelace/devices"
       name: "Sonstige Geräte"
     - action: navigate
-      navigation_path: "/lovelace/speakers"
+      navigation_path: "/lovelace/sonos"
       name: "Lautsprecher"
     - action: navigate
       navigation_path: "/lovelace/temperature"
@@ -199,5 +199,5 @@ views:
   - !include ha_lovelace/views/overview.yaml
   - !include ha_lovelace/views/lights.yaml
   - !include ha_lovelace/views/devices.yaml
-  - !include ha_lovelace/views/speakers.yaml
+  - !include ha_lovelace/views/sonos.yaml
   - !include ha_lovelace/views/temperature_sensors.yaml

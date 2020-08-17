@@ -1,0 +1,177 @@
+default:
+  #required
+  - entity: ''
+  #optional
+  - tap_action: more-info
+  - hold_action: more-info
+  - aspect_ratio: 1/1
+
+card:
+  style: |
+    ha-card {
+      box-shadow: none;
+    }
+    #icon {
+      border-radius: 50px;
+    }
+  type: custom:button-card
+  size: '30%'
+  color: 'auto'
+  lock: 'false'
+  show_icon: false
+  show_label: true
+  show_state: false
+  aspect_ratio: '[[aspect_ratio]]'
+  entity: '[[entity]]'
+  label: "[[[ return `Zieltemperatur ` + `${states['[[entity]]'].attributes.temperature}°` ]]]"
+  styles:
+    card:
+      - border-radius: var(--ha-card-border-radius)
+      - box-shadow: var(--button-card-box-shadow)
+      - padding: 10px
+    label:
+      - justify-self: start
+      - text-align: left
+      - font-size: 11px
+      - padding: 0px 10px
+    state:
+      - justify-self: start
+      - text-transform: capitalize
+      - font-size: 14px
+      - font-weight: 400
+    img_cell:
+      - justify-content: start
+      - align-items: start
+    name:
+      - justify-self: start
+      - text-align: left
+      - font-size: 14px
+      - font-weight: 400
+      - padding: 0px 10px
+    icon:
+      -  padding: 0px 10px
+    grid:
+      - grid-template-areas: '"i i" "n n" "area area" "s l"'
+      - grid-template-columns: 1fr lfr
+      - grid-template-rows: 1fr min-content min-content min-content
+    custom_fields:
+      notification:
+        - background-color: var(--paper-item-icon-color)
+        - color: var(--notification-badge-color)
+        - font-weight: bold
+        - border-radius: 50%
+        - overflow: visible
+        - position: absolute
+        - left: 12%
+        - top: 12%
+        - height: 32px
+        - width: 32px
+        - font-size: 10px
+        - line-height: 32px
+  custom_fields: 
+    notification: "[[[ return `${states['[[entity]]'].attributes.current_temperature}°` ]]]"
+  state:
+    - value: "heat"
+      spin: false
+      styles:
+        card:
+          - --ha-card-background: var(--button-card-background-color-on)
+          - --ha-card-box-shadow: var(--button-card-box-shadow-on)
+        name:
+          - color: var(--button-card-name-color-on)
+        label:
+          - color: var(--button-card-label-color-on)
+        state:
+          - color: var(--button-card-state-color-on)
+        custom_fields:
+          notification:
+            - background-color: "[[[ if (states['[[entity]]'].attributes.hvac_action == 'cooling') return `#1E90FF`; if (states['[[entity]]'].attributes.preset_mode == 'comfort') return `#EE7600`; if (states['[[entity]]'].attributes.preset_mode == 'eco') return `#0F964A`; if (states['[[entity]]'].attributes.hvac_action == 'idle') return `#00CC66`; else return `#FC2403`; ]]]"
+            - color: white
+        lock:
+          - color: gray
+    - value: "cool"
+      spin: false
+      styles:
+        card:
+          - --ha-card-background: var(--button-card-background-color-on)
+          - --ha-card-box-shadow: var(--button-card-box-shadow-on)
+        name:
+          - color: var(--button-card-name-color-on)
+        label:
+          - color: var(--button-card-label-color-on)
+        state:
+          - color: var(--button-card-state-color-on)
+        custom_fields:
+          notification:
+            - background-color: '#1E90FF'
+            - color: white
+        lock:
+          - color: gray
+    - value: "heat_cool"
+      spin: false
+      styles:
+        card:
+          - --ha-card-background: var(--button-card-background-color-on)
+          - --ha-card-box-shadow: var(--button-card-box-shadow-on)
+        name:
+          - color: var(--button-card-name-color-on)
+        label:
+          - color: var(--button-card-label-color-on)
+        state:
+          - color: var(--button-card-state-color-on)
+        custom_fields:
+          notification:
+            - background-color: '#00CC66'
+            - color: white
+        lock:
+          - color: gray
+    - value: "idle"
+      spin: false
+      styles:
+        card:
+          - --ha-card-background: var(--button-card-background-color-off)
+          - --ha-card-box-shadow: var(--button-card-box-shadow-off)
+        name:
+          - color: var(--button-card-name-color-off)
+        label:
+          - color: var(--button-card-label-color-off)
+        state:
+          - color: var(--button-card-state-color-off)
+        custom_fields:
+          notification:
+            - background-color: '#00CC66'
+            - color: white
+        lock:
+          - color: gray
+    - value: "off"
+      spin: false
+      styles:
+        card:
+          - --ha-card-background: var(--button-card-background-color-off)
+          - --ha-card-box-shadow: var(--button-card-box-shadow-off)
+        name:
+          - color: var(--button-card-name-color-off)
+        label:
+          - color: var(--button-card-label-color-off)
+        state:
+          - color: var(--button-card-state-color-off)
+        custom_fields:
+          notification:
+            - background-color: var(--paper-item-icon-color)
+            - color: white
+    - operator: 'default'
+      spin: false
+      styles:
+        card:
+          - --ha-card-background: var(--button-card-background-color-off)
+          - --ha-card-box-shadow: var(--button-card-box-shadow-off)
+        name:
+          - color: var(--button-card-name-color-off)
+        label:
+          - color: var(--button-card-label-color-off)
+        state:
+          - color: var(--button-card-state-color-off)
+        custom_fields:
+          notification:
+            - background-color: var(--paper-item-icon-color)
+            - color: white

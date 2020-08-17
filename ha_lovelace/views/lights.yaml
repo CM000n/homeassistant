@@ -46,28 +46,24 @@ cards:
                 entities: 
                   - card: custom:decluttering-card
                     noPadding: true
-                    cardStyle: !include ../styles/graph-card.yaml
                     cardOptions:
                       template: light-card
                       variables:
                         - entity: light.wohnzimmer_deckenlampe
                   - card: custom:decluttering-card
                     noPadding: true
-                    cardStyle: !include ../styles/graph-card.yaml
                     cardOptions:
                       template: light-card
                       variables:
                         - entity: light.wohnzimmer_lightstrip
                   - card: custom:decluttering-card
                     noPadding: true
-                    cardStyle: !include ../styles/graph-card.yaml
                     cardOptions:
                       template: light-card
                       variables:
                         - entity: light.stehlampe_wohnzimmer_links
                   - card: custom:decluttering-card
                     noPadding: true
-                    cardStyle: !include ../styles/graph-card.yaml
                     cardOptions:
                       template: light-card
                       variables:

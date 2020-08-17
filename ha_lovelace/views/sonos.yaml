@@ -1,14 +1,14 @@
 ---
-title: Lautsprecher
+title: Sonos Lautsprecher
 icon: 'mdi:speaker'
-path: speakers
+path: sonos
 panel: true
 badges: []
 
 
 cards:
   - type: "custom:sonos-card"
-    name: "Sonos"
+    name: "Sonos Lautsprecher"
     entities:
       - media_player.wohnzimmer
       - media_player.schlafzimmer

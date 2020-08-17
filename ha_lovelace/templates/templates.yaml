@@ -51,3 +51,5 @@ device-shortcut-card:
   !include device-shortcut-card.yaml
 domestic-appliances-popup-card:
   !include domestic-appliances-popup-card.yaml
+thermostat-card:
+  !include thermostat-card.yaml

@@ -38,7 +38,7 @@ light.kinderzimmer_deckenlampe:
   icon: mdi:ceiling-light
 light.kinderzimmer_tischleuchte:
   friendly_name: Tischleuchte
-  icon: mdi:desk-lamp
+  icon: mdi:lamp
 light.ankleide_nahtisch_wand:
   friendly_name: Nähtisch W.
   icon: mdi:track-light

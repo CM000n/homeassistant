@@ -150,38 +150,20 @@ cards:
         columns:
           - column: 1
             entities:
-              - title: Ankleide
+              - title: Kinderzimmer
                 entities:
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: light-card
                       variables:
-                        - entity: light.ankleide_deckenlampe
+                        - entity: light.kinderzimmer_deckenlampe
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: light-card
                       variables:
-                        - entity: light.ankleide_schreibtisch
-                  - card: custom:decluttering-card
-                    noPadding: true
-                    cardOptions:
-                      template: light-card
-                      variables:
-                        - entity: light.ankleide_nahtisch_wand
-                  - card: custom:decluttering-card
-                    noPadding: true
-                    cardOptions:
-                      template: light-card
-                      variables:
-                        - entity: light.ankleide_nahtisch_links
-                  - card: custom:decluttering-card
-                    noPadding: true
-                    cardOptions:
-                      template: light-card
-                      variables:
-                        - entity: light.ankleide_nahtisch_rechts
+                        - entity: light.kinderzimmer_tischleuchte
       - row: 7
         columns:
           - column: 1

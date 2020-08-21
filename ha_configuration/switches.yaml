@@ -64,6 +64,13 @@
     min_brightness: 20
     max_brightness: 100
 
+  - platform: circadian_lighting
+    name: Autofarbtemperatur Kinderzimmer
+    lights_ct:
+      - light.kinderzimmer_deckenlampe
+    min_brightness: 30
+    max_brightness: 100
+
 ####################################################
 #                                                  #
 #                      Räume                       #

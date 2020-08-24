@@ -7,25 +7,192 @@
 #                                                  #
 ####################################################
 
+wohnzimmer_deckenlampe_lichtstimmung:
+  name: Wohnzimmer Deckenlampe Lichtstimmung
+  options:
+    - Automatik
+    - Entspannen
+    - Lesen
+    - Konzentrieren
+    - Energie tanken
+    - Aus
+  initial: Automatik
+wohnzimmer_lightstrip_lichtstimmung:
+  name: Wohnzimmer Lightstrip Lichtstimmung
+  options:
+    - Automatik
+    - Entspannen
+    - Lesen
+    - Konzentrieren
+    - Energie tanken
+    - Aus
+  initial: Automatik
+wohnzimmer_stehlampe_links_lichtstimmung:
+  name: Wohnzimmer Stehlampe links Lichtstimmung
+  options:
+    - Automatik
+    - Entspannen
+    - Lesen
+    - Konzentrieren
+    - Energie tanken
+    - Aus
+  initial: Automatik
+wohnzimmer_stehlampe_rechts_lichtstimmung:
+  name: Wohnzimmer Stehlampe rechts Lichtstimmung
+  options:
+    - Automatik
+    - Entspannen
+    - Lesen
+    - Konzentrieren
+    - Energie tanken
+    - Aus
+  initial: Automatik
+
+kuche_herd_lichtstimmung:
+  name: Küche Herd Lichtstimmung
+  options:
+    - Automatik
+    - Entspannen
+    - Lesen
+    - Konzentrieren
+    - Energie tanken
+    - Aus
+  initial: Energie tanken
+kuche_esstisch_lichtstimmung:
+  name: Küche Esstisch Lichtstimmung
+  options:
+    - Automatik
+    - Entspannen
+    - Lesen
+    - Konzentrieren
+    - Energie tanken
+    - Aus
+  initial: Entspannen
+
+bad_deckenlampe_lichtstimmung:
+  name: Bad Deckenlampe Lichtstimmung
+  options:
+    - Automatik
+    - Entspannen
+    - Lesen
+    - Konzentrieren
+    - Energie tanken
+    - Aus
+  initial: Aus
+bad_spiegellampe_lichtstimmung:
+  name: Bad Spiegellampe Lichtstimmung
+  options:
+    - Automatik
+    - Entspannen
+    - Lesen
+    - Konzentrieren
+    - Energie tanken
+    - Aus
+  initial: Aus
+
 buero_deckenlampe_lichtstimmung:
   name: Büro Deckenlampe Lichtstimmung
   options:
     - Automatik
-    - Energie tanken
+    - Entspannen
     - Lesen
     - Konzentrieren
-    - Entspannen
+    - Energie tanken
+    - Aus
   initial: Automatik
-
 buero_schreibtischlampe_lichtstimmung:
   name: Büro Schreibtischlampe Lichtstimmung
   options:
     - Automatik
-    - Energie tanken
+    - Entspannen
     - Lesen
     - Konzentrieren
-    - Entspannen
+    - Energie tanken
+    - Aus
   initial: Automatik
+
+schlafzimmer_deckenlampe_lichtstimmung:
+  name: Schlafzimmer Deckenlampe Lichtstimmung
+  options:
+    - Automatik
+    - Entspannen
+    - Lesen
+    - Konzentrieren
+    - Energie tanken
+    - Aus
+  initial: Automatik
+schlafzimmer_nachttisch_lisa_lichtstimmung:
+  name: Schlafzimmer Nachttisch Lisa Lichtstimmung
+  options:
+    - Automatik
+    - Entspannen
+    - Lesen
+    - Konzentrieren
+    - Energie tanken
+    - Aus
+  initial: Entspannen
+schlafzimmer_nachttisch_simon_lichtstimmung:
+  name: Schlafzimmer Nachttisch Simon Lichtstimmung
+  options:
+    - Automatik
+    - Entspannen
+    - Lesen
+    - Konzentrieren
+    - Energie tanken
+    - Aus
+  initial: Entspannen
+
+kinderzimmer_deckenlampe_lichtstimmung:
+  name: Schlafzimmer Deckenlampe Lichtstimmung
+  options:
+    - Automatik
+    - Entspannen
+    - Lesen
+    - Konzentrieren
+    - Energie tanken
+    - Aus
+  initial: Automatik
+kinderzimmer_tischlampe_lichtstimmung:
+  name: Schlafzimmer Nachttisch Lisa Lichtstimmung
+  options:
+    - Automatik
+    - Entspannen
+    - Lesen
+    - Konzentrieren
+    - Energie tanken
+    - Aus
+  initial: Aus
+
+flur_deckenlampen_lichtstimmung:
+  name: Flur Deckenlampen Lichtstimmung
+  options:
+    - Automatik
+    - Entspannen
+    - Lesen
+    - Konzentrieren
+    - Energie tanken
+    - Aus
+  initial: Automatik
+treppenhaus_wandlampen_lichtstimmung:
+  name: Treppenhaus Wandlampen Lichtstimmung
+  options:
+    - Automatik
+    - Entspannen
+    - Lesen
+    - Konzentrieren
+    - Energie tanken
+    - Aus
+  initial: Energie tanken
+eingangstuer_deckenlampe_lichtstimmung:
+  name: Eingangstür Deckenlampe Lichtstimmung
+  options:
+    - Automatik
+    - Entspannen
+    - Lesen
+    - Konzentrieren
+    - Energie tanken
+    - Aus
+  initial: Aus
 
 
 ####################################################

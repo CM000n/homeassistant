@@ -6,17 +6,20 @@ default:
   - show_last_changed: false
   - tap_action: toggle
   - hold_action: more-info
+  - input_select_entity: ''
 
 card:
   type: custom:button-card
-  size: '30%'
+  size: '80%'
   color: 'auto'
   lock: 'false'
   aspect_ratio: '1/1'
   entity: '[[entity]]'
-  label_template: >
-    var bri = Math.round(entity.attributes.brightness / 2.55);
-    return (bri ? bri : '0') + '%';
+  label: >
+    [[[
+      var bri = Math.round(states['[[entity]]'].attributes.brightness / 2.55);
+      return 'Helligkeit: ' + (bri ? bri : '0') + '%';
+    ]]]
   show_state: true
   show_label: true
   show_last_changed: '[[show_last_changed]]'
@@ -24,16 +27,21 @@ card:
     action: '[[tap_action]]'
   hold_action:
     action: '[[hold_action]]'
+  double_tap_action:
+    action: call-service
+    service: input_select.select_next
+    service_data:
+      entity_id: '[[input_select_entity]]'
   styles:
     card:
       - border-radius: var(--ha-card-border-radius)      
       - box-shadow: var(--button-card-box-shadow)
       - padding: 10px
     label:
-      - font-size: 11px
+      - font-size: 10px
       - justify-self: start
     grid:
-      - grid-template-areas: '"i" "n" "s" "l"'
+      - grid-template-areas: '"i temp" "n n" "s s" "l l"'
       - grid-template-columns: 1fr
       - grid-template-rows: 1fr min-content min-content
     img_cell:
@@ -51,6 +59,39 @@ card:
       - text-transform: capitalize
       - font-size: 14px
       - font-weight: 400
+    custom_fields:
+      temp:
+        - align-self: start
+        - justify-self: end
+  custom_fields:
+    temp: >
+      [[[
+        if (states['[[input_select_entity]]'].state == 'Automatik')
+          return `<ha-icon
+            icon="mdi:brightness-auto"
+            style="width: 15px; height: 15px; color: grey;">
+            </ha-icon>`;
+        if (states['[[input_select_entity]]'].state == 'Entspannen')
+          return `<ha-icon
+            icon="mdi:brightness-4"
+            style="width: 15px; height: 15px; color: grey;">
+            </ha-icon>`;
+        if (states['[[input_select_entity]]'].state == 'Lesen')
+          return `<ha-icon
+            icon="mdi:brightness-6"
+            style="width: 15px; height: 15px; color: grey;">
+            </ha-icon>`;
+        if (states['[[input_select_entity]]'].state == 'Konzentrieren')
+          return `<ha-icon
+            icon="mdi:brightness-7"
+            style="width: 15px; height: 15px; color: grey;">
+            </ha-icon>`;
+        if (states['[[input_select_entity]]'].state == 'Energie tanken')
+          return `<ha-icon
+            icon="mdi:brightness-5"
+            style="width: 15px; height: 15px; color: grey;">
+            </ha-icon>`;
+      ]]]
   state:
     - value: "on" 
       styles:

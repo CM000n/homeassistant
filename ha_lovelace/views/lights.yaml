@@ -50,24 +50,28 @@ cards:
                       template: light-card
                       variables:
                         - entity: light.wohnzimmer_deckenlampe
+                        - input_select_entity: input_select.wohnzimmer_deckenlampe_lichtstimmung
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: light-card
                       variables:
                         - entity: light.wohnzimmer_lightstrip
+                        - input_select_entity: input_select.wohnzimmer_lightstrip_lichtstimmung
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: light-card
                       variables:
                         - entity: light.stehlampe_wohnzimmer_links
+                        - input_select_entity: input_select.wohnzimmer_stehlampe_links_lichtstimmung
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: light-card
                       variables:
                         - entity: light.wohnzimmer_stehlampe_rechts
+                        - input_select_entity: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
       - row: 2
         columns:
           - column: 1
@@ -80,12 +84,14 @@ cards:
                       template: light-card
                       variables:
                         - entity: light.kuche_herd
+                        - input_select_entity: input_select.kuche_herd_lichtstimmung
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: light-card
                       variables:
                         - entity: light.kuche_esstisch
+                        - input_select_entity: input_select.kuche_esstisch_lichtstimmung
       - row: 3
         columns:
           - column: 1
@@ -98,12 +104,14 @@ cards:
                       template: light-card
                       variables:
                         - entity: light.shelly_deckenlampe_bad
+                        - input_select_entity: input_select.bad_deckenlampe_lichtstimmung
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: light-card
                       variables:
                         - entity: light.shelly_badspiegel
+                        - input_select_entity: input_select.bad_spiegellampe_lichtstimmung
       - row: 4
         columns:
           - column: 1
@@ -116,12 +124,14 @@ cards:
                       template: light-card
                       variables:
                         - entity: light.buro_deckenlampe
+                        - input_select_entity: input_select.buero_deckenlampe_lichtstimmung
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: light-card
                       variables:
                         - entity: light.buro_schreibtisch
+                        - input_select_entity: input_select.buero_schreibtischlampe_lichtstimmung
       - row: 5
         columns:
           - column: 1
@@ -134,18 +144,21 @@ cards:
                       template: light-card
                       variables:
                         - entity: light.schlafzimmer_deckenlampe
+                        - input_select_entity: input_select.schlafzimmer_deckenlampe_lichtstimmung
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: light-card
                       variables:
                         - entity: light.schlafzimmer_nachttisch_simon
+                        - input_select_entity: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: light-card
                       variables:
                         - entity: light.schlafzimmer_nachttisch_lisa
+                        - input_select_entity: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
       - row: 6
         columns:
           - column: 1
@@ -158,12 +171,14 @@ cards:
                       template: light-card
                       variables:
                         - entity: light.kinderzimmer_deckenlampe
+                        - input_select_entity: input_select.kinderzimmer_deckenlampe_lichtstimmung
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: light-card
                       variables:
                         - entity: light.kinderzimmer_tischleuchte
+                        - input_select_entity: input_select.kinderzimmer_tischlampe_lichtstimmung
       - row: 7
         columns:
           - column: 1
@@ -176,15 +191,18 @@ cards:
                       template: light-card
                       variables:
                         - entity: light.deckenlampen_flur
+                        - input_select_entity: input_select.flur_deckenlampen_lichtstimmung
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: light-card
                       variables:
                         - entity: light.wandlampen_treppenhaus
+                        - input_select_entity: input_select.treppenhaus_wandlampen_lichtstimmung
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: light-card
                       variables:
                         - entity: light.eingangstuer_decke
+                        - input_select_entity: input_select.eingangstuer_deckenlampe_lichtstimmung

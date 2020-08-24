@@ -11,8 +11,8 @@ default:
 card:
   type: custom:button-card
   size: '80%'
-  color: 'auto'
-  lock: 'false'
+  color: auto
+  lock: false
   aspect_ratio: '1/1'
   entity: '[[entity]]'
   label: >

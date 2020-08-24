@@ -344,7 +344,7 @@
       profile: hueenergize
     entity_id: light.kuche_herd
     service: light.turn_on
-  mode: single
+  mode: restart
 - id: '1595446592140'
   alias: Beleuchtung - Bad Spiegellampe mit Deckenlampe an
   description: ''
@@ -398,7 +398,7 @@
       profile: hueenergize
     entity_id: light.ankleide_nahtisch_links
     service: light.turn_on
-  mode: single
+  mode: restart
 - id: '1595840015959'
   alias: Beleuchtung - Energize - Ankleide Nähtisch Rechts
   description: ''
@@ -412,7 +412,7 @@
       profile: hueenergize
     entity_id: light.ankleide_nahtisch_rechts
     service: light.turn_on
-  mode: single
+  mode: restart
 - id: '1595840071764'
   alias: Beleuchtung - Küche Esstisch Deckenlampe auf Warmweis
   description: ''
@@ -427,7 +427,7 @@
       kelvin: 1800
     entity_id: light.kuche_esstisch
     service: light.turn_on
-  mode: single
+  mode: restart
 - id: '1595840155379'
   alias: Beleuchtung - Wohnzimmer Stehlampe rechts auf Warmweis
   description: ''
@@ -852,7 +852,7 @@
   description: ''
   trigger:
   - platform: time_pattern
-    seconds: '1'
+    seconds: '*'
   condition:
   - condition: state
     entity_id: light.buro_deckenlampe
@@ -862,13 +862,13 @@
       profile: hueenergize
     entity_id: light.buro_deckenlampe
     service: light.turn_on
-  mode: single
+  mode: restart
 - id: '1598199283716'
   alias: Beleuchtung - Energize - Büro Schreibtisch
   description: ''
   trigger:
   - platform: time_pattern
-    seconds: '1'
+    seconds: '*'
   condition:
   - condition: state
     entity_id: light.buro_schreibtisch
@@ -878,13 +878,13 @@
       profile: hueenergize
     entity_id: light.buro_schreibtisch
     service: light.turn_on
-  mode: single
+  mode: restart
 - id: '1498199116891'
   alias: Beleuchtung - Concentrate - Büro Deckenlampe
   description: ''
   trigger:
   - platform: time_pattern
-    seconds: '1'
+    seconds: '*'
   condition:
   - condition: state
     entity_id: light.buro_deckenlampe
@@ -894,13 +894,13 @@
       profile: hueconcentrate
     entity_id: light.buro_deckenlampe
     service: light.turn_on
-  mode: single
+  mode: restart
 - id: '1498199283716'
   alias: Beleuchtung - Concentrate - Büro Schreibtisch
   description: ''
   trigger:
   - platform: time_pattern
-    seconds: '1'
+    seconds: '*'
   condition:
   - condition: state
     entity_id: light.buro_schreibtisch
@@ -910,13 +910,13 @@
       profile: hueconcentrate
     entity_id: light.buro_schreibtisch
     service: light.turn_on
-  mode: single
+  mode: restart
 - id: '1398199116891'
   alias: Beleuchtung - Reading - Büro Deckenlampe
   description: ''
   trigger:
   - platform: time_pattern
-    seconds: '1'
+    seconds: '*'
   condition:
   - condition: state
     entity_id: light.buro_deckenlampe
@@ -926,13 +926,13 @@
       profile: huereading
     entity_id: light.buro_deckenlampe
     service: light.turn_on
-  mode: single
+  mode: restart
 - id: '1398199283716'
   alias: Beleuchtung - Reading - Büro Schreibtisch
   description: ''
   trigger:
   - platform: time_pattern
-    seconds: '1'
+    seconds: '*'
   condition:
   - condition: state
     entity_id: light.buro_schreibtisch
@@ -942,13 +942,13 @@
       profile: huereading
     entity_id: light.buro_schreibtisch
     service: light.turn_on
-  mode: single
+  mode: restart
 - id: '1298199116891'
   alias: Beleuchtung - Relax - Büro Deckenlampe
   description: ''
   trigger:
   - platform: time_pattern
-    seconds: '1'
+    seconds: '*'
   condition:
   - condition: state
     entity_id: light.buro_deckenlampe
@@ -958,13 +958,13 @@
       profile: huerelax
     entity_id: light.buro_deckenlampe
     service: light.turn_on
-  mode: single
+  mode: restart
 - id: '1298199283716'
   alias: Beleuchtung - Relax - Büro Schreibtisch
   description: ''
   trigger:
   - platform: time_pattern
-    seconds: '1'
+    seconds: '*'
   condition:
   - condition: state
     entity_id: light.buro_schreibtisch
@@ -974,4 +974,4 @@
       profile: huerelax
     entity_id: light.buro_schreibtisch
     service: light.turn_on
-  mode: single
+  mode: restart

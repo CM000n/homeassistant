@@ -350,6 +350,19 @@ ltss:
 
 ####################################################
 #                                                  #
+#                   AMBIIGHTS                      #
+#                                                  #
+####################################################
+
+# https://github.com/jomwells/ambilights
+
+light:
+  - platform: philips_ambilight
+    name: Wohnzimmer Ambilight
+    host: 192.168.178.19
+
+####################################################
+#                                                  #
 #            END OF CONFIGURATION FILE             #
 #                                                  #
 ####################################################

@@ -72,21 +72,11 @@ kuche_esstisch_lichtstimmung:
 bad_deckenlampe_lichtstimmung:
   name: Bad Deckenlampe Lichtstimmung
   options:
-    - Automatik
-    - Entspannen
-    - Lesen
-    - Konzentrieren
-    - Energie tanken
     - Aus
   initial: Aus
 bad_spiegellampe_lichtstimmung:
   name: Bad Spiegellampe Lichtstimmung
   options:
-    - Automatik
-    - Entspannen
-    - Lesen
-    - Konzentrieren
-    - Energie tanken
     - Aus
   initial: Aus
 

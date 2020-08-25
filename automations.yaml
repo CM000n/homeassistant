@@ -331,20 +331,6 @@
     entity_id: light.wohnzimmer_lightstrip
     service: light.turn_off
   mode: single
-- id: '1595446434413'
-  alias: Beleuchtung - Energize - Küche Deckenlampe Herd
-  description: ''
-  trigger:
-  - entity_id: light.kuche_herd
-    platform: state
-    to: 'on'
-  condition: []
-  action:
-  - data:
-      profile: hueenergize
-    entity_id: light.kuche_herd
-    service: light.turn_on
-  mode: restart
 - id: '1595446592140'
   alias: Beleuchtung - Bad Spiegellampe mit Deckenlampe an
   description: ''
@@ -371,48 +357,6 @@
     entity_id: light.shelly_badspiegel
     service: light.turn_off
   mode: single
-- id: '1595839581196'
-  alias: Beleuchtung - Energize - Ankleide Nähtisch Wand
-  description: ''
-  trigger:
-  - entity_id: light.ankleide_nahtisch_wand
-    platform: state
-    to: 'on'
-  condition: []
-  action:
-  - data:
-      profile: hueenergize
-    entity_id: light.ankleide_nahtisch_wand
-    service: light.turn_on
-  mode: restart
-- id: '1595839948059'
-  alias: Beleuchtung - Energize - Ankleide Nähtisch Links
-  description: ''
-  trigger:
-  - entity_id: light.ankleide_nahtisch_links
-    platform: state
-    to: 'on'
-  condition: []
-  action:
-  - data:
-      profile: hueenergize
-    entity_id: light.ankleide_nahtisch_links
-    service: light.turn_on
-  mode: restart
-- id: '1595840015959'
-  alias: Beleuchtung - Energize - Ankleide Nähtisch Rechts
-  description: ''
-  trigger:
-  - entity_id: light.ankleide_nahtisch_rechts
-    platform: state
-    to: 'on'
-  condition: []
-  action:
-  - data:
-      profile: hueenergize
-    entity_id: light.ankleide_nahtisch_rechts
-    service: light.turn_on
-  mode: restart
 - id: '1595840071764'
   alias: Beleuchtung - Küche Esstisch Deckenlampe auf Warmweis
   description: ''
@@ -530,13 +474,61 @@
     service: media_player.media_play
   mode: single
 - id: '1598187502216'
-  alias: Beleuchtung - Lichtstimmung Automatik
+  alias: 'Beleuchtung - # Lichtstimmung Automatik'
   description: ''
   trigger:
+  - entity_id: input_select.bad_deckenlampe_lichtstimmung
+    platform: state
+    to: Automatik
+  - entity_id: input_select.bad_spiegellampe_lichtstimmung
+    platform: state
+    to: Automatik
   - entity_id: input_select.buero_deckenlampe_lichtstimmung
     platform: state
     to: Automatik
   - entity_id: input_select.buero_schreibtischlampe_lichtstimmung
+    platform: state
+    to: Automatik
+  - entity_id: input_select.eingangstuer_deckenlampe_lichtstimmung
+    platform: state
+    to: Automatik
+  - entity_id: input_select.flur_deckenlampen_lichtstimmung
+    platform: state
+    to: Automatik
+  - entity_id: input_select.kinderzimmer_deckenlampe_lichtstimmung
+    platform: state
+    to: Automatik
+  - entity_id: input_select.kinderzimmer_tischlampe_lichtstimmung
+    platform: state
+    to: Automatik
+  - entity_id: input_select.kuche_esstisch_lichtstimmung
+    platform: state
+    to: Automatik
+  - entity_id: input_select.kuche_herd_lichtstimmung
+    platform: state
+    to: Automatik
+  - entity_id: input_select.schlafzimmer_deckenlampe_lichtstimmung
+    platform: state
+    to: Automatik
+  - entity_id: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
+    platform: state
+    to: Automatik
+  - entity_id: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
+    platform: state
+    to: Automatik
+  - entity_id: input_select.treppenhaus_wandlampen_lichtstimmung
+    platform: state
+    to: Automatik
+  - entity_id: input_select.wohnzimmer_deckenlampe_lichtstimmung
+    platform: state
+    to: Automatik
+  - entity_id: input_select.wohnzimmer_lightstrip_lichtstimmung
+    platform: state
+    to: Automatik
+  - entity_id: input_select.wohnzimmer_stehlampe_links_lichtstimmung
+    platform: state
+    to: Automatik
+  - entity_id: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
     platform: state
     to: Automatik
   condition: []
@@ -585,13 +577,61 @@
     default: []
   mode: single
 - id: '1598187961436'
-  alias: Beleuchtung - Lichtstimmung Energize
+  alias: 'Beleuchtung - # Lichtstimmung Energize'
   description: ''
   trigger:
+  - entity_id: input_select.bad_deckenlampe_lichtstimmung
+    platform: state
+    to: Energie tanken
+  - entity_id: input_select.bad_spiegellampe_lichtstimmung
+    platform: state
+    to: Energie tanken
   - entity_id: input_select.buero_deckenlampe_lichtstimmung
     platform: state
     to: Energie tanken
   - entity_id: input_select.buero_schreibtischlampe_lichtstimmung
+    platform: state
+    to: Energie tanken
+  - entity_id: input_select.eingangstuer_deckenlampe_lichtstimmung
+    platform: state
+    to: Energie tanken
+  - entity_id: input_select.flur_deckenlampen_lichtstimmung
+    platform: state
+    to: Energie tanken
+  - entity_id: input_select.kinderzimmer_deckenlampe_lichtstimmung
+    platform: state
+    to: Energie tanken
+  - entity_id: input_select.kinderzimmer_tischlampe_lichtstimmung
+    platform: state
+    to: Energie tanken
+  - entity_id: input_select.kuche_esstisch_lichtstimmung
+    platform: state
+    to: Energie tanken
+  - entity_id: input_select.kuche_herd_lichtstimmung
+    platform: state
+    to: Energie tanken
+  - entity_id: input_select.schlafzimmer_deckenlampe_lichtstimmung
+    platform: state
+    to: Energie tanken
+  - entity_id: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
+    platform: state
+    to: Energie tanken
+  - entity_id: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
+    platform: state
+    to: Energie tanken
+  - entity_id: input_select.treppenhaus_wandlampen_lichtstimmung
+    platform: state
+    to: Energie tanken
+  - entity_id: input_select.wohnzimmer_deckenlampe_lichtstimmung
+    platform: state
+    to: Energie tanken
+  - entity_id: input_select.wohnzimmer_lightstrip_lichtstimmung
+    platform: state
+    to: Energie tanken
+  - entity_id: input_select.wohnzimmer_stehlampe_links_lichtstimmung
+    platform: state
+    to: Energie tanken
+  - entity_id: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
     platform: state
     to: Energie tanken
   condition: []
@@ -640,13 +680,61 @@
     default: []
   mode: single
 - id: '1498187502216'
-  alias: Beleuchtung - Lichtstimmung Reading
+  alias: 'Beleuchtung - # Lichtstimmung Reading'
   description: ''
   trigger:
+  - entity_id: input_select.bad_deckenlampe_lichtstimmung
+    platform: state
+    to: Lesen
+  - entity_id: input_select.bad_spiegellampe_lichtstimmung
+    platform: state
+    to: Lesen
   - entity_id: input_select.buero_deckenlampe_lichtstimmung
     platform: state
     to: Lesen
   - entity_id: input_select.buero_schreibtischlampe_lichtstimmung
+    platform: state
+    to: Lesen
+  - entity_id: input_select.eingangstuer_deckenlampe_lichtstimmung
+    platform: state
+    to: Lesen
+  - entity_id: input_select.flur_deckenlampen_lichtstimmung
+    platform: state
+    to: Lesen
+  - entity_id: input_select.kinderzimmer_deckenlampe_lichtstimmung
+    platform: state
+    to: Lesen
+  - entity_id: input_select.kinderzimmer_tischlampe_lichtstimmung
+    platform: state
+    to: Lesen
+  - entity_id: input_select.kuche_esstisch_lichtstimmung
+    platform: state
+    to: Lesen
+  - entity_id: input_select.kuche_herd_lichtstimmung
+    platform: state
+    to: Lesen
+  - entity_id: input_select.schlafzimmer_deckenlampe_lichtstimmung
+    platform: state
+    to: Lesen
+  - entity_id: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
+    platform: state
+    to: Lesen
+  - entity_id: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
+    platform: state
+    to: Lesen
+  - entity_id: input_select.treppenhaus_wandlampen_lichtstimmung
+    platform: state
+    to: Lesen
+  - entity_id: input_select.wohnzimmer_deckenlampe_lichtstimmung
+    platform: state
+    to: Lesen
+  - entity_id: input_select.wohnzimmer_lightstrip_lichtstimmung
+    platform: state
+    to: Lesen
+  - entity_id: input_select.wohnzimmer_stehlampe_links_lichtstimmung
+    platform: state
+    to: Lesen
+  - entity_id: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
     platform: state
     to: Lesen
   condition: []
@@ -695,13 +783,61 @@
     default: []
   mode: single
 - id: '1398187502216'
-  alias: Beleuchtung - Lichtstimmung Concentrate
+  alias: 'Beleuchtung - # Lichtstimmung Concentrate'
   description: ''
   trigger:
+  - entity_id: input_select.bad_deckenlampe_lichtstimmung
+    platform: state
+    to: Konzentrieren
+  - entity_id: input_select.bad_spiegellampe_lichtstimmung
+    platform: state
+    to: Konzentrieren
   - entity_id: input_select.buero_deckenlampe_lichtstimmung
     platform: state
     to: Konzentrieren
   - entity_id: input_select.buero_schreibtischlampe_lichtstimmung
+    platform: state
+    to: Konzentrieren
+  - entity_id: input_select.eingangstuer_deckenlampe_lichtstimmung
+    platform: state
+    to: Konzentrieren
+  - entity_id: input_select.flur_deckenlampen_lichtstimmung
+    platform: state
+    to: Konzentrieren
+  - entity_id: input_select.kinderzimmer_deckenlampe_lichtstimmung
+    platform: state
+    to: Konzentrieren
+  - entity_id: input_select.kinderzimmer_tischlampe_lichtstimmung
+    platform: state
+    to: Konzentrieren
+  - entity_id: input_select.kuche_esstisch_lichtstimmung
+    platform: state
+    to: Konzentrieren
+  - entity_id: input_select.kuche_herd_lichtstimmung
+    platform: state
+    to: Konzentrieren
+  - entity_id: input_select.schlafzimmer_deckenlampe_lichtstimmung
+    platform: state
+    to: Konzentrieren
+  - entity_id: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
+    platform: state
+    to: Konzentrieren
+  - entity_id: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
+    platform: state
+    to: Konzentrieren
+  - entity_id: input_select.treppenhaus_wandlampen_lichtstimmung
+    platform: state
+    to: Konzentrieren
+  - entity_id: input_select.wohnzimmer_deckenlampe_lichtstimmung
+    platform: state
+    to: Konzentrieren
+  - entity_id: input_select.wohnzimmer_lightstrip_lichtstimmung
+    platform: state
+    to: Konzentrieren
+  - entity_id: input_select.wohnzimmer_stehlampe_links_lichtstimmung
+    platform: state
+    to: Konzentrieren
+  - entity_id: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
     platform: state
     to: Konzentrieren
   condition: []
@@ -750,13 +886,61 @@
     default: []
   mode: single
 - id: '1298187502216'
-  alias: Beleuchtung - Lichtstimmung Relax
+  alias: 'Beleuchtung - # Lichtstimmung Relax'
   description: ''
   trigger:
+  - entity_id: input_select.bad_deckenlampe_lichtstimmung
+    platform: state
+    to: Entspannen
+  - entity_id: input_select.bad_spiegellampe_lichtstimmung
+    platform: state
+    to: Entspannen
   - entity_id: input_select.buero_deckenlampe_lichtstimmung
     platform: state
     to: Entspannen
   - entity_id: input_select.buero_schreibtischlampe_lichtstimmung
+    platform: state
+    to: Entspannen
+  - entity_id: input_select.eingangstuer_deckenlampe_lichtstimmung
+    platform: state
+    to: Entspannen
+  - entity_id: input_select.flur_deckenlampen_lichtstimmung
+    platform: state
+    to: Entspannen
+  - entity_id: input_select.kinderzimmer_deckenlampe_lichtstimmung
+    platform: state
+    to: Entspannen
+  - entity_id: input_select.kinderzimmer_tischlampe_lichtstimmung
+    platform: state
+    to: Entspannen
+  - entity_id: input_select.kuche_esstisch_lichtstimmung
+    platform: state
+    to: Entspannen
+  - entity_id: input_select.kuche_herd_lichtstimmung
+    platform: state
+    to: Entspannen
+  - entity_id: input_select.schlafzimmer_deckenlampe_lichtstimmung
+    platform: state
+    to: Entspannen
+  - entity_id: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
+    platform: state
+    to: Entspannen
+  - entity_id: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
+    platform: state
+    to: Entspannen
+  - entity_id: input_select.treppenhaus_wandlampen_lichtstimmung
+    platform: state
+    to: Entspannen
+  - entity_id: input_select.wohnzimmer_deckenlampe_lichtstimmung
+    platform: state
+    to: Entspannen
+  - entity_id: input_select.wohnzimmer_lightstrip_lichtstimmung
+    platform: state
+    to: Entspannen
+  - entity_id: input_select.wohnzimmer_stehlampe_links_lichtstimmung
+    platform: state
+    to: Entspannen
+  - entity_id: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
     platform: state
     to: Entspannen
   condition: []
@@ -805,13 +989,63 @@
     default: []
   mode: single
 - id: '1198187502216'
-  alias: Beleuchtung - Lichtstimmung Aus
+  alias: 'Beleuchtung - # Lichtstimmung Aus'
   description: ''
   trigger:
+  - entity_id: input_select.bad_deckenlampe_lichtstimmung
+    platform: state
+    to: Aus
+  - entity_id: input_select.bad_spiegellampe_lichtstimmung
+    platform: state
+    to: Aus
   - entity_id: input_select.buero_deckenlampe_lichtstimmung
     platform: state
+    to: Aus
   - entity_id: input_select.buero_schreibtischlampe_lichtstimmung
     platform: state
+    to: Aus
+  - entity_id: input_select.eingangstuer_deckenlampe_lichtstimmung
+    platform: state
+    to: Aus
+  - entity_id: input_select.flur_deckenlampen_lichtstimmung
+    platform: state
+    to: Aus
+  - entity_id: input_select.kinderzimmer_deckenlampe_lichtstimmung
+    platform: state
+    to: Aus
+  - entity_id: input_select.kinderzimmer_tischlampe_lichtstimmung
+    platform: state
+    to: Aus
+  - entity_id: input_select.kuche_esstisch_lichtstimmung
+    platform: state
+    to: Aus
+  - entity_id: input_select.kuche_herd_lichtstimmung
+    platform: state
+    to: Aus
+  - entity_id: input_select.schlafzimmer_deckenlampe_lichtstimmung
+    platform: state
+    to: Aus
+  - entity_id: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
+    platform: state
+    to: Aus
+  - entity_id: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
+    platform: state
+    to: Aus
+  - entity_id: input_select.treppenhaus_wandlampen_lichtstimmung
+    platform: state
+    to: Aus
+  - entity_id: input_select.wohnzimmer_deckenlampe_lichtstimmung
+    platform: state
+    to: Aus
+  - entity_id: input_select.wohnzimmer_lightstrip_lichtstimmung
+    platform: state
+    to: Aus
+  - entity_id: input_select.wohnzimmer_stehlampe_links_lichtstimmung
+    platform: state
+    to: Aus
+  - entity_id: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
+    platform: state
+    to: Aus
   condition: []
   action:
   - choose:
@@ -858,38 +1092,6 @@
     default: []
   mode: single
 - id: '1598199116891'
-  alias: Beleuchtung - Energize - Büro Deckenlampe
-  description: ''
-  trigger:
-  - platform: time_pattern
-    seconds: '*'
-  condition:
-  - condition: state
-    entity_id: light.buro_deckenlampe
-    state: 'on'
-  action:
-  - data:
-      profile: hueenergize
-    entity_id: light.buro_deckenlampe
-    service: light.turn_on
-  mode: restart
-- id: '1598199283716'
-  alias: Beleuchtung - Energize - Büro Schreibtisch
-  description: ''
-  trigger:
-  - platform: time_pattern
-    seconds: '*'
-  condition:
-  - condition: state
-    entity_id: light.buro_schreibtisch
-    state: 'on'
-  action:
-  - data:
-      profile: hueenergize
-    entity_id: light.buro_schreibtisch
-    service: light.turn_on
-  mode: restart
-- id: '1498199116891'
   alias: Beleuchtung - Concentrate - Büro Deckenlampe
   description: ''
   trigger:
@@ -905,7 +1107,7 @@
     entity_id: light.buro_deckenlampe
     service: light.turn_on
   mode: restart
-- id: '1498199283716'
+- id: '1598199283716'
   alias: Beleuchtung - Concentrate - Büro Schreibtisch
   description: ''
   trigger:
@@ -914,14 +1116,266 @@
   condition:
   - condition: state
     entity_id: light.buro_schreibtisch
-    state: ''
+    state: 'on'
   action:
   - data:
       profile: hueconcentrate
     entity_id: light.buro_schreibtisch
     service: light.turn_on
   mode: restart
-- id: '1398199116891'
+- id: '1598357151843'
+  alias: Beleuchtung - Concentrate - Eingangstür Decke
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.eingangstuer_decke
+    state: 'on'
+  action:
+  - data:
+      profile: hueconcentrate
+    entity_id: light.eingangstuer_decke
+    service: light.turn_on
+  mode: restart
+- id: '1598357311026'
+  alias: Beleuchtung - Concentrate - Flur Deckenlampen
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.flur_deckenlampe_1
+    state: 'on'
+  - condition: state
+    entity_id: light.flur_deckenlampe_2
+    state: 'on'
+  action:
+  - data:
+      profile: hueconcentrate
+    entity_id: light.flur_deckenlampe_1
+    service: light.turn_on
+  - data:
+      profile: hueconcentrate
+    entity_id: light.flur_deckenlampe_2
+    service: light.turn_on
+  mode: restart
+- id: '1598357470375'
+  alias: Beleuchtung - Concentrate - Kinderzimmer Deckenlampe
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.kinderzimmer_deckenlampe
+    state: 'on'
+  action:
+  - data:
+      profile: hueconcentrate
+    entity_id: light.kinderzimmer_deckenlampe
+    service: light.turn_on
+  mode: restart
+- id: '1598357541561'
+  alias: Beleuchtung - Concentrate - Kinderzimmer Tischleuchte
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.kinderzimmer_tischleuchte
+    state: 'on'
+  action:
+  - data:
+      profile: hueconcentrate
+    entity_id: light.kinderzimmer_tischleuchte
+    service: light.turn_on
+  mode: restart
+- id: '1598357783987'
+  alias: Beleuchtung - Concentrate - Küche Esstisch
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.kuche_esstisch
+    state: 'on'
+  action:
+  - data:
+      profile: hueconcentrate
+    entity_id: light.kuche_esstisch
+    service: light.turn_on
+  mode: restart
+- id: '1598357863227'
+  alias: Beleuchtung - Concentrate - Küche Herd
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.kuche_herd
+    state: 'on'
+  action:
+  - data:
+      profile: hueconcentrate
+    entity_id: light.kuche_herd
+    service: light.turn_on
+  mode: single
+- id: '1598357933839'
+  alias: Beleuchtung - Concentrate - Schlafzimmer Deckenlampe
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.schlafzimmer_deckenlampe
+    state: 'on'
+  action:
+  - data:
+      profile: hueconcentrate
+    entity_id: light.schlafzimmer_deckenlampe
+    service: light.turn_on
+  mode: restart
+- id: '1598358028764'
+  alias: Beleuchtung - Concentrate - Schlafzimmer Nachttisch Lisa
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.schlafzimmer_nachttisch_lisa
+    state: 'on'
+  action:
+  - data:
+      profile: hueconcentrate
+    entity_id: light.schlafzimmer_nachttisch_lisa
+    service: light.turn_on
+  mode: restart
+- id: '1598358093075'
+  alias: Beleuchtung - Concentrate - Schlafzimmer Nachttisch Simon
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.schlafzimmer_nachttisch_simon
+    state: 'on'
+  action:
+  - data:
+      profile: hueconcentrate
+    entity_id: light.schlafzimmer_nachttisch_simon
+    service: light.turn_on
+  mode: single
+- id: '1598358213909'
+  alias: Beleuchtung - Concentrate - Treppenhaus Wandlampen
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.treppenhaus_wandlampe_1
+    state: 'on'
+  - condition: state
+    entity_id: light.treppenhaus_wandlampe_2
+    state: 'on'
+  - condition: state
+    entity_id: light.treppenhaus_wandlampe_3
+    state: 'on'
+  action:
+  - data:
+      profile: hueconcentrate
+    entity_id: light.treppenhaus_wandlampe_1
+    service: light.turn_on
+  - data:
+      profile: hueconcentrate
+    entity_id: light.treppenhaus_wandlampe_2
+    service: light.turn_on
+  - data:
+      profile: hueconcentrate
+    entity_id: light.treppenhaus_wandlampe_3
+    service: light.turn_on
+  mode: restart
+- id: '1598358356882'
+  alias: Beleuchtung - Concentrate - Wohnzimmer Deckenlampe
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.wohnzimmer_deckenlampe
+    state: 'on'
+  action:
+  - data:
+      profile: hueconcentrate
+    entity_id: light.wohnzimmer_deckenlampe
+    service: light.turn_on
+  mode: restart
+- id: '1598358451671'
+  alias: Beleuchtung - Concentrate - Wohnzimmer Lightstrip
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.wohnzimmer_lightstrip
+    state: 'on'
+  action:
+  - data:
+      profile: hueconcentrate
+    entity_id: light.wohnzimmer_lightstrip
+    service: light.turn_on
+  mode: restart
+- id: '1598358527453'
+  alias: Beleuchtung - Concentrate - Wohnzimmer Stehlampe links
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.wohnzimmer_stehlampe_links1
+    state: 'on'
+  - condition: state
+    entity_id: light.wohnzimmer_stehlampe_links2
+    state: 'on'
+  action:
+  - data:
+      profile: hueconcentrate
+    entity_id: light.wohnzimmer_stehlampe_links1
+    service: light.turn_on
+  - data:
+      profile: hueconcentrate
+    entity_id: light.wohnzimmer_stehlampe_links2
+    service: light.turn_on
+  mode: restart
+- id: '1598358635600'
+  alias: Beleuchtung - Concentrate - Wohnzimmer Stehlampe rechts
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.wohnzimmer_stehlampe_rechts
+    state: 'on'
+  action:
+  - data:
+      profile: hueconcentrate
+    entity_id: light.wohnzimmer_stehlampe_rechts
+    service: light.turn_on
+  mode: restart
+- id: '1498199116891'
   alias: Beleuchtung - Reading - Büro Deckenlampe
   description: ''
   trigger:
@@ -937,7 +1391,7 @@
     entity_id: light.buro_deckenlampe
     service: light.turn_on
   mode: restart
-- id: '1398199283716'
+- id: '1498199283716'
   alias: Beleuchtung - Reading - Büro Schreibtisch
   description: ''
   trigger:
@@ -953,7 +1407,259 @@
     entity_id: light.buro_schreibtisch
     service: light.turn_on
   mode: restart
-- id: '1298199116891'
+- id: '1498357151843'
+  alias: Beleuchtung - Reading - Eingangstür Decke
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.eingangstuer_decke
+    state: 'on'
+  action:
+  - data:
+      profile: huereading
+    entity_id: light.eingangstuer_decke
+    service: light.turn_on
+  mode: restart
+- id: '1498357311026'
+  alias: Beleuchtung - Reading - Flur Deckenlampen
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.flur_deckenlampe_1
+    state: 'on'
+  - condition: state
+    entity_id: light.flur_deckenlampe_2
+    state: 'on'
+  action:
+  - data:
+      profile: huereading
+    entity_id: light.flur_deckenlampe_1
+    service: light.turn_on
+  - data:
+      profile: huereading
+    entity_id: light.flur_deckenlampe_2
+    service: light.turn_on
+  mode: restart
+- id: '1498357470375'
+  alias: Beleuchtung - Reading - Kinderzimmer Deckenlampe
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.kinderzimmer_deckenlampe
+    state: 'on'
+  action:
+  - data:
+      profile: huereading
+    entity_id: light.kinderzimmer_deckenlampe
+    service: light.turn_on
+  mode: restart
+- id: '1498357541561'
+  alias: Beleuchtung - Reading - Kinderzimmer Tischleuchte
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.kinderzimmer_tischleuchte
+    state: 'on'
+  action:
+  - data:
+      profile: huereading
+    entity_id: light.kinderzimmer_tischleuchte
+    service: light.turn_on
+  mode: restart
+- id: '1498357783987'
+  alias: Beleuchtung - Reading - Küche Esstisch
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.kuche_esstisch
+    state: 'on'
+  action:
+  - data:
+      profile: huereading
+    entity_id: light.kuche_esstisch
+    service: light.turn_on
+  mode: restart
+- id: '1498357863227'
+  alias: Beleuchtung - Reading - Küche Herd
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.kuche_herd
+    state: 'on'
+  action:
+  - data:
+      profile: huereading
+    entity_id: light.kuche_herd
+    service: light.turn_on
+  mode: single
+- id: '1498357933839'
+  alias: Beleuchtung - Reading - Schlafzimmer Deckenlampe
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.schlafzimmer_deckenlampe
+    state: 'on'
+  action:
+  - data:
+      profile: huereading
+    entity_id: light.schlafzimmer_deckenlampe
+    service: light.turn_on
+  mode: restart
+- id: '1498358028764'
+  alias: Beleuchtung - Reading - Schlafzimmer Nachttisch Lisa
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.schlafzimmer_nachttisch_lisa
+    state: 'on'
+  action:
+  - data:
+      profile: huereading
+    entity_id: light.schlafzimmer_nachttisch_lisa
+    service: light.turn_on
+  mode: restart
+- id: '1498358093075'
+  alias: Beleuchtung - Reading - Schlafzimmer Nachttisch Simon
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.schlafzimmer_nachttisch_simon
+    state: 'on'
+  action:
+  - data:
+      profile: huereading
+    entity_id: light.schlafzimmer_nachttisch_simon
+    service: light.turn_on
+  mode: single
+- id: '1498358213909'
+  alias: Beleuchtung - Reading - Treppenhaus Wandlampen
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.treppenhaus_wandlampe_1
+    state: 'on'
+  - condition: state
+    entity_id: light.treppenhaus_wandlampe_2
+    state: 'on'
+  - condition: state
+    entity_id: light.treppenhaus_wandlampe_3
+    state: 'on'
+  action:
+  - data:
+      profile: huereading
+    entity_id: light.treppenhaus_wandlampe_1
+    service: light.turn_on
+  - data:
+      profile: huereading
+    entity_id: light.treppenhaus_wandlampe_2
+    service: light.turn_on
+  - data:
+      profile: huereading
+    entity_id: light.treppenhaus_wandlampe_3
+    service: light.turn_on
+  mode: restart
+- id: '1498358356882'
+  alias: Beleuchtung - Reading - Wohnzimmer Deckenlampe
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.wohnzimmer_deckenlampe
+    state: 'on'
+  action:
+  - data:
+      profile: huereading
+    entity_id: light.wohnzimmer_deckenlampe
+    service: light.turn_on
+  mode: restart
+- id: '1498358451671'
+  alias: Beleuchtung - Reading - Wohnzimmer Lightstrip
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.wohnzimmer_lightstrip
+    state: 'on'
+  action:
+  - data:
+      profile: huereading
+    entity_id: light.wohnzimmer_lightstrip
+    service: light.turn_on
+  mode: restart
+- id: '1498358527453'
+  alias: Beleuchtung - Reading - Wohnzimmer Stehlampe links
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.wohnzimmer_stehlampe_links1
+    state: 'on'
+  - condition: state
+    entity_id: light.wohnzimmer_stehlampe_links2
+    state: 'on'
+  action:
+  - data:
+      profile: huereading
+    entity_id: light.wohnzimmer_stehlampe_links1
+    service: light.turn_on
+  - data:
+      profile: huereading
+    entity_id: light.wohnzimmer_stehlampe_links2
+    service: light.turn_on
+  mode: restart
+- id: '1498358635600'
+  alias: Beleuchtung - Reading - Wohnzimmer Stehlampe rechts
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.wohnzimmer_stehlampe_rechts
+    state: 'on'
+  action:
+  - data:
+      profile: huereading
+    entity_id: light.wohnzimmer_stehlampe_rechts
+    service: light.turn_on
+  mode: restart
+- id: '1398199116891'
   alias: Beleuchtung - Relax - Büro Deckenlampe
   description: ''
   trigger:
@@ -969,7 +1675,7 @@
     entity_id: light.buro_deckenlampe
     service: light.turn_on
   mode: restart
-- id: '1298199283716'
+- id: '1398199283716'
   alias: Beleuchtung - Relax - Büro Schreibtisch
   description: ''
   trigger:
@@ -983,5 +1689,541 @@
   - data:
       profile: huerelax
     entity_id: light.buro_schreibtisch
+    service: light.turn_on
+  mode: restart
+- id: '1398357151843'
+  alias: Beleuchtung - Relax - Eingangstür Decke
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.eingangstuer_decke
+    state: 'on'
+  action:
+  - data:
+      profile: huerelax
+    entity_id: light.eingangstuer_decke
+    service: light.turn_on
+  mode: restart
+- id: '1398357311026'
+  alias: Beleuchtung - Relax - Flur Deckenlampen
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.flur_deckenlampe_1
+    state: 'on'
+  - condition: state
+    entity_id: light.flur_deckenlampe_2
+    state: 'on'
+  action:
+  - data:
+      profile: huerelax
+    entity_id: light.flur_deckenlampe_1
+    service: light.turn_on
+  - data:
+      profile: huerelax
+    entity_id: light.flur_deckenlampe_2
+    service: light.turn_on
+  mode: restart
+- id: '1398357470375'
+  alias: Beleuchtung - Relax - Kinderzimmer Deckenlampe
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.kinderzimmer_deckenlampe
+    state: 'on'
+  action:
+  - data:
+      profile: huerelax
+    entity_id: light.kinderzimmer_deckenlampe
+    service: light.turn_on
+  mode: restart
+- id: '1398357541561'
+  alias: Beleuchtung - Relax - Kinderzimmer Tischleuchte
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.kinderzimmer_tischleuchte
+    state: 'on'
+  action:
+  - data:
+      profile: huerelax
+    entity_id: light.kinderzimmer_tischleuchte
+    service: light.turn_on
+  mode: restart
+- id: '1398357783987'
+  alias: Beleuchtung - Relax - Küche Esstisch
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.kuche_esstisch
+    state: 'on'
+  action:
+  - data:
+      profile: huerelax
+    entity_id: light.kuche_esstisch
+    service: light.turn_on
+  mode: restart
+- id: '1398357863227'
+  alias: Beleuchtung - Relax - Küche Herd
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.kuche_herd
+    state: 'on'
+  action:
+  - data:
+      profile: huerelax
+    entity_id: light.kuche_herd
+    service: light.turn_on
+  mode: single
+- id: '1398357933839'
+  alias: Beleuchtung - Relax - Schlafzimmer Deckenlampe
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.schlafzimmer_deckenlampe
+    state: 'on'
+  action:
+  - data:
+      profile: huerelax
+    entity_id: light.schlafzimmer_deckenlampe
+    service: light.turn_on
+  mode: restart
+- id: '1398358028764'
+  alias: Beleuchtung - Relax - Schlafzimmer Nachttisch Lisa
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.schlafzimmer_nachttisch_lisa
+    state: 'on'
+  action:
+  - data:
+      profile: huerelax
+    entity_id: light.schlafzimmer_nachttisch_lisa
+    service: light.turn_on
+  mode: restart
+- id: '1398358093075'
+  alias: Beleuchtung - Relax - Schlafzimmer Nachttisch Simon
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.schlafzimmer_nachttisch_simon
+    state: 'on'
+  action:
+  - data:
+      profile: huerelax
+    entity_id: light.schlafzimmer_nachttisch_simon
+    service: light.turn_on
+  mode: single
+- id: '1398358213909'
+  alias: Beleuchtung - Relax - Treppenhaus Wandlampen
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.treppenhaus_wandlampe_1
+    state: 'on'
+  - condition: state
+    entity_id: light.treppenhaus_wandlampe_2
+    state: 'on'
+  - condition: state
+    entity_id: light.treppenhaus_wandlampe_3
+    state: 'on'
+  action:
+  - data:
+      profile: huerelax
+    entity_id: light.treppenhaus_wandlampe_1
+    service: light.turn_on
+  - data:
+      profile: huerelax
+    entity_id: light.treppenhaus_wandlampe_2
+    service: light.turn_on
+  - data:
+      profile: huerelax
+    entity_id: light.treppenhaus_wandlampe_3
+    service: light.turn_on
+  mode: restart
+- id: '1398358356882'
+  alias: Beleuchtung - Relax - Wohnzimmer Deckenlampe
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.wohnzimmer_deckenlampe
+    state: 'on'
+  action:
+  - data:
+      profile: huerelax
+    entity_id: light.wohnzimmer_deckenlampe
+    service: light.turn_on
+  mode: restart
+- id: '1398358451671'
+  alias: Beleuchtung - Relax - Wohnzimmer Lightstrip
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.wohnzimmer_lightstrip
+    state: 'on'
+  action:
+  - data:
+      profile: huerelax
+    entity_id: light.wohnzimmer_lightstrip
+    service: light.turn_on
+  mode: restart
+- id: '1398358527453'
+  alias: Beleuchtung - Relax - Wohnzimmer Stehlampe links
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.wohnzimmer_stehlampe_links1
+    state: 'on'
+  - condition: state
+    entity_id: light.wohnzimmer_stehlampe_links2
+    state: 'on'
+  action:
+  - data:
+      profile: huerelax
+    entity_id: light.wohnzimmer_stehlampe_links1
+    service: light.turn_on
+  - data:
+      profile: huerelax
+    entity_id: light.wohnzimmer_stehlampe_links2
+    service: light.turn_on
+  mode: restart
+- id: '1398358635600'
+  alias: Beleuchtung - Relax - Wohnzimmer Stehlampe rechts
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.wohnzimmer_stehlampe_rechts
+    state: 'on'
+  action:
+  - data:
+      profile: huerelax
+    entity_id: light.wohnzimmer_stehlampe_rechts
+    service: light.turn_on
+  mode: restart
+- id: '1298199116891'
+  alias: Beleuchtung - Energize - Büro Deckenlampe
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.buro_deckenlampe
+    state: 'on'
+  action:
+  - data:
+      profile: hueenergize
+    entity_id: light.buro_deckenlampe
+    service: light.turn_on
+  mode: restart
+- id: '1298199283716'
+  alias: Beleuchtung - Energize - Büro Schreibtisch
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.buro_schreibtisch
+    state: 'on'
+  action:
+  - data:
+      profile: hueenergize
+    entity_id: light.buro_schreibtisch
+    service: light.turn_on
+  mode: restart
+- id: '1298357151843'
+  alias: Beleuchtung - Energize - Eingangstür Decke
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.eingangstuer_decke
+    state: 'on'
+  action:
+  - data:
+      profile: hueenergize
+    entity_id: light.eingangstuer_decke
+    service: light.turn_on
+  mode: restart
+- id: '1298357311026'
+  alias: Beleuchtung - Energize - Flur Deckenlampen
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.flur_deckenlampe_1
+    state: 'on'
+  - condition: state
+    entity_id: light.flur_deckenlampe_2
+    state: 'on'
+  action:
+  - data:
+      profile: hueenergize
+    entity_id: light.flur_deckenlampe_1
+    service: light.turn_on
+  - data:
+      profile: hueenergize
+    entity_id: light.flur_deckenlampe_2
+    service: light.turn_on
+  mode: restart
+- id: '1298357470375'
+  alias: Beleuchtung - Energize - Kinderzimmer Deckenlampe
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.kinderzimmer_deckenlampe
+    state: 'on'
+  action:
+  - data:
+      profile: hueenergize
+    entity_id: light.kinderzimmer_deckenlampe
+    service: light.turn_on
+  mode: restart
+- id: '1298357541561'
+  alias: Beleuchtung - Energize - Kinderzimmer Tischleuchte
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.kinderzimmer_tischleuchte
+    state: 'on'
+  action:
+  - data:
+      profile: hueenergize
+    entity_id: light.kinderzimmer_tischleuchte
+    service: light.turn_on
+  mode: restart
+- id: '1298357783987'
+  alias: Beleuchtung - Energize - Küche Esstisch
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.kuche_esstisch
+    state: 'on'
+  action:
+  - data:
+      profile: hueenergize
+    entity_id: light.kuche_esstisch
+    service: light.turn_on
+  mode: restart
+- id: '1298357863227'
+  alias: Beleuchtung - Energize - Küche Herd
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.kuche_herd
+    state: 'on'
+  action:
+  - data:
+      profile: hueenergize
+    entity_id: light.kuche_herd
+    service: light.turn_on
+  mode: single
+- id: '1298357933839'
+  alias: Beleuchtung - Energize - Schlafzimmer Deckenlampe
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.schlafzimmer_deckenlampe
+    state: 'on'
+  action:
+  - data:
+      profile: hueenergize
+    entity_id: light.schlafzimmer_deckenlampe
+    service: light.turn_on
+  mode: restart
+- id: '1298358028764'
+  alias: Beleuchtung - Energize - Schlafzimmer Nachttisch Lisa
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.schlafzimmer_nachttisch_lisa
+    state: 'on'
+  action:
+  - data:
+      profile: hueenergize
+    entity_id: light.schlafzimmer_nachttisch_lisa
+    service: light.turn_on
+  mode: restart
+- id: '1298358093075'
+  alias: Beleuchtung - Energize - Schlafzimmer Nachttisch Simon
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.schlafzimmer_nachttisch_simon
+    state: 'on'
+  action:
+  - data:
+      profile: hueenergize
+    entity_id: light.schlafzimmer_nachttisch_simon
+    service: light.turn_on
+  mode: single
+- id: '1298358213909'
+  alias: Beleuchtung - Energize - Treppenhaus Wandlampen
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.treppenhaus_wandlampe_1
+    state: 'on'
+  - condition: state
+    entity_id: light.treppenhaus_wandlampe_2
+    state: 'on'
+  - condition: state
+    entity_id: light.treppenhaus_wandlampe_3
+    state: 'on'
+  action:
+  - data:
+      profile: hueenergize
+    entity_id: light.treppenhaus_wandlampe_1
+    service: light.turn_on
+  - data:
+      profile: hueenergize
+    entity_id: light.treppenhaus_wandlampe_2
+    service: light.turn_on
+  - data:
+      profile: hueenergize
+    entity_id: light.treppenhaus_wandlampe_3
+    service: light.turn_on
+  mode: restart
+- id: '1298358356882'
+  alias: Beleuchtung - Energize - Wohnzimmer Deckenlampe
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.wohnzimmer_deckenlampe
+    state: 'on'
+  action:
+  - data:
+      profile: hueenergize
+    entity_id: light.wohnzimmer_deckenlampe
+    service: light.turn_on
+  mode: restart
+- id: '1298358451671'
+  alias: Beleuchtung - Energize - Wohnzimmer Lightstrip
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.wohnzimmer_lightstrip
+    state: 'on'
+  action:
+  - data:
+      profile: hueenergize
+    entity_id: light.wohnzimmer_lightstrip
+    service: light.turn_on
+  mode: restart
+- id: '1298358527453'
+  alias: Beleuchtung - Energize - Wohnzimmer Stehlampe links
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.wohnzimmer_stehlampe_links1
+    state: 'on'
+  - condition: state
+    entity_id: light.wohnzimmer_stehlampe_links2
+    state: 'on'
+  action:
+  - data:
+      profile: hueenergize
+    entity_id: light.wohnzimmer_stehlampe_links1
+    service: light.turn_on
+  - data:
+      profile: hueenergize
+    entity_id: light.wohnzimmer_stehlampe_links2
+    service: light.turn_on
+  mode: restart
+- id: '1298358635600'
+  alias: Beleuchtung - Energize - Wohnzimmer Stehlampe rechts
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '*'
+  condition:
+  - condition: state
+    entity_id: light.wohnzimmer_stehlampe_rechts
+    state: 'on'
+  action:
+  - data:
+      profile: hueenergize
+    entity_id: light.wohnzimmer_stehlampe_rechts
     service: light.turn_on
   mode: restart

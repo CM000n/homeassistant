@@ -535,8 +535,10 @@
   trigger:
   - entity_id: input_select.buero_deckenlampe_lichtstimmung
     platform: state
+    to: Automatik
   - entity_id: input_select.buero_schreibtischlampe_lichtstimmung
     platform: state
+    to: Automatik
   condition: []
   action:
   - choose:
@@ -588,8 +590,10 @@
   trigger:
   - entity_id: input_select.buero_deckenlampe_lichtstimmung
     platform: state
+    to: Energie tanken
   - entity_id: input_select.buero_schreibtischlampe_lichtstimmung
     platform: state
+    to: Energie tanken
   condition: []
   action:
   - choose:
@@ -602,9 +606,6 @@
         entity_id: automation.beleuchtung_concentrate_buro_deckenlampe
         service: automation.turn_off
       - data: {}
-        entity_id: automation.beleuchtung_energize_buro_deckenlampe
-        service: automation.turn_on
-      - data: {}
         entity_id: automation.beleuchtung_reading_buro_deckenlampe
         service: automation.turn_off
       - data: {}
@@ -613,6 +614,9 @@
       - data: {}
         entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
         service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_energize_buro_deckenlampe
+        service: automation.turn_on
     - conditions:
       - condition: state
         entity_id: input_select.buero_schreibtischlampe_lichtstimmung
@@ -622,9 +626,6 @@
         entity_id: automation.beleuchtung_concentrate_buro_schreibtisch
         service: automation.turn_off
       - data: {}
-        entity_id: automation.beleuchtung_energize_buro_schreibtisch
-        service: automation.turn_on
-      - data: {}
         entity_id: automation.beleuchtung_reading_buro_schreibtisch
         service: automation.turn_off
       - data: {}
@@ -633,6 +634,9 @@
       - data: {}
         entity_id: switch.circadian_lighting_autofarbtemperatur_schreibtischlampe_buro
         service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_energize_buro_schreibtisch
+        service: automation.turn_on
     default: []
   mode: single
 - id: '1498187502216'
@@ -641,8 +645,10 @@
   trigger:
   - entity_id: input_select.buero_deckenlampe_lichtstimmung
     platform: state
+    to: Lesen
   - entity_id: input_select.buero_schreibtischlampe_lichtstimmung
     platform: state
+    to: Lesen
   condition: []
   action:
   - choose:
@@ -658,14 +664,14 @@
         entity_id: automation.beleuchtung_energize_buro_deckenlampe
         service: automation.turn_off
       - data: {}
-        entity_id: automation.beleuchtung_reading_buro_deckenlampe
-        service: automation.turn_on
-      - data: {}
         entity_id: automation.beleuchtung_relax_buro_deckenlampe
         service: automation.turn_off
       - data: {}
         entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
         service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_reading_buro_deckenlampe
+        service: automation.turn_on
     - conditions:
       - condition: state
         entity_id: input_select.buero_schreibtischlampe_lichtstimmung
@@ -678,14 +684,14 @@
         entity_id: automation.beleuchtung_energize_buro_schreibtisch
         service: automation.turn_off
       - data: {}
-        entity_id: automation.beleuchtung_reading_buro_schreibtisch
-        service: automation.turn_on
-      - data: {}
         entity_id: automation.beleuchtung_relax_buro_schreibtisch
         service: automation.turn_off
       - data: {}
         entity_id: switch.circadian_lighting_autofarbtemperatur_schreibtischlampe_buro
         service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_reading_buro_schreibtisch
+        service: automation.turn_on
     default: []
   mode: single
 - id: '1398187502216'
@@ -694,8 +700,10 @@
   trigger:
   - entity_id: input_select.buero_deckenlampe_lichtstimmung
     platform: state
+    to: Konzentrieren
   - entity_id: input_select.buero_schreibtischlampe_lichtstimmung
     platform: state
+    to: Konzentrieren
   condition: []
   action:
   - choose:
@@ -704,9 +712,6 @@
         entity_id: input_select.buero_deckenlampe_lichtstimmung
         state: Konzentrieren
       sequence:
-      - data: {}
-        entity_id: automation.beleuchtung_concentrate_buro_deckenlampe
-        service: automation.turn_on
       - data: {}
         entity_id: automation.beleuchtung_energize_buro_deckenlampe
         service: automation.turn_off
@@ -719,14 +724,14 @@
       - data: {}
         entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
         service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_concentrate_buro_deckenlampe
+        service: automation.turn_on
     - conditions:
       - condition: state
         entity_id: input_select.buero_schreibtischlampe_lichtstimmung
         state: Konzentrieren
       sequence:
-      - data: {}
-        entity_id: automation.beleuchtung_concentrate_buro_schreibtisch
-        service: automation.turn_on
       - data: {}
         entity_id: automation.beleuchtung_energize_buro_schreibtisch
         service: automation.turn_off
@@ -739,6 +744,9 @@
       - data: {}
         entity_id: switch.circadian_lighting_autofarbtemperatur_schreibtischlampe_buro
         service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_concentrate_buro_schreibtisch
+        service: automation.turn_on
     default: []
   mode: single
 - id: '1298187502216'
@@ -747,8 +755,10 @@
   trigger:
   - entity_id: input_select.buero_deckenlampe_lichtstimmung
     platform: state
+    to: Entspannen
   - entity_id: input_select.buero_schreibtischlampe_lichtstimmung
     platform: state
+    to: Entspannen
   condition: []
   action:
   - choose:
@@ -767,11 +777,11 @@
         entity_id: automation.beleuchtung_reading_buro_deckenlampe
         service: automation.turn_off
       - data: {}
-        entity_id: automation.beleuchtung_relax_buro_deckenlampe
-        service: automation.turn_on
-      - data: {}
         entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
         service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_relax_buro_deckenlampe
+        service: automation.turn_on
     - conditions:
       - condition: state
         entity_id: input_select.buero_schreibtischlampe_lichtstimmung
@@ -787,11 +797,11 @@
         entity_id: automation.beleuchtung_reading_buro_schreibtisch
         service: automation.turn_off
       - data: {}
-        entity_id: automation.beleuchtung_relax_buro_schreibtisch
-        service: automation.turn_on
-      - data: {}
         entity_id: switch.circadian_lighting_autofarbtemperatur_schreibtischlampe_buro
         service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_relax_buro_schreibtisch
+        service: automation.turn_on
     default: []
   mode: single
 - id: '1198187502216'

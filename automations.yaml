@@ -473,626 +473,8 @@
     entity_id: media_player.buro
     service: media_player.media_play
   mode: single
-- id: '1598187502216'
-  alias: 'Beleuchtung - # Lichtstimmung Automatik'
-  description: ''
-  trigger:
-  - entity_id: input_select.bad_deckenlampe_lichtstimmung
-    platform: state
-    to: Automatik
-  - entity_id: input_select.bad_spiegellampe_lichtstimmung
-    platform: state
-    to: Automatik
-  - entity_id: input_select.buero_deckenlampe_lichtstimmung
-    platform: state
-    to: Automatik
-  - entity_id: input_select.buero_schreibtischlampe_lichtstimmung
-    platform: state
-    to: Automatik
-  - entity_id: input_select.eingangstuer_deckenlampe_lichtstimmung
-    platform: state
-    to: Automatik
-  - entity_id: input_select.flur_deckenlampen_lichtstimmung
-    platform: state
-    to: Automatik
-  - entity_id: input_select.kinderzimmer_deckenlampe_lichtstimmung
-    platform: state
-    to: Automatik
-  - entity_id: input_select.kinderzimmer_tischlampe_lichtstimmung
-    platform: state
-    to: Automatik
-  - entity_id: input_select.kuche_esstisch_lichtstimmung
-    platform: state
-    to: Automatik
-  - entity_id: input_select.kuche_herd_lichtstimmung
-    platform: state
-    to: Automatik
-  - entity_id: input_select.schlafzimmer_deckenlampe_lichtstimmung
-    platform: state
-    to: Automatik
-  - entity_id: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
-    platform: state
-    to: Automatik
-  - entity_id: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
-    platform: state
-    to: Automatik
-  - entity_id: input_select.treppenhaus_wandlampen_lichtstimmung
-    platform: state
-    to: Automatik
-  - entity_id: input_select.wohnzimmer_deckenlampe_lichtstimmung
-    platform: state
-    to: Automatik
-  - entity_id: input_select.wohnzimmer_lightstrip_lichtstimmung
-    platform: state
-    to: Automatik
-  - entity_id: input_select.wohnzimmer_stehlampe_links_lichtstimmung
-    platform: state
-    to: Automatik
-  - entity_id: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
-    platform: state
-    to: Automatik
-  condition: []
-  action:
-  - choose:
-    - conditions:
-      - condition: state
-        entity_id: input_select.buero_deckenlampe_lichtstimmung
-        state: Automatik
-      sequence:
-      - data: {}
-        entity_id: automation.beleuchtung_concentrate_buro_deckenlampe
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_energize_buro_deckenlampe
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_reading_buro_deckenlampe
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_relax_buro_deckenlampe
-        service: automation.turn_off
-      - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
-        service: switch.turn_on
-    - conditions:
-      - condition: state
-        entity_id: input_select.buero_schreibtischlampe_lichtstimmung
-        state: Automatik
-      sequence:
-      - data: {}
-        entity_id: automation.beleuchtung_concentrate_buro_schreibtisch
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_energize_buro_schreibtisch
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_reading_buro_schreibtisch
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_relax_buro_schreibtisch
-        service: automation.turn_off
-      - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schreibtischlampe_buro
-        service: switch.turn_on
-    default: []
-  mode: single
-- id: '1598187961436'
-  alias: 'Beleuchtung - # Lichtstimmung Energize'
-  description: ''
-  trigger:
-  - entity_id: input_select.bad_deckenlampe_lichtstimmung
-    platform: state
-    to: Energie tanken
-  - entity_id: input_select.bad_spiegellampe_lichtstimmung
-    platform: state
-    to: Energie tanken
-  - entity_id: input_select.buero_deckenlampe_lichtstimmung
-    platform: state
-    to: Energie tanken
-  - entity_id: input_select.buero_schreibtischlampe_lichtstimmung
-    platform: state
-    to: Energie tanken
-  - entity_id: input_select.eingangstuer_deckenlampe_lichtstimmung
-    platform: state
-    to: Energie tanken
-  - entity_id: input_select.flur_deckenlampen_lichtstimmung
-    platform: state
-    to: Energie tanken
-  - entity_id: input_select.kinderzimmer_deckenlampe_lichtstimmung
-    platform: state
-    to: Energie tanken
-  - entity_id: input_select.kinderzimmer_tischlampe_lichtstimmung
-    platform: state
-    to: Energie tanken
-  - entity_id: input_select.kuche_esstisch_lichtstimmung
-    platform: state
-    to: Energie tanken
-  - entity_id: input_select.kuche_herd_lichtstimmung
-    platform: state
-    to: Energie tanken
-  - entity_id: input_select.schlafzimmer_deckenlampe_lichtstimmung
-    platform: state
-    to: Energie tanken
-  - entity_id: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
-    platform: state
-    to: Energie tanken
-  - entity_id: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
-    platform: state
-    to: Energie tanken
-  - entity_id: input_select.treppenhaus_wandlampen_lichtstimmung
-    platform: state
-    to: Energie tanken
-  - entity_id: input_select.wohnzimmer_deckenlampe_lichtstimmung
-    platform: state
-    to: Energie tanken
-  - entity_id: input_select.wohnzimmer_lightstrip_lichtstimmung
-    platform: state
-    to: Energie tanken
-  - entity_id: input_select.wohnzimmer_stehlampe_links_lichtstimmung
-    platform: state
-    to: Energie tanken
-  - entity_id: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
-    platform: state
-    to: Energie tanken
-  condition: []
-  action:
-  - choose:
-    - conditions:
-      - condition: state
-        entity_id: input_select.buero_deckenlampe_lichtstimmung
-        state: Energie tanken
-      sequence:
-      - data: {}
-        entity_id: automation.beleuchtung_concentrate_buro_deckenlampe
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_reading_buro_deckenlampe
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_relax_buro_deckenlampe
-        service: automation.turn_off
-      - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
-        service: switch.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_energize_buro_deckenlampe
-        service: automation.turn_on
-    - conditions:
-      - condition: state
-        entity_id: input_select.buero_schreibtischlampe_lichtstimmung
-        state: Energie tanken
-      sequence:
-      - data: {}
-        entity_id: automation.beleuchtung_concentrate_buro_schreibtisch
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_reading_buro_schreibtisch
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_relax_buro_schreibtisch
-        service: automation.turn_off
-      - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schreibtischlampe_buro
-        service: switch.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_energize_buro_schreibtisch
-        service: automation.turn_on
-    default: []
-  mode: single
-- id: '1498187502216'
-  alias: 'Beleuchtung - # Lichtstimmung Reading'
-  description: ''
-  trigger:
-  - entity_id: input_select.bad_deckenlampe_lichtstimmung
-    platform: state
-    to: Lesen
-  - entity_id: input_select.bad_spiegellampe_lichtstimmung
-    platform: state
-    to: Lesen
-  - entity_id: input_select.buero_deckenlampe_lichtstimmung
-    platform: state
-    to: Lesen
-  - entity_id: input_select.buero_schreibtischlampe_lichtstimmung
-    platform: state
-    to: Lesen
-  - entity_id: input_select.eingangstuer_deckenlampe_lichtstimmung
-    platform: state
-    to: Lesen
-  - entity_id: input_select.flur_deckenlampen_lichtstimmung
-    platform: state
-    to: Lesen
-  - entity_id: input_select.kinderzimmer_deckenlampe_lichtstimmung
-    platform: state
-    to: Lesen
-  - entity_id: input_select.kinderzimmer_tischlampe_lichtstimmung
-    platform: state
-    to: Lesen
-  - entity_id: input_select.kuche_esstisch_lichtstimmung
-    platform: state
-    to: Lesen
-  - entity_id: input_select.kuche_herd_lichtstimmung
-    platform: state
-    to: Lesen
-  - entity_id: input_select.schlafzimmer_deckenlampe_lichtstimmung
-    platform: state
-    to: Lesen
-  - entity_id: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
-    platform: state
-    to: Lesen
-  - entity_id: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
-    platform: state
-    to: Lesen
-  - entity_id: input_select.treppenhaus_wandlampen_lichtstimmung
-    platform: state
-    to: Lesen
-  - entity_id: input_select.wohnzimmer_deckenlampe_lichtstimmung
-    platform: state
-    to: Lesen
-  - entity_id: input_select.wohnzimmer_lightstrip_lichtstimmung
-    platform: state
-    to: Lesen
-  - entity_id: input_select.wohnzimmer_stehlampe_links_lichtstimmung
-    platform: state
-    to: Lesen
-  - entity_id: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
-    platform: state
-    to: Lesen
-  condition: []
-  action:
-  - choose:
-    - conditions:
-      - condition: state
-        entity_id: input_select.buero_deckenlampe_lichtstimmung
-        state: Lesen
-      sequence:
-      - data: {}
-        entity_id: automation.beleuchtung_concentrate_buro_deckenlampe
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_energize_buro_deckenlampe
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_relax_buro_deckenlampe
-        service: automation.turn_off
-      - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
-        service: switch.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_reading_buro_deckenlampe
-        service: automation.turn_on
-    - conditions:
-      - condition: state
-        entity_id: input_select.buero_schreibtischlampe_lichtstimmung
-        state: Lesen
-      sequence:
-      - data: {}
-        entity_id: automation.beleuchtung_concentrate_buro_schreibtisch
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_energize_buro_schreibtisch
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_relax_buro_schreibtisch
-        service: automation.turn_off
-      - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schreibtischlampe_buro
-        service: switch.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_reading_buro_schreibtisch
-        service: automation.turn_on
-    default: []
-  mode: single
-- id: '1398187502216'
-  alias: 'Beleuchtung - # Lichtstimmung Concentrate'
-  description: ''
-  trigger:
-  - entity_id: input_select.bad_deckenlampe_lichtstimmung
-    platform: state
-    to: Konzentrieren
-  - entity_id: input_select.bad_spiegellampe_lichtstimmung
-    platform: state
-    to: Konzentrieren
-  - entity_id: input_select.buero_deckenlampe_lichtstimmung
-    platform: state
-    to: Konzentrieren
-  - entity_id: input_select.buero_schreibtischlampe_lichtstimmung
-    platform: state
-    to: Konzentrieren
-  - entity_id: input_select.eingangstuer_deckenlampe_lichtstimmung
-    platform: state
-    to: Konzentrieren
-  - entity_id: input_select.flur_deckenlampen_lichtstimmung
-    platform: state
-    to: Konzentrieren
-  - entity_id: input_select.kinderzimmer_deckenlampe_lichtstimmung
-    platform: state
-    to: Konzentrieren
-  - entity_id: input_select.kinderzimmer_tischlampe_lichtstimmung
-    platform: state
-    to: Konzentrieren
-  - entity_id: input_select.kuche_esstisch_lichtstimmung
-    platform: state
-    to: Konzentrieren
-  - entity_id: input_select.kuche_herd_lichtstimmung
-    platform: state
-    to: Konzentrieren
-  - entity_id: input_select.schlafzimmer_deckenlampe_lichtstimmung
-    platform: state
-    to: Konzentrieren
-  - entity_id: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
-    platform: state
-    to: Konzentrieren
-  - entity_id: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
-    platform: state
-    to: Konzentrieren
-  - entity_id: input_select.treppenhaus_wandlampen_lichtstimmung
-    platform: state
-    to: Konzentrieren
-  - entity_id: input_select.wohnzimmer_deckenlampe_lichtstimmung
-    platform: state
-    to: Konzentrieren
-  - entity_id: input_select.wohnzimmer_lightstrip_lichtstimmung
-    platform: state
-    to: Konzentrieren
-  - entity_id: input_select.wohnzimmer_stehlampe_links_lichtstimmung
-    platform: state
-    to: Konzentrieren
-  - entity_id: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
-    platform: state
-    to: Konzentrieren
-  condition: []
-  action:
-  - choose:
-    - conditions:
-      - condition: state
-        entity_id: input_select.buero_deckenlampe_lichtstimmung
-        state: Konzentrieren
-      sequence:
-      - data: {}
-        entity_id: automation.beleuchtung_energize_buro_deckenlampe
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_reading_buro_deckenlampe
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_relax_buro_deckenlampe
-        service: automation.turn_off
-      - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
-        service: switch.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_concentrate_buro_deckenlampe
-        service: automation.turn_on
-    - conditions:
-      - condition: state
-        entity_id: input_select.buero_schreibtischlampe_lichtstimmung
-        state: Konzentrieren
-      sequence:
-      - data: {}
-        entity_id: automation.beleuchtung_energize_buro_schreibtisch
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_reading_buro_schreibtisch
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_relax_buro_schreibtisch
-        service: automation.turn_off
-      - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schreibtischlampe_buro
-        service: switch.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_concentrate_buro_schreibtisch
-        service: automation.turn_on
-    default: []
-  mode: single
-- id: '1298187502216'
-  alias: 'Beleuchtung - # Lichtstimmung Relax'
-  description: ''
-  trigger:
-  - entity_id: input_select.bad_deckenlampe_lichtstimmung
-    platform: state
-    to: Entspannen
-  - entity_id: input_select.bad_spiegellampe_lichtstimmung
-    platform: state
-    to: Entspannen
-  - entity_id: input_select.buero_deckenlampe_lichtstimmung
-    platform: state
-    to: Entspannen
-  - entity_id: input_select.buero_schreibtischlampe_lichtstimmung
-    platform: state
-    to: Entspannen
-  - entity_id: input_select.eingangstuer_deckenlampe_lichtstimmung
-    platform: state
-    to: Entspannen
-  - entity_id: input_select.flur_deckenlampen_lichtstimmung
-    platform: state
-    to: Entspannen
-  - entity_id: input_select.kinderzimmer_deckenlampe_lichtstimmung
-    platform: state
-    to: Entspannen
-  - entity_id: input_select.kinderzimmer_tischlampe_lichtstimmung
-    platform: state
-    to: Entspannen
-  - entity_id: input_select.kuche_esstisch_lichtstimmung
-    platform: state
-    to: Entspannen
-  - entity_id: input_select.kuche_herd_lichtstimmung
-    platform: state
-    to: Entspannen
-  - entity_id: input_select.schlafzimmer_deckenlampe_lichtstimmung
-    platform: state
-    to: Entspannen
-  - entity_id: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
-    platform: state
-    to: Entspannen
-  - entity_id: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
-    platform: state
-    to: Entspannen
-  - entity_id: input_select.treppenhaus_wandlampen_lichtstimmung
-    platform: state
-    to: Entspannen
-  - entity_id: input_select.wohnzimmer_deckenlampe_lichtstimmung
-    platform: state
-    to: Entspannen
-  - entity_id: input_select.wohnzimmer_lightstrip_lichtstimmung
-    platform: state
-    to: Entspannen
-  - entity_id: input_select.wohnzimmer_stehlampe_links_lichtstimmung
-    platform: state
-    to: Entspannen
-  - entity_id: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
-    platform: state
-    to: Entspannen
-  condition: []
-  action:
-  - choose:
-    - conditions:
-      - condition: state
-        entity_id: input_select.buero_deckenlampe_lichtstimmung
-        state: Entspannen
-      sequence:
-      - data: {}
-        entity_id: automation.beleuchtung_concentrate_buro_deckenlampe
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_energize_buro_deckenlampe
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_reading_buro_deckenlampe
-        service: automation.turn_off
-      - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
-        service: switch.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_relax_buro_deckenlampe
-        service: automation.turn_on
-    - conditions:
-      - condition: state
-        entity_id: input_select.buero_schreibtischlampe_lichtstimmung
-        state: Entspannen
-      sequence:
-      - data: {}
-        entity_id: automation.beleuchtung_concentrate_buro_schreibtisch
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_energize_buro_schreibtisch
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_reading_buro_schreibtisch
-        service: automation.turn_off
-      - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schreibtischlampe_buro
-        service: switch.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_relax_buro_schreibtisch
-        service: automation.turn_on
-    default: []
-  mode: single
-- id: '1198187502216'
-  alias: 'Beleuchtung - # Lichtstimmung Aus'
-  description: ''
-  trigger:
-  - entity_id: input_select.bad_deckenlampe_lichtstimmung
-    platform: state
-    to: Aus
-  - entity_id: input_select.bad_spiegellampe_lichtstimmung
-    platform: state
-    to: Aus
-  - entity_id: input_select.buero_deckenlampe_lichtstimmung
-    platform: state
-    to: Aus
-  - entity_id: input_select.buero_schreibtischlampe_lichtstimmung
-    platform: state
-    to: Aus
-  - entity_id: input_select.eingangstuer_deckenlampe_lichtstimmung
-    platform: state
-    to: Aus
-  - entity_id: input_select.flur_deckenlampen_lichtstimmung
-    platform: state
-    to: Aus
-  - entity_id: input_select.kinderzimmer_deckenlampe_lichtstimmung
-    platform: state
-    to: Aus
-  - entity_id: input_select.kinderzimmer_tischlampe_lichtstimmung
-    platform: state
-    to: Aus
-  - entity_id: input_select.kuche_esstisch_lichtstimmung
-    platform: state
-    to: Aus
-  - entity_id: input_select.kuche_herd_lichtstimmung
-    platform: state
-    to: Aus
-  - entity_id: input_select.schlafzimmer_deckenlampe_lichtstimmung
-    platform: state
-    to: Aus
-  - entity_id: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
-    platform: state
-    to: Aus
-  - entity_id: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
-    platform: state
-    to: Aus
-  - entity_id: input_select.treppenhaus_wandlampen_lichtstimmung
-    platform: state
-    to: Aus
-  - entity_id: input_select.wohnzimmer_deckenlampe_lichtstimmung
-    platform: state
-    to: Aus
-  - entity_id: input_select.wohnzimmer_lightstrip_lichtstimmung
-    platform: state
-    to: Aus
-  - entity_id: input_select.wohnzimmer_stehlampe_links_lichtstimmung
-    platform: state
-    to: Aus
-  - entity_id: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
-    platform: state
-    to: Aus
-  condition: []
-  action:
-  - choose:
-    - conditions:
-      - condition: state
-        entity_id: input_select.buero_deckenlampe_lichtstimmung
-        state: Aus
-      sequence:
-      - data: {}
-        entity_id: automation.beleuchtung_concentrate_buro_deckenlampe
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_energize_buro_deckenlampe
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_reading_buro_deckenlampe
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_relax_buro_deckenlampe
-        service: automation.turn_off
-      - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
-        service: switch.turn_off
-    - conditions:
-      - condition: state
-        entity_id: input_select.buero_schreibtischlampe_lichtstimmung
-        state: Aus
-      sequence:
-      - data: {}
-        entity_id: automation.beleuchtung_concentrate_buro_schreibtisch
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_energize_buro_schreibtisch
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_reading_buro_schreibtisch
-        service: automation.turn_off
-      - data: {}
-        entity_id: automation.beleuchtung_relax_buro_schreibtisch
-        service: automation.turn_off
-      - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schreibtischlampe_buro
-        service: switch.turn_off
-    default: []
-  mode: single
 - id: '1598199116891'
-  alias: Beleuchtung - Concentrate - Büro Deckenlampe
+  alias: Beleuchtung - Büro Deckenlampe - Concentrate
   description: ''
   trigger:
   - platform: time_pattern
@@ -1108,7 +490,7 @@
     service: light.turn_on
   mode: restart
 - id: '1598199283716'
-  alias: Beleuchtung - Concentrate - Büro Schreibtisch
+  alias: Beleuchtung - Büro Schreibtisch - Concentrate
   description: ''
   trigger:
   - platform: time_pattern
@@ -1121,26 +503,10 @@
   - data:
       profile: hueconcentrate
     entity_id: light.buro_schreibtisch
-    service: light.turn_on
-  mode: restart
-- id: '1598357151843'
-  alias: Beleuchtung - Concentrate - Eingangstür Decke
-  description: ''
-  trigger:
-  - platform: time_pattern
-    seconds: '*'
-  condition:
-  - condition: state
-    entity_id: light.eingangstuer_decke
-    state: 'on'
-  action:
-  - data:
-      profile: hueconcentrate
-    entity_id: light.eingangstuer_decke
     service: light.turn_on
   mode: restart
 - id: '1598357311026'
-  alias: Beleuchtung - Concentrate - Flur Deckenlampen
+  alias: Beleuchtung - Flur Deckenlampen - Concentrate
   description: ''
   trigger:
   - platform: time_pattern
@@ -1163,7 +529,7 @@
     service: light.turn_on
   mode: restart
 - id: '1598357470375'
-  alias: Beleuchtung - Concentrate - Kinderzimmer Deckenlampe
+  alias: Beleuchtung - Kinderzimmer Deckenlampe - Concentrate
   description: ''
   trigger:
   - platform: time_pattern
@@ -1179,7 +545,7 @@
     service: light.turn_on
   mode: restart
 - id: '1598357541561'
-  alias: Beleuchtung - Concentrate - Kinderzimmer Tischleuchte
+  alias: Beleuchtung - Kinderzimmer Tischleuchte - Concentrate
   description: ''
   trigger:
   - platform: time_pattern
@@ -1195,7 +561,7 @@
     service: light.turn_on
   mode: restart
 - id: '1598357783987'
-  alias: Beleuchtung - Concentrate - Küche Esstisch
+  alias: Beleuchtung - Küche Esstisch - Concentrate
   description: ''
   trigger:
   - platform: time_pattern
@@ -1211,7 +577,7 @@
     service: light.turn_on
   mode: restart
 - id: '1598357863227'
-  alias: Beleuchtung - Concentrate - Küche Herd
+  alias: Beleuchtung -  Küche Herd - Concentrate
   description: ''
   trigger:
   - platform: time_pattern
@@ -1227,7 +593,7 @@
     service: light.turn_on
   mode: single
 - id: '1598357933839'
-  alias: Beleuchtung - Concentrate - Schlafzimmer Deckenlampe
+  alias: Beleuchtung - Schlafzimmer Deckenlampe - Concentrate
   description: ''
   trigger:
   - platform: time_pattern
@@ -1243,7 +609,7 @@
     service: light.turn_on
   mode: restart
 - id: '1598358028764'
-  alias: Beleuchtung - Concentrate - Schlafzimmer Nachttisch Lisa
+  alias: Beleuchtung - Schlafzimmer Nachttisch Lisa - Concentrate
   description: ''
   trigger:
   - platform: time_pattern
@@ -1259,7 +625,7 @@
     service: light.turn_on
   mode: restart
 - id: '1598358093075'
-  alias: Beleuchtung - Concentrate - Schlafzimmer Nachttisch Simon
+  alias: Beleuchtung - Schlafzimmer Nachttisch Simon - Concentrate
   description: ''
   trigger:
   - platform: time_pattern
@@ -1275,7 +641,7 @@
     service: light.turn_on
   mode: single
 - id: '1598358213909'
-  alias: Beleuchtung - Concentrate - Treppenhaus Wandlampen
+  alias: Beleuchtung - Treppenhaus Wandlampen - Concentrate
   description: ''
   trigger:
   - platform: time_pattern
@@ -1305,7 +671,7 @@
     service: light.turn_on
   mode: restart
 - id: '1598358356882'
-  alias: Beleuchtung - Concentrate - Wohnzimmer Deckenlampe
+  alias: Beleuchtung - Wohnzimmer Deckenlampe - Concentrate
   description: ''
   trigger:
   - platform: time_pattern
@@ -1321,7 +687,7 @@
     service: light.turn_on
   mode: restart
 - id: '1598358451671'
-  alias: Beleuchtung - Concentrate - Wohnzimmer Lightstrip
+  alias: Beleuchtung - Wohnzimmer Lightstrip - Concentrate
   description: ''
   trigger:
   - platform: time_pattern
@@ -1337,7 +703,7 @@
     service: light.turn_on
   mode: restart
 - id: '1598358527453'
-  alias: Beleuchtung - Concentrate - Wohnzimmer Stehlampe links
+  alias: Beleuchtung - Wohnzimmer Stehlampe links - Concentrate
   description: ''
   trigger:
   - platform: time_pattern
@@ -1360,7 +726,7 @@
     service: light.turn_on
   mode: restart
 - id: '1598358635600'
-  alias: Beleuchtung - Concentrate - Wohnzimmer Stehlampe rechts
+  alias: Beleuchtung - Wohnzimmer Stehlampe rechts - Concentrate
   description: ''
   trigger:
   - platform: time_pattern
@@ -1376,7 +742,7 @@
     service: light.turn_on
   mode: restart
 - id: '1498199116891'
-  alias: Beleuchtung - Reading - Büro Deckenlampe
+  alias: Beleuchtung - Büro Deckenlampe - Reading
   description: ''
   trigger:
   - platform: time_pattern
@@ -1392,7 +758,7 @@
     service: light.turn_on
   mode: restart
 - id: '1498199283716'
-  alias: Beleuchtung - Reading - Büro Schreibtisch
+  alias: Beleuchtung - Büro Schreibtisch - Reading
   description: ''
   trigger:
   - platform: time_pattern
@@ -1405,26 +771,10 @@
   - data:
       profile: huereading
     entity_id: light.buro_schreibtisch
-    service: light.turn_on
-  mode: restart
-- id: '1498357151843'
-  alias: Beleuchtung - Reading - Eingangstür Decke
-  description: ''
-  trigger:
-  - platform: time_pattern
-    seconds: '*'
-  condition:
-  - condition: state
-    entity_id: light.eingangstuer_decke
-    state: 'on'
-  action:
-  - data:
-      profile: huereading
-    entity_id: light.eingangstuer_decke
     service: light.turn_on
   mode: restart
 - id: '1498357311026'
-  alias: Beleuchtung - Reading - Flur Deckenlampen
+  alias: Beleuchtung - Flur Deckenlampen - Reading
   description: ''
   trigger:
   - platform: time_pattern
@@ -1447,7 +797,7 @@
     service: light.turn_on
   mode: restart
 - id: '1498357470375'
-  alias: Beleuchtung - Reading - Kinderzimmer Deckenlampe
+  alias: Beleuchtung - Kinderzimmer Deckenlampe - Reading
   description: ''
   trigger:
   - platform: time_pattern
@@ -1463,7 +813,7 @@
     service: light.turn_on
   mode: restart
 - id: '1498357541561'
-  alias: Beleuchtung - Reading - Kinderzimmer Tischleuchte
+  alias: Beleuchtung - Kinderzimmer Tischleuchte - Reading
   description: ''
   trigger:
   - platform: time_pattern
@@ -1479,7 +829,7 @@
     service: light.turn_on
   mode: restart
 - id: '1498357783987'
-  alias: Beleuchtung - Reading - Küche Esstisch
+  alias: Beleuchtung - Küche Esstisch - Reading
   description: ''
   trigger:
   - platform: time_pattern
@@ -1495,7 +845,7 @@
     service: light.turn_on
   mode: restart
 - id: '1498357863227'
-  alias: Beleuchtung - Reading - Küche Herd
+  alias: Beleuchtung - Küche Herd - Reading
   description: ''
   trigger:
   - platform: time_pattern
@@ -1511,7 +861,7 @@
     service: light.turn_on
   mode: single
 - id: '1498357933839'
-  alias: Beleuchtung - Reading - Schlafzimmer Deckenlampe
+  alias: Beleuchtung - Schlafzimmer Deckenlampe - Reading
   description: ''
   trigger:
   - platform: time_pattern
@@ -1527,7 +877,7 @@
     service: light.turn_on
   mode: restart
 - id: '1498358028764'
-  alias: Beleuchtung - Reading - Schlafzimmer Nachttisch Lisa
+  alias: Beleuchtung - Schlafzimmer Nachttisch Lisa - Reading
   description: ''
   trigger:
   - platform: time_pattern
@@ -1543,7 +893,7 @@
     service: light.turn_on
   mode: restart
 - id: '1498358093075'
-  alias: Beleuchtung - Reading - Schlafzimmer Nachttisch Simon
+  alias: Beleuchtung - Schlafzimmer Nachttisch Simon - Reading
   description: ''
   trigger:
   - platform: time_pattern
@@ -1559,7 +909,7 @@
     service: light.turn_on
   mode: single
 - id: '1498358213909'
-  alias: Beleuchtung - Reading - Treppenhaus Wandlampen
+  alias: Beleuchtung - Treppenhaus Wandlampen - Reading
   description: ''
   trigger:
   - platform: time_pattern
@@ -1589,7 +939,7 @@
     service: light.turn_on
   mode: restart
 - id: '1498358356882'
-  alias: Beleuchtung - Reading - Wohnzimmer Deckenlampe
+  alias: Beleuchtung - Wohnzimmer Deckenlampe - Reading
   description: ''
   trigger:
   - platform: time_pattern
@@ -1605,7 +955,7 @@
     service: light.turn_on
   mode: restart
 - id: '1498358451671'
-  alias: Beleuchtung - Reading - Wohnzimmer Lightstrip
+  alias: Beleuchtung - Wohnzimmer Lightstrip - Reading
   description: ''
   trigger:
   - platform: time_pattern
@@ -1621,7 +971,7 @@
     service: light.turn_on
   mode: restart
 - id: '1498358527453'
-  alias: Beleuchtung - Reading - Wohnzimmer Stehlampe links
+  alias: Beleuchtung - Wohnzimmer Stehlampe links - Reading
   description: ''
   trigger:
   - platform: time_pattern
@@ -1644,7 +994,7 @@
     service: light.turn_on
   mode: restart
 - id: '1498358635600'
-  alias: Beleuchtung - Reading - Wohnzimmer Stehlampe rechts
+  alias: Beleuchtung - Wohnzimmer Stehlampe rechts - Reading
   description: ''
   trigger:
   - platform: time_pattern
@@ -1660,7 +1010,7 @@
     service: light.turn_on
   mode: restart
 - id: '1398199116891'
-  alias: Beleuchtung - Relax - Büro Deckenlampe
+  alias: Beleuchtung - Büro Deckenlampe - Relax
   description: ''
   trigger:
   - platform: time_pattern
@@ -1676,7 +1026,7 @@
     service: light.turn_on
   mode: restart
 - id: '1398199283716'
-  alias: Beleuchtung - Relax - Büro Schreibtisch
+  alias: Beleuchtung - Büro Schreibtisch - Relax
   description: ''
   trigger:
   - platform: time_pattern
@@ -1689,26 +1039,10 @@
   - data:
       profile: huerelax
     entity_id: light.buro_schreibtisch
-    service: light.turn_on
-  mode: restart
-- id: '1398357151843'
-  alias: Beleuchtung - Relax - Eingangstür Decke
-  description: ''
-  trigger:
-  - platform: time_pattern
-    seconds: '*'
-  condition:
-  - condition: state
-    entity_id: light.eingangstuer_decke
-    state: 'on'
-  action:
-  - data:
-      profile: huerelax
-    entity_id: light.eingangstuer_decke
     service: light.turn_on
   mode: restart
 - id: '1398357311026'
-  alias: Beleuchtung - Relax - Flur Deckenlampen
+  alias: Beleuchtung - Flur Deckenlampen - Relax
   description: ''
   trigger:
   - platform: time_pattern
@@ -1731,7 +1065,7 @@
     service: light.turn_on
   mode: restart
 - id: '1398357470375'
-  alias: Beleuchtung - Relax - Kinderzimmer Deckenlampe
+  alias: Beleuchtung - Kinderzimmer Deckenlampe - Relax
   description: ''
   trigger:
   - platform: time_pattern
@@ -1747,7 +1081,7 @@
     service: light.turn_on
   mode: restart
 - id: '1398357541561'
-  alias: Beleuchtung - Relax - Kinderzimmer Tischleuchte
+  alias: Beleuchtung - Kinderzimmer Tischleuchte - Relax
   description: ''
   trigger:
   - platform: time_pattern
@@ -1763,7 +1097,7 @@
     service: light.turn_on
   mode: restart
 - id: '1398357783987'
-  alias: Beleuchtung - Relax - Küche Esstisch
+  alias: Beleuchtung - Küche Esstisch - Relax
   description: ''
   trigger:
   - platform: time_pattern
@@ -1779,7 +1113,7 @@
     service: light.turn_on
   mode: restart
 - id: '1398357863227'
-  alias: Beleuchtung - Relax - Küche Herd
+  alias: Beleuchtung - Küche Herd - Relax
   description: ''
   trigger:
   - platform: time_pattern
@@ -1795,7 +1129,7 @@
     service: light.turn_on
   mode: single
 - id: '1398357933839'
-  alias: Beleuchtung - Relax - Schlafzimmer Deckenlampe
+  alias: Beleuchtung - Schlafzimmer Deckenlampe - Relax
   description: ''
   trigger:
   - platform: time_pattern
@@ -1811,7 +1145,7 @@
     service: light.turn_on
   mode: restart
 - id: '1398358028764'
-  alias: Beleuchtung - Relax - Schlafzimmer Nachttisch Lisa
+  alias: Beleuchtung - Schlafzimmer Nachttisch Lisa - Relax
   description: ''
   trigger:
   - platform: time_pattern
@@ -1827,7 +1161,7 @@
     service: light.turn_on
   mode: restart
 - id: '1398358093075'
-  alias: Beleuchtung - Relax - Schlafzimmer Nachttisch Simon
+  alias: Beleuchtung - Schlafzimmer Nachttisch Simon - Relax
   description: ''
   trigger:
   - platform: time_pattern
@@ -1843,7 +1177,7 @@
     service: light.turn_on
   mode: single
 - id: '1398358213909'
-  alias: Beleuchtung - Relax - Treppenhaus Wandlampen
+  alias: Beleuchtung - Treppenhaus Wandlampen - Relax
   description: ''
   trigger:
   - platform: time_pattern
@@ -1873,7 +1207,7 @@
     service: light.turn_on
   mode: restart
 - id: '1398358356882'
-  alias: Beleuchtung - Relax - Wohnzimmer Deckenlampe
+  alias: Beleuchtung - Wohnzimmer Deckenlampe - Relax
   description: ''
   trigger:
   - platform: time_pattern
@@ -1889,7 +1223,7 @@
     service: light.turn_on
   mode: restart
 - id: '1398358451671'
-  alias: Beleuchtung - Relax - Wohnzimmer Lightstrip
+  alias: Beleuchtung - Wohnzimmer Lightstrip - Relax
   description: ''
   trigger:
   - platform: time_pattern
@@ -1905,7 +1239,7 @@
     service: light.turn_on
   mode: restart
 - id: '1398358527453'
-  alias: Beleuchtung - Relax - Wohnzimmer Stehlampe links
+  alias: Beleuchtung - Wohnzimmer Stehlampe links - Relax
   description: ''
   trigger:
   - platform: time_pattern
@@ -1928,7 +1262,7 @@
     service: light.turn_on
   mode: restart
 - id: '1398358635600'
-  alias: Beleuchtung - Relax - Wohnzimmer Stehlampe rechts
+  alias: Beleuchtung - Wohnzimmer Stehlampe rechts - Relax
   description: ''
   trigger:
   - platform: time_pattern
@@ -1944,7 +1278,7 @@
     service: light.turn_on
   mode: restart
 - id: '1298199116891'
-  alias: Beleuchtung - Energize - Büro Deckenlampe
+  alias: Beleuchtung - Büro Deckenlampe - Energize
   description: ''
   trigger:
   - platform: time_pattern
@@ -1960,7 +1294,7 @@
     service: light.turn_on
   mode: restart
 - id: '1298199283716'
-  alias: Beleuchtung - Energize - Büro Schreibtisch
+  alias: Beleuchtung - Büro Schreibtisch - Energize
   description: ''
   trigger:
   - platform: time_pattern
@@ -1973,26 +1307,10 @@
   - data:
       profile: hueenergize
     entity_id: light.buro_schreibtisch
-    service: light.turn_on
-  mode: restart
-- id: '1298357151843'
-  alias: Beleuchtung - Energize - Eingangstür Decke
-  description: ''
-  trigger:
-  - platform: time_pattern
-    seconds: '*'
-  condition:
-  - condition: state
-    entity_id: light.eingangstuer_decke
-    state: 'on'
-  action:
-  - data:
-      profile: hueenergize
-    entity_id: light.eingangstuer_decke
     service: light.turn_on
   mode: restart
 - id: '1298357311026'
-  alias: Beleuchtung - Energize - Flur Deckenlampen
+  alias: Beleuchtung - Flur Deckenlampen - Energize
   description: ''
   trigger:
   - platform: time_pattern
@@ -2015,7 +1333,7 @@
     service: light.turn_on
   mode: restart
 - id: '1298357470375'
-  alias: Beleuchtung - Energize - Kinderzimmer Deckenlampe
+  alias: Beleuchtung - Kinderzimmer Deckenlampe - Energize
   description: ''
   trigger:
   - platform: time_pattern
@@ -2031,7 +1349,7 @@
     service: light.turn_on
   mode: restart
 - id: '1298357541561'
-  alias: Beleuchtung - Energize - Kinderzimmer Tischleuchte
+  alias: Beleuchtung - Kinderzimmer Tischleuchte - Energize
   description: ''
   trigger:
   - platform: time_pattern
@@ -2047,7 +1365,7 @@
     service: light.turn_on
   mode: restart
 - id: '1298357783987'
-  alias: Beleuchtung - Energize - Küche Esstisch
+  alias: Beleuchtung - Küche Esstisch - Energize
   description: ''
   trigger:
   - platform: time_pattern
@@ -2063,7 +1381,7 @@
     service: light.turn_on
   mode: restart
 - id: '1298357863227'
-  alias: Beleuchtung - Energize - Küche Herd
+  alias: Beleuchtung - Küche Herd - Energize
   description: ''
   trigger:
   - platform: time_pattern
@@ -2079,7 +1397,7 @@
     service: light.turn_on
   mode: single
 - id: '1298357933839'
-  alias: Beleuchtung - Energize - Schlafzimmer Deckenlampe
+  alias: Beleuchtung - Schlafzimmer Deckenlampe - Energize
   description: ''
   trigger:
   - platform: time_pattern
@@ -2095,7 +1413,7 @@
     service: light.turn_on
   mode: restart
 - id: '1298358028764'
-  alias: Beleuchtung - Energize - Schlafzimmer Nachttisch Lisa
+  alias: Beleuchtung - Schlafzimmer Nachttisch Lisa - Energize
   description: ''
   trigger:
   - platform: time_pattern
@@ -2111,7 +1429,7 @@
     service: light.turn_on
   mode: restart
 - id: '1298358093075'
-  alias: Beleuchtung - Energize - Schlafzimmer Nachttisch Simon
+  alias: Beleuchtung - Schlafzimmer Nachttisch Simon - Energize
   description: ''
   trigger:
   - platform: time_pattern
@@ -2127,7 +1445,7 @@
     service: light.turn_on
   mode: single
 - id: '1298358213909'
-  alias: Beleuchtung - Energize - Treppenhaus Wandlampen
+  alias: Beleuchtung - Treppenhaus Wandlampen - Energize
   description: ''
   trigger:
   - platform: time_pattern
@@ -2157,7 +1475,7 @@
     service: light.turn_on
   mode: restart
 - id: '1298358356882'
-  alias: Beleuchtung - Energize - Wohnzimmer Deckenlampe
+  alias: Beleuchtung - Wohnzimmer Deckenlampe - Energize
   description: ''
   trigger:
   - platform: time_pattern
@@ -2173,7 +1491,7 @@
     service: light.turn_on
   mode: restart
 - id: '1298358451671'
-  alias: Beleuchtung - Energize - Wohnzimmer Lightstrip
+  alias: Beleuchtung - Wohnzimmer Lightstrip - Energize
   description: ''
   trigger:
   - platform: time_pattern
@@ -2189,7 +1507,7 @@
     service: light.turn_on
   mode: restart
 - id: '1298358527453'
-  alias: Beleuchtung - Energize - Wohnzimmer Stehlampe links
+  alias: Beleuchtung - Wohnzimmer Stehlampe links - Energize
   description: ''
   trigger:
   - platform: time_pattern
@@ -2212,7 +1530,7 @@
     service: light.turn_on
   mode: restart
 - id: '1298358635600'
-  alias: Beleuchtung - Energize - Wohnzimmer Stehlampe rechts
+  alias: Beleuchtung - Wohnzimmer Stehlampe rechts - Energize
   description: ''
   trigger:
   - platform: time_pattern
@@ -2227,3 +1545,265 @@
     entity_id: light.wohnzimmer_stehlampe_rechts
     service: light.turn_on
   mode: restart
+- id: '1598386979791'
+  alias: 'Beleuchtung - Büro Deckenlampe - #Lichtstimmung'
+  description: ''
+  trigger:
+  - entity_id: input_select.buero_deckenlampe_lichtstimmung
+    platform: state
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_select.buero_deckenlampe_lichtstimmung
+        state: Automatik
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
+        service: switch.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.buero_deckenlampe_lichtstimmung
+        state: Entspannen
+      sequence:
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_relax
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.buero_deckenlampe_lichtstimmung
+        state: Lesen
+      sequence:
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_reading
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.buero_deckenlampe_lichtstimmung
+        state: Konzentrieren
+      sequence:
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_concentrate
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.buero_deckenlampe_lichtstimmung
+        state: Energie tanken
+      sequence:
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_energize
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.buero_deckenlampe_lichtstimmung
+        state: Aus
+      sequence:
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_buro
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_deckenlampe_relax
+        service: automation.turn_off
+    default: []
+  mode: single
+- id: '1598422031591'
+  alias: 'Beleuchtung - Büro Schreibtisch - #Lichtstimmung'
+  description: ''
+  trigger:
+  - entity_id: input_select.buero_schreibtischlampe_lichtstimmung
+    platform: state
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_select.buero_schreibtischlampe_lichtstimmung
+        state: Automatik
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schreibtischlampe_buro
+        service: switch.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.buero_schreibtischlampe_lichtstimmung
+        state: Entspannen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schreibtischlampe_buro
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_relax
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.buero_schreibtischlampe_lichtstimmung
+        state: Lesen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schreibtischlampe_buro
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_reading
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.buero_schreibtischlampe_lichtstimmung
+        state: Konzentrieren
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schreibtischlampe_buro
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_concentrate
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.buero_schreibtischlampe_lichtstimmung
+        state: Energie tanken
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schreibtischlampe_buro
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_energize
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.buero_schreibtischlampe_lichtstimmung
+        state: Aus
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_buro_schreibtisch_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schreibtischlampe_buro
+        service: switch.turn_off
+    default: []
+  mode: single

@@ -44,6 +44,20 @@
     name: Shelly Badspiegel
     entity_id: switch.shelly1pm_76da84_relay_0
 
+
+####################################################
+#                                                  #
+#                   AMBIIGHTS                      #
+#                                                  #
+####################################################
+
+# https://github.com/jomwells/ambilights
+
+  - platform: philips_ambilight
+    name: Wohnzimmer Ambilight
+    host: 192.168.178.19
+
+
 #########################################################
 #                                                       #
 #            END OF CONFIGURATION FILE                  #

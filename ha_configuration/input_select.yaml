@@ -176,11 +176,6 @@ treppenhaus_wandlampen_lichtstimmung:
 eingangstuer_deckenlampe_lichtstimmung:
   name: Eingangstür Deckenlampe Lichtstimmung
   options:
-    - Automatik
-    - Entspannen
-    - Lesen
-    - Konzentrieren
-    - Energie tanken
     - Aus
   initial: Aus
 

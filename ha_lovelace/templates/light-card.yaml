@@ -17,8 +17,12 @@ card:
   entity: '[[entity]]'
   label: >
     [[[
-      var bri = Math.round(states['[[entity]]'].attributes.brightness / 2.55);
-      return 'Helligkeit: ' + (bri ? bri : '0') + '%';
+      if ('brightness' in states['[[entity]]'].attributes) {
+        var bri = Math.round(states['[[entity]]'].attributes.brightness / 2.55);
+        return 'Helligkeit: ' + (bri ? bri : '0') + '%';
+      } else {
+        return '';
+      }
     ]]]
   show_state: true
   show_label: true
@@ -34,7 +38,7 @@ card:
       entity_id: '[[input_select_entity]]'
   styles:
     card:
-      - border-radius: var(--ha-card-border-radius)      
+      - border-radius: var(--ha-card-border-radius)
       - box-shadow: var(--button-card-box-shadow)
       - padding: 10px
     label:

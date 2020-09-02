@@ -2840,3 +2840,396 @@
         service: switch.turn_off
     default: []
   mode: single
+- id: '1856839961230'
+  alias: 'Beleuchtung - Schlafzimmer Deckenlampe - #Lichtstimmung'
+  description: ''
+  trigger:
+  - entity_id: input_select.schlafzimmer_deckenlampe_lichtstimmung
+    platform: state
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_select.schlafzimmer_deckenlampe_lichtstimmung
+        state: Automatik
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_deckenlampe
+        service: switch.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.schlafzimmer_deckenlampe_lichtstimmung
+        state: Entspannen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_deckenlampe
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_relax
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.schlafzimmer_deckenlampe_lichtstimmung
+        state: Lesen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_deckenlampe
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_reading
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.schlafzimmer_deckenlampe_lichtstimmung
+        state: Konzentrieren
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_deckenlampe
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_concentrate
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.schlafzimmer_deckenlampe_lichtstimmung
+        state: Energie tanken
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_deckenlampe
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_energize
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.schlafzimmer_deckenlampe_lichtstimmung
+        state: Aus
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_deckenlampe
+        service: switch.turn_off
+    default: []
+  mode: single
+- id: '1636161269568'
+  alias: 'Beleuchtung - Schlafzimmer Nachttisch Lisa - #Lichtstimmung'
+  description: ''
+  trigger:
+  - entity_id: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
+    platform: state
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
+        state: Automatik
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_lisa
+        service: switch.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
+        state: Entspannen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_lisa
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_relax
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
+        state: Lesen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_lisa
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_reading
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
+        state: Konzentrieren
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_lisa
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_concentrate
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
+        state: Energie tanken
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_lisa
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_energize
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
+        state: Aus
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_lisa
+        service: switch.turn_off
+    default: []
+  mode: single
+- id: '1756979213799'
+  alias: 'Beleuchtung - Schlafzimmer Nachttisch Simon - #Lichtstimmung'
+  description: ''
+  trigger:
+  - entity_id: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
+    platform: state
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
+        state: Automatik
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_simon
+        service: switch.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
+        state: Entspannen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_simon
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_relax
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
+        state: Lesen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_simon
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_reading
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
+        state: Konzentrieren
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_simon
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_concentrate
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
+        state: Energie tanken
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_simon
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_energize
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
+        state: Aus
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_simon
+        service: switch.turn_off
+    default: []
+  mode: single

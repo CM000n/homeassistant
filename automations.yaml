@@ -2317,7 +2317,7 @@
     default: []
   mode: single
 - id: '1672295879095'
-  alias: 'Beleuchtung - Wochnzimmer Küche Herd - #Lichtstimmung'
+  alias: 'Beleuchtung - Küche Herd - #Lichtstimmung'
   description: ''
   trigger:
   - entity_id: input_select.kuche_herd_lichtstimmung
@@ -2448,7 +2448,7 @@
     default: []
   mode: single
 - id: '1619763095865'
-  alias: 'Beleuchtung - Wochnzimmer Küche Esstisch - #Lichtstimmung'
+  alias: 'Beleuchtung - Küche Esstisch - #Lichtstimmung'
   description: ''
   trigger:
   - entity_id: input_select.kuche_esstisch_lichtstimmung
@@ -2575,6 +2575,268 @@
         service: automation.turn_off
       - data: {}
         entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_esstisch
+        service: switch.turn_off
+    default: []
+  mode: single
+- id: '1977035196370'
+  alias: 'Beleuchtung - Flur Deckenlampen - #Lichtstimmung'
+  description: ''
+  trigger:
+  - entity_id: input_select.flur_deckenlampen_lichtstimmung
+    platform: state
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_select.flur_deckenlampen_lichtstimmung
+        state: Automatik
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_flur_deckenlampen
+        service: switch.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.flur_deckenlampen_lichtstimmung
+        state: Entspannen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_flur_deckenlampen
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_relax
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.flur_deckenlampen_lichtstimmung
+        state: Lesen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_flur_deckenlampen
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_reading
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.flur_deckenlampen_lichtstimmung
+        state: Konzentrieren
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_flur_deckenlampen
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_concentrate
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.flur_deckenlampen_lichtstimmung
+        state: Energie tanken
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_flur_deckenlampen
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_energize
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.flur_deckenlampen_lichtstimmung
+        state: Aus
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_flur_deckenlampen_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_flur_deckenlampen
+        service: switch.turn_off
+    default: []
+  mode: single
+- id: '1752550331211'
+  alias: 'Beleuchtung - Treppenhaus Wandlampen - #Lichtstimmung'
+  description: ''
+  trigger:
+  - entity_id: input_select.treppenhaus_wandlampen_lichtstimmung
+    platform: state
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_select.treppenhaus_wandlampen_lichtstimmung
+        state: Automatik
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_treppenhaus_wandlampen
+        service: switch.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.treppenhaus_wandlampen_lichtstimmung
+        state: Entspannen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_treppenhaus_wandlampen
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_relax
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.treppenhaus_wandlampen_lichtstimmung
+        state: Lesen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_treppenhaus_wandlampen
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_reading
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.treppenhaus_wandlampen_lichtstimmung
+        state: Konzentrieren
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_treppenhaus_wandlampen
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_concentrate
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.treppenhaus_wandlampen_lichtstimmung
+        state: Energie tanken
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_treppenhaus_wandlampen
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_energize
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.treppenhaus_wandlampen_lichtstimmung
+        state: Aus
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_treppenhaus_wandlampen_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_treppenhaus_wandlampen
         service: switch.turn_off
     default: []
   mode: single

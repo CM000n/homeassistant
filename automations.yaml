@@ -3233,3 +3233,265 @@
         service: switch.turn_off
     default: []
   mode: single
+- id: '1936236190613'
+  alias: 'Beleuchtung - Kinderzimmer Deckenlampe - #Lichtstimmung'
+  description: ''
+  trigger:
+  - entity_id: input_select.kinderzimmer_deckenlampe_lichtstimmung
+    platform: state
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_select.kinderzimmer_deckenlampe_lichtstimmung
+        state: Automatik
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_deckenlampe
+        service: switch.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.kinderzimmer_deckenlampe_lichtstimmung
+        state: Entspannen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_deckenlampe
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_relax
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.kinderzimmer_deckenlampe_lichtstimmung
+        state: Lesen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_deckenlampe
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_reading
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.kinderzimmer_deckenlampe_lichtstimmung
+        state: Konzentrieren
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_deckenlampe
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_concentrate
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.kinderzimmer_deckenlampe_lichtstimmung
+        state: Energie tanken
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_deckenlampe
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_energize
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.kinderzimmer_deckenlampe_lichtstimmung
+        state: Aus
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_deckenlampe
+        service: switch.turn_off
+    default: []
+  mode: single
+- id: '1999498729598'
+  alias: 'Beleuchtung - Kinderzimmer Tichleuchte - #Lichtstimmung'
+  description: ''
+  trigger:
+  - entity_id: input_select.kinderzimmer_tischleuchte_lichtstimmung
+    platform: state
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_select.kinderzimmer_tischleuchte_lichtstimmung
+        state: Automatik
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_tischleuchte
+        service: switch.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.kinderzimmer_tischleuchte_lichtstimmung
+        state: Entspannen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_tischleuchte
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_relax
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.kinderzimmer_tischleuchte_lichtstimmung
+        state: Lesen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_tischleuchte
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_reading
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.kinderzimmer_tischleuchte_lichtstimmung
+        state: Konzentrieren
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_tischleuchte
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_concentrate
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.kinderzimmer_tischleuchte_lichtstimmung
+        state: Energie tanken
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_tischleuchte
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_energize
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.kinderzimmer_tischleuchte_lichtstimmung
+        state: Aus
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_tischleuchte
+        service: switch.turn_off
+    default: []
+  mode: single

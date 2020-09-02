@@ -2316,3 +2316,265 @@
         service: switch.turn_off
     default: []
   mode: single
+- id: '1672295879095'
+  alias: 'Beleuchtung - Wochnzimmer Küche Herd - #Lichtstimmung'
+  description: ''
+  trigger:
+  - entity_id: input_select.kuche_herd_lichtstimmung
+    platform: state
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_select.kuche_herd_lichtstimmung
+        state: Automatik
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_herd
+        service: switch.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.kuche_herd_lichtstimmung
+        state: Entspannen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_herd
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_relax
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.kuche_herd_lichtstimmung
+        state: Lesen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_herd
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_reading
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.kuche_herd_lichtstimmung
+        state: Konzentrieren
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_herd
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_concentrate
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.kuche_herd_lichtstimmung
+        state: Energie tanken
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_herd
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_energize
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.kuche_herd_lichtstimmung
+        state: Aus
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_herd_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_herd
+        service: switch.turn_off
+    default: []
+  mode: single
+- id: '1619763095865'
+  alias: 'Beleuchtung - Wochnzimmer Küche Esstisch - #Lichtstimmung'
+  description: ''
+  trigger:
+  - entity_id: input_select.kuche_esstisch_lichtstimmung
+    platform: state
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_select.kuche_esstisch_lichtstimmung
+        state: Automatik
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_esstisch
+        service: switch.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.kuche_esstisch_lichtstimmung
+        state: Entspannen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_esstisch
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_relax
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.kuche_esstisch_lichtstimmung
+        state: Lesen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_esstisch
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_reading
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.kuche_esstisch_lichtstimmung
+        state: Konzentrieren
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_esstisch
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_concentrate
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.kuche_esstisch_lichtstimmung
+        state: Energie tanken
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_esstisch
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_energize
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.kuche_esstisch_lichtstimmung
+        state: Aus
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_kuche_esstisch_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_esstisch
+        service: switch.turn_off
+    default: []
+  mode: single

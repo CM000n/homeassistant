@@ -357,21 +357,6 @@
     entity_id: light.shelly_badspiegel
     service: light.turn_off
   mode: single
-- id: '1595840071764'
-  alias: Beleuchtung - Küche Esstisch Deckenlampe auf Warmweis
-  description: ''
-  trigger:
-  - entity_id: light.kuche_esstisch
-    platform: state
-    to: 'on'
-  condition: []
-  action:
-  - data:
-      brightness: 180
-      kelvin: 1800
-    entity_id: light.kuche_esstisch
-    service: light.turn_on
-  mode: restart
 - id: '1595840155379'
   alias: Beleuchtung - Wohnzimmer Stehlampe rechts auf Warmweis
   description: ''
@@ -577,7 +562,7 @@
     service: light.turn_on
   mode: restart
 - id: '1598357863227'
-  alias: Beleuchtung -  Küche Herd - Concentrate
+  alias: Beleuchtung - Küche Herd - Concentrate
   description: ''
   trigger:
   - platform: time_pattern
@@ -1804,6 +1789,530 @@
         service: automation.turn_off
       - data: {}
         entity_id: switch.circadian_lighting_autofarbtemperatur_schreibtischlampe_buro
+        service: switch.turn_off
+    default: []
+  mode: single
+- id: '1825812110646'
+  alias: 'Beleuchtung - Wohnzimmer Decke - #Lichtstimmung'
+  description: ''
+  trigger:
+  - entity_id: input_select.wohnzimmer_deckenlampe_lichtstimmung
+    platform: state
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_deckenlampe_lichtstimmung
+        state: Automatik
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_wohnzimmer
+        service: switch.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_deckenlampe_lichtstimmung
+        state: Entspannen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_wohnzimmer
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_relax
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_deckenlampe_lichtstimmung
+        state: Lesen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_wohnzimmer
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_reading
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_deckenlampe_lichtstimmung
+        state: Konzentrieren
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_wohnzimmer
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_concentrate
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_deckenlampe_lichtstimmung
+        state: Energie tanken
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_wohnzimmer
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_energize
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_deckenlampe_lichtstimmung
+        state: Aus
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_deckenlampe_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_wohnzimmer
+        service: switch.turn_off
+    default: []
+  mode: single
+- id: '1983835480808'
+  alias: 'Beleuchtung - Wohnzimmer Lightstrip - #Lichtstimmung'
+  description: ''
+  trigger:
+  - entity_id: input_select.wohnzimmer_lightstrip_lichtstimmung
+    platform: state
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_lightstrip_lichtstimmung
+        state: Automatik
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_lightstrip_wohnzimmer
+        service: switch.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_lightstrip_lichtstimmung
+        state: Entspannen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_lightstrip_wohnzimmer
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_relax
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_lightstrip_lichtstimmung
+        state: Lesen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_lightstrip_wohnzimmer
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_reading
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_lightstrip_lichtstimmung
+        state: Konzentrieren
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_lightstrip_wohnzimmer
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_concentrate
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_lightstrip_lichtstimmung
+        state: Energie tanken
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_lightstrip_wohnzimmer
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_energize
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_lightstrip_lichtstimmung
+        state: Aus
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_lightstrip_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_lightstrip_wohnzimmer
+        service: switch.turn_off
+    default: []
+  mode: single
+- id: '1718454021724'
+  alias: 'Beleuchtung - Wohnzimmer Stehlampe links - #Lichtstimmung'
+  description: ''
+  trigger:
+  - entity_id: input_select.wohnzimmer_stehlampe_links_lichtstimmung
+    platform: state
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_stehlampe_links_lichtstimmung
+        state: Automatik
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_stehlampe_links_wohnzimmer
+        service: switch.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_stehlampe_links_lichtstimmung
+        state: Entspannen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_stehlampe_links_wohnzimmer
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_relax
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_stehlampe_links_lichtstimmung
+        state: Lesen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_stehlampe_links_wohnzimmer
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_reading
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_stehlampe_links_lichtstimmung
+        state: Konzentrieren
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_stehlampe_links_wohnzimmer
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_concentrate
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_stehlampe_links_lichtstimmung
+        state: Energie tanken
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_stehlampe_links_wohnzimmer
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_energize
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_stehlampe_links_lichtstimmung
+        state: Aus
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_links_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_stehlampe_links_wohnzimmer
+        service: switch.turn_off
+    default: []
+  mode: single
+- id: '1677077854718'
+  alias: 'Beleuchtung - Wohnzimmer Stehlampe rechts - #Lichtstimmung'
+  description: ''
+  trigger:
+  - entity_id: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
+    platform: state
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
+        state: Automatik
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_stehlampe_rechts_wohnzimmer
+        service: switch.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
+        state: Entspannen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_stehlampe_rechts_wohnzimmer
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_relax
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
+        state: Lesen
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_stehlampe_rechts_wohnzimmer
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_reading
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
+        state: Konzentrieren
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_stehlampe_rechts_wohnzimmer
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_concentrate
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
+        state: Energie tanken
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_stehlampe_rechts_wohnzimmer
+        service: switch.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_energize
+        service: automation.turn_on
+    - conditions:
+      - condition: state
+        entity_id: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
+        state: Aus
+      sequence:
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_concentrate
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_energize
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_reading
+        service: automation.turn_off
+      - data: {}
+        entity_id: automation.beleuchtung_wohnzimmer_stehlampe_rechts_relax
+        service: automation.turn_off
+      - data: {}
+        entity_id: switch.circadian_lighting_autofarbtemperatur_stehlampe_rechts_wohnzimmer
         service: switch.turn_off
     default: []
   mode: single

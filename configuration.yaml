@@ -70,7 +70,7 @@ tts:
    cache: true
    cache_dir: /tts
    time_memory: 300
-   base_url: http://192.168.178.203:8123
+   base_url: http://192.168.178.3:8123
    language: 'de'
 # https://home-assistant.io/components/python_script/
 python_script:
@@ -94,7 +94,7 @@ system_health:
 person:
 # https://www.home-assistant.io/integrations/logger
 logger:
-  default: critical
+  default: error
 #  logs:
 #    pydeconz: debug
 #    homeassistant.components.deconz: debug

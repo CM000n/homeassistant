@@ -498,18 +498,17 @@
     seconds: '*'
   condition:
   - condition: state
-    entity_id: light.flur_deckenlampe_1
-    state: 'on'
-  - condition: state
-    entity_id: light.flur_deckenlampe_2
+    entity_id: light.deckenlampen_flur
     state: 'on'
   action:
   - data:
-      profile: hueconcentrate
+      brightness: 255
+      color_temp: 312
     entity_id: light.flur_deckenlampe_1
     service: light.turn_on
   - data:
-      profile: hueconcentrate
+      brightness: 255
+      color_temp: 312
     entity_id: light.flur_deckenlampe_2
     service: light.turn_on
   mode: restart
@@ -557,7 +556,8 @@
     state: 'on'
   action:
   - data:
-      profile: hueconcentrate
+      brightness: 255
+      color_temp: 312
     entity_id: light.kuche_esstisch
     service: light.turn_on
   mode: restart
@@ -573,7 +573,8 @@
     state: 'on'
   action:
   - data:
-      profile: hueconcentrate
+      brightness: 255
+      color_temp: 312
     entity_id: light.kuche_herd
     service: light.turn_on
   mode: single
@@ -643,15 +644,18 @@
     state: 'on'
   action:
   - data:
-      profile: hueconcentrate
+      brightness: 255
+      color_temp: 312
     entity_id: light.treppenhaus_wandlampe_1
     service: light.turn_on
   - data:
-      profile: hueconcentrate
+      brightness: 255
+      color_temp: 312
     entity_id: light.treppenhaus_wandlampe_2
     service: light.turn_on
   - data:
-      profile: hueconcentrate
+      brightness: 255
+      color_temp: 312
     entity_id: light.treppenhaus_wandlampe_3
     service: light.turn_on
   mode: restart
@@ -702,11 +706,13 @@
     state: 'on'
   action:
   - data:
-      profile: hueconcentrate
+      brightness: 255
+      color_temp: 312
     entity_id: light.wohnzimmer_stehlampe_links1
     service: light.turn_on
   - data:
-      profile: hueconcentrate
+      brightness: 255
+      color_temp: 312
     entity_id: light.wohnzimmer_stehlampe_links2
     service: light.turn_on
   mode: restart
@@ -722,7 +728,8 @@
     state: 'on'
   action:
   - data:
-      profile: hueconcentrate
+      brightness: 255
+      color_temp: 312
     entity_id: light.wohnzimmer_stehlampe_rechts
     service: light.turn_on
   mode: restart
@@ -766,10 +773,7 @@
     seconds: '*'
   condition:
   - condition: state
-    entity_id: light.flur_deckenlampe_1
-    state: 'on'
-  - condition: state
-    entity_id: light.flur_deckenlampe_2
+    entity_id: light.deckenlampen_flur
     state: 'on'
   action:
   - data:
@@ -1034,10 +1038,7 @@
     seconds: '*'
   condition:
   - condition: state
-    entity_id: light.flur_deckenlampe_1
-    state: 'on'
-  - condition: state
-    entity_id: light.flur_deckenlampe_2
+    entity_id: light.deckenlampen_flur
     state: 'on'
   action:
   - data:
@@ -1302,18 +1303,17 @@
     seconds: '*'
   condition:
   - condition: state
-    entity_id: light.flur_deckenlampe_1
-    state: 'on'
-  - condition: state
-    entity_id: light.flur_deckenlampe_2
+    entity_id: light.deckenlampen_flur
     state: 'on'
   action:
   - data:
-      profile: hueenergize
+      brightness: 255
+      color_temp: 250
     entity_id: light.flur_deckenlampe_1
     service: light.turn_on
   - data:
-      profile: hueenergize
+      brightness: 255
+      color_temp: 250
     entity_id: light.flur_deckenlampe_2
     service: light.turn_on
   mode: restart
@@ -1361,7 +1361,8 @@
     state: 'on'
   action:
   - data:
-      profile: hueenergize
+      brightness: 255
+      color_temp: 250
     entity_id: light.kuche_esstisch
     service: light.turn_on
   mode: restart
@@ -1377,7 +1378,8 @@
     state: 'on'
   action:
   - data:
-      profile: hueenergize
+      brightness: 255
+      color_temp: 250
     entity_id: light.kuche_herd
     service: light.turn_on
   mode: single
@@ -1447,15 +1449,18 @@
     state: 'on'
   action:
   - data:
-      profile: hueenergize
+      brightness: 255
+      color_temp: 250
     entity_id: light.treppenhaus_wandlampe_1
     service: light.turn_on
   - data:
-      profile: hueenergize
+      brightness: 255
+      color_temp: 250
     entity_id: light.treppenhaus_wandlampe_2
     service: light.turn_on
   - data:
-      profile: hueenergize
+      brightness: 255
+      color_temp: 250
     entity_id: light.treppenhaus_wandlampe_3
     service: light.turn_on
   mode: restart
@@ -1506,11 +1511,13 @@
     state: 'on'
   action:
   - data:
-      profile: hueenergize
+      brightness: 255
+      color_temp: 250
     entity_id: light.wohnzimmer_stehlampe_links1
     service: light.turn_on
   - data:
-      profile: hueenergize
+      brightness: 255
+      color_temp: 250
     entity_id: light.wohnzimmer_stehlampe_links2
     service: light.turn_on
   mode: restart
@@ -1526,7 +1533,8 @@
     state: 'on'
   action:
   - data:
-      profile: hueenergize
+      brightness: 255
+      color_temp: 250
     entity_id: light.wohnzimmer_stehlampe_rechts
     service: light.turn_on
   mode: restart
@@ -2343,7 +2351,7 @@
         entity_id: automation.beleuchtung_kuche_herd_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_herd
+        entity_id: switch.circadian_lighting_kuche_deckenlampe_herd
         service: switch.turn_on
     - conditions:
       - condition: state
@@ -2360,7 +2368,7 @@
         entity_id: automation.beleuchtung_kuche_herd_reading
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_herd
+        entity_id: switch.circadian_lighting_kuche_deckenlampe_herd
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_kuche_herd_relax
@@ -2380,7 +2388,7 @@
         entity_id: automation.beleuchtung_kuche_herd_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_herd
+        entity_id: switch.circadian_lighting_kuche_deckenlampe_herd
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_kuche_herd_reading
@@ -2400,7 +2408,7 @@
         entity_id: automation.beleuchtung_kuche_herd_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_herd
+        entity_id: switch.circadian_lighting_kuche_deckenlampe_herd
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_kuche_herd_concentrate
@@ -2420,7 +2428,7 @@
         entity_id: automation.beleuchtung_kuche_herd_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_herd
+        entity_id: switch.circadian_lighting_kuche_deckenlampe_herd
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_kuche_herd_energize
@@ -2443,7 +2451,7 @@
         entity_id: automation.beleuchtung_kuche_herd_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_herd
+        entity_id: switch.circadian_lighting_kuche_deckenlampe_herd
         service: switch.turn_off
     default: []
   mode: single
@@ -2474,7 +2482,7 @@
         entity_id: automation.beleuchtung_kuche_esstisch_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_esstisch
+        entity_id: switch.circadian_lighting_kuche_deckenlampe_esstisch
         service: switch.turn_on
     - conditions:
       - condition: state
@@ -2491,7 +2499,7 @@
         entity_id: automation.beleuchtung_kuche_esstisch_reading
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_esstisch
+        entity_id: switch.circadian_lighting_kuche_deckenlampe_esstisch
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_kuche_esstisch_relax
@@ -2511,7 +2519,7 @@
         entity_id: automation.beleuchtung_kuche_esstisch_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_esstisch
+        entity_id: switch.circadian_lighting_kuche_deckenlampe_esstisch
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_kuche_esstisch_reading
@@ -2531,7 +2539,7 @@
         entity_id: automation.beleuchtung_kuche_esstisch_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_esstisch
+        entity_id: switch.circadian_lighting_kuche_deckenlampe_esstisch
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_kuche_esstisch_concentrate
@@ -2551,7 +2559,7 @@
         entity_id: automation.beleuchtung_kuche_esstisch_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_esstisch
+        entity_id: switch.circadian_lighting_kuche_deckenlampe_esstisch
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_kuche_esstisch_energize
@@ -2574,7 +2582,7 @@
         entity_id: automation.beleuchtung_kuche_esstisch_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kuche_esstisch
+        entity_id: switch.circadian_lighting_kuche_deckenlampe_esstisch
         service: switch.turn_off
     default: []
   mode: single
@@ -2605,7 +2613,7 @@
         entity_id: automation.beleuchtung_flur_deckenlampen_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_flur_deckenlampen
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampen_flur
         service: switch.turn_on
     - conditions:
       - condition: state
@@ -2622,7 +2630,7 @@
         entity_id: automation.beleuchtung_flur_deckenlampen_reading
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_flur_deckenlampen
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampen_flur
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_flur_deckenlampen_relax
@@ -2642,7 +2650,7 @@
         entity_id: automation.beleuchtung_flur_deckenlampen_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_flur_deckenlampen
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampen_flur
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_flur_deckenlampen_reading
@@ -2662,7 +2670,7 @@
         entity_id: automation.beleuchtung_flur_deckenlampen_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_flur_deckenlampen
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampen_flur
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_flur_deckenlampen_concentrate
@@ -2682,7 +2690,7 @@
         entity_id: automation.beleuchtung_flur_deckenlampen_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_flur_deckenlampen
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampen_flur
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_flur_deckenlampen_energize
@@ -2705,7 +2713,7 @@
         entity_id: automation.beleuchtung_flur_deckenlampen_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_flur_deckenlampen
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampen_flur
         service: switch.turn_off
     default: []
   mode: single
@@ -2736,7 +2744,7 @@
         entity_id: automation.beleuchtung_treppenhaus_wandlampen_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_treppenhaus_wandlampen
+        entity_id: switch.circadian_lighting_autofarbtemperatur_wandlampe_treppenhaus
         service: switch.turn_on
     - conditions:
       - condition: state
@@ -2753,7 +2761,7 @@
         entity_id: automation.beleuchtung_treppenhaus_wandlampen_reading
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_treppenhaus_wandlampen
+        entity_id: switch.circadian_lighting_autofarbtemperatur_wandlampe_treppenhaus
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_treppenhaus_wandlampen_relax
@@ -2773,7 +2781,7 @@
         entity_id: automation.beleuchtung_treppenhaus_wandlampen_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_treppenhaus_wandlampen
+        entity_id: switch.circadian_lighting_autofarbtemperatur_wandlampe_treppenhaus
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_treppenhaus_wandlampen_reading
@@ -2793,7 +2801,7 @@
         entity_id: automation.beleuchtung_treppenhaus_wandlampen_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_treppenhaus_wandlampen
+        entity_id: switch.circadian_lighting_autofarbtemperatur_wandlampe_treppenhaus
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_treppenhaus_wandlampen_concentrate
@@ -2813,7 +2821,7 @@
         entity_id: automation.beleuchtung_treppenhaus_wandlampen_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_treppenhaus_wandlampen
+        entity_id: switch.circadian_lighting_autofarbtemperatur_wandlampe_treppenhaus
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_treppenhaus_wandlampen_energize
@@ -2836,7 +2844,7 @@
         entity_id: automation.beleuchtung_treppenhaus_wandlampen_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_treppenhaus_wandlampen
+        entity_id: switch.circadian_lighting_autofarbtemperatur_wandlampe_treppenhaus
         service: switch.turn_off
     default: []
   mode: single
@@ -2867,7 +2875,7 @@
         entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_deckenlampe
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_schlafzimmer
         service: switch.turn_on
     - conditions:
       - condition: state
@@ -2884,7 +2892,7 @@
         entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_reading
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_deckenlampe
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_schlafzimmer
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_relax
@@ -2904,7 +2912,7 @@
         entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_deckenlampe
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_schlafzimmer
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_reading
@@ -2924,7 +2932,7 @@
         entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_deckenlampe
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_schlafzimmer
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_concentrate
@@ -2944,7 +2952,7 @@
         entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_deckenlampe
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_schlafzimmer
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_energize
@@ -2967,7 +2975,7 @@
         entity_id: automation.beleuchtung_schlafzimmer_deckenlampe_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_deckenlampe
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_schlafzimmer
         service: switch.turn_off
     default: []
   mode: single
@@ -2998,7 +3006,7 @@
         entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_lisa
+        entity_id: switch.circadian_lighting_autofarbtemperatur_nachttisch_lisa
         service: switch.turn_on
     - conditions:
       - condition: state
@@ -3015,7 +3023,7 @@
         entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_reading
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_lisa
+        entity_id: switch.circadian_lighting_autofarbtemperatur_nachttisch_lisa
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_relax
@@ -3035,7 +3043,7 @@
         entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_lisa
+        entity_id: switch.circadian_lighting_autofarbtemperatur_nachttisch_lisa
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_reading
@@ -3055,7 +3063,7 @@
         entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_lisa
+        entity_id: switch.circadian_lighting_autofarbtemperatur_nachttisch_lisa
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_concentrate
@@ -3075,7 +3083,7 @@
         entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_lisa
+        entity_id: switch.circadian_lighting_autofarbtemperatur_nachttisch_lisa
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_energize
@@ -3098,7 +3106,7 @@
         entity_id: automation.beleuchtung_schlafzimmer_nachttisch_lisa_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_lisa
+        entity_id: switch.circadian_lighting_autofarbtemperatur_nachttisch_lisa
         service: switch.turn_off
     default: []
   mode: single
@@ -3129,7 +3137,7 @@
         entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_simon
+        entity_id: switch.circadian_lighting_autofarbtemperatur_nachttisch_simon
         service: switch.turn_on
     - conditions:
       - condition: state
@@ -3146,7 +3154,7 @@
         entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_reading
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_simon
+        entity_id: switch.circadian_lighting_autofarbtemperatur_nachttisch_simon
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_relax
@@ -3166,7 +3174,7 @@
         entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_simon
+        entity_id: switch.circadian_lighting_autofarbtemperatur_nachttisch_simon
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_reading
@@ -3186,7 +3194,7 @@
         entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_simon
+        entity_id: switch.circadian_lighting_autofarbtemperatur_nachttisch_simon
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_concentrate
@@ -3206,7 +3214,7 @@
         entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_simon
+        entity_id: switch.circadian_lighting_autofarbtemperatur_nachttisch_simon
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_energize
@@ -3229,7 +3237,7 @@
         entity_id: automation.beleuchtung_schlafzimmer_nachttisch_simon_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_schlafzimmer_nachttisch_simon
+        entity_id: switch.circadian_lighting_autofarbtemperatur_nachttisch_simon
         service: switch.turn_off
     default: []
   mode: single
@@ -3260,7 +3268,7 @@
         entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_deckenlampe
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_kinderzimmer
         service: switch.turn_on
     - conditions:
       - condition: state
@@ -3277,7 +3285,7 @@
         entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_reading
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_deckenlampe
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_kinderzimmer
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_relax
@@ -3297,7 +3305,7 @@
         entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_deckenlampe
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_kinderzimmer
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_reading
@@ -3317,7 +3325,7 @@
         entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_deckenlampe
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_kinderzimmer
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_concentrate
@@ -3337,7 +3345,7 @@
         entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_deckenlampe
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_kinderzimmer
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_energize
@@ -3360,7 +3368,7 @@
         entity_id: automation.beleuchtung_kinderzimmer_deckenlampe_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_deckenlampe
+        entity_id: switch.circadian_lighting_autofarbtemperatur_deckenlampe_kinderzimmer
         service: switch.turn_off
     default: []
   mode: single
@@ -3368,14 +3376,14 @@
   alias: 'Beleuchtung - Kinderzimmer Tichleuchte - #Lichtstimmung'
   description: ''
   trigger:
-  - entity_id: input_select.kinderzimmer_tischleuchte_lichtstimmung
+  - entity_id: input_select.kinderzimmer_tischlampe_lichtstimmung
     platform: state
   condition: []
   action:
   - choose:
     - conditions:
       - condition: state
-        entity_id: input_select.kinderzimmer_tischleuchte_lichtstimmung
+        entity_id: input_select.kinderzimmer_tischlampe_lichtstimmung
         state: Automatik
       sequence:
       - data: {}
@@ -3391,11 +3399,11 @@
         entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_tischleuchte
+        entity_id: switch.circadian_lighting_autofarbtemperatur_tischleuchte_kinderzimmer
         service: switch.turn_on
     - conditions:
       - condition: state
-        entity_id: input_select.kinderzimmer_tischleuchte_lichtstimmung
+        entity_id: input_select.kinderzimmer_tischlampe_lichtstimmung
         state: Entspannen
       sequence:
       - data: {}
@@ -3408,14 +3416,14 @@
         entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_reading
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_tischleuchte
+        entity_id: switch.circadian_lighting_autofarbtemperatur_tischleuchte_kinderzimmer
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_relax
         service: automation.turn_on
     - conditions:
       - condition: state
-        entity_id: input_select.kinderzimmer_tischleuchte_lichtstimmung
+        entity_id: input_select.kinderzimmer_tischlampe_lichtstimmung
         state: Lesen
       sequence:
       - data: {}
@@ -3428,14 +3436,14 @@
         entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_tischleuchte
+        entity_id: switch.circadian_lighting_autofarbtemperatur_tischleuchte_kinderzimmer
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_reading
         service: automation.turn_on
     - conditions:
       - condition: state
-        entity_id: input_select.kinderzimmer_tischleuchte_lichtstimmung
+        entity_id: input_select.kinderzimmer_tischlampe_lichtstimmung
         state: Konzentrieren
       sequence:
       - data: {}
@@ -3448,14 +3456,14 @@
         entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_tischleuchte
+        entity_id: switch.circadian_lighting_autofarbtemperatur_tischleuchte_kinderzimmer
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_concentrate
         service: automation.turn_on
     - conditions:
       - condition: state
-        entity_id: input_select.kinderzimmer_tischleuchte_lichtstimmung
+        entity_id: input_select.kinderzimmer_tischlampe_lichtstimmung
         state: Energie tanken
       sequence:
       - data: {}
@@ -3468,14 +3476,14 @@
         entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_tischleuchte
+        entity_id: switch.circadian_lighting_autofarbtemperatur_tischleuchte_kinderzimmer
         service: switch.turn_off
       - data: {}
         entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_energize
         service: automation.turn_on
     - conditions:
       - condition: state
-        entity_id: input_select.kinderzimmer_tischleuchte_lichtstimmung
+        entity_id: input_select.kinderzimmer_tischlampe_lichtstimmung
         state: Aus
       sequence:
       - data: {}
@@ -3491,7 +3499,7 @@
         entity_id: automation.beleuchtung_kinderzimmer_tischleuchte_relax
         service: automation.turn_off
       - data: {}
-        entity_id: switch.circadian_lighting_autofarbtemperatur_kinderzimmer_tischleuchte
+        entity_id: switch.circadian_lighting_autofarbtemperatur_tischleuchte_kinderzimmer
         service: switch.turn_off
     default: []
   mode: single

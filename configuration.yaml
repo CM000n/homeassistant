@@ -350,6 +350,45 @@ ltss:
 
 ####################################################
 #                                                  #
+#               DOCKER MONITOR                     #
+#                                                  #
+####################################################
+
+# https://github.com/ualex73/monitor_docker
+
+monitor_docker:
+  - name: Docker
+    containers:
+      - reverse-proxy
+      - timescale
+      - esphome
+      - mqtt
+      - portainer
+      - grafana
+      - homeassistant
+      - watchtower
+    rename:
+      reverse-proxy: "Traefik"
+      timescale: "Timescale DB"
+      esphome: "ESPHome"
+      mqtt: "Eclipse MQTT"
+      portainer: "Portainer"
+      grafana: "Grafana"
+      homeassistant: "Home Assistant"
+      watchtower: "Watchtower"
+    monitored_conditions:
+      - containers_running
+      - state
+      - cpu_percentage
+      - memory
+      - memory_percentage
+      - network_speed_up
+      - network_speed_down
+      - network_total_up
+      - network_total_down
+
+####################################################
+#                                                  #
 #            END OF CONFIGURATION FILE             #
 #                                                  #
 ####################################################

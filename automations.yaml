@@ -303,74 +303,58 @@
     service: homeassistant.turn_off
   mode: restart
 - id: '1595446145358'
-  alias: Beleuchtung - Wohnzimmer Lightstrip mit Deckenlampe an
+  alias: Beleuchtung - Wohnzimmer Lightstrip mit Deckenlampe an/aus
   description: ''
   trigger:
   - entity_id: light.wohnzimmer_deckenlampe
     platform: state
-    to: 'on'
   condition: []
   action:
-  - data:
-      brightness: 55
-      color_temp: 440
-      transition: 180
-    entity_id: light.wohnzimmer_lightstrip
-    service: light.turn_on
-  mode: single
-- id: '1595446304417'
-  alias: Beleuchtung - Wohnzimmer Lightstrip mit Deckenlampe aus
-  description: ''
-  trigger:
-  - entity_id: light.wohnzimmer_deckenlampe
-    from: 'on'
-    platform: state
-  condition: []
-  action:
-  - data: {}
-    entity_id: light.wohnzimmer_lightstrip
-    service: light.turn_off
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: light.wohnzimmer_deckenlampe
+        state: 'on'
+      sequence:
+      - data: {}
+        entity_id: light.wohnzimmer_lightstrip
+        service: light.turn_on
+    - conditions:
+      - condition: state
+        entity_id: light.wohnzimmer_deckenlampe
+        state: 'off'
+      sequence:
+      - data: {}
+        entity_id: light.wohnzimmer_lightstrip
+        service: light.turn_off
+    default: []
   mode: single
 - id: '1595446592140'
-  alias: Beleuchtung - Bad Spiegellampe mit Deckenlampe an
+  alias: Beleuchtung - Bad Spiegellampe mit Deckenlampe an/aus
   description: ''
   trigger:
   - entity_id: light.shelly_deckenlampe_bad
     platform: state
-    to: 'on'
   condition: []
   action:
-  - data: {}
-    entity_id: light.shelly_badspiegel
-    service: light.turn_on
-  mode: single
-- id: '1595446707600'
-  alias: Beleuchtung - Bad Spiegellampe mit Deckenlampe aus
-  description: ''
-  trigger:
-  - entity_id: light.shelly_deckenlampe_bad
-    from: 'on'
-    platform: state
-  condition: []
-  action:
-  - data: {}
-    entity_id: light.shelly_badspiegel
-    service: light.turn_off
-  mode: single
-- id: '1595840155379'
-  alias: Beleuchtung - Wohnzimmer Stehlampe rechts auf Warmweis
-  description: ''
-  trigger:
-  - entity_id: light.wohnzimmer_stehlampe_rechts
-    platform: state
-    to: 'on'
-  condition: []
-  action:
-  - data:
-      brightness: 255
-      kelvin: 2100
-    entity_id: light.wohnzimmer_stehlampe_rechts
-    service: light.turn_on
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: light.shelly_deckenlampe_bad
+        state: 'on'
+      sequence:
+      - data: {}
+        entity_id: light.shelly_badspiegel
+        service: light.turn_on
+    - conditions:
+      - condition: state
+        entity_id: light.shelly_deckenlampe_bad
+        state: 'off'
+      sequence:
+      - data: {}
+        entity_id: light.shelly_badspiegel
+        service: light.turn_off
+    default: []
   mode: single
 - id: '1595840375132'
   alias: Benachrichtigung - Login Fehlversuch

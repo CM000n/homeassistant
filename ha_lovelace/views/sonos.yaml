@@ -7,7 +7,7 @@ badges: []
 
 
 cards:
-  - type: "custom:sonos-card"
+  - type: "custom:custom-sonos-card"
     name: "Sonos Lautsprecher"
     entities:
       - media_player.wohnzimmer

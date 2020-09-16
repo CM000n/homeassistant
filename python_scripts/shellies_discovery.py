@@ -431,7 +431,7 @@ ignored = [
 mac = data.get(CONF_MAC).lower()  # noqa: F821
 
 if not dev_id:
-    raise ValueError(f"{dev_id} is wrong dev_id argument")
+    raise ValueError(f"{dev_id} is wrong id argument")
 if not mac:
     raise ValueError(f"{mac} is wrong mac argument")
 if not fw_ver:
@@ -444,7 +444,7 @@ except (IndexError, ValueError):
         f"Firmware version {fw_ver} is not supported, please update your device {dev_id}"
     )
 
-dev_id_prefix = dev_id.rsplit("-", 1)[0]
+dev_id_prefix = dev_id.rsplit("-", 1)[0].lower()
 
 min_ver = MIN_FIRMWARE_VERSION.split(".")
 min_ver = int("".join(i for i in min_ver)[:3])
@@ -466,7 +466,7 @@ if (
     )
 
 logger.debug(
-    "dev_id: %s, mac: %s, fw_ver: %s, model_id: %s", dev_id, mac, fw_ver, model_id
+    "id: %s, mac: %s, fw_ver: %s, model: %s", dev_id, mac, fw_ver, model_id
 )  # noqa: F821
 
 try:

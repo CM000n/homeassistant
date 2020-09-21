@@ -159,6 +159,104 @@
       - climate.heizung_bad
       - climate.heizung_buro
 
+  - platform: attributes
+    friendly_name: "CPU Auslastung"
+    attribute: cpu_percentage
+    unit_of_measurement: "%"
+    entities:
+      - sensor.docker_esphome
+      - sensor.docker_grafana
+      - sensor.docker_home_assistant
+      - sensor.docker_mqtt
+      - sensor.docker_portainer
+      - sensor.docker_reverse_proxy
+      - sensor.docker_timescale
+      - sensor.docker_watchtower
+
+  - platform: attributes
+    friendly_name: "Speicher Auslastung"
+    attribute: memory_percentage
+    unit_of_measurement: "%"
+    entities:
+      - sensor.docker_esphome
+      - sensor.docker_grafana
+      - sensor.docker_home_assistant
+      - sensor.docker_mqtt
+      - sensor.docker_portainer
+      - sensor.docker_reverse_proxy
+      - sensor.docker_timescale
+      - sensor.docker_watchtower
+
+  - platform: attributes
+    friendly_name: "Speicher Nutzung"
+    attribute: memory
+    unit_of_measurement: "MB"
+    entities:
+      - sensor.docker_esphome
+      - sensor.docker_grafana
+      - sensor.docker_home_assistant
+      - sensor.docker_mqtt
+      - sensor.docker_portainer
+      - sensor.docker_reverse_proxy
+      - sensor.docker_timescale
+      - sensor.docker_watchtower
+
+  - platform: attributes
+    friendly_name: "Netzwerk Nutzung Up"
+    attribute: network_speed_up
+    unit_of_measurement: "kB/s"
+    entities:
+      - sensor.docker_esphome
+      - sensor.docker_grafana
+      - sensor.docker_home_assistant
+      - sensor.docker_mqtt
+      - sensor.docker_portainer
+      - sensor.docker_reverse_proxy
+      - sensor.docker_timescale
+      - sensor.docker_watchtower
+
+  - platform: attributes
+    friendly_name: "Netzwerk Nutzung Down"
+    attribute: network_speed_down
+    unit_of_measurement: "kB/s"
+    entities:
+      - sensor.docker_esphome
+      - sensor.docker_grafana
+      - sensor.docker_home_assistant
+      - sensor.docker_mqtt
+      - sensor.docker_portainer
+      - sensor.docker_reverse_proxy
+      - sensor.docker_timescale
+      - sensor.docker_watchtower
+
+  - platform: attributes
+    friendly_name: "Netzwerk Nutzung Total Up"
+    attribute: network_total_up
+    unit_of_measurement: "MB"
+    entities:
+      - sensor.docker_esphome
+      - sensor.docker_grafana
+      - sensor.docker_home_assistant
+      - sensor.docker_mqtt
+      - sensor.docker_portainer
+      - sensor.docker_reverse_proxy
+      - sensor.docker_timescale
+      - sensor.docker_watchtower
+
+  - platform: attributes
+    friendly_name: "Netzwerk Nutzung Total Down"
+    attribute: network_total_down
+    unit_of_measurement: "MB"
+    entities:
+      - sensor.docker_esphome
+      - sensor.docker_grafana
+      - sensor.docker_home_assistant
+      - sensor.docker_mqtt
+      - sensor.docker_portainer
+      - sensor.docker_reverse_proxy
+      - sensor.docker_timescale
+      - sensor.docker_watchtower
+
 ####################################################
 #                                                  #
 #                  TEMPLATE SENSORS                #

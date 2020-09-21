@@ -76,11 +76,13 @@ cards:
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
-                      template: button-card
+                      template: mediaplayer-card
                       variables:
                         - entity: binary_sensor.philipstv
                         - icon: television
                         - name: Fernseher
+                        - tap_action: more-info
+                        - show_entity_picture: true
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:

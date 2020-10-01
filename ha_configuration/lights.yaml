@@ -38,11 +38,11 @@
 
   - platform: switch
     name: Shelly Deckenlampe Bad
-    entity_id: switch.shelly1pm_76d8e1_relay_0
+    entity_id: switch.shelly_1pm_76d8e1_relay_0
 
   - platform: switch
     name: Shelly Badspiegel
-    entity_id: switch.shelly1pm_76da84_relay_0
+    entity_id: switch.shelly_1pm_76da84_relay_0
 
 
 #########################################################

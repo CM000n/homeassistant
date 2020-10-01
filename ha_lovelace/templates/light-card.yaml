@@ -14,6 +14,7 @@ card:
   color: auto
   lock: false
   aspect_ratio: '1/1'
+  name: '[[name]]'
   entity: '[[entity]]'
   label: >
     [[[

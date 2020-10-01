@@ -7,17 +7,16 @@ badges: []
 
 
 popup_cards:
-  media_player.chromecast:
+  media_player.chromecast_wohnzimmer:
     title: ""
     style: !include ../styles/popup.yaml
     card:
       type: custom:decluttering-card
       template: mediaplayer-popup-card
       variables:
-        - media_player_entity: media_player.chromecast
+        - media_player_entity: media_player.chromecast_wohnzimmer
         - media_player_icon: 'cast'
         - media_player_artwork: 'cover'
-        - speaker_entity: media_player.wohnzimmer
     deviceID: 
       - this
   media_player.wohnzimmer:
@@ -88,7 +87,7 @@ cards:
                     cardOptions:
                       template: mediaplayer-card
                       variables:
-                        - entity: media_player.chromecast
+                        - entity: media_player.chromecast_wohnzimmer
                         - icon: cast
                         - name: Chromecast
                         #- tap_action: more-info

@@ -3,19 +3,35 @@
 
 ####################################################
 #                                                  #
-#                 WEATHER RADAR                    #
+#              XIAOMI VACUUM CARD                  #
 #                                                  #
 ####################################################
 
-#  - platform: generic
-#    name: Wetterradar
-#    still_image_url: http://www.dwd.de/DWD/wetter/radar/radfilm_baw_akt.gif
-#    content_type: 'image/gif+xml'
+# https://github.com/PiotrMachowski/Home-Assistant-custom-components-Xiaomi-Cloud-Map-Extractor
 
-#  - platform: generic
-#    name: Meteogram
-#    still_image_url: https://www.yr.no/place/Germany/Baden-W%C3%BCrttemberg/Kraichtal/meteogram.svg
-#    content_type: 'image/svg+xml'
+  - platform: xiaomi_cloud_map_extractor
+    host: 192.168.178.100
+    token: !secret roborock_token
+    username: !secret xiaomi_cloud_username
+    password: !secret xiaomi_cloud_password
+    country: "de"
+    name: "Robi Karte"
+    draw:
+      - charger
+      - path
+      - no_go_zones
+      - no_mopping_zones
+      - vacuum_position
+      - virtual_walls
+      - zones
+    map_transformation:
+      scale: 1
+      rotate: 90
+      trim:
+        top: 0
+        bottom: 0
+        left: 0
+        right: 0
 
 ####################################################
 #                                                  #

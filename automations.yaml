@@ -327,7 +327,10 @@
       - data: {}
         entity_id: light.wohnzimmer_lightstrip
         service: light.turn_off
-    default: []
+    default:
+    - service: light.turn_off
+      data: {}
+      entity_id: light.wohnzimmer_lightstrip
   mode: single
 - id: '1595446592140'
   alias: Beleuchtung - Bad Spiegellampe mit Deckenlampe an/aus
@@ -3486,4 +3489,52 @@
         entity_id: switch.circadian_lighting_autofarbtemperatur_tischleuchte_kinderzimmer
         service: switch.turn_off
     default: []
+  mode: single
+- id: '1601484887894'
+  alias: System - Purge Database
+  description: Diese Automatisierung löscht jede Nacht alle Events die älter als 7
+    Tage sind aus der Datenbank. Zusätzlich wird die Datenbank komprimiert, um Platz
+    einzusparen.
+  trigger:
+  - platform: time
+    at: 04:00:00
+  condition: []
+  action:
+  - service: recorder.purge
+    data:
+      keep_days: 7
+      repack: true
+  mode: single
+- id: '1601550132829'
+  alias: Staubsauger - Wochentags reinigen
+  description: ''
+  trigger:
+  - platform: time
+    at: 09:30:00
+  condition:
+  - condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'on'
+  action:
+  - service: vacuum.start
+    data:
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+  mode: single
+- id: '1601550156741'
+  alias: Staubsauger -  Samstags reinigen
+  description: ''
+  trigger:
+  - platform: time
+    at: 09:30:00
+  condition:
+  - condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'off'
+  - condition: state
+    entity_id: sensor.dayoftheweek
+    state: Saturday
+  action:
+  - service: vacuum.start
+    data:
+      entity_id: vacuum.xiaomi_vacuum_cleaner
   mode: single

@@ -330,55 +330,50 @@ vacuum:
 ltss:
     db_url: !secret ltss_url
     include:
-        domains:
-        - binary_sensor
-        - climate
-        - light
-        - media_player
-        - person
-        - sensor
-        - switch
-    exclude:
         entities:
-        - sensor.time
-        - sensor.time_2
-        - sensor.time_date
-        - sensor.time_utc
-        - sensor.date_time
-        - sensor.date_time_iso
-        - sensor.internet_time
-
-####################################################
-#                                                  #
-#               DOCKER MONITOR                     #
-#                                                  #
-####################################################
-
-# https://github.com/ualex73/monitor_docker
-
-monitor_docker:
-  - name: Docker
-    containers:
-      - reverse-proxy
-      - timescale
-      - esphome
-      - mqtt
-      - portainer
-      - grafana
-      - home-assistant
-      - watchtower
-    rename:
-      reverse-proxy: "Traefik"
-      timescale: "Timescale DB"
-      esphome: "ESPHome"
-      mqtt: "Eclipse MQTT"
-      portainer: "Portainer"
-      grafana: "Grafana"
-      home-assistant: "Home Assistant"
-      watchtower: "Watchtower"
-    scan_interval: 60
-    monitored_conditions:
-      - allinone
+        - sensor.heizung_bad_battery_level
+        - sensor.heizung_buro_battery_level
+        - sensor.ipad_von_simon_battery_level_2
+        - sensor.mi_a3_battery_level
+        - sensor.nokia_7_2_battery_level
+        - sensor.von_der_arbeit_nach_hause
+        - sensor.von_zu_hause_zur_arbeit
+        - sensor.tankerkoenig_zg_raiffeisen_tankstelle_kraichtal_munzesheim_e10
+        - sensor.tankerkoenig_autohaus_bahm_gmbh_e10
+        - sensor.tankerkoenig_tk_unterowisheim_11_e10
+        - sensor.tankerkoenig_oil_tankstelle_oberderdingen_e10
+        - sensor.fritzbox_is_connected
+        - sensor.fritzbox_is_linked
+        - sensor.fritzbox_uptime
+        - sensor.fritzbox_transmission_rate_down
+        - sensor.fritzbox_transmission_rate_up
+        - sensor.fritzbox_bytes_received
+        - sensor.fritzbox_bytes_sent
+        - sensor.speedtest_download
+        - sensor.speedtest_upload
+        - sensor.speedtest_ping
+        - sensor.gesamtverbrauch_waschmaschine
+        - sensor.gesamtverbrauch_trockner
+        - sensor.gesamtverbrauch_spuehlmaschine
+        - sensor.gesamtverbrauch_wohnzimmer_lowboard
+        - sensor.gesamtverbrauch_beleuchtung
+        - sensor.stromverbrauch_spuehlmaschine
+        - sensor.stromverbrauch_waschmaschine
+        - sensor.stromverbrauch_wohnzimmer_lowboard
+        - sensor.stromverbrauch_trockner
+        - sensor.stromverbrauch_beleuchtung
+        - sensor.darksky_temperature
+        - sensor.temperatur_ankleide
+        - sensor.temperatur_wohnzimmer_lowboard
+        - sensor.temperatur_climate_buero
+        - sensor.temperatur_climate_bad
+        - sensor.einganstuer_bewegungsmelder_temperature
+        - sensor.darksky_humidity
+        - sensor.darksky_pressure
+        - sensor.luftdaten_19149_p2
+        - sensor.luftdaten_19149_p1
+        - sensor.darksky_precip_probability
+        - sensor.darksky_cloud_coverage
 
 ####################################################
 #                                                  #

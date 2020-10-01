@@ -31,7 +31,7 @@
   type: module
 - url: /hacsfiles/config-template-card/config-template-card.js
   type: module
-- url: /hacsfiles/custom-sonos-card/custom-sonos-card.js
+- url: /hacsfiles/vacuum-card/vacuum-card.js
   type: module
 - url: /local/custom_plugin/light-popup-card.js?v=0.0.2
   type: module

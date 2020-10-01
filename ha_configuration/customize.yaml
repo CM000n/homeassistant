@@ -5,70 +5,73 @@
 #########################################################
 
 light.wohnzimmer_deckenlampe:
-  friendly_name: Wohnzimmer
+  friendly_name: Wohnzimmer Deckenlampe
   icon: mdi:ceiling-light
 light.wohnzimmer_lightstrip:
-  friendly_name: Lowboard
+  friendly_name: Wohnzimmer Lightstrip
   icon: mdi:led-strip-variant
 light.stehlampe_wohnzimmer_links:
-  friendly_name: Lampe L.
+  friendly_name: Wohnzimmer Stehlampe links
   icon: mdi:floor-lamp
 light.wohnzimmer_stehlampe_rechts:
-  friendly_name: Lampe R.
+  friendly_name: Wohnzimmer Stehlampe rechts
   icon: mdi:floor-lamp
 light.kuche_herd:
-  friendly_name: Herd
+  friendly_name: Küche Herdlampe
   icon: mdi:ceiling-light
 light.kuche_esstisch:
-  friendly_name: Esstisch
+  friendly_name: Küche Esstisch Lampe
   icon: mdi:ceiling-light
 
 light.schlafzimmer_deckenlampe:
-  friendly_name: Decke
+  friendly_name: Schlafzimmer Deckenlampe
   icon: mdi:ceiling-light
 light.schlafzimmer_nachttisch_lisa:
-  friendly_name: Lisa
+  friendly_name: Wohnzimmer Nachttisch Lisa
   icon: mdi:lava-lamp
 light.schlafzimmer_nachttisch_simon:
-  friendly_name: Simon
+  friendly_name: Wohnzimmer Nachttisch Simon
   icon: mdi:lava-lamp
 
 light.kinderzimmer_deckenlampe:
-  friendly_name: Decke
+  friendly_name: Kinderzimmer Deckelampe
   icon: mdi:ceiling-light
 light.kinderzimmer_tischleuchte:
-  friendly_name: Tischleuchte
+  friendly_name: Kinderzimmer Tischleuchte
   icon: mdi:lamp
 light.ankleide_nahtisch_wand:
-  friendly_name: Nähtisch W.
+  friendly_name: Büro Nähtischlampe Wand
   icon: mdi:track-light
 light.ankleide_nahtisch_links:
-  friendly_name: Nähtisch L.
+  friendly_name: Büro Nähtischlampe links
   icon: mdi:track-light
 light.ankleide_nahtisch_rechts:
-  friendly_name: Nähtisch R.
+  friendly_name: Büro Nähtischlampe rechts
   icon: mdi:track-light
 
 
 light.shelly_deckenlampe_bad:
-  friendly_name: Decke
+  friendly_name: Badezimmer Deckenlampe
   icon: mdi:ceiling-light
 light.shelly_badspiegel:
-  friendly_name: Spiegel
+  friendly_name: Badezimmer Spiegellampe
   icon: mdi:led-strip
 
 light.buro_deckenlampe:
-  friendly_name: Decke
+  friendly_name: Büro Deckenlampe
   icon: mdi:ceiling-light
 light.buro_schreibtisch:
-  friendly_name: Schreibtisch
+  friendly_name: Büro Schreibtischlampe
   icon: mdi:lamp
 
 light.deckenlampen_flur:
-  friendly_name: Flur
+  friendly_name: Flur Deckenlampen
   icon: mdi:ceiling-light
 light.wandlampen_treppenhaus:
-  friendly_name: Treppenhaus
+  friendly_name: Treppenhaus Wandleuchte
+  icon: mdi:track-light
+light.eingangstuer_decke:
+  friendly_name: Eingangstür Deckenlampe
   icon: mdi:track-light
 
 #########################################################

@@ -11,6 +11,3 @@ cards:
     name: "Sonos Lautsprecher"
     entities:
       - media_player.wohnzimmer
-      - media_player.schlafzimmer
-      - media_player.bad
-      - media_player.buro

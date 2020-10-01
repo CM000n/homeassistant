@@ -6,8 +6,9 @@
 #                                                  #
 ####################################################
 
-  purge_keep_days: 7
   db_url: !secret db_url
+  auto_purge: false
+  commit_interval: 0
   include:
     domains:
       - binary_sensor

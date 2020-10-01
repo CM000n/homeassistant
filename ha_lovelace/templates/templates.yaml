@@ -53,3 +53,5 @@ domestic-appliances-popup-card:
   !include domestic-appliances-popup-card.yaml
 thermostat-card:
   !include thermostat-card.yaml
+vacuum-popup-card:
+  !include vacuum-popup-card.yaml

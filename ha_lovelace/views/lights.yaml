@@ -49,6 +49,7 @@ cards:
                     cardOptions:
                       template: light-card
                       variables:
+                        - name: Decke
                         - entity: light.wohnzimmer_deckenlampe
                         - input_select_entity: input_select.wohnzimmer_deckenlampe_lichtstimmung
                   - card: custom:decluttering-card
@@ -56,6 +57,7 @@ cards:
                     cardOptions:
                       template: light-card
                       variables:
+                        - name: Lightstrip
                         - entity: light.wohnzimmer_lightstrip
                         - input_select_entity: input_select.wohnzimmer_lightstrip_lichtstimmung
                   - card: custom:decluttering-card
@@ -63,6 +65,7 @@ cards:
                     cardOptions:
                       template: light-card
                       variables:
+                        - name: Stehlampe l.
                         - entity: light.stehlampe_wohnzimmer_links
                         - input_select_entity: input_select.wohnzimmer_stehlampe_links_lichtstimmung
                   - card: custom:decluttering-card
@@ -70,6 +73,7 @@ cards:
                     cardOptions:
                       template: light-card
                       variables:
+                        - name: Stehlampe r.
                         - entity: light.wohnzimmer_stehlampe_rechts
                         - input_select_entity: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
       - row: 2
@@ -83,6 +87,7 @@ cards:
                     cardOptions:
                       template: light-card
                       variables:
+                        - name: Herd
                         - entity: light.kuche_herd
                         - input_select_entity: input_select.kuche_herd_lichtstimmung
                   - card: custom:decluttering-card
@@ -90,6 +95,7 @@ cards:
                     cardOptions:
                       template: light-card
                       variables:
+                        - name: Esstisch
                         - entity: light.kuche_esstisch
                         - input_select_entity: input_select.kuche_esstisch_lichtstimmung
       - row: 3
@@ -103,6 +109,7 @@ cards:
                     cardOptions:
                       template: light-card
                       variables:
+                        - name: Decke
                         - entity: light.shelly_deckenlampe_bad
                         - input_select_entity: input_select.bad_deckenlampe_lichtstimmung
                   - card: custom:decluttering-card
@@ -110,6 +117,7 @@ cards:
                     cardOptions:
                       template: light-card
                       variables:
+                        - name: Spiegel
                         - entity: light.shelly_badspiegel
                         - input_select_entity: input_select.bad_spiegellampe_lichtstimmung
       - row: 4
@@ -123,6 +131,7 @@ cards:
                     cardOptions:
                       template: light-card
                       variables:
+                        - name: Decke
                         - entity: light.buro_deckenlampe
                         - input_select_entity: input_select.buero_deckenlampe_lichtstimmung
                   - card: custom:decluttering-card
@@ -130,6 +139,7 @@ cards:
                     cardOptions:
                       template: light-card
                       variables:
+                        - name: Schreibtisch
                         - entity: light.buro_schreibtisch
                         - input_select_entity: input_select.buero_schreibtischlampe_lichtstimmung
       - row: 5
@@ -143,6 +153,7 @@ cards:
                     cardOptions:
                       template: light-card
                       variables:
+                        - name: Decke
                         - entity: light.schlafzimmer_deckenlampe
                         - input_select_entity: input_select.schlafzimmer_deckenlampe_lichtstimmung
                   - card: custom:decluttering-card
@@ -150,6 +161,7 @@ cards:
                     cardOptions:
                       template: light-card
                       variables:
+                        - name: Nachttisch Simon
                         - entity: light.schlafzimmer_nachttisch_simon
                         - input_select_entity: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
                   - card: custom:decluttering-card
@@ -157,6 +169,7 @@ cards:
                     cardOptions:
                       template: light-card
                       variables:
+                        - name: Nachttisch Lisa
                         - entity: light.schlafzimmer_nachttisch_lisa
                         - input_select_entity: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
       - row: 6
@@ -170,6 +183,7 @@ cards:
                     cardOptions:
                       template: light-card
                       variables:
+                        - name: Decke
                         - entity: light.kinderzimmer_deckenlampe
                         - input_select_entity: input_select.kinderzimmer_deckenlampe_lichtstimmung
                   - card: custom:decluttering-card
@@ -177,6 +191,7 @@ cards:
                     cardOptions:
                       template: light-card
                       variables:
+                        - name: Wickeltisch
                         - entity: light.kinderzimmer_tischleuchte
                         - input_select_entity: input_select.kinderzimmer_tischlampe_lichtstimmung
       - row: 7
@@ -190,6 +205,7 @@ cards:
                     cardOptions:
                       template: light-card
                       variables:
+                        - name: Flur
                         - entity: light.deckenlampen_flur
                         - input_select_entity: input_select.flur_deckenlampen_lichtstimmung
                   - card: custom:decluttering-card
@@ -197,6 +213,7 @@ cards:
                     cardOptions:
                       template: light-card
                       variables:
+                        - name: Treppenhaus
                         - entity: light.wandlampen_treppenhaus
                         - input_select_entity: input_select.treppenhaus_wandlampen_lichtstimmung
                   - card: custom:decluttering-card
@@ -204,5 +221,6 @@ cards:
                     cardOptions:
                       template: light-card
                       variables:
+                        - name: Eingangstür
                         - entity: light.eingangstuer_decke
                         - input_select_entity: input_select.eingangstuer_deckenlampe_lichtstimmung

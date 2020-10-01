@@ -45,6 +45,14 @@ popup_cards:
         - domestic_appliance_energy: sensor.gesamtverbrauch_trockner
     deviceID: 
       - this
+  vacuum.xiaomi_vacuum_cleaner:
+    title: "Robi"
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: vacuum-popup-card
+    deviceID: 
+      - this
 
 
 cards:

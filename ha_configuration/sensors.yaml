@@ -168,8 +168,8 @@
   - platform: template
     sensors:
       current_lights_on:
-        friendly_name: Lichter momentan an
-        unit_of_measurement: 'on'
+        friendly_name: 'Anzahl angeschalteter Lichter'
+        unit_of_measurement: 'an'
         value_template: >
           {% set lights = [
             states.light.ankleide_nahtisch_links,
@@ -197,8 +197,10 @@
           {{ lights | selectattr('state','eq','on') | list | count }}
 
       dayoftheweek:
-        value_template: "{{ ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'][now().weekday()] }}"
-        entity_id: sensor.time
+        value_template: >
+          {% set x = states('sensor.time') %}
+          {{ now().strftime("%A") | lower }}
+        friendly_name: 'Wochentag'
 
       tv_wohnzimmer_state:
         value_template: '{{ states("binary_sensor.device_tracker_philipstv") }}'

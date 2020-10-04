@@ -33,6 +33,8 @@
   type: module
 - url: /hacsfiles/vacuum-card/vacuum-card.js
   type: module
+- url: /hacsfiles/custom-sonos-card/custom-sonos-card.js
+  type: module
 - url: /local/custom_plugin/light-popup-card.js?v=0.0.2
   type: module
 - url: /local/custom_plugin/popup-backdrop-filter.js?v=4924b86

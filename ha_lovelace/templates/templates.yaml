@@ -55,3 +55,7 @@ thermostat-card:
   !include thermostat-card.yaml
 vacuum-popup-card:
   !include vacuum-popup-card.yaml
+lights-on-card:
+  !include lights-on-card.yaml
+lights-on-popup-card:
+  !include lights-on-popup-card.yaml

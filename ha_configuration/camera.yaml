@@ -19,19 +19,23 @@
     draw:
       - charger
       - path
+      - goto_path
+      - predicted_path
       - no_go_zones
       - no_mopping_zones
       - vacuum_position
       - virtual_walls
       - zones
     map_transformation:
-      scale: 1
+      scale: 5
       rotate: 90
       trim:
-        top: 0
-        bottom: 0
-        left: 0
-        right: 0
+        top: 5
+        bottom: 5
+        left: 5
+        right: 5
+    attributes:
+      - image
 
 ####################################################
 #                                                  #

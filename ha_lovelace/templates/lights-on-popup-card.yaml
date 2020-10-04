@@ -1,0 +1,64 @@
+default:
+  #required
+card:
+  type: vertical-stack
+  style: |
+    ha-card {
+      margin: 10px 10px;
+      box-shadow: none;
+      border: none;
+    }
+  cards:
+    - type: entity-filter
+      style: |
+        ha-card {
+          border: none;
+          box-shadow: none;
+        }
+      show_header_toggle: true
+      entities:
+        - entity: light.ankleide_nahtisch_links
+          secondary_info: last-changed
+        - entity: light.ankleide_nahtisch_rechts
+          secondary_info: last-changed
+        - entity: light.ankleide_nahtisch_wand
+          secondary_info: last-changed
+        - entity: light.buro_deckenlampe
+          secondary_info: last-changed
+        - entity: light.buro_schreibtisch
+          secondary_info: last-changed
+        - entity: light.deckenlampen_flur
+          secondary_info: last-changed
+        - entity: light.eingangstuer_decke
+          secondary_info: last-changed
+        - entity: light.kinderzimmer_deckenlampe
+          secondary_info: last-changed
+        - entity: light.kinderzimmer_tischleuchte
+          secondary_info: last-changed
+        - entity: light.kuche_esstisch
+          secondary_info: last-changed
+        - entity: light.kuche_herd
+          secondary_info: last-changed
+        - entity: light.schlafzimmer_deckenlampe
+          secondary_info: last-changed
+        - entity: light.schlafzimmer_nachttisch_lisa
+          secondary_info: last-changed
+        - entity: light.schlafzimmer_nachttisch_simon
+          secondary_info: last-changed
+        - entity: light.shelly_badspiegel
+          secondary_info: last-changed
+        - entity: light.shelly_deckenlampe_bad
+          secondary_info: last-changed
+        - entity: light.stehlampe_wohnzimmer_links
+          secondary_info: last-changed
+        - entity: light.wandlampen_treppenhaus
+          secondary_info: last-changed
+        - entity: light.wohnzimmer_deckenlampe
+          secondary_info: last-changed
+        - entity: light.wohnzimmer_lightstrip
+          secondary_info: last-changed
+        - entity: light.wohnzimmer_stehlampe_rechts
+          secondary_info: last-changed
+      state_filter:
+        - "on"
+      show_empty: false

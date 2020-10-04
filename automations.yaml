@@ -3502,7 +3502,7 @@
   action:
   - service: recorder.purge
     data:
-      keep_days: 7
+      keep_days: 2
       repack: true
   mode: single
 - id: '1601550132829'
@@ -3532,7 +3532,7 @@
     state: 'off'
   - condition: state
     entity_id: sensor.dayoftheweek
-    state: Saturday
+    state: saturday
   action:
   - service: vacuum.start
     data:

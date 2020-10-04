@@ -4,6 +4,14 @@
 #                                                       #
 #########################################################
 
+sensor.current_lights_on:
+  friendly_name: Lichter an
+  icon: mdi:lightbulb-group
+
+binary_sensor.indicator_lights_on:
+  friendly_name: Lichter an
+  icon: mdi:lightbulb-group
+
 light.wohnzimmer_deckenlampe:
   friendly_name: Wohnzimmer Deckenlampe
   icon: mdi:ceiling-light
@@ -27,10 +35,10 @@ light.schlafzimmer_deckenlampe:
   friendly_name: Schlafzimmer Deckenlampe
   icon: mdi:ceiling-light
 light.schlafzimmer_nachttisch_lisa:
-  friendly_name: Wohnzimmer Nachttisch Lisa
+  friendly_name: Schlafzimmer Nachttisch Lisa
   icon: mdi:lava-lamp
 light.schlafzimmer_nachttisch_simon:
-  friendly_name: Wohnzimmer Nachttisch Simon
+  friendly_name: Schlafzimmer Nachttisch Simon
   icon: mdi:lava-lamp
 
 light.kinderzimmer_deckenlampe:

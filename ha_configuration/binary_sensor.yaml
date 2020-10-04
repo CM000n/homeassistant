@@ -109,6 +109,22 @@
 
 ####################################################
 #                                                  #
+#                    Lights ON                     #
+#                                                  #
+####################################################
+
+# https://home-assistant.io/components/binary_sensor/
+
+  - platform: template
+    sensors:
+      indicator_lights_on:
+        friendly_name: "Indikator für gerade angeschaltete lichter"
+        device_class: light
+        value_template: >-
+          {{ states('sensor.current_lights_on')|float > 0 }}
+
+####################################################
+#                                                  #
 #          END OF CONFIGURATION FILE               #
 #                                                  #
 ####################################################

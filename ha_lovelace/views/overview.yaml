@@ -53,6 +53,14 @@ popup_cards:
       template: vacuum-popup-card
     deviceID: 
       - this
+  sensor.current_lights_on:
+    title: "Angeschaltete Lichter"
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: lights-on-popup-card
+    deviceID: 
+      - this
 
 
 cards:
@@ -93,6 +101,13 @@ cards:
                       variables:
                         - entity: binary_sensor.eingangstuer_bewegungsmelder_motion
                         - name: Eingangstür
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: lights-on-card
+                      variables:
+                        - entity: sensor.current_lights_on
+                        - name: 'Lichter an:'
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:

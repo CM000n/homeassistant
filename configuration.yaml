@@ -212,7 +212,7 @@ wake_on_lan:
 # https://www.home-assistant.io/components/speedtestdotnet/
 
 speedtestdotnet:
-  server_id: 6601
+  server_id: 10291
   monitored_conditions:
     - download
     - upload

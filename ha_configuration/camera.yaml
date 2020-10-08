@@ -16,26 +16,65 @@
     password: !secret xiaomi_cloud_password
     country: "de"
     name: "Robi Karte"
+    colors:
+      color_map_inside: [252, 250, 250]
+      color_map_outside: [252, 250, 250]
+      color_map_wall: [225, 225, 225]
+      color_map_wall_v2: [110, 110, 110]
+      color_grey_wall: [252, 250, 250]
+      color_path: [255, 255, 255]
+      color_goto_path: [0, 255, 0]
+      color_predicted_path: [255, 255, 0, 0]
+      color_zones: [0xAD, 0xD8, 0xFF, 0x8F]
+      color_zones_outline: [0xAD, 0xD8, 0xFF]
+      color_virtual_walls: [255, 0, 0]
+      color_no_go_zones: [255, 33, 55, 127]
+      color_no_go_zones_outline: [255, 0, 0]
+      color_no_mop_zones: [163, 130, 211, 127]
+      color_no_mop_zones_outline: [163, 130, 211]
+      color_charger: [1, 195, 120]
+      color_robo: [236, 236, 236]
+      color_unknown: [225, 225, 225]
+      color_scan: [225, 225, 225]
+    room_colors:
+      1: [113, 203, 222]
+      2: [253, 211, 82]
+      3: [145, 200, 255]
+      4: [245, 142, 110]
+      5: [113, 203, 222]
+      6: [253, 211, 82]
+      7: [145, 200, 255]
+      8: [245, 142, 110]
+      9: [113, 203, 222]
+      10: [253, 211, 82]
+      11: [145, 200, 255]
+      12: [245, 142, 110]
+      13: [113, 203, 222]
+      14: [253, 211, 82]
+      15: [145, 200, 255]
+      16: [245, 142, 110]
+      17: [113, 203, 222]
+      18: [253, 211, 82]
+      19: [145, 200, 255]
+      20: [245, 142, 110]
     draw:
       - charger
       - path
-      - goto_path
-      - predicted_path
       - no_go_zones
       - no_mopping_zones
       - vacuum_position
       - virtual_walls
-      - zones
     map_transformation:
-      scale: 5
-      rotate: 90
+      scale: 2
+      rotate: 0
       trim:
-        top: 5
-        bottom: 5
+        top: 20
+        bottom: 10
         left: 5
         right: 5
     attributes:
       - image
+      - calibration_points
 
 ####################################################
 #                                                  #

@@ -9,8 +9,6 @@
 - url: /hacsfiles/lovelace-swipe-navigation/swipe-navigation.js
   type: js
 
-- url: /hacsfiles/custom-header/custom-header.js
-  type: module
 - url: /hacsfiles/sidebar-card/sidebar-card.js
   type: module
 - url: /hacsfiles/lovelace-card-tools/card-tools.js

@@ -5,7 +5,7 @@ default:
   - icon: ''
   - name: ''
   #optional
-  - tap_action: toggle
+  - tap_action: more-info
   - hold_action: more-info
   - show_entity_picture: false
 

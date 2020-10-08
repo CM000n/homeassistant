@@ -27,7 +27,10 @@ card:
   show_entity_picture: true
   show_last_changed: false
   tap_action:
-    action: '[[tap_action]]'
+    action: 'call-service'
+    service: 'media_player.[[tap_action]]'
+    service_data:
+      entity_id: '[[entity]]'
   hold_action:
     action: '[[hold_action]]'
   styles:

@@ -30,12 +30,12 @@ lovelace:
   mode: yaml
   resources: !include ui-resources.yaml
   dashboards:
-    home-dashboard:
+    default-dashboard:
       mode: yaml
       title: Dashboard
-      show_in_sidebar: false
+      show_in_sidebar: true
       require_admin: false
-      icon: mdi:dev-to
+      icon: mdi:floor-plan
       filename: ui-lovelace.yaml
 
 frontend:
@@ -205,21 +205,6 @@ wake_on_lan:
 
 ####################################################
 #                                                  #
-#                    SPEEDTEST                     #
-#                                                  #
-####################################################
-
-# https://www.home-assistant.io/components/speedtestdotnet/
-
-speedtestdotnet:
-  server_id: 10291
-  monitored_conditions:
-    - download
-    - upload
-    - ping
-
-####################################################
-#                                                  #
 #                CIRCADIAN LIGHTS                  #
 #                                                  #
 ####################################################
@@ -330,6 +315,17 @@ vacuum:
 ltss:
     db_url: !secret ltss_url
     include:
+        domains:
+        - automation
+        - climate
+        - input_boolean
+        - input_select
+        - light
+        - media_player
+        - script
+        - sensor
+        - switch
+        - vacuum
         entities:
         - sensor.heizung_bad_battery_level
         - sensor.heizung_buro_battery_level

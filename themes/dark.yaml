@@ -2,6 +2,7 @@
 # Dark
 #------------------------------------------------------------
 dark:
+
   #lovelace-background: 'center / cover no-repeat url("/local/bg-blue.png") fixed'
 
   primary-color: "#272e38"

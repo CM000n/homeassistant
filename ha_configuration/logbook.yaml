@@ -9,14 +9,16 @@
 
   include:
     entities:
-      - light.ankleide_deckenlampe
       - light.ankleide_nahtisch_links
       - light.ankleide_nahtisch_rechts
       - light.ankleide_nahtisch_wand
-      - light.ankleide_schreibtisch
       - light.buro_deckenlampe
       - light.buro_schreibtisch
       - light.deckenlampen_flur
+      - light.eingangstuer_decke
+      - light.kinderzimmer_deckenlampe
+      - light.kinderzimmer_tischleuchte
+      - light.kuche_esstisch
       - light.kuche_herd
       - light.schlafzimmer_deckenlampe
       - light.schlafzimmer_nachttisch_lisa
@@ -24,10 +26,10 @@
       - light.shelly_badspiegel
       - light.shelly_deckenlampe_bad
       - light.stehlampe_wohnzimmer_links
-      - light.stehlampe_wohnzimmer_rechts
       - light.wandlampen_treppenhaus
       - light.wohnzimmer_deckenlampe
       - light.wohnzimmer_lightstrip
+      - light.wohnzimmer_stehlampe_rechts
       - media_player.chromecast_wohnzimmer
       - media_player.sonos_bad
       - media_player.sonos_buero
@@ -35,6 +37,9 @@
       - media_player.sonos_wohnzimmer
       - person.lisa
       - person.simon
+      - vacuum.xiaomi_vacuum_cleaner
+      - climate.heizung_bad
+      - climate.heizung_buro
 
 ####################################################
 #                                                  #

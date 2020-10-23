@@ -6,7 +6,6 @@ card:
     ha-card {
       margin: 10px 10px;
       box-shadow: none;
-      border: none;
     }
   cards:
     - type: entity-filter

@@ -205,18 +205,6 @@ wake_on_lan:
 
 ####################################################
 #                                                  #
-#                CIRCADIAN LIGHTS                  #
-#                                                  #
-####################################################
-
-# https://community.home-assistant.io/t/circadian-lighting-custom-component/61246
-
-circadian_lighting:
-  min_colortemp: 2000
-  max_colortemp: 6500
-
-####################################################
-#                                                  #
 #                    DARKSKY                       #
 #                                                  #
 ####################################################

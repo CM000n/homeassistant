@@ -6,7 +6,7 @@ default:
   - show_last_changed: false
   - tap_action: toggle
   - hold_action: more-info
-  - input_select_entity: ''
+  - adaptive_lighting_entity: ''
 
 card:
   type: custom:button-card
@@ -34,9 +34,9 @@ card:
     action: '[[hold_action]]'
   double_tap_action:
     action: call-service
-    service: input_select.select_next
+    service: homeassistant.toggle
     service_data:
-      entity_id: '[[input_select_entity]]'
+      entity_id: '[[adaptive_lighting_entity]]'
   styles:
     card:
       - border-radius: var(--ha-card-border-radius)
@@ -71,29 +71,9 @@ card:
   custom_fields:
     temp: >
       [[[
-        if (states['[[input_select_entity]]'].state == 'Automatik')
+        if (states['[[adaptive_lighting_entity]]'].state == 'on')
           return `<ha-icon
             icon="mdi:brightness-auto"
-            style="width: 15px; height: 15px; color: grey;">
-            </ha-icon>`;
-        if (states['[[input_select_entity]]'].state == 'Entspannen')
-          return `<ha-icon
-            icon="mdi:brightness-4"
-            style="width: 15px; height: 15px; color: grey;">
-            </ha-icon>`;
-        if (states['[[input_select_entity]]'].state == 'Lesen')
-          return `<ha-icon
-            icon="mdi:brightness-6"
-            style="width: 15px; height: 15px; color: grey;">
-            </ha-icon>`;
-        if (states['[[input_select_entity]]'].state == 'Konzentrieren')
-          return `<ha-icon
-            icon="mdi:brightness-7"
-            style="width: 15px; height: 15px; color: grey;">
-            </ha-icon>`;
-        if (states['[[input_select_entity]]'].state == 'Energie tanken')
-          return `<ha-icon
-            icon="mdi:brightness-5"
             style="width: 15px; height: 15px; color: grey;">
             </ha-icon>`;
       ]]]

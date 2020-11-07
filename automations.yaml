@@ -458,28 +458,14 @@
   alias: 'Beleuchtung - Büro Deckenlampe - #Lichtstimmung'
   description: ''
   trigger:
-  - entity_id: input_select.buero_deckenlampe_lichtstimmung
-    platform: state
+  - platform: state
+    entity_id: light.buro_deckenlampe
+    from: 'on'
   condition: []
   action:
-  - choose:
-    - conditions:
-      - condition: state
-        entity_id: input_select.buero_deckenlampe_lichtstimmung
-        state: Automatik
-      sequence:
-      - data: {}
-        entity_id: switch.adaptive_lighting_buro_deckenlampe
-        service: switch.turn_on
-    - conditions:
-      - condition: state
-        entity_id: input_select.buero_deckenlampe_lichtstimmung
-        state: Aus
-      sequence:
-      - data: {}
-        entity_id: switch.adaptive_lighting_buro_deckenlampe
-        service: switch.turn_off
-    default: []
+  - service: switch.turn_on
+    data: {}
+    entity_id: switch.adaptive_lighting_buro_deckenlampe
   mode: single
 - id: '1598422031591'
   alias: 'Beleuchtung - Büro Schreibtisch - #Lichtstimmung'

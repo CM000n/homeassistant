@@ -303,17 +303,17 @@ vacuum:
 ltss:
     db_url: !secret ltss_url
     include:
-        domains:
-        - automation
-        - climate
-        - input_boolean
-        - input_select
-        - light
-        - media_player
-        - script
-        - sensor
-        - switch
-        - vacuum
+#        domains:
+#        - automation
+#        - climate
+#        - input_boolean
+#        - input_select
+#        - light
+#        - media_player
+#        - script
+#        - sensor
+#        - switch
+#        - vacuum
         entities:
         - sensor.heizung_bad_battery_level
         - sensor.heizung_buro_battery_level
@@ -358,6 +358,19 @@ ltss:
         - sensor.luftdaten_19149_p1
         - sensor.darksky_precip_probability
         - sensor.darksky_cloud_coverage
+
+####################################################
+#                                                  #
+#                     DATADOG                      #
+#                                                  #
+####################################################
+
+# https://github.com/freol35241/ltss
+
+datadog:
+  host: 192.168.178.3
+  port: 8125
+  prefix: hass
 
 ####################################################
 #                                                  #

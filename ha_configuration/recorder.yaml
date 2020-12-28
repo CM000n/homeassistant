@@ -8,20 +8,30 @@
 
   db_url: !secret db_url
   auto_purge: false
-  commit_interval: 0
+  commit_interval: 1
   include:
     domains:
-      - binary_sensor
-      - calendar
-      - climate
       - light
       - media_player
       - person
-      - sensor
-      - switch
+      - climate
     entities:
       - vacuum.xiaomi_vacuum_cleaner
       - sun.sun
+      - binary_sensor.eingangstuer_bewegungsmelder_motion
+      - sensor.darksky_temperature
+      - sensor.darksky_precip_probability
+      - sensor.season
+      - sensor.darksky_wind_speed
+      - sensor.darksky_humidity
+      - binary_sensor.philipstv
+      - switch.simon_pc
+      - sensor.temperatur_wohnzimmer_lowboard
+      - sensor.temperatur_wohness
+      - sensor.temperatur_climate_bad
+      - sensor.temperatur_climate_buero
+      - sensor.temperatur_ankleide
+      - sensor.temperatur_keller
 
 ####################################################
 #                                                  #

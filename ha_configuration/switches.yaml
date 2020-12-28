@@ -1,6 +1,12 @@
 
 #https://home-assistant.io/components/switch/
 
+  - platform: ha_ambilight_hue
+    name: Ambilight Test
+    host: 192.168.178.19
+    entity_id: light.wohnzimmer_deckenlampe
+    display_options: right-top
+
 ####################################################
 #                                                  #
 #             WAKE ON LAN SWITCHES                 #

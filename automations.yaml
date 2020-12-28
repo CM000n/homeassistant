@@ -426,7 +426,7 @@
     entity_id: media_player.bad, media_player.buro, media_player.schlafzimmer, media_player.wohnzimmer
     service: media_player.clear_playlist
   - data:
-      volume_level: 0.25
+      volume_level: 0.15
     entity_id: media_player.bad, media_player.buro, media_player.schlafzimmer, media_player.wohnzimmer
     service: media_player.volume_set
   mode: single
@@ -461,388 +461,567 @@
   - platform: state
     entity_id: light.buro_deckenlampe
     from: 'on'
-  condition: []
-  action:
-  - service: switch.turn_on
-    data: {}
-    entity_id: switch.adaptive_lighting_buro_deckenlampe
-  mode: single
-- id: '1598422031591'
-  alias: 'Beleuchtung - Büro Schreibtisch - #Lichtstimmung'
-  description: ''
-  trigger:
-  - entity_id: input_select.buero_schreibtischlampe_lichtstimmung
-    platform: state
+  - platform: state
+    entity_id: binary_sensor.adaptive_lighting_buro_deckenlampe_manual_control
   condition: []
   action:
   - choose:
     - conditions:
       - condition: state
-        entity_id: input_select.buero_schreibtischlampe_lichtstimmung
-        state: Automatik
+        entity_id: light.buro_deckenlampe
+        state: 'off'
       sequence:
-      - data: {}
-        entity_id: switch.adaptive_lighting_buro_schreibtisch
-        service: switch.turn_on
+      - service: switch.turn_on
+        data: {}
+        entity_id: switch.adaptive_lighting_buro_deckenlampe
     - conditions:
       - condition: state
-        entity_id: input_select.buero_schreibtischlampe_lichtstimmung
-        state: Aus
+        entity_id: light.buro_deckenlampe
+        state: unavailable
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
+        entity_id: switch.adaptive_lighting_buro_deckenlampe
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.adaptive_lighting_buro_deckenlampe_manual_control
+        state: 'on'
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        entity_id: switch.adaptive_lighting_buro_deckenlampe
+    default: []
+  mode: single
+- id: '1598422031591'
+  alias: 'Beleuchtung - Büro Schreibtischlampe - #Lichtstimmung'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: light.buro_schreibtisch
+    from: 'on'
+  - platform: state
+    entity_id: binary_sensor.adaptive_lighting_buro_schreibtisch_manual_control
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: light.buro_schreibtisch
+        state: 'off'
+      sequence:
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_buro_schreibtisch
-        service: switch.turn_off
+    - conditions:
+      - condition: state
+        entity_id: light.buro_schreibtisch
+        state: unavailable
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        entity_id: switch.adaptive_lighting_buro_schreibtisch
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.adaptive_lighting_buro_schreibtisch_manual_control
+        state: 'on'
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        entity_id: switch.adaptive_lighting_buro_schreibtisch
     default: []
   mode: single
 - id: '1825812110646'
-  alias: 'Beleuchtung - Wohnzimmer Decke - #Lichtstimmung'
+  alias: 'Beleuchtung - Wohnzimmer Deckenlampe - #Lichtstimmung'
   description: ''
   trigger:
-  - entity_id: input_select.wohnzimmer_deckenlampe_lichtstimmung
-    platform: state
+  - platform: state
+    entity_id: light.wohnzimmer_deckenlampe
+    from: 'on'
+  - platform: state
+    entity_id: binary_sensor.adaptive_lighting_wohnzimmer_deckenlampe_manual_control
   condition: []
   action:
   - choose:
     - conditions:
       - condition: state
-        entity_id: input_select.wohnzimmer_deckenlampe_lichtstimmung
-        state: Automatik
+        entity_id: light.wohnzimmer_deckenlampe
+        state: 'off'
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_wohnzimmer_deckenlampe
-        service: switch.turn_on
     - conditions:
       - condition: state
-        entity_id: input_select.wohnzimmer_deckenlampe_lichtstimmung
-        state: Aus
+        entity_id: light.wohnzimmer_deckenlampe
+        state: unavailable
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_wohnzimmer_deckenlampe
-        service: switch.turn_off
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.adaptive_lighting_wohnzimmer_deckenlampe_manual_control
+        state: 'on'
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        entity_id: switch.adaptive_lighting_wohnzimmer_deckenlampe
     default: []
   mode: single
 - id: '1983835480808'
   alias: 'Beleuchtung - Wohnzimmer Lightstrip - #Lichtstimmung'
   description: ''
   trigger:
-  - entity_id: input_select.wohnzimmer_lightstrip_lichtstimmung
-    platform: state
+  - platform: state
+    entity_id: light.wohnzimmer_lightstrip
+    from: 'on'
+  - platform: state
+    entity_id: binary_sensor.adaptive_lighting_wohnzimmer_lightstrip_manual_control
   condition: []
   action:
   - choose:
     - conditions:
       - condition: state
-        entity_id: input_select.wohnzimmer_lightstrip_lichtstimmung
-        state: Automatik
+        entity_id: light.wohnzimmer_lightstrip
+        state: 'off'
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_wohnzimmer_lightstrip
-        service: switch.turn_on
     - conditions:
       - condition: state
-        entity_id: input_select.wohnzimmer_lightstrip_lichtstimmung
-        state: Aus
+        entity_id: light.wohnzimmer_lightstrip
+        state: unavailable
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_wohnzimmer_lightstrip
-        service: switch.turn_off
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.adaptive_lighting_wohnzimmer_lightstrip_manual_control
+        state: 'on'
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        entity_id: switch.adaptive_lighting_wohnzimmer_lightstrip
     default: []
   mode: single
 - id: '1718454021724'
   alias: 'Beleuchtung - Wohnzimmer Stehlampe links - #Lichtstimmung'
   description: ''
   trigger:
-  - entity_id: input_select.wohnzimmer_stehlampe_links_lichtstimmung
-    platform: state
+  - platform: state
+    entity_id: light.stehlampe_wohnzimmer_links
+    from: 'on'
+  - platform: state
+    entity_id: binary_sensor.adaptive_lighting_wohnzimmer_stehlampe_links_manual_control
   condition: []
   action:
   - choose:
     - conditions:
       - condition: state
-        entity_id: input_select.wohnzimmer_stehlampe_links_lichtstimmung
-        state: Automatik
+        entity_id: light.stehlampe_wohnzimmer_links
+        state: 'off'
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_wohnzimmer_stehlampe_links
-        service: switch.turn_on
     - conditions:
       - condition: state
-        entity_id: input_select.wohnzimmer_stehlampe_links_lichtstimmung
-        state: Aus
+        entity_id: light.stehlampe_wohnzimmer_links
+        state: unavailable
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_wohnzimmer_stehlampe_links
-        service: switch.turn_off
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.adaptive_lighting_wohnzimmer_stehlampe_links_manual_control
+        state: 'on'
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        entity_id: switch.adaptive_lighting_wohnzimmer_stehlampe_links
     default: []
   mode: single
 - id: '1677077854718'
   alias: 'Beleuchtung - Wohnzimmer Stehlampe rechts - #Lichtstimmung'
   description: ''
   trigger:
-  - entity_id: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
-    platform: state
+  - platform: state
+    entity_id: light.wohnzimmer_stehlampe_rechts
+    from: 'on'
+  - platform: state
+    entity_id: binary_sensor.adaptive_lighting_wohnzimmer_stehlampe_rechts_manual_control
   condition: []
   action:
   - choose:
     - conditions:
       - condition: state
-        entity_id: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
-        state: Automatik
+        entity_id: light.wohnzimmer_stehlampe_rechts
+        state: 'off'
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_wohnzimmer_stehlampe_rechts
-        service: switch.turn_on
     - conditions:
       - condition: state
-        entity_id: input_select.wohnzimmer_stehlampe_rechts_lichtstimmung
-        state: Aus
+        entity_id: light.wohnzimmer_stehlampe_rechts
+        state: unavailable
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_wohnzimmer_stehlampe_rechts
-        service: switch.turn_off
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.adaptive_lighting_wohnzimmer_stehlampe_rechts_manual_control
+        state: 'on'
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        entity_id: switch.adaptive_lighting_wohnzimmer_stehlampe_rechts
     default: []
   mode: single
 - id: '1672295879095'
   alias: 'Beleuchtung - Küche Herd - #Lichtstimmung'
   description: ''
   trigger:
-  - entity_id: input_select.kuche_herd_lichtstimmung
-    platform: state
+  - platform: state
+    entity_id: light.kuche_herd
+    from: 'on'
+  - platform: state
+    entity_id: binary_sensor.adaptive_lighting_kuche_herd_manual_control
   condition: []
   action:
   - choose:
     - conditions:
       - condition: state
-        entity_id: input_select.kuche_herd_lichtstimmung
-        state: Automatik
+        entity_id: light.kuche_herd
+        state: 'off'
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_kuche_herd
-        service: switch.turn_on
     - conditions:
       - condition: state
-        entity_id: input_select.kuche_herd_lichtstimmung
-        state: Aus
+        entity_id: light.kuche_herd
+        state: unavailable
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_kuche_herd
-        service: switch.turn_off
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.adaptive_lighting_kuche_herd_manual_control
+        state: 'on'
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        entity_id: switch.adaptive_lighting_kuche_herd
     default: []
   mode: single
 - id: '1619763095865'
   alias: 'Beleuchtung - Küche Esstisch - #Lichtstimmung'
   description: ''
   trigger:
-  - entity_id: input_select.kuche_esstisch_lichtstimmung
-    platform: state
+  - platform: state
+    entity_id: light.kuche_esstisch
+    from: 'on'
+  - platform: state
+    entity_id: binary_sensor.adaptive_lighting_kuche_esstisch_manual_control
   condition: []
   action:
   - choose:
     - conditions:
       - condition: state
-        entity_id: input_select.kuche_esstisch_lichtstimmung
-        state: Automatik
+        entity_id: light.kuche_esstisch
+        state: 'off'
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_kuche_esstisch
-        service: switch.turn_on
     - conditions:
       - condition: state
-        entity_id: input_select.kuche_esstisch_lichtstimmung
-        state: Aus
+        entity_id: light.kuche_esstisch
+        state: unavailable
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_kuche_esstisch
-        service: switch.turn_off
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.adaptive_lighting_kuche_esstisch_manual_control
+        state: 'on'
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        entity_id: switch.adaptive_lighting_kuche_esstisch
     default: []
   mode: single
 - id: '1977035196370'
   alias: 'Beleuchtung - Flur Deckenlampen - #Lichtstimmung'
   description: ''
   trigger:
-  - entity_id: input_select.flur_deckenlampen_lichtstimmung
-    platform: state
+  - platform: state
+    entity_id: light.deckenlampen_flur
+    from: 'on'
+  - platform: state
+    entity_id: binary_sensor.adaptive_lighting_flur_deckenlampe_manual_control
   condition: []
   action:
   - choose:
     - conditions:
       - condition: state
-        entity_id: input_select.flur_deckenlampen_lichtstimmung
-        state: Automatik
+        entity_id: light.deckenlampen_flur
+        state: 'off'
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_flur_deckenlampe
-        service: switch.turn_on
     - conditions:
       - condition: state
-        entity_id: input_select.flur_deckenlampen_lichtstimmung
-        state: Aus
+        entity_id: light.deckenlampen_flur
+        state: unavailable
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_flur_deckenlampe
-        service: switch.turn_off
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.adaptive_lighting_flur_deckenlampe_manual_control
+        state: 'on'
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        entity_id: switch.adaptive_lighting_flur_deckenlampe
     default: []
   mode: single
 - id: '1752550331211'
-  alias: 'Beleuchtung - Treppenhaus Wandlampen - #Lichtstimmung'
+  alias: 'Beleuchtung - Treppenhaus Wandlampe - #Lichtstimmung'
   description: ''
   trigger:
-  - entity_id: input_select.treppenhaus_wandlampen_lichtstimmung
-    platform: state
+  - platform: state
+    entity_id: light.wandlampen_treppenhaus
+    from: 'on'
+  - platform: state
+    entity_id: binary_sensor.adaptive_lighting_treppenhaus_wandlampe_manual_control
   condition: []
   action:
   - choose:
     - conditions:
       - condition: state
-        entity_id: input_select.treppenhaus_wandlampen_lichtstimmung
-        state: Automatik
+        entity_id: light.wandlampen_treppenhaus
+        state: 'off'
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_treppenhaus_wandlampe
-        service: switch.turn_on
     - conditions:
       - condition: state
-        entity_id: input_select.treppenhaus_wandlampen_lichtstimmung
-        state: Aus
+        entity_id: light.wandlampen_treppenhaus
+        state: unavailable
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_treppenhaus_wandlampe
-        service: switch.turn_off
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.adaptive_lighting_treppenhaus_wandlampe_manual_control
+        state: 'on'
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        entity_id: switch.adaptive_lighting_treppenhaus_wandlampe
     default: []
   mode: single
 - id: '1856839961230'
   alias: 'Beleuchtung - Schlafzimmer Deckenlampe - #Lichtstimmung'
   description: ''
   trigger:
-  - entity_id: input_select.schlafzimmer_deckenlampe_lichtstimmung
-    platform: state
+  - platform: state
+    entity_id: light.schlafzimmer_deckenlampe
+    from: 'on'
+  - platform: state
+    entity_id: binary_sensor.adaptive_lighting_schlafzimmer_deckenlampe_manual_control
   condition: []
   action:
   - choose:
     - conditions:
       - condition: state
-        entity_id: input_select.schlafzimmer_deckenlampe_lichtstimmung
-        state: Automatik
+        entity_id: light.schlafzimmer_deckenlampe
+        state: 'off'
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_schlafzimmer_deckenlampe
-        service: switch.turn_on
     - conditions:
       - condition: state
-        entity_id: input_select.schlafzimmer_deckenlampe_lichtstimmung
-        state: Aus
+        entity_id: light.schlafzimmer_deckenlampe
+        state: unavailable
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_schlafzimmer_deckenlampe
-        service: switch.turn_off
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.adaptive_lighting_schlafzimmer_deckenlampe_manual_control
+        state: 'on'
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        entity_id: switch.adaptive_lighting_schlafzimmer_deckenlampe
     default: []
   mode: single
 - id: '1636161269568'
   alias: 'Beleuchtung - Schlafzimmer Nachttisch Lisa - #Lichtstimmung'
   description: ''
   trigger:
-  - entity_id: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
-    platform: state
+  - platform: state
+    entity_id: light.schlafzimmer_nachttisch_lisa
+    from: 'on'
+  - platform: state
+    entity_id: binary_sensor.adaptive_lighting_schlafzimmer_nachttisch_lisa_manual_control
   condition: []
   action:
   - choose:
     - conditions:
       - condition: state
-        entity_id: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
-        state: Automatik
+        entity_id: light.schlafzimmer_nachttisch_lisa
+        state: 'off'
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_schlafzimmer_nachttisch_lisa
-        service: switch.turn_on
     - conditions:
       - condition: state
-        entity_id: input_select.schlafzimmer_nachttisch_lisa_lichtstimmung
-        state: Aus
+        entity_id: light.schlafzimmer_nachttisch_lisa
+        state: unavailable
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_schlafzimmer_nachttisch_lisa
-        service: switch.turn_off
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.adaptive_lighting_schlafzimmer_nachttisch_lisa_manual_control
+        state: 'on'
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        entity_id: switch.adaptive_lighting_schlafzimmer_nachttisch_lisa
     default: []
   mode: single
 - id: '1756979213799'
   alias: 'Beleuchtung - Schlafzimmer Nachttisch Simon - #Lichtstimmung'
   description: ''
   trigger:
-  - entity_id: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
-    platform: state
+  - platform: state
+    entity_id: light.schlafzimmer_nachttisch_simon
+    from: 'on'
+  - platform: state
+    entity_id: binary_sensor.adaptive_lighting_schlafzimmer_nachttisch_simon_manual_control
   condition: []
   action:
   - choose:
     - conditions:
       - condition: state
-        entity_id: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
-        state: Automatik
+        entity_id: light.schlafzimmer_nachttisch_simon
+        state: 'off'
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_schlafzimmer_nachttisch_simon
-        service: switch.turn_on
     - conditions:
       - condition: state
-        entity_id: input_select.schlafzimmer_nachttisch_simon_lichtstimmung
-        state: Aus
+        entity_id: light.schlafzimmer_nachttisch_simon
+        state: unavailable
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_schlafzimmer_nachttisch_simon
-        service: switch.turn_off
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.adaptive_lighting_schlafzimmer_nachttisch_simon_manual_control
+        state: 'on'
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        entity_id: switch.adaptive_lighting_schlafzimmer_nachttisch_simon
     default: []
   mode: single
 - id: '1936236190613'
   alias: 'Beleuchtung - Kinderzimmer Deckenlampe - #Lichtstimmung'
   description: ''
   trigger:
-  - entity_id: input_select.kinderzimmer_deckenlampe_lichtstimmung
-    platform: state
+  - platform: state
+    entity_id: light.kinderzimmer_deckenlampe
+    from: 'on'
+  - platform: state
+    entity_id: binary_sensor.adaptive_lighting_kinderzimmer_deckenlampe_manual_control
   condition: []
   action:
   - choose:
     - conditions:
       - condition: state
-        entity_id: input_select.kinderzimmer_deckenlampe_lichtstimmung
-        state: Automatik
+        entity_id: light.kinderzimmer_deckenlampe
+        state: 'off'
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_kinderzimmer_deckenlampe
-        service: switch.turn_on
     - conditions:
       - condition: state
-        entity_id: input_select.kinderzimmer_deckenlampe_lichtstimmung
-        state: Aus
+        entity_id: light.kinderzimmer_deckenlampe
+        state: unavailable
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_kinderzimmer_deckenlampe
-        service: switch.turn_off
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.adaptive_lighting_kinderzimmer_deckenlampe_manual_control
+        state: 'on'
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        entity_id: switch.adaptive_lighting_kinderzimmer_deckenlampe
     default: []
   mode: single
 - id: '1999498729598'
-  alias: 'Beleuchtung - Kinderzimmer Tichleuchte - #Lichtstimmung'
+  alias: 'Beleuchtung - Kinderzimmer Wickeltisch - #Lichtstimmung'
   description: ''
   trigger:
-  - entity_id: input_select.kinderzimmer_tischlampe_lichtstimmung
-    platform: state
+  - platform: state
+    entity_id: light.kinderzimmer_tischleuchte
+    from: 'on'
+  - platform: state
+    entity_id: binary_sensor.adaptive_lighting_kinderzimmer_wickeltisch_manual_control
   condition: []
   action:
   - choose:
     - conditions:
       - condition: state
-        entity_id: input_select.kinderzimmer_tischlampe_lichtstimmung
-        state: Automatik
+        entity_id: light.kinderzimmer_tischleuchte
+        state: 'off'
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_kinderzimmer_wickeltisch
-        service: switch.turn_on
     - conditions:
       - condition: state
-        entity_id: input_select.kinderzimmer_tischlampe_lichtstimmung
-        state: Aus
+        entity_id: light.kinderzimmer_tischleuchte
+        state: unavailable
       sequence:
-      - data: {}
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.adaptive_lighting_kinderzimmer_wickeltisch
-        service: switch.turn_off
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.adaptive_lighting_kinderzimmer_wickeltisch_manual_control
+        state: 'on'
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        entity_id: switch.adaptive_lighting_kinderzimmer_wickeltisch
     default: []
   mode: single
 - id: '1601484887894'
@@ -865,7 +1044,7 @@
   description: ''
   trigger:
   - platform: time
-    at: 09:30:00
+    at: 08:30:00
   condition:
   - condition: state
     entity_id: binary_sensor.workday_sensor

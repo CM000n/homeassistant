@@ -16,164 +16,125 @@
     - script
     - switch
     - sensor
-    - input_boolean
-    - input_select
   entity_config:
 
 
-    light.stehlampe_wohnzimmer_links:
-      expose: true
-      room: Wohnzimmer
-      name: Stehlampe links
-      aliases:
-        - Linke Stehlampe
-    input_select.wohnzimmer_stehlampe_links_lichtstimmung:
-      expose: true
-      room: Wohnzimmer
-      name: Lichtstimmung Stehlampe links
-    light.wohnzimmer_stehlampe_rechts:
-      expose: true
-      room: Wohnzimmer
-      name: Stehlampe rechts
-      aliases:
-        - Rechte Stehlampe
-    input_select.wohnzimmer_stehlampe_rechts_lichtstimmung:
-      expose: true
-      room: Wohnzimmer
-      name: Lichtstimmung Stehlampe rechts
-    light.wohnzimmer_deckenlampe:
-      expose: true
-      room: Wohnzimmer
-      name: Deckenlampe
-      aliases:
-        - Deckenlampe Wohnzimmer
-    input_select.wohnzimmer_deckenlampe_lichtstimmung:
-      expose: true
-      room: Wohnzimmer
-      name: Lichtstimmung Deckenlampe
-    light.wohnzimmer_lightstrip:
-      expose: true
-      room: Wohnzimmer
-      name: Lightstrip
-      aliases:
-        - Lichtschlauch
-    input_select.wohnzimmer_lightstrip_lichtstimmung:
-      expose: true
-      room: Wohnzimmer
-      name: Lichtstimmung Lightstrip
-
-    light.kuche_herd:
-      expose: true
-      room: Küche
-      name: Herdlampe
-      aliases:
-        - Deckenlampe Herd
-    light.kuche_esstisch:
-      expose: true
-      room: Küche
-      name: Esstischlampe
-      aliases:
-        - Deckenlampe Esstisch
-        - Licht Esstisch
-        - Esstischlicht
-
-
-    light.schlafzimmer_deckenlampe:
-      expose: true
-      room: Schlafzimmer
-      name: Deckenlampe
-      aliases:
-        - Deckenlampe Schlafzimmer
-    light.schlafzimmer_nachttisch_lisa:
-      expose: true
-      room: Schlafzimmer
-      name: Nachttischlampe Lisa
-      aliases:
-        - Lisas Nachttischlampe
-    light.schlafzimmer_nachttisch_simon:
-      expose: true
-      room: Schlafzimmer
-      name: Nachttischlampe Simon
-      aliases:
-        - Simons Nachttischlampe
-
-
-    light.kinderzimmer_deckenlampe:
-      expose: true
-      room: Kinderzimmer
-      name: Deckenlampe
-      aliases:
-        - Deckenlampe Kinderzimmer
-    light.kinderzimmer_tischleuchte:
-      expose: true
-      room: Kinderzimmer
-      name: Tischleuchte
-      aliases:
-        - Licht Wickeltisch
-
-
-    climate.heizung_bad:
-      expose: true
-      room: Badezimmer
-      name: Heizung Bad
-      aliases:
-        - Bad Heizung
-    light.shelly_badspiegel:
-      expose: true
-      room: Badezimmer
-      name: Spiegellampe
-      aliases:
-        - Spiegellampe Bad
-        - Spiegelleuchte
-    light.shelly_deckenlampe_bad:
-      expose: true
-      room: Badezimmer
-      name: Deckenlampe
-      aliases:
-        - Deckenlampe Bad
-
-
-    switch.simon_pc:
-      expose: true
-      room: Büro
-      name: Simon-PC
-      aliases:
-        - Simons PC
-        - Simons Computer
-        - Computer Simon
-    climate.heizung_buro:
-      expose: true
-      room: Büro
-      name: Heizung Büro
-      aliases:
-        - Büro Heizung
     light.buro_deckenlampe:
       expose: true
       room: Büro
-      name: Deckenlampe
+      name: Büro Deckenlampe
       aliases:
         - Deckenlampe Büro
     light.buro_schreibtisch:
       expose: true
       room: Büro
-      name: Schreibtischlampe
+      name: Büro Schreibtischlampe
       aliases:
         - Schreibtischlampe Büro
 
     light.deckenlampen_flur:
       expose: true
       room: Flur
-      name: Deckenlampen
+      name: Flur Deckenlampen
       aliases:
         - Deckenlampen Flur
 
+    light.kinderzimmer_deckenlampe:
+      expose: true
+      room: Kinderzimmer
+      name: Kinderzimmer Deckenlampe
+      aliases:
+        - Deckenlampe Kinderzimmer
+    light.kinderzimmer_tischleuchte:
+      expose: true
+      room: Kinderzimmer
+      name: Kinderzimmer Wickeltischlampe
+      aliases:
+        - Wickeltischlampe Kinderzimmer
+
+    light.kuche_esstisch:
+      expose: true
+      room: Küche
+      name: Küche Esstischlampe
+      aliases:
+        - Esstischlampe Küche
+    light.kuche_herd:
+      expose: true
+      room: Küche
+      name: Küche Herdlampe
+      aliases:
+        - Herdlampe Küche
+
+    light.schlafzimmer_deckenlampe:
+      expose: true
+      room: Schlafzimmer
+      name: Schlafzimmer Deckenlampe
+      aliases:
+        - Deckenlampe Schlafzimmer
+    light.schlafzimmer_nachttisch_lisa:
+      expose: true
+      room: Schlafzimmer
+      name: Schlafzimmer Nachttischlampe Lisa
+      aliases:
+        - Nachttischlampe Lisa Schlafzimmer
+    light.schlafzimmer_nachttisch_simon:
+      expose: true
+      room: Schlafzimmer
+      name: Schlafzimmer Nachttischlampe Simon
+      aliases:
+        - Nachttischlampe Simon Schlafzimmer
+
+    light.shelly_badspiegel:
+      expose: true
+      room: Bad
+      name: Bad Spiegellampe
+      aliases:
+        - Spiegellampe Bad
+    light.shelly_deckenlampe_bad:
+      expose: true
+      room: Bad
+      name: Bad Deckenlampe
+      aliases:
+        - Deckenlampe Bad
 
     light.wandlampen_treppenhaus:
       expose: true
       room: Treppenhaus
-      name: Wandlampen
+      name: Treppenhaus Wandlampe
       aliases:
-        - Wandlampen Treppenhaus
+        - Wandlampe Treppenhaus
+
+    light.stehlampe_wohnzimmer_links:
+      expose: true
+      room: Wohnzimmer
+      name: Wohnzimmer Stehlampe links
+      aliases:
+        - Stehlampe links Wohnzimmer
+    light.wohnzimmer_deckenlampe:
+      expose: true
+      room: Wohnzimmer
+      name: Wohnzimmer Deckenlampe
+      aliases:
+        - Deckenlampe Wohnzimmer
+    light.wohnzimmer_lightstrip:
+      expose: true
+      room: Wohnzimmer
+      name: Wohnzimmer Lightstrip
+      aliases:
+        - Lightstip Wohnzimmer
+        - Lichtschlauch Wohnzimmer
+    light.wohnzimmer_stehlampe_rechts:
+      expose: true
+      room: Wohnzimmer
+      name: Wohnzimmer Stehlampe rechts
+      aliases:
+        - Stehlampe rechts Wohnzimmer
+    light.wohnzimmer_weihnachtsstern:
+      expose: true
+      room: Wohnzimmer
+      name: Wohnzimmer Weihnachtsstern
+      aliases:
+        - Weihnachtsstern Wohnzimmer
 
 
     switch.wasserpumpe:

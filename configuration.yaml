@@ -94,7 +94,7 @@ system_health:
 person:
 # https://www.home-assistant.io/integrations/logger
 logger:
-  default: error
+  default: debug
 #  logs:
 #    pydeconz: debug
 #    homeassistant.components.deconz: debug

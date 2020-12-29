@@ -32,6 +32,7 @@
       - sensor.temperatur_climate_buero
       - sensor.temperatur_ankleide
       - sensor.temperatur_keller
+      - switch.ambilight_test
 
 ####################################################
 #                                                  #

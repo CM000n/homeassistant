@@ -29,12 +29,12 @@
       - sensor.temperatur_ankleide
       - sensor.temperatur_keller
       - switch.ambilight_test
-      - sensor.dwd_weather_kraichtal_gochsheim_humidity
-      - sensor.dwd_weather_kraichtal_gochsheim_pressure
-      - sensor.dwd_weather_kraichtal_gochsheim_temperature
-      - sensor.dwd_weather_kraichtal_gochsheim_visibility
-      - sensor.dwd_weather_kraichtal_gochsheim_wind_bearing
-      - sensor.dwd_weather_kraichtal_gochsheim_wind_speed
+      - sensor.temperature_kraichtal_gochsheim
+      - sensor.pressure_kraichtal_gochsheim
+      - sensor.wind_speed_kraichtal_gochsheim
+      - sensor.wind_direction_kraichtal_gochsheim
+      - sensor.visibility_kraichtal_gochsheim
+      - sensor.humidity_kraichtal_gochsheim
 
 ####################################################
 #                                                  #

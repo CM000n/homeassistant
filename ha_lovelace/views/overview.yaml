@@ -161,26 +161,26 @@ cards:
                     cardOptions:
                       template: sensor-card
                       variables:
-                        - entity: sensor.dwd_weather_kraichtal_gochsheim_temperature
+                        - entity: sensor.temperature_kraichtal_gochsheim
                         - name: Außentemperatur
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: sensor-card
                       variables:
-                        - entity: sensor.dwd_weather_kraichtal_gochsheim_wind_speed
+                        - entity: sensor.wind_speed_kraichtal_gochsheim
                         - name: Wind
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: sensor-card
                       variables:
-                        - entity: sensor.dwd_weather_kraichtal_gochsheim_humidity
+                        - entity: sensor.humidity_kraichtal_gochsheim
                         - name: Luftfeuchtigkeit
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: sensor-card
                       variables:
-                        - entity: sensor.dwd_weather_kraichtal_gochsheim_pressure
+                        - entity: sensor.pressure_kraichtal_gochsheim
                         - name: Luftdruck

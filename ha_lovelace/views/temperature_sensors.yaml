@@ -14,28 +14,6 @@ cards:
         columns:
           - column: 1
             entities:
-              - title: Thermostate
-                entities:
-                  - card: custom:decluttering-card
-                    noPadding: true
-                    cardStyle: !include ../styles/graph-card.yaml
-                    cardOptions:
-                      template: thermostat-card
-                      variables:
-                        - entity: climate.heizung_buro
-                        - name: Büro
-                  - card: custom:decluttering-card
-                    noPadding: true
-                    cardStyle: !include ../styles/graph-card.yaml
-                    cardOptions:
-                      template: thermostat-card
-                      variables:
-                        - entity: climate.heizung_bad
-                        - name: Bad
-      - row: 2
-        columns:
-          - column: 1
-            entities:
               - title: Wohnung
                 entities:
                   - card: custom:decluttering-card
@@ -86,7 +64,7 @@ cards:
                       variables:
                         - entity: sensor.temperatur_keller
                         - name: Keller
-      - row: 3
+      - row: 2
         columns:
           - column: 1
             entities:
@@ -98,5 +76,5 @@ cards:
                     cardOptions:
                       template: graph-card
                       variables:
-                        - entity: sensor.dwd_weather_kraichtal_gochsheim_temperature
+                        - entity: sensor.temperature_kraichtal_gochsheim
                         - name: Außen

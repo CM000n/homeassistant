@@ -55,6 +55,51 @@
 
 ####################################################
 #                                                  #
+#                  Attributes                      #
+#                                                  #
+####################################################
+
+#https://github.com/pilotak/homeassistant-attributes
+
+  - platform: attributes
+    friendly_name: "temperature"
+    attribute: temperature
+    unit_of_measurement: "°C"
+    entities:
+      - weather.dwd_weather_kraichtal_gochsheim
+  - platform: attributes
+    friendly_name: "humidity"
+    attribute: humidity
+    unit_of_measurement: "%"
+    entities:
+      - weather.dwd_weather_kraichtal_gochsheim
+  - platform: attributes
+    friendly_name: "pressure"
+    attribute: pressure
+    unit_of_measurement: "mbar"
+    entities:
+      - weather.dwd_weather_kraichtal_gochsheim
+  - platform: attributes
+    friendly_name: "wind_bearing"
+    attribute: wind_bearing
+    unit_of_measurement: "°"
+    entities:
+      - weather.dwd_weather_kraichtal_gochsheim
+  - platform: attributes
+    friendly_name: "wind_speed"
+    attribute: wind_speed
+    unit_of_measurement: "m/s"
+    entities:
+      - weather.dwd_weather_kraichtal_gochsheim
+  - platform: attributes
+    friendly_name: "visibility"
+    attribute: visibility
+    unit_of_measurement: "km"
+    entities:
+      - weather.dwd_weather_kraichtal_gochsheim
+
+####################################################
+#                                                  #
 #                  Travel Time                     #
 #                                                  #
 ####################################################

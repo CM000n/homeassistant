@@ -76,5 +76,5 @@ cards:
                     cardOptions:
                       template: graph-card
                       variables:
-                        - entity: sensor.temperature_kraichtal_gochsheim
+                        - entity: sensor.dwd_weather_kraichtal_gochsheim_temperature
                         - name: Außen

@@ -94,7 +94,7 @@ system_health:
 person:
 # https://www.home-assistant.io/integrations/logger
 logger:
-  default: debug
+  default: error
 #  logs:
 #    pydeconz: debug
 #    homeassistant.components.deconz: debug
@@ -205,18 +205,6 @@ wake_on_lan:
 
 ####################################################
 #                                                  #
-#                    DARKSKY                       #
-#                                                  #
-####################################################
-
-# https://www.home-assistant.io/components/weather.darksky/
-
-weather:
-  - platform: darksky
-    api_key: !secret dsky_api
-
-####################################################
-#                                                  #
 #                    LUFTDATEN                     #
 #                                                  #
 ####################################################
@@ -303,13 +291,13 @@ vacuum:
 ltss:
     db_url: !secret ltss_url
     include:
-#        domains:
+        domains:
 #        - automation
-#        - climate
+        - climate
 #        - input_boolean
 #        - input_select
 #        - light
-#        - media_player
+        - media_player
 #        - script
 #        - sensor
 #        - switch
@@ -346,18 +334,19 @@ ltss:
         - sensor.stromverbrauch_wohnzimmer_lowboard
         - sensor.stromverbrauch_trockner
         - sensor.stromverbrauch_beleuchtung
-        - sensor.darksky_temperature
         - sensor.temperatur_ankleide
         - sensor.temperatur_wohnzimmer_lowboard
         - sensor.temperatur_climate_buero
         - sensor.temperatur_climate_bad
         - sensor.einganstuer_bewegungsmelder_temperature
-        - sensor.darksky_humidity
-        - sensor.darksky_pressure
         - sensor.luftdaten_19149_p2
         - sensor.luftdaten_19149_p1
-        - sensor.darksky_precip_probability
-        - sensor.darksky_cloud_coverage
+        - sensor.dwd_weather_kraichtal_gochsheim_humidity
+        - sensor.dwd_weather_kraichtal_gochsheim_pressure
+        - sensor.dwd_weather_kraichtal_gochsheim_temperature
+        - sensor.dwd_weather_kraichtal_gochsheim_visibility
+        - sensor.dwd_weather_kraichtal_gochsheim_wind_bearing
+        - sensor.dwd_weather_kraichtal_gochsheim_wind_speed
 
 ####################################################
 #                                                  #

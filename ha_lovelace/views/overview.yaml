@@ -154,20 +154,6 @@ cards:
                     cardOptions:
                       template: sensor-card
                       variables:
-                        - entity: sensor.darksky_temperature
-                        - name: Außentemperatur
-                  - card: custom:decluttering-card
-                    noPadding: true
-                    cardOptions:
-                      template: sensor-card
-                      variables:
-                        - entity: sensor.darksky_precip_probability
-                        - name: Niederschlag
-                  - card: custom:decluttering-card
-                    noPadding: true
-                    cardOptions:
-                      template: sensor-card
-                      variables:
                         - entity: sensor.season
                         - name: Jahreszeit
                   - card: custom:decluttering-card
@@ -175,12 +161,26 @@ cards:
                     cardOptions:
                       template: sensor-card
                       variables:
-                        - entity: sensor.darksky_wind_speed
+                        - entity: sensor.dwd_weather_kraichtal_gochsheim_temperature
+                        - name: Außentemperatur
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: sensor-card
+                      variables:
+                        - entity: sensor.dwd_weather_kraichtal_gochsheim_wind_speed
                         - name: Wind
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: sensor-card
                       variables:
-                        - entity: sensor.darksky_humidity
+                        - entity: sensor.dwd_weather_kraichtal_gochsheim_humidity
                         - name: Luftfeuchtigkeit
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: sensor-card
+                      variables:
+                        - entity: sensor.dwd_weather_kraichtal_gochsheim_pressure
+                        - name: Luftdruck

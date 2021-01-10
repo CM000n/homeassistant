@@ -16,31 +16,6 @@
 
 ####################################################
 #                                                  #
-#                   DARKSKY                        #
-#                                                  #
-####################################################
-
-#https://www.home-assistant.io/components/sensor.darksky/
-
-  - platform: darksky
-    api_key: c1b5d48496e36e4a25a6be95c8949766
-    name: darksky
-    language: de
-    monitored_conditions:
-      - temperature
-      - icon
-      - precip_probability
-      - wind_speed
-      - pressure
-      - wind_bearing
-      - humidity
-      - visibility
-      - cloud_cover
-      - apparent_temperature
-      - icon
-
-####################################################
-#                                                  #
 #                  JAHRESZEIT                      #
 #                                                  #
 ####################################################
@@ -142,7 +117,6 @@
 
   - platform: dnsip
 
-
 ####################################################
 #                                                  #
 #                    Attributes                    #
@@ -152,12 +126,41 @@
 #https://github.com/pilotak/homeassistant-attributes
 
   - platform: attributes
-    friendly_name: "Batterien"
-    attribute: battery_level
+    friendly_name: "temperature"
+    attribute: temperature
+    unit_of_measurement: "°C"
+    entities:
+      - weather.dwd_weather_kraichtal_gochsheim
+  - platform: attributes
+    friendly_name: "humidity"
+    attribute: humidity
     unit_of_measurement: "%"
     entities:
-      - climate.heizung_bad
-      - climate.heizung_buro
+      - weather.dwd_weather_kraichtal_gochsheim
+  - platform: attributes
+    friendly_name: "pressure"
+    attribute: pressure
+    unit_of_measurement: "mbar"
+    entities:
+      - weather.dwd_weather_kraichtal_gochsheim
+  - platform: attributes
+    friendly_name: "wind_bearing"
+    attribute: wind_bearing
+    unit_of_measurement: "°"
+    entities:
+      - weather.dwd_weather_kraichtal_gochsheim
+  - platform: attributes
+    friendly_name: "wind_speed"
+    attribute: wind_speed
+    unit_of_measurement: "m/s"
+    entities:
+      - weather.dwd_weather_kraichtal_gochsheim
+  - platform: attributes
+    friendly_name: "visibility"
+    attribute: visibility
+    unit_of_measurement: "km"
+    entities:
+      - weather.dwd_weather_kraichtal_gochsheim
 
 ####################################################
 #                                                  #

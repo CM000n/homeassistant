@@ -19,11 +19,7 @@
       - vacuum.xiaomi_vacuum_cleaner
       - sun.sun
       - binary_sensor.eingangstuer_bewegungsmelder_motion
-      - sensor.darksky_temperature
-      - sensor.darksky_precip_probability
       - sensor.season
-      - sensor.darksky_wind_speed
-      - sensor.darksky_humidity
       - binary_sensor.philipstv
       - switch.simon_pc
       - sensor.temperatur_wohnzimmer_lowboard
@@ -33,6 +29,12 @@
       - sensor.temperatur_ankleide
       - sensor.temperatur_keller
       - switch.ambilight_test
+      - sensor.dwd_weather_kraichtal_gochsheim_humidity
+      - sensor.dwd_weather_kraichtal_gochsheim_pressure
+      - sensor.dwd_weather_kraichtal_gochsheim_temperature
+      - sensor.dwd_weather_kraichtal_gochsheim_visibility
+      - sensor.dwd_weather_kraichtal_gochsheim_wind_bearing
+      - sensor.dwd_weather_kraichtal_gochsheim_wind_speed
 
 ####################################################
 #                                                  #

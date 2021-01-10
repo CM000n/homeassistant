@@ -158,13 +158,13 @@ sensor.darksky_precip_probability:
 sensor.wetter_symbol:
   friendly_name: Wetter
   hidden: true
-sensor.darksky_wind_bearing:
+sensor.dwd_weather_kraichtal_gochsheim_wind_bearing:
   friendly_name: Windrichtung
   icon: mdi:compass
-sensor.darksky_wind_speed:
+sensor.dwd_weather_kraichtal_gochsheim_wind_speed:
   friendly_name: Windgeschwindigkeit
   icon: mdi:weather-windy
-sensor.darksky_visibility:
+sensor.dwd_weather_kraichtal_gochsheim_visibility:
   friendly_name: Sichtweite
 sensor.stromverbrauch_spuehlmaschine:
   icon: mdi:flash
@@ -231,16 +231,16 @@ sensor.temperatur_wohness:
   friendly_name: Esszimmer
   device_class: temperature
   icon: mdi:thermometer
-sensor.darksky_temperature:
+sensor.dwd_weather_kraichtal_gochsheim_temperature:
   friendly_name: Außen
   device_class: temperature
   icon: mdi:thermometer
 
-sensor.darksky_humidity:
+sensor.dwd_weather_kraichtal_gochsheim_humidity:
   friendly_name: Außen
   icon: mdi:water-percent
 
-sensor.darksky_pressure:
+sensor.dwd_weather_kraichtal_gochsheim_pressure:
   friendly_name: Außen
   icon: mdi:chart-line
 
@@ -284,7 +284,7 @@ binary_sensor.all_climates_on:
 #                                                       #
 #########################################################
 
-weather.dark_sky:
+weather.dwd_weather_kraichtal_gochsheim:
   friendly_name: Kraichtal
   icon: mdi:weather-partly-cloudy
 

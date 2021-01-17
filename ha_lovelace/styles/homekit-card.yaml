@@ -2,8 +2,8 @@
   :host {
     --tile-background: rgba(255, 255, 255, 0);
     --tile-on-background: rgba(255, 255, 255, 0);
-    --tile-width-mobile: 101px;
-    --tile-height-mobile: 101px;
+    --tile-width-mobile: 100px;
+    --tile-height-mobile: 100px;
     --tile-border-radius: var(--ha-card-border-radius)
   }
   

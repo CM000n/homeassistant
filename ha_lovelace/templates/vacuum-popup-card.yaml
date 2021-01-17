@@ -12,6 +12,7 @@ card:
       style: |
         ha-card {
           box-shadow: none;
+          border: none;
           color: white;
           --lovelace-background: white;
         }
@@ -44,6 +45,7 @@ card:
         ha-card {
           border: none;
           box-shadow: none;
+          --lovelace-background: white;
         }
       show_header_toggle: false
       entities:

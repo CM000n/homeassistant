@@ -1,5 +1,15 @@
-#z-index: 999
-background: 'linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 0%)'
-box-shadow: none
-border-radius: 10px
-#"--iron-icon-fill-color": "#FFF"
+$: |
+  .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+    border-radius: var(--ha-card-border-radius);
+  }
+.: |
+  :host {
+    --mdc-theme-surface: white;
+    --secondary-background-color: white;
+    --ha-card-background: white;
+    --iron-icon-fill-color: white;
+  }
+#  :host .content {
+#    width: 50vw;
+#    height: 50vh;
+#   }

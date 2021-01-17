@@ -30,7 +30,7 @@ card:
   name: '[[name]]'
   styles:
     card:
-      - border-radius: var(--ha-card-border-radius)      
+      - border-radius: var(--ha-card-border-radius)
       - box-shadow: var(--button-card-box-shadow)
       - padding: 10px
     label:

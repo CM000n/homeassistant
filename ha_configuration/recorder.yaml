@@ -29,6 +29,16 @@
       - sensor.temperatur_ankleide
       - sensor.temperatur_keller
       - switch.ambilight_test
+      - sensor.gesamtverbrauch_waschmaschine
+      - sensor.gesamtverbrauch_trockner
+      - sensor.gesamtverbrauch_spuehlmaschine
+      - sensor.gesamtverbrauch_wohnzimmer_lowboard
+      - sensor.gesamtverbrauch_beleuchtung
+      - sensor.stromverbrauch_spuehlmaschine
+      - sensor.stromverbrauch_waschmaschine
+      - sensor.stromverbrauch_wohnzimmer_lowboard
+      - sensor.stromverbrauch_trockner
+      - sensor.stromverbrauch_beleuchtung
       - sensor.dwd_weather_kraichtal_gochsheim_temperature
       - sensor.dwd_weather_kraichtal_gochsheim_pressure
       - sensor.dwd_weather_kraichtal_gochsheim_wind_speed

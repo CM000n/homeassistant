@@ -37,3 +37,7 @@
   type: module
 - url: /local/custom_plugin/popup-backdrop-filter.js?v=4924b86
   type: module
+- url: /hacsfiles/lovelace-more-info-card/more-info-card.js
+  type: module
+- url: /hacsfiles/kb-better-graph-colors/kb-better-graph-colors.js
+  type: module

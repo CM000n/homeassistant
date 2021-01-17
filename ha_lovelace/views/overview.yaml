@@ -6,6 +6,26 @@ panel: true
 badges: []
 
 popup_cards:
+  person.simon:
+    title: "Simon"
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: more-info-popup-card
+      variables:
+        - entity: person.simon
+    deviceID: 
+      - this
+  person.lisa:
+    title: "Lisa"
+    style: !include ../styles/popup.yaml
+    card:
+      type: custom:decluttering-card
+      template: more-info-popup-card
+      variables:
+        - entity: person.lisa
+    deviceID: 
+      - this
   sensor.status_waschmaschine:
     title: "Waschmaschine"
     style: !include ../styles/popup.yaml

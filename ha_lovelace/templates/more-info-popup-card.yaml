@@ -1,0 +1,30 @@
+default:
+  #required
+card:
+  type: vertical-stack
+  style: |
+    ha-card {
+      margin: 10px 10px;
+      box-shadow: none;
+    }
+  cards:
+    - type: custom:more-info-card
+      style: |
+        ha-card {
+          box-shadow: none;
+          border: none;
+          --lovelace-background: white;
+        }
+        .card-header {
+          font-size: 0px;
+        }
+      entity: '[[entity]]'
+    - type: history-graph
+      style: |
+        ha-card {
+          box-shadow: none;
+          border: none;
+          --lovelace-background: white;
+        }
+      entities:
+        - '[[entity]]'

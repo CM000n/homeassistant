@@ -59,3 +59,5 @@ lights-on-card:
   !include lights-on-card.yaml
 lights-on-popup-card:
   !include lights-on-popup-card.yaml
+more-info-popup-card:
+  !include more-info-popup-card.yaml

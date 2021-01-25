@@ -41,3 +41,5 @@
   type: module
 - url: /hacsfiles/kb-better-graph-colors/kb-better-graph-colors.js
   type: module
+- url: /hacsfiles/popup-backdrop-filter/popup-backdrop-filter.js
+  type: module

@@ -17,6 +17,7 @@ card:
         }
         .card-header {
           font-size: 0px;
+          display: 10px;
         }
       entity: '[[entity]]'
     - type: history-graph

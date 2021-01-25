@@ -2,6 +2,12 @@ default:
   #required
 card:
   type: vertical-stack
+  style: |
+    ha-card {
+      margin: 10px 10px;
+      border: none;
+      box-shadow: none;
+    }
   cards:
     - type: entity-filter
       style: |

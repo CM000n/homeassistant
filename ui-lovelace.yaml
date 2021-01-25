@@ -75,6 +75,8 @@ sidebar:
   breakpoints:
     mobile: 1100
     tablet: 1220
+  hideTopMenu: true
+  showTopMenuOnMobile: true
   template: |
     <li>
       {% if now().hour  < 5 %} Gute Nacht {{'\U0001F634'}}

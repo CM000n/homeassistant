@@ -38,22 +38,6 @@ cards:
                     cardOptions:
                       template: graph-card
                       variables:
-                        - entity: sensor.temperatur_climate_bad
-                        - name: Bad
-                  - card: custom:decluttering-card
-                    noPadding: true
-                    cardStyle: !include ../styles/graph-card.yaml
-                    cardOptions:
-                      template: graph-card
-                      variables:
-                        - entity: sensor.temperatur_climate_buero
-                        - name: Büro
-                  - card: custom:decluttering-card
-                    noPadding: true
-                    cardStyle: !include ../styles/graph-card.yaml
-                    cardOptions:
-                      template: graph-card
-                      variables:
                         - entity: sensor.temperatur_ankleide
                         - name: Ankleide
                   - card: custom:decluttering-card

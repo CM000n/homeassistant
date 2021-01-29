@@ -1072,3 +1072,15 @@
     data:
       entity_id: vacuum.xiaomi_vacuum_cleaner
   mode: single
+- id: '1611907197662'
+  alias: ytube music sonos_fix
+  trigger:
+  - platform: homeassistant
+    event: start
+  action:
+  - delay: 00:00:12
+  - service: ytube_music_player.call_method
+    entity_id: media_player.ytube_music_player
+    data:
+      command: paused_is_idle
+  initial_state: true

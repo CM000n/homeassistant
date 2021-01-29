@@ -28,6 +28,24 @@
 #      - 192.168.178.11
 #      - 192.168.178.12
 
+
+####################################################
+#                                                  #
+#             Youtube Music Player                 #
+#                                                  #
+####################################################
+
+#https://github.com/KoljaWindeler/ytube_music_player/issues/38
+
+  - platform: ytube_music_player
+    speakers: 
+       - media_player.bad
+       - media_player.buro
+       - media_player.schlafzimmer
+       - media_player.wohnzimmer
+    proxy_path: "/config/www"
+    proxy_url: "http://192.168.178.3:8123/local"
+
 ####################################################
 #                                                  #
 #                  PHILIPS TV                      #

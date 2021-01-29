@@ -7,7 +7,7 @@ views:
   - !include ha_lovelace/views/overview.yaml
   - !include ha_lovelace/views/lights.yaml
   - !include ha_lovelace/views/devices.yaml
-  - !include ha_lovelace/views/temperature_sensors.yaml
+  - !include ha_lovelace/views/scripts.yaml
 
 # Lovelace Sidebar
 sidebar:

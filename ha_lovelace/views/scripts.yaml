@@ -1,0 +1,39 @@
+---
+title: Abläufe
+icon: 'mdi:script-text-play'
+path: scripts
+panel: true
+badges: []
+
+
+cards:
+  - type: custom:homekit-card
+    style: !include ../styles/homekit-card.yaml
+    enableColumns: true
+    rows:
+      - row: 1
+        columns:
+          - column: 1
+            entities:
+              - title: Wohnzimmer
+                entities: 
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: button-card
+                      variables:
+                        - name: Weißes Funkeln
+                        - entity: script.weisses_funkeln
+      - row: 2
+        columns:
+          - column: 1
+            entities:
+              - title: Schlafzimmer
+                entities: 
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: button-card
+                      variables:
+                        - name: Lina Schlafenszeit
+                        - entity: script.lina_schlafenszeit

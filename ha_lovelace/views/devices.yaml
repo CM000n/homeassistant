@@ -1,6 +1,6 @@
 ---
 title: Sonstige Geräte
-icon: 'mdi:television'
+icon: 'mdi:floor-plan'
 path: devices
 panel: true
 badges: []
@@ -58,8 +58,16 @@ cards:
         columns:
           - column: 1
             entities:
-              - title: Wohnzimmer
+              - title: Wohnzimmer & Küche
                 entities:
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardStyle: !include ../styles/graph-card.yaml
+                    cardOptions:
+                      template: graph-card
+                      variables:
+                        - entity: sensor.temperatur_wohnzimmer_lowboard
+                        - name: Wohnzimmer
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
@@ -104,9 +112,7 @@ cards:
                       template: speaker-card
                       variables:
                         - entity: media_player.buro
-      - row: 3
-        columns:
-          - column: 1
+          - column: 2
             entities:
               - title: Bad
                 entities:
@@ -116,15 +122,45 @@ cards:
                       template: speaker-card
                       variables:
                         - entity: media_player.bad
-      - row: 4
+      - row: 3
         columns:
           - column: 1
             entities:
-              - title: Schlafzimmer
+              - title: Schlaf- & Kinderzimmer
                 entities:
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardStyle: !include ../styles/graph-card.yaml
+                    cardOptions:
+                      template: graph-card
+                      variables:
+                        - entity: sensor.temperatur_ankleide
+                        - name: Kinderzimmer
                   - card: custom:decluttering-card
                     noPadding: true
                     cardOptions:
                       template: speaker-card
                       variables:
                         - entity: media_player.schlafzimmer
+      - row: 4
+        columns:
+          - column: 1
+            entities:
+              - title: Außenbereich & Keller
+                entities:
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardStyle: !include ../styles/graph-card.yaml
+                    cardOptions:
+                      template: graph-card
+                      variables:
+                        - entity: sensor.dwd_weather_kraichtal_gochsheim_temperature
+                        - name: Außen
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardStyle: !include ../styles/graph-card.yaml
+                    cardOptions:
+                      template: graph-card
+                      variables:
+                        - entity: sensor.temperatur_keller
+                        - name: Keller

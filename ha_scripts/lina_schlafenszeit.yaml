@@ -1,0 +1,25 @@
+
+lina_schlafenszeit:
+  alias: Lina Schlafenszeit
+  sequence:
+    - service: light.turn_off
+      data:
+        entity_id: 
+          - light.schlafzimmer_deckenlampe
+          - light.schlafzimmer_nachttisch_simon
+          - light.kinderzimmer_deckenlampe
+    - service: light.turn_on
+      data:
+        entity_id: 
+          - light.schlafzimmer_nachttisch_lisa
+          - light.kinderzimmer_tischleuchte
+    - service: media_player.select_source
+      data:
+        source: schlafzimmer
+        entity_id: media_player.ytube_music_player
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.ytube_music_player
+        media_content_id: AQMMgDB3ZEw
+        media_content_type: track
+  mode: single

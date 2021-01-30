@@ -1,5 +1,5 @@
 
-- url: 'https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap'
+- url: 'https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap'
   type: css
 
 - url: /hacsfiles/light-entity-card/light-entity-card.js

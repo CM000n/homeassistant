@@ -1,6 +1,7 @@
 
 lina_schlafenszeit:
   alias: Lina Schlafenszeit
+  icon: 'mdi:human-baby-changing-table'
   sequence:
     - service: light.turn_off
       data:
@@ -15,11 +16,6 @@ lina_schlafenszeit:
           - light.kinderzimmer_tischleuchte
     - service: media_player.select_source
       data:
-        source: schlafzimmer
-        entity_id: media_player.ytube_music_player
-    - service: media_player.play_media
-      data:
-        entity_id: media_player.ytube_music_player
-        media_content_id: AQMMgDB3ZEw
-        media_content_type: track
+        source: '60 Minutes Womb Sounds (Gets Baby to Sleep Fast! Calms Crying Babies & Colic)'
+        entity_id: media_player.schlafzimmer
   mode: single

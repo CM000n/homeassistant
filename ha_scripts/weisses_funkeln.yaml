@@ -1,5 +1,7 @@
 
 weisses_funkeln:
+  alias: Weißes Funkeln
+  icon: 'mdi:shimmer'
   sequence:
   - service: script.weihnachtsbeleuchtung_farbe
     data_template:

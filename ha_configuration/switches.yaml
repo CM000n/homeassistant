@@ -141,6 +141,36 @@
 
 ####################################################
 #                                                  #
+#                   HUE LABS                       #
+#                                                  #
+####################################################
+
+#https://community.home-assistant.io/t/possible-to-trigger-hue-labs-from-home-assistant/43881/9
+
+
+  - platform: command_line
+    switches:
+      hue_labs_wohnzimmer_timeless:
+        command_on: !secret huelab_timeless_command_on
+        command_off: !secret huelab_timeless_command_off
+        command_state: !secret huelab_timeless_command_state
+        value_template: '{{ value_json.state.status == 1 }}'
+        friendly_name: HUE Labs Wohnzimmer Timeless
+      hue_labs_wohnzimmer_scandinavian:
+        command_on: !secret huelab_scandinavian_command_on
+        command_off: !secret huelab_scandinavian_command_off
+        command_state: !secret huelab_scandinavian_command_state
+        value_template: '{{ value_json.state.status == 1 }}'
+        friendly_name: HUE Labs Wohnzimmer Scandinavian
+      hue_labs_wohnzimmer_urban:
+        command_on: !secret huelab_urban_command_on
+        command_off: !secret huelab_urban_command_off
+        command_state: !secret huelab_urban_command_state
+        value_template: '{{ value_json.state.status == 1 }}'
+        friendly_name: HUE Labs Wohnzimmer Urban
+
+####################################################
+#                                                  #
 #           END OF CONFIGURATION FILE              #
 #                                                  #
 ####################################################

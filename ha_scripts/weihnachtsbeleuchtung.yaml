@@ -1,5 +1,7 @@
 
 weihnachtsbeleuchtung:
+  alias: Weihnachtsbeleuchtung
+  icon: 'mdi:string-lights'
   sequence:
   - service: script.weihnachtsbeleuchtung_farbe
     data_template:

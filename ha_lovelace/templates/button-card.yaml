@@ -1,13 +1,17 @@
 ---
 default:
+  - name: ''
   - spin: false
   - show_last_changed: false
   - tap_action: toggle
   - hold_action: more-info
   - aspect_ratio: 1/1
+  - show_entity_picture: false
+  - entity_picture: ''
 
 card:
   type: custom:button-card
+  name: '[[name]]'
   size: '30%'
   color: 'auto'
   lock: 'false'
@@ -18,6 +22,8 @@ card:
     return (bri ? bri : '0') + '%';
   show_state: true
   show_label: true
+  show_entity_picture: '[[show_entity_picture]]'
+  entity_picture: '[[entity_picture]]'
   show_last_changed: '[[show_last_changed]]'
   tap_action:
     action: '[[tap_action]]'
@@ -25,7 +31,7 @@ card:
     action: '[[hold_action]]'
   styles:
     card:
-      - border-radius: var(--ha-card-border-radius)      
+      - border-radius: var(--ha-card-border-radius)
       - box-shadow: var(--button-card-box-shadow)
       - padding: 10px
     label:

@@ -1,6 +1,6 @@
 ---
 title: Abläufe
-icon: 'mdi:script-text-play'
+icon: 'mdi:script-text-outline'
 path: scripts
 panel: true
 badges: []
@@ -22,8 +22,28 @@ cards:
                     cardOptions:
                       template: button-card
                       variables:
-                        - name: Weißes Funkeln
-                        - entity: script.weisses_funkeln
+                        - name: Skandinavien
+                        - entity: switch.hue_labs_wohnzimmer_scandinavian
+                        - show_entity_picture: true
+                        - entity_picture: '/local/huelabs_scandinavian.png'
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: button-card
+                      variables:
+                        - name: Timeless
+                        - entity: switch.hue_labs_wohnzimmer_timeless
+                        - show_entity_picture: true
+                        - entity_picture: '/local/huelabs_timeless.png'
+                  - card: custom:decluttering-card
+                    noPadding: true
+                    cardOptions:
+                      template: button-card
+                      variables:
+                        - name: Urban
+                        - entity: switch.hue_labs_wohnzimmer_urban
+                        - show_entity_picture: true
+                        - entity_picture: '/local/huelabs_urban.png'
       - row: 2
         columns:
           - column: 1

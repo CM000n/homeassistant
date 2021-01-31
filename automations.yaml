@@ -1084,3 +1084,101 @@
     data:
       command: paused_is_idle
   initial_state: true
+- id: '1612076833542'
+  alias: Beleuchtung - Linas Nachtlichter aus
+  description: ''
+  trigger:
+  - platform: time
+    at: 08:30
+  condition: []
+  action:
+  - service: light.turn_off
+    data: {}
+    entity_id:
+    - light.kinderzimmer_tischleuchte
+    - light.schlafzimmer_nachttisch_lisa
+  mode: single
+- id: '1612091552439'
+  alias: Beleuchtung - HUE Labs Wohnzimmer Skandinavien - Helper
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.hue_labs_wohnzimmer_scandinavian
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: switch.hue_labs_wohnzimmer_scandinavian
+        state: 'on'
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        entity_id:
+        - switch.adaptive_lighting_wohnzimmer_deckenlampe
+        - switch.adaptive_lighting_wohnzimmer_lightstrip
+        - switch.adaptive_lighting_wohnzimmer_stehlampe_links
+    default:
+    - service: switch.turn_on
+      data: {}
+      entity_id:
+      - switch.adaptive_lighting_wohnzimmer_deckenlampe
+      - switch.adaptive_lighting_wohnzimmer_lightstrip
+      - switch.adaptive_lighting_wohnzimmer_stehlampe_links
+  mode: single
+- id: '1612091735098'
+  alias: Beleuchtung - HUE Labs Wohnzimmer Timeless - Helper
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.hue_labs_wohnzimmer_timeless
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: switch.hue_labs_wohnzimmer_timeless
+        state: 'on'
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        entity_id:
+        - switch.adaptive_lighting_wohnzimmer_deckenlampe
+        - switch.adaptive_lighting_wohnzimmer_lightstrip
+        - switch.adaptive_lighting_wohnzimmer_stehlampe_links
+    default:
+    - service: switch.turn_on
+      data: {}
+      entity_id:
+      - switch.adaptive_lighting_wohnzimmer_deckenlampe
+      - switch.adaptive_lighting_wohnzimmer_lightstrip
+      - switch.adaptive_lighting_wohnzimmer_stehlampe_links
+  mode: single
+- id: '1612091778863'
+  alias: Beleuchtung - HUE Labs Wohnzimmer Urban - Helper
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.hue_labs_wohnzimmer_urban
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: switch.hue_labs_wohnzimmer_urban
+        state: 'on'
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        entity_id:
+        - switch.adaptive_lighting_wohnzimmer_deckenlampe
+        - switch.adaptive_lighting_wohnzimmer_lightstrip
+        - switch.adaptive_lighting_wohnzimmer_stehlampe_links
+    default:
+    - service: switch.turn_on
+      data: {}
+      entity_id:
+      - switch.adaptive_lighting_wohnzimmer_deckenlampe
+      - switch.adaptive_lighting_wohnzimmer_lightstrip
+      - switch.adaptive_lighting_wohnzimmer_stehlampe_links
+  mode: single

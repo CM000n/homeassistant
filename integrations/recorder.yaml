@@ -1,0 +1,44 @@
+---
+# https://home-assistant.io/components/recorder/
+recorder:
+  db_url: !secret "db_url"
+  auto_purge: false
+  commit_interval: 5
+  include:
+    domains:
+      - "sensor"
+      - "binary_sensor"
+      - "climate"
+      - "water_heater"
+    entities:
+      # Persons
+      - "person.simon"
+      - "person.lisa"
+      # Lights
+      - "light.buro_deckenleuchte"
+      - "light.buro_schreibtisch"
+      - "light.deckenlampen_flur"
+      - "light.eingangstur_decke"
+      - "light.kinderzimmer_deckenleuchte"
+      - "light.kinderzimmer_nachttisch"
+      - "light.kuche_esstischlampe"
+      - "light.kuche_herdlampe"
+      - "light.nahtisch_decke"
+      - "light.nahtisch_wand"
+      - "light.schlafzimmer_deckenleuchte"
+      - "light.schlafzimmer_wickeltisch"
+      - "light.schlafzimmer_nachttisch_simon"
+      - "light.shelly_badspiegel"
+      - "light.shelly_deckenlampe_bad"
+      - "light.wandlampen_treppenhaus"
+      - "light.wohnzimmer_deckenleuchte"
+      - "light.wohnzimmer_lightstrip"
+      - "light.wohnzimmer_stehlampe_rechts"
+      - "light.wohnzimmer_stehlampe_links"
+      # Power sockets
+      - "switch.steckdose_ankleide"
+      - "switch.steckdose_spulmaschine"
+      - "switch.nous_a1t_smartplug_4_switch"
+      - "switch.steckdose_waschmaschine"
+      - "switch.steckdose_wohnzimmer"
+      - "switch.shelly_1pm_buero_tuer"

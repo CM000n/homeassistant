@@ -1,0 +1,9 @@
+---
+# https://home-assistant.io/components/notify/
+notify:
+  # https://home-assistant.io/components/notify.html5/
+  - name: "home_assistant_html"
+    platform: "html5"
+    vapid_pub_key: !secret "vapid_pub_key"
+    vapid_prv_key: !secret "vapid_prv_key"
+    vapid_email: !secret "vapid_mail"

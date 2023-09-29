@@ -1,0 +1,75 @@
+---
+input_boolean:
+  welcome_toggle:
+  switch_weihnachtsbeleuchtung:
+    name: "Weihnachtsbeleuchtung"
+    initial: off
+    icon: "mdi:pine-tree"
+  switch_weisses_funkeln:
+    name: "Weisses Funkeln"
+    initial: off
+    icon: "mdi:star-circle-outline"
+  switch_wohnzimmer_beleuchtung_hell:
+    name: "Hell"
+    initial: off
+    icon: "mdi:brightness-5"
+  switch_wohnzimmer_beleuchtung_gemuetlich:
+    name: "Gemütlich"
+    initial: off
+    icon: "mdi:brightness-6"
+  switch_wohnzimmer_beleuchtung_automatik:
+    name: "Automatik"
+    initial: on
+    icon: "mdi:brightness-auto"
+  switch_wohnzimmer_beleuchtung_aus:
+    name: "Aus"
+    initial: off
+    icon: "mdi:power"
+
+  living_room_select_vacuuming:
+    initial: off
+  kitchen_select_vacuuming:
+    initial: off
+  floor_select_vacuuming:
+    initial: off
+  bath_room_select_vacuuming:
+    initial: off
+  office_select_vacuuming:
+    initial: off
+  stairs_select_vacuuming:
+    initial: off
+  general_robot_vacuum_cleaner_zones_selected:
+    initial: off
+
+input_number:
+  wohnzimmer_fan_timer:
+    name: "Ausschalten nach"
+    icon: "mdi:timer-outline"
+    initial: 12
+    min: 1
+    max: 12
+    unit_of_measurement: "h"
+  general_robot_vacuum_cleaner_zone_repetitions:
+    initial: 1
+    min: 1
+    max: 3
+
+input_select:
+  conditional_media:
+    initial: "Mediaplayer aus"
+    options:
+      - "wohnzimmer_2"
+      - "wohnzimmer"
+      - "kueche"
+      - "bad"
+      - "buro"
+      - "schlafzimmer"
+      - "Mediaplayer aus"
+
+input_datetime:
+  living_room_last_vacuumed:
+    has_date: true
+  kitchen_last_vacuumed:
+    has_date: true
+  hallway_last_vacuumed:
+    has_date: true

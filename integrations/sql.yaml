@@ -1,0 +1,10 @@
+---
+# https://www.home-assistant.io/integrations/sql/
+sql:
+  - name: "Recorder database size"
+    unique_id: "8b208c35ffc640d294784ff169a799aa"
+    db_url: !secret "db_url"
+    query: >
+      SELECT (pg_database_size('ha_recorder')/1024/1024) as db_size;
+    column: "db_size"
+    unit_of_measurement: "MB"

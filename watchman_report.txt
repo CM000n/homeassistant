@@ -1,0 +1,27 @@
+-== Watchman Report ==- 
+
+-== Missing 2 service(s) from 20 found in your config:
++----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
+| Service ID                                                                       | State   | Location                                                     |
++----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
+| notify.home_assistant_smtp                                                       | missing | automations.yaml:117                                         |
+| pyscript.measure_power_consumption_hs                                            | missing | automations.yaml:248                                         |
++----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
+
+-== Missing 8 entity(ies) from 190 found in your config:
++----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
+| Entity ID                                                                        | State   | Location                                                     |
++----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
+| light.kuche_esstisch                                                             | missing | automations.yaml:47                                          |
+| sensor.shelly_1pm_buero_tuer_power_mean_over_last_30_minutes                     | unknown | automations.yaml:109                                         |
+| media_player.kueche                                                              | missing | automations.yaml:141,148,158                                 |
+| sensor.steckdose_wohnzimmer_power_consumption                                    | missing | automations.yaml:251                                         |
+| media_player.android_tv_192_168_178_9                                            | missing | dashboard/rounded.yaml:948                                   |
+| light.wohnzimmer_stehlampe_links                                                 | missing | integrations/ltss.yaml:35                                    |
+| sensor.buro_tuer_stromverbrauch_jahrlich                                         | missing | integrations/powercalc.yaml:76                               |
+| device_tracker.dm_pf2l2j0l                                                       | missing | integrations/sensors.yaml:184,191                            |
++----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
+
+-== Report created on 29 Sep 2023 04:00:00
+-== Parsed 48 files in 0.25s., ignored 0 files 
+-== Generated in: 0.00s. Validated in: 0.00s.

@@ -1,0 +1,325 @@
+---
+# https://home-assistant.io/components/light/
+light:
+  # https://home-assistant.io/components/light.group/
+  - platform: "group"
+    name: "Deckenlampen Flur"
+    entities:
+      - "light.flur_deckenlampe_1"
+      - "light.flur_deckenlampe_2"
+  - platform: "group"
+    name: "Wandlampen Treppenhaus"
+    entities:
+      - "light.treppenhaus_wandlampe_1"
+      - "light.treppenhaus_wandlampe_2"
+      - "light.treppenhaus_wandlampe_3"
+  - platform: "group"
+    name: "Nähtisch"
+    entities:
+      - "light.nahtisch_decke"
+      - "light.nahtisch_wand"
+  - platform: "group"
+    name: "gruppe_wohnzimmer"
+    entities:
+      - "light.wohnzimmer_deckenleuchte"
+      - "light.wohnzimmer_lightstrip"
+      - "light.wohnzimmer_stehlampe_rechts"
+      - "light.wohnzimmer_weihnachtsstern"
+  - platform: "group"
+    name: "gruppe_kuche"
+    entities:
+      - "light.kuche_esstischlampe"
+      - "light.kuche_herdlampe"
+  - platform: "group"
+    name: "gruppe_schlafzimmer"
+    entities:
+      - "light.schlafzimmer_deckenleuchte"
+      - "light.schlafzimmer_wickeltisch"
+      - "light.schlafzimmer_nachttisch_simon"
+  - platform: "group"
+    name: "gruppe_kinderzimmer"
+    entities:
+      - "light.kinderzimmer_deckenleuchte"
+      - "light.kinderzimmer_nachttisch"
+  - platform: "group"
+    name: "gruppe_bad"
+    entities:
+      - "light.shelly_badspiegel"
+      - "light.shelly_deckenlampe_bad"
+  - platform: "group"
+    name: "gruppe_buro"
+    entities:
+      - "light.buro_deckenleuchte"
+      - "light.buro_schreibtisch"
+      - "light.nahtisch_wand"
+      - "light.nahtisch_decke"
+  - platform: "group"
+    name: "gruppe_flur"
+    entities:
+      - "light.deckenlampen_flur"
+      - "light.wandlampen_treppenhaus"
+      - "light.eingangstur_decke"
+  - platform: "group"
+    name: "gruppe_alle"
+    entities:
+      - "light.gruppe_wohnzimmer"
+      - "light.gruppe_kuche"
+      - "light.gruppe_schlafzimmer"
+      - "light.gruppe_kinderzimmer"
+      - "light.gruppe_bad"
+      - "light.gruppe_buro"
+      - "light.gruppe_flur"
+  # https://community.home-assistant.io/t/rounded-dashboard-guide/543043/39?u=cm000n
+  - platform: "template"
+    lights:
+      active_light_group_living_room:
+        friendly_name: "Aktive Lampen Wohnzimmer"
+        level_template: >
+          {% set data = namespace(numbers=[]) %}
+          {% for s in state_attr('group.light_group_living_room', 'entity_id') %}
+            {% if is_state(s, 'on') %}
+              {% set data.numbers = [state_attr(s, "brightness")] + data.numbers %}
+            {% endif %}
+          {% endfor %}
+          {{data.numbers|average|round(0)}}
+        value_template: >
+          {%- set data = namespace(res="off") -%}
+          {% for s in state_attr('group.light_group_living_room', 'entity_id') %}
+            {% if is_state(s, 'on') %}
+              {%- set data.res = "on" -%}
+            {% endif %}
+          {%- endfor -%}
+          {{data.res}}
+        temperature_template: >
+          {% set data = namespace(numbers=[]) %}
+          {% for s in state_attr('group.light_group_living_room', 'entity_id') %}
+            {% if state_attr(s, "color_temp") %}
+              {% set data.numbers = [state_attr(s, "color_temp")] + data.numbers %}
+            {% endif %}
+          {% endfor %}
+          {{data.numbers|average|round(0)}}
+        turn_on:
+          - service: "light.turn_on"
+            data:
+              entity_id: "group.light_group_living_room"
+        turn_off:
+          - service: "light.turn_off"
+            data:
+              entity_id: "group.light_group_living_room"
+        set_level:
+          - service: "light.turn_on"
+            target:
+              # was tun wenn alles aus ist? If-Anweisung, um alles einzuschalten?
+              entity_id: "{{ expand('group.light_group_living_room') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
+            data:
+              brightness: "{{ brightness }}"
+        set_temperature:
+          - service: "light.turn_on"
+            target:
+              entity_id: "{{ expand('group.light_group_living_room') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
+            data:
+              color_temp: "{{ color_temp }}"
+  - platform: "template"
+    lights:
+      active_light_group_kitchen:
+        friendly_name: "Aktive Lampen Küche"
+        level_template: >
+          {% set data = namespace(numbers=[]) %}
+          {% for s in state_attr('group.light_group_kitchen', 'entity_id') %}
+            {% if is_state(s, 'on') %}
+              {% set data.numbers = [state_attr(s, "brightness")] + data.numbers %}
+            {% endif %}
+          {% endfor %}
+          {{data.numbers|average|round(0)}}
+        value_template: >
+          {%- set data = namespace(res="off") -%}
+          {% for s in state_attr('group.light_group_kitchen', 'entity_id') %}
+            {% if is_state(s, 'on') %}
+              {%- set data.res = "on" -%}
+            {% endif %}
+          {%- endfor -%}
+          {{data.res}}
+        temperature_template: >
+          {% set data = namespace(numbers=[]) %}
+          {% for s in state_attr('group.light_group_kitchen', 'entity_id') %}
+            {% if state_attr(s, "color_temp") %}
+              {% set data.numbers = [state_attr(s, "color_temp")] + data.numbers %}
+            {% endif %}
+          {% endfor %}
+          {{data.numbers|average|round(0)}}
+        turn_on:
+          - service: "light.turn_on"
+            data:
+              entity_id: "group.light_group_kitchen"
+        turn_off:
+          - service: "light.turn_off"
+            data:
+              entity_id: "group.light_group_kitchen"
+        set_level:
+          - service: "light.turn_on"
+            target:
+              # was tun wenn alles aus ist? If-Anweisung, um alles einzuschalten?
+              entity_id: "{{ expand('group.light_group_kitchen') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
+            data:
+              brightness: "{{ brightness }}"
+        set_temperature:
+          - service: "light.turn_on"
+            target:
+              entity_id: "{{ expand('group.light_group_kitchen') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
+            data:
+              color_temp: "{{ color_temp }}"
+  - platform: "template"
+    lights:
+      active_light_group_bed_room:
+        friendly_name: "Aktive Lampen Schlafzimmer"
+        level_template: >
+          {% set data = namespace(numbers=[]) %}
+          {% for s in state_attr('group.light_group_bed_room', 'entity_id') %}
+            {% if is_state(s, 'on') %}
+              {% set data.numbers = [state_attr(s, "brightness")] + data.numbers %}
+            {% endif %}
+          {% endfor %}
+          {{data.numbers|average|round(0)}}
+        value_template: >
+          {%- set data = namespace(res="off") -%}
+          {% for s in state_attr('group.light_group_bed_room', 'entity_id') %}
+            {% if is_state(s, 'on') %}
+              {%- set data.res = "on" -%}
+            {% endif %}
+          {%- endfor -%}
+          {{data.res}}
+        temperature_template: >
+          {% set data = namespace(numbers=[]) %}
+          {% for s in state_attr('group.light_group_bed_room', 'entity_id') %}
+            {% if state_attr(s, "color_temp") %}
+              {% set data.numbers = [state_attr(s, "color_temp")] + data.numbers %}
+            {% endif %}
+          {% endfor %}
+          {{data.numbers|average|round(0)}}
+        turn_on:
+          - service: "light.turn_on"
+            data:
+              entity_id: "group.light_group_bed_room"
+        turn_off:
+          - service: "light.turn_off"
+            data:
+              entity_id: "group.light_group_bed_room"
+        set_level:
+          - service: "light.turn_on"
+            target:
+              # was tun wenn alles aus ist? If-Anweisung, um alles einzuschalten?
+              entity_id: "{{ expand('group.light_group_bed_room') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
+            data:
+              brightness: "{{ brightness }}"
+        set_temperature:
+          - service: "light.turn_on"
+            target:
+              entity_id: "{{ expand('group.light_group_bed_room') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
+            data:
+              color_temp: "{{ color_temp }}"
+  - platform: "template"
+    lights:
+      active_light_group_child_room:
+        friendly_name: "Aktive Lampen Kinderzimmer"
+        level_template: >
+          {% set data = namespace(numbers=[]) %}
+          {% for s in state_attr('group.light_group_child_room', 'entity_id') %}
+            {% if is_state(s, 'on') %}
+              {% set data.numbers = [state_attr(s, "brightness")] + data.numbers %}
+            {% endif %}
+          {% endfor %}
+          {{data.numbers|average|round(0)}}
+        value_template: >
+          {%- set data = namespace(res="off") -%}
+          {% for s in state_attr('group.light_group_child_room', 'entity_id') %}
+            {% if is_state(s, 'on') %}
+              {%- set data.res = "on" -%}
+            {% endif %}
+          {%- endfor -%}
+          {{data.res}}
+        temperature_template: >
+          {% set data = namespace(numbers=[]) %}
+          {% for s in state_attr('group.light_group_child_room', 'entity_id') %}
+            {% if state_attr(s, "color_temp") %}
+              {% set data.numbers = [state_attr(s, "color_temp")] + data.numbers %}
+            {% endif %}
+          {% endfor %}
+          {{data.numbers|average|round(0)}}
+        turn_on:
+          - service: "light.turn_on"
+            data:
+              entity_id: "group.light_group_child_room"
+        turn_off:
+          - service: "light.turn_off"
+            data:
+              entity_id: "group.light_group_child_room"
+        set_level:
+          - service: "light.turn_on"
+            target:
+              # was tun wenn alles aus ist? If-Anweisung, um alles einzuschalten?
+              entity_id: "{{ expand('group.light_group_child_room') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
+            data:
+              brightness: "{{ brightness }}"
+        set_temperature:
+          - service: "light.turn_on"
+            target:
+              entity_id: "{{ expand('group.light_group_child_room') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
+            data:
+              color_temp: "{{ color_temp }}"
+  - platform: "template"
+    lights:
+      active_light_group_office:
+        friendly_name: "Aktive Lampen Büro"
+        level_template: >
+          {% set data = namespace(numbers=[]) %}
+          {% for s in state_attr('group.light_group_office', 'entity_id') %}
+            {% if is_state(s, 'on') %}
+              {% set data.numbers = [state_attr(s, "brightness")] + data.numbers %}
+            {% endif %}
+          {% endfor %}
+          {{data.numbers|average|round(0)}}
+        value_template: >
+          {%- set data = namespace(res="off") -%}
+          {% for s in state_attr('group.light_group_office', 'entity_id') %}
+            {% if is_state(s, 'on') %}
+              {%- set data.res = "on" -%}
+            {% endif %}
+          {%- endfor -%}
+          {{data.res}}
+        temperature_template: >
+          {% set data = namespace(numbers=[]) %}
+          {% for s in state_attr('group.light_group_office', 'entity_id') %}
+            {% if state_attr(s, "color_temp") %}
+              {% set data.numbers = [state_attr(s, "color_temp")] + data.numbers %}
+            {% endif %}
+          {% endfor %}
+          {{data.numbers|average|round(0)}}
+        turn_on:
+          - service: "light.turn_on"
+            data:
+              entity_id: "group.light_group_office"
+        turn_off:
+          - service: "light.turn_off"
+            data:
+              entity_id: "group.light_group_office"
+        set_level:
+          - service: "light.turn_on"
+            target:
+              # was tun wenn alles aus ist? If-Anweisung, um alles einzuschalten?
+              entity_id: "{{ expand('group.light_group_office') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
+            data:
+              brightness: "{{ brightness }}"
+        set_temperature:
+          - service: "light.turn_on"
+            target:
+              entity_id: "{{ expand('group.light_group_office') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
+            data:
+              color_temp: "{{ color_temp }}"
+
+  # https://www.home-assistant.io/integrations/light.switch/
+  - platform: "switch"
+    name: "Shelly Deckenlampe Bad"
+    entity_id: "switch.shelly_1pm_bad_deckenlampe"
+  - platform: "switch"
+    name: "Shelly Badspiegel"
+    entity_id: "switch.shelly_1pm_bad_spiegellampe"

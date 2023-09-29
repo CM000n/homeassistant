@@ -1,0 +1,198 @@
+---
+# https://www.home-assistant.io/integrations/template/
+template:
+  - sensor:
+      - name: "weather_temperature"
+        unique_id: "a52ce6ac-05eb-11ee-be56-0242ac120002"
+        unit_of_measurement: "°C"
+        device_class: "temperature"
+        state_class: "measurement"
+        state: >-
+          {{ state_attr("weather.forecast_home", "temperature") }}
+      - name: "weather_humidity"
+        unique_id: "7eb821d0-05eb-11ee-be56-0242ac120002"
+        unit_of_measurement: "%"
+        device_class: "humidity"
+        state_class: "measurement"
+        state: >-
+          {{ state_attr("weather.forecast_home", "humidity") }}
+      - name: "weather_pressure"
+        unique_id: "421bc286-05eb-11ee-be56-0242ac120002"
+        unit_of_measurement: "hPa"
+        device_class: "pressure"
+        state_class: "measurement"
+        state: >-
+          {{ state_attr("weather.forecast_home", "pressure") }}
+      - name: "weather_wind_bearing"
+        unique_id: "10e228f4-05eb-11ee-be56-0242ac120002"
+        unit_of_measurement: "°"
+        state_class: "measurement"
+        state: >-
+          {{ state_attr("weather.forecast_home", "wind_bearing") }}
+      - name: "weather_wind_speed"
+        unique_id: "bfacce08-05ea-11ee-be56-0242ac120002"
+        unit_of_measurement: "m/s"
+        device_class: "speed"
+        state_class: "measurement"
+        state: >-
+          {{ state_attr("weather.forecast_home", "wind_speed") }}
+      - name: "adaptive_lighting_adaptives_licht_rgb_color"
+        unique_id: "60ecda42-bbbc-448a-82cf-61a774c0462e"
+        state: >-
+          {{ state_attr("switch.adaptive_lighting_adaptives_licht", "rgb_color") }}
+      # https://community.home-assistant.io/t/viessmann-component/77873/760
+      - name: "viessman_gasverbrauch_m3"
+        unique_id: "1713d700b1d511edaeb2af87d8ff0b2f"
+        unit_of_measurement: "m³"
+        device_class: "energy"
+        state_class: "total_increasing"
+        state: >-
+          {{ states('sensor.vicare_burner_load_intensity') | float(0) * 0.44164 | round(4) }}
+      # converting m³-consumption into kWh, using "Z-Zahl" 0.9574 and "Brennwert" 11.54:
+      - name: "viessman_gasverbrauch_kwh"
+        unique_id: "81f411c0b1d511edaeb2af87d8ff0b2f"
+        unit_of_measurement: "kWh"
+        device_class: "energy"
+        state_class: "total_increasing"
+        state: >-
+          {{ states('sensor.viessman_gasverbrauch_m3') | float(0) * 0.9574 * 11.54 | round(4) }}
+
+      # https://community.home-assistant.io/t/updating-number-of-people-at-home/168127/17
+      - name: "persons_at_home"
+        unique_id: "85cba6a0b1d511ed90171b0f7a30ae2f"
+        state: >-
+          {{ [states.person.simon, states.person.lisa] | selectattr('state', '==', 'home') | list | count }}
+      - name: "corolla_at_home"
+        unique_id: ""
+        state: >-
+          {{ [states.person.corolla] | selectattr('state', '==', 'home') | list | count }}
+
+      # Appliances
+      - name: "status_spuelmaschine"
+        unique_id: "8a5d63c0b1d511ed90171b0f7a30ae2f"
+        state: >-
+          {% if states("sensor.steckdose_spulmaschine_leistung")|float(0) <= 0 %}
+            off
+          {% elif states("sensor.steckdose_spulmaschine_leistung")|float(0) < 100 %}
+            on
+          {% elif states("sensor.steckdose_spulmaschine_leistung")|float(0) >= 100 %}
+            on
+          {% else %}
+            unknown
+          {% endif %}
+      - name: "status_waschmaschine"
+        unique_id: "8ecc56a0b1d511ed90171b0f7a30ae2f"
+        state: >-
+          {% if states("sensor.steckdose_waschmaschine_leistung")|float(0) <= 0.4 %}
+            off
+          {% elif states("sensor.steckdose_waschmaschine_leistung")|float(0) <= 3.9 %}
+            on
+          {% elif states("sensor.steckdose_waschmaschine_leistung")|float(0) > 3.9 %}
+            on
+          {% else %}
+            unknown
+          {% endif %}
+      - name: "status_trockner"
+        unique_id: "947c5500b1d511ed90171b0f7a30ae2f"
+        state: >-
+          {% if states("sensor.nous_a1t_smartplug_4_power")|float(0) <= 0 %}
+            off
+          {% elif states("sensor.nous_a1t_smartplug_4_power")|float(0) <= 7 %}
+            off
+          {% elif states("sensor.nous_a1t_smartplug_4_power")|float(0) > 7 %}
+            on
+          {% else %}
+            unknown
+          {% endif %}
+
+      # Person not home time
+      - name: "simon_abwesend"
+        unique_id: "9c120350b1d511edaeb2af87d8ff0b2f"
+        state: >-
+          {{ 24 - (states('sensor.simon_zu_hause')|float(2) * 1) }}
+        unit_of_measurement: "h"
+        device_class: "duration"
+        state_class: "total_increasing"
+      - name: "lisa_abwesend"
+        unique_id: "a0119290b1d511ed90171b0f7a30ae2f"
+        state: >-
+          {{ 24 - (states('sensor.lisa_zu_hause')|float(2) * 1) }}
+        unit_of_measurement: "h"
+        device_class: "duration"
+        state_class: "total_increasing"
+
+      # Working hours
+      - name: "arbeitszeit_heute"
+        unique_id: "a420d940b1d511edaeb2af87d8ff0b2f"
+        state: >-
+          {{ (states('sensor.auf_der_arbeit_heute')|float(0) * 1) + (states('sensor.im_homeoffice_heute')|float(0) * 1) }}
+        unit_of_measurement: "h"
+        device_class: "duration"
+        state_class: "total_increasing"
+      - name: "arbeitszeit_diese_woche"
+        unique_id: "a8d2c890b1d511edaeb2af87d8ff0b2f"
+        state: >-
+          {{ (states('sensor.auf_der_arbeit_diese_woche')|float(0) * 1) + (states('sensor.im_homeoffice_diese_woche')|float(0) * 1) }}
+        unit_of_measurement: "h"
+        device_class: "duration"
+        state_class: "total_increasing"
+
+      # car
+      - name: "reichweite_corolla"
+        unique_id: "ae083fc0b1d511edaeb2af87d8ff0b2f"
+        state: >-
+          {{ states('sensor.corolla_fuel_tank') | float(0) | multiply(6.25) | round(2)}}
+        unit_of_measurement: "km"
+        device_class: "distance"
+        state_class: "total_increasing"
+
+      # Power consumption
+      - name: "energie_unidentifiziert_power"
+        unique_id: "b2784410b1d511ed90171b0f7a30ae2f"
+        state: >-
+          {{ (states('sensor.esp_01s_stromzaehler_active_power') | float(0)) - (states('sensor.energie_identifiziert_power') | float(0)) }}
+        unit_of_measurement: "W"
+        device_class: "power"
+        state_class: "measurement"
+
+      # Other Templates
+      - name: "current_lights_on"
+        unique_id: "b7372bb0b1d511edaeb2af87d8ff0b2f"
+        state: >-
+          {{ states.light | selectattr('state', 'eq', 'on') | rejectattr('attributes.is_hue_group', 'eq', true) | list | count }}
+      - name: "dayoftheweek"
+        unique_id: "bc10ee50b1d511ed90171b0f7a30ae2f"
+        state: >-
+          {% set x = states('sensor.time') %}
+          {{ now().strftime("%A") | lower }}
+      - name: "deckenlampe_bad_temp_offset"
+        unique_id: "bfdf3460b1d511edaeb2af87d8ff0b2f"
+        state: >-
+          {% if is_state('switch.shelly_1pm_bad_deckenlampe', "on") %}
+            {{ float(states('sensor.shelly_1pm_bad_spiegellampe_temperature'), 0) -25 }}
+          {% else %}
+            {{ float(states('sensor.shelly_1pm_bad_spiegellampe_temperature'), 0) -20 }}
+          {% endif %}
+        unit_of_measurement: "°C"
+        device_class: "temperature"
+        state_class: "measurement"
+
+  - binary_sensor:
+      # Appliances
+      - name: "waschmaschine"
+        unique_id: "e84da000b1e211edaeb2af87d8ff0b2f"
+        state: >-
+          {{ is_state('sensor.status_waschmaschine', 'on') }}
+      - name: "trockner"
+        unique_id: "ec4b0c60b1e211ed90171b0f7a30ae2f"
+        state: >-
+          {{ is_state('sensor.status_trockner', 'on') }}
+      - name: "spuehlmaschine"
+        unique_id: "f0c6d080b1e211edaeb2af87d8ff0b2f"
+        state: >-
+          {{ is_state('sensor.status_spuelmaschine', 'on') }}
+      # Light
+      - name: "indicator_lights_on"
+        unique_id: "23670500b1e311ed90171b0f7a30ae2f"
+        state: >-
+          {{ states('sensor.current_lights_on')|float(0) > 0 }}

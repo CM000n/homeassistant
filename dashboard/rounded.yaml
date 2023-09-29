@@ -1,0 +1,1687 @@
+---
+default_templates:
+  title_card_template: &title_card_template
+    type: "custom:button-card"
+    styles:
+      card:
+        - background: "none"
+        - padding: "16px 0"
+        - "--mdc-ripple-press-opacity": 0
+        - height: "36px"
+      name:
+        - font-size: "32px"
+        - color: "var(--contrast20)"
+    tap_action:
+      action: "navigate"
+      navigation_path: "/lovelace-rounded/default_view"
+      haptic: "medium"
+  sensor_line_graph_card_template: &sensor_line_graph_card_template
+    type: "sensor"
+    hours_to_show: 24
+    detail: 1
+    graph: "line"
+    icon: "none"
+    card_mod:
+      class: "graph"
+  sensor_swipe_card_template: &sensor_swipe_card_template
+    type: "custom:swipe-card"
+    card_width: "calc(100% - 48px)"
+    start_card: 3
+    reset_after: 15
+    parameters:
+      centeredSlides: true
+      slidesPerView: "auto"
+      spaceBetween: 16
+      initialSlide: 0
+  navigation_button_template: &navigation_button_template
+    type: "custom:button-card"
+    show_label: true
+    hold_action:
+      action: "more-info"
+      haptic: "medium"
+    custom_fields:
+      light:
+        card:
+          type: "custom:button-card"
+          entity: "[[[ return entity.entity_id ]]]"
+          show_name: false
+          show_label: false
+          state:
+            - value: "on"
+              icon: "mdi:lightbulb"
+            - value: "off"
+              icon: "mdi:lightbulb-off"
+            - value: "unavailable"
+              icon: "mdi:lightbulb-question"
+              styles:
+                icon:
+                  - color: "var(--contrast6)"
+            - value: "unknown"
+              icon: "mdi:lightbulb-question"
+              styles:
+                icon:
+                  - color: "var(--contrast6)"
+          styles:
+            icon:
+              - width: "24px"
+              - height: "24px"
+    styles:
+      grid:
+        - grid-template-areas: "'i light' 'n n' 'l l'"
+        - grid-template-columns: "1fr 1fr"
+        - grid-template-rows: "35% min-content min-content"
+      card:
+        - background: "var(--contrast2)"
+        - padding: "16px"
+        - "--mdc-ripple-press-opacity": 0
+        - height: "100px"
+      img_cell:
+        - justify-self: "start"
+        - width: "24px"
+      icon:
+        - width: "24px"
+        - height: "24px"
+        - color: "var(--contrast8)"
+      label:
+        - justify-self: "start"
+        - align-self: "start"
+        - font-size: "12px"
+        - filter: "opacity(40%)"
+        - margin: "4px 0 3px 0"
+        - max-width: "100%"
+        - color: "var(--contrast8)"
+      name:
+        - justify-self: "start"
+        - font-size: "14px"
+        - margin: "4px 0 12px 0"
+        - color: "var(--contrast8)"
+    state:
+      - value: "on"
+        styles:
+          card:
+            - background: "var(--yellow)"
+          icon:
+            - color: "var(--black)"
+          label:
+            - color: "var(--black)"
+          name:
+            - color: "var(--black)"
+      - value: "off"
+        styles:
+          icon:
+            - color: "var(--contrast20)"
+          label:
+            - color: "var(--contrast20)"
+          name:
+            - color: "var(--contrast20)"
+  navigation_button_template_cellar: &navigation_button_template_cellar
+    type: "custom:button-card"
+    show_label: true
+    styles:
+      grid:
+        - grid-template-areas: "'i' 'n n' 'l l'"
+        - grid-template-columns: "1fr 1fr"
+        - grid-template-rows: "35% min-content min-content"
+      card:
+        - background: "var(--contrast2)"
+        - padding: "16px"
+        - "--mdc-ripple-press-opacity": 0
+        - height: "100px"
+      img_cell:
+        - justify-self: "start"
+        - width: "24px"
+      icon:
+        - width: "24px"
+        - height: "24px"
+        - color: "var(--contrast8)"
+      label:
+        - justify-self: "start"
+        - align-self: "start"
+        - font-size: "12px"
+        - filter: "opacity(40%)"
+        - margin: "4px 0 3px 0"
+        - max-width: "100%"
+        - color: "var(--contrast8)"
+      name:
+        - justify-self: "start"
+        - font-size: "14px"
+        - margin: "4px 0 12px 0"
+        - color: "var(--contrast8)"
+    state:
+      - value: "on"
+        styles:
+          card:
+            - background: "var(--yellow)"
+          icon:
+            - color: "var(--black)"
+          label:
+            - color: "var(--black)"
+          name:
+            - color: "var(--black)"
+      - value: "off"
+        styles:
+          icon:
+            - color: "var(--contrast20)"
+          label:
+            - color: "var(--contrast20)"
+          name:
+            - color: "var(--contrast20)"
+  light_button_template: &light_button_template
+    type: "custom:button-card"
+    tap_action:
+      action: "toggle"
+      haptic: "medium"
+    hold_action:
+      action: "more-info"
+      haptic: "medium"
+    custom_fields:
+      slider:
+        card:
+          type: "custom:my-slider-v2"
+          entity: "[[[ return entity.entity_id ]]]"
+          colorMode: "brightness"
+          styles:
+            container:
+              - background: "none"
+              - border-radius: "100px"
+              - overflow: "visible"
+            card:
+              - height: "16px"
+              - padding: "0 8px"
+              - background: |
+                  [[[
+                    if (entity.state == "on") return "linear-gradient(90deg, rgba(255,255,255, 0.3) 0%, rgba(255,255,255, 1) 100%)";
+                    else return "var(--contrast4)";
+                  ]]]
+            track:
+              - overflow: "visible"
+              - background: "none"
+            progress:
+              - background: "none"
+            thumb:
+              - background: |
+                  [[[
+                    if (entity.state == "on") return "var(--black)";
+                    if (entity.state == "off") return "var(--contrast20)";
+                    else return "var(--contrast8)";
+                  ]]]
+              - top: "2px"
+              - right: "-6px"
+              - height: "12px"
+              - width: "12px"
+              - border-radius: "100px"
+    styles:
+      grid:
+        - grid-template-areas: "'i' 'n' 'slider'"
+        - grid-template-columns: "1fr"
+        - grid-template-rows: "1fr min-content min-content"
+      card:
+        - background: "var(--contrast2)"
+        - padding: "16px"
+        - "--mdc-ripple-press-opacity": 0
+        - height: "100px"
+      img_cell:
+        - justify-self: "start"
+        - width: "24px"
+      icon:
+        - width: "24px"
+        - height: "24px"
+        - color: "var(--contrast8)"
+      name:
+        - justify-self: "start"
+        - font-size: "14px"
+        - margin: "4px 0 12px 0"
+        - color: "var(--contrast8)"
+    state:
+      - value: "on"
+        styles:
+          card:
+            - background: |
+                [[[
+                    var color = entity.attributes?.rgb_color;
+                    if (entity.state != "on"){
+                      return 'var(--contrast20)';
+                    }
+                    else if (color){
+                      return 'rgba(' + color + ')'
+                    }
+                    else{
+                      return 'var(--yellow)'
+                    }
+                ]]]
+          icon:
+            - color: "var(--black)"
+          name:
+            - color: "var(--black)"
+      - value: "off"
+        styles:
+          icon:
+            - color: "var(--contrast20)"
+          name:
+            - color: "var(--contrast20)"
+  light_button_template_bath: &light_button_template_bath
+    type: "custom:button-card"
+    tap_action:
+      action: "toggle"
+      haptic: "medium"
+    hold_action:
+      action: "more-info"
+      haptic: "medium"
+    styles:
+      grid:
+        - grid-template-areas: "'i' 'n'"
+        - grid-template-columns: "1fr"
+        - grid-template-rows: "1fr min-content min-content"
+      card:
+        - background: "var(--contrast2)"
+        - padding: "16px"
+        - "--mdc-ripple-press-opacity": 0
+        - height: "100px"
+      img_cell:
+        - justify-self: "start"
+        - width: "24px"
+      icon:
+        - width: "24px"
+        - height: "24px"
+        - color: "var(--contrast8)"
+      name:
+        - justify-self: "start"
+        - font-size: "14px"
+        - margin: "4px 0 12px 0"
+        - color: "var(--contrast8)"
+    state:
+      - value: "on"
+        styles:
+          card:
+            - background: "var(--yellow)"
+          icon:
+            - color: "var(--black)"
+          name:
+            - color: "var(--black)"
+      - value: "off"
+        styles:
+          icon:
+            - color: "var(--contrast20)"
+          name:
+            - color: "var(--contrast20)"
+  person_button_template: &person_button_template
+    type: "custom:button-card"
+    show_label: true
+    show_entity_picture: true
+    styles:
+      grid:
+        - grid-template-areas: "'i' 'n n' 'l l'"
+        - grid-template-columns: "1fr 1fr"
+        - grid-template-rows: "50% max-content max-content"
+      card:
+        - background: "var(--contrast2)"
+        - padding: "16px"
+        - "--mdc-ripple-press-opacity": 0
+        - height: "100px"
+      img_cell:
+        - justify-self: "start"
+        - width: "35px"
+      icon:
+        - width: "30px"
+        - height: "30px"
+        - color: "var(--contrast8)"
+        - clip-path: "circle()"
+      label:
+        - justify-self: "start"
+        - align-self: "start"
+        - font-size: "12px"
+        - filter: "opacity(40%)"
+        - margin: "0 0 0 0"
+        - max-width: "100%"
+        - color: "var(--contrast8)"
+      name:
+        - justify-self: "start"
+        - font-size: "14px"
+        - margin: "0 0 0 0"
+        - color: "var(--contrast8)"
+    state:
+      - value: "home"
+        styles:
+          card:
+            - background: "var(--green)"
+          icon:
+            - color: "var(--black)"
+          label:
+            - color: "var(--black)"
+          name:
+            - color: "var(--black)"
+      - value: "not_home"
+        styles:
+          icon:
+            - color: "var(--contrast20)"
+          label:
+            - color: "var(--contrast20)"
+          name:
+            - color: "var(--contrast20)"
+  appliances_button_template: &appliances_button_template
+    type: "custom:button-card"
+    show_label: true
+    styles:
+      grid:
+        - grid-template-areas: "'i' 'n n' 'l l'"
+        - grid-template-columns: "1fr 1fr"
+        - grid-template-rows: "35% min-content min-content"
+      card:
+        - background: "var(--contrast2)"
+        - padding: "16px"
+        - "--mdc-ripple-press-opacity": 0
+        - height: "100px"
+      img_cell:
+        - justify-self: "start"
+        - width: "24px"
+      icon:
+        - width: "24px"
+        - height: "24px"
+        - color: "var(--contrast8)"
+      label:
+        - justify-self: "start"
+        - align-self: "start"
+        - font-size: "12px"
+        - filter: "opacity(40%)"
+        - margin: "4px 0 3px 0"
+        - max-width: "100%"
+        - color: "var(--contrast8)"
+      name:
+        - justify-self: "start"
+        - font-size: "14px"
+        - margin: "4px 0 12px 0"
+        - color: "var(--contrast8)"
+    state:
+      - value: "on"
+        styles:
+          card:
+            - background: "var(--blue)"
+          icon:
+            - color: "var(--black)"
+          label:
+            - color: "var(--black)"
+          name:
+            - color: "var(--black)"
+      - value: "off"
+        styles:
+          icon:
+            - color: "var(--contrast20)"
+          label:
+            - color: "var(--contrast20)"
+          name:
+            - color: "var(--contrast20)"
+      - value: "cleaning"
+        styles:
+          card:
+            - background: "var(--blue)"
+          icon:
+            - color: "var(--black)"
+          label:
+            - color: "var(--black)"
+          name:
+            - color: "var(--black)"
+      - value: "docked"
+        styles:
+          icon:
+            - color: "var(--contrast20)"
+          label:
+            - color: "var(--contrast20)"
+          name:
+            - color: "var(--contrast20)"
+  brightness_slider_template: &brightness_slider_template
+    type: "custom:button-card"
+    show_icon: false
+    show_label: false
+    name: "Helligkeit"
+    custom_fields:
+      slider:
+        card:
+          type: "custom:my-slider-v2"
+          entity: "[[[ return entity.entity_id ]]]"
+          colorMode: "brightness"
+          styles:
+            container:
+              - border-radius: "100px"
+              - overflow: "visible"
+              - background: "none"
+            card:
+              - height: "40px"
+              - padding: "0 20px"
+              - background: "var(--brightness)"
+            track:
+              - overflow: "visible"
+              - background: "none"
+            progress:
+              - background: "none"
+            thumb:
+              - background: "var(--black)"
+              - top: "2px"
+              - right: "-18px"
+              - height: "36px"
+              - width: "36px"
+              - border-radius: "100px"
+    styles:
+      grid:
+        - grid-template-areas: "'n' 'slider'"
+        - grid-template-columns: "1fr"
+        - grid-template-rows: "1fr min-content min-content"
+      card:
+        - background: "var(--brightness-tint)"
+        - padding: "16px"
+        - "--mdc-ripple-press-opacity": 0
+        - height: "100px"
+      name:
+        - justify-self: "start"
+        - font-size: "14px"
+        - margin: "4px 0 12px 0"
+        - color: "var(--contrast20)"
+  temperature_slider_template: &temperature_slider_template
+    type: "custom:button-card"
+    show_icon: false
+    show_label: false
+    name: "Farbtemperatur"
+    custom_fields:
+      slider:
+        card:
+          type: "custom:my-slider-v2"
+          entity: "[[[ return entity.entity_id ]]]"
+          colorMode: "temperature"
+          styles:
+            container:
+              - border-radius: "100px"
+              - overflow: "visible"
+              - background: "none"
+            card:
+              - height: "40px"
+              - padding: "0 20px"
+              - background: "var(--temperature)"
+            track:
+              - overflow: "visible"
+              - background: "none"
+            progress:
+              - background: "none"
+            thumb:
+              - background: "var(--black)"
+              - top: "2px"
+              - right: "-18px"
+              - height: "36px"
+              - width: "36px"
+              - border-radius: "100px"
+    styles:
+      grid:
+        - grid-template-areas: "'n' 'slider'"
+        - grid-template-columns: "1fr"
+        - grid-template-rows: "1fr min-content min-content"
+      card:
+        - background: "var(--temperature-tint)"
+        - padding: "16px"
+        - "--mdc-ripple-press-opacity": 0
+        - height: "100px"
+      name:
+        - justify-self: "start"
+        - font-size: "14px"
+        - margin: "4px 0 12px 0"
+        - color: "var(--contrast20)"
+  vacuum_zone_card_template: &vacuum_zone_card_template
+    type: "custom:button-card"
+    show_label: true
+    tap_action:
+      action: "toggle"
+      haptic: "medium"
+    state:
+      - value: "on"
+        styles:
+          card:
+            - background-color: "var(--yellow)"
+            - box-shadow: "none"
+          icon:
+            - color: "var(--black)"
+          name:
+            - color: "var(--black)"
+          label:
+            - color: "var(--black)"
+            - opacity: "0.5"
+      - value: "off"
+        styles:
+          card:
+            - background: "var(--contrast2)"
+            - box-shadow: "none"
+          icon:
+            - width: "24px"
+            - color: "var(--contrast20)"
+          name:
+            - color: "var(--contrast20)"
+          label:
+            - color: "var(--contrast9)"
+    styles:
+      icon:
+        - width: "24px"
+      img_cell:
+        - justify-content: "flex-start"
+        - margin-top: "-4px"
+      name:
+        - justify-self: "start"
+        - font-size: "12px"
+        - margin-bottom: "0px"
+      card:
+        - height: "84px"
+        - border-radius: "24px"
+        - padding: "12px 0 12px 14px"
+        - box-sizing: "border-box"
+        - "--mdc-ripple-press-opacity": 0
+      label:
+        - justify-self: "start"
+        - font-size: "12px"
+  hvac_button_template: &hvac_button_template
+    type: "custom:button-card"
+    show_label: true
+    label: "[[[ return entity.state ]]]"
+    tap_action:
+      action: "more-info"
+      haptic: "medium"
+    hold_action:
+      action: "more-info"
+      haptic: "medium"
+    custom_fields:
+      temp: >
+        [[[ return entity.attributes.temperature + ' °C' ]]]
+    styles:
+      grid:
+        - grid-template-areas: "'i temp' 'n n' 'l l'"
+        - grid-template-columns: "1fr 1fr"
+        - grid-template-rows: "35% min-content min-content"
+      card:
+        - background: "var(--contrast2)"
+        - padding: "16px"
+        - "--mdc-ripple-press-opacity": 0
+        - height: "100px"
+      img_cell:
+        - justify-self: "start"
+        - width: "24px"
+      icon:
+        - width: "24px"
+        - height: "24px"
+        - color: "var(--contrast8)"
+      label:
+        - justify-self: "start"
+        - align-self: "start"
+        - font-size: "12px"
+        - filter: "opacity(40%)"
+        - margin: "4px 0 3px 0"
+        - max-width: "100%"
+        - color: "var(--contrast8)"
+      name:
+        - justify-self: "start"
+        - font-size: "14px"
+        - margin: "4px 0 12px 0"
+        - color: "var(--contrast8)"
+    state:
+      - value: "on"
+        styles:
+          card:
+            - background: "var(--red)"
+          icon:
+            - color: "var(--black)"
+          label:
+            - color: "var(--black)"
+          name:
+            - color: "var(--black)"
+          custom_fields:
+            temp:
+              - color: "var(--black)"
+      - value: "Heizen"
+        styles:
+          card:
+            - background: "var(--red)"
+          icon:
+            - color: "var(--black)"
+          label:
+            - color: "var(--black)"
+          name:
+            - color: "var(--black)"
+          custom_fields:
+            temp:
+              - color: "var(--black)"
+      - value: "heat"
+        styles:
+          card:
+            - background: "var(--red)"
+          icon:
+            - color: "var(--black)"
+          label:
+            - color: "var(--black)"
+          name:
+            - color: "var(--black)"
+          custom_fields:
+            temp:
+              - color: "var(--black)"
+      - value: "cool"
+        styles:
+          card:
+            - background: "var(--blue)"
+          icon:
+            - color: "var(--black)"
+          label:
+            - color: "var(--black)"
+          name:
+            - color: "var(--black)"
+          custom_fields:
+            temp:
+              - color: "var(--black)"
+      - value: "eco"
+        styles:
+          card:
+            - background: "var(--green)"
+          icon:
+            - color: "var(--black)"
+          label:
+            - color: "var(--black)"
+          name:
+            - color: "var(--black)"
+          custom_fields:
+            temp:
+              - color: "var(--black)"
+      - value: "off"
+        styles:
+          icon:
+            - color: "var(--contrast20)"
+          label:
+            - color: "var(--contrast20)"
+          name:
+            - color: "var(--contrast20)"
+          custom_fields:
+            temp:
+              - color: "var(--contrast20)"
+      - value: "auto"
+        styles:
+          icon:
+            - color: "var(--contrast20)"
+          label:
+            - color: "var(--contrast20)"
+          name:
+            - color: "var(--contrast20)"
+          custom_fields:
+            temp:
+              - color: "var(--contrast20)"
+
+title: ""
+views:
+  - path: "default_view"
+    icon: "mdi:home"
+    title: ""
+    visible:
+      - user: "3fb4deff931c4631b84d2584e5f2e493"
+      - user: "e7bec22aa70e4762ac231811f5997452"
+    theme: "Rounded"
+    type: "masonry"
+    badges: []
+    cards:
+      - name: "Home"
+        <<: *title_card_template
+      - <<: *sensor_swipe_card_template
+        cards:
+          - name: "Leistung"
+            entity: "sensor.esp_01s_stromzaehler_active_power"
+            <<: *sensor_line_graph_card_template
+          - name: "Verbrauch"
+            entity: "sensor.stromzahler_stromverbrauch_jahrlich"
+            <<: *sensor_line_graph_card_template
+          - name: "Außen"
+            entity: "sensor.eingangstur_bewegungsmelder_temperature"
+            <<: *sensor_line_graph_card_template
+      - type: "grid"
+        columns: 2
+        square: false
+        cards:
+          - name: "Simon"
+            entity: "person.simon"
+            label: "[[[ return states['sensor.simon'].state ]]]"
+            tap_action:
+              action: "more-info"
+              haptic: "medium"
+            <<: *person_button_template
+          - name: "Lisa"
+            entity: "person.lisa"
+            label: "[[[ return states['sensor.lisa'].state ]]]"
+            tap_action:
+              action: "more-info"
+              haptic: "medium"
+            <<: *person_button_template
+      - type: "grid"
+        columns: 2
+        square: false
+        cards:
+          - name: "Wohnzimmer"
+            entity: "light.gruppe_wohnzimmer"
+            icon: "mdi:sofa"
+            label: "[[[ return states['sensor.steckdose_wohnzimmer_temperatur'].state + ' °C' ]]]"
+            tap_action:
+              action: "navigate"
+              navigation_path: "/lovelace-rounded/living_room"
+              haptic: "medium"
+            <<: *navigation_button_template
+          - name: "Küche"
+            entity: "light.gruppe_kuche"
+            icon: "mdi:silverware-fork-knife"
+            label: "[[[ return states['sensor.steckdose_wohnzimmer_temperatur'].state + ' °C' ]]]"
+            tap_action:
+              action: "navigate"
+              navigation_path: "/lovelace-rounded/kitchen"
+              haptic: "medium"
+            <<: *navigation_button_template
+          - name: "Schlafzimmer"
+            entity: "light.gruppe_schlafzimmer"
+            icon: "mdi:bed"
+            label: "[[[ return states['sensor.steckdose_schlafzimmer_temperatur'].state + ' °C' ]]]"
+            tap_action:
+              action: "navigate"
+              navigation_path: "/lovelace-rounded/sleep"
+              haptic: "medium"
+            <<: *navigation_button_template
+          - name: "Kinderzimmer"
+            entity: "light.gruppe_kinderzimmer"
+            icon: "mdi:teddy-bear"
+            label: "[[[ return states['sensor.steckdose_ankleide_temperatur'].state + ' °C' ]]]"
+            tap_action:
+              action: "navigate"
+              navigation_path: "/lovelace-rounded/child_room"
+              haptic: "medium"
+            <<: *navigation_button_template
+          - name: "Badezimmer"
+            entity: "light.gruppe_bad"
+            icon: "mdi:faucet"
+            label: "[[[ return states['sensor.deckenlampe_bad_temperatur_offset_gefiltert'].state + ' °C' ]]]"
+            tap_action:
+              action: "navigate"
+              navigation_path: "/lovelace-rounded/bath"
+              haptic: "medium"
+            <<: *navigation_button_template
+          - name: "Büro"
+            entity: "light.gruppe_buro"
+            icon: "mdi:chair-rolling"
+            label: "[[[ return states['sensor.awtrix_ulanzi_tc001_temperature'].state + ' °C' ]]]"
+            tap_action:
+              action: "navigate"
+              navigation_path: "/lovelace-rounded/office"
+              haptic: "medium"
+            <<: *navigation_button_template
+          - name: "Keller"
+            entity: "group.cellar_appliances"
+            icon: "mdi:washing-machine"
+            label: "[[[ return states['sensor.steckdose_waschmaschine_temperatur'].state + ' °C' ]]]"
+            tap_action:
+              action: "navigate"
+              navigation_path: "/lovelace-rounded/cellar"
+              haptic: "medium"
+            <<: *navigation_button_template_cellar
+          - name: "Sonstiges"
+            entity: "light.gruppe_flur"
+            icon: "mdi:floor-plan"
+            label: "[[[ return states['sensor.eingangstur_bewegungsmelder_temperature'].state + ' °C' ]]]"
+            tap_action:
+              action: "navigate"
+              navigation_path: "/lovelace-rounded/other"
+              haptic: "medium"
+            <<: *navigation_button_template
+      - type: "grid"
+        columns: 2
+        square: false
+        cards:
+          - name: "Robi"
+            entity: "vacuum.valetudo_falsescrawnyhornet"
+            icon: "mdi:robot-vacuum"
+            label: "[[[ return states['vacuum.valetudo_falsescrawnyhornet'].state ]]]"
+            tap_action:
+              action: "navigate"
+              navigation_path: "/lovelace-rounded/vacuum"
+              haptic: "medium"
+            <<: *appliances_button_template
+      - type: "custom:button-card"
+        color_type: "blank-card"
+  - path: "living_room"
+    icon: "mdi:sofa"
+    title: ""
+    visible:
+      - user: "3fb4deff931c4631b84d2584e5f2e493"
+      - user: "e7bec22aa70e4762ac231811f5997452"
+    theme: "Rounded"
+    type: "masonry"
+    subview: true
+    back_path: "/lovelace-rounded/default_view"
+    badges: []
+    cards:
+      - name: "Wohnzimmer"
+        <<: *title_card_template
+      - <<: *sensor_swipe_card_template
+        cards:
+          - name: "Leistung"
+            entity: "sensor.energie_wohnzimmer_power"
+            <<: *sensor_line_graph_card_template
+          - name: "Verbrauch"
+            entity: "sensor.energie_wohnzimmer_energy_yearly"
+            <<: *sensor_line_graph_card_template
+          - name: "Temperatur"
+            entity: "sensor.steckdose_wohnzimmer_temperatur"
+            <<: *sensor_line_graph_card_template
+      - type: "grid"
+        columns: 1
+        square: false
+        cards:
+          - type: "grid"
+            columns: 2
+            square: false
+            cards:
+              - name: "Deckenlampe"
+                entity: "light.wohnzimmer_deckenleuchte"
+                icon: "mdi:globe-light"
+                <<: *light_button_template
+              - name: "Lightstrip"
+                entity: "light.wohnzimmer_lightstrip"
+                icon: "mdi:led-strip-variant"
+                <<: *light_button_template
+              - name: "Stehlampe"
+                entity: "light.wohnzimmer_stehlampe_rechts"
+                icon: "mdi:floor-lamp"
+                <<: *light_button_template
+              - name: "Weihnachtsstern"
+                entity: "light.wohnzimmer_weihnachtsstern"
+                icon: "mdi:star"
+                <<: *light_button_template
+          - type: "grid"
+            columns: 1
+            square: false
+            cards:
+              - type: "conditional"
+                conditions:
+                  - entity: "light.active_light_group_living_room"
+                    state: "on"
+                card:
+                  entity: "light.active_light_group_living_room"
+                  <<: *brightness_slider_template
+              - type: "conditional"
+                conditions:
+                  - entity: "light.active_light_group_living_room"
+                    state: "on"
+                card:
+                  entity: "light.active_light_group_living_room"
+                  <<: *temperature_slider_template
+      - type: "grid"
+        columns: 2
+        square: false
+        cards:
+          - name: "Ventilator"
+            entity: "fan.wohnzimmer"
+            icon: "mdi:fan"
+            label: "[[[ return states['fan.wohnzimmer'].state ]]]"
+            tap_action:
+              action: "toggle"
+              haptic: "medium"
+            <<: *appliances_button_template
+      - type: "grid"
+        columns: 1
+        square: false
+        cards:
+          - name: "Sonos"
+            entity: "media_player.wohnzimmer"
+            type: "custom:mini-media-player"
+            icon: "mdi:speaker"
+            artwork: "material"
+            toggle_power: false
+            idle_view:
+              when_idle: true
+              when_paused: true
+            speaker_group:
+              platform: "sonos"
+              show_group_count: true
+              entities:
+                - entity_id: "media_player.wohnzimmer"
+                  name: "Sonos Wohnzimmer"
+                - entity_id: "media_player.kueche"
+                  name: "Sonos Küche"
+                - entity_id: "media_player.bad"
+                  name: "Sonos Bad"
+                - entity_id: "media_player.buro"
+                  name: "Sonos Büro"
+                - entity_id: "media_player.schlafzimmer"
+                  name: "Sonos Schlafzimmer"
+          - name: "Chromecast"
+            entity: "media_player.android_tv_192_168_178_9"
+            type: "custom:mini-media-player"
+            icon: "mdi:cast"
+            artwork: "material"
+            toggle_power: false
+            idle_view:
+              when_idle: true
+              when_paused: true
+          - name: "Homemini"
+            entity: "media_player.homemini_wohnzimmer"
+            type: "custom:mini-media-player"
+            icon: "mdi:google"
+            artwork: "material"
+            toggle_power: false
+            idle_view:
+              when_idle: true
+              when_paused: true
+      - type: "custom:button-card"
+        color_type: "blank-card"
+  - path: "kitchen"
+    icon: "mdi:silverware-fork-knife"
+    title: ""
+    visible:
+      - user: "3fb4deff931c4631b84d2584e5f2e493"
+      - user: "e7bec22aa70e4762ac231811f5997452"
+    theme: "Rounded"
+    type: "masonry"
+    subview: true
+    back_path: "/lovelace-rounded/default_view"
+    badges: []
+    cards:
+      - name: "Küche"
+        <<: *title_card_template
+      - <<: *sensor_swipe_card_template
+        cards:
+          - name: "Leistung"
+            entity: "sensor.energie_kuche_power"
+            <<: *sensor_line_graph_card_template
+          - name: "Verbrauch"
+            entity: "sensor.energie_kuche_energy_yearly"
+            <<: *sensor_line_graph_card_template
+          - name: "Temperatur"
+            entity: "sensor.steckdose_wohnzimmer_temperatur"
+            <<: *sensor_line_graph_card_template
+      - type: "grid"
+        columns: 1
+        square: false
+        cards:
+          - type: "grid"
+            columns: 2
+            square: false
+            cards:
+              - name: "Tischlampe"
+                entity: "light.kuche_esstischlampe"
+                icon: "mdi:ceiling-light"
+                <<: *light_button_template
+              - name: "Herdlampe"
+                entity: "light.kuche_herdlampe"
+                icon: "mdi:ceiling-light"
+                <<: *light_button_template
+          - type: "grid"
+            columns: 1
+            square: false
+            cards:
+              - type: "conditional"
+                conditions:
+                  - entity: "light.active_light_group_kitchen"
+                    state: "on"
+                card:
+                  entity: "light.active_light_group_kitchen"
+                  <<: *brightness_slider_template
+              - type: "conditional"
+                conditions:
+                  - entity: "light.active_light_group_kitchen"
+                    state: "on"
+                card:
+                  entity: "light.active_light_group_kitchen"
+                  <<: *temperature_slider_template
+      - type: "grid"
+        columns: 2
+        square: false
+        cards:
+          - name: "Spülmaschine"
+            entity: "binary_sensor.spuehlmaschine"
+            icon: "mdi:dishwasher"
+            label: "[[[ return states['binary_sensor.spuehlmaschine'].state ]]]"
+            tap_action:
+              action: "more-info"
+              haptic: "medium"
+            <<: *appliances_button_template
+      - type: "grid"
+        columns: 1
+        square: false
+        cards:
+          - name: "Sonos"
+            entity: "media_player.kueche"
+            type: "custom:mini-media-player"
+            icon: "mdi:speaker"
+            artwork: "material"
+            toggle_power: false
+            idle_view:
+              when_idle: true
+              when_paused: true
+            speaker_group:
+              platform: "sonos"
+              show_group_count: true
+              entities:
+                - entity_id: "media_player.wohnzimmer"
+                  name: "Sonos Wohnzimmer"
+                - entity_id: "media_player.kueche"
+                  name: "Sonos Küche"
+                - entity_id: "media_player.bad"
+                  name: "Sonos Bad"
+                - entity_id: "media_player.buro"
+                  name: "Sonos Büro"
+                - entity_id: "media_player.schlafzimmer"
+                  name: "Sonos Schlafzimmer"
+      - type: "custom:button-card"
+        color_type: "blank-card"
+  - path: "sleep"
+    icon: "mdi:bed"
+    title: ""
+    visible:
+      - user: "3fb4deff931c4631b84d2584e5f2e493"
+      - user: "e7bec22aa70e4762ac231811f5997452"
+    theme: "Rounded"
+    type: "masonry"
+    subview: true
+    back_path: "/lovelace-rounded/default_view"
+    badges: []
+    cards:
+      - name: "Schlafzimmer"
+        <<: *title_card_template
+      - <<: *sensor_swipe_card_template
+        cards:
+          - name: "Leistung"
+            entity: "sensor.energie_schlafzimmer_power"
+            <<: *sensor_line_graph_card_template
+          - name: "Verbrauch"
+            entity: "sensor.energie_schlafzimmer_energy_yearly"
+            <<: *sensor_line_graph_card_template
+          - name: "Temperatur"
+            entity: "sensor.steckdose_schlafzimmer_temperatur"
+            <<: *sensor_line_graph_card_template
+      - type: "grid"
+        columns: 1
+        square: false
+        cards:
+          - type: "grid"
+            columns: 2
+            square: false
+            cards:
+              - name: "Deckenlampe"
+                entity: "light.schlafzimmer_deckenleuchte"
+                icon: "mdi:globe-light"
+                <<: *light_button_template
+              - name: "Wickeltisch"
+                entity: "light.schlafzimmer_wickeltisch"
+                icon: "mdi:lamp"
+                <<: *light_button_template
+          - type: "grid"
+            columns: 1
+            square: false
+            cards:
+              - type: "conditional"
+                conditions:
+                  - entity: "light.active_light_group_bed_room"
+                    state: "on"
+                card:
+                  entity: "light.active_light_group_bed_room"
+                  <<: *brightness_slider_template
+              - type: "conditional"
+                conditions:
+                  - entity: "light.active_light_group_bed_room"
+                    state: "on"
+                card:
+                  entity: "light.active_light_group_bed_room"
+                  <<: *temperature_slider_template
+      - type: "grid"
+        columns: 1
+        square: false
+        cards:
+          - name: "Sonos"
+            entity: "media_player.schlafzimmer"
+            type: "custom:mini-media-player"
+            icon: "mdi:speaker"
+            artwork: "material"
+            toggle_power: false
+            idle_view:
+              when_idle: true
+              when_paused: true
+            speaker_group:
+              platform: "sonos"
+              show_group_count: true
+              entities:
+                - entity_id: "media_player.wohnzimmer"
+                  name: "Sonos Wohnzimmer"
+                - entity_id: "media_player.kueche"
+                  name: "Sonos Küche"
+                - entity_id: "media_player.bad"
+                  name: "Sonos Bad"
+                - entity_id: "media_player.buro"
+                  name: "Sonos Büro"
+                - entity_id: "media_player.schlafzimmer"
+                  name: "Sonos Schlafzimmer"
+      - type: "custom:button-card"
+        color_type: "blank-card"
+  - path: "child_room"
+    icon: "mdi:teddy-bear"
+    title: ""
+    visible:
+      - user: "3fb4deff931c4631b84d2584e5f2e493"
+      - user: "e7bec22aa70e4762ac231811f5997452"
+    theme: "Rounded"
+    type: "masonry"
+    subview: true
+    back_path: "/lovelace-rounded/default_view"
+    badges: []
+    cards:
+      - name: "Kinderzimmer"
+        <<: *title_card_template
+      - <<: *sensor_swipe_card_template
+        cards:
+          - name: "Leistung"
+            entity: "sensor.energie_kinderzimmer_power"
+            <<: *sensor_line_graph_card_template
+          - name: "Verbrauch"
+            entity: "sensor.energie_kinderzimmer_energy_yearly"
+            <<: *sensor_line_graph_card_template
+          - name: "Temperatur"
+            entity: "sensor.steckdose_ankleide_temperatur"
+            <<: *sensor_line_graph_card_template
+      - type: "grid"
+        columns: 1
+        square: false
+        cards:
+          - type: "grid"
+            columns: 2
+            square: false
+            cards:
+              - name: "Deckenlampe"
+                entity: "light.kinderzimmer_deckenleuchte"
+                icon: "mdi:globe-light"
+                <<: *light_button_template
+              - name: "Nachttisch Lina"
+                entity: "light.kinderzimmer_nachttisch"
+                icon: "mdi:lamp"
+                <<: *light_button_template
+          - type: "grid"
+            columns: 1
+            square: false
+            cards:
+              - type: "conditional"
+                conditions:
+                  - entity: "light.active_light_group_child_room"
+                    state: "on"
+                card:
+                  entity: "light.active_light_group_child_room"
+                  <<: *brightness_slider_template
+              - type: "conditional"
+                conditions:
+                  - entity: "light.active_light_group_child_room"
+                    state: "on"
+                card:
+                  entity: "light.active_light_group_child_room"
+                  <<: *temperature_slider_template
+      - type: "grid"
+        columns: 2
+        square: false
+        cards:
+          - name: "Klimaanlage"
+            entity: "climate.c63380a3"
+            icon: "mdi:snowflake-thermometer"
+            <<: *hvac_button_template
+      - type: "custom:button-card"
+        color_type: "blank-card"
+  - path: "bath"
+    icon: "mdi:faucet"
+    title: ""
+    visible:
+      - user: "3fb4deff931c4631b84d2584e5f2e493"
+      - user: "e7bec22aa70e4762ac231811f5997452"
+    theme: "Rounded"
+    type: "masonry"
+    subview: true
+    back_path: "/lovelace-rounded/default_view"
+    badges: []
+    cards:
+      - name: "Badezimmer"
+        <<: *title_card_template
+      - <<: *sensor_swipe_card_template
+        cards:
+          - name: "Leistung"
+            entity: "sensor.energie_bad_power"
+            <<: *sensor_line_graph_card_template
+          - name: "Verbrauch"
+            entity: "sensor.energie_bad_energy_yearly"
+            <<: *sensor_line_graph_card_template
+          - name: "Temperatur"
+            entity: "sensor.deckenlampe_bad_temperatur_offset_gefiltert"
+            <<: *sensor_line_graph_card_template
+      - type: "grid"
+        columns: 2
+        square: false
+        cards:
+          - name: "Deckenlampe"
+            entity: "light.shelly_deckenlampe_bad"
+            icon: "mdi:light-recessed"
+            <<: *light_button_template_bath
+          - name: "Spiegellampe"
+            entity: "light.shelly_badspiegel"
+            icon: "mdi:spotlight"
+            <<: *light_button_template_bath
+      - type: "grid"
+        columns: 1
+        square: false
+        cards:
+          - name: "Sonos"
+            entity: "media_player.bad"
+            type: "custom:mini-media-player"
+            icon: "mdi:speaker"
+            artwork: "material"
+            toggle_power: false
+            idle_view:
+              when_idle: true
+              when_paused: true
+            speaker_group:
+              platform: "sonos"
+              show_group_count: true
+              entities:
+                - entity_id: "media_player.wohnzimmer"
+                  name: "Sonos Wohnzimmer"
+                - entity_id: "media_player.kueche"
+                  name: "Sonos Küche"
+                - entity_id: "media_player.bad"
+                  name: "Sonos Bad"
+                - entity_id: "media_player.buro"
+                  name: "Sonos Büro"
+                - entity_id: "media_player.schlafzimmer"
+                  name: "Sonos Schlafzimmer"
+      - type: "custom:button-card"
+        color_type: "blank-card"
+  - path: "office"
+    icon: "mdi:chair-rolling"
+    title: ""
+    visible:
+      - user: "3fb4deff931c4631b84d2584e5f2e493"
+      - user: "e7bec22aa70e4762ac231811f5997452"
+    theme: "Rounded"
+    type: "masonry"
+    subview: true
+    back_path: "/lovelace-rounded/default_view"
+    badges: []
+    cards:
+      - name: "Büro"
+        <<: *title_card_template
+      - <<: *sensor_swipe_card_template
+        cards:
+          - name: "Leistung"
+            entity: "sensor.energie_buro_nahzimmer_power"
+            <<: *sensor_line_graph_card_template
+          - name: "Verbrauch"
+            entity: "sensor.energie_buro_nahzimmer_energy_yearly"
+            <<: *sensor_line_graph_card_template
+          - name: "Temperatur"
+            entity: "sensor.awtrix_ulanzi_tc001_temperature"
+            <<: *sensor_line_graph_card_template
+      - type: "grid"
+        columns: 1
+        square: false
+        cards:
+          - type: "grid"
+            columns: 2
+            square: false
+            cards:
+              - name: "Deckenlampe"
+                entity: "light.buro_deckenleuchte"
+                icon: "mdi:globe-light"
+                <<: *light_button_template
+              - name: "Schreibtisch"
+                entity: "light.buro_schreibtisch"
+                icon: "mdi:lamp"
+                <<: *light_button_template
+          - type: "grid"
+            columns: 1
+            square: false
+            cards:
+              - type: "conditional"
+                conditions:
+                  - entity: "light.active_light_group_office"
+                    state: "on"
+                card:
+                  entity: "light.active_light_group_office"
+                  <<: *brightness_slider_template
+              - type: "conditional"
+                conditions:
+                  - entity: "light.active_light_group_office"
+                    state: "on"
+                card:
+                  entity: "light.active_light_group_office"
+                  <<: *temperature_slider_template
+      - type: "grid"
+        columns: 1
+        square: false
+        cards:
+          - name: "Sonos"
+            entity: "media_player.buro"
+            type: "custom:mini-media-player"
+            icon: "mdi:speaker"
+            artwork: "material"
+            toggle_power: false
+            idle_view:
+              when_idle: true
+              when_paused: true
+            speaker_group:
+              platform: "sonos"
+              show_group_count: true
+              entities:
+                - entity_id: "media_player.wohnzimmer"
+                  name: "Sonos Wohnzimmer"
+                - entity_id: "media_player.kueche"
+                  name: "Sonos Küche"
+                - entity_id: "media_player.bad"
+                  name: "Sonos Bad"
+                - entity_id: "media_player.buro"
+                  name: "Sonos Büro"
+                - entity_id: "media_player.schlafzimmer"
+                  name: "Sonos Schlafzimmer"
+      - type: "custom:button-card"
+        color_type: "blank-card"
+  - path: "cellar"
+    icon: "mdi:washing-machine"
+    title: ""
+    visible:
+      - user: "3fb4deff931c4631b84d2584e5f2e493"
+      - user: "e7bec22aa70e4762ac231811f5997452"
+    theme: "Rounded"
+    type: "masonry"
+    subview: true
+    back_path: "/lovelace-rounded/default_view"
+    badges: []
+    cards:
+      - name: "Keller"
+        <<: *title_card_template
+      - <<: *sensor_swipe_card_template
+        cards:
+          - name: "Leistung"
+            entity: "sensor.energie_keller_power"
+            <<: *sensor_line_graph_card_template
+          - name: "Verbrauch"
+            entity: "sensor.energie_keller_energy_yearly"
+            <<: *sensor_line_graph_card_template
+          - name: "Temperatur"
+            entity: "sensor.steckdose_waschmaschine_temperatur"
+            <<: *sensor_line_graph_card_template
+      - type: "grid"
+        columns: 2
+        square: false
+        cards:
+          - name: "Waschmaschine"
+            entity: "binary_sensor.waschmaschine"
+            icon: "mdi:washing-machine"
+            label: "[[[ return states['binary_sensor.waschmaschine'].state ]]]"
+            tap_action:
+              action: "more-info"
+              haptic: "medium"
+            <<: *appliances_button_template
+          - name: "Trockner"
+            entity: "binary_sensor.trockner"
+            icon: "mdi:tumble-dryer"
+            label: "[[[ return states['binary_sensor.trockner'].state ]]]"
+            tap_action:
+              action: "more-info"
+              haptic: "medium"
+            <<: *appliances_button_template
+      - type: "grid"
+        columns: 2
+        square: false
+        cards:
+          - name: "HK1 Fußboden"
+            entity: "climate.vicare_heating_1"
+            icon: "mdi:heat-wave"
+            <<: *hvac_button_template
+          - name: "HK2 Radiatoren"
+            entity: "climate.vicare_heating_2"
+            icon: "mdi:heat-wave"
+            <<: *hvac_button_template
+          - name: "Warmwasser"
+            entity: "water_heater.vicare_water_1"
+            icon: "mdi:hot-tub"
+            <<: *hvac_button_template
+  - path: "other"
+    icon: "mdi:floor-plan"
+    title: ""
+    visible:
+      - user: "3fb4deff931c4631b84d2584e5f2e493"
+      - user: "e7bec22aa70e4762ac231811f5997452"
+    theme: "Rounded"
+    type: "masonry"
+    subview: true
+    back_path: "/lovelace-rounded/default_view"
+    badges: []
+    cards:
+      - name: "Sonstiges"
+        <<: *title_card_template
+      - <<: *sensor_swipe_card_template
+        cards:
+          - name: "Leistung"
+            entity: "sensor.energie_flur_power"
+            <<: *sensor_line_graph_card_template
+          - name: "Verbrauch"
+            entity: "sensor.energie_flur_energy_yearly"
+            <<: *sensor_line_graph_card_template
+          - name: "Außen"
+            entity: "sensor.eingangstur_bewegungsmelder_temperature"
+            <<: *sensor_line_graph_card_template
+      - type: "grid"
+        columns: 2
+        square: false
+        cards:
+          - name: "Deckenlampen Flur"
+            entity: "light.deckenlampen_flur"
+            icon: "mdi:ceiling-light-multiple"
+            <<: *light_button_template
+          - name: "Treppenhaus"
+            entity: "light.wandlampen_treppenhaus"
+            icon: "mdi:track-light"
+            <<: *light_button_template
+          - name: "Eingangstür"
+            entity: "light.eingangstur_decke"
+            icon: "mdi:light-recessed"
+            <<: *light_button_template
+  - path: "vacuum"
+    icon: "mdi:robot-vacuum"
+    title: ""
+    visible:
+      - user: "3fb4deff931c4631b84d2584e5f2e493"
+      - user: "e7bec22aa70e4762ac231811f5997452"
+    theme: "Rounded"
+    type: "masonry"
+    subview: true
+    back_path: "/lovelace-rounded/default_view"
+    badges: []
+    cards:
+      - type: "custom:button-card"
+        name: "Robi"
+        tap_action:
+          action: "navigate"
+          navigation_path: "/lovelace-rounded/default_view"
+          haptic: "medium"
+        custom_fields:
+          badge:
+            card:
+              type: "custom:button-card"
+              name: "[[[return states['vacuum.valetudo_falsescrawnyhornet'].attributes.status]]]"
+              label: >-
+                [[[return states['vacuum.valetudo_falsescrawnyhornet'].attributes.battery_level +
+                '%']]]
+              show_label: true
+              show_icon: false
+              entity: "vacuum.valetudo_falsescrawnyhornet"
+              tap_action:
+                action: "more-info"
+                haptic: "medium"
+              styles:
+                grid:
+                  - grid-template-areas: "'n gutter l'"
+                  - grid-template-columns: "min-content 5px min-content"
+                  - grid-template-rows: "min-content"
+                card:
+                  - padding: "6px 10px"
+                  - font-size: "12px"
+                  - line-height: "18px"
+                  - font-weight: 500
+                  - background: "var(--contrast20)"
+                name:
+                  - color: "var(--contrast1)"
+                label:
+                  - color: "var(--contrast12)"
+        styles:
+          grid:
+            - grid-template-areas: "'n' 'badge'"
+          card:
+            - background: "none"
+            - padding: "16px 0"
+            - "--mdc-ripple-press-opacity": 0
+          name:
+            - font-size: "32px"
+            - color: "var(--contrast20)"
+          custom_fields:
+            badge:
+              - margin: "16px auto 0 auto"
+              - "--mdc-ripple-press-opacity": 0.5
+      - type: "custom:valetudo-map-card"
+        vacuum: "valetudo_falsescrawnyhornet"
+        title: []
+        wall_color: "--blue"
+        floor_color: "--blue"
+        segment_colors: "--blue"
+        segment_opacity: 0.2
+        vacuum_color: "--purple"
+        dock_color: "--yellow"
+        path_color: "--purple"
+        map_scale: 1.5
+        icon_scale: 0.8
+        show_status: false
+        show_segments: true
+        show_start_button: false
+        show_battery_level: false
+        show_locate_button: false
+      - type: "grid"
+        columns: 3
+        square: false
+        cards:
+          - name: "Wohnzimmer"
+            icon: "mdi:sofa"
+            entity: "input_boolean.living_room_select_vacuuming"
+            label: "[[[return states['input_datetime.living_room_last_vacuumed'].state ]]]"
+            <<: *vacuum_zone_card_template
+          - name: "Küche"
+            icon: "mdi:silverware-fork-knife"
+            entity: "input_boolean.kitchen_select_vacuuming"
+            label: "[[[return states['input_datetime.kitchen_last_vacuumed'].state ]]]"
+            <<: *vacuum_zone_card_template
+          - name: "Flur"
+            icon: "mdi:floor-plan"
+            entity: "input_boolean.floor_select_vacuuming"
+            label: "[[[return states['input_datetime.hallway_last_vacuumed'].state ]]]"
+            <<: *vacuum_zone_card_template
+          - type: "custom:button-card"
+            entity: "input_boolean.general_robot_vacuum_cleaner_zones_selected"
+            icon: "mdi:robot-vacuum"
+            name: "Zonen"
+            label: "Zonen"
+            show_label: true
+            tap_action:
+              action: "call-service"
+              service: "script.vacuuming_of_selection"
+              haptic: "success"
+            state:
+              - value: "off"
+                name: "Reinige"
+                icon: "mdi:home"
+            styles:
+              icon:
+                - width: "24px"
+                - color: "var(--black)"
+              img_cell:
+                - justify-content: "flex-start"
+                - margin-top: "-4px"
+              name:
+                - justify-self: "start"
+                - color: "var(--black)"
+                - font-size: "12px"
+                - margin-bottom: "0px"
+              card:
+                - height: "84px"
+                - background-color: "var(--green)"
+                - box-shadow: "none"
+                - border-radius: "24px"
+                - padding: "12px 0 12px 14px"
+                - z-index: 1
+              label:
+                - justify-self: "start"
+                - color: "var(--black)"
+                - font-size: "12px"
+          - type: "custom:button-card"
+            icon: "mdi:numeric-1-box"
+            entity: "input_number.general_robot_vacuum_cleaner_zone_repetitions"
+            name: "Anzahl"
+            label: "Wiederholungen"
+            show_label: true
+            state:
+              - value: "1.0"
+                icon: "mdi:numeric-1-box"
+              - value: "2.0"
+                icon: "mdi:numeric-2-box"
+              - value: "3.0"
+                icon: "mdi:numeric-3-box"
+            tap_action:
+              action: "call-service"
+              service: "script.vacuum_repetitions"
+              haptic: "medium"
+            styles:
+              icon:
+                - width: "24px"
+                - color: "var(--contrast1)"
+              img_cell:
+                - justify-content: "flex-start"
+                - margin-top: "-4px"
+              name:
+                - justify-self: "start"
+                - color: "var(--contrast1)"
+                - font-size: "12px"
+                - margin-bottom: "0px"
+              card:
+                - height: "84px"
+                - background-color: "var(--contrast20)"
+                - box-shadow: "none"
+                - border-radius: "24px"
+                - padding: "12px 0 12px 14px"
+                - z-index: 1
+              label:
+                - justify-self: "start"
+                - color: "var(--contrast1)"
+                - font-size: "12px"
+          - type: "custom:button-card"
+            icon: "mdi:broom"
+            name: "Entleerung"
+            label: "[[[return Math.round(states['sensor.valetudo_falsescrawnyhornet_current_statistics_area'].state / 10000).toFixed(0) + ' m² gesaugt']]]"
+            show_label: true
+            tap_action:
+              action: "call-service"
+              service: "script.vacuum_go_to_the_trash_can"
+              haptic: "success"
+            styles:
+              icon:
+                - width: "24px"
+                - color: "var(--contrast1)"
+              img_cell:
+                - justify-content: "flex-start"
+                - margin-top: "-4px"
+              name:
+                - justify-self: "start"
+                - color: "var(--contrast1)"
+                - font-size: "12px"
+                - margin-bottom: "0px"
+              card:
+                - height: "84px"
+                - background-color: "var(--contrast20)"
+                - box-shadow: "none"
+                - border-radius: "24px"
+                - padding: "12px 0 12px 14px"
+                - z-index: 1
+              label:
+                - justify-self: "start"
+                - color: "var(--contrast11)"
+                - font-size: "12px"
+          - type: "custom:button-card"
+            color_type: "blank-card"

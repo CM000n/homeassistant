@@ -12,7 +12,7 @@ powercalc:
   sensors:
     - name: "Energie Küche Sonos"
       unique_id: "80f965a2-2a2c-11ee-be56-0242ac120002"
-      entity_id: "media_player.kueche"
+      entity_id: "media_player.kuche"
       manufacturer: "sonos"
       model: "one"
     - name: "Energie Wohnzimmer Sonos"

@@ -936,7 +936,7 @@ views:
               entities:
                 - entity_id: "media_player.wohnzimmer"
                   name: "Sonos Wohnzimmer"
-                - entity_id: "media_player.kueche"
+                - entity_id: "media_player.kuche"
                   name: "Sonos Küche"
                 - entity_id: "media_player.bad"
                   name: "Sonos Bad"
@@ -945,7 +945,7 @@ views:
                 - entity_id: "media_player.schlafzimmer"
                   name: "Sonos Schlafzimmer"
           - name: "Chromecast"
-            entity: "media_player.android_tv_192_168_178_9"
+            entity: "media_player.chromecast"
             type: "custom:mini-media-player"
             icon: "mdi:cast"
             artwork: "material"
@@ -1040,7 +1040,7 @@ views:
         square: false
         cards:
           - name: "Sonos"
-            entity: "media_player.kueche"
+            entity: "media_player.kuche"
             type: "custom:mini-media-player"
             icon: "mdi:speaker"
             artwork: "material"
@@ -1054,7 +1054,7 @@ views:
               entities:
                 - entity_id: "media_player.wohnzimmer"
                   name: "Sonos Wohnzimmer"
-                - entity_id: "media_player.kueche"
+                - entity_id: "media_player.kuche"
                   name: "Sonos Küche"
                 - entity_id: "media_player.bad"
                   name: "Sonos Bad"
@@ -1142,7 +1142,7 @@ views:
               entities:
                 - entity_id: "media_player.wohnzimmer"
                   name: "Sonos Wohnzimmer"
-                - entity_id: "media_player.kueche"
+                - entity_id: "media_player.kuche"
                   name: "Sonos Küche"
                 - entity_id: "media_player.bad"
                   name: "Sonos Bad"
@@ -1277,7 +1277,7 @@ views:
               entities:
                 - entity_id: "media_player.wohnzimmer"
                   name: "Sonos Wohnzimmer"
-                - entity_id: "media_player.kueche"
+                - entity_id: "media_player.kuche"
                   name: "Sonos Küche"
                 - entity_id: "media_player.bad"
                   name: "Sonos Bad"
@@ -1365,7 +1365,7 @@ views:
               entities:
                 - entity_id: "media_player.wohnzimmer"
                   name: "Sonos Wohnzimmer"
-                - entity_id: "media_player.kueche"
+                - entity_id: "media_player.kuche"
                   name: "Sonos Küche"
                 - entity_id: "media_player.bad"
                   name: "Sonos Bad"

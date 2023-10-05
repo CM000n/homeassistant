@@ -58,6 +58,8 @@ lovelace:
       type: "module"
     - url: "/hacsfiles/mini-media-player/mini-media-player-bundle.js"
       type: "module"
+    - url: "/hacsfiles/ha-floorplan/floorplan.js"
+      type: "module"
   dashboards:
     lovelace-rounded:
       mode: "yaml"

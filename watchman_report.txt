@@ -2,18 +2,14 @@
 
 -== Congratulations, all 19 services from your config are available!
 
--== Missing 6 entity(ies) from 191 found in your config:
+-== Missing 2 entity(ies) from 190 found in your config:
 +----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
 | Entity ID                                                                        | State   | Location                                                     |
 +----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
-| sensor.steckdose_wohnzimmer_power_consumption                                    | missing | automations.yaml:243                                         |
-| media_player.kuche                                                              | missing | dashboard/rounded.yaml:939,1043,1057,1145,1280,1368          |
-| media_player.chromecast                                            | missing | dashboard/rounded.yaml:948                                   |
-| light.wohnzimmer_stehlampe_links                                                 | missing | integrations/ltss.yaml:35                                    |
-| sensor.buro_tuer_stromverbrauch_jahrlich                                         | missing | integrations/powercalc.yaml:76                               |
+| light.wohnzimmer_stehlampe_links                                                 | missing | integrations/recorder.yaml:37                                |
 | device_tracker.dm_pf2l2j0l                                                       | missing | integrations/sensors.yaml:184,191                            |
 +----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
 
--== Report created on 01 Oct 2023 13:57:38
--== Parsed 47 files in 0.21s., ignored 0 files 
--== Generated in: 0.00s. Validated in: 0.00s.
+-== Report created on 05 Oct 2023 04:00:00
+-== Parsed 47 files in 0.26s., ignored 0 files 
+-== Generated in: 0.03s. Validated in: 0.00s.

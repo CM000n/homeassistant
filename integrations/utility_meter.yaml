@@ -37,7 +37,7 @@ utility_meter:
     delta_values: false
     cycle: "yearly"
   nous_a1t_smartplug_2_yearly_energy:
-    unique_id: "4a512f70-f86e-11ed-b67e-0242ac120002"
+    unique_id: "1cb0c875-5a0b-4b9e-80f5-7ffa164c9f7a"
     source: "sensor.nous_a1t_smartplug_2_daily_energy"
     name: "Nous A1T Smartplug 2 Stromverbrauch jährlich"
     delta_values: false

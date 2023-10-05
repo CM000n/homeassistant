@@ -81,7 +81,7 @@ light:
               {% set data.numbers = [state_attr(s, "brightness")] + data.numbers %}
             {% endif %}
           {% endfor %}
-          {{data.numbers|average|round(0)}}
+          {{data.numbers|average(0)|round(0)}}
         value_template: >
           {%- set data = namespace(res="off") -%}
           {% for s in state_attr('group.light_group_living_room', 'entity_id') %}
@@ -97,7 +97,7 @@ light:
               {% set data.numbers = [state_attr(s, "color_temp")] + data.numbers %}
             {% endif %}
           {% endfor %}
-          {{data.numbers|average|round(0)}}
+          {{data.numbers|average(155)|round(0)}}
         turn_on:
           - service: "light.turn_on"
             data:
@@ -130,7 +130,7 @@ light:
               {% set data.numbers = [state_attr(s, "brightness")] + data.numbers %}
             {% endif %}
           {% endfor %}
-          {{data.numbers|average|round(0)}}
+          {{data.numbers|average(0)|round(0)}}
         value_template: >
           {%- set data = namespace(res="off") -%}
           {% for s in state_attr('group.light_group_kitchen', 'entity_id') %}
@@ -146,7 +146,7 @@ light:
               {% set data.numbers = [state_attr(s, "color_temp")] + data.numbers %}
             {% endif %}
           {% endfor %}
-          {{data.numbers|average|round(0)}}
+          {{data.numbers|average(155)|round(0)}}
         turn_on:
           - service: "light.turn_on"
             data:
@@ -179,7 +179,7 @@ light:
               {% set data.numbers = [state_attr(s, "brightness")] + data.numbers %}
             {% endif %}
           {% endfor %}
-          {{data.numbers|average|round(0)}}
+          {{data.numbers|average(0)|round(0)}}
         value_template: >
           {%- set data = namespace(res="off") -%}
           {% for s in state_attr('group.light_group_bed_room', 'entity_id') %}
@@ -195,7 +195,7 @@ light:
               {% set data.numbers = [state_attr(s, "color_temp")] + data.numbers %}
             {% endif %}
           {% endfor %}
-          {{data.numbers|average|round(0)}}
+          {{data.numbers|average(155)|round(0)}}
         turn_on:
           - service: "light.turn_on"
             data:
@@ -228,7 +228,7 @@ light:
               {% set data.numbers = [state_attr(s, "brightness")] + data.numbers %}
             {% endif %}
           {% endfor %}
-          {{data.numbers|average|round(0)}}
+          {{data.numbers|average(0)|round(0)}}
         value_template: >
           {%- set data = namespace(res="off") -%}
           {% for s in state_attr('group.light_group_child_room', 'entity_id') %}
@@ -244,7 +244,7 @@ light:
               {% set data.numbers = [state_attr(s, "color_temp")] + data.numbers %}
             {% endif %}
           {% endfor %}
-          {{data.numbers|average|round(0)}}
+          {{data.numbers|average(155)|round(0)}}
         turn_on:
           - service: "light.turn_on"
             data:
@@ -277,7 +277,7 @@ light:
               {% set data.numbers = [state_attr(s, "brightness")] + data.numbers %}
             {% endif %}
           {% endfor %}
-          {{data.numbers|average|round(0)}}
+          {{data.numbers|average(0)|round(0)}}
         value_template: >
           {%- set data = namespace(res="off") -%}
           {% for s in state_attr('group.light_group_office', 'entity_id') %}
@@ -293,7 +293,7 @@ light:
               {% set data.numbers = [state_attr(s, "color_temp")] + data.numbers %}
             {% endif %}
           {% endfor %}
-          {{data.numbers|average|round(0)}}
+          {{data.numbers|average(155)|round(0)}}
         turn_on:
           - service: "light.turn_on"
             data:

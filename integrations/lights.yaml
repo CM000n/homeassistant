@@ -4,22 +4,26 @@ light:
   # https://home-assistant.io/components/light.group/
   - platform: "group"
     name: "Deckenlampen Flur"
+    unique_id: "afcf7f7e-b51d-4057-b877-ab5aa359bba1"
     entities:
       - "light.flur_deckenlampe_1"
       - "light.flur_deckenlampe_2"
   - platform: "group"
     name: "Wandlampen Treppenhaus"
+    unique_id: "4a91ac20-7375-4787-851d-6e04193f35b7"
     entities:
       - "light.treppenhaus_wandlampe_1"
       - "light.treppenhaus_wandlampe_2"
       - "light.treppenhaus_wandlampe_3"
   - platform: "group"
     name: "Nähtisch"
+    unique_id: "0f025e30-de4f-4ac6-8955-eb9c1c77f2be"
     entities:
       - "light.nahtisch_decke"
       - "light.nahtisch_wand"
   - platform: "group"
     name: "gruppe_wohnzimmer"
+    unique_id: "857fa86a-8106-42c4-a1b6-c8ebf2456865"
     entities:
       - "light.wohnzimmer_deckenleuchte"
       - "light.wohnzimmer_lightstrip"
@@ -27,27 +31,32 @@ light:
       - "light.wohnzimmer_weihnachtsstern"
   - platform: "group"
     name: "gruppe_kuche"
+    unique_id: "0a6e1013-e96f-4814-a191-df704b5dbbd3"
     entities:
       - "light.kuche_esstischlampe"
       - "light.kuche_herdlampe"
   - platform: "group"
     name: "gruppe_schlafzimmer"
+    unique_id: "6fcd71f5-6622-46e8-80f1-3f0c51fafa15"
     entities:
       - "light.schlafzimmer_deckenleuchte"
       - "light.schlafzimmer_wickeltisch"
       - "light.schlafzimmer_nachttisch_simon"
   - platform: "group"
     name: "gruppe_kinderzimmer"
+    unique_id: "db6c70fc-0811-4470-8f37-f7844ce79da7"
     entities:
       - "light.kinderzimmer_deckenleuchte"
       - "light.kinderzimmer_nachttisch"
   - platform: "group"
     name: "gruppe_bad"
+    unique_id: "966e1ffa-0ac1-43c9-bfde-67189be58cf7"
     entities:
       - "light.shelly_badspiegel"
       - "light.shelly_deckenlampe_bad"
   - platform: "group"
     name: "gruppe_buro"
+    unique_id: "9f0ff60a-db37-41a4-9b51-f1133ce3ca79"
     entities:
       - "light.buro_deckenleuchte"
       - "light.buro_schreibtisch"
@@ -55,12 +64,14 @@ light:
       - "light.nahtisch_decke"
   - platform: "group"
     name: "gruppe_flur"
+    unique_id: "4eb78a1e-1583-4209-9d6b-724cd902d884"
     entities:
       - "light.deckenlampen_flur"
       - "light.wandlampen_treppenhaus"
       - "light.eingangstur_decke"
   - platform: "group"
     name: "gruppe_alle"
+    unique_id: "3699c329-789c-485f-94fa-ca9dc991cc34"
     entities:
       - "light.gruppe_wohnzimmer"
       - "light.gruppe_kuche"
@@ -74,6 +85,7 @@ light:
     lights:
       active_light_group_living_room:
         friendly_name: "Aktive Lampen Wohnzimmer"
+        unique_id: "dde917da-cff3-46d2-98f0-27b2d2b8e042"
         level_template: >
           {% set data = namespace(numbers=[]) %}
           {% for s in state_attr('group.light_group_living_room', 'entity_id') %}
@@ -123,6 +135,7 @@ light:
     lights:
       active_light_group_kitchen:
         friendly_name: "Aktive Lampen Küche"
+        unique_id: "32f59805-863b-42c7-986e-713de8b1b429"
         level_template: >
           {% set data = namespace(numbers=[]) %}
           {% for s in state_attr('group.light_group_kitchen', 'entity_id') %}
@@ -172,6 +185,7 @@ light:
     lights:
       active_light_group_bed_room:
         friendly_name: "Aktive Lampen Schlafzimmer"
+        unique_id: "b7068506-61a7-4b08-b066-286b7b23d1f0"
         level_template: >
           {% set data = namespace(numbers=[]) %}
           {% for s in state_attr('group.light_group_bed_room', 'entity_id') %}
@@ -221,6 +235,7 @@ light:
     lights:
       active_light_group_child_room:
         friendly_name: "Aktive Lampen Kinderzimmer"
+        unique_id: "009b093f-c3b0-476b-97aa-d50738bed140"
         level_template: >
           {% set data = namespace(numbers=[]) %}
           {% for s in state_attr('group.light_group_child_room', 'entity_id') %}
@@ -270,6 +285,7 @@ light:
     lights:
       active_light_group_office:
         friendly_name: "Aktive Lampen Büro"
+        unique_id: "115fc981-c6ba-413e-ad71-45b38dfb9f87"
         level_template: >
           {% set data = namespace(numbers=[]) %}
           {% for s in state_attr('group.light_group_office', 'entity_id') %}

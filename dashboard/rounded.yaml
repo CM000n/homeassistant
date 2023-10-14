@@ -1133,6 +1133,18 @@ views:
                   entity: "light.active_light_group_bed_room"
                   <<: *temperature_slider_template
       - type: "grid"
+        columns: 2
+        square: false
+        cards:
+          - name: "Luftbefeuchter"
+            entity: "humidifier.luftbefeuchter"
+            icon: "mdi:air-humidifier"
+            label: "[[[ return states['humidifier.luftbefeuchter'].state ]]]"
+            tap_action:
+              action: "more-info"
+              haptic: "medium"
+            <<: *appliances_button_template
+      - type: "grid"
         columns: 1
         square: false
         cards:

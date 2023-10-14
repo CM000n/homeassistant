@@ -1,15 +1,22 @@
 -== Watchman Report ==- 
 
--== Congratulations, all 19 services from your config are available!
+-== Missing 1 service(s) from 20 found in your config:
++----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
+| Service ID                                                                       | State   | Location                                                     |
++----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
+| floorplan.style_set                                                              | missing | dashboard/rounded.yaml:1737,1748,1759                        |
++----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
 
--== Missing 2 entity(ies) from 190 found in your config:
+-== Missing 4 entity(ies) from 196 found in your config:
 +----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
 | Entity ID                                                                        | State   | Location                                                     |
 +----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
+| sensor.netatmo_strawberry_land_indoor_temperature                                | missing | dashboard/rounded.yaml:1734                                  |
+| sensor.thermal_comfort_netatmo_bedroom_absolutehumidity                          | missing | dashboard/rounded.yaml:1743                                  |
 | light.wohnzimmer_stehlampe_links                                                 | missing | integrations/recorder.yaml:37                                |
 | device_tracker.dm_pf2l2j0l                                                       | missing | integrations/sensors.yaml:184,191                            |
 +----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
 
--== Report created on 05 Oct 2023 04:00:00
--== Parsed 47 files in 0.26s., ignored 0 files 
--== Generated in: 0.03s. Validated in: 0.00s.
+-== Report created on 14 Oct 2023 04:00:00
+-== Parsed 49 files in 0.25s., ignored 0 files 
+-== Generated in: 0.04s. Validated in: 0.00s.

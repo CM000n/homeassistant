@@ -10,6 +10,7 @@ recorder:
       - "binary_sensor"
       - "climate"
       - "water_heater"
+      - "humidifier"
     entities:
       # Persons
       - "person.simon"
@@ -34,7 +35,6 @@ recorder:
       - "light.wohnzimmer_deckenleuchte"
       - "light.wohnzimmer_lightstrip"
       - "light.wohnzimmer_stehlampe_rechts"
-      - "light.wohnzimmer_stehlampe_links"
       # Power sockets
       - "switch.steckdose_ankleide"
       - "switch.steckdose_spulmaschine"

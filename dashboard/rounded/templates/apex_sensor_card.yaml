@@ -1,0 +1,9 @@
+apex_sensor_card:
+  card:
+    type: "custom:apexcharts-card"
+    graph_span: 24h
+    span:
+      start: day
+    series:
+      - entity: "[[entity]]"
+        name: "[[name]]"

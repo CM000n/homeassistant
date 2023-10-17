@@ -29,12 +29,14 @@ cards:
           - name: "Waschmaschine"
           - entity: "binary_sensor.waschmaschine"
           - icon: "mdi:washing-machine"
+          - label: "[[[ return states['binary_sensor.waschmaschine'].state ]]]"
       - type: "custom:decluttering-card"
         template: "appliances_button_card"
         variables:
           - name: "Trockner"
           - entity: "binary_sensor.trockner"
           - icon: "mdi:tumble-dryer"
+          - label: "[[[ return states['binary_sensor.trockner'].state ]]]"
   - type: "grid"
     columns: 2
     square: false

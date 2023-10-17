@@ -1,0 +1,66 @@
+path: "bath"
+icon: "mdi:faucet"
+title: ""
+visible:
+  - user: "3fb4deff931c4631b84d2584e5f2e493"
+  - user: "e7bec22aa70e4762ac231811f5997452"
+theme: "Rounded"
+type: "masonry"
+subview: true
+back_path: "/lovelace-rounded/default_view"
+badges: []
+cards:
+  - type: "custom:decluttering-card"
+    template: "title_card"
+    variables:
+      - name: "Badezimmer"
+  - type: "custom:decluttering-card"
+    template: "sensor_card"
+    variables:
+      - name: "Temperatur"
+      - entity: "sensor.deckenlampe_bad_temperatur_offset_gefiltert"
+  - type: "grid"
+    columns: 2
+    square: false
+    cards:
+      - type: "custom:decluttering-card"
+        template: "light_button_bath_card"
+        variables:
+          - name: "Deckenlampe"
+          - entity: "light.shelly_deckenlampe_bad"
+          - icon: "mdi:light-recessed"
+      - type: "custom:decluttering-card"
+        template: "light_button_bath_card"
+        variables:
+          - name: "Spiegellampe"
+          - entity: "light.shelly_badspiegel"
+          - icon: "mdi:spotlight"
+  - type: "grid"
+    columns: 1
+    square: false
+    cards:
+      - name: "Sonos"
+        entity: "media_player.bad"
+        type: "custom:mini-media-player"
+        icon: "mdi:speaker"
+        artwork: "material"
+        toggle_power: false
+        idle_view:
+          when_idle: true
+          when_paused: true
+        speaker_group:
+          platform: "sonos"
+          show_group_count: true
+          entities:
+            - entity_id: "media_player.wohnzimmer"
+              name: "Sonos Wohnzimmer"
+            - entity_id: "media_player.kuche"
+              name: "Sonos Küche"
+            - entity_id: "media_player.bad"
+              name: "Sonos Bad"
+            - entity_id: "media_player.buro"
+              name: "Sonos Büro"
+            - entity_id: "media_player.schlafzimmer"
+              name: "Sonos Schlafzimmer"
+  - type: "custom:button-card"
+    color_type: "blank-card"

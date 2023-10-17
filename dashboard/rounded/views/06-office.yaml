@@ -1,0 +1,82 @@
+path: "office"
+icon: "mdi:chair-rolling"
+title: ""
+visible:
+  - user: "3fb4deff931c4631b84d2584e5f2e493"
+  - user: "e7bec22aa70e4762ac231811f5997452"
+theme: "Rounded"
+type: "masonry"
+subview: true
+back_path: "/lovelace-rounded/default_view"
+badges: []
+cards:
+  - type: "custom:decluttering-card"
+    template: "title_card"
+    variables:
+      - name: "Büro"
+  - type: "custom:decluttering-card"
+    template: "sensor_card"
+    variables:
+      - name: "Temperatur"
+      - entity: "sensor.awtrix_ulanzi_tc001_temperature"
+  - type: "grid"
+    columns: 1
+    square: false
+    cards:
+      - type: "grid"
+        columns: 2
+        square: false
+        cards:
+          - type: "custom:decluttering-card"
+            template: "light_button_card"
+            variables:
+              - name: "Deckenlampe"
+              - entity: "light.buro_deckenleuchte"
+              - icon: "mdi:globe-light"
+          - type: "custom:decluttering-card"
+            template: "light_button_card"
+            variables:
+              - name: "Schreibtisch"
+              - entity: "light.buro_schreibtisch"
+              - icon: "mdi:lamp"
+      - type: "grid"
+        columns: 1
+        square: false
+        cards:
+          - type: "custom:decluttering-card"
+            template: "light_brightness_slider"
+            variables:
+              - entity: "light.active_light_group_office"
+          - type: "custom:decluttering-card"
+            template: "light_temperature_slider"
+            variables:
+              - entity: "light.active_light_group_office"
+  - type: "grid"
+    columns: 1
+    square: false
+    cards:
+      - name: "Sonos"
+        entity: "media_player.buro"
+        type: "custom:mini-media-player"
+        icon: "mdi:speaker"
+        artwork: "material"
+        toggle_power: false
+        idle_view:
+          when_idle: true
+          when_paused: true
+        speaker_group:
+          platform: "sonos"
+          show_group_count: true
+          entities:
+            - entity_id: "media_player.wohnzimmer"
+              name: "Sonos Wohnzimmer"
+            - entity_id: "media_player.kuche"
+              name: "Sonos Küche"
+            - entity_id: "media_player.bad"
+              name: "Sonos Bad"
+            - entity_id: "media_player.buro"
+              name: "Sonos Büro"
+            - entity_id: "media_player.schlafzimmer"
+              name: "Sonos Schlafzimmer"
+  - type: "custom:button-card"
+    color_type: "blank-card"

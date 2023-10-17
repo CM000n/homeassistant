@@ -1,7 +1,7 @@
-sensor_swipe_card:
+home_sensors_swipe_card:
   card:
-    card_width: "calc(100% - 48px)"
     type: "custom:swipe-card"
+    card_width: "calc(100% - 48px)"
     start_card: 3
     reset_after: 15
     parameters:

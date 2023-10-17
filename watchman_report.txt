@@ -2,15 +2,14 @@
 
 -== Congratulations, all 19 services from your config are available!
 
--== Missing 3 entity(ies) from 191 found in your config:
+-== Missing 2 entity(ies) from 190 found in your config:
 +----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
 | Entity ID                                                                        | State   | Location                                                     |
 +----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
 | sensor.shelly_1pm_buero_tuer_power_mean_over_last_30_minutes                     | unknown | automations.yaml:102                                         |
-| light.wohnzimmer_stehlampe_links                                                 | missing | integrations/recorder.yaml:37                                |
 | device_tracker.dm_pf2l2j0l                                                       | missing | integrations/sensors.yaml:184,191                            |
 +----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
 
--== Report created on 16 Oct 2023 04:00:00
--== Parsed 53 files in 0.25s., ignored 0 files 
--== Generated in: 0.00s. Validated in: 0.00s.
+-== Report created on 17 Oct 2023 04:00:00
+-== Parsed 64 files in 0.41s., ignored 0 files 
+-== Generated in: 0.04s. Validated in: 0.00s.

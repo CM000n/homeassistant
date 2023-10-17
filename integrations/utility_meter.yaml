@@ -3,13 +3,13 @@ utility_meter:
   gas_consumption_vicare_daily:
     unique_id: "1699d09ef40547e482919e4722e22968"
     source: "sensor.viessman_gasverbrauch_kwh"
-    name: "Gasverbrauch kWh"
+    name: "Gasverbrauch kWh täglich"
     delta_values: false
     cycle: "daily"
   gas_consumption_vicare_yearly:
     unique_id: "3c5954b30be3456781be40a73f8b5285"
     source: "sensor.viessman_gasverbrauch_kwh"
-    name: "Gasverbrauch kWh"
+    name: "Gasverbrauch kWh jährlich"
     delta_values: false
     cycle: "yearly"
   shelly_1pm_buero_ecke_yearly_energy:
@@ -36,12 +36,6 @@ utility_meter:
     name: "Nous A1T Smartplug 1 Stromverbrauch jährlich"
     delta_values: false
     cycle: "yearly"
-  nous_a1t_smartplug_2_yearly_energy:
-    unique_id: "1cb0c875-5a0b-4b9e-80f5-7ffa164c9f7a"
-    source: "sensor.nous_a1t_smartplug_2_daily_energy"
-    name: "Nous A1T Smartplug 2 Stromverbrauch jährlich"
-    delta_values: false
-    cycle: "yearly"
   nous_a1t_smartplug_3_yearly_energy:
     unique_id: "501e4bea-f86e-11ed-b67e-0242ac120002"
     source: "sensor.nous_a1t_smartplug_3_daily_energy"
@@ -52,5 +46,11 @@ utility_meter:
     unique_id: "ee8597b2-4a89-11ee-be56-0242ac120002"
     source: "sensor.nous_a1t_smartplug_4_daily_energy"
     name: "Nous A1T Smartplug 4 Stromverbrauch jährlich"
+    delta_values: false
+    cycle: "yearly"
+  nous_a1t_smartplug_bpplant_yearly_energy:
+    unique_id: "a4688ab3-bda1-4fe2-9fa8-1843d905197f"
+    source: "sensor.nous_a1t_smartplug_bpplant_daily_energy"
+    name: "Nous A1T Smartplug Balkonkraftwerk Stromverbrauch jährlich"
     delta_values: false
     cycle: "yearly"

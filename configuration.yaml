@@ -61,13 +61,13 @@ lovelace:
     - url: "/hacsfiles/decluttering-card/decluttering-card.js"
       type: "module"
   dashboards:
-    lovelace-rounded:
+    lovelace-rounded-old-config:
       mode: "yaml"
       title: "Rounded"
       icon: "mdi:square-rounded-outline"
       show_in_sidebar: true
       filename: "dashboard/rounded.yaml"
-    lovelace-rounded-split:
+    lovelace-rounded:
       mode: "yaml"
       title: "Rounded"
       icon: "mdi:square-rounded-outline"

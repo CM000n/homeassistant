@@ -1,0 +1,45 @@
+path: "other"
+icon: "mdi:floor-plan"
+title: ""
+visible:
+  - user: "3fb4deff931c4631b84d2584e5f2e493"
+  - user: "e7bec22aa70e4762ac231811f5997452"
+theme: "Rounded"
+type: "masonry"
+subview: true
+back_path: "/lovelace-rounded/default_view"
+badges: []
+cards:
+  - type: "custom:decluttering-card"
+    template: "title_card"
+    variables:
+      - name: "Sonstiges"
+  - type: "custom:decluttering-card"
+    template: "sensor_card"
+    variables:
+      - name: "Temperatur"
+      - entity: "sensor.eingangstur_bewegungsmelder_temperature"
+  - type: "grid"
+    columns: 2
+    square: false
+    cards:
+      - type: "custom:decluttering-card"
+        template: "light_button_card"
+        variables:
+          - name: "Deckenlampen Flur"
+          - entity: "light.deckenlampen_flur"
+          - icon: "mdi:ceiling-light-multiple"
+      - type: "custom:decluttering-card"
+        template: "light_button_card"
+        variables:
+          - name: "Treppenhaus"
+          - entity: "light.wandlampen_treppenhaus"
+          - icon: "mdi:track-light"
+      - type: "custom:decluttering-card"
+        template: "light_button_card"
+        variables:
+          - name: "Eingangstür"
+          - entity: "light.eingangstur_decke"
+          - icon: "mdi:light-recessed"
+  - type: "custom:button-card"
+    color_type: "blank-card"

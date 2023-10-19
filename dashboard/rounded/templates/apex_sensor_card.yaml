@@ -26,7 +26,7 @@ apex_sensor_card:
         fontWeight: 300
         position: "top"
         horizontalAlign: "left"
-        floating: false
+        floating: true
         markers:
           width: 26
           height: 23

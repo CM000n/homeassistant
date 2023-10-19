@@ -28,13 +28,13 @@ cards:
         square: false
         cards:
           - type: "custom:decluttering-card"
-            template: "light_button_card"
+            template: "light_button_w_slider"
             variables:
               - name: "Tischlampe"
               - entity: "light.kuche_esstischlampe"
               - icon: "mdi:ceiling-light"
           - type: "custom:decluttering-card"
-            template: "light_button_card"
+            template: "light_button_w_slider"
             variables:
               - name: "Herdlampe"
               - entity: "light.kuche_herdlampe"
@@ -44,11 +44,11 @@ cards:
         square: false
         cards:
           - type: "custom:decluttering-card"
-            template: "light_brightness_slider"
+            template: "light_slider_brightness"
             variables:
               - entity: "light.active_light_group_kitchen"
           - type: "custom:decluttering-card"
-            template: "light_temperature_slider"
+            template: "light_slider_temperature"
             variables:
               - entity: "light.active_light_group_kitchen"
   - type: "grid"
@@ -56,7 +56,7 @@ cards:
     square: false
     cards:
       - type: "custom:decluttering-card"
-        template: "appliances_button_card"
+        template: "appliances_button"
         variables:
           - name: "Spülmaschine"
           - entity: "binary_sensor.spuehlmaschine"

@@ -28,13 +28,13 @@ cards:
         square: false
         cards:
           - type: "custom:decluttering-card"
-            template: "light_button_card"
+            template: "light_button_w_slider"
             variables:
               - name: "Deckenlampe"
               - entity: "light.buro_deckenleuchte"
               - icon: "mdi:globe-light"
           - type: "custom:decluttering-card"
-            template: "light_button_card"
+            template: "light_button_w_slider"
             variables:
               - name: "Schreibtisch"
               - entity: "light.buro_schreibtisch"
@@ -44,11 +44,11 @@ cards:
         square: false
         cards:
           - type: "custom:decluttering-card"
-            template: "light_brightness_slider"
+            template: "light_slider_brightness"
             variables:
               - entity: "light.active_light_group_office"
           - type: "custom:decluttering-card"
-            template: "light_temperature_slider"
+            template: "light_slider_temperature"
             variables:
               - entity: "light.active_light_group_office"
   - type: "grid"

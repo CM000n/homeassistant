@@ -1,4 +1,4 @@
-appliances_button_card:
+appliances_button:
   card:
     type: "custom:button-card"
     name: "[[name]]"

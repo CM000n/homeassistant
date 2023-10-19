@@ -28,25 +28,25 @@ cards:
         square: false
         cards:
           - type: "custom:decluttering-card"
-            template: "light_button_card"
+            template: "light_button_w_slider"
             variables:
               - name: "Deckenlampe"
               - entity: "light.wohnzimmer_deckenleuchte"
               - icon: "mdi:globe-light"
           - type: "custom:decluttering-card"
-            template: "light_button_card"
+            template: "light_button_w_slider"
             variables:
               - name: "Lightstrip"
               - entity: "light.wohnzimmer_lightstrip"
               - icon: "mdi:led-strip-variant"
           - type: "custom:decluttering-card"
-            template: "light_button_card"
+            template: "light_button_w_slider"
             variables:
               - name: "Stehlampe"
               - entity: "light.wohnzimmer_stehlampe_rechts"
               - icon: "mdi:floor-lamp"
           - type: "custom:decluttering-card"
-            template: "light_button_card"
+            template: "light_button_w_slider"
             variables:
               - name: "Weihnachtsstern"
               - entity: "light.wohnzimmer_weihnachtsstern"
@@ -56,11 +56,11 @@ cards:
         square: false
         cards:
           - type: "custom:decluttering-card"
-            template: "light_brightness_slider"
+            template: "light_slider_brightness"
             variables:
               - entity: "light.active_light_group_living_room"
           - type: "custom:decluttering-card"
-            template: "light_temperature_slider"
+            template: "light_slider_temperature"
             variables:
               - entity: "light.active_light_group_living_room"
   - type: "grid"
@@ -68,7 +68,7 @@ cards:
     square: false
     cards:
       - type: "custom:decluttering-card"
-        template: "appliances_button_card"
+        template: "appliances_button"
         variables:
           - name: "Ventilator"
           - entity: "fan.wohnzimmer"

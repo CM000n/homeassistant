@@ -1,4 +1,4 @@
-light_button_bath_card:
+light_button_wo_slider:
   card:
     type: "custom:button-card"
     name: "[[name]]"

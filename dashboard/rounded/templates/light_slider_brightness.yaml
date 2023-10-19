@@ -1,4 +1,4 @@
-light_brightness_slider:
+light_slider_brightness:
   card:
     type: "conditional"
     conditions:

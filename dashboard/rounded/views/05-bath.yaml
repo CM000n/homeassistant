@@ -24,13 +24,13 @@ cards:
     square: false
     cards:
       - type: "custom:decluttering-card"
-        template: "light_button_bath_card"
+        template: "light_button_wo_slider"
         variables:
           - name: "Deckenlampe"
           - entity: "light.shelly_deckenlampe_bad"
           - icon: "mdi:light-recessed"
       - type: "custom:decluttering-card"
-        template: "light_button_bath_card"
+        template: "light_button_wo_slider"
         variables:
           - name: "Spiegellampe"
           - entity: "light.shelly_badspiegel"

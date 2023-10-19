@@ -1,4 +1,4 @@
-light_temperature_slider:
+light_slider_temperature:
   card:
     type: "conditional"
     conditions:

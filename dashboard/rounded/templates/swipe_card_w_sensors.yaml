@@ -1,12 +1,8 @@
-#name_1: "Leistung"
-#entity_1: "sensor.esp_01s_stromzaehler_active_power"
-#name_2: "Verbrauch"
-#entity_2: "sensor.stromzahler_stromverbrauch_jahrlich"
-home_sensors_swipe_card:
+swipe_card_w_sensors:
   card:
     type: "custom:swipe-card"
     card_width: "calc(100% - 48px)"
-    start_card: 4
+    start_card: 5
     reset_after: 15
     parameters:
       centeredSlides: true
@@ -44,7 +40,7 @@ home_sensors_swipe_card:
             fontWeight: 300
             position: "top"
             horizontalAlign: "left"
-            floating: false
+            floating: true
             markers:
               width: 26
               height: 23
@@ -68,9 +64,9 @@ home_sensors_swipe_card:
           extend_to: false
         series:
           - entity: "sensor.stromzahler_stromverbrauch_taglich"
-            name: "Gesamtenergie: Netz"
+            name: "Energie: Netz"
             float_precision: 1
-            color: "rgb(128, 73, 144)"
+            color: "var(--purple)"
             type: "column"
             group_by:
               func: "max"
@@ -78,7 +74,7 @@ home_sensors_swipe_card:
           - entity: "sensor.nous_a1t_smartplug_bpplant_daily_energy"
             name: "Solar"
             float_precision: 1
-            color: "rgb(167, 137, 42)"
+            color: "var(--yellow)"
             type: "column"
             invert: true
             group_by:
@@ -93,11 +89,7 @@ home_sensors_swipe_card:
           show: false
         show:
           loading: false
-        yaxis:
-          - id: "power"
-            show: false
-          - id: "energy"
-            show: false
+        stacked: true
         apex_config:
           tooltip:
             style:
@@ -118,7 +110,7 @@ home_sensors_swipe_card:
             fontWeight: 300
             position: "top"
             horizontalAlign: "left"
-            floating: false
+            floating: true
             markers:
               width: 26
               height: 23
@@ -129,7 +121,7 @@ home_sensors_swipe_card:
                   }
                 - |-
                   EVAL:() => {
-                    return `<ha-icon icon="mdi:counter" style="--mdc-icon-size: 23px;"></ha-icon>`
+                    return `<ha-icon icon="mdi:solar-power" style="--mdc-icon-size: 23px;"></ha-icon>`
                   }
               fillColors:
                 - "none"
@@ -141,21 +133,20 @@ home_sensors_swipe_card:
           fill_raw: "last"
           extend_to: false
         series:
-          - entity: "sensor.esp_01s_stromzaehler_active_power"
-            name: "Netz: Leistung"
-            float_precision: 0
-            color: "rgb(210, 150, 226)"
-            type: "line"
-            yaxis_id: "power"
-            group_by:
-              func: "avg"
-              duration: "1min"
           - entity: "sensor.stromzahler_stromverbrauch_stundlich"
-            name: "Stündlich"
+            name: "Energie: Netz"
             float_precision: 2
-            color: "rgb(128, 73, 144)"
+            color: "var(--purple)"
             type: "column"
-            yaxis_id: "energy"
+            group_by:
+              func: "max"
+              duration: "1h"
+          - entity: "sensor.nous_a1t_smartplug_balkonkraftwerk_stromverbrauch_stundlich"
+            name: "Solar"
+            float_precision: 2
+            color: "var(--yellow)"
+            type: "column"
+            invert: true
             group_by:
               func: "max"
               duration: "1h"
@@ -168,11 +159,6 @@ home_sensors_swipe_card:
           show: false
         show:
           loading: false
-        yaxis:
-          - id: "power"
-            show: false
-          - id: "energy"
-            show: false
         apex_config:
           tooltip:
             style:
@@ -193,7 +179,73 @@ home_sensors_swipe_card:
             fontWeight: 300
             position: "top"
             horizontalAlign: "left"
-            floating: false
+            floating: true
+            markers:
+              width: 26
+              height: 23
+              customHTML:
+                - |-
+                  EVAL:() => {
+                    return `<ha-icon icon="mdi:transmission-tower-import" style="--mdc-icon-size: 23px;"></ha-icon>`
+                  }
+              fillColors:
+                - "none"
+          fill:
+            type: "gradient"
+            gradient:
+              type: "vertical"
+              shadeIntensity: 0.2
+              opacityFrom: 0.7
+              opacityTo: 0.1
+              stops:
+                - 0
+                - 90
+                - 100
+          stroke:
+            curve: "smooth"
+            width: 3
+        all_series_config:
+          type: "area"
+          fill_raw: "last"
+          extend_to: false
+          group_by:
+            func: "avg"
+            duration: "1min"
+        series:
+          - entity: "sensor.esp_01s_stromzaehler_active_power"
+            name: "Leistung: Netz"
+            float_precision: 0
+            color: "var(--purple)"
+      - type: "custom:apexcharts-card"
+        cache: true
+        layout: "minimal"
+        graph_span: "24h"
+        update_interval: "1min"
+        header:
+          show: false
+        show:
+          loading: false
+        apex_config:
+          tooltip:
+            style:
+              fontSize: "14px"
+            x:
+              show: true
+              formatter: |
+                EVAL:(timestamp) => {
+                  let date = new Date(timestamp).toLocaleString('de-DE',{weekday: 'long', hour: '2-digit', minute:'2-digit'}).toString();
+                  return date.charAt(0).toUpperCase() + date.slice(1);
+                }
+          chart:
+            height: "150px"
+          legend:
+            show: true
+            showForSingleSeries: true
+            fontSize: "15px"
+            fontWeight: 300
+            position: "top"
+            horizontalAlign: "left"
+            floating: true
             markers:
               width: 26
               height: 23
@@ -202,38 +254,34 @@ home_sensors_swipe_card:
                   EVAL:() => {
                     return `<ha-icon icon="mdi:solar-power" style="--mdc-icon-size: 23px;"></ha-icon>`
                   }
-                - |-
-                  EVAL:() => {
-                    return `<ha-icon icon="mdi:counter" style="--mdc-icon-size: 23px;"></ha-icon>`
-                  }
               fillColors:
                 - "none"
-                - "none"
+          fill:
+            type: "gradient"
+            gradient:
+              type: "vertical"
+              shadeIntensity: 0.2
+              opacityFrom: 0.7
+              opacityTo: 0.1
+              stops:
+                - 0
+                - 90
+                - 100
           stroke:
             curve: "smooth"
             width: 3
         all_series_config:
+          type: "area"
           fill_raw: "last"
           extend_to: false
+          group_by:
+            func: "avg"
+            duration: "1min"
         series:
           - entity: "sensor.nous_a1t_smartplug_bpplant_power"
-            name: "Solar: Leistung"
+            name: "Leistung: Solar"
             float_precision: 0
-            color: "rgb(255, 218, 120)"
-            type: "line"
-            yaxis_id: "power"
-            group_by:
-              func: "avg"
-              duration: "1min"
-          - entity: "sensor.nous_a1t_smartplug_balkonkraftwerk_stromverbrauch_stundlich"
-            name: "Stündlich"
-            float_precision: 2
-            color: "rgb(167, 137, 42)"
-            type: "column"
-            yaxis_id: "energy"
-            group_by:
-              func: "max"
-              duration: "1h"
+            color: "var(--yellow)"
       - type: "custom:apexcharts-card"
         cache: true
         layout: "minimal"
@@ -260,7 +308,7 @@ home_sensors_swipe_card:
             fontWeight: 300
             position: "top"
             horizontalAlign: "left"
-            floating: false
+            floating: true
             markers:
               width: 26
               height: 23

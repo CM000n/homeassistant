@@ -85,6 +85,19 @@ hvac_card:
           custom_fields:
             temp:
               - color: "var(--black)"
+      - value: "auto"
+        styles:
+          card:
+            - background: "var(--red)"
+          icon:
+            - color: "var(--black)"
+          label:
+            - color: "var(--black)"
+          name:
+            - color: "var(--black)"
+          custom_fields:
+            temp:
+              - color: "var(--black)"
       - value: "cool"
         styles:
           card:

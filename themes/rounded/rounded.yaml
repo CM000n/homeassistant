@@ -121,6 +121,13 @@ Rounded:
   red-tint: "rgba(var(--red-rgb),var(--color-tint))"
   green-tint: "rgba(var(--green-rgb),var(--color-tint))"
   blue-tint: "rgba(var(--blue-rgb),var(--color-tint))"
+  # More Color tints
+  purple-tint2: "rgba(var(--purple-rgb),var(--color-tint2))"
+  yellow-tint2: "rgba(var(--yellow-rgb),var(--color-tint2))"
+  orange-tint2: "rgba(var(--orange-rgb),var(--color-tint2))"
+  red-tint2: "rgba(var(--red-rgb),var(--color-tint2))"
+  green-tint2: "rgba(var(--green-rgb),var(--color-tint2))"
+  blue-tint2: "rgba(var(--blue-rgb),var(--color-tint2))"
   # Gradients
   brightness: "linear-gradient(90deg, rgba(var(--brightness-low-rgb), 0.4) 0%, rgba(var(--brightness-high-rgb), 1) 100%)"
   brightness-tint: "linear-gradient(90deg, rgba(var(--brightness-low-rgb), 0.06) 0%, rgba(var(--brightness-high-rgb), var(--color-tint)) 100%)"
@@ -216,6 +223,7 @@ Rounded:
       contrast20: "var(--black1)"
       # Color tint transparancy
       color-tint: "0.20"
+      color-tint2: "0.40"
       # Contrast RGB variables
       contrast1-RGB: "255,255,255"
 

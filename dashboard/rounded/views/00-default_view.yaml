@@ -15,12 +15,8 @@ cards:
   - type: "custom:decluttering-card"
     template: "home_sensors_swipe_card"
     variables:
-      - name_1: "Leistung"
-      - entity_1: "sensor.esp_01s_stromzaehler_active_power"
-      - name_2: "Verbrauch"
-      - entity_2: "sensor.stromzahler_stromverbrauch_jahrlich"
-      - name_3: "Außen"
-      - entity_3: "sensor.eingangstur_bewegungsmelder_temperature"
+      - name: "Außen"
+      - entity: "sensor.eingangstur_bewegungsmelder_temperature"
   - type: "grid"
     columns: 2
     square: false

@@ -30,6 +30,18 @@ utility_meter:
     name: "Stromzähler Stromverbrauch jährlich"
     delta_values: false
     cycle: "yearly"
+  esp_01s_stromzaehler_total_energy_in_daily:
+    unique_id: "9c6cee34-332d-4dcc-ba80-d1a7df744f70"
+    source: "sensor.esp_01s_stromzaehler_total_energy_in"
+    name: "Stromzähler Stromverbrauch täglich"
+    delta_values: false
+    cycle: "daily"
+  esp_01s_stromzaehler_total_energy_in_hourly:
+    unique_id: "097374bb-a26d-43ac-8780-5631799e1d4d"
+    source: "sensor.esp_01s_stromzaehler_total_energy_in"
+    name: "Stromzähler Stromverbrauch stündlich"
+    delta_values: false
+    cycle: "hourly"
   nous_a1t_smartplug_1_yearly_energy:
     unique_id: "4359763c-f86e-11ed-b67e-0242ac120002"
     source: "sensor.nous_a1t_smartplug_1_daily_energy"
@@ -54,3 +66,9 @@ utility_meter:
     name: "Nous A1T Smartplug Balkonkraftwerk Stromverbrauch jährlich"
     delta_values: false
     cycle: "yearly"
+  nous_a1t_smartplug_bpplant_hourly_energy:
+    unique_id: "79f0dc55-48d2-40b3-9f8b-db4e89242b9b"
+    source: "sensor.nous_a1t_smartplug_bpplant_daily_energy"
+    name: "Nous A1T Smartplug Balkonkraftwerk Stromverbrauch stündlich"
+    delta_values: false
+    cycle: "hourly"

@@ -42,7 +42,7 @@ cards:
     square: false
     cards:
       - type: "custom:decluttering-card"
-        template: "navigation_card"
+        template: "navigation_button"
         variables:
           - name: "Wohnzimmer"
           - entity: "light.gruppe_wohnzimmer"
@@ -50,7 +50,7 @@ cards:
           - label: "[[[ return states['sensor.steckdose_wohnzimmer_temperatur'].state + ' °C' ]]]"
           - navigation_path: "/lovelace-rounded/living_room"
       - type: "custom:decluttering-card"
-        template: "navigation_card"
+        template: "navigation_button"
         variables:
           - name: "Küche"
           - entity: "light.gruppe_kuche"
@@ -58,7 +58,7 @@ cards:
           - label: "[[[ return states['sensor.steckdose_wohnzimmer_temperatur'].state + ' °C' ]]]"
           - navigation_path: "/lovelace-rounded/kitchen"
       - type: "custom:decluttering-card"
-        template: "navigation_card"
+        template: "navigation_button"
         variables:
           - name: "Schlafzimmer"
           - entity: "light.gruppe_schlafzimmer"
@@ -66,7 +66,7 @@ cards:
           - label: "[[[ return states['sensor.steckdose_schlafzimmer_temperatur'].state + ' °C' ]]]"
           - navigation_path: "/lovelace-rounded/sleep"
       - type: "custom:decluttering-card"
-        template: "navigation_card"
+        template: "navigation_button"
         variables:
           - name: "Kinderzimmer"
           - entity: "light.gruppe_kinderzimmer"
@@ -74,7 +74,7 @@ cards:
           - label: "[[[ return states['sensor.steckdose_ankleide_temperatur'].state + ' °C' ]]]"
           - navigation_path: "/lovelace-rounded/child_room"
       - type: "custom:decluttering-card"
-        template: "navigation_card"
+        template: "navigation_button"
         variables:
           - name: "Badezimmer"
           - entity: "light.gruppe_bad"
@@ -82,7 +82,7 @@ cards:
           - label: "[[[ return states['sensor.deckenlampe_bad_temperatur_offset_gefiltert'].state + ' °C' ]]]"
           - navigation_path: "/lovelace-rounded/bath"
       - type: "custom:decluttering-card"
-        template: "navigation_card"
+        template: "navigation_button"
         variables:
           - name: "Büro"
           - entity: "light.gruppe_buro"
@@ -90,7 +90,7 @@ cards:
           - label: "[[[ return states['sensor.awtrix_ulanzi_tc001_temperature'].state + ' °C' ]]]"
           - navigation_path: "/lovelace-rounded/office"
       - type: "custom:decluttering-card"
-        template: "navigation_cellar_card"
+        template: "navigation_button"
         variables:
           - name: "Keller"
           - entity: "group.cellar_appliances"
@@ -98,7 +98,7 @@ cards:
           - label: "[[[ return states['sensor.steckdose_waschmaschine_temperatur'].state + ' °C' ]]]"
           - navigation_path: "/lovelace-rounded/cellar"
       - type: "custom:decluttering-card"
-        template: "navigation_card"
+        template: "navigation_button"
         variables:
           - name: "Sonstiges"
           - entity: "light.gruppe_flur"
@@ -110,7 +110,7 @@ cards:
     square: false
     cards:
       - type: "custom:decluttering-card"
-        template: "appliances_navigation_card"
+        template: "navigation_button"
         variables:
           - name: "Robi"
           - entity: "vacuum.valetudo_falsescrawnyhornet"

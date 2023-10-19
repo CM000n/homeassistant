@@ -1,4 +1,4 @@
-navigation_cellar_card:
+navigation_button_with_light:
   card:
     type: "custom:button-card"
     name: "[[name]]"
@@ -10,9 +10,38 @@ navigation_cellar_card:
       navigation_path: "[[navigation_path]]"
       haptic: "medium"
     show_label: true
+    hold_action:
+      action: "more-info"
+      haptic: "medium"
+    custom_fields:
+      light:
+        card:
+          type: "custom:button-card"
+          entity: "[[[ return entity.entity_id ]]]"
+          show_name: false
+          show_label: false
+          state:
+            - value: "on"
+              icon: "mdi:lightbulb"
+            - value: "off"
+              icon: "mdi:lightbulb-off"
+            - value: "unavailable"
+              icon: "mdi:lightbulb-question"
+              styles:
+                icon:
+                  - color: "var(--contrast6)"
+            - value: "unknown"
+              icon: "mdi:lightbulb-question"
+              styles:
+                icon:
+                  - color: "var(--contrast6)"
+          styles:
+            icon:
+              - width: "24px"
+              - height: "24px"
     styles:
       grid:
-        - grid-template-areas: "'i' 'n n' 'l l'"
+        - grid-template-areas: "'i light' 'n n' 'l l'"
         - grid-template-columns: "1fr 1fr"
         - grid-template-rows: "35% min-content min-content"
       card:

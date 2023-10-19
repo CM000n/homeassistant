@@ -15,7 +15,7 @@ cards:
     variables:
       - name: "Sonstiges"
   - type: "custom:decluttering-card"
-    template: "sensor_card"
+    template: "apex_sensor_card"
     variables:
       - name: "Temperatur"
       - entity: "sensor.eingangstur_bewegungsmelder_temperature"

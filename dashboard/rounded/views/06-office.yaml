@@ -15,7 +15,7 @@ cards:
     variables:
       - name: "Büro"
   - type: "custom:decluttering-card"
-    template: "sensor_card"
+    template: "apex_sensor_card"
     variables:
       - name: "Temperatur"
       - entity: "sensor.awtrix_ulanzi_tc001_temperature"

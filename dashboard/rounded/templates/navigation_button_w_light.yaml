@@ -1,3 +1,4 @@
+---
 navigation_button_with_light:
   card:
     type: "custom:button-card"

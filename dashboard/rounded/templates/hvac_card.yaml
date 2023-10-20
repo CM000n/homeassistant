@@ -1,3 +1,4 @@
+---
 hvac_card:
   card:
     type: "custom:button-card"

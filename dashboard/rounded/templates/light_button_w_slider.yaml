@@ -1,3 +1,4 @@
+---
 light_button_w_slider:
   card:
     type: "custom:button-card"

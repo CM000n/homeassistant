@@ -1,3 +1,4 @@
+---
 sensor_card:
   card:
     type: "sensor"

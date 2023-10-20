@@ -61,7 +61,7 @@ video-camera.png
 zigbee.db
 zigbee.db-shm
 zigbee.db-wal
-ha-venv
+havenv
 
 # Log files
 home-assistant.log

@@ -1,3 +1,4 @@
+---
 vacuum_zone_card:
   card:
     type: "custom:button-card"

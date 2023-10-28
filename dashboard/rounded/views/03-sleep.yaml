@@ -41,11 +41,11 @@ cards:
           - type: "custom:decluttering-card"
             template: "light_slider_brightness"
             variables:
-              - entity: "light.active_light_group_kitchen"
+              - entity: "light.active_light_group_bed_room"
           - type: "custom:decluttering-card"
             template: "light_slider_temperature"
             variables:
-              - entity: "light.active_light_group_kitchen"
+              - entity: "light.active_light_group_bed_room"
   - type: "grid"
     columns: 2
     square: false

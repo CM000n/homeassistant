@@ -40,8 +40,6 @@ light:
     unique_id: "6fcd71f5-6622-46e8-80f1-3f0c51fafa15"
     entities:
       - "light.schlafzimmer_deckenleuchte"
-      - "light.schlafzimmer_wickeltisch"
-      - "light.schlafzimmer_nachttisch_simon"
   - platform: "group"
     name: "gruppe_kinderzimmer"
     unique_id: "db6c70fc-0811-4470-8f37-f7844ce79da7"

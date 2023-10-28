@@ -2,7 +2,7 @@
 apex_sensor_card:
   card:
     type: "custom:apexcharts-card"
-    cache: true
+    cache: false
     layout: "minimal"
     graph_span: "24h"
     header:

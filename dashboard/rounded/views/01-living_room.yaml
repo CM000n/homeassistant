@@ -49,8 +49,14 @@ cards:
           - type: "custom:decluttering-card"
             template: "light_button_w_slider"
             variables:
-              - name: "Weihnachtsstern"
+              - name: "Weihnachtsstern Ecke"
               - entity: "light.wohnzimmer_weihnachtsstern"
+              - icon: "mdi:star"
+          - type: "custom:decluttering-card"
+            template: "light_button_w_slider"
+            variables:
+              - name: "Weihnachtsstern Fenster"
+              - entity: "light.wohnzimmer_weihnachtsstern_fenster"
               - icon: "mdi:star"
       - type: "grid"
         columns: 1

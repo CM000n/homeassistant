@@ -1,16 +1,23 @@
 -== Watchman Report ==-
 
--== Congratulations, all 19 services from your config are available!
+-== Missing 1 service(s) from 21 found in your config:
++----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
+| Service ID                                                                       | State   | Location                                                     |
++----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
+| notify.simon_hoerrle_gmail_com                                                   | missing | automations.yaml:110                                         |
++----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
 
--== Missing 3 entity(ies) from 152 found in your config:
+-== Missing 5 entity(ies) from 155 found in your config:
 +----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
 | Entity ID                                                                        | State   | Location                                                     |
 +----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
 | sensor.shelly_1pm_buero_tuer_power_mean_over_last_30_minutes                     | unknown | automations.yaml:102                                         |
 | device_tracker.dm_pf2l2j0l                                                       | missing | integrations/sensors.yaml:184,191                            |
+| sensor.corolla_fuel_tank                                                         | missing | integrations/template.yaml:144                               |
 | sensor.energie_identifiziert_power                                               | missing | integrations/template.yaml:153                               |
+| media_player.MediaPlayerEntityFeature                                            | missing | custom_components/mass/services.yaml:9,30,44                 |
 +----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
 
--== Report created on 28 Oct 2023 04:00:00
--== Parsed 75 files in 0.33s., ignored 0 files
+-== Report created on 16 Nov 2023 04:00:00
+-== Parsed 76 files in 0.25s., ignored 0 files
 -== Generated in: 0.00s. Validated in: 0.00s.

@@ -4,4 +4,4 @@ logger:
   default: "error"
   logs:
     homeassistant.components.vicare: "critical"
-    custom_components.toyota: "critical"
+    custom_components.toyota: "debug"

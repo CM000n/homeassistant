@@ -40,6 +40,12 @@ cards:
               - name: "Herdlampe"
               - entity: "light.kuche_herdlampe"
               - icon: "mdi:ceiling-light"
+          - type: "custom:decluttering-card"
+            template: "light_button_w_slider"
+            variables:
+              - name: "Weihnachtsstern Fenster"
+              - entity: "light.kuche_weihnachtsstern_fenster"
+              - icon: "mdi:star"
       - type: "grid"
         columns: 1
         square: false

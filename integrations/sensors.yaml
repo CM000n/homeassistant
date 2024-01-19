@@ -1,21 +1,6 @@
 ---
 # https://home-assistant.io/components/sensor/
 sensor:
-  # https://www.home-assistant.io/integrations/systemmonitor/
-  - platform: "systemmonitor"
-    resources:
-      - type: "disk_use_percent"
-        arg: "/"
-      - type: "memory_use_percent"
-      - type: "processor_use"
-      - type: "processor_temperature"
-      - type: "last_boot"
-      - type: "throughput_network_in"
-        arg: "eno1"
-      - type: "throughput_network_out"
-        arg: "eno1"
-      - type: "load_15m"
-
   # https://www.home-assistant.io/components/time_date/
   - platform: "time_date"
     display_options:

@@ -60,15 +60,9 @@ utility_meter:
     name: "Nous A1T Smartplug 4 Stromverbrauch jährlich"
     delta_values: false
     cycle: "yearly"
-  nous_a1t_smartplug_bpplant_yearly_energy:
-    unique_id: "a4688ab3-bda1-4fe2-9fa8-1843d905197f"
-    source: "sensor.nous_a1t_smartplug_bpplant_daily_energy"
-    name: "Nous A1T Smartplug Balkonkraftwerk Stromverbrauch jährlich"
-    delta_values: false
-    cycle: "yearly"
-  nous_a1t_smartplug_bpplant_hourly_energy:
+  bpplant_hourly_energy:
     unique_id: "79f0dc55-48d2-40b3-9f8b-db4e89242b9b"
-    source: "sensor.nous_a1t_smartplug_bpplant_daily_energy"
-    name: "Nous A1T Smartplug Balkonkraftwerk Stromverbrauch stündlich"
+    source: "sensor.apsystems_garagenpower_lifetime_production"
+    name: "Balkonkraftwerk Stromverbrauch stündlich"
     delta_values: false
     cycle: "hourly"

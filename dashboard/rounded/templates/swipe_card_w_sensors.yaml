@@ -76,7 +76,7 @@ swipe_card_w_sensors:
             group_by:
               func: "max"
               duration: "1h"
-          - entity: "sensor.nous_a1t_smartplug_bpplant_daily_energy"
+          - entity: "sensor.apsystems_garagenpower_today_production"
             name: "Solar"
             float_precision: 1
             color: "var(--yellow)"
@@ -148,7 +148,7 @@ swipe_card_w_sensors:
             group_by:
               func: "max"
               duration: "1h"
-          - entity: "sensor.nous_a1t_smartplug_balkonkraftwerk_stromverbrauch_stundlich"
+          - entity: "sensor.bpplant_hourly_energy"
             name: "Solar"
             float_precision: 2
             color: "var(--yellow)"
@@ -285,7 +285,7 @@ swipe_card_w_sensors:
             func: "avg"
             duration: "1min"
         series:
-          - entity: "sensor.nous_a1t_smartplug_bpplant_power"
+          - entity: "sensor.apsystems_garagenpower_total_power"
             name: "Leistung: Solar"
             float_precision: 0
             color: "var(--yellow)"

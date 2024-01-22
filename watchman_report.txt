@@ -7,20 +7,21 @@
 | notify.simon_hoerrle_gmail_com                                                   | missing | automations.yaml:110                                         |
 +----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
 
--== Missing 8 entity(ies) from 157 found in your config:
+-== Missing 9 entity(ies) from 158 found in your config:
 +----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
 | Entity ID                                                                        | State   | Location                                                     |
 +----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
 | light.schlafzimmer_nachttisch_simon                                              | missing | scripts.yaml:39                                              |
+| sensor.shelly_1pm_buero_tuer_power_mean_over_last_30_minutes                     | unknown | automations.yaml:102                                         |
 | climate.c63380a3                                                                 | missing | dashboard/rounded/views/04-child_room.yaml:63                |
 | light.shelly_deckenlampe_bad                                                     | missing | dashboard/rounded/views/05-bath.yaml:31                      |
 | light.shelly_badspiegel                                                          | missing | dashboard/rounded/views/05-bath.yaml:37                      |
 | light.nahtisch_decke                                                             | missing | google_assistant/google_assistant.yaml:31                    |
-| device_tracker.dm_pf2l2j0l                                                       | missing | integrations/sensors.yaml:170,177                            |
+| device_tracker.dm_pf2l2j0l                                                       | missing | integrations/sensors.yaml:169,176                            |
 | sensor.corolla_fuel_tank                                                         | missing | integrations/template.yaml:144                               |
 | sensor.energie_identifiziert_power                                               | missing | integrations/template.yaml:153                               |
 +----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
 
--== Report created on 19 Jan 2024 04:00:00
--== Parsed 74 files in 0.41s., ignored 0 files
--== Generated in: 0.03s. Validated in: 0.00s.
+-== Report created on 22 Jan 2024 04:00:00
+-== Parsed 74 files in 0.45s., ignored 0 files
+-== Generated in: 0.00s. Validated in: 0.00s.

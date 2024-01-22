@@ -137,15 +137,6 @@ template:
         device_class: "duration"
         state_class: "total_increasing"
 
-      # car
-      - name: "reichweite_corolla"
-        unique_id: "ae083fc0b1d511edaeb2af87d8ff0b2f"
-        state: >-
-          {{ states('sensor.corolla_fuel_tank') | float(0) | multiply(6.25) | round(2)}}
-        unit_of_measurement: "km"
-        device_class: "distance"
-        state_class: "total_increasing"
-
       # Power consumption
       - name: "energie_unidentifiziert_power"
         unique_id: "b2784410b1d511ed90171b0f7a30ae2f"

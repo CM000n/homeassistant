@@ -76,7 +76,7 @@ swipe_card_w_sensors:
             group_by:
               func: "max"
               duration: "1h"
-          - entity: "sensor.apsystems_garagenpower_today_production"
+          - entity: "sensor.balkonkraftwerk_stromproduktion_taglich"
             name: "Solar"
             float_precision: 1
             color: "var(--yellow)"

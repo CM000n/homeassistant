@@ -1,0 +1,928 @@
+---
+title: ""
+path: "default_view"
+icon: "mdi:chevron-up"
+visible:
+  - user: "3fb4deff931c4631b84d2584e5f2e493"
+  - user: "e7bec22aa70e4762ac231811f5997452"
+theme: "Minimal"
+type: "masonry"
+badges: []
+cards:
+  - type: custom:layout-card
+    layout_type: custom:grid-layout
+    cards:
+      - type: custom:button-card
+        name: Hallo
+        label: |
+          [[[
+              return user.name
+            ]]]
+        show_label: true
+        styles:
+          card:
+            - background: none
+            - padding: 0px 12px
+            - margin-bottom: 0px
+            - "--mdc-ripple-press-opacity": 0
+          name:
+            - font-family: Product Sans
+            - justify-self: start
+            - font-size: 16px
+            - color: var(--contrast10)
+          label:
+            - font-family: Product Sans
+            - justify-self: start
+            - font-size: 20px
+            - color: var(--contrast20)
+            - font-weight: bold
+      - type: custom:bar-card
+        card_mod:
+          style: >
+            ha-card {
+              background: rgb(0,0,0,0);
+              box-shadow: none;
+              --primary-text-color: var(--contrast15);
+              font-family: Product Sans;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 5px;
+              margin-bottom: -5px;
+              font-weight: bold;
+              }
+            bar-card-name {
+              margin-left: 0px;
+            }
+
+            bar-card-value {
+              margin-right: 15px;
+              font-family: Product Sans Medium ;
+            }
+
+            bar-card-backgroundbar {
+            background: var(--contrast18);
+
+            }
+
+            bar-card-currentbar {
+            background: linear-gradient(to right, var(--green) 0%, var(--yellow)
+            40%, var(--orange) 70%, var(--red) 100%);
+
+            clip-path: polygon(0 0, var(--bar-percent) 0, var(--bar-percent) 100%, 0
+            100%);
+
+            }
+
+            bar-card-card {
+              margin-top: -15px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-bottom: 0px;
+            }
+        entities:
+          - entity: sensor.stromzahler_stromverbrauch_taglich
+            name: Stromverbrauch
+            icon: none
+            min: 0
+            max: 12
+            direction: right
+            height: 30px
+            positions:
+              icon: inside
+              name: "off"
+              value: inside
+              indicator: "off"
+            unit_of_measurement: kW
+            decimal: 2
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/energia-casa
+    layout:
+      grid-template-columns: auto 45%
+      grid-template-rows: auto
+      max_cols: 2
+      margin: "-4px"
+
+  - type: vertical-stack
+    cards:
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: person.simon
+                state: home
+            chip:
+              type: entity
+              entity: person.simon
+              content_info: none
+              tap_action:
+                action: more-info
+              hold_action:
+                action: none
+              double_tap_action:
+                action: none
+              use_entity_picture: true
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: person.lisa
+                state: home
+            chip:
+              type: entity
+              entity: person.lisa
+              content_info: none
+              tap_action:
+                action: more-info
+              hold_action:
+                action: none
+              double_tap_action:
+                action: none
+              use_entity_picture: true
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: person.simon
+                state_not: home
+            chip:
+              type: entity
+              entity: person.simon
+              content_info: name
+              tap_action:
+                action: more-info
+              hold_action:
+                action: none
+              double_tap_action:
+                action: none
+              name: Abwesend
+              use_entity_picture: true
+              card_mod:
+                style: |
+                  ha-card {
+                    --chip-background: var(--contrast15);
+                    }
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: person.lisa
+                state_not: home
+            chip:
+              type: entity
+              entity: person.lisa
+              content_info: name
+              tap_action:
+                action: more-info
+              hold_action:
+                action: none
+              double_tap_action:
+                action: none
+              name: Abwesend
+              use_entity_picture: true
+              card_mod:
+                style: |
+                  ha-card {
+                    --chip-background: var(--contrast15);
+                    }
+        alignment: start
+        card_mod:
+          style: |
+            ha-card {
+              margin-bottom: -15px;
+              --primary-text-color: var(--contrast0);
+              }
+      - type: custom:stack-in-card
+        mode: horizontal
+        keep:
+          margin: true
+          border_radius: true
+          background: true
+          outer_padding: false
+        card_mod:
+          style: |
+            ha-card {
+              border-radius: 18px;
+              background-color: var(--contrast0);
+              }
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: custom:button-card
+                entity: sensor.apsystems_garagenpower_total_power
+                name: '[[[return states["sensor.apsystems_garagenpower_total_power"].state]]]'
+                styles:
+                  grid:
+                    - grid-template-areas: '"n eenheid" "l l"'
+                    - grid-template-columns: min-content min-content
+                  name:
+                    - font-size: 28px
+                    - color: var(--contrast15)
+                    - font-weight: bold
+                  card:
+                    - height: 80px
+                    - border-radius: 18px
+                    - padding: 0px 0 6px 6px
+                    - box-sizing: border-box
+                    - background: none
+                    - box-shadow: none
+                    - margin-bottom: "-10px"
+                    - "--mdc-ripple-press-opacity": 0
+                  label:
+                    - justify-self: start
+                    - font-size: 13px
+                    - color: var(--contrast15)
+                    - margin-bottom: 0px
+                  custom_fields:
+                    eenheid:
+                      - font-size: 12px
+                      - margin-bottom: "-10px"
+                      - padding-left: 2px
+                      - margin-right: 100px
+                label: Solaranlage
+                custom_fields:
+                  eenheid: "&nbsp;W"
+                show_label: true
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/energia-casa
+              - type: custom:bar-card
+                card_mod:
+                  style: >
+                    ha-card {
+                      background: rgb(0,0,0,0);
+                      box-shadow: none;
+                      --primary-text-color: var(--contrast15);
+                      font-family: Product Sans;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      margin-bottom: 0px;
+                      font-weight: bold;
+                      }
+                    bar-card-name {
+                      margin-left: 0px;
+                    }
+                    bar-card-value {
+                      margin-right: 0px;
+                      font-family: Product Sans Medium ;
+                    }
+                    bar-card-backgroundbar {
+                    background: var(--contrast18);
+                    }
+                    bar-card-currentbar {
+                    background: linear-gradient(to right, var(--red) 0%,
+                    var(--orange) 5%, var(--yellow) 20%, var(--green) 100%);
+                    clip-path: polygon(0 0, var(--bar-percent) 0, var(--bar-percent)
+                    100%, 0 100%);
+                    }
+                    bar-card-card {
+                      margin-top: -15px;
+                      margin-left: -10px;
+                      margin-right: 0px;
+                      margin-bottom: 0px;
+                    }
+                entities:
+                  - entity: sensor.apsystems_garagenpower_total_power
+                    name: Leistung
+                    icon: none
+                    min: 0
+                    max: 800
+                    direction: right
+                    height: 20px
+                    positions:
+                      icon: "off"
+                      name: "off"
+                      value: "off"
+                      indicator: "off"
+                    unit_of_measurement: W
+                    decimal: 0
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/energia-casa
+          - type: vertical-stack
+            cards:
+              - type: custom:button-card
+                entity: sensor.esp_01s_stromzaehler_active_power
+                name: '[[[return Math.round(Number(states["sensor.esp_01s_stromzaehler_active_power"].state)).toFixed(0) ]]]'
+                styles:
+                  grid:
+                    - grid-template-areas: '"n eenheid" "l l"'
+                    - grid-template-columns: min-content min-content
+                  name:
+                    - font-size: 28px
+                    - color: var(--contrast15)
+                    - font-weight: bold
+                  card:
+                    - height: 80px
+                    - border-radius: 18px
+                    - padding: 0px 0 6px 6px
+                    - box-sizing: border-box
+                    - background: none
+                    - box-shadow: none
+                    - margin-bottom: "-10px"
+                    - "--mdc-ripple-press-opacity": 0
+                  label:
+                    - justify-self: start
+                    - font-size: 13px
+                    - color: var(--contrast15)
+                    - margin-bottom: 0px
+                  custom_fields:
+                    eenheid:
+                      - font-size: 12px
+                      - margin-bottom: "-10px"
+                      - padding-left: 2px
+                      - margin-right: 100px
+                label: Zählerkasten
+                custom_fields:
+                  eenheid: "&nbsp;W"
+                show_label: true
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/energia-casa
+              - type: custom:bar-card
+                card_mod:
+                  style: >
+                    ha-card {
+                      background: rgb(0,0,0,0);
+                      box-shadow: none;
+                      --primary-text-color: var(--contrast15);
+                      font-family: Product Sans;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      margin-bottom: 0px;
+                      font-weight: bold;
+                      }
+                    bar-card-name {
+                      margin-left: 0px;
+                    }
+                    bar-card-value {
+                      margin-right: 0px;
+                      font-family: Product Sans Medium ;
+                    }
+                    bar-card-backgroundbar {
+                    background: var(--contrast18);
+                    }
+                    bar-card-currentbar {
+                    background: linear-gradient(to right, var(--green) 0%,
+                    var(--yellow) 5%, var(--orange) 20%, var(--red) 100%);
+                    clip-path: polygon(0 0, var(--bar-percent) 0, var(--bar-percent)
+                    100%, 0 100%);
+                    }
+                    bar-card-card {
+                      margin-top: -15px;
+                      margin-left: -10px;
+                      margin-right: 0px;
+                      margin-bottom: 0px;
+                    }
+                entities:
+                  - entity: sensor.esp_01s_stromzaehler_active_power
+                    name: Leistung
+                    icon: none
+                    min: 0
+                    max: 6000
+                    direction: right
+                    height: 20px
+                    positions:
+                      icon: "off"
+                      name: "off"
+                      value: "off"
+                      indicator: "off"
+                    unit_of_measurement: W
+                    decimal: 0
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/energia-casa
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            name: " "
+            icon: mdi:lightbulb-on
+            entity: sensor.luci_accese
+            tap_action:
+              action: none
+            styles:
+              grid:
+                - grid-template-areas: '"i" "n" "slider"'
+                - grid-template-columns: 1fr
+                - grid-template-rows: 1fr min-content min-content
+              card:
+                - background: var(--contrast15)
+                - "--mdc-ripple-press-opacity": 0
+                - box-shadow: 0px 0px 4px 2px var(--contrast15)
+                - border-radius: 100px
+                - height: 50px
+                - width: 50px
+                - margin-top: 5px
+                - margin-bottom: 5px
+              img_cell:
+                - justify-self: center
+                - width: 20px
+                - margin: 10px 0px 0px 0px
+              icon:
+                - width: 20px
+                - height: 20px
+                - color: var(--contrast0)
+              name:
+                - justify-self: center
+                - font-size: 12px
+                - margin: 0px 0px 10px 0px
+                - color: var(--black)
+                - font-family: Product Sans
+            state:
+              - value: "0"
+                icon: mdi:lightbulb-off
+                name: " "
+                styles:
+                  card:
+                    - background: var(--contrast0)
+                    - box-shadow: none
+                  icon:
+                    - color: var(--contrast8)
+            card_mod:
+              style: |
+                ha-card {
+                  transition: 300ms !important;
+                  }
+          - type: custom:button-card
+            name: " "
+            icon: mdi:lightbulb-on
+            entity: sensor.luci_accese
+            tap_action:
+              action: none
+            styles:
+              grid:
+                - grid-template-areas: '"i" "n" "slider"'
+                - grid-template-columns: 1fr
+                - grid-template-rows: 1fr min-content min-content
+              card:
+                - background: var(--contrast15)
+                - "--mdc-ripple-press-opacity": 0
+                - box-shadow: 0px 0px 4px 2px var(--contrast15)
+                - border-radius: 100px
+                - height: 50px
+                - width: 50px
+                - margin-top: 5px
+                - margin-bottom: 5px
+              img_cell:
+                - justify-self: center
+                - width: 20px
+                - margin: 10px 0px 0px 0px
+              icon:
+                - width: 20px
+                - height: 20px
+                - color: var(--contrast0)
+              name:
+                - justify-self: center
+                - font-size: 12px
+                - margin: 0px 0px 10px 0px
+                - color: var(--black)
+                - font-family: Product Sans
+            state:
+              - value: "0"
+                icon: mdi:lightbulb-off
+                name: " "
+                styles:
+                  card:
+                    - background: var(--contrast0)
+                    - box-shadow: none
+                  icon:
+                    - color: var(--contrast8)
+            card_mod:
+              style: |
+                ha-card {
+                  transition: 300ms !important;
+                  }
+          - type: custom:button-card
+            name: " "
+            icon: mdi:lightbulb-on
+            entity: sensor.luci_accese
+            tap_action:
+              action: none
+            styles:
+              grid:
+                - grid-template-areas: '"i" "n" "slider"'
+                - grid-template-columns: 1fr
+                - grid-template-rows: 1fr min-content min-content
+              card:
+                - background: var(--contrast15)
+                - "--mdc-ripple-press-opacity": 0
+                - box-shadow: 0px 0px 4px 2px var(--contrast15)
+                - border-radius: 100px
+                - height: 50px
+                - width: 50px
+                - margin-top: 5px
+                - margin-bottom: 5px
+              img_cell:
+                - justify-self: center
+                - width: 20px
+                - margin: 10px 0px 0px 0px
+              icon:
+                - width: 20px
+                - height: 20px
+                - color: var(--contrast0)
+              name:
+                - justify-self: center
+                - font-size: 12px
+                - margin: 0px 0px 10px 0px
+                - color: var(--black)
+                - font-family: Product Sans
+            state:
+              - value: "0"
+                icon: mdi:lightbulb-off
+                name: " "
+                styles:
+                  card:
+                    - background: var(--contrast0)
+                    - box-shadow: none
+                  icon:
+                    - color: var(--contrast8)
+            card_mod:
+              style: |
+                ha-card {
+                  transition: 300ms !important;
+                  }
+          - type: custom:button-card
+            name: " "
+            icon: mdi:lightbulb-on
+            entity: sensor.luci_accese
+            tap_action:
+              action: none
+            styles:
+              grid:
+                - grid-template-areas: '"i" "n" "slider"'
+                - grid-template-columns: 1fr
+                - grid-template-rows: 1fr min-content min-content
+              card:
+                - background: var(--contrast15)
+                - "--mdc-ripple-press-opacity": 0
+                - box-shadow: 0px 0px 4px 2px var(--contrast15)
+                - border-radius: 100px
+                - height: 50px
+                - width: 50px
+                - margin-top: 5px
+                - margin-bottom: 5px
+              img_cell:
+                - justify-self: center
+                - width: 20px
+                - margin: 10px 0px 0px 0px
+              icon:
+                - width: 20px
+                - height: 20px
+                - color: var(--contrast0)
+              name:
+                - justify-self: center
+                - font-size: 12px
+                - margin: 0px 0px 10px 0px
+                - color: var(--black)
+                - font-family: Product Sans
+            state:
+              - value: "0"
+                icon: mdi:lightbulb-off
+                name: " "
+                styles:
+                  card:
+                    - background: var(--contrast0)
+                    - box-shadow: none
+                  icon:
+                    - color: var(--contrast8)
+            card_mod:
+              style: |
+                ha-card {
+                  transition: 300ms !important;
+                  }
+          - type: custom:button-card
+            name: " "
+            icon: mdi:lightbulb-on
+            entity: sensor.luci_accese
+            tap_action:
+              action: none
+            styles:
+              grid:
+                - grid-template-areas: '"i" "n" "slider"'
+                - grid-template-columns: 1fr
+                - grid-template-rows: 1fr min-content min-content
+              card:
+                - background: var(--contrast15)
+                - "--mdc-ripple-press-opacity": 0
+                - box-shadow: 0px 0px 4px 2px var(--contrast15)
+                - border-radius: 100px
+                - height: 50px
+                - margin-top: 5px
+                - margin-bottom: 5px
+              img_cell:
+                - justify-self: center
+                - width: 20px
+                - margin: 10px 0px 0px 0px
+              icon:
+                - width: 20px
+                - height: 20px
+                - color: var(--contrast0)
+              name:
+                - justify-self: center
+                - font-size: 12px
+                - margin: 0px 0px 10px 0px
+                - color: var(--black)
+                - font-family: Product Sans
+            state:
+              - value: "0"
+                icon: mdi:lightbulb-off
+                name: " "
+                styles:
+                  card:
+                    - background: var(--contrast0)
+                    - box-shadow: none
+                  icon:
+                    - color: var(--contrast8)
+            card_mod:
+              style: |
+                ha-card {
+                  transition: 300ms !important;
+                  }
+
+  - type: vertical-stack
+    cards:
+      - type: custom:button-card
+        name: Haus
+        label: Zimmer
+        show_label: true
+        styles:
+          card:
+            - background: none
+            - padding: 0px 12px
+            - margin-bottom: "-5px"
+            - margin-top: 15px
+            - "--mdc-ripple-press-opacity": 0
+          name:
+            - font-family: Product Sans
+            - justify-self: start
+            - font-size: 20px
+            - color: var(--contrast20)
+          label:
+            - font-family: Product Sans Light
+            - justify-self: start
+            - font-size: 16px
+            - color: var(--contrast10)
+      - square: false
+        type: grid
+        cards:
+          - type: "custom:decluttering-card"
+            template: "room_card"
+            variables:
+              - name: "Wohnzimmer"
+              - entity: "light.gruppe_wohnzimmer"
+              - icon: "mdi:sofa"
+              - navigation_path: "/lovelace-rounded/living_room"
+
+          - type: custom:button-card
+            icon: "mdi:silverware-fork-knife"
+            name: Küche
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/cucina
+              haptic: light
+            styles:
+              grid:
+                - grid-template-areas: '"i temp" "n hum"'
+                - grid-template-columns: 1fr 1fr
+                - grid-template-rows: 1fr min-content min-content
+              card:
+                - background: var(--contrast0)
+                - padding: 10px
+                - "--mdc-ripple-press-opacity": 0
+                - box-shadow: none
+                - border-radius: 18px
+                - height: 96px
+              img_cell:
+                - justify-self: start
+                - width: 24px
+                - margin: 10px
+              icon:
+                - width: 24px
+                - height: 24px
+                - color: var(--contrast15)
+              name:
+                - justify-self: start
+                - font-size: 14px
+                - margin: 10px
+                - color: var(--contrast15)
+                - font-family: Product Sans
+              custom_fields:
+                temp:
+                  - align-self: start
+                  - justify-self: end
+                  - font-size: 14px
+                  - font-weight: 500
+                  - margin: 2px 0px 10px 0px
+                  - color: |
+                      [[[
+                        var state = states['media_player.kuche'].state
+                       if(state == "off")
+                        return `var(--contrast10)`;
+                      else
+                        return `var(--contrast00)`;
+                      ]]]
+                  - font-family: Product Sans
+                  - background-color: |
+                      [[[
+                        var state = states['media_player.kuche'].state
+                       if(state == "off")
+                        return `var(--contrast00)`;
+                      else
+                        return `var(--contrast15)`;
+                      ]]]
+                  - border-radius: 100px
+                  - padding: 6px
+            custom_fields:
+              temp: |
+                [[[
+                 var state = states['media_player.kuche'].state;
+                 if(state == "off")
+                  return `<ha-icon
+                  icon="cil:google-home-off"
+                  style="width: 25px; height: 25px; color: auto;">
+                  </ha-icon>`;
+                 else
+                  return `<ha-icon
+                  icon="cil:google-home-off"
+                  style="width: 25px; height: 25px; color: auto;">
+                  </ha-icon>
+                  `;
+                ]]]
+            card_mod:
+              style: |
+                ha-card:active {
+                  box-shadow: none;
+                  transform: scale(0.96);
+                  transition: 200ms !important;
+                  transform-origin: center;
+                  }
+          - type: custom:button-card
+            icon: mdi:sofa
+            name: Wohnzimmer
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/soggiorno
+              haptic: light
+            styles:
+              grid:
+                - grid-template-areas: '"i temp" "n hum"'
+                - grid-template-columns: 1fr 1fr
+                - grid-template-rows: 1fr min-content min-content
+              card:
+                - background: var(--contrast0)
+                - padding: 10px
+                - "--mdc-ripple-press-opacity": 0
+                - box-shadow: none
+                - border-radius: 18px
+                - height: 96px
+              img_cell:
+                - justify-self: start
+                - width: 24px
+                - margin: 10px
+              icon:
+                - width: 24px
+                - height: 24px
+                - color: var(--contrast15)
+              name:
+                - justify-self: start
+                - font-size: 14px
+                - margin: 10px
+                - color: var(--contrast15)
+                - font-family: Product Sans
+              custom_fields:
+                temp:
+                  - align-self: start
+                  - justify-self: end
+                  - font-size: 14px
+                  - font-weight: 500
+                  - margin: 2px 0px 10px 0px
+                  - color: |
+                      [[[
+                        var state = states['media_player.wohnzimmer'].state
+                       if(state == "off")
+                        return `var(--contrast10)`;
+                      else
+                        return `var(--contrast00)`;
+                      ]]]
+                  - font-family: Product Sans
+                  - background-color: |
+                      [[[
+                        var state = states['media_player.wohnzimmer'].state
+                       if(state == "off")
+                        return `var(--contrast00)`;
+                      else
+                        return `var(--contrast15)`;
+                      ]]]
+                  - border-radius: 100px
+                  - padding: 6px
+            custom_fields:
+              temp: |
+                [[[
+                 var state = states['media_player.wohnzimmer'].state;
+                 if(state == "off")
+                  return `<ha-icon
+                  icon="mdi:television-off"
+                  style="width: 25px; height: 25px; color: auto;">
+                  </ha-icon>`;
+                 else
+                  return `<ha-icon
+                  icon="mdi:television"
+                  style="width: 25px; height: 25px; color: auto;">
+                  </ha-icon>
+                  `;
+                ]]]
+            card_mod:
+              style: |
+                ha-card:active {
+                  box-shadow: none;
+                  transform: scale(0.96);
+                  transition: 200ms !important;
+                  transform-origin: center;
+                  }
+          - type: custom:button-card
+            icon: mdi:bed
+            name: Schlafzimmer
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/esterno
+              haptic: light
+            styles:
+              grid:
+                - grid-template-areas: '"i temp" "n hum"'
+                - grid-template-columns: 1fr 1fr
+                - grid-template-rows: 1fr min-content min-content
+              card:
+                - background: var(--contrast0)
+                - padding: 10px
+                - "--mdc-ripple-press-opacity": 0
+                - box-shadow: none
+                - border-radius: 18px
+                - height: 96px
+              img_cell:
+                - justify-self: start
+                - width: 24px
+                - margin: 10px
+              icon:
+                - width: 24px
+                - height: 24px
+                - color: var(--contrast15)
+              name:
+                - justify-self: start
+                - font-size: 14px
+                - margin: 10px
+                - color: var(--contrast15)
+                - font-family: Product Sans
+              custom_fields:
+                temp:
+                  - align-self: start
+                  - justify-self: end
+                  - font-size: 14px
+                  - font-weight: 500
+                  - margin: 2px 0px 10px 0px
+                  - color: |
+                      [[[
+                        var state = states['light.gruppe_schlafzimmer'].state
+                       if(state == "off")
+                        return `var(--contrast10)`;
+                      else
+                        return `var(--contrast00)`;
+                      ]]]
+                  - font-family: Product Sans
+                  - background-color: |
+                      [[[
+                        var state = states['light.gruppe_schlafzimmer'].state
+                       if(state == "off")
+                        return `var(--contrast00)`;
+                      else
+                        return `var(--contrast15)`;
+                      ]]]
+                  - border-radius: 100px
+                  - padding: 6px
+            custom_fields:
+              temp: |
+                [[[
+                 var state = states['light.gruppe_schlafzimmer'].state;
+                 if(state == "off")
+                  return `<ha-icon
+                  icon="mdi:lightbulb-off-outline"
+                  style="width: 25px; height: 25px; color: auto;">
+                  </ha-icon>`;
+                 else
+                  return `<ha-icon
+                  icon="mdi:lightbulb-on"
+                  style="width: 25px; height: 25px; color: auto;">
+                  </ha-icon>
+                  `;
+                ]]]
+            card_mod:
+              style: |
+                ha-card:active {
+                  box-shadow: none;
+                  transform: scale(0.96);
+                  transition: 200ms !important;
+                  transform-origin: center;
+                  }
+        columns: 2
+
+  - type: custom:gap-card
+    height: 80

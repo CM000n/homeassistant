@@ -67,6 +67,20 @@ template:
         state: >-
           {{ [states.person.corolla] | selectattr('state', '==', 'home') | list | count }}
 
+      - name: "co2_emissions_displaced_rate_solar"
+        unique_id: "324b63f0-e633-4f52-abe6-4b414396bb95"
+        unit_of_measurement: "gCO2eq/h"
+        state_class: "measurement"
+        state: >-
+          {{states('sensor.electricity_maps_co2_intensitat')|float(0)*states('sensor.apsystems_garagenpower_total_power')|float(0)}}
+
+      - name: "co2_emissions_displaced_rate_grid"
+        unique_id: "4d610241-8041-406f-ab1b-d95c4a44839f"
+        unit_of_measurement: "gCO2eq/h"
+        state_class: "measurement"
+        state: >-
+          {{states('sensor.electricity_maps_co2_intensitat')|float(0)*states('sensor.esp_01s_stromzaehler_active_power')|float(0)}}
+
       # Appliances
       - name: "status_spuelmaschine"
         unique_id: "8a5d63c0b1d511ed90171b0f7a30ae2f"

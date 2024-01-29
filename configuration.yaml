@@ -62,6 +62,20 @@ lovelace:
       type: "module"
     - url: "/hacsfiles/apexcharts-card/apexcharts-card.js"
       type: "module"
+    - url: "https://db.onlinewebfonts.com/c/d5075ebf15c6a1d89e8ed3e20d1c4d7b?family=Product+Sans"
+      type: "css"
+    - url: "https://db.onlinewebfonts.com/c/d5075ebf15c6a1d89e8ed3e20d1c4d7b?family=Product+Sans+Medium"
+      type: "css"
+    - url: "https://db.onlinewebfonts.com/c/d5075ebf15c6a1d89e8ed3e20d1c4d7b?family=Product+Sans+Light"
+      type: "css"
+    - url: "/hacsfiles/lovelace-layout-card/layout-card.js"
+      type: "module"
+    - url: "/hacsfiles/bar-card/bar-card.js"
+      type: "module"
+    - url: "/hacsfiles/lovelace-mushroom/mushroom.js"
+      type: "module"
+    - url: "/hacsfiles/stack-in-card/stack-in-card.js"
+      type: "module"
   dashboards:
     lovelace-rounded:
       mode: "yaml"
@@ -69,6 +83,12 @@ lovelace:
       icon: "mdi:square-rounded-outline"
       show_in_sidebar: true
       filename: "dashboard/rounded/main.yaml"
+    lovelace-minimal:
+      mode: "yaml"
+      title: "Minimal"
+      icon: "mdi:square-rounded-outline"
+      show_in_sidebar: true
+      filename: "dashboard/minimal/main.yaml"
 
 # https://home-assistant.io/docs/ha_configuration/splitting_ha_configuration/
 google_assistant: !include "google_assistant/google_assistant.yaml"

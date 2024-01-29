@@ -72,3 +72,21 @@ utility_meter:
     name: "Balkonkraftwerk Stromproduktion täglich"
     delta_values: false
     cycle: "daily"
+  bpplant_yearly_energy:
+    unique_id: "e4b2f92f-a873-48f1-a831-99c255e114a5"
+    source: "sensor.apsystems_garagenpower_lifetime_production"
+    name: "Balkonkraftwerk Stromproduktion jährlich"
+    delta_values: false
+    cycle: "yearly"
+  co2_emissions_displaced_grid_yearly:
+    unique_id: "3818f1a4-2b18-477b-993c-7e779801a001"
+    source: "sensor.co2_emissions_displaced_grid"
+    name: "CO2 Emissionen Netz jährlich"
+    delta_values: false
+    cycle: "yearly"
+  co2_emissions_displaced_solar_yearly:
+    unique_id: "4ead6298-33a8-4b94-9a0a-5be1e8dc9a5f"
+    source: "sensor.co2_emissions_displaced_solar"
+    name: "CO2 Einsparung Solar jährlich"
+    delta_values: false
+    cycle: "yearly"

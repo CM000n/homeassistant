@@ -211,3 +211,17 @@ sensor:
     unit_prefix: "k"
     round: 2
     method: "left"
+  - platform: integration
+    unique_id: 2f059ebb-d009-4779-b778-ba30f42a3bfc
+    source: sensor.co2_emissions_displaced_rate_solar
+    name: co2_emissions_displaced_solar
+    unit_prefix: k
+    round: 1
+    method: left
+  - platform: integration
+    unique_id: 4a8ecd51-1ce9-450e-807e-9d4174f5cc8a
+    source: sensor.co2_emissions_displaced_rate_grid
+    name: co2_emissions_displaced_grid
+    unit_prefix: k
+    round: 1
+    method: left

@@ -58,8 +58,6 @@ light:
     entities:
       - "light.buro_deckenleuchte"
       - "light.buro_schreibtisch"
-      - "light.nahtisch_wand"
-      - "light.nahtisch_decke"
   - platform: "group"
     name: "gruppe_flur"
     unique_id: "4eb78a1e-1583-4209-9d6b-724cd902d884"

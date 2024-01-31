@@ -212,16 +212,16 @@ sensor:
     round: 2
     method: "left"
   - platform: integration
-    unique_id: 2f059ebb-d009-4779-b778-ba30f42a3bfc
-    source: sensor.co2_emissions_displaced_rate_solar
-    name: co2_emissions_displaced_solar
+    unique_id: ba53be56-f813-403f-b254-bfe61c2b4e8c
+    source: sensor.co2_emissions_displaced_rate_solar_new
+    name: co2_emissions_displaced_solar_new
     unit_prefix: k
     round: 1
     method: left
   - platform: integration
-    unique_id: 4a8ecd51-1ce9-450e-807e-9d4174f5cc8a
-    source: sensor.co2_emissions_displaced_rate_grid
-    name: co2_emissions_displaced_grid
+    unique_id: f762a334-289a-4384-8e42-736dde35a389
+    source: sensor.co2_emissions_displaced_rate_grid_new
+    name: co2_emissions_displaced_grid_new
     unit_prefix: k
     round: 1
     method: left

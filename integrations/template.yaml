@@ -67,19 +67,26 @@ template:
         state: >-
           {{ [states.person.corolla] | selectattr('state', '==', 'home') | list | count }}
 
-      - name: "co2_emissions_displaced_rate_solar"
-        unique_id: "324b63f0-e633-4f52-abe6-4b414396bb95"
+      - name: "co2_emissions_displaced_rate_solar_new"
+        unique_id: "b1a8f164-095c-41ff-9d15-7ba3d165f0d3"
         unit_of_measurement: "gCO2eq/h"
         state_class: "measurement"
         state: >-
-          {{states('sensor.electricity_maps_co2_intensitat')|float(0)*states('sensor.apsystems_garagenpower_total_power')|float(0)}}
+          {{ states('sensor.electricity_maps_co2_intensitat')|float(0) * (states('sensor.apsystems_garagenpower_total_power')|float(0) / 1000) }}
 
-      - name: "co2_emissions_displaced_rate_grid"
-        unique_id: "4d610241-8041-406f-ab1b-d95c4a44839f"
+      - name: "co2_emissions_displaced_rate_grid_new"
+        unique_id: "0feb4cb1-54ee-492d-8eec-ae855564a75c"
         unit_of_measurement: "gCO2eq/h"
         state_class: "measurement"
         state: >-
-          {{states('sensor.electricity_maps_co2_intensitat')|float(0)*states('sensor.esp_01s_stromzaehler_active_power')|float(0)}}
+          {{ states('sensor.electricity_maps_co2_intensitat')|float(0) * (states('sensor.esp_01s_stromzaehler_active_power')|float(0) / 1000) }}
+
+      - name: "apsystems_garagenpower_total_power_fixed"
+        unique_id: "b1ae8ede-dc7f-486f-85b3-8dcb82f1bbca"
+        unit_of_measurement: "W"
+        state_class: "measurement"
+        state: >-
+          {{ states('sensor.apsystems_garagenpower_total_power')|float(0) }}
 
       # Appliances
       - name: "status_spuelmaschine"
@@ -201,3 +208,29 @@ template:
         unique_id: "23670500b1e311ed90171b0f7a30ae2f"
         state: >-
           {{ states('sensor.current_lights_on')|float(0) > 0 }}
+
+  - trigger:
+      - platform: state
+        entity_id: sensor.balkonkraftwerk_stromproduktion_taglich
+        not_to:
+          - unknown
+          - unavailable
+    sensor:
+      - name: balkonkraftwerk_stromproduktion_taglich_latest
+        unique_id: 23889b79-e6d9-48f9-bda6-e27c0591054d
+        state: "{{ trigger.to_state.state }}"
+        device_class: energy
+        unit_of_measurement: "kWh"
+
+  - trigger:
+      - platform: state
+        entity_id: sensor.balkonkraftwerk_stromproduktion_jahrlich
+        not_to:
+          - unknown
+          - unavailable
+    sensor:
+      - name: balkonkraftwerk_stromproduktion_jahrlich_latest
+        unique_id: d9a87ce5-422a-42fd-8c00-0db82b48cfe5
+        state: "{{ trigger.to_state.state }}"
+        device_class: energy
+        unit_of_measurement: "kWh"

@@ -68,6 +68,8 @@ lovelace:
       type: "css"
     - url: "https://db.onlinewebfonts.com/c/d5075ebf15c6a1d89e8ed3e20d1c4d7b?family=Product+Sans+Light"
       type: "css"
+    - url: "https://db.onlinewebfonts.com/c/d5075ebf15c6a1d89e8ed3e20d1c4d7b?family=Product+Sans+Black"
+      type: "css"
     - url: "/hacsfiles/lovelace-layout-card/layout-card.js"
       type: "module"
     - url: "/hacsfiles/bar-card/bar-card.js"
@@ -75,6 +77,8 @@ lovelace:
     - url: "/hacsfiles/lovelace-mushroom/mushroom.js"
       type: "module"
     - url: "/hacsfiles/stack-in-card/stack-in-card.js"
+      type: "module"
+    - url: "/hacsfiles/power-flow-card-plus/power-flow-card-plus.js"
       type: "module"
   dashboards:
     lovelace-rounded:

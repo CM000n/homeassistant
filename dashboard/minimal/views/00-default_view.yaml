@@ -977,19 +977,19 @@ cards:
                   grid:
                     - grid-template-areas: '"i" "n" "slider"'
                     - grid-template-columns: 1fr
-                - grid-template-rows: 1fr min-content min-content
-              card:
-                - background: var(--red)
-                - '--mdc-ripple-press-opacity': 0
-                - height: 66px
-                - border-radius: 18px
-              img_cell:
-                - justify-self: center
-                - width: 54px
-              icon:
-                - width: 44px
-                - height: 44px
-                - color: var(--black)
+                    - grid-template-rows: 1fr min-content min-content
+                card:
+                  - background: var(--red)
+                  - '--mdc-ripple-press-opacity': 0
+                  - height: 66px
+                  - border-radius: 18px
+                img_cell:
+                  - justify-self: center
+                  - width: 54px
+                icon:
+                  - width: 44px
+                  - height: 44px
+                  - color: var(--black)
             card_mod:
               style: |
                 ha-card:active {

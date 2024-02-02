@@ -62,6 +62,9 @@ zigbee.db
 zigbee.db-shm
 zigbee.db-wal
 havenv
+venv
+.venv
+.HA_VERSION
 
 # Log files
 home-assistant.log
@@ -69,5 +72,8 @@ ozw_log.txt
 
 # Development files
 custom_components/
+.pre-commit-config.yaml
+.prettierrc.yaml
+.yamllint
 
 # End of https://mrkandreev.name/snippets/gitignore-generator/#HomeAssistant

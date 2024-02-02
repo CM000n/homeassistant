@@ -1,0 +1,41 @@
+---
+sensor_button_card_light:
+  card:
+    type: "custom:button-card"
+    card_mod:
+      style: |
+        ha-card {
+          transition: 300ms !important;
+          }
+    icon: "[[icon]]"
+    name: "[[name]]"
+    show_state: true
+    entity: "[[entity]]"
+    tap_action:
+      action: more-info
+    state_display: "[[[ return Math.round(Number(entity.state)).toFixed(0) +' [[unit]]'; ]]]"
+    styles:
+      grid:
+        - grid-template-areas: '"i" "n" "slider"'
+        - grid-template-columns: 1fr
+        - grid-template-rows: 1fr min-content min-content
+      card:
+        - background: var(--contrast15)
+        - padding: 16px
+        - "--mdc-ripple-press-opacity": 0
+      img_cell:
+        - justify-self: start
+        - width: 24px
+      icon:
+        - width: 24px
+        - height: 24px
+        - color: var(--contrast0)
+      name:
+        - justify-self: start
+        - font-size: 12px
+        - margin: 4px 0 12px 0
+        - color: var(--contrast0)
+        - font-family: Product Sans
+      state:
+        - color: var(--contrast0)
+        - font-family: Product Sans Black

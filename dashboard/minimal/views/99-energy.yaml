@@ -98,89 +98,22 @@ cards:
           - label: "Produktion"
       - type: grid
         square: false
-        cards:
-          - type: custom:button-card
-            card_mod:
-              style: |
-                ha-card {
-                  transition: 300ms !important;
-                  }
-            icon: mdi:molecule-co2
-            name: Einsparung
-            show_state: true
-            entity: sensor.co2_einsparung_solar_jahrlich_neu
-            tap_action:
-              action: more-info
-            state_display: |
-              [[[
-                return Math.round(Number(entity.state)).toFixed(0) +' kgCO2eq';
-              ]]]
-            styles:
-              grid:
-                - grid-template-areas: '"i" "n" "slider"'
-                - grid-template-columns: 1fr
-                - grid-template-rows: 1fr min-content min-content
-              card:
-                - background: var(--contrast15)
-                - padding: 16px
-                - "--mdc-ripple-press-opacity": 0
-              img_cell:
-                - justify-self: start
-                - width: 24px
-              icon:
-                - width: 24px
-                - height: 24px
-                - color: var(--contrast0)
-              name:
-                - justify-self: start
-                - font-size: 12px
-                - margin: 4px 0 12px 0
-                - color: var(--contrast0)
-                - font-family: Product Sans
-              state:
-                - color: var(--contrast0)
-                - font-family: Product Sans Black
-          - type: custom:button-card
-            card_mod:
-              style: |
-                ha-card {
-                  transition: 300ms !important;
-                  }
-            icon: mdi:solar-power-variant
-            name: Stromproduktion jährlich
-            show_state: true
-            entity: sensor.balkonkraftwerk_stromproduktion_jahrlich_latest
-            tap_action:
-              action: more-info
-            state_display: |
-              [[[
-                return Math.round(Number(entity.state)).toFixed(0) +' kWh';
-              ]]]
-            styles:
-              grid:
-                - grid-template-areas: '"i" "n" "slider"'
-                - grid-template-columns: 1fr
-                - grid-template-rows: 1fr min-content min-content
-              card:
-                - background: var(--contrast0)
-                - padding: 16px
-                - "--mdc-ripple-press-opacity": 0
-              img_cell:
-                - justify-self: start
-                - width: 24px
-              icon:
-                - width: 24px
-                - height: 24px
-                - color: var(--contrast15)
-              name:
-                - justify-self: start
-                - font-size: 12px
-                - margin: 4px 0 12px 0
-                - color: var(--contrast15)
-              state:
-                - color: var(--contrast15)
-                - font-family: Product Sans Black
         columns: 2
+        cards:
+          - type: "custom:decluttering-card"
+            template: "sensor_button_card_light"
+            variables:
+              - entity: "sensor.co2_einsparung_solar_jahrlich_neu"
+              - name: "Einsparung"
+              - icon: "mdi:molecule-co2"
+              - unit: "kgCO2eq"
+          - type: "custom:decluttering-card"
+            template: "sensor_button_card_dark"
+            variables:
+              - entity: "sensor.balkonkraftwerk_stromproduktion_jahrlich_latest"
+              - name: "Stromproduktion jährlich"
+              - icon: "mdi:solar-power-variant"
+              - unit: " kWh"
 
       - type: "custom:decluttering-card"
         template: "title_card"
@@ -190,88 +123,22 @@ cards:
 
       - type: grid
         square: false
-        cards:
-          - type: custom:button-card
-            card_mod:
-              style: |
-                ha-card {
-                  transition: 300ms !important;
-                  }
-            icon: mdi:molecule-co2
-            name: Emission
-            show_state: true
-            entity: sensor.co2_emissionen_netz_jahrlich_neu
-            tap_action:
-              action: more-info
-            state_display: |
-              [[[
-                return Math.round(Number(entity.state)).toFixed(0) +' kgCO2eq';
-              ]]]
-            styles:
-              grid:
-                - grid-template-areas: '"i" "n" "slider"'
-                - grid-template-columns: 1fr
-                - grid-template-rows: 1fr min-content min-content
-              card:
-                - background: var(--contrast15)
-                - padding: 16px
-                - "--mdc-ripple-press-opacity": 0
-              img_cell:
-                - justify-self: start
-                - width: 24px
-              icon:
-                - width: 24px
-                - height: 24px
-                - color: var(--contrast0)
-              name:
-                - justify-self: start
-                - font-size: 12px
-                - margin: 4px 0 12px 0
-                - color: var(--contrast0)
-              state:
-                - color: var(--contrast0)
-                - font-family: Product Sans Black
-          - type: custom:button-card
-            card_mod:
-              style: |
-                ha-card {
-                  transition: 300ms !important;
-                  }
-            icon: mdi:transmission-tower-export
-            name: Stromverbrauch jährlich
-            show_state: true
-            entity: sensor.stromzahler_stromverbrauch_jahrlich
-            tap_action:
-              action: more-info
-            state_display: |
-              [[[
-                return Math.round(Number(entity.state)).toFixed(0) +' kWh';
-              ]]]
-            styles:
-              grid:
-                - grid-template-areas: '"i" "n" "slider"'
-                - grid-template-columns: 1fr
-                - grid-template-rows: 1fr min-content min-content
-              card:
-                - background: var(--contrast0)
-                - padding: 16px
-                - "--mdc-ripple-press-opacity": 0
-              img_cell:
-                - justify-self: start
-                - width: 24px
-              icon:
-                - width: 24px
-                - height: 24px
-                - color: var(--contrast15)
-              name:
-                - justify-self: start
-                - font-size: 12px
-                - margin: 4px 0 12px 0
-                - color: var(--contrast15)
-              state:
-                - color: var(--contrast15)
-                - font-family: Product Sans Black
         columns: 2
+        cards:
+          - type: "custom:decluttering-card"
+            template: "sensor_button_card_light"
+            variables:
+              - entity: "sensor.co2_emissionen_netz_jahrlich_neu"
+              - name: "Emission"
+              - icon: "mdi:molecule-co2"
+              - unit: "kgCO2eq"
+          - type: "custom:decluttering-card"
+            template: "sensor_button_card_dark"
+            variables:
+              - entity: "sensor.stromzahler_stromverbrauch_jahrlich"
+              - name: "Stromverbrauch jährlich"
+              - icon: "mdi:transmission-tower-export"
+              - unit: " kWh"
 
       - type: "custom:decluttering-card"
         template: "title_card"
@@ -294,7 +161,7 @@ cards:
         min_flow_rate: 0.9
         max_flow_rate: 6
         watt_threshold: 10000
-        clickable_entities: true
+        clickable_entities: false
         card_mod:
           style: |
             ha-card {

@@ -14,7 +14,7 @@ cards:
   - type: "custom:layout-card"
     layout_type: "custom:grid-layout"
     layout:
-      grid-template-columns: auto 15%
+      grid-template-columns: "auto 15%"
       grid-template-rows: 1
       max_cols: 2
       margin: "0px"
@@ -56,8 +56,8 @@ cards:
           - type: "entity"
             entity: "sensor.power_highest_peak_time_tomorrow"
             double_tap_action:
-              action: none
-            icon: mdi:solar-power-variant
+              action: "none"
+            icon: "mdi:solar-power-variant"
             content_info: "state"
             tap_action:
               action: "more-info"
@@ -89,14 +89,14 @@ cards:
               - entity: "sensor.esp_01s_stromzaehler_active_power"
               - name: "Leistung Zähler"
 
-  - type: vertical-stack
+  - type: "vertical-stack"
     cards:
       - type: "custom:decluttering-card"
         template: "title_card"
         variables:
           - name: "Photovoltaik"
           - label: "Produktion"
-      - type: grid
+      - type: "grid"
         square: false
         columns: 2
         cards:
@@ -121,7 +121,7 @@ cards:
           - name: "Netz"
           - label: "Verbrauch"
 
-      - type: grid
+      - type: "grid"
         square: false
         columns: 2
         cards:
@@ -146,16 +146,16 @@ cards:
           - name: "Echtzeit"
           - label: "Energiefluss"
 
-      - type: custom:power-flow-card-plus
+      - type: "custom:power-flow-card-plus"
         entities:
           grid:
-            icon: mdi:transmission-tower
-            name: Netz
-            entity: sensor.esp_01s_stromzaehler_active_power
+            icon: "mdi:transmission-tower"
+            name: "Netz"
+            entity: "sensor.esp_01s_stromzaehler_active_power"
           solar:
-            icon: mdi:solar-power-variant
-            name: Photovoltaik
-            entity: sensor.apsystems_garagenpower_total_power_fixed
+            icon: "mdi:solar-power-variant"
+            name: "Photovoltaik"
+            entity: "sensor.apsystems_garagenpower_total_power_fixed"
         w_decimals: 0
         kw_decimals: 2
         min_flow_rate: 0.9
@@ -169,5 +169,5 @@ cards:
              box-shadow: none;
              }
 
-  - type: custom:gap-card
+  - type: "custom:gap-card"
     height: 80

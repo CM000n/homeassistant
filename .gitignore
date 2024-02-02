@@ -66,6 +66,7 @@ venv
 # Log files
 home-assistant.log
 ozw_log.txt
+watchman_report.txt
 
 # Development files
 custom_components/

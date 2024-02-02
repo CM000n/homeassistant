@@ -43,101 +43,51 @@ cards:
               font-family: Product Sans;
               }
         chips:
-          - type: "custom:decluttering-card"
-            template: "entity_chip"
-            variables:
-              - entity: "sensor.power_highest_peak_time_today"
-              - icon: "mdi:solar-power-variant"
-          - type: "custom:decluttering-card"
-            template: "entity_chip"
-            variables:
-              - entity: "sensor.power_highest_peak_time_tomorrow"
-              - icon: "mdi:solar-power-variant"
+          - type: "entity"
+            entity: "sensor.power_highest_peak_time_today"
+            double_tap_action:
+              action: "none"
+            icon: "mdi:solar-power-variant"
+            content_info: "state"
+            tap_action:
+              action: "more-info"
+            hold_action:
+              action: "none"
+          - type: "entity"
+            entity: "sensor.power_highest_peak_time_tomorrow"
+            double_tap_action:
+              action: none
+            icon: mdi:solar-power-variant
+            content_info: "state"
+            tap_action:
+              action: "more-info"
+            hold_action:
+              action: "none"
 
       - type: "grid"
         columns: 2
         square: false
         cards:
-          - graph: line
-            type: sensor
-            entity: sensor.balkonkraftwerk_stromproduktion_taglich_latest
-            hours_to_show: 24
-            detail: 1
-            name: Tagesproduktion
-            icon: none
-            card_mod:
-              class: graph
-              style: |
-                ha-card {
-                  box-shadow: none;
-                  }
-                .graph {
-                  background: var(--contrast0);
-                }
-                    .graph .name {
-                      background: var(--contrast15);
-                      color: var(--contrast0);
-                    }
-          - graph: line
-            type: sensor
-            entity: sensor.stromzahler_stromverbrauch_taglich
-            hours_to_show: 24
-            detail: 1
-            name: Tagesverbrauch
-            icon: none
-            card_mod:
-              class: graph
-              style: |
-                ha-card {
-                  box-shadow: none;
-                  }
-                .graph {
-                  background: var(--contrast0);
-                }
-                    .graph .name {
-                      background: var(--contrast15);
-                      color: var(--contrast0);
-                    }
-          - type: sensor
-            graph: line
-            entity: sensor.apsystems_garagenpower_total_power_fixed
-            hours_to_show: 24
-            detail: 1
-            name: Leistung Photovoltaik
-            icon: none
-            card_mod:
-              class: graph
-              style: |
-                ha-card {
-                  box-shadow: none;
-                  }
-                .graph {
-                  background: var(--contrast0);
-                }
-                    .graph .name {
-                      background: var(--contrast15);
-                      color: var(--contrast0);
-                    }
-          - type: sensor
-            graph: line
-            entity: sensor.esp_01s_stromzaehler_active_power
-            hours_to_show: 24
-            detail: 1
-            name: Leistung Zähler
-            icon: none
-            card_mod:
-              class: graph
-              style: |
-                ha-card {
-                  box-shadow: none;
-                  }
-                .graph {
-                  background: var(--contrast0);
-                }
-                    .graph .name {
-                      background: var(--contrast15);
-                      color: var(--contrast0);
-                    }
+          - type: "custom:decluttering-card"
+            template: "sensor_line_graph_card"
+            variables:
+              - entity: "sensor.balkonkraftwerk_stromproduktion_taglich_latest"
+              - name: "Tagesproduktion"
+          - type: "custom:decluttering-card"
+            template: "sensor_line_graph_card"
+            variables:
+              - entity: "sensor.stromzahler_stromverbrauch_taglich"
+              - name: "Tagesverbrauch"
+          - type: "custom:decluttering-card"
+            template: "sensor_line_graph_card"
+            variables:
+              - entity: "sensor.apsystems_garagenpower_total_power_fixed"
+              - name: "Leistung Photovoltaik"
+          - type: "custom:decluttering-card"
+            template: "sensor_line_graph_card"
+            variables:
+              - entity: "sensor.esp_01s_stromzaehler_active_power"
+              - name: "Leistung Zähler"
 
   - type: vertical-stack
     cards:

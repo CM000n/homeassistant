@@ -18,12 +18,9 @@ GA_SERVICE_ACCOUNT.json
 aircast.xml
 icloud/
 google_assistant/
-automations.yaml
 google_calendars.yaml
 groups.yaml
-scenes.yaml
 scripts/
-scripts.yaml
 hass-emulated-hue/
 home-assistant.db
 home-assistant_v2.db

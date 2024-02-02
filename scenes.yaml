@@ -1,0 +1,16 @@
+- id: "1676058213453"
+  name: "Filmzeit"
+  entities:
+    light.wohnzimmer_deckenleuchte:
+      state: "on"
+      brightness_pct: 35
+      rgb_color: [255, 128, 26]
+    light.wohnzimmer_weihnachtsstern:
+      state: "on"
+    light.wohnzimmer_stehlampe_rechts:
+      state: "off"
+    light.wohnzimmer_lightstrip:
+      state: "on"
+      brightness_pct: 20
+      rgb_color: [255, 128, 26]
+  metadata: {}

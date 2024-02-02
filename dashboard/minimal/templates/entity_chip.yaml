@@ -1,0 +1,13 @@
+---
+entity_chip:
+  card:
+    type: "entity"
+    entity: "[[entity]]"
+    double_tap_action:
+      action: "none"
+    icon: "[[icon]]"
+    content_info: "state"
+    tap_action:
+      action: "more-info"
+    hold_action:
+      action: "none"

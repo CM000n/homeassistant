@@ -19,7 +19,7 @@ cards:
       margin: "-4px"
     cards:
       - type: "custom:decluttering-card"
-        template: "title_card"
+        template: "title_home_card"
       - type: "custom:decluttering-card"
         template: "title_chip_entity"
         variables:

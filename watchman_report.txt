@@ -7,23 +7,25 @@
 | notify.simon_hoerrle_gmail_com                                                   | missing | automations.yaml:110                                         |
 +----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
 
--== Missing 10 entity(ies) from 172 found in your config:
+-== Missing 11 entity(ies) from 176 found in your config:
 +----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
 | Entity ID                                                                        | State   | Location                                                     |
 +----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
 | light.schlafzimmer_nachttisch_simon                                              | missing | scripts.yaml:39                                              |
 | sensor.shelly_1pm_buero_tuer_power_mean_over_last_30_minutes                     | unknown | automations.yaml:102                                         |
 | climate.c63380a3                                                                 | missing | dashboard/rounded/views/04-child_room.yaml:63                |
-| light.shelly_deckenlampe_bad                                                     | missing | dashboard/rounded/views/05-bath.yaml:31                      |
-| light.shelly_badspiegel                                                          | missing | dashboard/rounded/views/05-bath.yaml:37                      |
-| sensor.luci_accese                                                               | missing | dashboard/minimal/views/00-                                  |
-|                                                                                  |         | default_view.yaml:357,406,455,504,553                        |
-| sensor.balkonkraftwerk_stromproduktion_jahrlich_latest                           | unknown | dashboard/minimal/views/99-energy.yaml:254                   |
+| sensor.luci_accese                                                               | missing | dashboard/minimal/views/00-default_view.yaml:148,197,246,295 |
+| switch.sonoff_10009c7508_1                                                       | missing | dashboard/minimal/views/00-                                  |
+|                                                                                  |         | default_view.yaml:534,545,555,565,577                        |
+| light.luce_terrazzo_mare                                                         | missing | dashboard/minimal/views/00-                                  |
+|                                                                                  |         | default_view.yaml:650,659,667,675,685                        |
+| input_boolean.clima_casa_on_off                                                  | missing | dashboard/minimal/views/00-default_view.yaml:786,821         |
+| input_select.sosp_gest_auto_casa                                                 | missing | dashboard/minimal/views/00-default_view.yaml:874             |
 | light.nahtisch_decke                                                             | missing | google_assistant/google_assistant.yaml:31                    |
 | device_tracker.dm_pf2l2j0l                                                       | missing | integrations/sensors.yaml:169,176                            |
 | sensor.energie_identifiziert_power                                               | missing | integrations/template.yaml:165                               |
 +----------------------------------------------------------------------------------+---------+--------------------------------------------------------------+
 
--== Report created on 31 Jan 2024 04:00:00
--== Parsed 79 files in 0.36s., ignored 0 files
--== Generated in: 0.03s. Validated in: 0.00s.
+-== Report created on 02 Feb 2024 04:00:01
+-== Parsed 86 files in 0.94s., ignored 0 files
+-== Generated in: 0.01s. Validated in: 0.00s.

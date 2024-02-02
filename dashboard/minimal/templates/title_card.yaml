@@ -2,8 +2,11 @@
 title_card:
   card:
     type: "custom:button-card"
-    name: "[[name]]"
-    label: "[[label]]"
+    name: "Hallo"
+    label: |
+      [[[
+          return user.name
+        ]]]
     show_label: true
     styles:
       card:

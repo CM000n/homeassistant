@@ -466,4 +466,4 @@ cards:
               - navigation_path: "/lovelace-minimal/other"
 
   - type: "custom:gap-card"
-    height: 80
+    height: 100

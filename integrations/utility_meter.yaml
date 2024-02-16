@@ -62,19 +62,19 @@ utility_meter:
     cycle: "yearly"
   bpplant_hourly_energy:
     unique_id: "79f0dc55-48d2-40b3-9f8b-db4e89242b9b"
-    source: "sensor.apsystems_garagenpower_lifetime_production"
+    source: "sensor.apsystems_garagenpower_lifetime_production_latest"
     name: "Balkonkraftwerk Stromproduktion stündlich"
     delta_values: false
     cycle: "hourly"
   bpplant_daily_energy:
     unique_id: "220e1e9c-0be0-4f0d-868b-21d62fd941d4"
-    source: "sensor.apsystems_garagenpower_lifetime_production"
+    source: "sensor.apsystems_garagenpower_lifetime_production_latest"
     name: "Balkonkraftwerk Stromproduktion täglich"
     delta_values: false
     cycle: "daily"
   bpplant_yearly_energy:
     unique_id: "e4b2f92f-a873-48f1-a831-99c255e114a5"
-    source: "sensor.apsystems_garagenpower_lifetime_production"
+    source: "sensor.apsystems_garagenpower_lifetime_production_latest"
     name: "Balkonkraftwerk Stromproduktion jährlich"
     delta_values: false
     cycle: "yearly"

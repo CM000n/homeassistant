@@ -210,27 +210,14 @@ template:
           {{ states('sensor.current_lights_on')|float(0) > 0 }}
 
   - trigger:
-      - platform: state
-        entity_id: sensor.balkonkraftwerk_stromproduktion_taglich
+      - platform: "state"
+        entity_id: "sensor.apsystems_garagenpower_lifetime_production"
         not_to:
-          - unknown
-          - unavailable
+          - "unknown"
+          - "unavailable"
     sensor:
-      - name: balkonkraftwerk_stromproduktion_taglich_latest
-        unique_id: 23889b79-e6d9-48f9-bda6-e27c0591054d
-        state: "{{ trigger.to_state.state }}"
-        device_class: energy
-        unit_of_measurement: "kWh"
-
-  - trigger:
-      - platform: state
-        entity_id: sensor.balkonkraftwerk_stromproduktion_jahrlich
-        not_to:
-          - unknown
-          - unavailable
-    sensor:
-      - name: balkonkraftwerk_stromproduktion_jahrlich_latest
-        unique_id: d9a87ce5-422a-42fd-8c00-0db82b48cfe5
+      - name: "apsystems_garagenpower_lifetime_production_latest"
+        unique_id: "dce6c4a1-8d21-4f07-be6d-336baec5d48c"
         state: "{{ trigger.to_state.state }}"
         device_class: energy
         unit_of_measurement: "kWh"

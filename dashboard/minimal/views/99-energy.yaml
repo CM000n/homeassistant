@@ -71,7 +71,7 @@ cards:
           - type: "custom:decluttering-card"
             template: "sensor_line_graph_card"
             variables:
-              - entity: "sensor.balkonkraftwerk_stromproduktion_taglich_latest"
+              - entity: "sensor.balkonkraftwerk_stromproduktion_taglich"
               - name: "Tagesproduktion"
           - type: "custom:decluttering-card"
             template: "sensor_line_graph_card"
@@ -110,7 +110,7 @@ cards:
           - type: "custom:decluttering-card"
             template: "sensor_button_card_dark"
             variables:
-              - entity: "sensor.balkonkraftwerk_stromproduktion_jahrlich_latest"
+              - entity: "sensor.balkonkraftwerk_stromproduktion_jahrlich"
               - name: "Stromproduktion jährlich"
               - icon: "mdi:solar-power-variant"
               - unit: " kWh"
@@ -170,4 +170,4 @@ cards:
              }
 
   - type: "custom:gap-card"
-    height: 80
+    height: 100

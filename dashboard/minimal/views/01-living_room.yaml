@@ -108,7 +108,7 @@ cards:
                     - color: var(--contrast20)
                   label:
                     - font-family: Product Sans
-                    - font-weight: light
+                    - font-weight: 300
                     - justify-self: start
                     - font-size: 16px
                     - color: var(--contrast10)
@@ -185,7 +185,7 @@ cards:
                     - color: var(--contrast20)
                   label:
                     - font-family: Product Sans
-                    - font-weight: light
+                    - font-weight: 300
                     - justify-self: start
                     - font-size: 16px
                     - color: var(--contrast10)
@@ -261,7 +261,7 @@ cards:
                     - color: var(--contrast20)
                   label:
                     - font-family: Product Sans
-                    - font-weight: light
+                    - font-weight: 300
                     - justify-self: start
                     - font-size: 16px
                     - color: var(--contrast10)
@@ -337,7 +337,7 @@ cards:
                     - color: var(--contrast20)
                   label:
                     - font-family: Product Sans
-                    - font-weight: light
+                    - font-weight: 300
                     - justify-self: start
                     - font-size: 16px
                     - color: var(--contrast10)
@@ -414,7 +414,7 @@ cards:
                     - color: var(--contrast20)
                   label:
                     - font-family: Product Sans
-                    - font-weight: light
+                    - font-weight: 300
                     - justify-self: start
                     - font-size: 16px
                     - color: var(--contrast10)
@@ -492,7 +492,7 @@ cards:
                     - color: var(--contrast20)
                   label:
                     - font-family: Product Sans
-                    - font-weight: light
+                    - font-weight: 300
                     - justify-self: start
                     - font-size: 16px
                     - color: var(--contrast10)
@@ -575,7 +575,7 @@ cards:
                     - color: var(--contrast20)
                   label:
                     - font-family: Product Sans
-                    - font-weight: light
+                    - font-weight: 300
                     - justify-self: start
                     - font-size: 16px
                     - color: var(--contrast10)

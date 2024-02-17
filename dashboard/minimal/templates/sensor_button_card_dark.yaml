@@ -39,4 +39,4 @@ sensor_button_card_dark:
       state:
         - color: var(--contrast15)
         - font-family: Product Sans
-        - font-weight: black
+        - font-weight: 900

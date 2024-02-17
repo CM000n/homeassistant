@@ -21,7 +21,7 @@ energy_bar_card_red_green:
         bar-card-value {
           margin-right: 0px;
           font-family: Product Sans;
-          font-weight: medium;
+          font-weight: 500;
         }
         bar-card-backgroundbar {
         background: var(--contrast18);

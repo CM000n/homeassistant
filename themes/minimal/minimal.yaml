@@ -1,5 +1,13 @@
 ---
 Minimal:
+  primary-font-family: "Product Sans"
+  paper-font-common-base_-_font-family: "var(--primary-font-family)"
+  paper-font-common-code_-_font-family: "var(--primary-font-family)"
+  paper-font-body1_-_font-family: "var(--primary-font-family)"
+  paper-font-subhead_-_font-family: "var(--primary-font-family)"
+  paper-font-headline_-_font-family: "var(--primary-font-family)"
+  paper-font-caption_-_font-family: "var(--primary-font-family)"
+  paper-font-title_-_font-family: "var(--primary-font-family)"
   #  ha-card-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.16)
   #  font-family: Poppins
   #  font-family: Quicksand
@@ -369,7 +377,7 @@ Minimal:
         padding: 6px 10px;
         border-radius: 100px;
         z-index: 1;
-        font-family: Poppins !important;
+        font-family: 'Product Sans' !important;
         background: var(--contrast20);
         color: var(--contrast1);
       }

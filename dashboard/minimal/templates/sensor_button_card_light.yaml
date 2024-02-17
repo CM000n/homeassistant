@@ -38,4 +38,5 @@ sensor_button_card_light:
         - font-family: Product Sans
       state:
         - color: var(--contrast0)
-        - font-family: Product Sans Black
+        - font-family: Product Sans
+        - font-weight: black

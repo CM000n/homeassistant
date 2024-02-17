@@ -3,6 +3,15 @@ Rounded:
   ########################################################
   ############### Default global variables ###############
   ########################################################
+  #font
+  primary-font-family: "Product Sans"
+  paper-font-common-base_-_font-family: "var(--primary-font-family)"
+  paper-font-common-code_-_font-family: "var(--primary-font-family)"
+  paper-font-body1_-_font-family: "var(--primary-font-family)"
+  paper-font-subhead_-_font-family: "var(--primary-font-family)"
+  paper-font-headline_-_font-family: "var(--primary-font-family)"
+  paper-font-caption_-_font-family: "var(--primary-font-family)"
+  paper-font-title_-_font-family: "var(--primary-font-family)"
   # Spacings and radius
   horizontal-stack-card-margin: "0px 8px"
   vertical-stack-card-margin: "8px 0px"
@@ -243,7 +252,7 @@ Rounded:
       /* General changes */
       ha-card {
         transition: none !important;
-        font-family: 'hk nova semibold', 'Roboto', 'Noto', sans-serif !important;
+        font-family: 'hk nova semibold', 'Product Sans', 'Noto', sans-serif !important;
       }
       /* Vacuum card load transition disabled */
       .type-custom-xiaomi-vacuum-map-card {

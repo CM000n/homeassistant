@@ -17,7 +17,8 @@ title_card:
         - font-size: 20px
         - color: var(--contrast20)
       label:
-        - font-family: Product Sans Light
+        - font-family: Product Sans
+        - font-weight: light
         - justify-self: start
         - font-size: 16px
         - color: var(--contrast10)

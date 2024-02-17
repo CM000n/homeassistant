@@ -23,12 +23,18 @@ cards:
         template: "title_card"
         variables:
           - name: "Wohnzimmer"
-          - label: "Geräte und Steuerung"
+          - label: "Steuerung"
       - type: "custom:decluttering-card"
         template: "title_chip_entity"
         variables:
           - entity: "sensor.steckdose_wohnzimmer_temperatur"
           - icon: "mdi:thermometer"
+
+  - type: "custom:decluttering-card"
+    template: "title_card"
+    variables:
+      - name: ""
+      - label: "Lichter"
 
   - type: vertical-stack
     cards:
@@ -38,7 +44,7 @@ cards:
           - type: vertical-stack
             cards:
               - type: custom:button-card
-                entity: light.luce_ingresso_light
+                entity: light.wohnzimmer_deckenleuchte
                 aspect_ratio: 1/1
                 tap_action:
                   action: more-info
@@ -46,7 +52,7 @@ cards:
                   haptic: heavy
                   action: toggle
                 name: " "
-                icon: mdi:lightbulb-off-outline
+                icon: mdi:globe-light
                 styles:
                   card:
                     - background: var(--contrast0)
@@ -85,8 +91,9 @@ cards:
                     ha-card {
                       transition: 300ms !important;
                       }
+
               - type: custom:button-card
-                name: Ingresso
+                name: Deckenlampe
                 show_label: false
                 styles:
                   card:
@@ -100,7 +107,8 @@ cards:
                     - font-size: 13px
                     - color: var(--contrast20)
                   label:
-                    - font-family: Product Sans Light
+                    - font-family: Product Sans
+                    - font-weight: light
                     - justify-self: start
                     - font-size: 16px
                     - color: var(--contrast10)
@@ -109,10 +117,11 @@ cards:
                     ha-card {
                       margin-top: 15px;
                       }
+
           - type: vertical-stack
             cards:
               - type: custom:button-card
-                entity: switch.luce_divano_switch
+                entity: light.wohnzimmer_lightstrip
                 aspect_ratio: 1/1
                 tap_action:
                   action: more-info
@@ -120,7 +129,7 @@ cards:
                   haptic: heavy
                   action: toggle
                 name: " "
-                icon: mdi:floor-lamp-outline
+                icon: mdi:led-strip-variant
                 styles:
                   card:
                     - background: var(--contrast0)
@@ -159,8 +168,9 @@ cards:
                     ha-card {
                       transition: 300ms !important;
                       }
+
               - type: custom:button-card
-                name: Divano
+                name: Lightstrip
                 show_label: false
                 styles:
                   card:
@@ -174,7 +184,8 @@ cards:
                     - font-size: 13px
                     - color: var(--contrast20)
                   label:
-                    - font-family: Product Sans Light
+                    - font-family: Product Sans
+                    - font-weight: light
                     - justify-self: start
                     - font-size: 16px
                     - color: var(--contrast10)
@@ -183,10 +194,11 @@ cards:
                     ha-card {
                       margin-top: 15px;
                       }
+
           - type: vertical-stack
             cards:
               - type: custom:button-card
-                entity: switch.router_2
+                entity: light.wohnzimmer_stehlampe_rechts
                 aspect_ratio: 1/1
                 tap_action:
                   action: more-info
@@ -194,7 +206,7 @@ cards:
                   haptic: heavy
                   action: toggle
                 name: " "
-                icon: mdi:router-wireless-off
+                icon: mdi:floor-lamp
                 styles:
                   card:
                     - background: var(--contrast0)
@@ -232,8 +244,9 @@ cards:
                     ha-card {
                       transition: 300ms !important;
                       }
+
               - type: custom:button-card
-                name: Router
+                name: Stehlampe
                 show_label: false
                 styles:
                   card:
@@ -247,7 +260,8 @@ cards:
                     - font-size: 13px
                     - color: var(--contrast20)
                   label:
-                    - font-family: Product Sans Light
+                    - font-family: Product Sans
+                    - font-weight: light
                     - justify-self: start
                     - font-size: 16px
                     - color: var(--contrast10)
@@ -256,10 +270,11 @@ cards:
                     ha-card {
                       margin-top: 15px;
                       }
+
           - type: vertical-stack
             cards:
               - type: custom:button-card
-                entity: input_boolean.ctrl_router_on_off_auto
+                entity: light.wohnzimmer_weihnachtsstern
                 aspect_ratio: 1/1
                 tap_action:
                   action: toggle
@@ -267,7 +282,7 @@ cards:
                 hold_action:
                   action: more-info
                 name: " "
-                icon: mdi:router-wireless-off
+                icon: mdi:star
                 styles:
                   card:
                     - background: var(--contrast0)
@@ -305,10 +320,9 @@ cards:
                     ha-card {
                       transition: 300ms !important;
                       }
+
               - type: custom:button-card
-                entity: input_boolean.ctrl_router_on_off_auto
-                name: Controllo
-                show_icon: false
+                name: Weihnachtsstern
                 show_label: false
                 styles:
                   card:
@@ -322,20 +336,17 @@ cards:
                     - font-size: 13px
                     - color: var(--contrast20)
                   label:
-                    - font-family: Product Sans Light
+                    - font-family: Product Sans
+                    - font-weight: light
                     - justify-self: start
                     - font-size: 16px
                     - color: var(--contrast10)
-                state:
-                  - value: "on"
-                    name: Manuale
-                  - value: "off"
-                    name: Auto
                 card_mod:
                   style: |
                     ha-card {
                       margin-top: 15px;
                       }
+
           - type: vertical-stack
             cards:
               - type: custom:button-card
@@ -386,6 +397,7 @@ cards:
                     ha-card {
                       transition: 300ms !important;
                       }
+
               - type: custom:button-card
                 name: Soggiorno
                 show_label: false
@@ -401,7 +413,8 @@ cards:
                     - font-size: 13px
                     - color: var(--contrast20)
                   label:
-                    - font-family: Product Sans Light
+                    - font-family: Product Sans
+                    - font-weight: light
                     - justify-self: start
                     - font-size: 16px
                     - color: var(--contrast10)
@@ -410,6 +423,7 @@ cards:
                     ha-card {
                       margin-top: 15px;
                       }
+
           - type: vertical-stack
             cards:
               - type: custom:button-card
@@ -459,6 +473,7 @@ cards:
                     ha-card {
                       transition: 300ms !important;
                       }
+
               - type: custom:button-card
                 entity: input_boolean.luci_soggiorno_automatico
                 name: Soggiorno
@@ -476,7 +491,8 @@ cards:
                     - font-size: 13px
                     - color: var(--contrast20)
                   label:
-                    - font-family: Product Sans Light
+                    - font-family: Product Sans
+                    - font-weight: light
                     - justify-self: start
                     - font-size: 16px
                     - color: var(--contrast10)
@@ -490,6 +506,7 @@ cards:
                     ha-card {
                       margin-top: 15px;
                       }
+
           - type: vertical-stack
             cards:
               - type: custom:button-card
@@ -540,6 +557,7 @@ cards:
                     ha-card {
                       transition: 300ms !important;
                       }
+
               - type: custom:button-card
                 name: Mobile
                 show_icon: false
@@ -556,7 +574,8 @@ cards:
                     - font-size: 13px
                     - color: var(--contrast20)
                   label:
-                    - font-family: Product Sans Light
+                    - font-family: Product Sans
+                    - font-weight: light
                     - justify-self: start
                     - font-size: 16px
                     - color: var(--contrast10)
@@ -566,135 +585,121 @@ cards:
                       margin-top: 15px;
                       }
         columns: 4
-      - type: custom:button-card
-        entity: media_player.soggiorno_2
-        name: Televisione
-        show_icon: false
-        tap_action:
-          action: more-info
-          haptic: light
+
+  - type: "custom:decluttering-card"
+    template: "title_card"
+    variables:
+      - name: ""
+      - label: "Mediaplayer"
+
+  - type: custom:button-card
+    entity: media_player.chromecast
+    name: Chromecast
+    show_icon: false
+    tap_action:
+      action: more-info
+      haptic: light
+    styles:
+      card:
+        - border-radius: 18px
+        - border-style: none
+        - background-color: var(--contrast0)
+      grid:
+        - grid-template-areas: '"icon_cells" "n" "button"'
+        - grid-template-columns: 1fr
+        - grid-template-rows: 1fr min-content min-content
+      custom_fields:
+        icon_cells:
+          - justify-self: start
+          - margin-top: 12px
+          - margin-left: 15px
+      name:
+        - font-size: 90%
+        - font-weight: bold
+        - justify-self: start
+        - margin-top: 6px
+        - margin-left: 15px
+    state:
+      - value: "on"
         styles:
           card:
-            - border-radius: 18px
-            - border-style: none
-            - background-color: var(--contrast0)
-          grid:
-            - grid-template-areas: '"icon_cells" "n" "button"'
-            - grid-template-columns: 1fr
-            - grid-template-rows: 1fr min-content min-content
-          custom_fields:
-            icon_cells:
-              - justify-self: start
-              - margin-top: 12px
-              - margin-left: 15px
-          name:
-            - font-size: 90%
-            - font-weight: bold
-            - justify-self: start
-            - margin-top: 6px
-            - margin-left: 15px
-        state:
-          - value: "on"
-            styles:
-              card:
-                - background-color: var(--contrast15)
-                - color: var(--contrast0)
-          - value: playing
-            styles:
-              card:
-                - background-color: var(--contrast15)
-                - color: var(--contrast0)
-        custom_fields:
-          icon_cells: |
-            [[[
-              return `<ha-icon
-                icon="mdi:monitor"
-                style="width: 25px; height: 25px; color: auto;">
-               </ha-icon>
-               `
-            ]]]
-          button:
+            - background-color: var(--contrast15)
+            - color: var(--contrast0)
+      - value: playing
+        styles:
+          card:
+            - background-color: var(--contrast15)
+            - color: var(--contrast0)
+    custom_fields:
+      icon_cells: |
+        [[[
+          return `<ha-icon
+            icon="mdi:cast"
+            style="width: 25px; height: 25px; color: auto;">
+           </ha-icon>
+           `
+        ]]]
+      button:
+        card:
+          type: custom:button-card
+          entity: media_player.chromecast
+          show_icon: false
+          show_name: false
+          styles:
             card:
-              type: custom:button-card
-              entity: media_player.soggiorno_2
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - border-style: none
-                  - margin-top: "-4%"
-                  - margin-bottom: "-5%"
-                  - background-color: transparent
-                grid:
-                  - grid-template-areas: '"state icon_cells"'
-                  - grid-template-columns: min-content 1fr
-                  - grid-template-rows: min-content
-                custom_fields:
-                  state:
-                    - justify-self: start
-                    - align-self: middle
-                    - font-size: 12px
-                    - filter: opacity(50%)
-                    - margin-left: 15px
-                    - margin-top: 1.6px
-                    - color: |
-                        [[[
-                         var state = states['media_player.soggiorno_2'].state
-                         if(state != "off")
-                          return `var(--contrast0)`;
-                         else
-                          return `var(--contrast15)`;
-                        ]]]
-                  icon_cells:
-                    - justify-self: end
-                    - align-self: start
-                    - margin-right: 15px
-                    - width: 45px
-              custom_fields:
-                icon_cells: |
-                  [[[
-                   var state = states['media_player.soggiorno_2'].state;
-                   if(state != "off")
-                    return `<ha-icon
-                    icon="mdi:toggle-switch"
-                    style="color: var(--contrast0);">
-                    </ha-icon>`;
-                   else
-                    return `<ha-icon
-                    icon="mdi:toggle-switch-off"
-                    style="color: auto;">
-                    </ha-icon>
-                    `;
-                  ]]]
-                state: |
-                  [[[
-                    var state = states['media_player.soggiorno_2'].state
-                   if(state != "off")
-                    return `<span>Accesa</span>`;
-                   else
-                    return `<span>Spento</span>`;
-                  ]]]
-      - type: custom:mushroom-chips-card
-        chips:
-          - type: template
-            tap_action:
-              action: navigate
-              navigation_path: /servizi-casa/0
-            hold_action:
-              action: none
-            double_tap_action:
-              action: none
-            icon: mdi:remote-tv
-            content: Telecomando
-        alignment: end
-        card_mod:
-          style: |
-            ha-card {
-              --chip-background: var(--contrast0);
-              --primary-text-color: var(--contrast18);
-              font-family: Product Sans Black;
-              margin-right: 5px;
-              }
+              - border-style: none
+              - margin-top: "-4%"
+              - margin-bottom: "-5%"
+              - background-color: transparent
+            grid:
+              - grid-template-areas: '"state icon_cells"'
+              - grid-template-columns: min-content 1fr
+              - grid-template-rows: min-content
+            custom_fields:
+              state:
+                - justify-self: start
+                - align-self: middle
+                - font-size: 12px
+                - filter: opacity(50%)
+                - margin-left: 15px
+                - margin-top: 1.6px
+                - color: |
+                    [[[
+                     var state = states['media_player.chromecast'].state
+                     if(state != "off")
+                      return `var(--contrast0)`;
+                     else
+                      return `var(--contrast15)`;
+                    ]]]
+              icon_cells:
+                - justify-self: end
+                - align-self: start
+                - margin-right: 15px
+                - width: 45px
+          custom_fields:
+            icon_cells: |
+              [[[
+               var state = states['media_player.chromecast'].state;
+               if(state != "off")
+                return `<ha-icon
+                icon="mdi:toggle-switch"
+                style="color: var(--contrast0);">
+                </ha-icon>`;
+               else
+                return `<ha-icon
+                icon="mdi:toggle-switch-off"
+                style="color: auto;">
+                </ha-icon>
+                `;
+              ]]]
+            state: |
+              [[[
+                var state = states['media_player.chromecast'].state
+               if(state != "off")
+                return `<span>An</span>`;
+               else
+                return `<span>Aus</span>`;
+              ]]]
 
   - type: "custom:gap-card"
     height: 100

@@ -11,7 +11,7 @@ light_button_card:
         hold_action:
           haptic: "heavy"
           action: "toggle"
-        name: ""
+        name: " "
         icon: "[[icon]]"
         styles:
           card:

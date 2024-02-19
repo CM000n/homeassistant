@@ -1,0 +1,111 @@
+---
+media_player_card:
+  card:
+    type: "custom:button-card"
+    entity: "[[entity]]"
+    name: "[[name]]"
+    show_icon: false
+    tap_action:
+      action: "more-info"
+      haptic: "light"
+    styles:
+      card:
+        - border-radius: "18px"
+        - border-style: "none"
+        - background-color: "var(--contrast0)"
+      grid:
+        - grid-template-areas: "'icon_cells' 'n' 'button'"
+        - grid-template-columns: "1fr"
+        - grid-template-rows: "'1fr' 'min-content' 'min-content'"
+      custom_fields:
+        icon_cells:
+          - justify-self: "start"
+          - margin-top: "12px"
+          - margin-left: "15px"
+      name:
+        - font-size: "90%"
+        - font-weight: "bold"
+        - justify-self: "start"
+        - margin-top: "6px"
+        - margin-left: "15px"
+    state:
+      - value: "on"
+        styles:
+          card:
+            - background-color: "var(--contrast15)"
+            - color: "var(--contrast0)"
+      - value: "playing"
+        styles:
+          card:
+            - background-color: "var(--contrast15)"
+            - color: "var(--contrast0)"
+    custom_fields:
+      icon_cells: |
+        [[[
+          return `<ha-icon
+            icon="[[icon]]"
+            style="width: 25px; height: 25px; color: auto;">
+           </ha-icon>
+           `
+        ]]]
+      button:
+        card:
+          type: "custom:button-card"
+          entity: "[[entity]]"
+          show_icon: false
+          show_name: false
+          styles:
+            card:
+              - border-style: "none"
+              - margin-top: "-4%"
+              - margin-bottom: "-5%"
+              - background-color: "transparent"
+            grid:
+              - grid-template-areas: "'state' 'icon_cells'"
+              - grid-template-columns: "'min-content' '1fr'"
+              - grid-template-rows: "min-content"
+            custom_fields:
+              state:
+                - justify-self: "start"
+                - align-self: "middle"
+                - font-size: "12px"
+                - filter: "opacity(50%)"
+                - margin-left: "15px"
+                - margin-top: "1.6px"
+                - color: |
+                    [[[
+                     var state = states['[[entity]]'].state
+                     if(state != "off")
+                      return `var(--contrast0)`;
+                     else
+                      return `var(--contrast15)`;
+                    ]]]
+              icon_cells:
+                - justify-self: end
+                - align-self: start
+                - margin-right: 15px
+                - width: 45px
+          custom_fields:
+            icon_cells: |
+              [[[
+               var state = states['[[entity]]'].state;
+               if(state != "off")
+                return `<ha-icon
+                icon="mdi:toggle-switch"
+                style="color: var(--contrast0);">
+                </ha-icon>`;
+               else
+                return `<ha-icon
+                icon="mdi:toggle-switch-off"
+                style="color: auto;">
+                </ha-icon>
+                `;
+              ]]]
+            state: |
+              [[[
+                var state = states['[[entity]]'].state
+               if(state != "off")
+                return `<span>An</span>`;
+               else
+                return `<span>Aus</span>`;
+              ]]]

@@ -36,372 +36,41 @@ cards:
     cards:
       - type: "custom:gap-card"
         height: 10
-
       - type: "custom:decluttering-card"
         template: "title_card"
         variables:
           - name: ""
           - label: "Lichter"
-
-      - type: vertical-stack
+      - type: "vertical-stack"
         cards:
-          - type: grid
+          - type: "grid"
             square: false
             columns: 4
             cards:
-              - type: vertical-stack
-                cards:
-                  - type: custom:button-card
-                    entity: light.wohnzimmer_deckenleuchte
-                    aspect_ratio: 1/1
-                    tap_action:
-                      action: more-info
-                    hold_action:
-                      haptic: heavy
-                      action: toggle
-                    name: " "
-                    icon: mdi:globe-light
-                    styles:
-                      card:
-                        - background: var(--contrast0)
-                        - "--mdc-ripple-press-opacity": 0
-                        - border-radius: 15px
-                        - color: var(--contrast15)
-                        - box-shadow: none
-                        - margin-top: 5px
-                        - margin-bottom: 5px
-                      img_cell:
-                        - justify-self: center
-                        - width: 30px
-                        - margin: 10px 0px 0px 0px
-                      icon:
-                        - width: 30px
-                        - height: 30px
-                        - color: var(--contrast15)
-                      name:
-                        - justify-self: center
-                        - font-size: 12px
-                        - margin: 0px 0px 10px 0px
-                        - color: var(--black)
-                        - font-family: Google Sans
-                    state:
-                      - value: "on"
-                        icon: mdi:globe-light
-                        styles:
-                          card:
-                            - background: |
-                                [[[
-                                    var color = entity.attributes?.rgb_color;
-                                    if (entity.state != "on"){
-                                      return 'var(--contrast20)';
-                                    }
-                                    else if (color){
-                                      return 'rgba(' + color + ')'
-                                    }
-                                    else{
-                                      return 'var(--yellow)'
-                                    }
-                                ]]]
-                            - box-shadow: |
-                                [[[
-                                    var color = entity.attributes?.rgb_color;
-                                    if (entity.state != "on"){
-                                      return '0px 0px 6px 2px var(--contrast20)';
-                                    }
-                                    else if (color){
-                                      return '0px 0px 6px 2px rgba(' + color + ')'
-                                    }
-                                    else{
-                                      return '0px 0px 6px 2px var(--yellow)'
-                                    }
-                                ]]]
-                            - border-radius: 100px
-                          icon:
-                            - color: var(--black)
-                    card_mod:
-                      style: |
-                        ha-card {
-                          transition: 300ms !important;
-                          }
-
-                  - type: custom:button-card
-                    name: Deckenlampe
-                    show_label: false
-                    styles:
-                      card:
-                        - background: none
-                        - padding: 0px 0px
-                        - margin-top: "-1px"
-                        - "--mdc-ripple-press-opacity": 0
-                      name:
-                        - font-family: Google Sans
-                        - justify-self: center
-                        - font-size: 13px
-                        - color: var(--contrast20)
-                      label:
-                        - font-family: Google Sans
-                        - font-weight: 300
-                        - justify-self: start
-                        - font-size: 16px
-                        - color: var(--contrast10)
-                    card_mod:
-                      style: |
-                        ha-card {
-                          margin-top: 15px;
-                          }
-
-              - type: vertical-stack
-                cards:
-                  - type: custom:button-card
-                    entity: light.wohnzimmer_lightstrip
-                    aspect_ratio: 1/1
-                    tap_action:
-                      action: more-info
-                    hold_action:
-                      haptic: heavy
-                      action: toggle
-                    name: " "
-                    icon: mdi:led-strip-variant
-                    styles:
-                      card:
-                        - background: var(--contrast0)
-                        - "--mdc-ripple-press-opacity": 0
-                        - border-radius: 15px
-                        - color: var(--contrast15)
-                        - box-shadow: none
-                        - margin-top: 5px
-                        - margin-bottom: 5px
-                      img_cell:
-                        - justify-self: center
-                        - width: 30px
-                        - margin: 10px 0px 0px 0px
-                      icon:
-                        - width: 30px
-                        - height: 30px
-                        - color: var(--contrast15)
-                      name:
-                        - justify-self: center
-                        - font-size: 12px
-                        - margin: 0px 0px 10px 0px
-                        - color: var(--black)
-                        - font-family: Google Sans
-                    state:
-                      - value: "on"
-                        icon: mdi:led-strip-variant
-                        styles:
-                          card:
-                            - background: |
-                                [[[
-                                    var color = entity.attributes?.rgb_color;
-                                    if (entity.state != "on"){
-                                      return 'var(--contrast20)';
-                                    }
-                                    else if (color){
-                                      return 'rgba(' + color + ')'
-                                    }
-                                    else{
-                                      return 'var(--yellow)'
-                                    }
-                                ]]]
-                            - box-shadow: |
-                                [[[
-                                    var color = entity.attributes?.rgb_color;
-                                    if (entity.state != "on"){
-                                      return '0px 0px 6px 2px var(--contrast20)';
-                                    }
-                                    else if (color){
-                                      return '0px 0px 6px 2px rgba(' + color + ')'
-                                    }
-                                    else{
-                                      return '0px 0px 6px 2px var(--yellow)'
-                                    }
-                                ]]]
-                            - border-radius: 100px
-                          icon:
-                            - color: var(--black)
-                    card_mod:
-                      style: |
-                        ha-card {
-                          transition: 300ms !important;
-                          }
-
-                  - type: custom:button-card
-                    name: Lightstrip
-                    show_label: false
-                    styles:
-                      card:
-                        - background: none
-                        - padding: 0px 0px
-                        - margin-top: "-1px"
-                        - "--mdc-ripple-press-opacity": 0
-                      name:
-                        - font-family: Google Sans
-                        - justify-self: center
-                        - font-size: 13px
-                        - color: var(--contrast20)
-                      label:
-                        - font-family: Google Sans
-                        - font-weight: 300
-                        - justify-self: start
-                        - font-size: 16px
-                        - color: var(--contrast10)
-                    card_mod:
-                      style: |
-                        ha-card {
-                          margin-top: 15px;
-                          }
-
-              - type: vertical-stack
-                cards:
-                  - type: custom:button-card
-                    entity: light.wohnzimmer_stehlampe_rechts
-                    aspect_ratio: 1/1
-                    tap_action:
-                      action: more-info
-                    hold_action:
-                      haptic: heavy
-                      action: toggle
-                    name: " "
-                    icon: mdi:floor-lamp
-                    styles:
-                      card:
-                        - background: var(--contrast0)
-                        - "--mdc-ripple-press-opacity": 0
-                        - border-radius: 15px
-                        - color: var(--contrast15)
-                        - box-shadow: none
-                        - margin-top: 5px
-                        - margin-bottom: 5px
-                      img_cell:
-                        - justify-self: center
-                        - width: 30px
-                        - margin: 10px 0px 0px 0px
-                      icon:
-                        - width: 30px
-                        - height: 30px
-                        - color: var(--contrast15)
-                      name:
-                        - justify-self: center
-                        - font-size: 12px
-                        - margin: 0px 0px 10px 0px
-                        - color: var(--contrast15)
-                        - font-family: Google Sans
-                    state:
-                      - value: "on"
-                        icon: mdi:floor-lamp
-                        styles:
-                          card:
-                            - background: var(--contrast15)
-                            - border-radius: 100px
-                          icon:
-                            - color: var(--contrast0)
-                    card_mod:
-                      style: |
-                        ha-card {
-                          transition: 300ms !important;
-                          }
-
-                  - type: custom:button-card
-                    name: Stehlampe
-                    show_label: false
-                    styles:
-                      card:
-                        - background: none
-                        - padding: 0px 0px
-                        - margin-top: "-1px"
-                        - "--mdc-ripple-press-opacity": 0
-                      name:
-                        - font-family: Google Sans
-                        - justify-self: center
-                        - font-size: 13px
-                        - color: var(--contrast20)
-                      label:
-                        - font-family: Google Sans
-                        - font-weight: 300
-                        - justify-self: start
-                        - font-size: 16px
-                        - color: var(--contrast10)
-                    card_mod:
-                      style: |
-                        ha-card {
-                          margin-top: 15px;
-                          }
-
-              - type: vertical-stack
-                cards:
-                  - type: custom:button-card
-                    entity: light.wohnzimmer_weihnachtsstern
-                    aspect_ratio: 1/1
-                    tap_action:
-                      action: toggle
-                      haptic: heavy
-                    hold_action:
-                      action: more-info
-                    name: " "
-                    icon: mdi:star
-                    styles:
-                      card:
-                        - background: var(--contrast0)
-                        - "--mdc-ripple-press-opacity": 0
-                        - border-radius: 15px
-                        - color: var(--contrast15)
-                        - box-shadow: none
-                        - margin-top: 5px
-                        - margin-bottom: 5px
-                      img_cell:
-                        - justify-self: center
-                        - width: 30px
-                        - margin: 10px 0px 0px 0px
-                      icon:
-                        - width: 30px
-                        - height: 30px
-                        - color: var(--contrast15)
-                      name:
-                        - justify-self: center
-                        - font-size: 12px
-                        - margin: 0px 0px 10px 0px
-                        - color: var(--black)
-                        - font-family: Google Sans
-                    state:
-                      - value: "on"
-                        icon: mdi:star
-                        styles:
-                          card:
-                            - background: var(--contrast15)
-                            - border-radius: 100px
-                          icon:
-                            - color: var(--contrast0)
-                    card_mod:
-                      style: |
-                        ha-card {
-                          transition: 300ms !important;
-                          }
-
-                  - type: custom:button-card
-                    name: Weihnachtsstern
-                    show_label: false
-                    styles:
-                      card:
-                        - background: none
-                        - padding: 0px 0px
-                        - margin-top: "-1px"
-                        - "--mdc-ripple-press-opacity": 0
-                      name:
-                        - font-family: Google Sans
-                        - justify-self: center
-                        - font-size: 13px
-                        - color: var(--contrast20)
-                      label:
-                        - font-family: Google Sans
-                        - font-weight: 300
-                        - justify-self: start
-                        - font-size: 16px
-                        - color: var(--contrast10)
-                    card_mod:
-                      style: |
-                        ha-card {
-                          margin-top: 15px;
-                          }
+              - type: "custom:decluttering-card"
+                template: "light_button_card"
+                variables:
+                  - entity: "light.wohnzimmer_deckenleuchte"
+                  - icon: "mdi:globe-light"
+                  - name: "Deckenlampe"
+              - type: "custom:decluttering-card"
+                template: "light_button_card"
+                variables:
+                  - entity: "light.wohnzimmer_lightstrip"
+                  - icon: "mdi:led-strip-variant"
+                  - name: "Lightstrip"
+              - type: "custom:decluttering-card"
+                template: "light_button_card"
+                variables:
+                  - entity: "light.wohnzimmer_stehlampe_rechts"
+                  - icon: "mdi:floor-lamp"
+                  - name: "Stehlampe"
+              - type: "custom:decluttering-card"
+                template: "light_button_card"
+                variables:
+                  - entity: "light.wohnzimmer_weihnachtsstern"
+                  - icon: "mdi:star"
+                  - name: "Weihnachtsstern"
 
   - type: "grid"
     columns: 1
@@ -409,127 +78,23 @@ cards:
     cards:
       - type: "custom:gap-card"
         height: 10
-
       - type: "custom:decluttering-card"
         template: "title_card"
         variables:
           - name: ""
           - label: "Mediaplayer"
-
-      - type: vertical-stack
+      - type: "vertical-stack"
         cards:
-          - type: grid
+          - type: "grid"
             square: false
             columns: 1
             cards:
-              - type: custom:button-card
-                entity: media_player.chromecast
-                name: Chromecast
-                show_icon: false
-                tap_action:
-                  action: more-info
-                  haptic: light
-                styles:
-                  card:
-                    - border-radius: 18px
-                    - border-style: none
-                    - background-color: var(--contrast0)
-                  grid:
-                    - grid-template-areas: '"icon_cells" "n" "button"'
-                    - grid-template-columns: 1fr
-                    - grid-template-rows: 1fr min-content min-content
-                  custom_fields:
-                    icon_cells:
-                      - justify-self: start
-                      - margin-top: 12px
-                      - margin-left: 15px
-                  name:
-                    - font-size: 90%
-                    - font-weight: bold
-                    - justify-self: start
-                    - margin-top: 6px
-                    - margin-left: 15px
-                state:
-                  - value: "on"
-                    styles:
-                      card:
-                        - background-color: var(--contrast15)
-                        - color: var(--contrast0)
-                  - value: playing
-                    styles:
-                      card:
-                        - background-color: var(--contrast15)
-                        - color: var(--contrast0)
-                custom_fields:
-                  icon_cells: |
-                    [[[
-                      return `<ha-icon
-                        icon="mdi:cast"
-                        style="width: 25px; height: 25px; color: auto;">
-                       </ha-icon>
-                       `
-                    ]]]
-                  button:
-                    card:
-                      type: custom:button-card
-                      entity: media_player.chromecast
-                      show_icon: false
-                      show_name: false
-                      styles:
-                        card:
-                          - border-style: none
-                          - margin-top: "-4%"
-                          - margin-bottom: "-5%"
-                          - background-color: transparent
-                        grid:
-                          - grid-template-areas: '"state icon_cells"'
-                          - grid-template-columns: min-content 1fr
-                          - grid-template-rows: min-content
-                        custom_fields:
-                          state:
-                            - justify-self: start
-                            - align-self: middle
-                            - font-size: 12px
-                            - filter: opacity(50%)
-                            - margin-left: 15px
-                            - margin-top: 1.6px
-                            - color: |
-                                [[[
-                                 var state = states['media_player.chromecast'].state
-                                 if(state != "off")
-                                  return `var(--contrast0)`;
-                                 else
-                                  return `var(--contrast15)`;
-                                ]]]
-                          icon_cells:
-                            - justify-self: end
-                            - align-self: start
-                            - margin-right: 15px
-                            - width: 45px
-                      custom_fields:
-                        icon_cells: |
-                          [[[
-                           var state = states['media_player.chromecast'].state;
-                           if(state != "off")
-                            return `<ha-icon
-                            icon="mdi:toggle-switch"
-                            style="color: var(--contrast0);">
-                            </ha-icon>`;
-                           else
-                            return `<ha-icon
-                            icon="mdi:toggle-switch-off"
-                            style="color: auto;">
-                            </ha-icon>
-                            `;
-                          ]]]
-                        state: |
-                          [[[
-                            var state = states['media_player.chromecast'].state
-                           if(state != "off")
-                            return `<span>An</span>`;
-                           else
-                            return `<span>Aus</span>`;
-                          ]]]
+              - type: "custom:decluttering-card"
+                template: "title_card"
+                variables:
+                  - entity: "media_player.chromecast"
+                  - name: "Chromecast"
+                  - icon: "mdi:cast"
 
   - type: "custom:gap-card"
     height: 100

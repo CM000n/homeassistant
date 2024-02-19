@@ -34,7 +34,7 @@ room_card:
         - font-size: 14px
         - margin: 10px
         - color: var(--contrast15)
-        - font-family: Product Sans
+        - font-family: Google Sans
       custom_fields:
         temp:
           - align-self: start
@@ -50,7 +50,7 @@ room_card:
               else
                 return `var(--contrast00)`;
               ]]]
-          - font-family: Product Sans
+          - font-family: Google Sans
           - background-color: |
               [[[
                 var state = states['[[entity]]'].state

@@ -1,6 +1,6 @@
 ---
 Minimal:
-  primary-font-family: "Product Sans"
+  primary-font-family: "Google Sans"
   paper-font-common-base_-_font-family: "var(--primary-font-family)"
   paper-font-common-code_-_font-family: "var(--primary-font-family)"
   paper-font-body1_-_font-family: "var(--primary-font-family)"
@@ -359,7 +359,7 @@ Minimal:
       /* General changes */
       ha-card {
         transition: none !important;
-        font-family: 'Product Sans' !important;
+        font-family: 'Google Sans' !important;
       }
       /* Vacuum card load transition disabled */
       .type-custom-xiaomi-vacuum-map-card {
@@ -377,7 +377,7 @@ Minimal:
         padding: 6px 10px;
         border-radius: 100px;
         z-index: 1;
-        font-family: 'Product Sans' !important;
+        font-family: 'Google Sans' !important;
         background: var(--contrast20);
         color: var(--contrast1);
       }

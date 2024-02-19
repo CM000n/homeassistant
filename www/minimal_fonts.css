@@ -1,5 +1,5 @@
 @font-face {
-	font-family: "Product Sans";
+	font-family: "Google Sans";
 	src:
 		url("/local/fonts/product_sans_thin.woff2") format("woff2"),
 		url("/local/fonts/product_sans_thin.woff") format("woff");
@@ -8,7 +8,7 @@
 }
 
 @font-face {
-	font-family: "Product Sans";
+	font-family: "Google Sans";
 	src:
 		url("/local/fonts/product_sans_light.woff2") format("woff2"),
 		url("/local/fonts/product_sans_light.woff") format("woff");
@@ -17,7 +17,7 @@
 }
 
 @font-face {
-	font-family: "Product Sans";
+	font-family: "Google Sans";
 	src:
 		url("/local/fonts/product_sans.woff2") format("woff2"),
 		url("/local/fonts/product_sans.woff") format("woff");
@@ -26,7 +26,7 @@
 }
 
 @font-face {
-	font-family: "Product Sans";
+	font-family: "Google Sans";
 	src:
 		url("/local/fonts/product_sans_medium.woff2") format("woff2"),
 		url("/local/fonts/product_sans_medium.woff") format("woff");
@@ -35,7 +35,7 @@
 }
 
 @font-face {
-	font-family: "Product Sans";
+	font-family: "Google Sans";
 	src:
 		url("/local/fonts/product_sans_bold.woff2") format("woff2"),
 		url("/local/fonts/product_sans_bold.woff") format("woff");
@@ -44,7 +44,7 @@
 }
 
 @font-face {
-	font-family: "Product Sans";
+	font-family: "Google Sans";
 	src:
 		url("/local/fonts/product_sans_black.woff2") format("woff2"),
 		url("/local/fonts/product_sans_black.woff") format("woff");

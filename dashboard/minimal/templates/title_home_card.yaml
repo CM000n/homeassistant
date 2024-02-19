@@ -15,12 +15,12 @@ title_home_card:
         - margin-bottom: 0px
         - "--mdc-ripple-press-opacity": 0
       name:
-        - font-family: Product Sans
+        - font-family: Google Sans
         - justify-self: start
         - font-size: 16px
         - color: var(--contrast10)
       label:
-        - font-family: Product Sans
+        - font-family: Google Sans
         - justify-self: start
         - font-size: 20px
         - color: var(--contrast20)

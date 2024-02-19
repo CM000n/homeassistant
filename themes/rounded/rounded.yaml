@@ -4,7 +4,7 @@ Rounded:
   ############### Default global variables ###############
   ########################################################
   #font
-  primary-font-family: "Product Sans"
+  primary-font-family: "Google Sans"
   paper-font-common-base_-_font-family: "var(--primary-font-family)"
   paper-font-common-code_-_font-family: "var(--primary-font-family)"
   paper-font-body1_-_font-family: "var(--primary-font-family)"
@@ -252,7 +252,7 @@ Rounded:
       /* General changes */
       ha-card {
         transition: none !important;
-        font-family: 'hk nova semibold', 'Product Sans', 'Noto', sans-serif !important;
+        font-family: 'hk nova semibold', 'Google Sans', 'Noto', sans-serif !important;
       }
       /* Vacuum card load transition disabled */
       .type-custom-xiaomi-vacuum-map-card {

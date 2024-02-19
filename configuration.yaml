@@ -62,7 +62,7 @@ lovelace:
       type: "module"
     - url: "/hacsfiles/apexcharts-card/apexcharts-card.js"
       type: "module"
-    - url: "/local/minimal_fonts.css"
+    - url: "https://fonts.googleapis.com/css?family=Google+Sans:100,300,400,500,700,900,100i,300i,400i,500i,700i,900i"
       type: "css"
     - url: "/hacsfiles/lovelace-layout-card/layout-card.js"
       type: "module"

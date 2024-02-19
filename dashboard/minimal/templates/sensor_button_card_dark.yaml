@@ -35,8 +35,8 @@ sensor_button_card_dark:
         - font-size: 12px
         - margin: 4px 0 12px 0
         - color: var(--contrast15)
-        - font-family: Product Sans
+        - font-family: Google Sans
       state:
         - color: var(--contrast15)
-        - font-family: Product Sans
+        - font-family: Google Sans
         - font-weight: 900

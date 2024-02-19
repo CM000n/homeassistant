@@ -185,7 +185,7 @@ cards:
                 - font-size: 12px
                 - margin: 0px 0px 10px 0px
                 - color: var(--black)
-                - font-family: Product Sans
+                - font-family: Google Sans
             state:
               - value: "off"
                 icon: mdi:lightbulb-off
@@ -234,7 +234,7 @@ cards:
                 - font-size: 12px
                 - margin: 0px 0px 10px 0px
                 - color: var(--black)
-                - font-family: Product Sans
+                - font-family: Google Sans
             state:
               - value: "0"
                 icon: mdi:lightbulb-off
@@ -283,7 +283,7 @@ cards:
                 - font-size: 12px
                 - margin: 0px 0px 10px 0px
                 - color: var(--black)
-                - font-family: Product Sans
+                - font-family: Google Sans
             state:
               - value: "0"
                 icon: mdi:lightbulb-off
@@ -332,7 +332,7 @@ cards:
                 - font-size: 12px
                 - margin: 0px 0px 10px 0px
                 - color: var(--black)
-                - font-family: Product Sans
+                - font-family: Google Sans
             state:
               - value: "0"
                 icon: mdi:lightbulb-off
@@ -380,7 +380,7 @@ cards:
                 - font-size: 12px
                 - margin: 0px 0px 10px 0px
                 - color: var(--black)
-                - font-family: Product Sans
+                - font-family: Google Sans
             state:
               - value: "0"
                 icon: mdi:lightbulb-off

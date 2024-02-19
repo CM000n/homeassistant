@@ -4,7 +4,7 @@ logbook:
   include:
     entities:
       # Persons
-      - "person.simon2"
+      - "person.simon_2"
       - "person.lisa"
       # Lights
       - "light.buro_deckenleuchte"

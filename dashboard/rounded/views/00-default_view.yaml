@@ -26,7 +26,7 @@ cards:
         template: "person_card"
         variables:
           - name: "Simon"
-          - entity: "person.simon2"
+          - entity: "person.simon_2"
           - label: "[[[ return states['sensor.simon'].state ]]]"
       - type: "custom:decluttering-card"
         template: "person_card"

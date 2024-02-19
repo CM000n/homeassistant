@@ -15,7 +15,7 @@ recorder:
       - "humidifier"
     entities:
       # Persons
-      - "person.simon"
+      - "person.simon2"
       - "person.lisa"
       # Device tracker
       - "device_tracker.corolla_parkposition"

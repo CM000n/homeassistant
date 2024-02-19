@@ -12,5 +12,5 @@ ltss:
       - "switch"
     entities:
       # Persons
-      - "person.simon"
+      - "person.simon2"
       - "person.lisa"

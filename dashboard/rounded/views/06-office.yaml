@@ -3,7 +3,7 @@ path: "office"
 icon: "mdi:chair-rolling"
 title: ""
 visible:
-  - user: "3fb4deff931c4631b84d2584e5f2e493"
+  - user: "8bdb01bc453944059ad983886193d3d2"
   - user: "e7bec22aa70e4762ac231811f5997452"
 theme: "Rounded"
 type: "masonry"

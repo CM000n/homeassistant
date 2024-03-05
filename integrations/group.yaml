@@ -5,7 +5,7 @@ group:
     name: "Personen Anwesend"
     entities:
       - "person.lisa"
-      - "person.simon_2"
+      - "person.simon"
 
   cellar_appliances:
     name: "Keller Geräte"

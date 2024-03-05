@@ -3,7 +3,7 @@ path: "kitchen"
 icon: "mdi:silverware-fork-knife"
 title: ""
 visible:
-  - user: "8bdb01bc453944059ad983886193d3d2"
+  - user: "3fb4deff931c4631b84d2584e5f2e493"
   - user: "e7bec22aa70e4762ac231811f5997452"
 theme: "Rounded"
 type: "masonry"
@@ -11,90 +11,120 @@ subview: true
 back_path: "/lovelace-rounded/default_view"
 badges: []
 cards:
-  - type: "custom:decluttering-card"
-    template: "title_card"
-    variables:
-      - name: "Küche"
-  - type: "custom:decluttering-card"
-    template: "apex_sensor_card"
-    variables:
-      - name: "Temperatur"
-      - entity: "sensor.steckdose_wohnzimmer_temperatur"
-  - type: "grid"
-    columns: 1
-    square: false
+  - type: "custom:layout-card"
+    layout_type: "custom:grid-layout"
+    layout:
+      grid-template-columns: "auto 40%"
+      grid-template-rows: 1
+      max_cols: 2
+      margin: "-50px -15px 0px -15px"
+    cards:
+      - type: "custom:decluttering-card"
+        template: "title_card_v2"
+        variables:
+          - name: "Küche"
+          - label: "Steuerung"
+      - type: "custom:decluttering-card"
+        template: "title_chip_entity"
+        variables:
+          - entity: "sensor.steckdose_wohnzimmer_temperatur"
+          - icon: "mdi:thermometer"
+
+  - type: "custom:layout-card"
+    layout_type: "custom:grid-layout"
+    layout:
+      margin: "-50px -15px 0px -15px"
+    cards:
+      - type: "vertical-stack"
+        cards:
+          - type: "grid"
+            columns: 1
+            square: false
+            cards:
+              - type: "grid"
+                columns: 2
+                square: false
+                cards:
+                  - type: "custom:decluttering-card"
+                    template: "light_button_w_slider"
+                    variables:
+                      - name: "Tischlampe"
+                      - entity: "light.kuche_esstischlampe"
+                      - icon: "mdi:ceiling-light"
+                  - type: "custom:decluttering-card"
+                    template: "light_button_w_slider"
+                    variables:
+                      - name: "Herdlampe"
+                      - entity: "light.kuche_herdlampe"
+                      - icon: "mdi:ceiling-light"
+                  - type: "custom:decluttering-card"
+                    template: "light_button_w_slider"
+                    variables:
+                      - name: "Weihnachtsstern Fenster"
+                      - entity: "light.kuche_weihnachtsstern_fenster"
+                      - icon: "mdi:star"
+              - type: "grid"
+                columns: 1
+                square: false
+                cards:
+                  - type: "custom:decluttering-card"
+                    template: "light_slider_brightness"
+                    variables:
+                      - entity: "light.active_light_group_kitchen"
+                  - type: "custom:decluttering-card"
+                    template: "light_slider_temperature"
+                    variables:
+                      - entity: "light.active_light_group_kitchen"
+
+  - type: "custom:layout-card"
+    layout_type: "custom:grid-layout"
+    layout:
+      margin: "-50px -15px 0px -15px"
     cards:
       - type: "grid"
         columns: 2
         square: false
         cards:
           - type: "custom:decluttering-card"
-            template: "light_button_w_slider"
+            template: "appliances_button"
             variables:
-              - name: "Tischlampe"
-              - entity: "light.kuche_esstischlampe"
-              - icon: "mdi:ceiling-light"
-          - type: "custom:decluttering-card"
-            template: "light_button_w_slider"
-            variables:
-              - name: "Herdlampe"
-              - entity: "light.kuche_herdlampe"
-              - icon: "mdi:ceiling-light"
-          - type: "custom:decluttering-card"
-            template: "light_button_w_slider"
-            variables:
-              - name: "Weihnachtsstern Fenster"
-              - entity: "light.kuche_weihnachtsstern_fenster"
-              - icon: "mdi:star"
+              - name: "Spülmaschine"
+              - entity: "binary_sensor.spuehlmaschine"
+              - icon: "mdi:dishwasher"
+              - label: "[[[ return states['binary_sensor.spuehlmaschine'].state ]]]"
+
+  - type: "custom:layout-card"
+    layout_type: "custom:grid-layout"
+    layout:
+      margin: "-50px -15px 0px -15px"
+    cards:
       - type: "grid"
         columns: 1
         square: false
         cards:
-          - type: "custom:decluttering-card"
-            template: "light_slider_brightness"
-            variables:
-              - entity: "light.active_light_group_kitchen"
-          - type: "custom:decluttering-card"
-            template: "light_slider_temperature"
-            variables:
-              - entity: "light.active_light_group_kitchen"
-  - type: "grid"
-    columns: 2
-    square: false
-    cards:
-      - type: "custom:decluttering-card"
-        template: "appliances_button"
-        variables:
-          - name: "Spülmaschine"
-          - entity: "binary_sensor.spuehlmaschine"
-          - icon: "mdi:dishwasher"
-          - label: "[[[ return states['binary_sensor.spuehlmaschine'].state ]]]"
-  - type: "grid"
-    columns: 1
-    square: false
-    cards:
-      - name: "Sonos"
-        entity: "media_player.kuche"
-        type: "custom:mini-media-player"
-        icon: "mdi:speaker"
-        artwork: "material"
-        toggle_power: false
-        idle_view:
-          when_idle: true
-          when_paused: true
-        speaker_group:
-          platform: "sonos"
-          show_group_count: true
-          entities:
-            - entity_id: "media_player.wohnzimmer"
-              name: "Sonos Wohnzimmer"
-            - entity_id: "media_player.kuche"
-              name: "Sonos Küche"
-            - entity_id: "media_player.bad"
-              name: "Sonos Bad"
-            - entity_id: "media_player.buro"
-              name: "Sonos Büro"
-            - entity_id: "media_player.schlafzimmer"
-              name: "Sonos Schlafzimmer"
+          - name: "Sonos"
+            entity: "media_player.kuche"
+            type: "custom:mini-media-player"
+            icon: "mdi:speaker"
+            artwork: "material"
+            toggle_power: false
+            idle_view:
+              when_idle: true
+              when_paused: true
+            speaker_group:
+              platform: "sonos"
+              show_group_count: true
+              entities:
+                - entity_id: "media_player.wohnzimmer"
+                  name: "Sonos Wohnzimmer"
+                - entity_id: "media_player.kuche"
+                  name: "Sonos Küche"
+                - entity_id: "media_player.bad"
+                  name: "Sonos Bad"
+                - entity_id: "media_player.buro"
+                  name: "Sonos Büro"
+                - entity_id: "media_player.schlafzimmer"
+                  name: "Sonos Schlafzimmer"
+
   - type: "custom:button-card"
     color_type: "blank-card"

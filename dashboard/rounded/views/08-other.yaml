@@ -3,7 +3,7 @@ path: "other"
 icon: "mdi:floor-plan"
 title: ""
 visible:
-  - user: "8bdb01bc453944059ad983886193d3d2"
+  - user: "3fb4deff931c4631b84d2584e5f2e493"
   - user: "e7bec22aa70e4762ac231811f5997452"
 theme: "Rounded"
 type: "masonry"
@@ -11,15 +11,25 @@ subview: true
 back_path: "/lovelace-rounded/default_view"
 badges: []
 cards:
-  - type: "custom:decluttering-card"
-    template: "title_card"
-    variables:
-      - name: "Sonstiges"
-  - type: "custom:decluttering-card"
-    template: "apex_sensor_card"
-    variables:
-      - name: "Temperatur"
-      - entity: "sensor.eingangstur_bewegungsmelder_temperature"
+  - type: "custom:layout-card"
+    layout_type: "custom:grid-layout"
+    layout:
+      grid-template-columns: "auto 40%"
+      grid-template-rows: 1
+      max_cols: 2
+      margin: "-50px -15px 0px -15px"
+    cards:
+      - type: "custom:decluttering-card"
+        template: "title_card_v2"
+        variables:
+          - name: "Büro"
+          - label: "Steuerung"
+      - type: "custom:decluttering-card"
+        template: "title_chip_entity"
+        variables:
+          - entity: "sensor.eingangstur_bewegungsmelder_temperature"
+          - icon: "mdi:thermometer"
+
   - type: "grid"
     columns: 2
     square: false

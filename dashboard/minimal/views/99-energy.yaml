@@ -3,7 +3,7 @@ title: ""
 path: "energy_view"
 icon: "mdi:flash"
 visible:
-  - user: "8bdb01bc453944059ad983886193d3d2"
+  - user: "3fb4deff931c4631b84d2584e5f2e493"
   - user: "e7bec22aa70e4762ac231811f5997452"
   - user: "393f7a35e14f417b8a42b130272cc586"
 theme: "Minimal"

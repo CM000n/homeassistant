@@ -61,7 +61,7 @@ template:
       - name: "persons_at_home"
         unique_id: "85cba6a0b1d511ed90171b0f7a30ae2f"
         state: >-
-          {{ [states.person.simon_2, states.person.lisa] | selectattr('state', '==', 'home') | list | count }}
+          {{ [states.person.simon, states.person.lisa] | selectattr('state', '==', 'home') | list | count }}
       - name: "corolla_at_home"
         unique_id: ""
         state: >-

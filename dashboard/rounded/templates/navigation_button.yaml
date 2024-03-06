@@ -23,6 +23,7 @@ navigation_button:
         - height: "100px"
       img_cell:
         - justify-self: "start"
+        - margin-left: 0px
         - width: "35px"
       icon:
         - width: "30px"

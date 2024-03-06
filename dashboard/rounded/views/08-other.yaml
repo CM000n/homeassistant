@@ -30,27 +30,33 @@ cards:
           - entity: "sensor.eingangstur_bewegungsmelder_temperature"
           - icon: "mdi:thermometer"
 
-  - type: "grid"
-    columns: 2
-    square: false
+  - type: "custom:layout-card"
+    layout_type: "custom:grid-layout"
+    layout:
+      margin: "-50px -15px 0px -15px"
     cards:
-      - type: "custom:decluttering-card"
-        template: "light_button_w_slider"
-        variables:
-          - name: "Deckenlampen Flur"
-          - entity: "light.deckenlampen_flur"
-          - icon: "mdi:ceiling-light-multiple"
-      - type: "custom:decluttering-card"
-        template: "light_button_w_slider"
-        variables:
-          - name: "Treppenhaus"
-          - entity: "light.wandlampen_treppenhaus"
-          - icon: "mdi:track-light"
-      - type: "custom:decluttering-card"
-        template: "light_button_w_slider"
-        variables:
-          - name: "Eingangstür"
-          - entity: "light.eingangstur_decke"
-          - icon: "mdi:light-recessed"
+      - type: "grid"
+        columns: 2
+        square: false
+        cards:
+          - type: "custom:decluttering-card"
+            template: "light_button_w_slider"
+            variables:
+              - name: "Deckenlampen Flur"
+              - entity: "light.deckenlampen_flur"
+              - icon: "mdi:ceiling-light-multiple"
+          - type: "custom:decluttering-card"
+            template: "light_button_w_slider"
+            variables:
+              - name: "Treppenhaus"
+              - entity: "light.wandlampen_treppenhaus"
+              - icon: "mdi:track-light"
+          - type: "custom:decluttering-card"
+            template: "light_button_w_slider"
+            variables:
+              - name: "Eingangstür"
+              - entity: "light.eingangstur_decke"
+              - icon: "mdi:light-recessed"
+
   - type: "custom:button-card"
     color_type: "blank-card"

@@ -14,7 +14,7 @@ appliances_button:
       grid:
         - grid-template-areas: "'i' 'n n' 'l l'"
         - grid-template-columns: "1fr 1fr"
-        - grid-template-rows: "35% min-content min-content"
+        - grid-template-rows: "50% max-content max-content"
       card:
         - background: "var(--contrast2)"
         - padding: "16px"
@@ -22,10 +22,11 @@ appliances_button:
         - height: "100px"
       img_cell:
         - justify-self: "start"
-        - width: "24px"
+        - margin-left: 0px
+        - width: "35px"
       icon:
-        - width: "24px"
-        - height: "24px"
+        - width: "30px"
+        - height: "30px"
         - color: "var(--contrast8)"
       label:
         - justify-self: "start"
@@ -38,7 +39,7 @@ appliances_button:
       name:
         - justify-self: "start"
         - font-size: "14px"
-        - margin: "4px 0 12px 0"
+        - margin: "0 0 0 0"
         - color: "var(--contrast8)"
     state:
       - value: "on"

@@ -1,0 +1,21 @@
+---
+title_chip_navigate:
+  card:
+    type: "custom:mushroom-chips-card"
+    chips:
+      - type: template
+        tap_action:
+          action: navigate
+          navigation_path: "[[navigation_path]]"
+        hold_action:
+          action: none
+        double_tap_action:
+          action: none
+        icon: "[[icon]]"
+        icon_color: ""
+    alignment: end
+    card_mod:
+      style: |
+        ha-card {
+          margin-top: 5px;
+          }

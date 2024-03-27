@@ -55,4 +55,4 @@ energy_bar_card_red_green:
         decimal: 0
     tap_action:
       action: "navigate"
-      navigation_path: "/lovelace-minimal/energy_view"
+      navigation_path: "/lovelace-rounded/energy_view"

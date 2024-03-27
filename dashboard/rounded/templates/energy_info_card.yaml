@@ -38,4 +38,4 @@ energy_info_card:
     show_label: true
     tap_action:
       action: navigate
-      navigation_path: /lovelace-minimal/energy_view
+      navigation_path: /lovelace-rounded/energy_view

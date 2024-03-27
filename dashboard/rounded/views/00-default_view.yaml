@@ -249,6 +249,14 @@ cards:
               - icon: "mdi:robot-vacuum"
               - label: "[[[ return states['vacuum.valetudo_falsescrawnyhornet'].state ]]]"
               - navigation_path: "/lovelace-rounded/vacuum"
+          - type: "custom:decluttering-card"
+            template: "navigation_button"
+            variables:
+              - name: "Energie"
+              - entity: "switch.apsystems_garagenpower_power_status"
+              - icon: "mdi:flash"
+              - label: "[[[ return states['sensor.balkonkraftwerk_stromproduktion_taglich'].state ]]]"
+              - navigation_path: "/lovelace-rounded/energy_view"
 
   - type: "custom:button-card"
     color_type: "blank-card"

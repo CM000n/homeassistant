@@ -23,7 +23,6 @@ sensor_button_card_dark:
         - background: "var(--contrast2)"
         - padding: "16px"
         - "--mdc-ripple-press-opacity": 0
-        - height: "100px"
       img_cell:
         - justify-self: "start"
         - width: "24px"

@@ -31,40 +31,44 @@ cards:
           - navigation_path: "/energy"
           - icon: "mdi:lightning-bolt"
 
-  - type: "vertical-stack"
+  - type: "custom:layout-card"
+    layout_type: "custom:grid-layout"
+    layout:
+      grid-template-rows: 1
+      max_cols: 1
+      margin: "-50px -15px 0px -15px"
     cards:
-      - type: "custom:mushroom-chips-card"
-        alignment: "start"
-        card_mod:
-          style: |
-            ha-card {
-              --chip-background: var(--contrast0);
-              --primary-text-color: var(--contrast18);
-              margin-top: -5px;
-              font-family: Google Sans;
-              }
-        chips:
-          - type: "entity"
-            entity: "sensor.power_highest_peak_time_today"
-            double_tap_action:
-              action: "none"
-            icon: "mdi:solar-power-variant"
-            content_info: "state"
-            tap_action:
-              action: "more-info"
-            hold_action:
-              action: "none"
-          - type: "entity"
-            entity: "sensor.power_highest_peak_time_tomorrow"
-            double_tap_action:
-              action: "none"
-            icon: "mdi:solar-power-variant"
-            content_info: "state"
-            tap_action:
-              action: "more-info"
-            hold_action:
-              action: "none"
+      - type: "vertical-stack"
+        cards:
+          - type: "custom:mushroom-chips-card"
+            alignment: "start"
+            chips:
+              - type: "entity"
+                entity: "sensor.power_highest_peak_time_today"
+                double_tap_action:
+                  action: "none"
+                icon: "mdi:solar-power-variant"
+                content_info: "state"
+                tap_action:
+                  action: "more-info"
+                hold_action:
+                  action: "none"
+              - type: "entity"
+                entity: "sensor.power_highest_peak_time_tomorrow"
+                double_tap_action:
+                  action: "none"
+                icon: "mdi:solar-power-variant"
+                content_info: "state"
+                tap_action:
+                  action: "more-info"
+                hold_action:
+                  action: "none"
 
+  - type: "custom:layout-card"
+    layout_type: "custom:grid-layout"
+    layout:
+      margin: "-50px -15px 0px -15px"
+    cards:
       - type: "grid"
         columns: 2
         square: false
@@ -90,85 +94,102 @@ cards:
               - entity: "sensor.esp_01s_stromzaehler_active_power"
               - name: "Leistung Zähler"
 
-  - type: "vertical-stack"
+  - type: "custom:layout-card"
+    layout_type: "custom:grid-layout"
+    layout:
+      margin: "-50px -15px 0px -15px"
     cards:
-      - type: "custom:decluttering-card"
-        template: "title_card_v2"
-        variables:
-          - name: "Photovoltaik"
-          - label: "Produktion"
-      - type: "grid"
-        square: false
-        columns: 2
+      - type: "vertical-stack"
         cards:
           - type: "custom:decluttering-card"
-            template: "sensor_button_card_light"
+            template: "title_card_v2"
             variables:
-              - entity: "sensor.co2_einsparung_solar_jahrlich_neu"
-              - name: "Einsparung"
-              - icon: "mdi:molecule-co2"
-              - unit: "kgCO2eq"
-          - type: "custom:decluttering-card"
-            template: "sensor_button_card_dark"
-            variables:
-              - entity: "sensor.balkonkraftwerk_stromproduktion_jahrlich"
-              - name: "Stromproduktion jährlich"
-              - icon: "mdi:solar-power-variant"
-              - unit: " kWh"
+              - name: "Photovoltaik"
+              - label: "Produktion"
+          - type: "grid"
+            square: false
+            columns: 2
+            cards:
+              - type: "custom:decluttering-card"
+                template: "sensor_button_card_light"
+                variables:
+                  - entity: "sensor.co2_einsparung_solar_jahrlich_neu"
+                  - name: "Einsparung"
+                  - icon: "mdi:molecule-co2"
+                  - unit: "kgCO2eq"
+              - type: "custom:decluttering-card"
+                template: "sensor_button_card_dark"
+                variables:
+                  - entity: "sensor.balkonkraftwerk_stromproduktion_jahrlich"
+                  - name: "Stromproduktion jährlich"
+                  - icon: "mdi:solar-power-variant"
+                  - unit: " kWh"
 
-      - type: "custom:decluttering-card"
-        template: "title_card_v2"
-        variables:
-          - name: "Netz"
-          - label: "Verbrauch"
-
-      - type: "grid"
-        square: false
-        columns: 2
+  - type: "custom:layout-card"
+    layout_type: "custom:grid-layout"
+    layout:
+      margin: "-50px -15px 0px -15px"
+    cards:
+      - type: "vertical-stack"
         cards:
           - type: "custom:decluttering-card"
-            template: "sensor_button_card_light"
+            template: "title_card_v2"
             variables:
-              - entity: "sensor.co2_emissionen_netz_jahrlich_neu"
-              - name: "Emission"
-              - icon: "mdi:molecule-co2"
-              - unit: "kgCO2eq"
+              - name: "Netz"
+              - label: "Verbrauch"
+          - type: "grid"
+            square: false
+            columns: 2
+            cards:
+              - type: "custom:decluttering-card"
+                template: "sensor_button_card_light"
+                variables:
+                  - entity: "sensor.co2_emissionen_netz_jahrlich_neu"
+                  - name: "Emission"
+                  - icon: "mdi:molecule-co2"
+                  - unit: "kgCO2eq"
+              - type: "custom:decluttering-card"
+                template: "sensor_button_card_dark"
+                variables:
+                  - entity: "sensor.stromzahler_stromverbrauch_jahrlich"
+                  - name: "Stromverbrauch jährlich"
+                  - icon: "mdi:transmission-tower-export"
+                  - unit: " kWh"
+
+  - type: "custom:layout-card"
+    layout_type: "custom:grid-layout"
+    layout:
+      margin: "-50px -15px 0px -15px"
+    cards:
+      - type: "vertical-stack"
+        cards:
           - type: "custom:decluttering-card"
-            template: "sensor_button_card_dark"
+            template: "title_card_v2"
             variables:
-              - entity: "sensor.stromzahler_stromverbrauch_jahrlich"
-              - name: "Stromverbrauch jährlich"
-              - icon: "mdi:transmission-tower-export"
-              - unit: " kWh"
+              - name: "Echtzeit"
+              - label: "Energiefluss"
+          - type: "custom:power-flow-card-plus"
+            entities:
+              grid:
+                icon: "mdi:transmission-tower"
+                name: "Netz"
+                entity: "sensor.esp_01s_stromzaehler_active_power"
+              solar:
+                icon: "mdi:solar-power-variant"
+                name: "Photovoltaik"
+                entity: "sensor.apsystems_garagenpower_total_power_fixed"
+            w_decimals: 0
+            kw_decimals: 2
+            min_flow_rate: 0.9
+            max_flow_rate: 6
+            watt_threshold: 10000
+            clickable_entities: false
+            card_mod:
+              style: |
+                ha-card {
+                 background-color: transparent;
+                 box-shadow: none;
+                 }
 
-      - type: "custom:decluttering-card"
-        template: "title_card_v2"
-        variables:
-          - name: "Echtzeit"
-          - label: "Energiefluss"
-
-      - type: "custom:power-flow-card-plus"
-        entities:
-          grid:
-            icon: "mdi:transmission-tower"
-            name: "Netz"
-            entity: "sensor.esp_01s_stromzaehler_active_power"
-          solar:
-            icon: "mdi:solar-power-variant"
-            name: "Photovoltaik"
-            entity: "sensor.apsystems_garagenpower_total_power_fixed"
-        w_decimals: 0
-        kw_decimals: 2
-        min_flow_rate: 0.9
-        max_flow_rate: 6
-        watt_threshold: 10000
-        clickable_entities: false
-        card_mod:
-          style: |
-            ha-card {
-             background-color: transparent;
-             box-shadow: none;
-             }
-
-  - type: "custom:gap-card"
-    height: 100
+  - type: "custom:button-card"
+    color_type: "blank-card"

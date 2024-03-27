@@ -20,9 +20,10 @@ sensor_button_card_light:
         - grid-template-columns: 1fr
         - grid-template-rows: 1fr min-content min-content
       card:
-        - background: var(--contrast15)
-        - padding: 16px
+        - background: "var(--contrast15)"
+        - padding: "16px"
         - "--mdc-ripple-press-opacity": 0
+        - height: "100px"
       img_cell:
         - justify-self: start
         - width: 24px

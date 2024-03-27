@@ -15,7 +15,7 @@ sensor_line_graph_card:
           box-shadow: none;
           }
         .graph {
-          background: var(--contrast0);
+          background: var(--contrast2;
         }
             .graph .name {
               background: var(--contrast15);

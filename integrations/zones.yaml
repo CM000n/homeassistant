@@ -4,7 +4,7 @@ zone:
   - name: "Home"
     latitude: !secret "latitude"
     longitude: !secret "longitude"
-    radius: 50
+    radius: 25
   - name: "Simon Arbeit"
     latitude: !secret "simon_arbeit_latitude"
     longitude: !secret "simon_arbeit_longitude"
@@ -16,4 +16,4 @@ zone:
   - name: "Karlsruhe"
     latitude: !secret "ka_latitude"
     longitude: !secret "ka_longitude"
-    radius: 4500
+    radius: 5000

@@ -8,7 +8,7 @@ zone:
   - name: "Simon Arbeit"
     latitude: !secret "simon_arbeit_latitude"
     longitude: !secret "simon_arbeit_longitude"
-    radius: 350
+    radius: 250
   - name: "Lisa Arbeit"
     latitude: !secret "lisa_arbeit_latitude"
     longitude: !secret "lisa_arbeit_longitude"

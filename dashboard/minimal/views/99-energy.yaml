@@ -8,7 +8,6 @@ visible:
   - user: "393f7a35e14f417b8a42b130272cc586"
 theme: "Minimal"
 type: "masonry"
-back_path: "/lovelace-minimal/default_view"
 badges: []
 cards:
   - type: "custom:layout-card"

@@ -16,4 +16,4 @@ zone:
   - name: "Karlsruhe"
     latitude: !secret "ka_latitude"
     longitude: !secret "ka_longitude"
-    radius: 5000
+    radius: 5500

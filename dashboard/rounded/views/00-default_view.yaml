@@ -89,7 +89,8 @@ cards:
                   card_mod:
                     style: |
                       ha-card {
-                        --chip-background: var(--contrast15);
+                        --chip-background: var(--contrast19);
+                        color: var(--contrast6);
                         }
               - type: "conditional"
                 conditions:
@@ -111,7 +112,8 @@ cards:
                   card_mod:
                     style: |
                       ha-card {
-                        --chip-background: var(--contrast15);
+                        --chip-background: var(--contrast19);
+                        color: var(--contrast6);
                         }
 
   - type: "custom:layout-card"

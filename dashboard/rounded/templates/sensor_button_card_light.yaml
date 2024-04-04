@@ -20,7 +20,7 @@ sensor_button_card_light:
         - grid-template-columns: 1fr
         - grid-template-rows: 1fr min-content min-content
       card:
-        - background: "var(--contrast15)"
+        - background: "var(--contrast19)"
         - padding: "16px"
         - "--mdc-ripple-press-opacity": 0
       img_cell:
@@ -29,14 +29,14 @@ sensor_button_card_light:
       icon:
         - width: 24px
         - height: 24px
-        - color: var(--contrast0)
+        - color: var(--contrast6)
       name:
         - justify-self: start
         - font-size: 12px
         - margin: 4px 0 12px 0
-        - color: var(--contrast0)
+        - color: var(--contrast6)
         - font-family: Google Sans
       state:
-        - color: var(--contrast0)
+        - color: var(--contrast6)
         - font-family: Google Sans
         - font-weight: 900

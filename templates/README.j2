@@ -1,38 +1,212 @@
-# Welcome !
+{#- Template file for https://github.com/custom-components/readme -#}
+# Welcome 👋!
 
 This is my Home Assistant installation.
 
 ## Some statistics about my installation:
 
 Description | value
--- | --
-Number of entities | {{states | count}}
-Number of sensors | {{states.sensor | count}}
-
-
-## My installed extensions:
-
-### Add-ons
-{%- for addon in addons | sort(attribute='name') %}
-- {{addon.name}}
+--|--
+Installed version | {{ states('sensor.current_version') }}
+Total entity objects | {{ states | count }}
+{%- set data = namespace(domains=[]) %}
+{%- for state in states %}
+{%- if state.domain not in data.domains %}
+{%- set data.domains = data.domains + [state.domain] %}
+{%- endif %}
+{%- endfor %}
+{%- for domain in data.domains %}
+Entities in the [`{{domain}}`](https://www.home-assistant.io/components/{{domain}}) domain | {{states[domain] | count }}
 {%- endfor %}
 
-### Custom integrations
-{%- for component in hacs_components | selectattr('category', 'equalto', 'integration') | sort(attribute='name') %}
-- [{{component.name}}]({{component.documentation}})
+{%- set core_integrations = [
+    {
+        "key": "adguard",
+        "name": "AdGuard Home",
+    },
+    {
+        "key": "apple_tv",
+        "name": "Apple TV",
+    },
+    {
+        "key": "automation",
+        "name": "Automation",
+        "configuration": "./automations.yaml"
+    },
+    {
+        "key": "wemo",
+        "name": "Belkin WeMo",
+    },
+    {
+        "key": "cast",
+        "name": "Google Cast",
+    },
+    {
+        "key": "cloud",
+        "name": "Home Assistant Cloud",
+        "configuration": "./packages/integrations/core/cloud.yaml"
+    },
+    {
+        "key": "cloudflare",
+        "name": "Cloudflare",
+    },
+    {
+        "key": "default_config",
+        "name": "Default Config",
+        "configuration": "./configuration.yaml"
+    },
+    {
+        "key": "frontend",
+        "name": "Frontend",
+        "configuration": "./packages/integrations/core/frontend.yaml"
+    },
+    {
+        "key": "github",
+        "name": "GitHub",
+    },
+    {
+        "key": "influxdb",
+        "name": "InfluxDB",
+        "configuration": "./packages/integrations/core/influxdb.yaml"
+    },
+    {
+        "key": "launch_library",
+        "name": "Launch Library",
+    },
+    {
+        "key": "logger",
+        "name": "Logger",
+        "configuration": "./packages/integrations/core/logger.yaml"
+    },
+    {
+        "key": "met",
+        "name": "Met.no",
+    },
+    {
+        "key": "mobile_app",
+        "name": "Mobile App",
+    },
+    {
+        "key": "nanoleaf",
+        "name": "Nanoleaf",
+    },
+    {
+        "key": "netatmo",
+        "name": "Netatmo",
+    },
+    {
+        "key": "plex",
+        "name": "Plex Media Server",
+    },
+    {
+        "key": "rest",
+        "name": "Rest",
+        "configuration": "./packages/integrations/core/rest.yaml"
+    },
+    {
+        "key": "script",
+        "name": "Script",
+        "configuration": "./scripts.yaml"
+    },
+    {
+        "key": "sentry",
+        "name": "Sentry",
+    },
+    {
+        "key": "spotify",
+        "name": "Spotify",
+        "configuration": "./packages/integrations/core/spotify.yaml"
+    },
+    {
+        "key": "hassio",
+        "name": "Supervisor",
+    },
+    {
+        "key": "synology_dsm",
+        "name": "Synology DSM",
+    },
+    {
+        "key": "tailscale",
+        "name": "Tailscale",
+    },
+    {
+        "key": "tautulli",
+        "name": "Tautulli",
+        "configuration": "./packages/integrations/core/tautulli.yaml"
+    },
+    {
+        "key": "telegram",
+        "name": "Telegram BOT",
+        "configuration": "./packages/integrations/core/telegram.yaml"
+    },
+    {
+        "key": "template",
+        "name": "Template",
+        "configuration": "./packages/integrations/core/template.yaml"
+    },
+    {
+        "key": "tuya",
+        "name": "Tuya",
+    },
+    {
+        "key": "uptimerobot",
+        "name": "UptimeRobot",
+    },
+    {
+        "key": "version",
+        "name": "Version",
+    },
+    {
+        "key": "xiaomi_miio",
+        "name": "Xiaomi Miio",
+    },
+] %}
+
+## Core integrations that I use
+
+Integration | Configuration
+--|--
+{% for integration in core_integrations -%}
+[<img src="https://brands.home-assistant.io/_/{{integration.key}}/icon.png" height="24"/>](https://brands.home-assistant.io/_/{{integration.key}}/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/{{integration.key}}/icon.png" height="24"/>](https://brands.home-assistant.io/_/{{integration.key}}/icon.png#gh-light-mode-only) [{{integration.name}}](https://home-assistant.io/integrations/{{integration.key}}) | {{"[" + integration.configuration + "](" + integration.configuration + ")" if integration.configuration else "Config flow[^1]"}}
+{% endfor -%}
+
+{%- set custom_categories = [
+    {
+        "key": "integration",
+        "name": "integrations"
+    },
+    {
+        "key": "plugin",
+        "name": "lovelace plugins"
+    },
+    {
+        "key": "theme",
+        "name": "themes"
+    }
+] %}
+
+{% for category in custom_categories -%}
+{%- set entries = hacs_components | selectattr("category", "eq", category.key) | selectattr("installed", "eq", True) | list -%}
+{% if entries | count != 0 %}
+## The custom {{category.name}} that I use
+{% for entry in entries -%}
+{% if entry.installed %}
+### {% if entry.category == "integration" -%}
+[<img src="https://brands.home-assistant.io/_/{{entry.domain}}/icon.png" height="24"/>](https://brands.home-assistant.io/_/{{entry.domain}}/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/{{entry.domain}}/icon.png" height="24"/>](https://brands.home-assistant.io/_/{{entry.domain}}/icon.png#gh-light-mode-only)
+{%- endif %} [{{entry.name}}]({{entry.documentation}})
+
+_{{entry.description}}_
+
+{% if category.key == "integration" and not entry.config_flow %}
+[**My configuration for {{entry.name}}**](./packages/integrations/custom/{{entry.domain}}.yaml)
+{% endif -%}
+
+**Version** | {{entry.installed_version}}
+--|--
+{% if entry.authors -%}
+**Author(s)** | {{entry.authors|join(", ")}}
+{% endif -%}
+{% endif -%}
+{%- endfor -%}
+{% endif -%}
 {%- endfor %}
-
-### Lovelace plugins
-{%- for component in hacs_components | selectattr('category', 'equalto', 'plugin') | sort(attribute='name') %}
-- [{{component.name}}]({{component.documentation}})
-{%- endfor %}
-
-### Themes
-{%- for component in hacs_components | selectattr('category', 'equalto', 'theme') | sort(attribute='name') %}
-- [{{component.name}}]({{component.documentation}})
-{%- endfor %}
-
-
-***
-
-Generated by the [custom readme integration](https://github.com/custom-components/readme)

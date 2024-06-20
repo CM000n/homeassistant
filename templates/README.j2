@@ -208,7 +208,7 @@ Integrations | Configuration
 {%- set entries = hacs_components | selectattr("category", "eq", category.key) | selectattr("installed", "eq", True) | list -%}
 {% if entries | count != 0 %}
 
-### The {{category.name}} that I use <a name="category.key}"></a>
+### The {{category.name}} that I use <a name="{{category.key}}"></a>
 {{category.name}} | Description | Version
 --|--|-- {% for entry in entries -%}
 {% if entry.installed %}

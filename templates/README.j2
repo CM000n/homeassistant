@@ -1,9 +1,30 @@
 {#- Template file for https://github.com/custom-components/readme -#}
 # Welcome 👋!
 
-This is my Home Assistant installation.
+Welcome to my Home Assistant Configuration Backup repository! This repository is dedicated to managing and backing up my personal Home Assistant configurations. Home Assistant is an incredibly powerful open-source platform for automating smart home devices, and maintaining a reliable backup of configurations is crucial for ensuring smooth operation and easy recovery in case of any issues.
 
-## Some statistics about my installation:
+# Table of contents
+1. [Introduction](#introduction)
+2. [Installation statistics](#statistics)
+2. [Installed componentents](#installed_components)
+    1. [Core integrations](#core_integrations)
+
+
+## Introduction <a name="introduction"></a>
+
+In this repository, I have included scripts and guidelines to help automate the backup process for my Home Assistant configurations. The goal is to provide a personal solution that ensures my configurations are regularly saved and easily recoverable.
+
+### Key Features
+
+- **Automated Backups**: Set up scheduled tasks to automatically back up my Home Assistant configuration.
+- **Cloud Storage Integration**: Options to store backups in various cloud storage services for added security and accessibility.
+- **Version Control**: Keep track of changes in configurations over time with versioned backups.
+- **Easy Restoration**: Clear instructions and tools to restore configurations from backups effortlessly.
+- **Customizable**: Flexible scripts tailored to fit my specific backup needs and preferences.
+
+By following the steps and using the resources provided in this repository, I can ensure that my Home Assistant configurations are always safe and recoverable, giving me peace of mind and allowing me to focus on enhancing my smart home experience.
+
+## Some statistics about my installation: <a name="statistics"></a>
 
 Description | value
 --|--
@@ -162,9 +183,11 @@ Entities in the [`{{domain}}`](https://www.home-assistant.io/components/{{domain
     },
 ] %}
 
-## Core integrations that I use
+## Installed components: <a name="installed_components"></a>
 
-Integration | Configuration
+### Core integrations that I use <a name="core_integrations"></a>
+
+Integrations | Configuration
 --|--
 {% for integration in core_integrations -%}
 [<img src="https://brands.home-assistant.io/_/{{integration.key}}/icon.png" height="24"/>](https://brands.home-assistant.io/_/{{integration.key}}/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/{{integration.key}}/icon.png" height="24"/>](https://brands.home-assistant.io/_/{{integration.key}}/icon.png#gh-light-mode-only) [{{integration.name}}](https://home-assistant.io/integrations/{{integration.key}}) | {{"[" + integration.configuration + "](" + integration.configuration + ")" if integration.configuration else "Config flow[^1]"}}
@@ -173,15 +196,15 @@ Integration | Configuration
 {%- set custom_categories = [
     {
         "key": "integration",
-        "name": "Custom integration"
+        "name": "Custom integrations"
     },
     {
         "key": "plugin",
-        "name": "Lovelace plugin"
+        "name": "Lovelace plugins"
     },
     {
         "key": "theme",
-        "name": "Theme"
+        "name": "Themes"
     }
 ] %}
 
@@ -189,7 +212,7 @@ Integration | Configuration
 {%- set entries = hacs_components | selectattr("category", "eq", category.key) | selectattr("installed", "eq", True) | list -%}
 {% if entries | count != 0 %}
 
-## The custom {{category.name}} that I use
+### The custom {{category.name}} that I use
 {{category.name}} | Description | Version
 --|--|-- {% for entry in entries -%}
 {% if entry.installed %}

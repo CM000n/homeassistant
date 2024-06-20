@@ -1,8 +1,29 @@
 # Welcome 👋!
 
-This is my Home Assistant installation.
+Welcome to my Home Assistant Configuration Backup repository! This repository is dedicated to managing and backing up my personal Home Assistant configurations. Home Assistant is an incredibly powerful open-source platform for automating smart home devices, and maintaining a reliable backup of configurations is crucial for ensuring smooth operation and easy recovery in case of any issues.
 
-## Some statistics about my installation:
+# Table of contents
+
+1. [Introduction](#introduction)
+2. [Installation statistics](#statistics)
+3. [Installed componentents](#installed_components)
+   1. [Core integrations](#core_integrations)
+
+## Introduction <a name="introduction"></a>
+
+In this repository, I have included scripts and guidelines to help automate the backup process for my Home Assistant configurations. The goal is to provide a personal solution that ensures my configurations are regularly saved and easily recoverable.
+
+### Key Features
+
+- **Automated Backups**: Set up scheduled tasks to automatically back up my Home Assistant configuration.
+- **Cloud Storage Integration**: Options to store backups in various cloud storage services for added security and accessibility.
+- **Version Control**: Keep track of changes in configurations over time with versioned backups.
+- **Easy Restoration**: Clear instructions and tools to restore configurations from backups effortlessly.
+- **Customizable**: Flexible scripts tailored to fit my specific backup needs and preferences.
+
+By following the steps and using the resources provided in this repository, I can ensure that my Home Assistant configurations are always safe and recoverable, giving me peace of mind and allowing me to focus on enhancing my smart home experience.
+
+## Some statistics about my installation: <a name="statistics"></a>
 
 | Description                                                                                        | value    |
 | -------------------------------------------------------------------------------------------------- | -------- |
@@ -45,9 +66,11 @@ This is my Home Assistant installation.
 | Entities in the [`image`](https://www.home-assistant.io/components/image) domain                   | 1        |
 | Entities in the [`humidifier`](https://www.home-assistant.io/components/humidifier) domain         | 1        |
 
-## Core integrations that I use
+## Installed components: <a name="installed_components"></a>
 
-| Integration                                                                                                                                                                                                                                                                                                                                                                                                          | Configuration                                                                            |
+### Core integrations that I use <a name="core_integrations"></a>
+
+| Integrations                                                                                                                                                                                                                                                                                                                                                                                                         | Configuration                                                                            |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | [<img src="https://brands.home-assistant.io/_/adguard/icon.png" height="24"/>](https://brands.home-assistant.io/_/adguard/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/adguard/icon.png" height="24"/>](https://brands.home-assistant.io/_/adguard/icon.png#gh-light-mode-only) [AdGuard Home](https://home-assistant.io/integrations/adguard)                                      | Config flow[^1]                                                                          |
 | [<img src="https://brands.home-assistant.io/_/apple_tv/icon.png" height="24"/>](https://brands.home-assistant.io/_/apple_tv/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/apple_tv/icon.png" height="24"/>](https://brands.home-assistant.io/_/apple_tv/icon.png#gh-light-mode-only) [Apple TV](https://home-assistant.io/integrations/apple_tv)                                     | Config flow[^1]                                                                          |
@@ -82,9 +105,9 @@ This is my Home Assistant installation.
 | [<img src="https://brands.home-assistant.io/_/version/icon.png" height="24"/>](https://brands.home-assistant.io/_/version/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/version/icon.png" height="24"/>](https://brands.home-assistant.io/_/version/icon.png#gh-light-mode-only) [Version](https://home-assistant.io/integrations/version)                                           | Config flow[^1]                                                                          |
 | [<img src="https://brands.home-assistant.io/_/xiaomi_miio/icon.png" height="24"/>](https://brands.home-assistant.io/_/xiaomi_miio/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/xiaomi_miio/icon.png" height="24"/>](https://brands.home-assistant.io/_/xiaomi_miio/icon.png#gh-light-mode-only) [Xiaomi Miio](https://home-assistant.io/integrations/xiaomi_miio)                   | Config flow[^1]                                                                          |
 
-## The custom Custom integration that I use
+### The custom Custom integrations that I use
 
-| Custom integration                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | Description                                                                                             | Version |
+| Custom integrations                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Description                                                                                             | Version |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------- |
 | [<img src="https://brands.home-assistant.io/_/places/icon.png" height="24"/>](https://brands.home-assistant.io/_/places/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/places/icon.png" height="24"/>](https://brands.home-assistant.io/_/places/icon.png#gh-light-mode-only) [Places](https://github.com/custom-components/places)                                                                                                                            | _Component to integrate with OpenStreetMap Reverse Geocode (places)_                                    | v2.7.0  |
 | [<img src="https://brands.home-assistant.io/_/ltss/icon.png" height="24"/>](https://brands.home-assistant.io/_/ltss/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/ltss/icon.png" height="24"/>](https://brands.home-assistant.io/_/ltss/icon.png#gh-light-mode-only) [Ltss](https://github.com/freol35241/ltss)                                                                                                                                               | _Long time state storage (LTSS) custom component for Home Assistant using Timescale DB_                 | v2.1.0  |
@@ -97,9 +120,9 @@ This is my Home Assistant installation.
 | [<img src="https://brands.home-assistant.io/_/readme/icon.png" height="24"/>](https://brands.home-assistant.io/_/readme/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/readme/icon.png" height="24"/>](https://brands.home-assistant.io/_/readme/icon.png#gh-light-mode-only) [Generate Readme](https://github.com/custom-components/readme)                                                                                                                   | _Use Jinja and data from Home Assistant to generate your README.md file_                                | 0.5.0   |
 | [<img src="https://brands.home-assistant.io/_/toyota/icon.png" height="24"/>](https://brands.home-assistant.io/_/toyota/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/toyota/icon.png" height="24"/>](https://brands.home-assistant.io/_/toyota/icon.png#gh-light-mode-only) [Toyota Connected Services Europe](https://github.com/DurgNomis-drol/ha_toyota)                                                                                                  | _Toyota Connected Services integration for Home Assistant._                                             | v2.0.3  |
 
-## The custom Lovelace plugin that I use
+### The custom Lovelace plugins that I use
 
-| Lovelace plugin                                                           | Description                                                                                           | Version    |
+| Lovelace plugins                                                          | Description                                                                                           | Version    |
 | ------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ---------- |
 | [My Cards Bundle](https://github.com/AnthonMS/my-cards)                   | _Bundle of my custom Lovelace cards for Home Assistant. Includes: my-slider, my-slider-v2, my-button_ | v1.0.5     |
 | [Stack In Card](https://github.com/custom-cards/stack-in-card)            | _🛠 group multiple cards into one card without the borders_                                           | 0.2.0      |

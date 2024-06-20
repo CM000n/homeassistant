@@ -190,7 +190,7 @@ Entities in the [`{{domain}}`](https://www.home-assistant.io/components/{{domain
 Integrations | Configuration
 --|--
 {% for integration in core_integrations -%}
-[<img src="https://brands.home-assistant.io/_/{{integration.key}}/icon.png" height="24"/>](https://brands.home-assistant.io/_/{{integration.key}}/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/{{integration.key}}/icon.png" height="24"/>](https://brands.home-assistant.io/_/{{integration.key}}/icon.png#gh-light-mode-only) [{{integration.name}}](https://home-assistant.io/integrations/{{integration.key}}) | {% if integration.configuration %} [{{integration.configurationy}}]({{integration.configurationy}}) {% else %} ["Config Flow"](https://my.home-assistant.io/redirect/config_flow_start?domain={{integration.key}}) {% endif %}
+[<img src="https://brands.home-assistant.io/_/{{integration.key}}/icon.png" height="24"/>](https://brands.home-assistant.io/_/{{integration.key}}/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/{{integration.key}}/icon.png" height="24"/>](https://brands.home-assistant.io/_/{{integration.key}}/icon.png#gh-light-mode-only) [{{integration.name}}](https://home-assistant.io/integrations/{{integration.key}}) | {% if integration.configuration %} [{{integration.configurationy}}]({{integration.configurationy}}) {% else %} [<img src="https://my.home-assistant.io/badges/config_flow_start.svg" height="24"/>](https://my.home-assistant.io/redirect/config_flow_start?domain={{integration.key}}) {% endif %}
 {% endfor -%}
 
 {%- set custom_categories = [

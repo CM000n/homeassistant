@@ -42,17 +42,19 @@ Entities in the [`{{domain}}`](https://www.home-assistant.io/components/{{domain
 
 {%- set core_integrations = [
     {
-        "key": "adguard",
-        "name": "AdGuard Home",
+        "key": "binary_sensor",
+        "name": "Binary sensor",
+        "configuration": "./integrations/binary_sensor.yaml"
     },
     {
-        "key": "apple_tv",
-        "name": "Apple TV",
+        "key": "configuration",
+        "name": "Configuration",
+        "configuration": "./integrations/config.yaml"
     },
     {
-        "key": "automation",
-        "name": "Automation",
-        "configuration": "./automations.yaml"
+        "key": "energy",
+        "name": "Energy",
+        "configuration": "./integrations/energy.yaml"
     },
     {
         "key": "wemo",

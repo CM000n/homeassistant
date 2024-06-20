@@ -190,7 +190,7 @@ Entities in the [`{{domain}}`](https://www.home-assistant.io/components/{{domain
 Integrations | Configuration
 --|--
 {% for integration in core_integrations -%}
-[<img src="https://brands.home-assistant.io/_/{{integration.key}}/icon.png" height="24"/>](https://brands.home-assistant.io/_/{{integration.key}}/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/{{integration.key}}/icon.png" height="24"/>](https://brands.home-assistant.io/_/{{integration.key}}/icon.png#gh-light-mode-only) [{{integration.name}}](https://home-assistant.io/integrations/{{integration.key}}) | {{"[" + integration.configuration + "](" + integration.configuration + ")" if integration.configuration else "https://my.home-assistant.io/redirect/config_flow_start?domain=integration.key"}}
+[<img src="https://brands.home-assistant.io/_/{{integration.key}}/icon.png" height="24"/>](https://brands.home-assistant.io/_/{{integration.key}}/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/{{integration.key}}/icon.png" height="24"/>](https://brands.home-assistant.io/_/{{integration.key}}/icon.png#gh-light-mode-only) [{{integration.name}}](https://home-assistant.io/integrations/{{integration.key}}) | {{"[" + integration.configuration + "](" + integration.configuration + ")" if integration.configuration else "Config Flow" }}
 {% endfor -%}
 
 {%- set custom_categories = [

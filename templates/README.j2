@@ -78,7 +78,102 @@ Entities in the [`{{domain}}`](https://www.home-assistant.io/components/{{domain
     {
         "key": "light",
         "name": "Light",
-        "configuration": "./integrations/lights.yaml"
+        "configuration": "./integrations/light.yaml"
+    },
+    {
+        "key": "logbook",
+        "name": "Logbook",
+        "configuration": "./integrations/logbook.yaml"
+    },
+    {
+        "key": "logger",
+        "name": "Logger",
+        "configuration": "./integrations/logger.yaml"
+    },
+    {
+        "key": "media_source",
+        "name": "Media source",
+        "configuration": "./integrations/media_source.yaml"
+    },
+    {
+        "key": "media_source",
+        "name": "Media source",
+        "configuration": "./integrations/media_source.yaml"
+    },
+    {
+        "key": "mobile_app",
+        "name": "Mobile app",
+        "configuration": "./integrations/mobile_app.yaml"
+    },
+    {
+        "key": "notify",
+        "name": "Notify",
+        "configuration": "./integrations/notify.yaml"
+    },
+    {
+        "key": "person",
+        "name": "Person",
+        "configuration": "./integrations/person.yaml"
+    },
+    {
+        "key": "recorder",
+        "name": "Recorder",
+        "configuration": "./integrations/recorder.yaml"
+    },
+    {
+        "key": "sensor",
+        "name": "Sensor",
+        "configuration": "./integrations/sensor.yaml"
+    },
+    {
+        "key": "shell_command",
+        "name": "Shell command",
+        "configuration": "./integrations/shell_command.yaml"
+    },
+    {
+        "key": "sonos",
+        "name": "Sonos",
+        "configuration": "./integrations/sonos.yaml"
+    },
+    {
+        "key": "sql",
+        "name": "SQL",
+        "configuration": "./integrations/sql.yaml"
+    },
+    {
+        "key": "sun",
+        "name": "Sun",
+        "configuration": "./integrations/sun.yaml"
+    },
+    {
+        "key": "switch",
+        "name": "Switch",
+        "configuration": "./integrations/switch.yaml"
+    },
+    {
+        "key": "system_health",
+        "name": "System health",
+        "configuration": "./integrations/system_health.yaml"
+    },
+    {
+        "key": "template",
+        "name": "Template",
+        "configuration": "./integrations/template.yaml"
+    },
+    {
+        "key": "utility_meter",
+        "name": "Utility meter",
+        "configuration": "./integrations/utility_meter.yaml"
+    },
+    {
+        "key": "wake_on_lan",
+        "name": "WOL",
+        "configuration": "./integrations/wake_on_lan.yaml"
+    },
+    {
+        "key": "zone",
+        "name": "Zone",
+        "configuration": "./integrations/zone.yaml"
     },
 ] %}
 
@@ -111,7 +206,7 @@ Integrations | Configuration
 {%- set entries = hacs_components | selectattr("category", "eq", category.key) | selectattr("installed", "eq", True) | list -%}
 {% if entries | count != 0 %}
 
-### The custom {{category.name}} that I use
+### The {{category.name}} that I use
 {{category.name}} | Description | Version
 --|--|-- {% for entry in entries -%}
 {% if entry.installed %}

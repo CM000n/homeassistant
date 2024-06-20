@@ -1,5 +1,5 @@
 ---
-# https://home-assistant.io/components/media_player.sonos/
+# https://www.home-assistant.io/integrations/sonos/
 sonos:
   media_player:
     advertise_addr: "192.168.176.3"

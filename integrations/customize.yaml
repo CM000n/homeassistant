@@ -1,4 +1,5 @@
 ---
+# https://www.home-assistant.io/integrations/homeassistant/#customize
 homeassistant:
   customize:
     input_boolean.living_room_select_vacuuming:

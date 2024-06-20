@@ -1,7 +1,9 @@
 {#- Template file for https://github.com/custom-components/readme -#}
 # Welcome 👋!
 
-Welcome to my Home Assistant Configuration Backup repository! This repository is dedicated to managing and backing up my personal Home Assistant configurations. Home Assistant is an incredibly powerful open-source platform for automating smart home devices, and maintaining a reliable backup of configurations is crucial for ensuring smooth operation and easy recovery in case of any issues.
+Welcome to my Home Assistant Configuration Backup repository!
+This repository is dedicated to managing and backing up my personal Home Assistant configuration.
+Home Assistant is an incredibly powerful open-source platform for automating smart home devices, and maintaining a reliable backup of configurations is crucial for ensuring smooth operation and easy recovery in case of any issues.
 
 # Table of contents
 1. [Introduction](#introduction)
@@ -12,17 +14,14 @@ Welcome to my Home Assistant Configuration Backup repository! This repository is
 
 ## Introduction <a name="introduction"></a>
 
-In this repository, I have included scripts and guidelines to help automate the backup process for my Home Assistant configurations. The goal is to provide a personal solution that ensures my configurations are regularly saved and easily recoverable.
+In this repository, I have included most .yaml configurations and assets of my Home Assistant setup to help automate the backup process for my Home Assistant configurations.
+The goal is to provide a personal solution that ensures my configurations are regularly saved and easily recoverable.
 
 ### Key Features
 
-- **Automated Backups**: Set up scheduled tasks to automatically back up my Home Assistant configuration.
-- **Cloud Storage Integration**: Options to store backups in various cloud storage services for added security and accessibility.
-- **Version Control**: Keep track of changes in configurations over time with versioned backups.
-- **Easy Restoration**: Clear instructions and tools to restore configurations from backups effortlessly.
-- **Customizable**: Flexible scripts tailored to fit my specific backup needs and preferences.
-
-By following the steps and using the resources provided in this repository, I can ensure that my Home Assistant configurations are always safe and recoverable, giving me peace of mind and allowing me to focus on enhancing my smart home experience.
+- **Documentation**: The current configuration is documented with the help of the repository and background information can be provided that may also be of interest to others.
+- **Version Control**: Keep track of changes in configurations over time with git versioning.
+- **Easy Restoration**: Simply use the repository to restore a large part of the configurations in the event of an error.
 
 ## Some statistics about my installation: <a name="statistics"></a>
 
@@ -57,131 +56,29 @@ Entities in the [`{{domain}}`](https://www.home-assistant.io/components/{{domain
         "configuration": "./integrations/energy.yaml"
     },
     {
-        "key": "wemo",
-        "name": "Belkin WeMo",
+        "key": "fan",
+        "name": "Fan",
+        "configuration": "./integrations/fan.yaml"
     },
     {
-        "key": "cast",
-        "name": "Google Cast",
+        "key": "group",
+        "name": "Group",
+        "configuration": "./integrations/group.yaml"
     },
     {
-        "key": "cloud",
-        "name": "Home Assistant Cloud",
-        "configuration": "./packages/integrations/core/cloud.yaml"
+        "key": "history",
+        "name": "History",
+        "configuration": "./integrations/history.yaml"
     },
     {
-        "key": "cloudflare",
-        "name": "Cloudflare",
-    },
-    {
-        "key": "default_config",
-        "name": "Default Config",
+        "key": "homeassistant",
+        "name": "Home Assistant core",
         "configuration": "./configuration.yaml"
     },
     {
-        "key": "frontend",
-        "name": "Frontend",
-        "configuration": "./packages/integrations/core/frontend.yaml"
-    },
-    {
-        "key": "github",
-        "name": "GitHub",
-    },
-    {
-        "key": "influxdb",
-        "name": "InfluxDB",
-        "configuration": "./packages/integrations/core/influxdb.yaml"
-    },
-    {
-        "key": "launch_library",
-        "name": "Launch Library",
-    },
-    {
-        "key": "logger",
-        "name": "Logger",
-        "configuration": "./packages/integrations/core/logger.yaml"
-    },
-    {
-        "key": "met",
-        "name": "Met.no",
-    },
-    {
-        "key": "mobile_app",
-        "name": "Mobile App",
-    },
-    {
-        "key": "nanoleaf",
-        "name": "Nanoleaf",
-    },
-    {
-        "key": "netatmo",
-        "name": "Netatmo",
-    },
-    {
-        "key": "plex",
-        "name": "Plex Media Server",
-    },
-    {
-        "key": "rest",
-        "name": "Rest",
-        "configuration": "./packages/integrations/core/rest.yaml"
-    },
-    {
-        "key": "script",
-        "name": "Script",
-        "configuration": "./scripts.yaml"
-    },
-    {
-        "key": "sentry",
-        "name": "Sentry",
-    },
-    {
-        "key": "spotify",
-        "name": "Spotify",
-        "configuration": "./packages/integrations/core/spotify.yaml"
-    },
-    {
-        "key": "hassio",
-        "name": "Supervisor",
-    },
-    {
-        "key": "synology_dsm",
-        "name": "Synology DSM",
-    },
-    {
-        "key": "tailscale",
-        "name": "Tailscale",
-    },
-    {
-        "key": "tautulli",
-        "name": "Tautulli",
-        "configuration": "./packages/integrations/core/tautulli.yaml"
-    },
-    {
-        "key": "telegram",
-        "name": "Telegram BOT",
-        "configuration": "./packages/integrations/core/telegram.yaml"
-    },
-    {
-        "key": "template",
-        "name": "Template",
-        "configuration": "./packages/integrations/core/template.yaml"
-    },
-    {
-        "key": "tuya",
-        "name": "Tuya",
-    },
-    {
-        "key": "uptimerobot",
-        "name": "UptimeRobot",
-    },
-    {
-        "key": "version",
-        "name": "Version",
-    },
-    {
-        "key": "xiaomi_miio",
-        "name": "Xiaomi Miio",
+        "key": "light",
+        "name": "Light",
+        "configuration": "./integrations/lights.yaml"
     },
 ] %}
 

@@ -18,7 +18,7 @@ Rounded:
   grid-card-gap: "16px"
   ha-card-border-width: "0px"
   ha-card-border-radius: "24px"
-  masonry-view-card-margin: "40px 20px"
+  #masonry-view-card-margin: "40px 20px"
   # Main Interface Colors
   primary-color: "var(--blue)"
   accent-color: "var(--blue)"

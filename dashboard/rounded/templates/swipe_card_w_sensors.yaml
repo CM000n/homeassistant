@@ -68,7 +68,7 @@ swipe_card_w_sensors:
           fill_raw: "last"
           extend_to: false
         series:
-          - entity: "sensor.stromzahler_stromverbrauch_taglich"
+          - entity: "sensor.electricity_meter_energy_consumption_daily"
             name: "Energie: Netz"
             float_precision: 1
             color: "var(--purple)"
@@ -76,7 +76,7 @@ swipe_card_w_sensors:
             group_by:
               func: "max"
               duration: "1h"
-          - entity: "sensor.balkonkraftwerk_stromproduktion_taglich"
+          - entity: "sensor.photovoltaik_production_daily"
             name: "Solar"
             float_precision: 1
             color: "var(--yellow)"

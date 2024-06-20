@@ -6,18 +6,18 @@ visible:
   - user: "3fb4deff931c4631b84d2584e5f2e493"
   - user: "e7bec22aa70e4762ac231811f5997452"
 theme: "Rounded"
-type: "masonry"
+type: "sections"
+max_columns: 1
 subview: true
 back_path: "/lovelace-rounded/default_view"
 badges: []
-cards:
+sections:
   - type: "custom:layout-card"
     layout_type: "custom:grid-layout"
     layout:
       grid-template-columns: "auto 40%"
       grid-template-rows: 1
       max_cols: 2
-      margin: "-50px -15px 0px -15px"
     cards:
       - type: "custom:decluttering-card"
         template: "title_card_v2"
@@ -32,8 +32,6 @@ cards:
 
   - type: "custom:layout-card"
     layout_type: "custom:grid-layout"
-    layout:
-      margin: "-50px -15px 0px -15px"
     cards:
       - type: "vertical-stack"
         cards:
@@ -66,8 +64,6 @@ cards:
 
   - type: "custom:layout-card"
     layout_type: "custom:grid-layout"
-    layout:
-      margin: "-50px -15px 0px -15px"
     cards:
       - type: "grid"
         columns: 2
@@ -83,8 +79,6 @@ cards:
 
   - type: "custom:layout-card"
     layout_type: "custom:grid-layout"
-    layout:
-      margin: "-50px -15px 0px -15px"
     cards:
       - type: "grid"
         columns: 1
@@ -116,3 +110,6 @@ cards:
 
   - type: "custom:button-card"
     color_type: "blank-card"
+    styles:
+      card:
+        - height: 40px

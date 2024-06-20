@@ -1,5 +1,9 @@
 ---
 Minimal:
+  ########################################################
+  ############### Default global variables ###############
+  ########################################################
+  #font
   primary-font-family: "Google Sans"
   paper-font-common-base_-_font-family: "var(--primary-font-family)"
   paper-font-common-code_-_font-family: "var(--primary-font-family)"
@@ -8,30 +12,13 @@ Minimal:
   paper-font-headline_-_font-family: "var(--primary-font-family)"
   paper-font-caption_-_font-family: "var(--primary-font-family)"
   paper-font-title_-_font-family: "var(--primary-font-family)"
-  #  ha-card-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.16)
-  #  font-family: Poppins
-  #  font-family: Quicksand
-  ha-card-border-radius: 18px
-  grid-card-gap: 12px
-  horizontal-stack-card-margin: 0px 8px
-  vertical-stack-card-margin: 8px 8px
-  ha-card-border-width: "0px" # Removes default 1px line
-  #masonry-view-card-margin: 40px 20px
-  ### NAVBAR ###
-  error-color: "var(--google-red)"
-  warning-color: "var(--google-yellow)"
-  success-color: "var(--google-green)"
-  info-color: "var(--google-blue)"
-  header-height: "calc(var(--header-base-height) + env(safe-area-inset-bottom))"
-  header-base-height: "60px"
-  ha-dialog-border-radius: "18px"
-  header-tab-indicator-color: "rgba(0, 0, 0, 0)"
-  header-active-tab-color: "var(--blue)"
-  header-active-tab-bg-color: "var(--blue-tint)"
-  header-all-tabs-color: "var(--contrast10)"
-  #  header-active-tab-color: "var(--contrast1)"
-  #  header-active-tab-bg-color: "var(--contrast22)"
-
+  # Spacings and radius
+  horizontal-stack-card-margin: "0px 8px"
+  vertical-stack-card-margin: "8px 0px"
+  grid-card-gap: "16px"
+  ha-card-border-width: "0px"
+  ha-card-border-radius: "24px"
+  #masonry-view-card-margin: "40px 20px"
   # Main Interface Colors
   primary-color: "var(--blue)"
   accent-color: "var(--blue)"
@@ -48,7 +35,7 @@ Minimal:
   app-header-background-color: "var(--contrast1)"
   app-header-text-color: "var(--contrast20)"
   app-header-selection-bar-color: "transparent"
-  app-header-edit-background-color: "var(--contrast0)"
+  app-header-edit-background-color: "var(--contrast2)"
   app-header-edit-text-color: "var(--contrast20)"
   # Cards
   card-background-color: "var(--contrast2)"
@@ -114,15 +101,13 @@ Minimal:
   # Checkboxes
   mdc-checkbox-unchecked-color: "var(--contrast15)"
   # Colors
-  orange-color: var(--orange)
-  green-color: var(--green)
-  blue-color: var(--blue)
-  red-color: var(--red)
-  purple-color: var(--purple)
-  yellow-color: var(--yellow)
-  grey-color: var(--contrast10)
-  pink-color: var(--pink)
-  brown-color: var(--brown)
+  orange-color: "var(--orange)"
+  green-color: "var(--green)"
+  blue-color: "var(--blue)"
+  red-color: "var(--red)"
+  purple-color: "var(--purple)"
+  yellow-color: "var(--yellow)"
+  grey-color: "var(--contrast10)"
 
   #######################################################
   ############### Custom global variables ###############
@@ -132,57 +117,44 @@ Minimal:
   black: "#000000"
   white: "#FFFFFF"
   # Colors
-  purple: rgb(var(--purple-rgb))
-  yellow: rgb(var(--yellow-rgb))
-  orange: rgb(var(--orange-rgb))
-  red: rgb(var(--red-rgb))
-  green: rgb(var(--green-rgb))
-  blue: rgb(var(--blue-rgb))
-  pink: rgb(var(--pink-rgb))
-  brown: rgb(var(--brown-rgb))
-  watergreen: rgb(var(--watergreen-rgb))
+  purple: "rgb(var(--purple-rgb))"
+  yellow: "rgb(var(--yellow-rgb))"
+  orange: "rgb(var(--orange-rgb))"
+  red: "rgb(var(--red-rgb))"
+  green: "rgb(var(--green-rgb))"
+  blue: "rgb(var(--blue-rgb))"
   # Color tints
-  purple-tint: rgba(var(--purple-rgb),var(--color-tint))
-  yellow-tint: rgba(var(--yellow-rgb),var(--color-tint))
-  orange-tint: rgba(var(--orange-rgb),var(--color-tint))
-  red-tint: rgba(var(--red-rgb),var(--color-tint))
-  green-tint: rgba(var(--green-rgb),var(--color-tint))
-  blue-tint: rgba(var(--blue-rgb),var(--color-tint))
-  pink-tint: rgba(var(--pink-rgb),var(--color-tint))
-  brown-tint: rgba(var(--brown-rgb),var(--color-tint))
-  watergreen-tint: rgba(var(--watergreen-rgb),var(--color-tint))
+  purple-tint: "rgba(var(--purple-rgb),var(--color-tint))"
+  yellow-tint: "rgba(var(--yellow-rgb),var(--color-tint))"
+  orange-tint: "rgba(var(--orange-rgb),var(--color-tint))"
+  red-tint: "rgba(var(--red-rgb),var(--color-tint))"
+  green-tint: "rgba(var(--green-rgb),var(--color-tint))"
+  blue-tint: "rgba(var(--blue-rgb),var(--color-tint))"
+  # More Color tints
+  purple-tint2: "rgba(var(--purple-rgb),var(--color-tint2))"
+  yellow-tint2: "rgba(var(--yellow-rgb),var(--color-tint2))"
+  orange-tint2: "rgba(var(--orange-rgb),var(--color-tint2))"
+  red-tint2: "rgba(var(--red-rgb),var(--color-tint2))"
+  green-tint2: "rgba(var(--green-rgb),var(--color-tint2))"
+  blue-tint2: "rgba(var(--blue-rgb),var(--color-tint2))"
   # Gradients
-  brightness: linear-gradient(90deg, rgba(var(--brightness-low-rgb), 0.4) 0%, rgba(var(--brightness-high-rgb), 1) 100%)
-  brightness-tint: linear-gradient(90deg, rgba(var(--brightness-low-rgb), 0.06) 0%, rgba(var(--brightness-high-rgb), var(--color-tint)) 100%)
-  temperature: linear-gradient(90deg, rgba(var(--temperature-low-rgb), 01) 0%, rgba(var(--temperature-high-rgb), 1) 100%)
-  temperature-tint: linear-gradient(90deg, rgba(var(--temperature-low-rgb), var(--color-tint)) 0%, rgba(var(--temperature-high-rgb), var(--color-tint)) 100%)
-  slidertenda: linear-gradient(90deg, rgba(var(--slidertenda-high-rgb), 1) 0%, rgba(var(--slidertenda-low-rgb), 0.5) 100%)
-  slidertriangolo: linear-gradient(90deg, rgba(var(--slidertriangolo-low-rgb), 0.4) 0%, rgba(var(--slidertriangolo-high-rgb), 1) 100%)
-  slidertriangolooff: linear-gradient(90deg, rgba(var(--slidertriangolo-low-rgb), 0.2) 0%, rgba(var(--slidertriangolo-high-rgb), 0.4) 100%)
-  slidertendaoff: linear-gradient(90deg, rgba(var(--slidertenda-high-rgb), 1) 0%, rgba(var(--slidertenda-low-rgb), 0.6) 100%)
-  thomslider: linear-gradient(90deg, rgba(var(--green-rgb), 0.4) 0%, rgba(var(--yellow-rgb), 1) 40%, rgba(var(--orange-rgb), 1) 70%, rgba(var(--red-rgb), 1) 100%)
+  brightness: "linear-gradient(90deg, rgba(var(--brightness-low-rgb), 0.4) 0%, rgba(var(--brightness-high-rgb), 1) 100%)"
+  brightness-tint: "linear-gradient(90deg, rgba(var(--brightness-low-rgb), 0.06) 0%, rgba(var(--brightness-high-rgb), var(--color-tint)) 100%)"
+  temperature: "linear-gradient(90deg, rgba(var(--temperature-low-rgb), 01) 0%, rgba(var(--temperature-high-rgb), 1) 100%)"
+  temperature-tint: "linear-gradient(90deg, rgba(var(--temperature-low-rgb), var(--color-tint)) 0%, rgba(var(--temperature-high-rgb), var(--color-tint)) 100%)"
   # Color RGB variables
-  purple-rgb: 239, 177, 255
-  yellow-rgb: 255, 218, 120
-  orange-rgb: 255, 181, 129
-  red-rgb: 255, 145, 138
-  green-rgb: 206, 245, 149
-  watergreen-rgb: 149, 245, 165
-  blue-rgb: 144, 191, 255
-  pink-rgb: 214, 131, 170
-  brown-rgb: 125, 110, 104
+  purple-rgb: "239, 177, 255"
+  yellow-rgb: "255, 218, 120"
+  orange-rgb: "255, 181, 129"
+  red-rgb: "255, 145, 138"
+  green-rgb: "206, 245, 149"
+  blue-rgb: "144, 191, 255"
   # Gradient RGB variables
-  brightness-low-rgb: 232, 176, 29
-  brightness-high-rgb: 255, 211, 94
-  temperature-low-rgb: 177, 197, 255
-  temperature-high-rgb: 255, 175, 131
-  slidertenda-low-rgb: 20, 20, 20
-  slidertenda-high-rgb: 255, 211, 94
-  slidertriangolo-low-rgb: 153, 161, 173
-  slidertriangolo-high-rgb: 105, 168, 255
+  brightness-low-rgb: "232, 176, 29"
+  brightness-high-rgb: "255, 211, 94"
+  temperature-low-rgb: "177, 197, 255"
+  temperature-high-rgb: "255, 175, 131"
   # Contrast variables
-  black00: "#1b1b1f"
-  black0: "#303034"
   black1: "#000000"
   black2: "#111318"
   black3: "#171A21"
@@ -203,8 +175,6 @@ Minimal:
   white3: "#EAEDF6"
   white2: "#F4F6FB"
   white1: "#FFFFFF"
-  white0: "#f2f0f4"
-  white00: "#fbf8fd"
 
   ########################################################
   ############### Variables based on modes ###############
@@ -213,65 +183,60 @@ Minimal:
   modes:
     dark:
       # Black white contrats
-      contrast0: var(--black0)
-      contrast00: var(--black00)
-      contrast1: var(--black1)
-      contrast2: var(--black2)
-      contrast3: var(--black3)
-      contrast4: var(--black4)
-      contrast5: var(--black5)
-      contrast6: var(--black6)
-      contrast7: var(--black7)
-      contrast8: var(--black8)
-      contrast9: var(--black9)
-      contrast10: var(--black10)
-      contrast11: var(--white10)
-      contrast12: var(--white9)
-      contrast13: var(--white8)
-      contrast14: var(--white7)
-      contrast15: var(--white6)
-      contrast16: var(--white5)
-      contrast17: var(--white4)
-      contrast18: var(--white3)
-      contrast19: var(--white2)
-      contrast20: var(--white1)
+      contrast1: "var(--black1)"
+      contrast2: "var(--black2)"
+      contrast3: "var(--black3)"
+      contrast4: "var(--black4)"
+      contrast5: "var(--black5)"
+      contrast6: "var(--black6)"
+      contrast7: "var(--black7)"
+      contrast8: "var(--black8)"
+      contrast9: "var(--black9)"
+      contrast10: "var(--black10)"
+      contrast11: "var(--white10)"
+      contrast12: "var(--white9)"
+      contrast13: "var(--white8)"
+      contrast14: "var(--white7)"
+      contrast15: "var(--white6)"
+      contrast16: "var(--white5)"
+      contrast17: "var(--white4)"
+      contrast18: "var(--white3)"
+      contrast19: "var(--white2)"
+      contrast20: "var(--white1)"
       # Color tint transparancy
       color-tint: "0.15"
       # Contrast RGB variables
-      contrast1-RGB: 0,0,0
+      contrast1-RGB: "0,0,0"
 
     light:
       # Black white contrats
-      contrast0: var(--white0)
-      contrast00: var(--white00)
-      contrast1: var(--white1)
-      contrast2: var(--white2)
-      contrast3: var(--white3)
-      contrast4: var(--white4)
-      contrast5: var(--white5)
-      contrast6: var(--white6)
-      contrast7: var(--white7)
-      contrast8: var(--white8)
-      contrast9: var(--white9)
-      contrast10: var(--white10)
-      contrast11: var(--black10)
-      contrast12: var(--black9)
-      contrast13: var(--black8)
-      contrast14: var(--black7)
-      contrast15: var(--black6)
-      contrast16: var(--black5)
-      contrast17: var(--black4)
-      contrast18: var(--black3)
-      contrast19: var(--black2)
-      contrast20: var(--black1)
+      contrast1: "var(--white1)"
+      contrast2: "var(--white2)"
+      contrast3: "var(--white3)"
+      contrast4: "var(--white4)"
+      contrast5: "var(--white5)"
+      contrast6: "var(--white6)"
+      contrast7: "var(--white7)"
+      contrast8: "var(--white8)"
+      contrast9: "var(--white9)"
+      contrast10: "var(--white10)"
+      contrast11: "var(--black10)"
+      contrast12: "var(--black9)"
+      contrast13: "var(--black8)"
+      contrast14: "var(--black7)"
+      contrast15: "var(--black6)"
+      contrast16: "var(--black5)"
+      contrast17: "var(--black4)"
+      contrast18: "var(--black3)"
+      contrast19: "var(--black2)"
+      contrast20: "var(--black1)"
       # Color tint transparancy
       color-tint: "0.20"
+      color-tint2: "0.40"
       # Contrast RGB variables
-      contrast1-RGB: 255,255,255
+      contrast1-RGB: "255,255,255"
 
-  ### TEMPLATE PER GRAFICO ###
-  card-mod-theme: Minimal
-
+  card-mod-theme: "Rounded"
   card-mod-view-yaml: |
     hui-masonry-view:
       $: |
@@ -282,84 +247,12 @@ Minimal:
             margin-right: -4px;
           }
         }
-
-  #      div#view{
-  #        transform: initial;
-  #        padding: 0 !important;
-  #        position: fixed !important;
-  #        margin: 0 !important;
-  #        width: 100%;
-  #      }
-
-  # Move navbar
-  card-mod-root-yaml: |
-    ha-tabs$: |
-      #tabsContent {
-        width: 97%;
-      }
-    .: |
-      .header {
-        top: auto !important;
-        bottom: 0px !important;
-        transform: translate3d(0px, 0px, 0px) !important;
-        backdrop-filter: blur(50px) !important;
-        -webkit-backdrop-filter: blur(50px) !important;
-        -moz-backdrop-filter: blur(50px);
-        -o-backdrop-filter: blur(50px);
-        -ms-backdrop-filter: blur(50px);
-        background-color: rgba(var(--contrast1-RGB),0.6) !important;
-      }
-      :host([scrolled]) .header {
-        box-shadow: none !important;
-      }
-      .toolbar {
-        height: var(--header-base-height) !important;
-        padding-bottom: env(safe-area-inset-bottom) !important;
-      }
-      #view {
-        margin-top: calc(-1 * var(--header-height)) !important;
-        padding-bottom: var(--header-height);
-      }
-      ha-tabs {
-        --paper-tabs-selection-bar-color: var(--header-tab-indicator-color);
-        --mdc-icon-size: 26px;
-        display: flex;
-        justify-content: space-between;
-        padding: 0 10px;
-        height:50px !important;
-      }
-      paper-tab[aria-selected=true] {
-        color: var(--contrast0);
-        background-color: var(--contrast15)
-      }
-      paper-tab {
-        color: var(--header-all-tabs-color);
-        border-radius: 18px;
-        height: 50px;
-        /*width: calc(100% / 4);
-        padding: 0;*/
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-      ha-menu-button, ha-button-menu {
-        color: var(--contrast16);
-      }
-
-  card-mod-row: |
-    /* Entities card row style */
-    :host {
-        display: block;
-        background: var(--contrast2);
-        border-radius: 18px;
-        padding: 6px 12px 6px 6px;
-    }
-
   card-mod-card-yaml: |
     .: |
       /* General changes */
       ha-card {
         transition: none !important;
-        font-family: 'Google Sans' !important;
+        font-family: 'hk nova semibold', 'Google Sans', 'Noto', sans-serif !important;
       }
       /* Vacuum card load transition disabled */
       .type-custom-xiaomi-vacuum-map-card {
@@ -374,12 +267,11 @@ Minimal:
       .graph .name {
         font-size: 12px;
         line-height: 18px;
+        background: var(--black);
+        color: var(--white);
         padding: 6px 10px;
         border-radius: 100px;
         z-index: 1;
-        font-family: 'Google Sans' !important;
-        background: var(--contrast20);
-        color: var(--contrast1);
       }
       .graph .icon {
         display: none;
@@ -388,7 +280,6 @@ Minimal:
         margin-top: 0;
         padding: 24px 24px 0 24px;
         order: 1;
-        color: var(--contrast18);
       }
       .graph hui-graph-header-footer {
         order: 3;
@@ -409,3 +300,47 @@ Minimal:
       .type-entities .card-content {
         padding: 0;
       }
+  card-mod-root-yaml: |
+    .: |
+      /* ___________ Bottom tabbar ___________  */
+      #view {
+        margin-top: 0 !important;
+        padding-top: 0px !important;
+      }
+      .header {
+        top: auto !important;
+        bottom: 0;
+        transform: translate3d(0px, 0px, 0px) !important;
+        backdrop-filter: blur(50px);
+        -webkit-backdrop-filter: blur(50px);
+        -moz-backdrop-filter: blur(50px);
+        -o-backdrop-filter: blur(50px);
+        -ms-backdrop-filter: blur(50px);
+        background-color: rgba(var(--contrast1-RGB),0.6) !important;
+      }
+      :host([scrolled]) .header {
+        box-shadow: none !important;
+      }
+      .toolbar {
+        height: 60px !important;
+        padding: 4px 8px 20px 8px;
+        background-color: rgba(0,0,0,0) !important;
+      }
+      paper-tab {
+        color: var(--contrast10);
+        border-radius: 16px;
+      }
+      paper-tab.iron-selected {
+        color: var(--contrast20);
+      }
+      ha-menu-button, ha-button-menu {
+        color: var(--contrast10);
+      }
+  card-mod-row: |
+    /* Entities card row style */
+    :host {
+        display: block;
+        background: var(--contrast2);
+        border-radius: 24px;
+        padding: 6px 12px 6px 6px;
+    }

@@ -6,23 +6,23 @@ visible:
   - user: "3fb4deff931c4631b84d2584e5f2e493"
   - user: "e7bec22aa70e4762ac231811f5997452"
 theme: "Rounded"
-type: "masonry"
+type: "sections"
+max_columns: 1
 badges: []
-cards:
+sections:
   - type: "custom:layout-card"
     layout_type: "custom:grid-layout"
     layout:
       grid-template-columns: "auto 40%"
       grid-template-rows: 1
       max_cols: 2
-      margin: "-50px -15px 0px -15px"
     cards:
       - type: "custom:decluttering-card"
         template: "title_home_card"
       - type: "custom:decluttering-card"
         template: "title_chip_entity"
         variables:
-          - entity: "sensor.stromzahler_stromverbrauch_taglich"
+          - entity: "sensor.electricity_meter_energy_consumption_daily"
           - icon: "mdi:lightning-bolt"
 
   - type: "custom:layout-card"
@@ -30,7 +30,6 @@ cards:
     layout:
       grid-template-rows: 1
       max_cols: 1
-      margin: "-50px -15px 0px -15px"
     cards:
       - type: "vertical-stack"
         cards:
@@ -90,7 +89,10 @@ cards:
                     style: |
                       ha-card {
                         --chip-background: var(--contrast19);
-                        color: var(--contrast6);
+                        --primary-text-color: var(--contrast6);
+                        --text-color: var(--contrast6);
+                        --card-primary-color: var(--contrast6);
+                        --card-secondary-color: var(--contrast6);
                         }
               - type: "conditional"
                 conditions:
@@ -113,7 +115,10 @@ cards:
                     style: |
                       ha-card {
                         --chip-background: var(--contrast19);
-                        color: var(--contrast6);
+                        --primary-text-color: var(--contrast6);
+                        --text-color: var(--contrast6);
+                        --card-primary-color: var(--contrast6);
+                        --card-secondary-color: var(--contrast6);
                         }
 
   - type: "custom:layout-card"
@@ -121,7 +126,6 @@ cards:
     layout:
       grid-template-rows: 2
       max_cols: 2
-      margin: "-50px -15px 0px -15px"
     cards:
       - type: "custom:stack-in-card"
         mode: "horizontal"
@@ -162,8 +166,6 @@ cards:
 
   - type: "custom:layout-card"
     layout_type: "custom:grid-layout"
-    layout:
-      margin: "-50px -15px 0px -15px"
     cards:
       - type: "grid"
         columns: 2
@@ -236,8 +238,6 @@ cards:
 
   - type: "custom:layout-card"
     layout_type: "custom:grid-layout"
-    layout:
-      margin: "-50px -15px 0px -15px"
     cards:
       - type: "grid"
         columns: 2
@@ -257,8 +257,11 @@ cards:
               - name: "Energie"
               - entity: "switch.apsystems_garagenpower_power_status"
               - icon: "mdi:flash"
-              - label: "[[[ return states['sensor.balkonkraftwerk_stromproduktion_taglich'].state ]]]"
+              - label: "[[[ return parseFloat(Number(states['sensor.photovoltaik_production_daily'].state)).toFixed(2) ]]]"
               - navigation_path: "/lovelace-rounded/energy_view"
 
   - type: "custom:button-card"
     color_type: "blank-card"
+    styles:
+      card:
+        - height: 40px

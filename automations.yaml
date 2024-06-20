@@ -167,18 +167,6 @@
         repack: true
         keep_days: 15
   mode: single
-- id: "1676056080625"
-  alias: System - Purge old Fritzbox devices
-  description: Löscht jede Nacht alle alten Fritzbox Geräte aus der Integration.
-  trigger:
-    - platform: time
-      at: 04:00:00
-  condition: []
-  action:
-    - service: fritz.cleanup
-      data:
-        device_id: c3c154ed6fadedfaf63d3d8d4144e099
-  mode: single
 - id: "1676056195216"
   alias: System - Create Watchman Report
   description: Generiert jede Nacht einen Watchman Report über verwaiste Config Einträge.

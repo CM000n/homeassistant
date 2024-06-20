@@ -7,18 +7,18 @@ visible:
   - user: "e7bec22aa70e4762ac231811f5997452"
   - user: "393f7a35e14f417b8a42b130272cc586"
 theme: "Rounded"
-type: "masonry"
+type: "sections"
+max_columns: 1
 subview: true
 back_path: "/lovelace-rounded/default_view"
 badges: []
-cards:
+sections:
   - type: "custom:layout-card"
     layout_type: "custom:grid-layout"
     layout:
       grid-template-columns: "auto 40%"
       grid-template-rows: 1
       max_cols: 2
-      margin: "-50px -15px 0px -15px"
     cards:
       - type: "custom:decluttering-card"
         template: "title_card_v2"
@@ -36,7 +36,6 @@ cards:
     layout:
       grid-template-rows: 1
       max_cols: 1
-      margin: "-50px -15px 0px -15px"
     cards:
       - type: "vertical-stack"
         cards:
@@ -63,11 +62,8 @@ cards:
                   action: "more-info"
                 hold_action:
                   action: "none"
-
   - type: "custom:layout-card"
     layout_type: "custom:grid-layout"
-    layout:
-      margin: "-50px -15px 0px -15px"
     cards:
       - type: "grid"
         columns: 2
@@ -76,12 +72,12 @@ cards:
           - type: "custom:decluttering-card"
             template: "sensor_line_graph_card"
             variables:
-              - entity: "sensor.balkonkraftwerk_stromproduktion_taglich"
+              - entity: "sensor.photovoltaik_production_daily"
               - name: "Tagesproduktion"
           - type: "custom:decluttering-card"
             template: "sensor_line_graph_card"
             variables:
-              - entity: "sensor.stromzahler_stromverbrauch_taglich"
+              - entity: "sensor.electricity_meter_energy_consumption_daily"
               - name: "Tagesverbrauch"
           - type: "custom:decluttering-card"
             template: "sensor_line_graph_card"
@@ -96,8 +92,6 @@ cards:
 
   - type: "custom:layout-card"
     layout_type: "custom:grid-layout"
-    layout:
-      margin: "-50px -15px 0px -15px"
     cards:
       - type: "vertical-stack"
         cards:
@@ -120,15 +114,13 @@ cards:
               - type: "custom:decluttering-card"
                 template: "sensor_button_card_dark"
                 variables:
-                  - entity: "sensor.balkonkraftwerk_stromproduktion_jahrlich"
+                  - entity: "sensor.photovoltaik_production_yearly"
                   - name: "Stromproduktion jährlich"
                   - icon: "mdi:solar-power-variant"
                   - unit: " kWh"
 
   - type: "custom:layout-card"
     layout_type: "custom:grid-layout"
-    layout:
-      margin: "-50px -15px 0px -15px"
     cards:
       - type: "vertical-stack"
         cards:
@@ -151,15 +143,13 @@ cards:
               - type: "custom:decluttering-card"
                 template: "sensor_button_card_dark"
                 variables:
-                  - entity: "sensor.stromzahler_stromverbrauch_jahrlich"
+                  - entity: "sensor.electricity_meter_energy_consumption_yearly"
                   - name: "Stromverbrauch jährlich"
                   - icon: "mdi:transmission-tower-export"
                   - unit: " kWh"
 
   - type: "custom:layout-card"
     layout_type: "custom:grid-layout"
-    layout:
-      margin: "-50px -15px 0px -15px"
     cards:
       - type: "vertical-stack"
         cards:
@@ -193,3 +183,6 @@ cards:
 
   - type: "custom:button-card"
     color_type: "blank-card"
+    styles:
+      card:
+        - height: 40px

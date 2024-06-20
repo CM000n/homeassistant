@@ -8,8 +8,10 @@ Home Assistant is an incredibly powerful open-source platform for automating sma
 # Table of contents
 1. [Introduction](#introduction)
 2. [Installation statistics](#statistics)
-2. [Installed componentents](#installed_components)
+3. [Installed componentents](#installed_components)
     1. [Core integrations](#core_integrations)
+    2. [Custom integrations](#integration)
+    3. [Lovelace plugins](#plugin)
 
 
 ## Introduction <a name="introduction"></a>
@@ -206,7 +208,7 @@ Integrations | Configuration
 {%- set entries = hacs_components | selectattr("category", "eq", category.key) | selectattr("installed", "eq", True) | list -%}
 {% if entries | count != 0 %}
 
-### The {{category.name}} that I use
+### The {{category.name}} that I use <a name="category.key}"></a>
 {{category.name}} | Description | Version
 --|--|-- {% for entry in entries -%}
 {% if entry.installed %}

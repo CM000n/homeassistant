@@ -187,25 +187,16 @@ Integration | Configuration
 
 {% for category in custom_categories -%}
 {%- set entries = hacs_components | selectattr("category", "eq", category.key) | selectattr("installed", "eq", True) | list -%}
+
 {% if entries | count != 0 %}
 ## The custom {{category.name}} that I use
+{{category.name}} | Description | Version
+--|--|--
 {% for entry in entries -%}
 {% if entry.installed %}
-### {% if entry.category == "integration" -%}
+{% if entry.category == "integration" -%}
 [<img src="https://brands.home-assistant.io/_/{{entry.domain}}/icon.png" height="24"/>](https://brands.home-assistant.io/_/{{entry.domain}}/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/{{entry.domain}}/icon.png" height="24"/>](https://brands.home-assistant.io/_/{{entry.domain}}/icon.png#gh-light-mode-only)
-{%- endif %} [{{entry.name}}]({{entry.documentation}})
-
-_{{entry.description}}_
-
-{% if category.key == "integration" and not entry.config_flow %}
-[**My configuration for {{entry.name}}**](./packages/integrations/custom/{{entry.domain}}.yaml)
-{% endif -%}
-
-**Version** | {{entry.installed_version}}
---|--
-{% if entry.authors -%}
-**Author(s)** | {{entry.authors|join(", ")}}
-{% endif -%}
+{%- endif %} [{{entry.name}}]({{entry.documentation}}) | _{{entry.description}}_ | {{entry.installed_version}}
 {% endif -%}
 {%- endfor -%}
 {% endif -%}

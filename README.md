@@ -84,176 +84,56 @@ This is my Home Assistant installation.
 
 ## The custom integrations that I use
 
-### [<img src="https://brands.home-assistant.io/_/places/icon.png" height="24"/>](https://brands.home-assistant.io/_/places/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/places/icon.png" height="24"/>](https://brands.home-assistant.io/_/places/icon.png#gh-light-mode-only) [Places](https://github.com/custom-components/places)
+| integrations | Description | Version |
+| ------------ | ----------- | ------- |
 
-_Component to integrate with OpenStreetMap Reverse Geocode (places)_
+[<img src="https://brands.home-assistant.io/_/places/icon.png" height="24"/>](https://brands.home-assistant.io/_/places/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/places/icon.png" height="24"/>](https://brands.home-assistant.io/_/places/icon.png#gh-light-mode-only) [Places](https://github.com/custom-components/places) | _Component to integrate with OpenStreetMap Reverse Geocode (places)_ | v2.7.0
 
-| **Version**   | v2.7.0   |
-| ------------- | -------- |
-| **Author(s)** | @Snuffy2 |
+[<img src="https://brands.home-assistant.io/_/ltss/icon.png" height="24"/>](https://brands.home-assistant.io/_/ltss/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/ltss/icon.png" height="24"/>](https://brands.home-assistant.io/_/ltss/icon.png#gh-light-mode-only) [Ltss](https://github.com/freol35241/ltss) | _Long time state storage (LTSS) custom component for Home Assistant using Timescale DB_ | v2.1.0
 
-### [<img src="https://brands.home-assistant.io/_/ltss/icon.png" height="24"/>](https://brands.home-assistant.io/_/ltss/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/ltss/icon.png" height="24"/>](https://brands.home-assistant.io/_/ltss/icon.png#gh-light-mode-only) [Ltss](https://github.com/freol35241/ltss)
+[<img src="https://brands.home-assistant.io/_/vesync/icon.png" height="24"/>](https://brands.home-assistant.io/_/vesync/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/vesync/icon.png" height="24"/>](https://brands.home-assistant.io/_/vesync/icon.png#gh-light-mode-only) [Custom Vesync](https://github.com/vlebourl/custom_vesync) | _Custom VeSync component for Home Assistant_ | v1.3.0
 
-_Long time state storage (LTSS) custom component for Home Assistant using Timescale DB_
+[<img src="https://brands.home-assistant.io/_/adaptive_lighting/icon.png" height="24"/>](https://brands.home-assistant.io/_/adaptive_lighting/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/adaptive_lighting/icon.png" height="24"/>](https://brands.home-assistant.io/_/adaptive_lighting/icon.png#gh-light-mode-only) [Adaptive Lighting](https://github.com/basnijholt/adaptive-lighting) | _Adaptive Lighting custom component for Home Assistant_ | 1.22.0
 
-[**My configuration for Ltss**](./packages/integrations/custom/ltss.yaml)
-**Version** | v2.1.0
---|--
-**Author(s)** | @freol35241
+[<img src="https://brands.home-assistant.io/_/pyscript/icon.png" height="24"/>](https://brands.home-assistant.io/_/pyscript/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/pyscript/icon.png" height="24"/>](https://brands.home-assistant.io/_/pyscript/icon.png#gh-light-mode-only) [Pyscript](https://github.com/custom-components/pyscript) | _Pyscript adds rich Python scripting to HASS_ | 1.5.0
 
-### [<img src="https://brands.home-assistant.io/_/vesync/icon.png" height="24"/>](https://brands.home-assistant.io/_/vesync/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/vesync/icon.png" height="24"/>](https://brands.home-assistant.io/_/vesync/icon.png#gh-light-mode-only) [Custom Vesync](https://github.com/vlebourl/custom_vesync)
+[<img src="https://brands.home-assistant.io/_/watchman/icon.png" height="24"/>](https://brands.home-assistant.io/_/watchman/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/watchman/icon.png" height="24"/>](https://brands.home-assistant.io/_/watchman/icon.png#gh-light-mode-only) [Watchman](https://github.com/dummylabs/thewatchman) | _Home Assistant custom integration to keep track of missing entities and services in your config files_ | v0.6.1
 
-_Custom VeSync component for Home Assistant_
+[<img src="https://brands.home-assistant.io/_/extended_openai_conversation/icon.png" height="24"/>](https://brands.home-assistant.io/_/extended_openai_conversation/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/extended_openai_conversation/icon.png" height="24"/>](https://brands.home-assistant.io/_/extended_openai_conversation/icon.png#gh-light-mode-only) [Extended Openai Conversation](https://github.com/jekalmin/extended_openai_conversation) | _Home Assistant custom component of conversation agent. It uses OpenAI to control your devices._ | 1.0.3
 
-| **Version**   | v1.3.0                                                          |
-| ------------- | --------------------------------------------------------------- |
-| **Author(s)** | @markperdue, @webdjoe, @thegardenmonkey, @vlebourl, @tv4you2016 |
+[<img src="https://brands.home-assistant.io/_/hacs/icon.png" height="24"/>](https://brands.home-assistant.io/_/hacs/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/hacs/icon.png" height="24"/>](https://brands.home-assistant.io/_/hacs/icon.png#gh-light-mode-only) [HACS](https://github.com/hacs/integration) | _HACS gives you a powerful UI to handle downloads of all your custom needs._ | 1.34.0
 
-### [<img src="https://brands.home-assistant.io/_/adaptive_lighting/icon.png" height="24"/>](https://brands.home-assistant.io/_/adaptive_lighting/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/adaptive_lighting/icon.png" height="24"/>](https://brands.home-assistant.io/_/adaptive_lighting/icon.png#gh-light-mode-only) [Adaptive Lighting](https://github.com/basnijholt/adaptive-lighting)
+[<img src="https://brands.home-assistant.io/_/readme/icon.png" height="24"/>](https://brands.home-assistant.io/_/readme/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/readme/icon.png" height="24"/>](https://brands.home-assistant.io/_/readme/icon.png#gh-light-mode-only) [Generate Readme](https://github.com/custom-components/readme) | _Use Jinja and data from Home Assistant to generate your README.md file_ | 0.5.0
 
-_Adaptive Lighting custom component for Home Assistant_
-
-| **Version**   | 1.22.0                                               |
-| ------------- | ---------------------------------------------------- |
-| **Author(s)** | @basnijholt, @RubenKelevra, @th3w1zard1, @protyposis |
-
-### [<img src="https://brands.home-assistant.io/_/pyscript/icon.png" height="24"/>](https://brands.home-assistant.io/_/pyscript/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/pyscript/icon.png" height="24"/>](https://brands.home-assistant.io/_/pyscript/icon.png#gh-light-mode-only) [Pyscript](https://github.com/custom-components/pyscript)
-
-_Pyscript adds rich Python scripting to HASS_
-
-| **Version**   | 1.5.0         |
-| ------------- | ------------- |
-| **Author(s)** | @craigbarratt |
-
-### [<img src="https://brands.home-assistant.io/_/watchman/icon.png" height="24"/>](https://brands.home-assistant.io/_/watchman/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/watchman/icon.png" height="24"/>](https://brands.home-assistant.io/_/watchman/icon.png#gh-light-mode-only) [Watchman](https://github.com/dummylabs/thewatchman)
-
-_Home Assistant custom integration to keep track of missing entities and services in your config files_
-
-| **Version**   | v0.6.1     |
-| ------------- | ---------- |
-| **Author(s)** | @dummylabs |
-
-### [<img src="https://brands.home-assistant.io/_/extended_openai_conversation/icon.png" height="24"/>](https://brands.home-assistant.io/_/extended_openai_conversation/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/extended_openai_conversation/icon.png" height="24"/>](https://brands.home-assistant.io/_/extended_openai_conversation/icon.png#gh-light-mode-only) [Extended Openai Conversation](https://github.com/jekalmin/extended_openai_conversation)
-
-_Home Assistant custom component of conversation agent. It uses OpenAI to control your devices._
-
-| **Version**   | 1.0.3     |
-| ------------- | --------- |
-| **Author(s)** | @jekalmin |
-
-### [<img src="https://brands.home-assistant.io/_/hacs/icon.png" height="24"/>](https://brands.home-assistant.io/_/hacs/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/hacs/icon.png" height="24"/>](https://brands.home-assistant.io/_/hacs/icon.png#gh-light-mode-only) [HACS](https://github.com/hacs/integration)
-
-_HACS gives you a powerful UI to handle downloads of all your custom needs._
-
-| **Version**   | 1.34.0   |
-| ------------- | -------- |
-| **Author(s)** | @ludeeus |
-
-### [<img src="https://brands.home-assistant.io/_/readme/icon.png" height="24"/>](https://brands.home-assistant.io/_/readme/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/readme/icon.png" height="24"/>](https://brands.home-assistant.io/_/readme/icon.png#gh-light-mode-only) [Generate Readme](https://github.com/custom-components/readme)
-
-_Use Jinja and data from Home Assistant to generate your README.md file_
-
-| **Version**   | 0.5.0    |
-| ------------- | -------- |
-| **Author(s)** | @ludeeus |
-
-### [<img src="https://brands.home-assistant.io/_/toyota/icon.png" height="24"/>](https://brands.home-assistant.io/_/toyota/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/toyota/icon.png" height="24"/>](https://brands.home-assistant.io/_/toyota/icon.png#gh-light-mode-only) [Toyota Connected Services Europe](https://github.com/DurgNomis-drol/ha_toyota)
-
-_Toyota Connected Services integration for Home Assistant._
-
-| **Version**   | v2.0.3          |
-| ------------- | --------------- |
-| **Author(s)** | @DurgNomis-drol |
+[<img src="https://brands.home-assistant.io/_/toyota/icon.png" height="24"/>](https://brands.home-assistant.io/_/toyota/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/toyota/icon.png" height="24"/>](https://brands.home-assistant.io/_/toyota/icon.png#gh-light-mode-only) [Toyota Connected Services Europe](https://github.com/DurgNomis-drol/ha_toyota) | _Toyota Connected Services integration for Home Assistant._ | v2.0.3
 
 ## The custom lovelace plugins that I use
 
-### [My Cards Bundle](https://github.com/AnthonMS/my-cards)
+| lovelace plugins | Description | Version |
+| ---------------- | ----------- | ------- |
 
-_Bundle of my custom Lovelace cards for Home Assistant. Includes: my-slider, my-slider-v2, my-button_
+[My Cards Bundle](https://github.com/AnthonMS/my-cards) | _Bundle of my custom Lovelace cards for Home Assistant. Includes: my-slider, my-slider-v2, my-button_ | v1.0.5
 
-| **Version** | v1.0.5 |
-| ----------- | ------ |
+[Stack In Card](https://github.com/custom-cards/stack-in-card) | _🛠 group multiple cards into one card without the borders_ | 0.2.0
 
-### [Stack In Card](https://github.com/custom-cards/stack-in-card)
+[Card Mod](https://github.com/thomasloven/lovelace-card-mod) | _🔹 Add CSS styles to (almost) any lovelace card_ | v3.4.3
 
-_🛠 group multiple cards into one card without the borders_
+[Mushroom](https://github.com/piitaya/lovelace-mushroom) | _Build a beautiful Home Assistant dashboard easily_ | v3.6.2
 
-| **Version** | 0.2.0 |
-| ----------- | ----- |
+[Valetudo Map Card](https://github.com/Hypfer/lovelace-valetudo-map-card) | _Display the map from a valetudo-enabled robot in a home assistant dashboard card._ | v2023.04.0
 
-### [Card Mod](https://github.com/thomasloven/lovelace-card-mod)
+[Decluttering Card](https://github.com/custom-cards/decluttering-card) | _🧹 Declutter your lovelace configuration with the help of this card_ | v1.0.0
 
-_🔹 Add CSS styles to (almost) any lovelace card_
+[Bar Card](https://github.com/custom-cards/bar-card) | _Customizable Animated Bar card for Home Assistant Lovelace_ | 3.2.0
 
-| **Version** | v3.4.3 |
-| ----------- | ------ |
+[Swipe Card](https://github.com/bramkragten/swipe-card) | _Card that allows you to swipe throught multiple cards for Home Assistant Lovelace_ | v5.0.0
 
-### [Mushroom](https://github.com/piitaya/lovelace-mushroom)
+[Mini Media Player](https://github.com/kalkih/mini-media-player) | _Minimalistic media card for Home Assistant Lovelace UI_ | v1.16.9
 
-_Build a beautiful Home Assistant dashboard easily_
+[Button Card](https://github.com/custom-cards/button-card) | _❇️ Lovelace button-card for home assistant_ | v4.1.2
 
-| **Version** | v3.6.2 |
-| ----------- | ------ |
+[Power Flow Card Plus](https://github.com/flixlix/power-flow-card-plus) | _A power distribution card inspired by the official Energy Distribution card for Home Assistant_ | v0.2.2
 
-### [Valetudo Map Card](https://github.com/Hypfer/lovelace-valetudo-map-card)
+[Apexcharts Card](https://github.com/RomRider/apexcharts-card) | _📈 A Lovelace card to display advanced graphs and charts based on ApexChartsJS for Home Assistant_ | v2.0.4
 
-_Display the map from a valetudo-enabled robot in a home assistant dashboard card._
-
-| **Version** | v2023.04.0 |
-| ----------- | ---------- |
-
-### [Decluttering Card](https://github.com/custom-cards/decluttering-card)
-
-_🧹 Declutter your lovelace configuration with the help of this card_
-
-| **Version** | v1.0.0 |
-| ----------- | ------ |
-
-### [Bar Card](https://github.com/custom-cards/bar-card)
-
-_Customizable Animated Bar card for Home Assistant Lovelace_
-
-| **Version** | 3.2.0 |
-| ----------- | ----- |
-
-### [Swipe Card](https://github.com/bramkragten/swipe-card)
-
-_Card that allows you to swipe throught multiple cards for Home Assistant Lovelace_
-
-| **Version** | v5.0.0 |
-| ----------- | ------ |
-
-### [Mini Media Player](https://github.com/kalkih/mini-media-player)
-
-_Minimalistic media card for Home Assistant Lovelace UI_
-
-| **Version** | v1.16.9 |
-| ----------- | ------- |
-
-### [Button Card](https://github.com/custom-cards/button-card)
-
-_❇️ Lovelace button-card for home assistant_
-
-| **Version** | v4.1.2 |
-| ----------- | ------ |
-
-### [Power Flow Card Plus](https://github.com/flixlix/power-flow-card-plus)
-
-_A power distribution card inspired by the official Energy Distribution card for Home Assistant_
-
-| **Version** | v0.2.2 |
-| ----------- | ------ |
-
-### [Apexcharts Card](https://github.com/RomRider/apexcharts-card)
-
-_📈 A Lovelace card to display advanced graphs and charts based on ApexChartsJS for Home Assistant_
-
-| **Version** | v2.0.4 |
-| ----------- | ------ |
-
-### [Layout Card](https://github.com/thomasloven/lovelace-layout-card)
-
-_🔹 Get more control over the placement of lovelace cards._
-
-| **Version** | v2.4.5 |
-| ----------- | ------ |
+[Layout Card](https://github.com/thomasloven/lovelace-layout-card) | _🔹 Get more control over the placement of lovelace cards._ | v2.4.5

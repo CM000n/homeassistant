@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # To run before
-# git config core.sshCommand "ssh -i /config/.ssh/id_rsa -o 'StrictHostKeyChecking=no' -F /dev/null"
+git config --global user.email "simon.hoerrle@gmail.com"
+git config core.sshCommand "ssh -i /config/.ssh/id_rsa -o 'StrictHostKeyChecking=no' -F /dev/null"
 
 HA_VERSION=`cat .HA_VERSION`
 COMMIT_CURRENT_DATE=$(date +'%d-%m-%Y %H:%M:%S')

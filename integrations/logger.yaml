@@ -5,3 +5,4 @@ logger:
   logs:
     homeassistant.components.vicare: "critical"
     custom_components.toyota: "debug"
+    homeassistant.components.shell_command: "debug"

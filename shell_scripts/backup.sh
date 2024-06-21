@@ -13,5 +13,5 @@ COMMIT_MESSAGE="[$HA_VERSION]: $COMMIT_CURRENT_DATE"
 echo "$COMMIT_MESSAGE"
 
 git add .
-git commit -m "$COMMIT_MESSAGE"
+git commit -m "$COMMIT_MESSAGE" --no-verify
 git push

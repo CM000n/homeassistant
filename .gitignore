@@ -45,6 +45,7 @@ frigate.yml
 glances/
 .storage/
 .storage
+.ssh
 storage
 *.db-journal
 *.pid

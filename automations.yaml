@@ -298,3 +298,28 @@
               - light.kuche_weihnachtsstern_fenster
               - light.wohnzimmer_weihnachtsstern
   mode: single
+- id: e8ead423-2e32-495b-8b59-ac6995a9f1fb
+  alias: Daily Backup
+  description: "Backup Home Assistant configuration folder"
+  trigger:
+    - platform: time
+      at: "02:00:00"
+  condition: []
+  action:
+    - service: shell_command.backup
+      data: {}
+      response_variable: backup_response
+    - if:
+        - condition: template
+          value_template: "{{ backup_response['returncode'] == 0 }}"
+      then:
+        - service: notify.notify
+          data:
+            title: ✅ Backup successful
+            message: "{{ backup_response['stdout'] }}"
+      else:
+        - service: notify.notify
+          data:
+            title: ❌ Backup failed
+            message: "{{ backup_response['stderr'] }}"
+  mode: single

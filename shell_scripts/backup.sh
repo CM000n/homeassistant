@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # To run before
-git config --global user.email "simon.hoerrle@gmail.com"
-git config --global user.name "Simon Hörrle"
-git config --global --unset credential.helper
+# Don't forget to check for the correct key permissions with 'chmod 600 /config/.ssh/id_rsa' before
+# And don't forget to add the id_rsa.pub key to ypur github account
+# The repo origin must be cloned with 'ssh' rather than with 'https' for this to work!
 git config core.sshCommand "ssh -i /config/.ssh/id_rsa -o 'StrictHostKeyChecking=no' -F /dev/null"
 
 HA_VERSION=`cat .HA_VERSION`

@@ -300,10 +300,10 @@
   mode: single
 - id: e8ead423-2e32-495b-8b59-ac6995a9f1fb
   alias: Daily Backup
-  description: "Backup Home Assistant configuration folder"
+  description: Backup Home Assistant configuration folder
   trigger:
     - platform: time
-      at: "02:00:00"
+      at: 02:00:00
   condition: []
   action:
     - service: shell_command.backup
@@ -313,12 +313,12 @@
         - condition: template
           value_template: "{{ backup_response['returncode'] == 0 }}"
       then:
-        - service: notify.notify
+        - service: notify.mobile_app_pixel_7a
           data:
             title: ✅ Backup successful
             message: "{{ backup_response['stdout'] }}"
       else:
-        - service: notify.notify
+        - service: notify.mobile_app_pixel_7a
           data:
             title: ❌ Backup failed
             message: "{{ backup_response['stderr'] }}"

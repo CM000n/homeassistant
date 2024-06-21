@@ -2,6 +2,8 @@
 
 # To run before
 git config --global user.email "simon.hoerrle@gmail.com"
+git config --global user.name "Simon Hörrle"
+git config --global --unset credential.helper
 git config core.sshCommand "ssh -i /config/.ssh/id_rsa -o 'StrictHostKeyChecking=no' -F /dev/null"
 
 HA_VERSION=`cat .HA_VERSION`

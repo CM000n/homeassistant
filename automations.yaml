@@ -215,7 +215,7 @@
         entity_id: vacuum.valetudo_falsescrawnyhornet
   mode: single
 - id: "1676056983868"
-  alias: Messe Strom (HUE)
+  alias: System - Messe Strom (HUE)
   description: Messe Strom für verschieden HUE Werte mit Hilfe eines pyscripts.
   trigger:
     - platform: webhook
@@ -299,8 +299,8 @@
               - light.wohnzimmer_weihnachtsstern
   mode: single
 - id: e8ead423-2e32-495b-8b59-ac6995a9f1fb
-  alias: Daily Backup
-  description: Backup Home Assistant configuration folder
+  alias: System - Daily git backup
+  description: Backup Home Assistant configuration folder to git daily
   trigger:
     - platform: time
       at: 02:00:00
@@ -322,4 +322,15 @@
           data:
             title: ❌ Backup failed
             message: "{{ backup_response['stderr'] }}"
+  mode: single
+- id: "1718961814697"
+  alias: System - Generate README.md
+  description: Generiert jede Nacht eine aktualisierte README.md file.
+  trigger:
+    - platform: time
+      at: 01:00:00
+  condition: []
+  action:
+    - service: readme.generate
+      data: {}
   mode: single

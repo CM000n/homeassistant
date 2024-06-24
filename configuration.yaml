@@ -50,8 +50,6 @@ lovelace:
   resources:
     - url: "/hacsfiles/button-card/button-card.js"
       type: "module"
-    - url: "/hacsfiles/swipe-card/swipe-card.js"
-      type: "module"
     - url: "/hacsfiles/my-cards/my-cards.js"
       type: "module"
     - url: "/hacsfiles/lovelace-valetudo-map-card/valetudo-map-card.js"

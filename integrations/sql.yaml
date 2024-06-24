@@ -16,7 +16,7 @@ sql:
     db_url: !secret "db_url"
     query: >
       SELECT
-        max(statistics.sum) - min(statistics.sum) AS v1
+        COALESCE(max(statistics.sum) - min(statistics.sum),0) AS v1
       FROM statistics
       INNER JOIN statistics_meta
         ON statistics.metadata_id = statistics_meta.id
@@ -32,7 +32,7 @@ sql:
     db_url: !secret "db_url"
     query: >
       SELECT
-        max(statistics.sum) - min(statistics.sum) AS v1
+        COALESCE(max(statistics.sum) - min(statistics.sum),0) AS v1
       FROM statistics
       INNER JOIN statistics_meta
         ON statistics.metadata_id = statistics_meta.id

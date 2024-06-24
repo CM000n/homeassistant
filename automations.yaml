@@ -312,11 +312,7 @@
     - if:
         - condition: template
           value_template: "{{ backup_response['returncode'] == 0 }}"
-      then:
-        - service: notify.mobile_app_pixel_7a
-          data:
-            title: ✅ Backup successful
-            message: "{{ backup_response['stdout'] }}"
+      then: []
       else:
         - service: notify.mobile_app_pixel_7a
           data:

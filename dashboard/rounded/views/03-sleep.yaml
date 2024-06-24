@@ -73,9 +73,9 @@ sections:
             template: "appliances_button"
             variables:
               - name: "Luftbefeuchter"
-              - entity: "humidifier.luftbefeuchter"
+              - entity: "humidifier.luh_o451s_weu"
               - icon: "mdi:air-humidifier"
-              - label: "[[[ return states['humidifier.luftbefeuchter'].state ]]]"
+              - label: "[[[ return states['humidifier.luh_o451s_weu'].state ]]]"
 
   - type: "custom:layout-card"
     layout_type: "custom:grid-layout"

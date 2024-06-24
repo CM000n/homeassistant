@@ -13,4 +13,4 @@ fan:
             entity_id: "switch.nous_a1t_smartplug_2_switch"
         turn_off:
           - service: "switch.turn_off"
-            entity_id: "switch.nous_a1t_smartplug_2_switchs"
+            entity_id: "switch.nous_a1t_smartplug_2_switch"

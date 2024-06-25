@@ -3,7 +3,7 @@ Rounded:
   ########################################################
   ############### Default global variables ###############
   ########################################################
-  #font
+  # font
   primary-font-family: "Google Sans"
   paper-font-common-base_-_font-family: "var(--primary-font-family)"
   paper-font-common-code_-_font-family: "var(--primary-font-family)"
@@ -18,7 +18,7 @@ Rounded:
   grid-card-gap: "16px"
   ha-card-border-width: "0px"
   ha-card-border-radius: "24px"
-  #masonry-view-card-margin: "40px 20px"
+  # masonry-view-card-margin: "40px 20px"
   # Main Interface Colors
   primary-color: "var(--blue)"
   accent-color: "var(--blue)"

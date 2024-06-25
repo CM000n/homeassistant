@@ -1,6 +1,8 @@
+---
 - id: "1676043808975"
   alias: Benachrichtigung - Geburtstag
-  description: Diese Automatisierung benachrichtigt zweimal am Tag darüber, wenn jemand
+  description:
+    Diese Automatisierung benachrichtigt zweimal am Tag darüber, wenn jemand
     Geburtstag hat.
   trigger:
     - platform: time
@@ -50,7 +52,8 @@
   mode: single
 - id: "1676044401836"
   alias: Beleuchtung - Lichter aus wenn abwesend
-  description: Schaltet die komplette Beleuchtung aus wenn alle Personen abwesend
+  description:
+    Schaltet die komplette Beleuchtung aus wenn alle Personen abwesend
     sind.
   trigger:
     - platform: state
@@ -95,7 +98,8 @@
   mode: single
 - id: "1676049396181"
   alias: "Schalter - Notaus Steckdose Büro Tür "
-  description: Schaltet die Steckdose an der Tür im Büro aus, wenn die durchschnittliche
+  description:
+    Schaltet die Steckdose an der Tür im Büro aus, wenn die durchschnittliche
     Last der letzten 30 Minuten über einem Grenzwert lag.
   trigger:
     - platform: numeric_state
@@ -154,7 +158,8 @@
   mode: single
 - id: "1676055969325"
   alias: System - Purge Database
-  description: Diese Automatisierung löscht jede Nacht alle Events die älter als 15
+  description:
+    Diese Automatisierung löscht jede Nacht alle Events die älter als 15
     Tage sind aus der Datenbank. Zusätzlich wird die Datenbank komprimiert, um Platz
     einzusparen.
   trigger:

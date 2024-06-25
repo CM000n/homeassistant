@@ -3,43 +3,43 @@ input_boolean:
   welcome_toggle:
   switch_weihnachtsbeleuchtung:
     name: "Weihnachtsbeleuchtung"
-    initial: off
+    initial: false
     icon: "mdi:pine-tree"
   switch_weisses_funkeln:
     name: "Weisses Funkeln"
-    initial: off
+    initial: false
     icon: "mdi:star-circle-outline"
   switch_wohnzimmer_beleuchtung_hell:
     name: "Hell"
-    initial: off
+    initial: false
     icon: "mdi:brightness-5"
   switch_wohnzimmer_beleuchtung_gemuetlich:
     name: "Gemütlich"
-    initial: off
+    initial: false
     icon: "mdi:brightness-6"
   switch_wohnzimmer_beleuchtung_automatik:
     name: "Automatik"
-    initial: on
+    initial: true
     icon: "mdi:brightness-auto"
   switch_wohnzimmer_beleuchtung_aus:
     name: "Aus"
-    initial: off
+    initial: false
     icon: "mdi:power"
 
   living_room_select_vacuuming:
-    initial: off
+    initial: false
   kitchen_select_vacuuming:
-    initial: off
+    initial: false
   floor_select_vacuuming:
-    initial: off
+    initial: false
   bath_room_select_vacuuming:
-    initial: off
+    initial: false
   office_select_vacuuming:
-    initial: off
+    initial: false
   stairs_select_vacuuming:
-    initial: off
+    initial: false
   general_robot_vacuum_cleaner_zones_selected:
-    initial: off
+    initial: false
 
 input_number:
   wohnzimmer_fan_timer:

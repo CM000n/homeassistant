@@ -68,19 +68,19 @@ sections:
                     variables:
                       - entity: "light.active_light_group_child_room"
 
-  #- type: "custom:layout-card"
-  #  layout_type: "custom:grid-layout"
-  #  cards:
-  #    - type: "grid"
-  #      columns: 2
-  #      square: false
-  #      cards:
-  #        - type: "custom:decluttering-card"
-  #          template: "hvac_card"
-  #          variables:
-  #            - name: "Klimaanlage"
-  #            - entity: "climate.c63380a3"
-  #            - icon: "mdi:snowflake-thermometer"
+  # - type: "custom:layout-card"
+  #   layout_type: "custom:grid-layout"
+  #   cards:
+  #     - type: "grid"
+  #       columns: 2
+  #       square: false
+  #       cards:
+  #         - type: "custom:decluttering-card"
+  #           template: "hvac_card"
+  #           variables:
+  #             - name: "Klimaanlage"
+  #             - entity: "climate.c63380a3"
+  #             - icon: "mdi:snowflake-thermometer"
 
   - type: "custom:button-card"
     color_type: "blank-card"

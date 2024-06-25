@@ -1,3 +1,4 @@
+---
 ring_simon_phone:
   alias: Simon Handy klingeln lassen
   sequence:
@@ -93,7 +94,8 @@ vacuuming_of_selection:
         entity_id: "script.vacuum_clean_segments_message"
       data:
         variables:
-          segments: '{{expand("group.vacuum_rooms") | selectattr("state","eq","on")
+          segments:
+            '{{expand("group.vacuum_rooms") | selectattr("state","eq","on")
             | map(attribute="attributes.room_id") | list | to_json}}'
           iterations: "{{states('input_number.general_robot_vacuum_cleaner_zone_repetitions')}}"
     - if:

@@ -107,7 +107,7 @@
       data: {}
       target:
         entity_id: switch.shelly_1pm_buero_tuer
-    - service: notify.simon_hoerrle_gmail_com
+    - service: notify.mobile_app_pixel_7a
       data:
         title: Steckdose Büro Tür
         message: Notaus aktiviert!

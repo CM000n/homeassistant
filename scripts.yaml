@@ -1,7 +1,7 @@
 ring_simon_phone:
   alias: Simon Handy klingeln lassen
   sequence:
-    - service: notify.mobile_app_pixel_6a
+    - service: notify.mobile_app_pixel_7a
       data:
         title: Home Assistant
         message: Wo bist du? Ich suche dich schon überall!
@@ -15,7 +15,7 @@ ring_simon_phone:
 ring_lisa_phone:
   alias: Lisa Handy klingeln lassen
   sequence:
-    - service: notify.mobile_app_mi_a3
+    - service: notify.mobile_app_lisa_note12pro
       data:
         title: Home Assistant
         message: Wo bist du? Ich suche dich schon überall!

@@ -30,7 +30,6 @@ group:
     entities:
       - "light.schlafzimmer_deckenleuchte"
       - "light.schlafzimmer_wickeltisch"
-      - "light.schlafzimmer_nachttisch_simon"
   light_group_child_room:
     name: "gruppe_kinderzimmer"
     entities:
@@ -41,8 +40,6 @@ group:
     entities:
       - "light.buro_deckenleuchte"
       - "light.buro_schreibtisch"
-      - "light.nahtisch_wand"
-      - "light.nahtisch_decke"
 
   vacuum_rooms:
     name: "Vacuum Rooms"

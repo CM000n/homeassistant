@@ -19,6 +19,20 @@ sensor:
     state_characteristic: "mean"
     max_age:
       minutes: 30
+  - platform: "statistics"
+    unique_id: "cfb9fb2f-2f43-45e9-b406-b27758654323"
+    name: "balkonkraftwerk inverter power mean over last 5 minutes"
+    entity_id: "sensor.apsystems_garagenpower_total_power"
+    state_characteristic: "mean"
+    max_age:
+      minutes: 5
+  - platform: "statistics"
+    unique_id: "3f27b186-a695-4b62-8516-8ae4a069c377"
+    name: "balkonkraftwerk plug power mean over last 5 minutes"
+    entity_id: "sensor.nous_a1t_smartplug_2_power"
+    state_characteristic: "mean"
+    max_age:
+      minutes: 5
 
   # https://www.home-assistant.io/integrations/filter/
   - platform: "filter"

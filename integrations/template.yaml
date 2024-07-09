@@ -200,7 +200,7 @@ template:
       - name: "Abweichung Balkonkraftwerk Inverter vs Plug - prozent"
         unique_id: "697643ec-9b8c-4a44-9706-21bf1d77d0b7"
         state: >-
-          {{ float(states('sensor.balkonkraftwerk_plug_power_mean_over_last_5_minutes'), 0) - float(states('sensor.balkonkraftwerk_inverter_power_mean_over_last_5_minutes'), 0) / float(states('sensor.balkonkraftwerk_plug_power_mean_over_last_5_minutes'), 0) }}
+          {{ (( float(states('sensor.balkonkraftwerk_plug_power_mean_over_last_5_minutes'), 0) - float(states('sensor.balkonkraftwerk_inverter_power_mean_over_last_5_minutes'), 0) ) / float(states('sensor.balkonkraftwerk_plug_power_mean_over_last_5_minutes'), 0) ) * 100 }}
         unit_of_measurement: "%"
         state_class: "measurement"
 

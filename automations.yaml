@@ -1,4 +1,3 @@
----
 - id: "1676043808975"
   alias: Benachrichtigung - Geburtstag
   description:
@@ -334,4 +333,41 @@
   action:
     - service: readme.generate
       data: {}
+  mode: single
+- id: "1720075417605"
+  alias: Energie - Balkonkraftwerk Inverter Neustart
+  description: ""
+  trigger:
+    - platform: numeric_state
+      entity_id:
+        - sensor.abweichung_balkonkraftwerk_inverter_vs_plug_prozent
+      for:
+        hours: 0
+        minutes: 5
+        seconds: 0
+      above: 99
+  condition: []
+  action:
+    - service: switch.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: switch.nous_a1t_smartplug_2_switch
+    - service: notify.mobile_app_pixel_7a
+      metadata: {}
+      data:
+        title: ⚠️ Stromverbindung Inverter wurde unterbrochen
+        message:
+          Abweichung zwischen Inverter und Messung zu groß!. Die Stomversorgung
+          des Balkonkraftwerk Inverters wurde für dessen Neustart kurzzeitig unterbrochen.
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 15
+        milliseconds: 0
+    - service: switch.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: switch.nous_a1t_smartplug_2_switch
   mode: single

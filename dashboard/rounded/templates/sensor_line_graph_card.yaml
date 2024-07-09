@@ -13,6 +13,8 @@ sensor_line_graph_card:
       style: |
         ha-card {
           box-shadow: none;
+          height: 110px;
+          min-height: 110px;
           }
         .graph {
           background: var(--contrast2;

@@ -49,7 +49,7 @@ navigation_button_with_light:
         - background: "var(--contrast2)"
         - padding: "16px"
         - "--mdc-ripple-press-opacity": 0
-        - height: "100px"
+        - height: "110px"
       img_cell:
         - justify-self: "start"
         - width: "24px"

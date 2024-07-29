@@ -219,13 +219,6 @@ sensor:
     method: "left"
     round: 4
     unit_time: "d"
-  - platform: "integration"
-    unique_id: "2a7557b0b1df11edaeb2af87d8ff0b2f"
-    source: "sensor.energie_unidentifiziert_power"
-    name: "energie_unidentifiziert_energy"
-    unit_prefix: "k"
-    round: 2
-    method: "left"
   - platform: integration
     unique_id: ba53be56-f813-403f-b254-bfe61c2b4e8c
     source: sensor.co2_emissions_displaced_rate_solar_new

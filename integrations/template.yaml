@@ -158,15 +158,6 @@ template:
         device_class: "duration"
         state_class: "total_increasing"
 
-      # Power consumption
-      - name: "energie_unidentifiziert_power"
-        unique_id: "b2784410b1d511ed90171b0f7a30ae2f"
-        state: >-
-          {{ (states('sensor.esp_01s_stromzaehler_active_power') | float(0)) - (states('sensor.energie_identifiziert_power') | float(0)) }}
-        unit_of_measurement: "W"
-        device_class: "power"
-        state_class: "measurement"
-
       # Other Templates
       - name: "current_lights_on"
         unique_id: "b7372bb0b1d511edaeb2af87d8ff0b2f"

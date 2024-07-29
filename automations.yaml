@@ -130,30 +130,30 @@
       data: {}
       target:
         entity_id:
-          - media_player.bad
-          - media_player.buro
-          - media_player.schlafzimmer
-          - media_player.wohnzimmer
-          - media_player.kuche
+          - media_player.lisi_sonoszp_bad
+          - media_player.lisi_sonoszp_buero
+          - media_player.lisi_sonoszp_schlafzimmer
+          - media_player.lisi_sonoszp_wohnzimmer_r
+          - media_player.lisi_sonoszp_kueche
     - service: media_player.clear_playlist
       data: {}
       target:
         entity_id:
-          - media_player.bad
-          - media_player.buro
-          - media_player.wohnzimmer
-          - media_player.schlafzimmer
-          - media_player.kuche
+          - media_player.lisi_sonoszp_bad
+          - media_player.lisi_sonoszp_buero
+          - media_player.lisi_sonoszp_wohnzimmer_r
+          - media_player.lisi_sonoszp_schlafzimmer
+          - media_player.lisi_sonoszp_kueche
     - service: media_player.volume_set
       data:
         volume_level: 0.15
       target:
         entity_id:
-          - media_player.bad
-          - media_player.buro
-          - media_player.schlafzimmer
-          - media_player.wohnzimmer
-          - media_player.kuche
+          - media_player.lisi_sonoszp_bad
+          - media_player.lisi_sonoszp_buero
+          - media_player.lisi_sonoszp_schlafzimmer
+          - media_player.lisi_sonoszp_wohnzimmer_r
+          - media_player.lisi_sonoszp_kueche
   mode: single
 - id: "1676055969325"
   alias: System - Purge Database

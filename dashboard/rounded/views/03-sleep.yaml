@@ -85,7 +85,7 @@ sections:
         square: false
         cards:
           - name: "Sonos"
-            entity: "media_player.schlafzimmer"
+            entity: "media_player.lisi_sonoszp_schlafzimmer"
             type: "custom:mini-media-player"
             icon: "mdi:speaker"
             artwork: "material"
@@ -97,15 +97,15 @@ sections:
               platform: "sonos"
               show_group_count: true
               entities:
-                - entity_id: "media_player.wohnzimmer"
+                - entity_id: "media_player.lisi_sonoszp_wohnzimmer_r"
                   name: "Sonos Wohnzimmer"
-                - entity_id: "media_player.kuche"
+                - entity_id: "media_player.lisi_sonoszp_kueche"
                   name: "Sonos Küche"
-                - entity_id: "media_player.bad"
+                - entity_id: "media_player.lisi_sonoszp_bad"
                   name: "Sonos Bad"
-                - entity_id: "media_player.buro"
+                - entity_id: "media_player.lisi_sonoszp_buero"
                   name: "Sonos Büro"
-                - entity_id: "media_player.schlafzimmer"
+                - entity_id: "media_player.lisi_sonoszp_schlafzimmer"
                   name: "Sonos Schlafzimmer"
 
   - type: "custom:button-card"

@@ -41,7 +41,7 @@ lina_schlafenszeit:
     - service: media_player.select_source
       data:
         source: 90 Minutes Womb Sounds (Baby-Einschlafhilfe)
-        entity_id: media_player.schlafzimmer
+        entity_id: media_player.lisi_sonoszp_schlafzimmer
   mode: single
 simon_pc_aufwecken:
   alias: Simon PC - Aufwecken
@@ -70,7 +70,7 @@ sonos_say:
       data_template:
         entity_id: "{{ sonos_entity }}"
         volume_level: "{{ volume }}"
-    - service: tts.google_de_de
+    - service: tts.speak
       data_template:
         entity_id: "{{ sonos_entity }}"
         message: "{{ message }}"

@@ -15,7 +15,7 @@ sections:
   - type: "custom:layout-card"
     layout_type: "custom:grid-layout"
     layout:
-      grid-template-columns: "auto 40%"
+      grid-template-columns: "auto 58%"
       grid-template-rows: 1
       max_cols: 2
     cards:
@@ -24,11 +24,23 @@ sections:
         variables:
           - name: "Büro"
           - label: "Steuerung"
-      - type: "custom:decluttering-card"
-        template: "title_chip_entity"
-        variables:
-          - entity: "sensor.awtrix_ulanzi_tc001_temperature"
-          - icon: "mdi:thermometer"
+      - type: "horizontal-stack"
+        cards:
+          - type: "custom:decluttering-card"
+            template: "title_chip_entity"
+            variables:
+              - entity: "sensor.ultimatesensor_mini_voc_index"
+              - icon: "mdi:biohazard"
+          - type: "custom:decluttering-card"
+            template: "title_chip_entity"
+            variables:
+              - entity: "sensor.ultimatesensor_mini_scd41_co2"
+              - icon: "mdi:molecule-co2"
+          - type: "custom:decluttering-card"
+            template: "title_chip_entity"
+            variables:
+              - entity: "sensor.ultimatesensor_mini_scd41_temperature"
+              - icon: "mdi:thermometer"
 
   - type: "custom:layout-card"
     layout_type: "custom:grid-layout"

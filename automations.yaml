@@ -362,3 +362,21 @@
       target:
         entity_id: media_player.homemini_wohnzimmer
   mode: single
+- id: "1734518438391"
+  alias: Beleuchtung - Szene Wohnzimmer setzen
+  description: ""
+  triggers:
+    - trigger: state
+      entity_id:
+        - input_select.light_scene_living_room
+  conditions: []
+  actions:
+    - data_template:
+        entity_id: light.active_light_group_living_room
+        profile:
+          "{{ states.input_select.light_scene_living_room.state | replace('
+          ', '_') | lower | string }}
+
+          "
+      action: light.turn_on
+  mode: single

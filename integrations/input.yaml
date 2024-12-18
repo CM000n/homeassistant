@@ -65,6 +65,16 @@ input_select:
       - "buro"
       - "schlafzimmer"
       - "Mediaplayer aus"
+  light_scene_living_room:
+    initial: "Energize"
+    options:
+      - "Relax"
+      - "Reading"
+      - "Concentrate"
+      - "Energize"
+      - "Bright"
+      - "Dimmed"
+      - "Nightlight"
 
 input_datetime:
   living_room_last_vacuumed:

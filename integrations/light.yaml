@@ -27,14 +27,15 @@ light:
     entities:
       - "light.wohnzimmer_deckenleuchte"
       - "light.wohnzimmer_lightstrip"
-      - "light.wohnzimmer_stehlampe_rechts"
       - "light.wohnzimmer_weihnachtsstern"
+      - "light.wohnzimmer_weihnachtsstern_fenster"
   - platform: "group"
     name: "gruppe_kuche"
     unique_id: "0a6e1013-e96f-4814-a191-df704b5dbbd3"
     entities:
       - "light.kuche_esstischlampe"
       - "light.kuche_herdlampe"
+      - "light.kuche_weihnachtsstern_fenster"
   - platform: "group"
     name: "gruppe_schlafzimmer"
     unique_id: "6fcd71f5-6622-46e8-80f1-3f0c51fafa15"

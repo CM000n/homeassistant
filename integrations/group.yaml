@@ -31,18 +31,18 @@ group:
     entities:
       - "light.wohnzimmer_deckenleuchte"
       - "light.wohnzimmer_lightstrip"
-      - "light.wohnzimmer_stehlampe_rechts"
       - "light.wohnzimmer_weihnachtsstern"
+      - "light.wohnzimmer_weihnachtsstern_fenster"
   light_group_kitchen:
     name: "gruppe_kuche"
     entities:
       - "light.kuche_esstischlampe"
       - "light.kuche_herdlampe"
+      - "light.kuche_weihnachtsstern_fenster"
   light_group_bed_room:
     name: "gruppe_schlafzimmer"
     entities:
       - "light.schlafzimmer_deckenleuchte"
-      - "light.schlafzimmer_wickeltisch"
   light_group_child_room:
     name: "gruppe_kinderzimmer"
     entities:

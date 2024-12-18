@@ -264,43 +264,39 @@
 - id: "1700087353184"
   alias: "Beleuchtung - Weihnachtsstern umschalten "
   description: ""
-  trigger:
-    - platform: sun
-      event: sunrise
+  triggers:
+    - event: sunrise
       offset: 00:30:00
       id: "Sonnenaufgang "
-    - platform: sun
-      event: sunset
+      trigger: sun
+    - event: sunset
       offset: -00:55:00
       id: "Sonnenuntergang "
-  condition: []
-  action:
+      trigger: sun
+  conditions: []
+  actions:
     - if:
         - condition: trigger
           id:
             - "Sonnenaufgang "
       then:
-        - service: light.turn_off
-          data: {}
+        - data: {}
           target:
             entity_id:
               - light.wohnzimmer_weihnachtsstern_fenster
               - light.kuche_weihnachtsstern_fenster
               - light.wohnzimmer_weihnachtsstern
+          action: light.turn_off
       else:
-        - service: light.turn_on
-          data:
+        - data:
             brightness_pct: 60
             transition: 300
-            rgb_color:
-              - 255
-              - 136
-              - 13
           target:
             entity_id:
               - light.wohnzimmer_weihnachtsstern_fenster
               - light.kuche_weihnachtsstern_fenster
               - light.wohnzimmer_weihnachtsstern
+          action: light.turn_on
   mode: single
 - id: e8ead423-2e32-495b-8b59-ac6995a9f1fb
   alias: System - Daily git backup
@@ -386,4 +382,20 @@
       data: {}
       target:
         entity_id: button.fritz_box_6660_cable_aufraumen
+  mode: single
+- id: "1727814349127"
+  alias: HomeMini zurücksetzen
+  description:
+    Setzten den Google Home Mini jede Nacht auf einige Standard Einstellungen
+    zurück.
+  triggers:
+    - at: 04:30:00
+      trigger: time
+  conditions: []
+  actions:
+    - data:
+        volume_level: 0.3
+      action: media_player.volume_set
+      target:
+        entity_id: media_player.homemini_wohnzimmer
   mode: single

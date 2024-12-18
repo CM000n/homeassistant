@@ -13,6 +13,19 @@ group:
       - "binary_sensor.waschmaschine"
       - "binary_sensor.trockner"
 
+  waschmaschine:
+    name: "Waschmaschine"
+    entities:
+      - "binary_sensor.waschmaschine"
+  trockner:
+    name: "Trockner"
+    entities:
+      - "binary_sensor.trockner"
+  spuehlmaschine:
+    name: "Spühlaschine"
+    entities:
+      - "binary_sensor.spuehlmaschine"
+
   light_group_living_room:
     name: "gruppe_wohnzimmer"
     entities:

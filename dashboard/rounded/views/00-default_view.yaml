@@ -146,12 +146,12 @@ sections:
               - type: "custom:decluttering-card"
                 template: "energy_info_card"
                 variables:
-                  - entity: "sensor.apsystems_garagenpower_total_power_fixed"
+                  - entity: "sensor.nous_a1t_smartplug_2_power"
                   - label: "Photovoltaik"
               - type: "custom:decluttering-card"
                 template: "energy_bar_card_red_green"
                 variables:
-                  - entity: "sensor.apsystems_garagenpower_total_power_fixed"
+                  - entity: "sensor.nous_a1t_smartplug_2_power"
           - type: "vertical-stack"
             cards:
               - type: "custom:decluttering-card"
@@ -257,7 +257,7 @@ sections:
               - name: "Energie"
               - entity: "switch.apsystems_garagenpower_power_status"
               - icon: "mdi:flash"
-              - label: "[[[ return parseFloat(Number(states['sensor.photovoltaik_production_daily'].state)).toFixed(2) ]]]"
+              - label: "[[[ return parseFloat(Number(states['sensor.nous_a1t_smartplug_2_daily_energy'].state)).toFixed(2) ]]]"
               - navigation_path: "/lovelace-rounded/energy_view"
 
   - type: "custom:button-card"

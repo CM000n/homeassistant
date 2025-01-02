@@ -357,7 +357,7 @@
   conditions: []
   actions:
     - data:
-        volume_level: 0.3
+        volume_level: 0.25
       action: media_player.volume_set
       target:
         entity_id: media_player.homemini_wohnzimmer

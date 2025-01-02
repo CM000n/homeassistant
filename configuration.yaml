@@ -17,6 +17,9 @@ homeassistant:
   packages: !include_dir_named "integrations"
   allowlist_external_dirs: ["/config/"]
 
+# https://www.home-assistant.io/integrations/assist_pipeline/
+assist_pipeline:
+
 # https://www.home-assistant.io/docs/automation/yaml/
 automation: !include "automations.yaml"
 

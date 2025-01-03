@@ -82,12 +82,6 @@ lovelace:
       icon: "mdi:square-rounded-outline"
       show_in_sidebar: true
       filename: "dashboard/rounded/main.yaml"
-    lovelace-minimal:
-      mode: "yaml"
-      title: "Minimal"
-      icon: "mdi:square-rounded-outline"
-      show_in_sidebar: true
-      filename: "dashboard/minimal/main.yaml"
 
 # https://home-assistant.io/docs/ha_configuration/splitting_ha_configuration/
 google_assistant: !include "google_assistant/google_assistant.yaml"

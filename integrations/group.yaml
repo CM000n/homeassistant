@@ -53,6 +53,13 @@ group:
     entities:
       - "light.buro_deckenleuchte"
       - "light.buro_schreibtisch"
+  light_group_office_cellar:
+    name: "gruppe_buro"
+    entities:
+      - "light.buero_keller_deckenlampe_1"
+      - "light.buero_keller_deckenlampe_2"
+      - "light.buero_keller_wandlampe_links"
+      - "light.buero_keller_wandlampe_rechts"
 
   vacuum_rooms:
     name: "Vacuum Rooms"

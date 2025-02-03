@@ -230,6 +230,14 @@ sections:
           - type: "custom:decluttering-card"
             template: "navigation_button"
             variables:
+              - name: "Büro Keller"
+              - entity: "light.gruppe_buro_keller"
+              - icon: "mdi:chair-rolling"
+              - label: "[[[ return states['sensor.steckdose_waschmaschine_temperatur'].state + ' °C' ]]]"
+              - navigation_path: "/lovelace-rounded/office_cellar"
+          - type: "custom:decluttering-card"
+            template: "navigation_button"
+            variables:
               - name: "Sonstiges"
               - entity: "light.gruppe_flur"
               - icon: "mdi:floor-plan"

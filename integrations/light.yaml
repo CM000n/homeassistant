@@ -16,12 +16,6 @@ light:
       - "light.treppenhaus_wandlampe_2"
       - "light.treppenhaus_wandlampe_3"
   - platform: "group"
-    name: "Nähtisch"
-    unique_id: "0f025e30-de4f-4ac6-8955-eb9c1c77f2be"
-    entities:
-      - "light.nahtisch_decke"
-      - "light.nahtisch_wand"
-  - platform: "group"
     name: "gruppe_wohnzimmer"
     unique_id: "857fa86a-8106-42c4-a1b6-c8ebf2456865"
     entities:
@@ -60,6 +54,14 @@ light:
       - "light.buro_deckenleuchte"
       - "light.buro_schreibtisch"
   - platform: "group"
+    name: "gruppe_buro_keller"
+    unique_id: "88fb9d0a-4317-4221-a662-b202d8bd8d46"
+    entities:
+      - "light.buero_keller_deckenlampe_1"
+      - "light.buero_keller_deckenlampe_2"
+      - "light.buero_keller_wandlampe_links"
+      - "light.buero_keller_wandlampe_rechts"
+  - platform: "group"
     name: "gruppe_flur"
     unique_id: "4eb78a1e-1583-4209-9d6b-724cd902d884"
     entities:
@@ -77,6 +79,7 @@ light:
       - "light.gruppe_bad"
       - "light.gruppe_buro"
       - "light.gruppe_flur"
+      - "light.gruppe_buro_keller"
   # https://community.home-assistant.io/t/rounded-dashboard-guide/543043/39?u=cm000n
   - platform: "template"
     lights:
@@ -326,6 +329,56 @@ light:
           - service: "light.turn_on"
             target:
               entity_id: "{{ expand('group.light_group_office') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
+            data:
+              color_temp: "{{ color_temp }}"
+  - platform: "template"
+    lights:
+      active_light_group_office_cellar:
+        friendly_name: "Aktive Lampen Büro Keller"
+        unique_id: "64dfa389-17eb-435b-80b8-5996b854127e"
+        level_template: >
+          {% set data = namespace(numbers=[]) %}
+          {% for s in state_attr('group.light_group_office_cellar', 'entity_id') %}
+            {% if is_state(s, 'on') %}
+              {% set data.numbers = [state_attr(s, "brightness")] + data.numbers %}
+            {% endif %}
+          {% endfor %}
+          {{data.numbers|average(0)|round(0)}}
+        value_template: >
+          {%- set data = namespace(res="off") -%}
+          {% for s in state_attr('group.light_group_office_cellar', 'entity_id') %}
+            {% if is_state(s, 'on') %}
+              {%- set data.res = "on" -%}
+            {% endif %}
+          {%- endfor -%}
+          {{data.res}}
+        temperature_template: >
+          {% set data = namespace(numbers=[]) %}
+          {% for s in state_attr('group.light_group_office_cellar', 'entity_id') %}
+            {% if state_attr(s, "color_temp") %}
+              {% set data.numbers = [state_attr(s, "color_temp")] + data.numbers %}
+            {% endif %}
+          {% endfor %}
+          {{data.numbers|average(155)|round(0)}}
+        turn_on:
+          - service: "light.turn_on"
+            data:
+              entity_id: "group.light_group_office_cellar"
+        turn_off:
+          - service: "light.turn_off"
+            data:
+              entity_id: "group.light_group_office_cellar"
+        set_level:
+          - service: "light.turn_on"
+            target:
+              # was tun wenn alles aus ist? If-Anweisung, um alles einzuschalten?
+              entity_id: "{{ expand('group.light_group_office_cellar') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
+            data:
+              brightness: "{{ brightness }}"
+        set_temperature:
+          - service: "light.turn_on"
+            target:
+              entity_id: "{{ expand('group.light_group_office_cellar') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
             data:
               color_temp: "{{ color_temp }}"
 

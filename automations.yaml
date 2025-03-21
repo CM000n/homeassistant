@@ -298,27 +298,6 @@
               - light.wohnzimmer_weihnachtsstern
           action: light.turn_on
   mode: single
-- id: e8ead423-2e32-495b-8b59-ac6995a9f1fb
-  alias: System - Daily git backup
-  description: Backup Home Assistant configuration folder to git daily
-  trigger:
-    - platform: time
-      at: 02:00:00
-  condition: []
-  action:
-    - service: shell_command.backup
-      data: {}
-      response_variable: backup_response
-    - if:
-        - condition: template
-          value_template: "{{ backup_response['returncode'] == 0 }}"
-      then: []
-      else:
-        - service: notify.mobile_app_pixel_7a
-          data:
-            title: ❌ Backup failed
-            message: "{{ backup_response['stderr'] }}"
-  mode: single
 - id: "1718961814697"
   alias: System - Generate README.md
   description: Generiert jede Nacht eine aktualisierte README.md file.
@@ -357,7 +336,7 @@
   conditions: []
   actions:
     - data:
-        volume_level: 0.25
+        volume_level: 0.4
       action: media_player.volume_set
       target:
         entity_id: media_player.homemini_wohnzimmer

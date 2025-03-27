@@ -1,0 +1,74 @@
+---
+utility_meter:
+  gas_consumption_vicare_daily:
+    unique_id: "1699d09ef40547e482919e4722e22968"
+    source: "sensor.viessman_gasverbrauch_kwh"
+    name: "Gasverbrauch kWh täglich"
+    delta_values: false
+    cycle: "daily"
+  gas_consumption_vicare_yearly:
+    unique_id: "3c5954b30be3456781be40a73f8b5285"
+    source: "sensor.viessman_gasverbrauch_kwh"
+    name: "Gasverbrauch kWh jährlich"
+    delta_values: false
+    cycle: "yearly"
+  shelly_1pm_buero_ecke_yearly_energy:
+    unique_id: "0fb67b8eaf22476ea9b4c4d520f8218a"
+    source: "sensor.shelly_1pm_buero_ecke_daily_energy"
+    name: "Büro Ecke Stromverbrauch jährlich"
+    delta_values: false
+    cycle: "yearly"
+  shelly_1pm_buero_tuer_yearly_energy:
+    unique_id: "ad33f4276e5e43da9534211253ad5708"
+    source: "sensor.shelly_1pm_buero_tuer_daily_energy"
+    name: "Büro Tür Stromverbrauch jährlich"
+    delta_values: false
+    cycle: "yearly"
+  esp_01s_stromzaehler_total_energy_in_yearly:
+    unique_id: "ce64e28c68324aa3893fecf08254768e"
+    source: "sensor.esp_01s_stromzaehler_total_energy_in"
+    name: "Stromzähler Stromverbrauch jährlich"
+    delta_values: false
+    cycle: "yearly"
+  esp_01s_stromzaehler_total_energy_in_daily:
+    unique_id: "9c6cee34-332d-4dcc-ba80-d1a7df744f70"
+    source: "sensor.esp_01s_stromzaehler_total_energy_in"
+    name: "Stromzähler Stromverbrauch täglich"
+    delta_values: false
+    cycle: "daily"
+  esp_01s_stromzaehler_total_energy_in_hourly:
+    unique_id: "097374bb-a26d-43ac-8780-5631799e1d4d"
+    source: "sensor.esp_01s_stromzaehler_total_energy_in"
+    name: "Stromzähler Stromverbrauch stündlich"
+    delta_values: false
+    cycle: "hourly"
+  nous_a1t_smartplug_1_yearly_energy:
+    unique_id: "4359763c-f86e-11ed-b67e-0242ac120002"
+    source: "sensor.nous_a1t_smartplug_1_daily_energy"
+    name: "Nous A1T Smartplug 1 Stromverbrauch jährlich"
+    delta_values: false
+    cycle: "yearly"
+  nous_a1t_smartplug_3_yearly_energy:
+    unique_id: "501e4bea-f86e-11ed-b67e-0242ac120002"
+    source: "sensor.nous_a1t_smartplug_3_daily_energy"
+    name: "Nous A1T Smartplug 3 Stromverbrauch jährlich"
+    delta_values: false
+    cycle: "yearly"
+  nous_a1t_smartplug_4_yearly_energy:
+    unique_id: "ee8597b2-4a89-11ee-be56-0242ac120002"
+    source: "sensor.nous_a1t_smartplug_4_daily_energy"
+    name: "Nous A1T Smartplug 4 Stromverbrauch jährlich"
+    delta_values: false
+    cycle: "yearly"
+  co2_emissions_displaced_grid_yearly_new:
+    unique_id: "4e423527-811a-4526-b921-ab2aeeca5e97"
+    source: "sensor.co2_emissions_displaced_grid_new"
+    name: "CO2 Emissionen Netz jährlich neu"
+    delta_values: false
+    cycle: "yearly"
+  co2_emissions_displaced_solar_yearly_new:
+    unique_id: "0696cc9a-dc04-4a1c-8c57-bf515df346f7"
+    source: "sensor.co2_emissions_displaced_solar_new"
+    name: "CO2 Einsparung Solar jährlich neu"
+    delta_values: false
+    cycle: "yearly"

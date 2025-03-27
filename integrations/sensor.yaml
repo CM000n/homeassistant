@@ -1,0 +1,235 @@
+---
+# https://home-assistant.io/components/sensor/
+sensor:
+  # https://www.home-assistant.io/components/time_date/
+  - platform: "time_date"
+    display_options:
+      - "time"
+      - "date"
+      - "date_time"
+      - "date_time_iso"
+      - "time_date"
+      - "time_utc"
+
+  # https://www.home-assistant.io/integrations/statistics/
+  - platform: "statistics"
+    unique_id: "d15b0520b1df11ed90171b0f7a30ae2f"
+    name: "shelly_1pm_buero_tuer_power mean over last 30 minutes"
+    entity_id: "sensor.shelly_1pm_buero_tuer_power"
+    state_characteristic: "mean"
+    max_age:
+      minutes: 30
+  - platform: "statistics"
+    unique_id: "cfb9fb2f-2f43-45e9-b406-b27758654323"
+    name: "balkonkraftwerk inverter power mean over last 5 minutes"
+    entity_id: "sensor.apsystems_garagenpower_total_power"
+    state_characteristic: "mean"
+    max_age:
+      minutes: 5
+  - platform: "statistics"
+    unique_id: "3f27b186-a695-4b62-8516-8ae4a069c377"
+    name: "balkonkraftwerk plug power mean over last 5 minutes"
+    entity_id: "sensor.nous_a1t_smartplug_2_power"
+    state_characteristic: "mean"
+    max_age:
+      minutes: 5
+
+  # https://www.home-assistant.io/integrations/filter/
+  - platform: "filter"
+    unique_id: "f9d0fdc0b1df11ed90171b0f7a30ae2f"
+    name: "Deckenlampe Bad Temperatur Offset gefiltert"
+    entity_id: "sensor.deckenlampe_bad_temp_offset"
+    filters:
+      - filter: "time_simple_moving_average"
+        window_size: "00:08"
+        precision: 1
+
+  # https://www.home-assistant.io/components/sensor.history_stats/
+  - platform: "history_stats"
+    name: "Deckenlampe Ankleide AN Jahr"
+    entity_id: "light.kinderzimmer_deckenleuchte"
+    state: "on"
+    type: "time"
+    start:
+      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
+      \ }}"
+    end: "{{ now() }}"
+  - platform: "history_stats"
+    name: "Deckenlampe Bad AN Jahr"
+    entity_id: "light.shelly_deckenlampe_bad"
+    state: "on"
+    type: "time"
+    start:
+      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
+      \ }}"
+    end: "{{ now() }}"
+  - platform: "history_stats"
+    name: "Deckenlampe Büro AN Jahr"
+    entity_id: "light.buro_deckenleuchte"
+    state: "on"
+    type: "time"
+    start:
+      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
+      \ }}"
+    end: "{{ now() }}"
+  - platform: "history_stats"
+    name: "Deckenlampen Flur AN Jahr"
+    entity_id: "light.deckenlampen_flur"
+    state: "on"
+    type: "time"
+    start:
+      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
+      \ }}"
+    end: "{{ now() }}"
+  - platform: "history_stats"
+    name: "Deckenlampe Herd AN Jahr"
+    entity_id: "light.kuche_herdlampe"
+    state: "on"
+    type: "time"
+    start:
+      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
+      \ }}"
+    end: "{{ now() }}"
+  - platform: "history_stats"
+    name: "Deckenlampe Schlafzimmer AN Jahr"
+    entity_id: "light.schlafzimmer_deckenleuchte"
+    state: "on"
+    type: "time"
+    start:
+      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
+      \ }}"
+    end: "{{ now() }}"
+  - platform: "history_stats"
+    name: "Deckenlampe Wohnzimmer AN Jahr"
+    entity_id: "light.wohnzimmer_deckenleuchte"
+    state: "on"
+    type: "time"
+    start:
+      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
+      \ }}"
+    end: "{{ now() }}"
+  - platform: "history_stats"
+    name: "Lightstrip Wohnzimmer AN Jahr"
+    entity_id: "light.wohnzimmer_lightstrip"
+    state: "on"
+    type: "time"
+    start:
+      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
+      \ }}"
+    end: "{{ now() }}"
+  - platform: "history_stats"
+    name: "Nachttischlampe Lisa AN Jahr"
+    entity_id: "light.schlafzimmer_wickeltisch"
+    state: "on"
+    type: "time"
+    start:
+      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
+      \ }}"
+    end: "{{ now() }}"
+  - platform: "history_stats"
+    name: "Nachttischlampe Simon AN Jahr"
+    entity_id: "light.schlafzimmer_nachttisch_simon"
+    state: "on"
+    type: "time"
+    start:
+      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
+      \ }}"
+    end: "{{ now() }}"
+  - platform: "history_stats"
+    name: "Schreibtischlampe Lisa AN Jahr"
+    entity_id: "light.nahtisch"
+    state: "on"
+    type: "time"
+    start:
+      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
+      \ }}"
+    end: "{{ now() }}"
+  - platform: "history_stats"
+    name: "Spiegellampe Bad AN Jahr"
+    entity_id: "light.shelly_badspiegel"
+    state: "on"
+    type: "time"
+    start:
+      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
+      \ }}"
+    end: "{{ now() }}"
+  - platform: "history_stats"
+    name: "Wandlampen Treppenhaus AN Jahr"
+    entity_id: "light.wandlampen_treppenhaus"
+    state: "on"
+    type: "time"
+    start:
+      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
+      \ }}"
+    end: "{{ now() }}"
+  - platform: "history_stats"
+    name: "Auf der Arbeit heute"
+    entity_id: "person.simon"
+    state: "Simon Arbeit"
+    type: "time"
+    start: "{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}"
+    end: "{{ now() }}"
+  - platform: "history_stats"
+    name: "Auf der Arbeit diese Woche"
+    entity_id: "person.simon"
+    state: "Simon Arbeit"
+    type: "time"
+    start:
+      "{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0)\
+      \ ) - now().weekday() * 86400 }}"
+    end: "{{ now() }}"
+  - platform: "history_stats"
+    name: "Im Homeoffice heute"
+    entity_id: "device_tracker.dm_pf2l2j0l"
+    state: "home"
+    type: "time"
+    start: "{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}"
+    end: "{{ now() }}"
+  - platform: "history_stats"
+    name: "Im Homeoffice diese Woche"
+    entity_id: "device_tracker.dm_pf2l2j0l"
+    state: "home"
+    type: "time"
+    start:
+      "{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0)\
+      \ ) - now().weekday() * 86400 }}"
+    end: "{{ now() }}"
+  - platform: "history_stats"
+    name: "Simon zu Hause"
+    entity_id: "person.simon"
+    state: "home"
+    type: "time"
+    end: "{{ now() }}"
+    duration:
+      hours: 24
+  - platform: "history_stats"
+    name: "Lisa zu Hause"
+    entity_id: "person.lisa"
+    state: "home"
+    end: "{{ now() }}"
+    duration:
+      hours: 24
+
+  # https://www.home-assistant.io/integrations/integration/
+  # https://community.home-assistant.io/t/viessmann-component/77873/760
+  - platform: "integration"
+    unique_id: "a3ad19c0b1de11edaeb2af87d8ff0b2f"
+    source: "sensor.vicare_burner_modulation"
+    name: "vicare_burner_load_intensity"
+    method: "left"
+    round: 4
+    unit_time: "d"
+  - platform: integration
+    unique_id: ba53be56-f813-403f-b254-bfe61c2b4e8c
+    source: sensor.co2_emissions_displaced_rate_solar_new
+    name: co2_emissions_displaced_solar_new
+    unit_prefix: k
+    round: 1
+    method: left
+  - platform: integration
+    unique_id: f762a334-289a-4384-8e42-736dde35a389
+    source: sensor.co2_emissions_displaced_rate_grid_new
+    name: co2_emissions_displaced_grid_new
+    unit_prefix: k
+    round: 1
+    method: left

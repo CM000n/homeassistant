@@ -1,0 +1,56 @@
+---
+vacuum_zone_card:
+  card:
+    type: "custom:button-card"
+    name: "[[name]]"
+    icon: "[[icon]]"
+    entity: "[[entity]]"
+    label: "[[label]]"
+    show_label: true
+    tap_action:
+      action: "toggle"
+      haptic: "medium"
+    state:
+      - value: "on"
+        styles:
+          card:
+            - background-color: "var(--yellow)"
+            - box-shadow: "none"
+          icon:
+            - color: "var(--black)"
+          name:
+            - color: "var(--black)"
+          label:
+            - color: "var(--black)"
+            - opacity: "0.5"
+      - value: "off"
+        styles:
+          card:
+            - background: "var(--contrast2)"
+            - box-shadow: "none"
+          icon:
+            - width: "24px"
+            - color: "var(--contrast20)"
+          name:
+            - color: "var(--contrast20)"
+          label:
+            - color: "var(--contrast9)"
+    styles:
+      icon:
+        - width: "24px"
+      img_cell:
+        - justify-content: "flex-start"
+        - margin-top: "-4px"
+      name:
+        - justify-self: "start"
+        - font-size: "12px"
+        - margin-bottom: "0px"
+      card:
+        - height: "84px"
+        - border-radius: "24px"
+        - padding: "12px 0 12px 14px"
+        - box-sizing: "border-box"
+        - "--mdc-ripple-press-opacity": 0
+      label:
+        - justify-self: "start"
+        - font-size: "12px"

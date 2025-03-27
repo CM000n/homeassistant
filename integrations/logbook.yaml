@@ -1,0 +1,30 @@
+---
+# https://home-assistant.io/components/logbook/
+logbook:
+  include:
+    entities:
+      # Persons
+      - "person.simon"
+      - "person.lisa"
+      # Lights
+      - "light.buro_deckenleuchte"
+      - "light.buro_schreibtisch"
+      - "light.deckenlampen_flur"
+      - "light.eingangstur_decke"
+      - "light.kinderzimmer_deckenleuchte"
+      - "light.kinderzimmer_nachttisch"
+      - "light.kuche_esstischlampe"
+      - "light.kuche_herdlampe"
+      - "light.schlafzimmer_deckenleuchte"
+      - "light.schlafzimmer_wickeltisch"
+      - "light.shelly_badspiegel"
+      - "light.shelly_deckenlampe_bad"
+      - "light.wandlampen_treppenhaus"
+      - "light.wohnzimmer_deckenleuchte"
+      - "light.wohnzimmer_lightstrip"
+      - "light.wohnzimmer_stehlampe_rechts"
+      # Power sockets
+      - "switch.steckdose_ankleide"
+      - "switch.steckdose_spulmaschine"
+      - "switch.steckdose_waschmaschine"
+      - "switch.steckdose_wohnzimmer"

@@ -1,0 +1,65 @@
+---
+apex_sensor_card:
+  card:
+    type: "custom:apexcharts-card"
+    cache: false
+    layout: "minimal"
+    graph_span: "24h"
+    header:
+      show: false
+    apex_config:
+      tooltip:
+        style:
+          fontSize: "14px"
+        x:
+          show: true
+          formatter: |
+            EVAL:(timestamp) => {
+              let date = new Date(timestamp).toLocaleString('de-DE',{weekday: 'long', hour: '2-digit', minute:'2-digit'}).toString();
+              return date.charAt(0).toUpperCase() + date.slice(1);
+            }
+      chart:
+        height: "150px"
+      legend:
+        show: true
+        showForSingleSeries: true
+        fontSize: "15px"
+        fontWeight: 300
+        position: "top"
+        horizontalAlign: "left"
+        floating: true
+        markers:
+          width: 26
+          height: 23
+          customHTML:
+            - |-
+              EVAL:() => {
+                return `<ha-icon icon="mdi:thermometer" style="--mdc-icon-size: 23px;"></ha-icon>`
+              }
+          fillColors:
+            - "none"
+      fill:
+        type: "gradient"
+        gradient:
+          type: "vertical"
+          shadeIntensity: 0.2
+          opacityFrom: 0.7
+          opacityTo: 0.1
+          stops:
+            - 0
+            - 90
+            - 100
+      stroke:
+        curve: "smooth"
+        width: 3
+    all_series_config:
+      type: "area"
+      fill_raw: "last"
+      extend_to: false
+      group_by:
+        func: "avg"
+        duration: "1h"
+    series:
+      - entity: "[[entity]]"
+        name: "[[name]]"
+        color: "var(--blue)"

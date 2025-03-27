@@ -1,0 +1,30 @@
+---
+title_home_card:
+  card:
+    type: "custom:button-card"
+    name: "Hallo"
+    label: |
+      [[[
+          return user.name
+        ]]]
+    show_label: true
+    styles:
+      card:
+        - background: "none"
+        - padding: 0px 0px
+        - margin-top: 0px
+        - margin-bottom: 0px
+        - "--mdc-ripple-press-opacity": 0
+        - height: "48px"
+        - border-radius: "0px"
+      name:
+        - font-family: Google Sans
+        - justify-self: start
+        - font-size: 16px
+        - color: var(--contrast10)
+      label:
+        - font-family: Google Sans
+        - justify-self: start
+        - font-size: 20px
+        - color: var(--contrast20)
+        - font-weight: bold

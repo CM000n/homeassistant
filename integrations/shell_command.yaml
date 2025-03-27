@@ -1,0 +1,6 @@
+---
+# https://home-assistant.io/components/shell_command/
+shell_command:
+  sleep_simon_pc: !secret "sleep_simon_pc"
+  sleep_on_lan_desktop: !secret "sleep_pc_simon"
+  backup: "/bin/sh /config/shell_scripts/backup.sh"

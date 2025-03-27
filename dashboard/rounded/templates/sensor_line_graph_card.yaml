@@ -1,0 +1,23 @@
+---
+sensor_line_graph_card:
+  card:
+    type: "sensor"
+    graph: "line"
+    entity: "[[entity]]"
+    hours_to_show: 24
+    detail: 1
+    name: "[[name]]"
+    icon: "none"
+    card_mod:
+      class: graph
+      style: |
+        ha-card {
+          box-shadow: none;
+          }
+        .graph {
+          background: var(--contrast2;
+        }
+            .graph .name {
+              background: var(--contrast15);
+              color: var(--contrast0);
+            }

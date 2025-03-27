@@ -1,0 +1,91 @@
+---
+navigation_button_with_light:
+  card:
+    type: "custom:button-card"
+    name: "[[name]]"
+    entity: "[[entity]]"
+    icon: "[[icon]]"
+    label: "[[label]]"
+    tap_action:
+      action: "navigate"
+      navigation_path: "[[navigation_path]]"
+      haptic: "medium"
+    show_label: true
+    hold_action:
+      action: "more-info"
+      haptic: "medium"
+    custom_fields:
+      light:
+        card:
+          type: "custom:button-card"
+          entity: "[[[ return entity.entity_id ]]]"
+          show_name: false
+          show_label: false
+          state:
+            - value: "on"
+              icon: "mdi:lightbulb"
+            - value: "off"
+              icon: "mdi:lightbulb-off"
+            - value: "unavailable"
+              icon: "mdi:lightbulb-question"
+              styles:
+                icon:
+                  - color: "var(--contrast6)"
+            - value: "unknown"
+              icon: "mdi:lightbulb-question"
+              styles:
+                icon:
+                  - color: "var(--contrast6)"
+          styles:
+            icon:
+              - width: "24px"
+              - height: "24px"
+    styles:
+      grid:
+        - grid-template-areas: "'i light' 'n n' 'l l'"
+        - grid-template-columns: "1fr 1fr"
+        - grid-template-rows: "35% min-content min-content"
+      card:
+        - background: "var(--contrast2)"
+        - padding: "16px"
+        - "--mdc-ripple-press-opacity": 0
+        - height: "110px"
+      img_cell:
+        - justify-self: "start"
+        - width: "24px"
+      icon:
+        - width: "24px"
+        - height: "24px"
+        - color: "var(--contrast8)"
+      label:
+        - justify-self: "start"
+        - align-self: "start"
+        - font-size: "12px"
+        - filter: "opacity(40%)"
+        - margin: "4px 0 3px 0"
+        - max-width: "100%"
+        - color: "var(--contrast8)"
+      name:
+        - justify-self: "start"
+        - font-size: "14px"
+        - margin: "4px 0 12px 0"
+        - color: "var(--contrast8)"
+    state:
+      - value: "on"
+        styles:
+          card:
+            - background: "var(--yellow)"
+          icon:
+            - color: "var(--black)"
+          label:
+            - color: "var(--black)"
+          name:
+            - color: "var(--black)"
+      - value: "off"
+        styles:
+          icon:
+            - color: "var(--contrast20)"
+          label:
+            - color: "var(--contrast20)"
+          name:
+            - color: "var(--contrast20)"

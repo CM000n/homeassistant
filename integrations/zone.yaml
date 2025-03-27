@@ -1,0 +1,19 @@
+---
+# https://home-assistant.io/components/zone/
+zone:
+  - name: "Home"
+    latitude: !secret "latitude"
+    longitude: !secret "longitude"
+    radius: 25
+  - name: "Simon Arbeit"
+    latitude: !secret "simon_arbeit_latitude"
+    longitude: !secret "simon_arbeit_longitude"
+    radius: 250
+  - name: "Lisa Arbeit"
+    latitude: !secret "lisa_arbeit_latitude"
+    longitude: !secret "lisa_arbeit_longitude"
+    radius: 200
+  - name: "Karlsruhe"
+    latitude: !secret "ka_latitude"
+    longitude: !secret "ka_longitude"
+    radius: 5500

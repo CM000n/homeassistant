@@ -1,0 +1,88 @@
+---
+path: "bath"
+icon: "mdi:faucet"
+title: ""
+visible:
+  - user: "3fb4deff931c4631b84d2584e5f2e493"
+  - user: "e7bec22aa70e4762ac231811f5997452"
+theme: "Rounded"
+type: "sections"
+max_columns: 1
+subview: true
+back_path: "/lovelace-rounded/default_view"
+badges: []
+sections:
+  - type: "custom:layout-card"
+    layout_type: "custom:grid-layout"
+    layout:
+      grid-template-columns: "auto 40%"
+      grid-template-rows: 1
+      max_cols: 2
+    cards:
+      - type: "custom:decluttering-card"
+        template: "title_card_v2"
+        variables:
+          - name: "Badezimmer"
+          - label: "Steuerung"
+      - type: "custom:decluttering-card"
+        template: "title_chip_entity"
+        variables:
+          - entity: "sensor.deckenlampe_bad_temperatur_offset_gefiltert"
+          - icon: "mdi:thermometer"
+
+  - type: "custom:layout-card"
+    layout_type: "custom:grid-layout"
+    cards:
+      - type: "grid"
+        columns: 2
+        square: false
+        cards:
+          - type: "custom:decluttering-card"
+            template: "light_button_wo_slider"
+            variables:
+              - name: "Deckenlampe"
+              - entity: "light.shelly_deckenlampe_bad"
+              - icon: "mdi:light-recessed"
+          - type: "custom:decluttering-card"
+            template: "light_button_wo_slider"
+            variables:
+              - name: "Spiegellampe"
+              - entity: "light.shelly_badspiegel"
+              - icon: "mdi:spotlight"
+
+  - type: "custom:layout-card"
+    layout_type: "custom:grid-layout"
+    cards:
+      - type: "grid"
+        columns: 1
+        square: false
+        cards:
+          - name: "Sonos"
+            entity: "media_player.lisi_sonoszp_bad"
+            type: "custom:mini-media-player"
+            icon: "mdi:speaker"
+            artwork: "material"
+            toggle_power: false
+            idle_view:
+              when_idle: true
+              when_paused: true
+            speaker_group:
+              platform: "sonos"
+              show_group_count: true
+              entities:
+                - entity_id: "media_player.lisi_sonoszp_wohnzimmer_r"
+                  name: "Sonos Wohnzimmer"
+                - entity_id: "media_player.lisi_sonoszp_kueche"
+                  name: "Sonos Küche"
+                - entity_id: "media_player.lisi_sonoszp_bad"
+                  name: "Sonos Bad"
+                - entity_id: "media_player.lisi_sonoszp_buero"
+                  name: "Sonos Büro"
+                - entity_id: "media_player.lisi_sonoszp_schlafzimmer"
+                  name: "Sonos Schlafzimmer"
+
+  - type: "custom:button-card"
+    color_type: "blank-card"
+    styles:
+      card:
+        - height: 40px

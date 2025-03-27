@@ -1,0 +1,72 @@
+---
+# https://www.home-assistant.io/integrations/group/
+group:
+  anwesenheit:
+    name: "Personen Anwesend"
+    entities:
+      - "person.lisa"
+      - "person.simon"
+
+  cellar_appliances:
+    name: "Keller Geräte"
+    entities:
+      - "binary_sensor.waschmaschine"
+      - "binary_sensor.trockner"
+
+  waschmaschine:
+    name: "Waschmaschine"
+    entities:
+      - "binary_sensor.waschmaschine"
+  trockner:
+    name: "Trockner"
+    entities:
+      - "binary_sensor.trockner"
+  spuehlmaschine:
+    name: "Spühlaschine"
+    entities:
+      - "binary_sensor.spuehlmaschine"
+
+  light_group_living_room:
+    name: "gruppe_wohnzimmer"
+    entities:
+      - "light.wohnzimmer_deckenleuchte"
+      - "light.wohnzimmer_lightstrip"
+      - "light.wohnzimmer_weihnachtsstern"
+      - "light.wohnzimmer_weihnachtsstern_fenster"
+  light_group_kitchen:
+    name: "gruppe_kuche"
+    entities:
+      - "light.kuche_esstischlampe"
+      - "light.kuche_herdlampe"
+      - "light.kuche_weihnachtsstern_fenster"
+  light_group_bed_room:
+    name: "gruppe_schlafzimmer"
+    entities:
+      - "light.schlafzimmer_deckenleuchte"
+  light_group_child_room:
+    name: "gruppe_kinderzimmer"
+    entities:
+      - "light.kinderzimmer_deckenleuchte"
+      - "light.kinderzimmer_nachttisch"
+  light_group_office:
+    name: "gruppe_buro"
+    entities:
+      - "light.buro_deckenleuchte"
+      - "light.buro_schreibtisch"
+  light_group_office_cellar:
+    name: "gruppe_buro"
+    entities:
+      - "light.buero_keller_deckenlampe_1"
+      - "light.buero_keller_deckenlampe_2"
+      - "light.buero_keller_wandlampe_links"
+      - "light.buero_keller_wandlampe_rechts"
+
+  vacuum_rooms:
+    name: "Vacuum Rooms"
+    entities:
+      - "input_boolean.living_room_select_vacuuming"
+      - "input_boolean.kitchen_select_vacuuming"
+      - "input_boolean.floor_select_vacuuming"
+      - "input_boolean.bath_room_select_vacuuming"
+      - "input_boolean.office_select_vacuuming"
+      - "input_boolean.stairs_select_vacuuming"

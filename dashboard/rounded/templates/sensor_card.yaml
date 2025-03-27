@@ -1,0 +1,12 @@
+---
+sensor_card:
+  card:
+    type: "sensor"
+    name: "[[name]]"
+    entity: "[[entity]]"
+    hours_to_show: 24
+    detail: 1
+    graph: "line"
+    icon: "none"
+    card_mod:
+      class: "graph"

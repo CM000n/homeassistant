@@ -1,0 +1,63 @@
+---
+path: "other"
+icon: "mdi:floor-plan"
+title: ""
+visible:
+  - user: "3fb4deff931c4631b84d2584e5f2e493"
+  - user: "e7bec22aa70e4762ac231811f5997452"
+theme: "Rounded"
+type: "sections"
+max_columns: 1
+subview: true
+back_path: "/lovelace-rounded/default_view"
+badges: []
+sections:
+  - type: "custom:layout-card"
+    layout_type: "custom:grid-layout"
+    layout:
+      grid-template-columns: "auto 40%"
+      grid-template-rows: 1
+      max_cols: 2
+    cards:
+      - type: "custom:decluttering-card"
+        template: "title_card_v2"
+        variables:
+          - name: "Sonstiges"
+          - label: "Steuerung"
+      - type: "custom:decluttering-card"
+        template: "title_chip_entity"
+        variables:
+          - entity: "sensor.eingangstur_bewegungsmelder_temperature"
+          - icon: "mdi:thermometer"
+
+  - type: "custom:layout-card"
+    layout_type: "custom:grid-layout"
+    cards:
+      - type: "grid"
+        columns: 2
+        square: false
+        cards:
+          - type: "custom:decluttering-card"
+            template: "light_button_w_slider"
+            variables:
+              - name: "Deckenlampen Flur"
+              - entity: "light.deckenlampen_flur"
+              - icon: "mdi:ceiling-light-multiple"
+          - type: "custom:decluttering-card"
+            template: "light_button_w_slider"
+            variables:
+              - name: "Treppenhaus"
+              - entity: "light.wandlampen_treppenhaus"
+              - icon: "mdi:track-light"
+          - type: "custom:decluttering-card"
+            template: "light_button_w_slider"
+            variables:
+              - name: "Eingangstür"
+              - entity: "light.eingangstur_decke"
+              - icon: "mdi:light-recessed"
+
+  - type: "custom:button-card"
+    color_type: "blank-card"
+    styles:
+      card:
+        - height: 40px

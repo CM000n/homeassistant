@@ -1,0 +1,18 @@
+---
+title_card:
+  card:
+    type: "custom:button-card"
+    name: "[[name]]"
+    styles:
+      card:
+        - background: "none"
+        - padding: "16px 0"
+        - "--mdc-ripple-press-opacity": 0
+        - height: "36px"
+      name:
+        - font-size: "32px"
+        - color: "var(--contrast20)"
+    tap_action:
+      action: "navigate"
+      navigation_path: "/lovelace-rounded/default_view"
+      haptic: "medium"

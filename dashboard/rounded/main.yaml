@@ -1,0 +1,5 @@
+---
+decluttering_templates: !include_dir_merge_named "/config/dashboard/rounded/templates/"
+
+title: ""
+views: !include_dir_list "/config/dashboard/rounded/views/"

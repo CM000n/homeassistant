@@ -1,0 +1,41 @@
+---
+energy_info_card:
+  card:
+    type: "custom:button-card"
+    entity: "[[entity]]"
+    name: '[[[return Math.round(Number(states["[[entity]]"].state)).toFixed(0) ]]]'
+    styles:
+      grid:
+        - grid-template-areas: '"n eenheid" "l l"'
+        - grid-template-columns: min-content min-content
+      name:
+        - font-size: 28px
+        - color: var(--contrast15)
+        - font-weight: bold
+      card:
+        - height: 80px
+        - border-radius: 18px
+        - padding: 0px 0 6px 6px
+        - box-sizing: border-box
+        - background: none
+        - box-shadow: none
+        - margin-bottom: "-10px"
+        - "--mdc-ripple-press-opacity": 0
+      label:
+        - justify-self: start
+        - font-size: 13px
+        - color: var(--contrast15)
+        - margin-bottom: 0px
+      custom_fields:
+        eenheid:
+          - font-size: 12px
+          - margin-bottom: "-10px"
+          - padding-left: 2px
+          - margin-right: 100px
+    label: "[[label]]"
+    custom_fields:
+      eenheid: "&nbsp;W"
+    show_label: true
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace-rounded/energy_view

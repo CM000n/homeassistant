@@ -1,0 +1,87 @@
+---
+# https://home-assistant.io/docs/ha_configuration/basic/
+homeassistant:
+  name: "Home"
+  latitude: !secret "latitude"
+  longitude: !secret "longitude"
+  currency: "EUR"
+  language: "de"
+  country: "DE"
+  elevation: 194
+  unit_system: "metric"
+  time_zone: !secret "time_zone"
+  auth_providers:
+    - type: "homeassistant"
+  external_url: !secret "external_url"
+  internal_url: !secret "internal_url"
+  packages: !include_dir_named "integrations"
+  allowlist_external_dirs: ["/config/"]
+
+# https://www.home-assistant.io/integrations/assist_pipeline/
+assist_pipeline:
+
+# https://www.home-assistant.io/docs/automation/yaml/
+automation: !include "automations.yaml"
+
+# https://www.home-assistant.io/integrations/scene/
+scene: !include "scenes.yaml"
+
+# https://www.home-assistant.io/integrations/script/
+script: !include "scripts.yaml"
+
+# https://home-assistant.io/components/http/
+# Note: trusted_proxies must match with the Traefik Proxy Docker Network(s)!
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - "172.17.0.0/16"
+    - "172.18.0.0/16"
+    - "172.19.0.0/16"
+    - 127.0.0.1
+    - ::1
+
+# https://www.home-assistant.io/integrations/frontend/
+frontend:
+  extra_module_url:
+    - "/hacsfiles/lovelace-card-mod/card-mod.js"
+    - "/hacsfiles/hass-hue-icons/hass-hue-icons.js"
+  themes: !include_dir_merge_named "themes"
+
+# https://www.home-assistant.io/lovelace/
+lovelace:
+  mode: "yaml"
+  resources:
+    - url: "/hacsfiles/button-card/button-card.js"
+      type: "module"
+    - url: "/hacsfiles/my-cards/my-cards.js"
+      type: "module"
+    - url: "/hacsfiles/lovelace-valetudo-map-card/valetudo-map-card.js"
+      type: "module"
+    - url: "/hacsfiles/mini-media-player/mini-media-player-bundle.js"
+      type: "module"
+    - url: "/hacsfiles/decluttering-card/decluttering-card.js"
+      type: "module"
+    - url: "/hacsfiles/apexcharts-card/apexcharts-card.js"
+      type: "module"
+    - url: "https://fonts.googleapis.com/css?family=Google+Sans:100,300,400,500,700,900,100i,300i,400i,500i,700i,900i"
+      type: "css"
+    - url: "/hacsfiles/lovelace-layout-card/layout-card.js"
+      type: "module"
+    - url: "/hacsfiles/bar-card/bar-card.js"
+      type: "module"
+    - url: "/hacsfiles/lovelace-mushroom/mushroom.js"
+      type: "module"
+    - url: "/hacsfiles/stack-in-card/stack-in-card.js"
+      type: "module"
+    - url: "/hacsfiles/power-flow-card-plus/power-flow-card-plus.js"
+      type: "module"
+  dashboards:
+    lovelace-rounded:
+      mode: "yaml"
+      title: "Rounded"
+      icon: "mdi:square-rounded-outline"
+      show_in_sidebar: true
+      filename: "dashboard/rounded/main.yaml"
+
+# https://home-assistant.io/docs/ha_configuration/splitting_ha_configuration/
+google_assistant: !include "google_assistant/google_assistant.yaml"

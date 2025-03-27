@@ -1,0 +1,12 @@
+---
+# https://www.home-assistant.io/integrations/sonos/
+sonos:
+  media_player:
+    advertise_addr: "192.168.176.3"
+    hosts:
+      - "192.168.179.17"
+      - "192.168.179.18"
+      - "192.168.179.19"
+      - "192.168.179.20"
+      - "192.168.179.21"
+      - "192.168.179.22"

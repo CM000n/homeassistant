@@ -1,0 +1,302 @@
+{#- Template file for https://github.com/custom-components/readme -#}
+# Welcome 👋!
+
+Welcome to my Home Assistant Configuration Backup repository!
+This repository is dedicated to managing and backing up my personal Home Assistant configuration.
+Home Assistant is an incredibly powerful open-source platform for automating smart home devices, and maintaining a reliable backup of configurations is crucial for ensuring smooth operation and easy recovery in case of any issues.
+
+# Table of contents
+1. [Introduction](#introduction)
+2. [Installation statistics](#statistics)
+3. [Installed componentents](#installed_components)
+    1. [Core integrations](#core_integrations)
+    2. [Custom integrations](#integration)
+    3. [Lovelace plugins](#plugin)
+
+
+## Introduction <a name="introduction"></a>
+
+In this repository, I have included most .yaml configurations and assets of my Home Assistant setup to help automate the backup process for my Home Assistant configurations.
+The goal is to provide a personal solution that ensures my configurations are regularly saved and easily recoverable.
+
+### Key Features
+
+- **Documentation**: The current configuration is documented with the help of the repository and background information can be provided that may also be of interest to others.
+- **Version Control**: Keep track of changes in configurations over time with git versioning.
+- **Easy Restoration**: Simply use the repository to restore a large part of the configurations in the event of an error.
+
+## Some statistics about my installation: <a name="statistics"></a>
+
+Description | value
+--|--
+Installed version | {{ states('sensor.current_version') }}
+Total entity objects | {{ states | count }}
+{%- set data = namespace(domains=[]) %}
+{%- for state in states %}
+{%- if state.domain not in data.domains %}
+{%- set data.domains = data.domains + [state.domain] %}
+{%- endif %}
+{%- endfor %}
+{%- for domain in data.domains %}
+Entities in the [`{{domain}}`](https://www.home-assistant.io/components/{{domain}}) domain | {{states[domain] | count }}
+{%- endfor %}
+
+{%- set core_integrations = [
+    {
+        "key": "androidtv_remote",
+        "name": "Android TV remote"
+    },
+    {
+        "key": "apsystems",
+        "name": "APsystems"
+    },
+    {
+        "key": "binary_sensor",
+        "name": "Binary sensor",
+        "configuration": "./integrations/binary_sensor.yaml"
+    },
+    {
+        "key": "cast",
+        "name": "Google Cast"
+    },
+    {
+        "key": "config",
+        "name": "Configuration",
+        "configuration": "./integrations/config.yaml"
+    },
+    {
+        "key": "energy",
+        "name": "Energy",
+        "configuration": "./integrations/energy.yaml"
+    },
+    {
+        "key": "fan",
+        "name": "Fan",
+        "configuration": "./integrations/fan.yaml"
+    },
+    {
+        "key": "fritz",
+        "name": "AVM FRITZ!Box Tools"
+    },
+    {
+        "key": "fritzbox",
+        "name": "AVM FRITZ!SmartHome"
+    },
+    {
+        "key": "co2signal",
+        "name": "Electricity Maps"
+    },
+    {
+        "key": "esphome",
+        "name": "ESPHome"
+    },
+    {
+        "key": "forecast_solar",
+        "name": "Forecast.Solar"
+    },
+    {
+        "key": "google_assistant",
+        "name": "Google Assistant",
+        "configuration": "./google_assistant/google_assistant.yaml"
+    },
+    {
+        "key": "google",
+        "name": "Google Calendar"
+    },
+    {
+        "key": "gree",
+        "name": "Gree Climate"
+    },
+    {
+        "key": "group",
+        "name": "Group",
+        "configuration": "./integrations/group.yaml"
+    },
+    {
+        "key": "history",
+        "name": "History",
+        "configuration": "./integrations/history.yaml"
+    },
+    {
+        "key": "homeassistant",
+        "name": "Home Assistant core",
+        "configuration": "./configuration.yaml"
+    },
+    {
+        "key": "hue",
+        "name": "Philips Hue"
+    },
+    {
+        "key": "light",
+        "name": "Light",
+        "configuration": "./integrations/light.yaml"
+    },
+    {
+        "key": "logbook",
+        "name": "Logbook",
+        "configuration": "./integrations/logbook.yaml"
+    },
+    {
+        "key": "logger",
+        "name": "Logger",
+        "configuration": "./integrations/logger.yaml"
+    },
+    {
+        "key": "media_source",
+        "name": "Media source",
+        "configuration": "./integrations/media_source.yaml"
+    },
+    {
+        "key": "met",
+        "name": "Meteorologisk institutt"
+    },
+    {
+        "key": "mobile_app",
+        "name": "Mobile app",
+        "configuration": "./integrations/mobile_app.yaml"
+    },
+    {
+        "key": "mqtt",
+        "name": "MQTT"
+    },
+    {
+        "key": "notify",
+        "name": "Notify",
+        "configuration": "./integrations/notify.yaml"
+    },
+    {
+        "key": "person",
+        "name": "Person",
+        "configuration": "./integrations/person.yaml"
+    },
+    {
+        "key": "radio_browser",
+        "name": "Radio Browser"
+    },
+    {
+        "key": "recorder",
+        "name": "Recorder",
+        "configuration": "./integrations/recorder.yaml"
+    },
+    {
+        "key": "season",
+        "name": "Season"
+    },
+    {
+        "key": "sensor",
+        "name": "Sensor",
+        "configuration": "./integrations/sensor.yaml"
+    },
+    {
+        "key": "shell_command",
+        "name": "Shell command",
+        "configuration": "./integrations/shell_command.yaml"
+    },
+    {
+        "key": "sonos",
+        "name": "Sonos",
+        "configuration": "./integrations/sonos.yaml"
+    },
+    {
+        "key": "spotify",
+        "name": "Spotify"
+    },
+    {
+        "key": "sql",
+        "name": "SQL",
+        "configuration": "./integrations/sql.yaml"
+    },
+    {
+        "key": "sun",
+        "name": "Sun",
+        "configuration": "./integrations/sun.yaml"
+    },
+    {
+        "key": "switch",
+        "name": "Switch",
+        "configuration": "./integrations/switch.yaml"
+    },
+    {
+        "key": "system_health",
+        "name": "System health",
+        "configuration": "./integrations/system_health.yaml"
+    },
+    {
+        "key": "systemmonitor",
+        "name": "System monitor"
+    },
+    {
+        "key": "template",
+        "name": "Template",
+        "configuration": "./integrations/template.yaml"
+    },
+    {
+        "key": "utility_meter",
+        "name": "Utility meter",
+        "configuration": "./integrations/utility_meter.yaml"
+    },
+    {
+        "key": "wake_on_lan",
+        "name": "WOL",
+        "configuration": "./integrations/wake_on_lan.yaml"
+    },
+    {
+        "key": "version",
+        "name": "Version"
+    },
+    {
+        "key": "vicare",
+        "name": "Viessmann ViCare"
+    },
+    {
+        "key": "workday",
+        "name": "Workday"
+    },
+    {
+        "key": "wyoming",
+        "name": "Wyoming Protocol"
+    },
+    {
+        "key": "zone",
+        "name": "Zone",
+        "configuration": "./integrations/zone.yaml"
+    },
+] %}
+
+## Installed components: <a name="installed_components"></a>
+
+### Core integrations that I use <a name="core_integrations"></a>
+
+Integrations | Configuration
+--|--
+{% for integration in core_integrations -%}
+[<img src="https://brands.home-assistant.io/_/{{integration.key}}/icon.png" height="24"/>](https://brands.home-assistant.io/_/{{integration.key}}/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/{{integration.key}}/icon.png" height="24"/>](https://brands.home-assistant.io/_/{{integration.key}}/icon.png#gh-light-mode-only) [{{integration.name}}](https://home-assistant.io/integrations/{{integration.key}}) | {% if integration.configuration is defined %} ["{{integration.configuration}}"]({{integration.configuration}}) {% else %} [<img src="https://my.home-assistant.io/badges/config_flow_start.svg" height="24"/>](https://my.home-assistant.io/redirect/config_flow_start?domain={{integration.key}}) {% endif %}
+{% endfor -%}
+
+{%- set custom_categories = [
+    {
+        "key": "integration",
+        "name": "Custom integrations"
+    },
+    {
+        "key": "plugin",
+        "name": "Lovelace plugins"
+    },
+    {
+        "key": "theme",
+        "name": "Themes"
+    }
+] %}
+
+{% for category in custom_categories -%}
+{%- set entries = hacs_components | selectattr("category", "eq", category.key) | selectattr("installed", "eq", True) | list -%}
+{% if entries | count != 0 %}
+
+### The {{category.name}} that I use <a name="{{category.key}}"></a>
+{{category.name}} | Description | Version
+--|--|-- {% for entry in entries -%}
+{% if entry.installed %}
+{% if entry.category == "integration" -%} [<img src="https://brands.home-assistant.io/_/{{entry.domain}}/icon.png" height="24"/>](https://brands.home-assistant.io/_/{{entry.domain}}/dark_icon.png#gh-dark-mode-only)[<img src="https://brands.home-assistant.io/_/{{entry.domain}}/icon.png" height="24"/>](https://brands.home-assistant.io/_/{{entry.domain}}/icon.png#gh-light-mode-only) {%- endif %} [{{entry.name}}]({{entry.documentation}}) | _{{entry.description}}_ | {{entry.installed_version}} {% endif -%}
+{%- endfor -%}
+{% endif -%}
+{%- endfor %}

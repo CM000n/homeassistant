@@ -1,0 +1,58 @@
+---
+energy_bar_card_green_red:
+  card:
+    type: "custom:bar-card"
+    card_mod:
+      style: >
+        ha-card {
+          background: rgb(0,0,0,0);
+          box-shadow: none;
+          --primary-text-color: var(--contrast15);
+          font-family: Google Sans;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          margin-bottom: 0px;
+          font-weight: bold;
+          }
+        bar-card-name {
+          margin-left: 0px;
+        }
+        bar-card-value {
+          margin-right: 0px;
+          font-family: Google Sans;
+          font-weight: 500;
+        }
+        bar-card-backgroundbar {
+        background: var(--contrast18);
+        }
+        bar-card-currentbar {
+        background: linear-gradient(to right, var(--green) 0%,
+        var(--yellow) 5%, var(--orange) 20%, var(--red) 100%);
+        clip-path: polygon(0 0, var(--bar-percent) 0, var(--bar-percent)
+        100%, 0 100%);
+        }
+        bar-card-card {
+          margin-top: -15px;
+          margin-left: -10px;
+          margin-right: 0px;
+          margin-bottom: 0px;
+        }
+    entities:
+      - entity: "[[entity]]"
+        name: "Leistung"
+        icon: "none"
+        min: 0
+        max: 6000
+        direction: "right"
+        height: "20px"
+        positions:
+          icon: "off"
+          name: "off"
+          value: "off"
+          indicator: "off"
+        unit_of_measurement: "W"
+        decimal: 0
+    tap_action:
+      action: "navigate"
+      navigation_path: "/lovelace-rounded/energy_view"

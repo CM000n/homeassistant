@@ -1,0 +1,21 @@
+---
+# https://home-assistant.io/components/recorder/
+recorder:
+  db_url: !secret "db_url"
+  auto_purge: false
+  commit_interval: 5
+  include:
+    domains:
+      - "sensor"
+      - "binary_sensor"
+      - "climate"
+      - "light"
+      - "switch"
+      - "water_heater"
+      - "humidifier"
+    entities:
+      # Persons
+      - "person.simon"
+      - "person.lisa"
+      # Device tracker
+      - "device_tracker.corolla_parkposition"

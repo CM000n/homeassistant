@@ -1,0 +1,16 @@
+---
+# https://www.home-assistant.io/integrations/homeassistant/#customize
+homeassistant:
+  customize:
+    input_boolean.living_room_select_vacuuming:
+      room_id: "17"
+    input_boolean.kitchen_select_vacuuming:
+      room_id: "18"
+    input_boolean.floor_select_vacuuming:
+      room_id: "16"
+    input_boolean.bath_room_select_vacuuming:
+      room_id: "20"
+    input_boolean.office_select_vacuuming:
+      room_id: "18"
+    input_boolean.stairs_select_vacuuming:
+      room_id: "21"

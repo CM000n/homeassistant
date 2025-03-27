@@ -1,0 +1,75 @@
+---
+# https://www.home-assistant.io/integrations/sql/
+sql:
+  - name: "Recorder database size"
+    unique_id: "8b208c35ffc640d294784ff169a799aa"
+    unit_of_measurement: "MB"
+    device_class: data_size
+    db_url: !secret "db_url"
+    query: >
+      SELECT (pg_database_size('ha_recorder')/1024/1024) as db_size;
+    column: "db_size"
+  - name: "Photovoltaik production daily"
+    unique_id: 0c73c8e5-2145-4362-9fc0-289a4ca71804
+    unit_of_measurement: "kWh"
+    device_class: energy
+    db_url: !secret "db_url"
+    query: >
+      SELECT
+        COALESCE(max(statistics.sum) - min(statistics.sum),0) AS v1
+      FROM statistics
+      INNER JOIN statistics_meta
+        ON statistics.metadata_id = statistics_meta.id
+      WHERE
+        statistics_meta.statistic_id = 'sensor.apsystems_garagenpower_lifetime_production'
+        AND to_timestamp(start_ts) >= date_trunc('day', CURRENT_DATE)
+        AND to_timestamp(start_ts) <= date_trunc('day', CURRENT_DATE) + interval '1 day'
+    column: "v1"
+  - name: "Photovoltaik production yearly"
+    unique_id: 2699d155-2ad9-4ae8-97c6-14e8aeba9e6b
+    unit_of_measurement: "kWh"
+    device_class: energy
+    db_url: !secret "db_url"
+    query: >
+      SELECT
+        COALESCE(max(statistics.sum) - min(statistics.sum),0) AS v1
+      FROM statistics
+      INNER JOIN statistics_meta
+        ON statistics.metadata_id = statistics_meta.id
+      WHERE
+        statistics_meta.statistic_id = 'sensor.apsystems_garagenpower_lifetime_production'
+        AND to_timestamp(start_ts) >= date_trunc('year', CURRENT_DATE)
+        AND to_timestamp(start_ts) <= date_trunc('year', CURRENT_DATE) + interval '1 year'
+    column: "v1"
+  - name: "Electricity meter energy consumption daily"
+    unique_id: ae7f9bf9-2be2-4a8b-8fd6-0a3a1a5a60bd
+    unit_of_measurement: "kWh"
+    device_class: energy
+    db_url: !secret "db_url"
+    query: >
+      SELECT
+        max(statistics.sum) - min(statistics.sum) AS v1
+      FROM statistics
+      INNER JOIN statistics_meta
+        ON statistics.metadata_id = statistics_meta.id
+      WHERE
+        statistics_meta.statistic_id = 'sensor.esp_01s_stromzaehler_total_energy_in'
+        AND to_timestamp(start_ts) >= date_trunc('day', CURRENT_DATE)
+        AND to_timestamp(start_ts) <= date_trunc('day', CURRENT_DATE) + interval '1 day'
+    column: "v1"
+  - name: "Electricity meter energy consumption yearly"
+    unique_id: d5e93fc2-06ea-4d29-b90a-546ccfd7f742
+    unit_of_measurement: "kWh"
+    device_class: energy
+    db_url: !secret "db_url"
+    query: >
+      SELECT
+        max(statistics.sum) - min(statistics.sum) AS v1
+      FROM statistics
+      INNER JOIN statistics_meta
+        ON statistics.metadata_id = statistics_meta.id
+      WHERE
+        statistics_meta.statistic_id = 'sensor.esp_01s_stromzaehler_total_energy_in'
+        AND to_timestamp(start_ts) >= date_trunc('year', CURRENT_DATE)
+        AND to_timestamp(start_ts) <= date_trunc('year', CURRENT_DATE) + interval '1 year'
+    column: "v1"

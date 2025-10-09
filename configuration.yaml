@@ -34,54 +34,37 @@ script: !include "scripts.yaml"
 http:
   use_x_forwarded_for: true
   trusted_proxies:
-    - "172.17.0.0/16"
-    - "172.18.0.0/16"
-    - "172.19.0.0/16"
+    - 172.17.0.1
+    - 172.17.0.2
+    - 172.17.0.3
+    - 172.17.0.4
     - 127.0.0.1
     - ::1
 
 # https://www.home-assistant.io/integrations/frontend/
 frontend:
   extra_module_url:
-    - "/hacsfiles/lovelace-card-mod/card-mod.js"
     - "/hacsfiles/hass-hue-icons/hass-hue-icons.js"
+    - "/hacsfiles/material-you-utilities/material-you-utilities.min.js"
   themes: !include_dir_merge_named "themes"
+
+panel_custom:
+  - name: "material-you-panel"
+    url_path: "material-you-configuration"
+    sidebar_title: "Material You Utilities"
+    sidebar_icon: "mdi:material-design"
+    module_url: "/hacsfiles/material-you-utilities/material-you-utilities.min.js"
 
 # https://www.home-assistant.io/lovelace/
 lovelace:
   mode: "yaml"
   resources:
-    - url: "/hacsfiles/button-card/button-card.js"
-      type: "module"
-    - url: "/hacsfiles/my-cards/my-cards.js"
-      type: "module"
     - url: "/hacsfiles/lovelace-valetudo-map-card/valetudo-map-card.js"
       type: "module"
-    - url: "/hacsfiles/mini-media-player/mini-media-player-bundle.js"
+    - url: "/hacsfiles/material-you-utilities/material-you-utilities.min.js"
       type: "module"
-    - url: "/hacsfiles/decluttering-card/decluttering-card.js"
-      type: "module"
-    - url: "/hacsfiles/apexcharts-card/apexcharts-card.js"
-      type: "module"
-    - url: "https://fonts.googleapis.com/css?family=Google+Sans:100,300,400,500,700,900,100i,300i,400i,500i,700i,900i"
+    - url: "https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
       type: "css"
-    - url: "/hacsfiles/lovelace-layout-card/layout-card.js"
-      type: "module"
-    - url: "/hacsfiles/bar-card/bar-card.js"
-      type: "module"
-    - url: "/hacsfiles/lovelace-mushroom/mushroom.js"
-      type: "module"
-    - url: "/hacsfiles/stack-in-card/stack-in-card.js"
-      type: "module"
-    - url: "/hacsfiles/power-flow-card-plus/power-flow-card-plus.js"
-      type: "module"
-  dashboards:
-    lovelace-rounded:
-      mode: "yaml"
-      title: "Rounded"
-      icon: "mdi:square-rounded-outline"
-      show_in_sidebar: true
-      filename: "dashboard/rounded/main.yaml"
 
 # https://home-assistant.io/docs/ha_configuration/splitting_ha_configuration/
 google_assistant: !include "google_assistant/google_assistant.yaml"

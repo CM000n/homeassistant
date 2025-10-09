@@ -1,7 +1,62 @@
 ---
 # https://www.home-assistant.io/integrations/template/
 template:
+  # https://community.home-assistant.io/t/days-until-x-sensors-based-on-single-local-calendar/651560/4
+  - trigger:
+      - platform: time_pattern
+        hours: 1
+      - platform: homeassistant
+        event: start
+    action:
+      - service: calendar.get_events
+        data:
+          start_date_time: "{{today_at()}}"
+          duration:
+            days: 365
+        target:
+          entity_id: calendar.abfuhrtermine
+        response_variable: agenda
+    sensor:
+      - name: "Tage bis Restabfallabholung"
+        unique_id: "8dad7e31-30bd-4f9d-90a5-292d22d5f3fa"
+        state: >
+          {% set midnight = today_at() %}
+          {% set event = agenda["calendar.abfuhrtermine"].events | selectattr('summary', 'contains', 'Restabfall')
+          | map(attribute='start') | map('as_datetime') | first %}
+          {% set delta = (event | as_local - midnight).days %}
+          {{ delta }}
+        unit_of_measurement: "Tage"
+        icon: mdi:trash-can-outline
+      - name: "Tage bis Wertstoffabholung"
+        unique_id: "0f03263a-f45f-46fd-a25d-f09673da702b"
+        state: >
+          {% set midnight = today_at() %}
+          {% set event = agenda["calendar.abfuhrtermine"].events | selectattr('summary', 'contains', 'Wertstoff')
+          | map(attribute='start') | map('as_datetime') | first %}
+          {% set delta = (event | as_local - midnight).days %}
+          {{ delta }}
+        unit_of_measurement: "Tage"
+        icon: mdi:recycle
+      - name: "Tage bis Mobile Schadstoffsammlung"
+        unique_id: "351d3882-2f87-4743-a678-26614e3e2d27"
+        state: >
+          {% set midnight = today_at() %}
+          {% set event = agenda["calendar.abfuhrtermine"].events | selectattr('summary', 'contains', 'Schadstoffsammlung')
+          | map(attribute='start') | map('as_datetime') | first %}
+          {% set delta = (event | as_local - midnight).days %}
+          {{ delta }}
+        unit_of_measurement: "Tage"
+        icon: mdi:biohazard
+
   - sensor:
+      - name: "Nächster Bus nach Münzesheim"
+        unique_id: "f0dbc9f5-ed89-4c63-bada-f865282b6e1f"
+        icon: mdi:bus-clock
+        unit_of_measurement: "min"
+        device_class: "duration"
+        state_class: "measurement"
+        state: >-
+          {{ state_attr("sensor.oberacker_rathaus_kraichtal_departures_via_munzesheim_bahnhof_kraicht", "next_departures")[0]['countdown'] | int }}
       - name: "weather_temperature"
         unique_id: "a52ce6ac-05eb-11ee-be56-0242ac120002"
         unit_of_measurement: "°C"
@@ -172,9 +227,9 @@ template:
         unique_id: "bfdf3460b1d511edaeb2af87d8ff0b2f"
         state: >-
           {% if is_state('switch.shelly_1pm_bad_deckenlampe', "on") %}
-            {{ float(states('sensor.shelly_1pm_bad_spiegellampe_temperature'), 0) -25 }}
+            {{ float(states('sensor.shelly_1pm_bad_deckenlampe_temperature'), 0) -25 }}
           {% else %}
-            {{ float(states('sensor.shelly_1pm_bad_spiegellampe_temperature'), 0) -20 }}
+            {{ float(states('sensor.shelly_1pm_bad_deckenlampe_temperature'), 0) -20 }}
           {% endif %}
         unit_of_measurement: "°C"
         device_class: "temperature"

@@ -4,7 +4,7 @@ Rounded:
   ############### Default global variables ###############
   ########################################################
   # font
-  primary-font-family: "Google Sans"
+  #primary-font-family: "Google Sans"
   paper-font-common-base_-_font-family: "var(--primary-font-family)"
   paper-font-common-code_-_font-family: "var(--primary-font-family)"
   paper-font-body1_-_font-family: "var(--primary-font-family)"
@@ -237,72 +237,72 @@ Rounded:
       contrast1-RGB: "255,255,255"
 
   card-mod-theme: "Rounded"
-  card-mod-view-yaml: |
-    hui-masonry-view:
-      $: |
-        /* Swipecard full width on mobile */
-        @media screen and (max-width: 599px) {
-          #columns .column swipe-card {
-            margin-left: -4px;
-            margin-right: -4px;
-          }
-        }
-  card-mod-card-yaml: |
-    .: |
-      /* General changes */
-      ha-card {
-        transition: none !important;
-        font-family: 'hk nova semibold', 'Google Sans', 'Noto', sans-serif !important;
-      }
-      /* Vacuum card load transition disabled */
-      .type-custom-xiaomi-vacuum-map-card {
-        transition: none !important;
-      }
-      /* Graph card style */
-      .graph {
-        background: var(--blue-tint);
-        display: flex;
-        overflow: hidden; /* Temporary fix for graph overflow bug */
-      }
-      .graph .name {
-        font-size: 12px;
-        line-height: 18px;
-        background: var(--black);
-        color: var(--white);
-        padding: 6px 10px;
-        border-radius: 100px;
-        z-index: 1;
-      }
-      .graph .icon {
-        display: none;
-      }
-      .graph .info {
-        margin-top: 0;
-        padding: 24px 24px 0 24px;
-        order: 1;
-      }
-      .graph hui-graph-header-footer {
-        order: 3;
-      }
-      .graph .footer {
-        order: 3;
-      }
-      .graph .header {
-        padding: 0 24px;
-        order: 2;
-        margin: 4px 0 -16px 0;
-        z-index: 1;
-      }
-      /* Entities card style */
-      .type-entities {
-        background: none;
-      }
-      .type-entities .card-header {
-        padding: 0 0 12px 0;
-      }
-      .type-entities .card-content {
-        padding: 0;
-      }
+  #  card-mod-view-yaml: |
+  #    hui-masonry-view:
+  #      $: |
+  #        /* Swipecard full width on mobile */
+  #        @media screen and (max-width: 599px) {
+  #          #columns .column swipe-card {
+  #            margin-left: -4px;
+  #            margin-right: -4px;
+  #          }
+  #        }
+  #  card-mod-card-yaml: |
+  #    .: |
+  #      /* General changes */
+  #      ha-card {
+  #        transition: none !important;
+  #        font-family: 'hk nova semibold', 'Noto', sans-serif !important;
+  #      }
+  #      /* Vacuum card load transition disabled */
+  #      .type-custom-xiaomi-vacuum-map-card {
+  #        transition: none !important;
+  #      }
+  #      /* Graph card style */
+  #      .graph {
+  #        background: var(--blue-tint);
+  #        display: flex;
+  #        overflow: hidden; /* Temporary fix for graph overflow bug */
+  #      }
+  #      .graph .name {
+  #        font-size: 12px;
+  #        line-height: 18px;
+  #        background: var(--black);
+  #        color: var(--white);
+  #        padding: 6px 10px;
+  #        border-radius: 100px;
+  #        z-index: 1;
+  #      }
+  #      .graph .icon {
+  #        display: none;
+  #      }
+  #      .graph .info {
+  #        margin-top: 0;
+  #        padding: 24px 24px 0 24px;
+  #        order: 1;
+  #      }
+  #      .graph hui-graph-header-footer {
+  #        order: 3;
+  #      }
+  #      .graph .footer {
+  #        order: 3;
+  #      }
+  #      .graph .header {
+  #        padding: 0 24px;
+  #        order: 2;
+  #        margin: 4px 0 -16px 0;
+  #        z-index: 1;
+  #      }
+  #      /* Entities card style */
+  #      .type-entities {
+  #        background: none;
+  #      }
+  #      .type-entities .card-header {
+  #        padding: 0 0 12px 0;
+  #      }
+  #      .type-entities .card-content {
+  #        padding: 0;
+  #      }
   card-mod-root-yaml: |
     .: |
       /* ___________ Bottom tabbar ___________  */
@@ -339,11 +339,12 @@ Rounded:
       ha-menu-button, ha-button-menu {
         color: var(--contrast10);
       }
-  card-mod-row: |
-    /* Entities card row style */
-    :host {
-        display: block;
-        background: var(--contrast2);
-        border-radius: 24px;
-        padding: 6px 12px 6px 6px;
-    }
+
+#  card-mod-row: |
+#    /* Entities card row style */
+#    :host {
+#        display: block;
+#        background: var(--contrast2);
+#        border-radius: 24px;
+#        padding: 6px 12px 6px 6px;
+#    }

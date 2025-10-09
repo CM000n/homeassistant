@@ -63,6 +63,8 @@ havenv
 venv
 .venv
 .HA_VERSION
+known_hosts
+.ha_run_lock
 
 # Log files
 home-assistant.log
@@ -74,5 +76,3 @@ custom_components/
 .pre-commit-config.yaml
 .prettierrc.yaml
 .yamllint
-
-# End of https://mrkandreev.name/snippets/gitignore-generator/#HomeAssistant

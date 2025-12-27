@@ -63,6 +63,8 @@ lovelace:
       type: "module"
     - url: "/hacsfiles/material-you-utilities/material-you-utilities.min.js"
       type: "module"
+    - url: "/hacsfiles/ha-map-card/map-card.js"
+      type: "module"
     - url: "https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
       type: "css"
 

@@ -172,3 +172,10 @@ vacuum_repetitions:
           target:
             entity_id: input_number.general_robot_vacuum_cleaner_zone_repetitions
   mode: single
+erhalte_wettervorhersagen:
+  use_blueprint:
+    path: 3_voice_weather_forecast_full_llm.yaml
+    input:
+      weather_entity: weather.kraichtal_gochsheim
+  alias: Erhalte Wettervorhersagen
+  description: ""

@@ -1,6 +1,21 @@
 ---
 # https://www.home-assistant.io/integrations/template/
 template:
+  - fan:
+      - turn_on:
+          - entity_id:
+              - switch.lisi_nous_a1t_smartplug_1_switch
+            action: switch.turn_on
+        turn_off:
+          - entity_id:
+              - switch.lisi_nous_a1t_smartplug_1_switch
+            action: switch.turn_off
+        default_entity_id: fan.wohnzimmer
+        name: Ventilator
+        state:
+          "{{ 'off' if is_state('switch.lisi_nous_a1t_smartplug_1_switch', 'unavailable')
+          else states('switch.lisi_nous_a1t_smartplug_1_switch') }}"
+
   # https://community.home-assistant.io/t/days-until-x-sensors-based-on-single-local-calendar/651560/4
   - trigger:
       - platform: time_pattern
@@ -214,10 +229,25 @@ template:
         state_class: "total_increasing"
 
       # Other Templates
+      #- name: "current_lights_on"
+      #  unique_id: "b7372bb0b1d511edaeb2af87d8ff0b2f"
+      #  state: >-
+      #    {{ states.light | selectattr('state', 'eq', 'on') | rejectattr('attributes.is_hue_group', 'eq', true) | list | count }}
       - name: "current_lights_on"
         unique_id: "b7372bb0b1d511edaeb2af87d8ff0b2f"
+        icon: mdi:lightbulb-group
+        state: "{{ expand('light.all_lights') | selectattr('state','eq','on') | list | count }}"
+        attributes:
+          Lichter: >-
+            {% set entities = expand('light.all_lights') | selectattr('state','eq','on') | map(attribute='name') | list | join(', ') %}
+            {%- for s in entities -%}
+            {{ s }}
+            {%- endfor %}
+
+      - name: "current_mediaplayers_playing"
+        unique_id: "eb5346f4-7eda-4e0a-8aaf-b804d23a3ee5"
         state: >-
-          {{ states.light | selectattr('state', 'eq', 'on') | rejectattr('attributes.is_hue_group', 'eq', true) | list | count }}
+          {{ states.media_player | selectattr('state', 'eq', 'playing') | list | count }}
       - name: "dayoftheweek"
         unique_id: "bc10ee50b1d511ed90171b0f7a30ae2f"
         state: >-

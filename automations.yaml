@@ -81,19 +81,19 @@
               state: "on"
               entity_id: switch.shelly_1pm_bad_deckenlampe
           sequence:
-            - action: switch.turn_on
-              target:
-                entity_id: switch.shelly_1_e8db84d66665_relay_0
+            - action: light.turn_on
               data: {}
+              target:
+                entity_id: light.lisi_shelly_1pm_bad_spiegellampe
         - conditions:
             - condition: state
               state: "off"
               entity_id: switch.shelly_1pm_bad_deckenlampe
           sequence:
-            - action: switch.turn_off
-              target:
-                entity_id: switch.shelly_1_e8db84d66665_relay_0
+            - action: light.turn_off
               data: {}
+              target:
+                entity_id: light.lisi_shelly_1pm_bad_spiegellampe
   mode: single
 - id: "1676049396181"
   alias: "Schalter - Notaus Steckdose Büro Tür "
@@ -266,11 +266,11 @@
   description: ""
   triggers:
     - event: sunrise
-      offset: 00:30:00
+      offset: 00:55:00
       id: "Sonnenaufgang "
       trigger: sun
     - event: sunset
-      offset: -00:55:00
+      offset: -01:55:00
       id: "Sonnenuntergang "
       trigger: sun
   conditions: []
@@ -336,7 +336,7 @@
   conditions: []
   actions:
     - data:
-        volume_level: 0.4
+        volume_level: 0.35
       action: media_player.volume_set
       target:
         entity_id: media_player.homemini_wohnzimmer
@@ -434,3 +434,46 @@
       data:
         topic: "{{ trigger.payload_json.result.mqtt.topic_prefix }}/command"
         payload: status_update
+- id: "1760816151586"
+  alias: Beleuchtung - Reset Adaptive Lightnings
+  description: ""
+  triggers:
+    - trigger: time
+      at: 04:30:00
+  conditions: []
+  actions:
+    - action: switch.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id:
+          - switch.adaptive_lighting_adapt_brightness_kaltweiss
+          - switch.adaptive_lighting_adapt_color_kaltweiss
+          - switch.adaptive_lighting_kaltweiss
+          - switch.adaptive_lighting_adapt_brightness_schlafzimmer
+          - switch.adaptive_lighting_adapt_color_schlafzimmer
+          - switch.adaptive_lighting_schlafzimmer
+          - switch.adaptive_lighting_adapt_brightness_warmweiss
+          - switch.adaptive_lighting_adapt_color_warmweiss
+          - switch.adaptive_lighting_warmweiss
+          - switch.adaptive_lighting_adapt_brightness_wohnzimmer
+          - switch.adaptive_lighting_adapt_color_wohnzimmer
+          - switch.adaptive_lighting_wohnzimmer
+    - action: switch.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id:
+          - switch.adaptive_lighting_adapt_brightness_kaltweiss
+          - switch.adaptive_lighting_adapt_color_kaltweiss
+          - switch.adaptive_lighting_kaltweiss
+          - switch.adaptive_lighting_adapt_brightness_schlafzimmer
+          - switch.adaptive_lighting_adapt_color_schlafzimmer
+          - switch.adaptive_lighting_schlafzimmer
+          - switch.adaptive_lighting_adapt_brightness_warmweiss
+          - switch.adaptive_lighting_adapt_color_warmweiss
+          - switch.adaptive_lighting_warmweiss
+          - switch.adaptive_lighting_adapt_brightness_wohnzimmer
+          - switch.adaptive_lighting_adapt_color_wohnzimmer
+          - switch.adaptive_lighting_wohnzimmer
+  mode: single

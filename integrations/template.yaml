@@ -361,4 +361,4 @@ template:
               ('Spiegel Bad', states('sensor.spiegellampe_bad_an_jahr') | float(0)),
               ('Treppenhaus', states('sensor.wandlampen_treppenhaus_an_jahr') | float(0))
             ] %}
-            {{ sensors | sort(attribute='1', reverse=true) | list[:3] }}
+            {{ (sensors | sort(attribute='1', reverse=true))[:3] }}

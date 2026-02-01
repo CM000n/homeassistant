@@ -1,44 +1,36 @@
+# TODO: notify.mobile_app_pixel_7a existiert nicht mehr - neues Gerät einrichten
 ring_simon_phone:
   alias: Simon Handy klingeln lassen
   sequence:
-    - service: notify.mobile_app_pixel_7a
+    - action: persistent_notification.create
       data:
         title: Home Assistant
-        message: Wo bist du? Ich suche dich schon überall!
-        data:
-          ttl: 0
-          importance: high
-          priority: high
-          tag: Find
-          channel: alarm_stream
+        message: "Handy-Suche für Simon angefordert. Bitte notify-Service konfigurieren."
+  mode: single
+# TODO: notify.mobile_app_lisa_note12pro existiert nicht mehr - neues Gerät einrichten
 ring_lisa_phone:
   alias: Lisa Handy klingeln lassen
   sequence:
-    - service: notify.mobile_app_lisa_note12pro
+    - action: persistent_notification.create
       data:
         title: Home Assistant
-        message: Wo bist du? Ich suche dich schon überall!
-        data:
-          ttl: 0
-          importance: high
-          priority: high
-          tag: Find
-          channel: alarm_stream
+        message: "Handy-Suche für Lisa angefordert. Bitte notify-Service konfigurieren."
+  mode: single
 lina_schlafenszeit:
   alias: Lina Schlafenszeit
   icon: mdi:human-baby-changing-table
   sequence:
-    - service: light.turn_off
+    - action: light.turn_off
       data: {}
       target:
         entity_id:
           - light.schlafzimmer_deckenleuchte
           - light.kinderzimmer_deckenleuchte
-    - service: light.turn_on
+    - action: light.turn_on
       data:
         entity_id:
           - light.kinderzimmer_nachttisch
-    - service: media_player.select_source
+    - action: media_player.select_source
       data:
         source: 90 Minutes Womb Sounds (Baby-Einschlafhilfe)
         entity_id: media_player.lisi_sonoszp_schlafzimmer
@@ -46,43 +38,46 @@ lina_schlafenszeit:
 simon_pc_aufwecken:
   alias: Simon PC - Aufwecken
   sequence:
-    - service: wake_on_lan.send_magic_packet
+    - action: wake_on_lan.send_magic_packet
       data:
         mac: 74-D4-35-B0-E5-F7
         broadcast_address: 192.168.178.255
+  mode: single
 simon_pc_herunterfahren:
   alias: Simon PC - Herunterfahren
   sequence:
-    - service: mqtt.publish
+    - action: mqtt.publish
       data:
         topic: iotlink/workgroup/simon-pc/commands/shutdown
         payload: ""
+  mode: single
 sonos_say:
   alias: Sonos TTS script
   sequence:
-    - service: sonos.snapshot
-      data_template:
+    - action: sonos.snapshot
+      data:
         entity_id: "{{ sonos_entity }}"
-    - service: media_player.unjoin
-      data_template:
+    - action: media_player.unjoin
+      data:
         entity_id: "{{ sonos_entity }}"
-    - service: media_player.volume_set
-      data_template:
+    - action: media_player.volume_set
+      data:
         entity_id: "{{ sonos_entity }}"
         volume_level: "{{ volume }}"
-    - service: tts.speak
-      data_template:
+    - action: tts.speak
+      data:
         entity_id: "{{ sonos_entity }}"
         message: "{{ message }}"
     - delay: "{{ delay }}"
-    - service: sonos.restore
-      data_template:
+    - action: sonos.restore
+      data:
         entity_id: "{{ sonos_entity }}"
+  mode: single
 vacuuming_of_selection:
   alias: Vacuuming of selection
   icon: mdi:robot-vacuum
   sequence:
-    - service: script.turn_on
+    - action: script.turn_on
       target:
         entity_id: script.vacuum_clean_segments_message
       data:
@@ -96,7 +91,7 @@ vacuuming_of_selection:
           entity_id: input_boolean.living_room_select_vacuuming
           state: "on"
       then:
-        - service: input_datetime.set_datetime
+        - action: input_datetime.set_datetime
           target:
             entity_id: input_datetime.living_room_last_vacuumed
           data:
@@ -106,7 +101,7 @@ vacuuming_of_selection:
           entity_id: input_boolean.kitchen_select_vacuuming
           state: "on"
       then:
-        - service: input_datetime.set_datetime
+        - action: input_datetime.set_datetime
           target:
             entity_id: input_datetime.kitchen_last_vacuumed
           data:
@@ -116,12 +111,12 @@ vacuuming_of_selection:
           entity_id: input_boolean.floor_select_vacuuming
           state: "on"
       then:
-        - service: input_datetime.set_datetime
+        - action: input_datetime.set_datetime
           target:
             entity_id: input_datetime.hallway_last_vacuumed
           data:
             date: "{{ now().strftime('%Y-%m-%d') }}"
-    - service: input_boolean.turn_off
+    - action: input_boolean.turn_off
       target:
         entity_id:
           - input_boolean.living_room_select_vacuuming
@@ -131,7 +126,7 @@ vacuuming_of_selection:
           - input_boolean.office_select_vacuuming
           - input_boolean.stairs_select_vacuuming
       data: {}
-    - service: input_number.set_value
+    - action: input_number.set_value
       data:
         value: 1
       target:
@@ -140,7 +135,7 @@ vacuuming_of_selection:
 vacuum_clean_segments_message:
   alias: vacuum_clean_segments_message
   sequence:
-    - service: mqtt.publish
+    - action: mqtt.publish
       data:
         topic: valetudo/FalseScrawnyHornet/MapSegmentationCapability/clean/set
         payload_template: '{"segment_ids": {{segments}}, "iterations": {{iterations}}}'
@@ -148,7 +143,7 @@ vacuum_clean_segments_message:
 vacuum_go_to_the_trash_can:
   alias: vacuum_go_to_the_trash_can
   sequence:
-    - service: mqtt.publish
+    - action: mqtt.publish
       data:
         topic: valetudo/FalseScrawnyHornet/GoToLocationCapability/go/set
         payload: '{"coordinates": {"x": 27340, "y": 22120}}'
@@ -161,13 +156,13 @@ vacuum_repetitions:
           entity_id: input_number.general_robot_vacuum_cleaner_zone_repetitions
           above: 2
       then:
-        - service: input_number.set_value
+        - action: input_number.set_value
           data:
             value: 1
           target:
             entity_id: input_number.general_robot_vacuum_cleaner_zone_repetitions
       else:
-        - service: input_number.increment
+        - action: input_number.increment
           data: {}
           target:
             entity_id: input_number.general_robot_vacuum_cleaner_zone_repetitions

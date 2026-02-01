@@ -44,124 +44,104 @@ sensor:
         window_size: "00:08"
         precision: 1
 
-  # https://www.home-assistant.io/components/sensor.history_stats/
+  # ============================================================================
+  # LICHT-STATISTIKEN (history_stats) - Jahres-Statistiken
+  # YAML-Anker für die gemeinsamen Start/End-Zeiten reduzieren Redundanz.
+  # Diese Sensoren nutzen den nativen history_stats Support für optimale
+  # Performance mit dem PostgreSQL Recorder.
+  # ============================================================================
+
+  # Definiere den Jahreszeitraum einmal als Anker
   - platform: "history_stats"
     name: "Deckenlampe Ankleide AN Jahr"
     entity_id: "light.kinderzimmer_deckenleuchte"
     state: "on"
     type: "time"
-    start:
-      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
-      \ }}"
-    end: "{{ now() }}"
+    start: &jahr_start "{{ now().replace(month=1, day=1, hour=0, minute=0, second=0, microsecond=0) }}"
+    end: &jahr_end "{{ now() }}"
+
   - platform: "history_stats"
     name: "Deckenlampe Bad AN Jahr"
     entity_id: "light.shelly_deckenlampe_bad"
     state: "on"
     type: "time"
-    start:
-      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
-      \ }}"
-    end: "{{ now() }}"
+    start: *jahr_start
+    end: *jahr_end
+
   - platform: "history_stats"
     name: "Deckenlampe Büro AN Jahr"
     entity_id: "light.buro_deckenleuchte"
     state: "on"
     type: "time"
-    start:
-      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
-      \ }}"
-    end: "{{ now() }}"
+    start: *jahr_start
+    end: *jahr_end
+
   - platform: "history_stats"
     name: "Deckenlampen Flur AN Jahr"
     entity_id: "light.deckenlampen_flur"
     state: "on"
     type: "time"
-    start:
-      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
-      \ }}"
-    end: "{{ now() }}"
+    start: *jahr_start
+    end: *jahr_end
+
   - platform: "history_stats"
     name: "Deckenlampe Herd AN Jahr"
     entity_id: "light.kuche_herdlampe"
     state: "on"
     type: "time"
-    start:
-      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
-      \ }}"
-    end: "{{ now() }}"
+    start: *jahr_start
+    end: *jahr_end
+
   - platform: "history_stats"
     name: "Deckenlampe Schlafzimmer AN Jahr"
     entity_id: "light.schlafzimmer_deckenleuchte"
     state: "on"
     type: "time"
-    start:
-      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
-      \ }}"
-    end: "{{ now() }}"
+    start: *jahr_start
+    end: *jahr_end
+
   - platform: "history_stats"
     name: "Deckenlampe Wohnzimmer AN Jahr"
     entity_id: "light.wohnzimmer_deckenleuchte"
     state: "on"
     type: "time"
-    start:
-      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
-      \ }}"
-    end: "{{ now() }}"
+    start: *jahr_start
+    end: *jahr_end
+
   - platform: "history_stats"
     name: "Lightstrip Wohnzimmer AN Jahr"
     entity_id: "light.wohnzimmer_lightstrip"
     state: "on"
     type: "time"
-    start:
-      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
-      \ }}"
-    end: "{{ now() }}"
+    start: *jahr_start
+    end: *jahr_end
+
   - platform: "history_stats"
     name: "Nachttischlampe Lisa AN Jahr"
     entity_id: "light.schlafzimmer_wickeltisch"
     state: "on"
     type: "time"
-    start:
-      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
-      \ }}"
-    end: "{{ now() }}"
-  - platform: "history_stats"
-    name: "Nachttischlampe Simon AN Jahr"
-    entity_id: "light.schlafzimmer_nachttisch_simon"
-    state: "on"
-    type: "time"
-    start:
-      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
-      \ }}"
-    end: "{{ now() }}"
-  - platform: "history_stats"
-    name: "Schreibtischlampe Lisa AN Jahr"
-    entity_id: "light.nahtisch"
-    state: "on"
-    type: "time"
-    start:
-      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
-      \ }}"
-    end: "{{ now() }}"
+    start: *jahr_start
+    end: *jahr_end
+
   - platform: "history_stats"
     name: "Spiegellampe Bad AN Jahr"
     entity_id: "light.shelly_badspiegel"
     state: "on"
     type: "time"
-    start:
-      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
-      \ }}"
-    end: "{{ now() }}"
+    start: *jahr_start
+    end: *jahr_end
+
   - platform: "history_stats"
     name: "Wandlampen Treppenhaus AN Jahr"
     entity_id: "light.wandlampen_treppenhaus"
     state: "on"
     type: "time"
-    start:
-      "{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0)\
-      \ }}"
-    end: "{{ now() }}"
+    start: *jahr_start
+    end: *jahr_end
+
+  # https://www.home-assistant.io/components/sensor.history_stats/
+  # Arbeitszeit-Tracking (diese bleiben als history_stats da sie unterschiedliche Logik haben)
   - platform: "history_stats"
     name: "Auf der Arbeit heute"
     entity_id: "person.simon"
@@ -178,22 +158,23 @@ sensor:
       "{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0)\
       \ ) - now().weekday() * 86400 }}"
     end: "{{ now() }}"
-  - platform: "history_stats"
-    name: "Im Homeoffice heute"
-    entity_id: "device_tracker.dm_pf2l2j0l"
-    state: "home"
-    type: "time"
-    start: "{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}"
-    end: "{{ now() }}"
-  - platform: "history_stats"
-    name: "Im Homeoffice diese Woche"
-    entity_id: "device_tracker.dm_pf2l2j0l"
-    state: "home"
-    type: "time"
-    start:
-      "{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0)\
-      \ ) - now().weekday() * 86400 }}"
-    end: "{{ now() }}"
+  # DEAKTIVIERT: device_tracker.dm_pf2l2j0l existiert nicht mehr
+  # - platform: "history_stats"
+  #   name: "Im Homeoffice heute"
+  #   entity_id: "device_tracker.dm_pf2l2j0l"
+  #   state: "home"
+  #   type: "time"
+  #   start: "{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}"
+  #   end: "{{ now() }}"
+  # - platform: "history_stats"
+  #   name: "Im Homeoffice diese Woche"
+  #   entity_id: "device_tracker.dm_pf2l2j0l"
+  #   state: "home"
+  #   type: "time"
+  #   start:
+  #     "{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0)\
+  #     \ ) - now().weekday() * 86400 }}"
+  #   end: "{{ now() }}"
   - platform: "history_stats"
     name: "Simon zu Hause"
     entity_id: "person.simon"

@@ -12,12 +12,13 @@ utility_meter:
     name: "Gasverbrauch kWh jährlich"
     delta_values: false
     cycle: "yearly"
-  shelly_1pm_buero_ecke_yearly_energy:
-    unique_id: "0fb67b8eaf22476ea9b4c4d520f8218a"
-    source: "sensor.shelly_1pm_buero_ecke_daily_energy"
-    name: "Büro Ecke Stromverbrauch jährlich"
-    delta_values: false
-    cycle: "yearly"
+  # DEAKTIVIERT: sensor.shelly_1pm_buero_ecke_daily_energy existiert nicht mehr
+  # shelly_1pm_buero_ecke_yearly_energy:
+  #   unique_id: "0fb67b8eaf22476ea9b4c4d520f8218a"
+  #   source: "sensor.shelly_1pm_buero_ecke_daily_energy"
+  #   name: "Büro Ecke Stromverbrauch jährlich"
+  #   delta_values: false
+  #   cycle: "yearly"
   shelly_1pm_buero_tuer_yearly_energy:
     unique_id: "ad33f4276e5e43da9534211253ad5708"
     source: "sensor.shelly_1pm_buero_tuer_daily_energy"

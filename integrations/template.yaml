@@ -78,38 +78,39 @@ template:
         device_class: "temperature"
         state_class: "measurement"
         state: >-
-          {{ state_attr("weather.forecast_home", "temperature") }}
+          {{ state_attr("weather.kraichtal_gochsheim", "temperature") }}
       - name: "weather_humidity"
         unique_id: "7eb821d0-05eb-11ee-be56-0242ac120002"
         unit_of_measurement: "%"
         device_class: "humidity"
         state_class: "measurement"
         state: >-
-          {{ state_attr("weather.forecast_home", "humidity") }}
+          {{ state_attr("weather.kraichtal_gochsheim", "humidity") }}
       - name: "weather_pressure"
         unique_id: "421bc286-05eb-11ee-be56-0242ac120002"
         unit_of_measurement: "hPa"
         device_class: "pressure"
         state_class: "measurement"
         state: >-
-          {{ state_attr("weather.forecast_home", "pressure") }}
+          {{ state_attr("weather.kraichtal_gochsheim", "pressure") }}
       - name: "weather_wind_bearing"
         unique_id: "10e228f4-05eb-11ee-be56-0242ac120002"
         unit_of_measurement: "°"
         state_class: "measurement"
         state: >-
-          {{ state_attr("weather.forecast_home", "wind_bearing") }}
+          {{ state_attr("weather.kraichtal_gochsheim", "wind_bearing") }}
       - name: "weather_wind_speed"
         unique_id: "bfacce08-05ea-11ee-be56-0242ac120002"
         unit_of_measurement: "m/s"
         device_class: "speed"
         state_class: "measurement"
         state: >-
-          {{ state_attr("weather.forecast_home", "wind_speed") }}
-      - name: "adaptive_lighting_adaptives_licht_rgb_color"
-        unique_id: "60ecda42-bbbc-448a-82cf-61a774c0462e"
-        state: >-
-          {{ state_attr("switch.adaptive_lighting_adaptives_licht", "rgb_color") }}
+          {{ state_attr("weather.kraichtal_gochsheim", "wind_speed") }}
+      # DEAKTIVIERT: switch.adaptive_lighting_adaptives_licht existiert nicht mehr
+      # - name: "adaptive_lighting_adaptives_licht_rgb_color"
+      #   unique_id: "60ecda42-bbbc-448a-82cf-61a774c0462e"
+      #   state: >-
+      #     {{ state_attr("switch.adaptive_lighting_adaptives_licht", "rgb_color") }}
       # https://community.home-assistant.io/t/viessmann-component/77873/760
       - name: "viessman_gasverbrauch_m3"
         unique_id: "1713d700b1d511edaeb2af87d8ff0b2f"
@@ -312,3 +313,52 @@ template:
         state: "{{ trigger.to_state.state }}"
         device_class: energy
         unit_of_measurement: "kWh"
+
+  # ============================================================================
+  # LICHT NUTZUNGSSTATISTIKEN (Jahres-Statistiken)
+  # Konsolidierte Konfiguration - Lichter sind in einer Liste definiert
+  # und können einfach erweitert werden.
+  #
+  # HINWEIS: history_stats Sensoren bleiben die beste Lösung für diese
+  # Art von Statistiken, da sie direkt vom Recorder unterstützt werden.
+  # Die Sensoren wurden in sensor.yaml -> integrations/sensor.yaml belassen,
+  # aber mit besserer Dokumentation versehen.
+  #
+  # Alternativ: Für eine Dashboard-Übersicht aller Lichter:
+  # ============================================================================
+  - sensor:
+      - name: "Licht Statistiken Übersicht"
+        unique_id: "light_stats_overview"
+        state: >-
+          {% set lights = [
+            states.sensor.deckenlampe_ankleide_an_jahr,
+            states.sensor.deckenlampe_bad_an_jahr,
+            states.sensor.deckenlampe_buro_an_jahr,
+            states.sensor.deckenlampen_flur_an_jahr,
+            states.sensor.deckenlampe_herd_an_jahr,
+            states.sensor.deckenlampe_schlafzimmer_an_jahr,
+            states.sensor.deckenlampe_wohnzimmer_an_jahr,
+            states.sensor.lightstrip_wohnzimmer_an_jahr,
+            states.sensor.nachttischlampe_lisa_an_jahr,
+            states.sensor.spiegellampe_bad_an_jahr,
+            states.sensor.wandlampen_treppenhaus_an_jahr
+          ] | selectattr('state', 'defined') | map(attribute='state') | map('float', 0) | sum | round(1) %}
+          {{ lights }}
+        unit_of_measurement: "h"
+        device_class: "duration"
+        attributes:
+          top_3: >-
+            {% set sensors = [
+              ('Ankleide', states('sensor.deckenlampe_ankleide_an_jahr') | float(0)),
+              ('Bad', states('sensor.deckenlampe_bad_an_jahr') | float(0)),
+              ('Büro', states('sensor.deckenlampe_buro_an_jahr') | float(0)),
+              ('Flur', states('sensor.deckenlampen_flur_an_jahr') | float(0)),
+              ('Herd', states('sensor.deckenlampe_herd_an_jahr') | float(0)),
+              ('Schlafzimmer', states('sensor.deckenlampe_schlafzimmer_an_jahr') | float(0)),
+              ('Wohnzimmer', states('sensor.deckenlampe_wohnzimmer_an_jahr') | float(0)),
+              ('Lightstrip', states('sensor.lightstrip_wohnzimmer_an_jahr') | float(0)),
+              ('Nachttisch Lisa', states('sensor.nachttischlampe_lisa_an_jahr') | float(0)),
+              ('Spiegel Bad', states('sensor.spiegellampe_bad_an_jahr') | float(0)),
+              ('Treppenhaus', states('sensor.wandlampen_treppenhaus_an_jahr') | float(0))
+            ] %}
+            {{ sensors | sort(attribute='1', reverse=true) | list[:3] }}

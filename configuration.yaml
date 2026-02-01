@@ -34,10 +34,7 @@ script: !include "scripts.yaml"
 http:
   use_x_forwarded_for: true
   trusted_proxies:
-    - 172.17.0.1
-    - 172.17.0.2
-    - 172.17.0.3
-    - 172.17.0.4
+    - 172.17.0.0/16 # Docker default bridge network
     - 127.0.0.1
     - ::1
 

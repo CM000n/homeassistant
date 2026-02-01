@@ -1,24 +1,25 @@
-- id: "1676043808975"
-  alias: Benachrichtigung - Geburtstag
-  description:
-    Diese Automatisierung benachrichtigt zweimal am Tag darüber, wenn jemand
-    Geburtstag hat.
-  trigger:
-    - platform: time
-      at: "12:00:00"
-    - platform: time
-      at: "18:00:00"
-  condition:
-    - condition: state
-      entity_id: calendar.geburtstage
-      state: "on"
-  action:
-    - service: notify.notify_simon_mail
-      data:
-        title: Geburtstagserinnerung
-        message: "{{ state_attr('calendar.geburtstage', 'message') }}."
-        target: simon.hoerrle@gmail.com
-  mode: single
+# DEAKTIVIERT: calendar.geburtstage und notify.notify_simon_mail existieren nicht mehr
+# - id: "1676043808975"
+#   alias: Benachrichtigung - Geburtstag
+#   description:
+#     Diese Automatisierung benachrichtigt zweimal am Tag darüber, wenn jemand
+#     Geburtstag hat.
+#   triggers:
+#     - trigger: time
+#       at: "12:00:00"
+#     - trigger: time
+#       at: "18:00:00"
+#   conditions:
+#     - condition: state
+#       entity_id: calendar.geburtstage
+#       state: "on"
+#   actions:
+#     - action: notify.notify_simon_mail
+#       data:
+#         title: Geburtstagserinnerung
+#         message: "{{ state_attr('calendar.geburtstage', 'message') }}."
+#         target: simon.hoerrle@gmail.com
+#   mode: single
 - id: "1676043951838"
   alias: System - Standardtheme bei Start setzen
   description: Stellt das standardmäßig zu verwendende HA Theme bei Systemstart  ein.
@@ -34,14 +35,14 @@
 - id: "1676044297753"
   alias: Beleuchtung - Lichter an wenn anwesend
   description: Schaltet primäre Lichter beim nach Hause kommen wieder an.
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id:
         - group.anwesenheit
       to: home
-  condition: []
-  action:
-    - service: light.turn_on
+  conditions: []
+  actions:
+    - action: light.turn_on
       data: {}
       target:
         entity_id:
@@ -54,17 +55,17 @@
   description:
     Schaltet die komplette Beleuchtung aus wenn alle Personen abwesend
     sind.
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id:
         - group.anwesenheit
       from: home
-  condition: []
-  action:
-    - service: light.turn_off
+  conditions: []
+  actions:
+    - action: light.turn_off
       data: {}
       target:
-        entity_id: light.gruppe_alle
+        entity_id: light.all_lights
   mode: single
 - id: "1676044763396"
   alias: Beleuchtung - Bad Spiegellampe schalten
@@ -96,37 +97,37 @@
                 entity_id: light.lisi_shelly_1pm_bad_spiegellampe
   mode: single
 - id: "1676049396181"
-  alias: "Schalter - Notaus Steckdose Büro Tür "
+  alias: "Schalter - Notaus Steckdose Büro Tür"
   description:
     Schaltet die Steckdose an der Tür im Büro aus, wenn die durchschnittliche
     Last der letzten 30 Minuten über einem Grenzwert lag.
-  trigger:
-    - platform: numeric_state
+  triggers:
+    - trigger: numeric_state
       entity_id: sensor.shelly_1pm_buero_tuer_power_mean_over_last_30_minutes
       above: 300
-  condition: []
-  action:
-    - service: switch.turn_off
+  conditions: []
+  actions:
+    - action: switch.turn_off
       data: {}
       target:
         entity_id: switch.shelly_1pm_buero_tuer
-    - service: notify.mobile_app_pixel_7a
+    # TODO: Benachrichtigung hinzufügen wenn neues Gerät eingerichtet
+    - action: persistent_notification.create
       data:
         title: Steckdose Büro Tür
         message: Notaus aktiviert!
-        target: simon.hoerrle@gmail.com
   mode: single
 - id: "1676055784332"
   alias: Media - Sonos System zurücksetzen
   description:
     Setzt das komplette Sonos Sytem jede Nacht auf einige Standard Einstellungen
     zurück.
-  trigger:
-    - platform: time
-      at: 04:30:00
-  condition: []
-  action:
-    - service: media_player.unjoin
+  triggers:
+    - trigger: time
+      at: "04:30:00"
+  conditions: []
+  actions:
+    - action: media_player.unjoin
       data: {}
       target:
         entity_id:
@@ -135,7 +136,7 @@
           - media_player.lisi_sonoszp_schlafzimmer
           - media_player.lisi_sonoszp_wohnzimmer_r
           - media_player.lisi_sonoszp_kueche
-    - service: media_player.clear_playlist
+    - action: media_player.clear_playlist
       data: {}
       target:
         entity_id:
@@ -144,7 +145,7 @@
           - media_player.lisi_sonoszp_wohnzimmer_r
           - media_player.lisi_sonoszp_schlafzimmer
           - media_player.lisi_sonoszp_kueche
-    - service: media_player.volume_set
+    - action: media_player.volume_set
       data:
         volume_level: 0.15
       target:
@@ -161,12 +162,12 @@
     Diese Automatisierung löscht jede Nacht alle Events die älter als 15
     Tage sind aus der Datenbank. Zusätzlich wird die Datenbank komprimiert, um Platz
     einzusparen.
-  trigger:
-    - platform: time
-      at: 04:00:00
-  condition: []
-  action:
-    - service: recorder.purge
+  triggers:
+    - trigger: time
+      at: "04:00:00"
+  conditions: []
+  actions:
+    - action: recorder.purge
       data:
         repack: true
         keep_days: 15
@@ -174,12 +175,12 @@
 - id: "1676056195216"
   alias: System - Create Watchman Report
   description: Generiert jede Nacht einen Watchman Report über verwaiste Config Einträge.
-  trigger:
-    - platform: time
-      at: 04:00:00
-  condition: []
-  action:
-    - service: watchman.report
+  triggers:
+    - trigger: time
+      at: "04:00:00"
+  conditions: []
+  actions:
+    - action: watchman.report
       data:
         create_file: true
         send_notification: false
@@ -189,15 +190,15 @@
 - id: "1676056325991"
   alias: Staubsauger - Werktags reinigen
   description: Startet den Staubsaugroboter an Werktagen.
-  trigger:
-    - platform: time
-      at: 08:30:00
-  condition:
+  triggers:
+    - trigger: time
+      at: "08:30:00"
+  conditions:
     - condition: state
       entity_id: binary_sensor.workday_sensor
       state: "on"
-  action:
-    - service: vacuum.start
+  actions:
+    - action: vacuum.start
       data: {}
       target:
         entity_id: vacuum.valetudo_falsescrawnyhornet
@@ -205,15 +206,15 @@
 - id: "1676056497026"
   alias: Staubsauger - Samstags reinigen
   description: Startet den Staubsauger an Samstagen.
-  trigger:
-    - platform: time
-      at: 09:30:00
-  condition:
-    - condition: state
-      entity_id: sensor.dayoftheweek
-      state: saturday
-  action:
-    - service: vacuum.start
+  triggers:
+    - trigger: time
+      at: "09:30:00"
+  conditions:
+    - condition: time
+      weekday:
+        - sat
+  actions:
+    - action: vacuum.start
       data: {}
       target:
         entity_id: vacuum.valetudo_falsescrawnyhornet
@@ -221,16 +222,16 @@
 - id: "1676056983868"
   alias: System - Messe Strom (HUE)
   description: Messe Strom für verschieden HUE Werte mit Hilfe eines pyscripts.
-  trigger:
-    - platform: webhook
+  triggers:
+    - trigger: webhook
       webhook_id: -8EApbeQ-yPKY0woS4oczY3wa
       allowed_methods:
         - POST
         - PUT
       local_only: true
-  condition: []
-  action:
-    - service: pyscript.measure_power_consumption_hs
+  conditions: []
+  actions:
+    - action: pyscript.measure_power_consumption_hs
       data:
         entity_id: light.wohnzimmer_lightstrip
         powermeter: sensor.steckdose_wohnzimmer_leistung
@@ -238,25 +239,25 @@
         bulb: LST002
   mode: single
 - id: "1700085757470"
-  alias: "Schalter - WLAN Gastzugang umschalten "
-  description: ""
-  trigger:
-    - platform: time
-      at: 06:00:00
-    - platform: time
+  alias: "Schalter - WLAN Gastzugang umschalten"
+  description: "Schaltet den WLAN Gastzugang morgens ein und abends aus."
+  triggers:
+    - trigger: time
+      at: "06:00:00"
+    - trigger: time
       at: "23:00:00"
-  condition: []
-  action:
+  conditions: []
+  actions:
     - if:
         - condition: time
           before: "22:59:59"
       then:
-        - service: switch.turn_on
+        - action: switch.turn_on
           data: {}
           target:
             entity_id: switch.fritz_box_6660_cable_wi_fi_goepferich_gastzugang
       else:
-        - service: switch.turn_off
+        - action: switch.turn_off
           data: {}
           target:
             entity_id: switch.fritz_box_6660_cable_wi_fi_goepferich_gastzugang
@@ -301,12 +302,12 @@
 - id: "1718961814697"
   alias: System - Generate README.md
   description: Generiert jede Nacht eine aktualisierte README.md file.
-  trigger:
-    - platform: time
-      at: 01:00:00
-  condition: []
-  action:
-    - service: readme.generate
+  triggers:
+    - trigger: time
+      at: "01:00:00"
+  conditions: []
+  actions:
+    - action: readme.generate
       data: {}
   mode: single
 - id: "1721243999628"
@@ -314,12 +315,12 @@
   description:
     Diese Automatisierung bereinigt jede Nacht veraltete Fritz Box Geräte
     Einträge.
-  trigger:
-    - platform: time
-      at: 03:00:00
-  condition: []
-  action:
-    - service: button.press
+  triggers:
+    - trigger: time
+      at: "03:00:00"
+  conditions: []
+  actions:
+    - action: button.press
       metadata: {}
       data: {}
       target:
@@ -341,24 +342,25 @@
       target:
         entity_id: media_player.homemini_wohnzimmer
   mode: single
-- id: "1734518438391"
-  alias: Beleuchtung - Szene Wohnzimmer setzen
-  description: ""
-  triggers:
-    - trigger: state
-      entity_id:
-        - input_select.light_scene_living_room
-  conditions: []
-  actions:
-    - data_template:
-        entity_id: light.active_light_group_living_room
-        profile:
-          "{{ states.input_select.light_scene_living_room.state | replace('
-          ', '_') | lower | string }}
-
-          "
-      action: light.turn_on
-  mode: single
+# DEAKTIVIERT: light.active_light_group_living_room existiert nicht
+# - id: "1734518438391"
+#   alias: Beleuchtung - Szene Wohnzimmer setzen
+#   description: ""
+#   triggers:
+#     - trigger: state
+#       entity_id:
+#         - input_select.light_scene_living_room
+#   conditions: []
+#   actions:
+#     - data_template:
+#         entity_id: light.active_light_group_living_room
+#         profile:
+#           "{{ states.input_select.light_scene_living_room.state | replace('
+#           ', '_') | lower | string }}
+#
+#           "
+#       action: light.turn_on
+#   mode: single
 - id: shellies_announce
   alias: Shellies Announce
   triggers:

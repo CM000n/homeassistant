@@ -54,7 +54,7 @@ sensor:
   # Definiere den Jahreszeitraum einmal als Anker
   - platform: "history_stats"
     name: "Deckenlampe Ankleide AN Jahr"
-    entity_id: "light.kinderzimmer_deckenleuchte"
+    entity_id: "light.og_kinderzimmer_deckenleuchte"
     state: "on"
     type: "time"
     start: &jahr_start "{{ now().replace(month=1, day=1, hour=0, minute=0, second=0, microsecond=0) }}"
@@ -62,7 +62,7 @@ sensor:
 
   - platform: "history_stats"
     name: "Deckenlampe Bad AN Jahr"
-    entity_id: "light.shelly_deckenlampe_bad"
+    entity_id: "light.og_bad_deckenlampe"
     state: "on"
     type: "time"
     start: *jahr_start
@@ -70,7 +70,7 @@ sensor:
 
   - platform: "history_stats"
     name: "Deckenlampe Büro AN Jahr"
-    entity_id: "light.buro_deckenleuchte"
+    entity_id: "light.og_buro_deckenleuchte"
     state: "on"
     type: "time"
     start: *jahr_start
@@ -78,7 +78,7 @@ sensor:
 
   - platform: "history_stats"
     name: "Deckenlampen Flur AN Jahr"
-    entity_id: "light.deckenlampen_flur"
+    entity_id: "light.og_flur_deckenlampen"
     state: "on"
     type: "time"
     start: *jahr_start
@@ -86,7 +86,7 @@ sensor:
 
   - platform: "history_stats"
     name: "Deckenlampe Herd AN Jahr"
-    entity_id: "light.kuche_herdlampe"
+    entity_id: "light.og_kuche_herdlampe"
     state: "on"
     type: "time"
     start: *jahr_start
@@ -94,7 +94,7 @@ sensor:
 
   - platform: "history_stats"
     name: "Deckenlampe Schlafzimmer AN Jahr"
-    entity_id: "light.schlafzimmer_deckenleuchte"
+    entity_id: "light.og_schlafzimmer_deckenleuchte"
     state: "on"
     type: "time"
     start: *jahr_start
@@ -102,7 +102,7 @@ sensor:
 
   - platform: "history_stats"
     name: "Deckenlampe Wohnzimmer AN Jahr"
-    entity_id: "light.wohnzimmer_deckenleuchte"
+    entity_id: "light.og_wohnzimmer_deckenlampe"
     state: "on"
     type: "time"
     start: *jahr_start
@@ -110,7 +110,7 @@ sensor:
 
   - platform: "history_stats"
     name: "Lightstrip Wohnzimmer AN Jahr"
-    entity_id: "light.wohnzimmer_lightstrip"
+    entity_id: "light.og_wohnzimmer_lightstrip"
     state: "on"
     type: "time"
     start: *jahr_start
@@ -118,7 +118,7 @@ sensor:
 
   - platform: "history_stats"
     name: "Nachttischlampe Lisa AN Jahr"
-    entity_id: "light.schlafzimmer_wickeltisch"
+    entity_id: "light.og_schlafzimmer_wickeltisch"
     state: "on"
     type: "time"
     start: *jahr_start
@@ -126,7 +126,7 @@ sensor:
 
   - platform: "history_stats"
     name: "Spiegellampe Bad AN Jahr"
-    entity_id: "light.shelly_badspiegel"
+    entity_id: "light.og_bad_badspiegel"
     state: "on"
     type: "time"
     start: *jahr_start
@@ -134,7 +134,7 @@ sensor:
 
   - platform: "history_stats"
     name: "Wandlampen Treppenhaus AN Jahr"
-    entity_id: "light.wandlampen_treppenhaus"
+    entity_id: "light.og_treppenhaus_wandlampen"
     state: "on"
     type: "time"
     start: *jahr_start

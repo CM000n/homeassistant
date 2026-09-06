@@ -29,20 +29,12 @@ scene: !include "scenes.yaml"
 # https://www.home-assistant.io/integrations/script/
 script: !include "scripts.yaml"
 
-# https://home-assistant.io/components/http/
-# Note: trusted_proxies must match with the Traefik Proxy Docker Network(s)!
-http:
-  use_x_forwarded_for: true
-  trusted_proxies:
-    - 172.17.0.0/16 # Docker default bridge network
-    - 127.0.0.1
-    - ::1
-
 # https://www.home-assistant.io/integrations/frontend/
 frontend:
   extra_module_url:
     - "/hacsfiles/hass-hue-icons/hass-hue-icons.js"
     - "/hacsfiles/material-you-utilities/material-you-utilities.min.js"
+    - "/local/community/lovelace-card-mod/card-mod.js"
   themes: !include_dir_merge_named "themes"
 
 panel_custom:
@@ -54,16 +46,10 @@ panel_custom:
 
 # https://www.home-assistant.io/lovelace/
 lovelace:
-  mode: "yaml"
-  resources:
-    - url: "/hacsfiles/lovelace-valetudo-map-card/valetudo-map-card.js"
-      type: "module"
-    - url: "/hacsfiles/material-you-utilities/material-you-utilities.min.js"
-      type: "module"
-    - url: "/hacsfiles/ha-map-card/map-card.js"
-      type: "module"
-    - url: "https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
-      type: "css"
 
 # https://home-assistant.io/docs/ha_configuration/splitting_ha_configuration/
 google_assistant: !include "google_assistant/google_assistant.yaml"
+
+# https://www.home-assistant.io/integrations/my
+my:
+

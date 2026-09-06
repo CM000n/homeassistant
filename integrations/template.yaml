@@ -237,10 +237,10 @@ template:
       - name: "current_lights_on"
         unique_id: "b7372bb0b1d511edaeb2af87d8ff0b2f"
         icon: mdi:lightbulb-group
-        state: "{{ expand('light.all_lights') | selectattr('state','eq','on') | list | count }}"
+        state: "{{ expand('light.og_all_lights') | selectattr('state','eq','on') | list | count }}"
         attributes:
           Lichter: >-
-            {% set entities = expand('light.all_lights') | selectattr('state','eq','on') | map(attribute='name') | list | join(', ') %}
+            {% set entities = expand('light.og_all_lights') | selectattr('state','eq','on') | map(attribute='name') | list | join(', ') %}
             {%- for s in entities -%}
             {{ s }}
             {%- endfor %}

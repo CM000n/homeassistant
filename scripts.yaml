@@ -24,12 +24,12 @@ lina_schlafenszeit:
       data: {}
       target:
         entity_id:
-          - light.schlafzimmer_deckenleuchte
-          - light.kinderzimmer_deckenleuchte
+          - light.og_schlafzimmer_deckenleuchte
+          - light.og_kinderzimmer_deckenleuchte
     - action: light.turn_on
       data:
         entity_id:
-          - light.kinderzimmer_nachttisch
+          - light.og_kinderzimmer_nachttisch
     - action: media_player.select_source
       data:
         source: 90 Minutes Womb Sounds (Baby-Einschlafhilfe)

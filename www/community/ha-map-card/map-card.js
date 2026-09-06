@@ -3,7 +3,7 @@
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 function getDefaultExportFromCjs (x) {
-	return x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
 }
 
 var leafletSrc = {exports: {}};
@@ -13,10 +13,10 @@ var leafletSrc = {exports: {}};
  * (c) 2010-2023 Vladimir Agafonkin, (c) 2010-2011 CloudMade
  */
 
-(function (module, exports) {
+(function (module, exports$1) {
 	(function (global, factory) {
-	  factory(exports) ;
-	})(commonjsGlobal, (function (exports) {
+	  factory(exports$1) ;
+	})(commonjsGlobal, (function (exports$1) {
 	  var version = "1.9.4";
 
 	  /*
@@ -14429,92 +14429,92 @@ var leafletSrc = {exports: {}};
 	  Map.TapHold = TapHold;
 	  Map.TouchZoom = TouchZoom;
 
-	  exports.Bounds = Bounds;
-	  exports.Browser = Browser;
-	  exports.CRS = CRS;
-	  exports.Canvas = Canvas;
-	  exports.Circle = Circle;
-	  exports.CircleMarker = CircleMarker;
-	  exports.Class = Class;
-	  exports.Control = Control;
-	  exports.DivIcon = DivIcon;
-	  exports.DivOverlay = DivOverlay;
-	  exports.DomEvent = DomEvent;
-	  exports.DomUtil = DomUtil;
-	  exports.Draggable = Draggable;
-	  exports.Evented = Evented;
-	  exports.FeatureGroup = FeatureGroup;
-	  exports.GeoJSON = GeoJSON;
-	  exports.GridLayer = GridLayer;
-	  exports.Handler = Handler;
-	  exports.Icon = Icon;
-	  exports.ImageOverlay = ImageOverlay;
-	  exports.LatLng = LatLng;
-	  exports.LatLngBounds = LatLngBounds;
-	  exports.Layer = Layer;
-	  exports.LayerGroup = LayerGroup;
-	  exports.LineUtil = LineUtil;
-	  exports.Map = Map;
-	  exports.Marker = Marker;
-	  exports.Mixin = Mixin;
-	  exports.Path = Path;
-	  exports.Point = Point;
-	  exports.PolyUtil = PolyUtil;
-	  exports.Polygon = Polygon;
-	  exports.Polyline = Polyline;
-	  exports.Popup = Popup;
-	  exports.PosAnimation = PosAnimation;
-	  exports.Projection = index;
-	  exports.Rectangle = Rectangle;
-	  exports.Renderer = Renderer;
-	  exports.SVG = SVG;
-	  exports.SVGOverlay = SVGOverlay;
-	  exports.TileLayer = TileLayer;
-	  exports.Tooltip = Tooltip;
-	  exports.Transformation = Transformation;
-	  exports.Util = Util;
-	  exports.VideoOverlay = VideoOverlay;
-	  exports.bind = bind;
-	  exports.bounds = toBounds;
-	  exports.canvas = canvas;
-	  exports.circle = circle;
-	  exports.circleMarker = circleMarker;
-	  exports.control = control;
-	  exports.divIcon = divIcon;
-	  exports.extend = extend;
-	  exports.featureGroup = featureGroup;
-	  exports.geoJSON = geoJSON;
-	  exports.geoJson = geoJson;
-	  exports.gridLayer = gridLayer;
-	  exports.icon = icon;
-	  exports.imageOverlay = imageOverlay;
-	  exports.latLng = toLatLng;
-	  exports.latLngBounds = toLatLngBounds;
-	  exports.layerGroup = layerGroup;
-	  exports.map = createMap;
-	  exports.marker = marker;
-	  exports.point = toPoint;
-	  exports.polygon = polygon;
-	  exports.polyline = polyline;
-	  exports.popup = popup;
-	  exports.rectangle = rectangle;
-	  exports.setOptions = setOptions;
-	  exports.stamp = stamp;
-	  exports.svg = svg;
-	  exports.svgOverlay = svgOverlay;
-	  exports.tileLayer = tileLayer;
-	  exports.tooltip = tooltip;
-	  exports.transformation = toTransformation;
-	  exports.version = version;
-	  exports.videoOverlay = videoOverlay;
+	  exports$1.Bounds = Bounds;
+	  exports$1.Browser = Browser;
+	  exports$1.CRS = CRS;
+	  exports$1.Canvas = Canvas;
+	  exports$1.Circle = Circle;
+	  exports$1.CircleMarker = CircleMarker;
+	  exports$1.Class = Class;
+	  exports$1.Control = Control;
+	  exports$1.DivIcon = DivIcon;
+	  exports$1.DivOverlay = DivOverlay;
+	  exports$1.DomEvent = DomEvent;
+	  exports$1.DomUtil = DomUtil;
+	  exports$1.Draggable = Draggable;
+	  exports$1.Evented = Evented;
+	  exports$1.FeatureGroup = FeatureGroup;
+	  exports$1.GeoJSON = GeoJSON;
+	  exports$1.GridLayer = GridLayer;
+	  exports$1.Handler = Handler;
+	  exports$1.Icon = Icon;
+	  exports$1.ImageOverlay = ImageOverlay;
+	  exports$1.LatLng = LatLng;
+	  exports$1.LatLngBounds = LatLngBounds;
+	  exports$1.Layer = Layer;
+	  exports$1.LayerGroup = LayerGroup;
+	  exports$1.LineUtil = LineUtil;
+	  exports$1.Map = Map;
+	  exports$1.Marker = Marker;
+	  exports$1.Mixin = Mixin;
+	  exports$1.Path = Path;
+	  exports$1.Point = Point;
+	  exports$1.PolyUtil = PolyUtil;
+	  exports$1.Polygon = Polygon;
+	  exports$1.Polyline = Polyline;
+	  exports$1.Popup = Popup;
+	  exports$1.PosAnimation = PosAnimation;
+	  exports$1.Projection = index;
+	  exports$1.Rectangle = Rectangle;
+	  exports$1.Renderer = Renderer;
+	  exports$1.SVG = SVG;
+	  exports$1.SVGOverlay = SVGOverlay;
+	  exports$1.TileLayer = TileLayer;
+	  exports$1.Tooltip = Tooltip;
+	  exports$1.Transformation = Transformation;
+	  exports$1.Util = Util;
+	  exports$1.VideoOverlay = VideoOverlay;
+	  exports$1.bind = bind;
+	  exports$1.bounds = toBounds;
+	  exports$1.canvas = canvas;
+	  exports$1.circle = circle;
+	  exports$1.circleMarker = circleMarker;
+	  exports$1.control = control;
+	  exports$1.divIcon = divIcon;
+	  exports$1.extend = extend;
+	  exports$1.featureGroup = featureGroup;
+	  exports$1.geoJSON = geoJSON;
+	  exports$1.geoJson = geoJson;
+	  exports$1.gridLayer = gridLayer;
+	  exports$1.icon = icon;
+	  exports$1.imageOverlay = imageOverlay;
+	  exports$1.latLng = toLatLng;
+	  exports$1.latLngBounds = toLatLngBounds;
+	  exports$1.layerGroup = layerGroup;
+	  exports$1.map = createMap;
+	  exports$1.marker = marker;
+	  exports$1.point = toPoint;
+	  exports$1.polygon = polygon;
+	  exports$1.polyline = polyline;
+	  exports$1.popup = popup;
+	  exports$1.rectangle = rectangle;
+	  exports$1.setOptions = setOptions;
+	  exports$1.stamp = stamp;
+	  exports$1.svg = svg;
+	  exports$1.svgOverlay = svgOverlay;
+	  exports$1.tileLayer = tileLayer;
+	  exports$1.tooltip = tooltip;
+	  exports$1.transformation = toTransformation;
+	  exports$1.version = version;
+	  exports$1.videoOverlay = videoOverlay;
 
 	  var oldL = window.L;
-	  exports.noConflict = function() {
+	  exports$1.noConflict = function() {
 	  	window.L = oldL;
 	  	return this;
 	  };
 	  // Always export us to window global (see #2364)
-	  window.L = exports;
+	  window.L = exports$1;
 
 	}));
 	
@@ -14528,26 +14528,26 @@ var L$2 = /*@__PURE__*/getDefaultExportFromCjs(leafletSrcExports);
  * Copyright 2019 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const t$1=globalThis,e$2=t$1.ShadowRoot&&(undefined===t$1.ShadyCSS||t$1.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,s$1=Symbol(),o$2=new WeakMap;let n$2 = class n{constructor(t,e,o){if(this._$cssResult$=true,o!==s$1)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=t,this.t=e;}get styleSheet(){let t=this.o;const s=this.t;if(e$2&&undefined===t){const e=undefined!==s&&1===s.length;e&&(t=o$2.get(s)),undefined===t&&((this.o=t=new CSSStyleSheet).replaceSync(this.cssText),e&&o$2.set(s,t));}return t}toString(){return this.cssText}};const r$3=t=>new n$2("string"==typeof t?t:t+"",undefined,s$1),i$3=(t,...e)=>{const o=1===t.length?t[0]:e.reduce(((e,s,o)=>e+(t=>{if(true===t._$cssResult$)return t.cssText;if("number"==typeof t)return t;throw Error("Value passed to 'css' function must be a 'css' function result: "+t+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(s)+t[o+1]),t[0]);return new n$2(o,t,s$1)},S$1=(s,o)=>{if(e$2)s.adoptedStyleSheets=o.map((t=>t instanceof CSSStyleSheet?t:t.styleSheet));else for(const e of o){const o=document.createElement("style"),n=t$1.litNonce;undefined!==n&&o.setAttribute("nonce",n),o.textContent=e.cssText,s.appendChild(o);}},c$2=e$2?t=>t:t=>t instanceof CSSStyleSheet?(t=>{let e="";for(const s of t.cssRules)e+=s.cssText;return r$3(e)})(t):t;
+const t$1=globalThis,e$2=t$1.ShadowRoot&&(void 0===t$1.ShadyCSS||t$1.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,s$2=Symbol(),o$3=new WeakMap;let n$2 = class n{constructor(t,e,o){if(this._$cssResult$=true,o!==s$2)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=t,this.t=e;}get styleSheet(){let t=this.o;const s=this.t;if(e$2&&void 0===t){const e=void 0!==s&&1===s.length;e&&(t=o$3.get(s)),void 0===t&&((this.o=t=new CSSStyleSheet).replaceSync(this.cssText),e&&o$3.set(s,t));}return t}toString(){return this.cssText}};const r$2=t=>new n$2("string"==typeof t?t:t+"",void 0,s$2),i$3=(t,...e)=>{const o=1===t.length?t[0]:e.reduce((e,s,o)=>e+(t=>{if(true===t._$cssResult$)return t.cssText;if("number"==typeof t)return t;throw Error("Value passed to 'css' function must be a 'css' function result: "+t+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(s)+t[o+1],t[0]);return new n$2(o,t,s$2)},S$1=(s,o)=>{if(e$2)s.adoptedStyleSheets=o.map(t=>t instanceof CSSStyleSheet?t:t.styleSheet);else for(const e of o){const o=document.createElement("style"),n=t$1.litNonce;void 0!==n&&o.setAttribute("nonce",n),o.textContent=e.cssText,s.appendChild(o);}},c$2=e$2?t=>t:t=>t instanceof CSSStyleSheet?(t=>{let e="";for(const s of t.cssRules)e+=s.cssText;return r$2(e)})(t):t;
 
 /**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const{is:i$2,defineProperty:e$1,getOwnPropertyDescriptor:r$2,getOwnPropertyNames:h$1,getOwnPropertySymbols:o$1,getPrototypeOf:n$1}=Object,a$1=globalThis,c$1=a$1.trustedTypes,l$1=c$1?c$1.emptyScript:"",p$1=a$1.reactiveElementPolyfillSupport,d$1=(t,s)=>t,u$1={toAttribute(t,s){switch(s){case Boolean:t=t?l$1:null;break;case Object:case Array:t=null==t?t:JSON.stringify(t);}return t},fromAttribute(t,s){let i=t;switch(s){case Boolean:i=null!==t;break;case Number:i=null===t?null:Number(t);break;case Object:case Array:try{i=JSON.parse(t);}catch(t){i=null;}}return i}},f$1=(t,s)=>!i$2(t,s),y$1={attribute:true,type:String,converter:u$1,reflect:false,hasChanged:f$1};Symbol.metadata??=Symbol("metadata"),a$1.litPropertyMetadata??=new WeakMap;class b extends HTMLElement{static addInitializer(t){this._$Ei(),(this.l??=[]).push(t);}static get observedAttributes(){return this.finalize(),this._$Eh&&[...this._$Eh.keys()]}static createProperty(t,s=y$1){if(s.state&&(s.attribute=false),this._$Ei(),this.elementProperties.set(t,s),!s.noAccessor){const i=Symbol(),r=this.getPropertyDescriptor(t,i,s);undefined!==r&&e$1(this.prototype,t,r);}}static getPropertyDescriptor(t,s,i){const{get:e,set:h}=r$2(this.prototype,t)??{get(){return this[s]},set(t){this[s]=t;}};return {get(){return e?.call(this)},set(s){const r=e?.call(this);h.call(this,s),this.requestUpdate(t,r,i);},configurable:true,enumerable:true}}static getPropertyOptions(t){return this.elementProperties.get(t)??y$1}static _$Ei(){if(this.hasOwnProperty(d$1("elementProperties")))return;const t=n$1(this);t.finalize(),undefined!==t.l&&(this.l=[...t.l]),this.elementProperties=new Map(t.elementProperties);}static finalize(){if(this.hasOwnProperty(d$1("finalized")))return;if(this.finalized=true,this._$Ei(),this.hasOwnProperty(d$1("properties"))){const t=this.properties,s=[...h$1(t),...o$1(t)];for(const i of s)this.createProperty(i,t[i]);}const t=this[Symbol.metadata];if(null!==t){const s=litPropertyMetadata.get(t);if(undefined!==s)for(const[t,i]of s)this.elementProperties.set(t,i);}this._$Eh=new Map;for(const[t,s]of this.elementProperties){const i=this._$Eu(t,s);undefined!==i&&this._$Eh.set(i,t);}this.elementStyles=this.finalizeStyles(this.styles);}static finalizeStyles(s){const i=[];if(Array.isArray(s)){const e=new Set(s.flat(1/0).reverse());for(const s of e)i.unshift(c$2(s));}else undefined!==s&&i.push(c$2(s));return i}static _$Eu(t,s){const i=s.attribute;return  false===i?undefined:"string"==typeof i?i:"string"==typeof t?t.toLowerCase():undefined}constructor(){super(),this._$Ep=undefined,this.isUpdatePending=false,this.hasUpdated=false,this._$Em=null,this._$Ev();}_$Ev(){this._$ES=new Promise((t=>this.enableUpdating=t)),this._$AL=new Map,this._$E_(),this.requestUpdate(),this.constructor.l?.forEach((t=>t(this)));}addController(t){(this._$EO??=new Set).add(t),undefined!==this.renderRoot&&this.isConnected&&t.hostConnected?.();}removeController(t){this._$EO?.delete(t);}_$E_(){const t=new Map,s=this.constructor.elementProperties;for(const i of s.keys())this.hasOwnProperty(i)&&(t.set(i,this[i]),delete this[i]);t.size>0&&(this._$Ep=t);}createRenderRoot(){const t=this.shadowRoot??this.attachShadow(this.constructor.shadowRootOptions);return S$1(t,this.constructor.elementStyles),t}connectedCallback(){this.renderRoot??=this.createRenderRoot(),this.enableUpdating(true),this._$EO?.forEach((t=>t.hostConnected?.()));}enableUpdating(t){}disconnectedCallback(){this._$EO?.forEach((t=>t.hostDisconnected?.()));}attributeChangedCallback(t,s,i){this._$AK(t,i);}_$EC(t,s){const i=this.constructor.elementProperties.get(t),e=this.constructor._$Eu(t,i);if(undefined!==e&&true===i.reflect){const r=(undefined!==i.converter?.toAttribute?i.converter:u$1).toAttribute(s,i.type);this._$Em=t,null==r?this.removeAttribute(e):this.setAttribute(e,r),this._$Em=null;}}_$AK(t,s){const i=this.constructor,e=i._$Eh.get(t);if(undefined!==e&&this._$Em!==e){const t=i.getPropertyOptions(e),r="function"==typeof t.converter?{fromAttribute:t.converter}:undefined!==t.converter?.fromAttribute?t.converter:u$1;this._$Em=e,this[e]=r.fromAttribute(s,t.type),this._$Em=null;}}requestUpdate(t,s,i){if(undefined!==t){if(i??=this.constructor.getPropertyOptions(t),!(i.hasChanged??f$1)(this[t],s))return;this.P(t,s,i);} false===this.isUpdatePending&&(this._$ES=this._$ET());}P(t,s,i){this._$AL.has(t)||this._$AL.set(t,s),true===i.reflect&&this._$Em!==t&&(this._$Ej??=new Set).add(t);}async _$ET(){this.isUpdatePending=true;try{await this._$ES;}catch(t){Promise.reject(t);}const t=this.scheduleUpdate();return null!=t&&await t,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){if(!this.isUpdatePending)return;if(!this.hasUpdated){if(this.renderRoot??=this.createRenderRoot(),this._$Ep){for(const[t,s]of this._$Ep)this[t]=s;this._$Ep=undefined;}const t=this.constructor.elementProperties;if(t.size>0)for(const[s,i]of t) true!==i.wrapped||this._$AL.has(s)||undefined===this[s]||this.P(s,this[s],i);}let t=false;const s=this._$AL;try{t=this.shouldUpdate(s),t?(this.willUpdate(s),this._$EO?.forEach((t=>t.hostUpdate?.())),this.update(s)):this._$EU();}catch(s){throw t=false,this._$EU(),s}t&&this._$AE(s);}willUpdate(t){}_$AE(t){this._$EO?.forEach((t=>t.hostUpdated?.())),this.hasUpdated||(this.hasUpdated=true,this.firstUpdated(t)),this.updated(t);}_$EU(){this._$AL=new Map,this.isUpdatePending=false;}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$ES}shouldUpdate(t){return  true}update(t){this._$Ej&&=this._$Ej.forEach((t=>this._$EC(t,this[t]))),this._$EU();}updated(t){}firstUpdated(t){}}b.elementStyles=[],b.shadowRootOptions={mode:"open"},b[d$1("elementProperties")]=new Map,b[d$1("finalized")]=new Map,p$1?.({ReactiveElement:b}),(a$1.reactiveElementVersions??=[]).push("2.0.4");
+ */const{is:i$2,defineProperty:e$1,getOwnPropertyDescriptor:h$1,getOwnPropertyNames:r$1,getOwnPropertySymbols:o$2,getPrototypeOf:n$1}=Object,a$1=globalThis,c$1=a$1.trustedTypes,l$1=c$1?c$1.emptyScript:"",p$1=a$1.reactiveElementPolyfillSupport,d$1=(t,s)=>t,u$1={toAttribute(t,s){switch(s){case Boolean:t=t?l$1:null;break;case Object:case Array:t=null==t?t:JSON.stringify(t);}return t},fromAttribute(t,s){let i=t;switch(s){case Boolean:i=null!==t;break;case Number:i=null===t?null:Number(t);break;case Object:case Array:try{i=JSON.parse(t);}catch(t){i=null;}}return i}},f$1=(t,s)=>!i$2(t,s),b$1={attribute:true,type:String,converter:u$1,reflect:false,useDefault:false,hasChanged:f$1};Symbol.metadata??=Symbol("metadata"),a$1.litPropertyMetadata??=new WeakMap;let y$1 = class y extends HTMLElement{static addInitializer(t){this._$Ei(),(this.l??=[]).push(t);}static get observedAttributes(){return this.finalize(),this._$Eh&&[...this._$Eh.keys()]}static createProperty(t,s=b$1){if(s.state&&(s.attribute=false),this._$Ei(),this.prototype.hasOwnProperty(t)&&((s=Object.create(s)).wrapped=true),this.elementProperties.set(t,s),!s.noAccessor){const i=Symbol(),h=this.getPropertyDescriptor(t,i,s);void 0!==h&&e$1(this.prototype,t,h);}}static getPropertyDescriptor(t,s,i){const{get:e,set:r}=h$1(this.prototype,t)??{get(){return this[s]},set(t){this[s]=t;}};return {get:e,set(s){const h=e?.call(this);r?.call(this,s),this.requestUpdate(t,h,i);},configurable:true,enumerable:true}}static getPropertyOptions(t){return this.elementProperties.get(t)??b$1}static _$Ei(){if(this.hasOwnProperty(d$1("elementProperties")))return;const t=n$1(this);t.finalize(),void 0!==t.l&&(this.l=[...t.l]),this.elementProperties=new Map(t.elementProperties);}static finalize(){if(this.hasOwnProperty(d$1("finalized")))return;if(this.finalized=true,this._$Ei(),this.hasOwnProperty(d$1("properties"))){const t=this.properties,s=[...r$1(t),...o$2(t)];for(const i of s)this.createProperty(i,t[i]);}const t=this[Symbol.metadata];if(null!==t){const s=litPropertyMetadata.get(t);if(void 0!==s)for(const[t,i]of s)this.elementProperties.set(t,i);}this._$Eh=new Map;for(const[t,s]of this.elementProperties){const i=this._$Eu(t,s);void 0!==i&&this._$Eh.set(i,t);}this.elementStyles=this.finalizeStyles(this.styles);}static finalizeStyles(s){const i=[];if(Array.isArray(s)){const e=new Set(s.flat(1/0).reverse());for(const s of e)i.unshift(c$2(s));}else void 0!==s&&i.push(c$2(s));return i}static _$Eu(t,s){const i=s.attribute;return  false===i?void 0:"string"==typeof i?i:"string"==typeof t?t.toLowerCase():void 0}constructor(){super(),this._$Ep=void 0,this.isUpdatePending=false,this.hasUpdated=false,this._$Em=null,this._$Ev();}_$Ev(){this._$ES=new Promise(t=>this.enableUpdating=t),this._$AL=new Map,this._$E_(),this.requestUpdate(),this.constructor.l?.forEach(t=>t(this));}addController(t){(this._$EO??=new Set).add(t),void 0!==this.renderRoot&&this.isConnected&&t.hostConnected?.();}removeController(t){this._$EO?.delete(t);}_$E_(){const t=new Map,s=this.constructor.elementProperties;for(const i of s.keys())this.hasOwnProperty(i)&&(t.set(i,this[i]),delete this[i]);t.size>0&&(this._$Ep=t);}createRenderRoot(){const t=this.shadowRoot??this.attachShadow(this.constructor.shadowRootOptions);return S$1(t,this.constructor.elementStyles),t}connectedCallback(){this.renderRoot??=this.createRenderRoot(),this.enableUpdating(true),this._$EO?.forEach(t=>t.hostConnected?.());}enableUpdating(t){}disconnectedCallback(){this._$EO?.forEach(t=>t.hostDisconnected?.());}attributeChangedCallback(t,s,i){this._$AK(t,i);}_$ET(t,s){const i=this.constructor.elementProperties.get(t),e=this.constructor._$Eu(t,i);if(void 0!==e&&true===i.reflect){const h=(void 0!==i.converter?.toAttribute?i.converter:u$1).toAttribute(s,i.type);this._$Em=t,null==h?this.removeAttribute(e):this.setAttribute(e,h),this._$Em=null;}}_$AK(t,s){const i=this.constructor,e=i._$Eh.get(t);if(void 0!==e&&this._$Em!==e){const t=i.getPropertyOptions(e),h="function"==typeof t.converter?{fromAttribute:t.converter}:void 0!==t.converter?.fromAttribute?t.converter:u$1;this._$Em=e;const r=h.fromAttribute(s,t.type);this[e]=r??this._$Ej?.get(e)??r,this._$Em=null;}}requestUpdate(t,s,i,e=false,h){if(void 0!==t){const r=this.constructor;if(false===e&&(h=this[t]),i??=r.getPropertyOptions(t),!((i.hasChanged??f$1)(h,s)||i.useDefault&&i.reflect&&h===this._$Ej?.get(t)&&!this.hasAttribute(r._$Eu(t,i))))return;this.C(t,s,i);} false===this.isUpdatePending&&(this._$ES=this._$EP());}C(t,s,{useDefault:i,reflect:e,wrapped:h},r){i&&!(this._$Ej??=new Map).has(t)&&(this._$Ej.set(t,r??s??this[t]),true!==h||void 0!==r)||(this._$AL.has(t)||(this.hasUpdated||i||(s=void 0),this._$AL.set(t,s)),true===e&&this._$Em!==t&&(this._$Eq??=new Set).add(t));}async _$EP(){this.isUpdatePending=true;try{await this._$ES;}catch(t){Promise.reject(t);}const t=this.scheduleUpdate();return null!=t&&await t,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){if(!this.isUpdatePending)return;if(!this.hasUpdated){if(this.renderRoot??=this.createRenderRoot(),this._$Ep){for(const[t,s]of this._$Ep)this[t]=s;this._$Ep=void 0;}const t=this.constructor.elementProperties;if(t.size>0)for(const[s,i]of t){const{wrapped:t}=i,e=this[s];true!==t||this._$AL.has(s)||void 0===e||this.C(s,void 0,i,e);}}let t=false;const s=this._$AL;try{t=this.shouldUpdate(s),t?(this.willUpdate(s),this._$EO?.forEach(t=>t.hostUpdate?.()),this.update(s)):this._$EM();}catch(s){throw t=false,this._$EM(),s}t&&this._$AE(s);}willUpdate(t){}_$AE(t){this._$EO?.forEach(t=>t.hostUpdated?.()),this.hasUpdated||(this.hasUpdated=true,this.firstUpdated(t)),this.updated(t);}_$EM(){this._$AL=new Map,this.isUpdatePending=false;}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$ES}shouldUpdate(t){return  true}update(t){this._$Eq&&=this._$Eq.forEach(t=>this._$ET(t,this[t])),this._$EM();}updated(t){}firstUpdated(t){}};y$1.elementStyles=[],y$1.shadowRootOptions={mode:"open"},y$1[d$1("elementProperties")]=new Map,y$1[d$1("finalized")]=new Map,p$1?.({ReactiveElement:y$1}),(a$1.reactiveElementVersions??=[]).push("2.1.2");
 
 /**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const t=globalThis,i$1=t.trustedTypes,s=i$1?i$1.createPolicy("lit-html",{createHTML:t=>t}):undefined,e="$lit$",h=`lit$${Math.random().toFixed(9).slice(2)}$`,o="?"+h,n=`<${o}>`,r$1=document,l=()=>r$1.createComment(""),c=t=>null===t||"object"!=typeof t&&"function"!=typeof t,a=Array.isArray,u=t=>a(t)||"function"==typeof t?.[Symbol.iterator],d="[ \t\n\f\r]",f=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,v=/-->/g,_=/>/g,m=RegExp(`>|${d}(?:([^\\s"'>=/]+)(${d}*=${d}*(?:[^ \t\n\f\r"'\`<>=]|("|')|))|$)`,"g"),p=/'/g,g=/"/g,$=/^(?:script|style|textarea|title)$/i,y=t=>(i,...s)=>({_$litType$:t,strings:i,values:s}),x=y(1),T=Symbol.for("lit-noChange"),E=Symbol.for("lit-nothing"),A=new WeakMap,C=r$1.createTreeWalker(r$1,129);function P(t,i){if(!a(t)||!t.hasOwnProperty("raw"))throw Error("invalid template strings array");return undefined!==s?s.createHTML(i):i}const V=(t,i)=>{const s=t.length-1,o=[];let r,l=2===i?"<svg>":3===i?"<math>":"",c=f;for(let i=0;i<s;i++){const s=t[i];let a,u,d=-1,y=0;for(;y<s.length&&(c.lastIndex=y,u=c.exec(s),null!==u);)y=c.lastIndex,c===f?"!--"===u[1]?c=v:undefined!==u[1]?c=_:undefined!==u[2]?($.test(u[2])&&(r=RegExp("</"+u[2],"g")),c=m):undefined!==u[3]&&(c=m):c===m?">"===u[0]?(c=r??f,d=-1):undefined===u[1]?d=-2:(d=c.lastIndex-u[2].length,a=u[1],c=undefined===u[3]?m:'"'===u[3]?g:p):c===g||c===p?c=m:c===v||c===_?c=f:(c=m,r=undefined);const x=c===m&&t[i+1].startsWith("/>")?" ":"";l+=c===f?s+n:d>=0?(o.push(a),s.slice(0,d)+e+s.slice(d)+h+x):s+h+(-2===d?i:x);}return [P(t,l+(t[s]||"<?>")+(2===i?"</svg>":3===i?"</math>":"")),o]};class N{constructor({strings:t,_$litType$:s},n){let r;this.parts=[];let c=0,a=0;const u=t.length-1,d=this.parts,[f,v]=V(t,s);if(this.el=N.createElement(f,n),C.currentNode=this.el.content,2===s||3===s){const t=this.el.content.firstChild;t.replaceWith(...t.childNodes);}for(;null!==(r=C.nextNode())&&d.length<u;){if(1===r.nodeType){if(r.hasAttributes())for(const t of r.getAttributeNames())if(t.endsWith(e)){const i=v[a++],s=r.getAttribute(t).split(h),e=/([.?@])?(.*)/.exec(i);d.push({type:1,index:c,name:e[2],strings:s,ctor:"."===e[1]?H:"?"===e[1]?I:"@"===e[1]?L$1:k}),r.removeAttribute(t);}else t.startsWith(h)&&(d.push({type:6,index:c}),r.removeAttribute(t));if($.test(r.tagName)){const t=r.textContent.split(h),s=t.length-1;if(s>0){r.textContent=i$1?i$1.emptyScript:"";for(let i=0;i<s;i++)r.append(t[i],l()),C.nextNode(),d.push({type:2,index:++c});r.append(t[s],l());}}}else if(8===r.nodeType)if(r.data===o)d.push({type:2,index:c});else {let t=-1;for(;-1!==(t=r.data.indexOf(h,t+1));)d.push({type:7,index:c}),t+=h.length-1;}c++;}}static createElement(t,i){const s=r$1.createElement("template");return s.innerHTML=t,s}}function S(t,i,s=t,e){if(i===T)return i;let h=undefined!==e?s._$Co?.[e]:s._$Cl;const o=c(i)?undefined:i._$litDirective$;return h?.constructor!==o&&(h?._$AO?.(false),undefined===o?h=undefined:(h=new o(t),h._$AT(t,s,e)),undefined!==e?(s._$Co??=[])[e]=h:s._$Cl=h),undefined!==h&&(i=S(t,h._$AS(t,i.values),h,e)),i}class M{constructor(t,i){this._$AV=[],this._$AN=undefined,this._$AD=t,this._$AM=i;}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}u(t){const{el:{content:i},parts:s}=this._$AD,e=(t?.creationScope??r$1).importNode(i,true);C.currentNode=e;let h=C.nextNode(),o=0,n=0,l=s[0];for(;undefined!==l;){if(o===l.index){let i;2===l.type?i=new R(h,h.nextSibling,this,t):1===l.type?i=new l.ctor(h,l.name,l.strings,this,t):6===l.type&&(i=new z(h,this,t)),this._$AV.push(i),l=s[++n];}o!==l?.index&&(h=C.nextNode(),o++);}return C.currentNode=r$1,e}p(t){let i=0;for(const s of this._$AV) undefined!==s&&(undefined!==s.strings?(s._$AI(t,s,i),i+=s.strings.length-2):s._$AI(t[i])),i++;}}class R{get _$AU(){return this._$AM?._$AU??this._$Cv}constructor(t,i,s,e){this.type=2,this._$AH=E,this._$AN=undefined,this._$AA=t,this._$AB=i,this._$AM=s,this.options=e,this._$Cv=e?.isConnected??true;}get parentNode(){let t=this._$AA.parentNode;const i=this._$AM;return undefined!==i&&11===t?.nodeType&&(t=i.parentNode),t}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(t,i=this){t=S(this,t,i),c(t)?t===E||null==t||""===t?(this._$AH!==E&&this._$AR(),this._$AH=E):t!==this._$AH&&t!==T&&this._(t):undefined!==t._$litType$?this.$(t):undefined!==t.nodeType?this.T(t):u(t)?this.k(t):this._(t);}O(t){return this._$AA.parentNode.insertBefore(t,this._$AB)}T(t){this._$AH!==t&&(this._$AR(),this._$AH=this.O(t));}_(t){this._$AH!==E&&c(this._$AH)?this._$AA.nextSibling.data=t:this.T(r$1.createTextNode(t)),this._$AH=t;}$(t){const{values:i,_$litType$:s}=t,e="number"==typeof s?this._$AC(t):(undefined===s.el&&(s.el=N.createElement(P(s.h,s.h[0]),this.options)),s);if(this._$AH?._$AD===e)this._$AH.p(i);else {const t=new M(e,this),s=t.u(this.options);t.p(i),this.T(s),this._$AH=t;}}_$AC(t){let i=A.get(t.strings);return undefined===i&&A.set(t.strings,i=new N(t)),i}k(t){a(this._$AH)||(this._$AH=[],this._$AR());const i=this._$AH;let s,e=0;for(const h of t)e===i.length?i.push(s=new R(this.O(l()),this.O(l()),this,this.options)):s=i[e],s._$AI(h),e++;e<i.length&&(this._$AR(s&&s._$AB.nextSibling,e),i.length=e);}_$AR(t=this._$AA.nextSibling,i){for(this._$AP?.(false,true,i);t&&t!==this._$AB;){const i=t.nextSibling;t.remove(),t=i;}}setConnected(t){ undefined===this._$AM&&(this._$Cv=t,this._$AP?.(t));}}class k{get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}constructor(t,i,s,e,h){this.type=1,this._$AH=E,this._$AN=undefined,this.element=t,this.name=i,this._$AM=e,this.options=h,s.length>2||""!==s[0]||""!==s[1]?(this._$AH=Array(s.length-1).fill(new String),this.strings=s):this._$AH=E;}_$AI(t,i=this,s,e){const h=this.strings;let o=false;if(undefined===h)t=S(this,t,i,0),o=!c(t)||t!==this._$AH&&t!==T,o&&(this._$AH=t);else {const e=t;let n,r;for(t=h[0],n=0;n<h.length-1;n++)r=S(this,e[s+n],i,n),r===T&&(r=this._$AH[n]),o||=!c(r)||r!==this._$AH[n],r===E?t=E:t!==E&&(t+=(r??"")+h[n+1]),this._$AH[n]=r;}o&&!e&&this.j(t);}j(t){t===E?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,t??"");}}class H extends k{constructor(){super(...arguments),this.type=3;}j(t){this.element[this.name]=t===E?undefined:t;}}class I extends k{constructor(){super(...arguments),this.type=4;}j(t){this.element.toggleAttribute(this.name,!!t&&t!==E);}}let L$1 = class L extends k{constructor(t,i,s,e,h){super(t,i,s,e,h),this.type=5;}_$AI(t,i=this){if((t=S(this,t,i,0)??E)===T)return;const s=this._$AH,e=t===E&&s!==E||t.capture!==s.capture||t.once!==s.once||t.passive!==s.passive,h=t!==E&&(s===E||e);e&&this.element.removeEventListener(this.name,this,s),h&&this.element.addEventListener(this.name,this,t),this._$AH=t;}handleEvent(t){"function"==typeof this._$AH?this._$AH.call(this.options?.host??this.element,t):this._$AH.handleEvent(t);}};class z{constructor(t,i,s){this.element=t,this.type=6,this._$AN=undefined,this._$AM=i,this.options=s;}get _$AU(){return this._$AM._$AU}_$AI(t){S(this,t);}}const j=t.litHtmlPolyfillSupport;j?.(N,R),(t.litHtmlVersions??=[]).push("3.2.1");const B=(t,i,s)=>{const e=s?.renderBefore??i;let h=e._$litPart$;if(undefined===h){const t=s?.renderBefore??null;e._$litPart$=h=new R(i.insertBefore(l(),t),t,undefined,s??{});}return h._$AI(t),h};
+const t=globalThis,i$1=t=>t,s$1=t.trustedTypes,e=s$1?s$1.createPolicy("lit-html",{createHTML:t=>t}):void 0,h="$lit$",o$1=`lit$${Math.random().toFixed(9).slice(2)}$`,n="?"+o$1,r=`<${n}>`,l=document,c=()=>l.createComment(""),a=t=>null===t||"object"!=typeof t&&"function"!=typeof t,u=Array.isArray,d=t=>u(t)||"function"==typeof t?.[Symbol.iterator],f="[ \t\n\f\r]",v=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,_=/-->/g,m=/>/g,p=RegExp(`>|${f}(?:([^\\s"'>=/]+)(${f}*=${f}*(?:[^ \t\n\f\r"'\`<>=]|("|')|))|$)`,"g"),g=/'/g,$=/"/g,y=/^(?:script|style|textarea|title)$/i,x=t=>(i,...s)=>({_$litType$:t,strings:i,values:s}),b=x(1),E=Symbol.for("lit-noChange"),A=Symbol.for("lit-nothing"),C=new WeakMap,P=l.createTreeWalker(l,129);function V(t,i){if(!u(t)||!t.hasOwnProperty("raw"))throw Error("invalid template strings array");return void 0!==e?e.createHTML(i):i}const N=(t,i)=>{const s=t.length-1,e=[];let n,l=2===i?"<svg>":3===i?"<math>":"",c=v;for(let i=0;i<s;i++){const s=t[i];let a,u,d=-1,f=0;for(;f<s.length&&(c.lastIndex=f,u=c.exec(s),null!==u);)f=c.lastIndex,c===v?"!--"===u[1]?c=_:void 0!==u[1]?c=m:void 0!==u[2]?(y.test(u[2])&&(n=RegExp("</"+u[2],"g")),c=p):void 0!==u[3]&&(c=p):c===p?">"===u[0]?(c=n??v,d=-1):void 0===u[1]?d=-2:(d=c.lastIndex-u[2].length,a=u[1],c=void 0===u[3]?p:'"'===u[3]?$:g):c===$||c===g?c=p:c===_||c===m?c=v:(c=p,n=void 0);const x=c===p&&t[i+1].startsWith("/>")?" ":"";l+=c===v?s+r:d>=0?(e.push(a),s.slice(0,d)+h+s.slice(d)+o$1+x):s+o$1+(-2===d?i:x);}return [V(t,l+(t[s]||"<?>")+(2===i?"</svg>":3===i?"</math>":"")),e]};class S{constructor({strings:t,_$litType$:i},e){let r;this.parts=[];let l=0,a=0;const u=t.length-1,d=this.parts,[f,v]=N(t,i);if(this.el=S.createElement(f,e),P.currentNode=this.el.content,2===i||3===i){const t=this.el.content.firstChild;t.replaceWith(...t.childNodes);}for(;null!==(r=P.nextNode())&&d.length<u;){if(1===r.nodeType){if(r.hasAttributes())for(const t of r.getAttributeNames())if(t.endsWith(h)){const i=v[a++],s=r.getAttribute(t).split(o$1),e=/([.?@])?(.*)/.exec(i);d.push({type:1,index:l,name:e[2],strings:s,ctor:"."===e[1]?I:"?"===e[1]?L$1:"@"===e[1]?z:H}),r.removeAttribute(t);}else t.startsWith(o$1)&&(d.push({type:6,index:l}),r.removeAttribute(t));if(y.test(r.tagName)){const t=r.textContent.split(o$1),i=t.length-1;if(i>0){r.textContent=s$1?s$1.emptyScript:"";for(let s=0;s<i;s++)r.append(t[s],c()),P.nextNode(),d.push({type:2,index:++l});r.append(t[i],c());}}}else if(8===r.nodeType)if(r.data===n)d.push({type:2,index:l});else {let t=-1;for(;-1!==(t=r.data.indexOf(o$1,t+1));)d.push({type:7,index:l}),t+=o$1.length-1;}l++;}}static createElement(t,i){const s=l.createElement("template");return s.innerHTML=t,s}}function M(t,i,s=t,e){if(i===E)return i;let h=void 0!==e?s._$Co?.[e]:s._$Cl;const o=a(i)?void 0:i._$litDirective$;return h?.constructor!==o&&(h?._$AO?.(false),void 0===o?h=void 0:(h=new o(t),h._$AT(t,s,e)),void 0!==e?(s._$Co??=[])[e]=h:s._$Cl=h),void 0!==h&&(i=M(t,h._$AS(t,i.values),h,e)),i}class R{constructor(t,i){this._$AV=[],this._$AN=void 0,this._$AD=t,this._$AM=i;}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}u(t){const{el:{content:i},parts:s}=this._$AD,e=(t?.creationScope??l).importNode(i,true);P.currentNode=e;let h=P.nextNode(),o=0,n=0,r=s[0];for(;void 0!==r;){if(o===r.index){let i;2===r.type?i=new k(h,h.nextSibling,this,t):1===r.type?i=new r.ctor(h,r.name,r.strings,this,t):6===r.type&&(i=new Z(h,this,t)),this._$AV.push(i),r=s[++n];}o!==r?.index&&(h=P.nextNode(),o++);}return P.currentNode=l,e}p(t){let i=0;for(const s of this._$AV) void 0!==s&&(void 0!==s.strings?(s._$AI(t,s,i),i+=s.strings.length-2):s._$AI(t[i])),i++;}}class k{get _$AU(){return this._$AM?._$AU??this._$Cv}constructor(t,i,s,e){this.type=2,this._$AH=A,this._$AN=void 0,this._$AA=t,this._$AB=i,this._$AM=s,this.options=e,this._$Cv=e?.isConnected??true;}get parentNode(){let t=this._$AA.parentNode;const i=this._$AM;return void 0!==i&&11===t?.nodeType&&(t=i.parentNode),t}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(t,i=this){t=M(this,t,i),a(t)?t===A||null==t||""===t?(this._$AH!==A&&this._$AR(),this._$AH=A):t!==this._$AH&&t!==E&&this._(t):void 0!==t._$litType$?this.$(t):void 0!==t.nodeType?this.T(t):d(t)?this.k(t):this._(t);}O(t){return this._$AA.parentNode.insertBefore(t,this._$AB)}T(t){this._$AH!==t&&(this._$AR(),this._$AH=this.O(t));}_(t){this._$AH!==A&&a(this._$AH)?this._$AA.nextSibling.data=t:this.T(l.createTextNode(t)),this._$AH=t;}$(t){const{values:i,_$litType$:s}=t,e="number"==typeof s?this._$AC(t):(void 0===s.el&&(s.el=S.createElement(V(s.h,s.h[0]),this.options)),s);if(this._$AH?._$AD===e)this._$AH.p(i);else {const t=new R(e,this),s=t.u(this.options);t.p(i),this.T(s),this._$AH=t;}}_$AC(t){let i=C.get(t.strings);return void 0===i&&C.set(t.strings,i=new S(t)),i}k(t){u(this._$AH)||(this._$AH=[],this._$AR());const i=this._$AH;let s,e=0;for(const h of t)e===i.length?i.push(s=new k(this.O(c()),this.O(c()),this,this.options)):s=i[e],s._$AI(h),e++;e<i.length&&(this._$AR(s&&s._$AB.nextSibling,e),i.length=e);}_$AR(t=this._$AA.nextSibling,s){for(this._$AP?.(false,true,s);t!==this._$AB;){const s=i$1(t).nextSibling;i$1(t).remove(),t=s;}}setConnected(t){ void 0===this._$AM&&(this._$Cv=t,this._$AP?.(t));}}class H{get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}constructor(t,i,s,e,h){this.type=1,this._$AH=A,this._$AN=void 0,this.element=t,this.name=i,this._$AM=e,this.options=h,s.length>2||""!==s[0]||""!==s[1]?(this._$AH=Array(s.length-1).fill(new String),this.strings=s):this._$AH=A;}_$AI(t,i=this,s,e){const h=this.strings;let o=false;if(void 0===h)t=M(this,t,i,0),o=!a(t)||t!==this._$AH&&t!==E,o&&(this._$AH=t);else {const e=t;let n,r;for(t=h[0],n=0;n<h.length-1;n++)r=M(this,e[s+n],i,n),r===E&&(r=this._$AH[n]),o||=!a(r)||r!==this._$AH[n],r===A?t=A:t!==A&&(t+=(r??"")+h[n+1]),this._$AH[n]=r;}o&&!e&&this.j(t);}j(t){t===A?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,t??"");}}class I extends H{constructor(){super(...arguments),this.type=3;}j(t){this.element[this.name]=t===A?void 0:t;}}let L$1 = class L extends H{constructor(){super(...arguments),this.type=4;}j(t){this.element.toggleAttribute(this.name,!!t&&t!==A);}};class z extends H{constructor(t,i,s,e,h){super(t,i,s,e,h),this.type=5;}_$AI(t,i=this){if((t=M(this,t,i,0)??A)===E)return;const s=this._$AH,e=t===A&&s!==A||t.capture!==s.capture||t.once!==s.once||t.passive!==s.passive,h=t!==A&&(s===A||e);e&&this.element.removeEventListener(this.name,this,s),h&&this.element.addEventListener(this.name,this,t),this._$AH=t;}handleEvent(t){"function"==typeof this._$AH?this._$AH.call(this.options?.host??this.element,t):this._$AH.handleEvent(t);}}class Z{constructor(t,i,s){this.element=t,this.type=6,this._$AN=void 0,this._$AM=i,this.options=s;}get _$AU(){return this._$AM._$AU}_$AI(t){M(this,t);}}const B=t.litHtmlPolyfillSupport;B?.(S,k),(t.litHtmlVersions??=[]).push("3.3.2");const D=(t,i,s)=>{const e=s?.renderBefore??i;let h=e._$litPart$;if(void 0===h){const t=s?.renderBefore??null;e._$litPart$=h=new k(i.insertBefore(c(),t),t,void 0,s??{});}return h._$AI(t),h};
 
 /**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */class r extends b{constructor(){super(...arguments),this.renderOptions={host:this},this._$Do=undefined;}createRenderRoot(){const t=super.createRenderRoot();return this.renderOptions.renderBefore??=t.firstChild,t}update(t){const s=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(t),this._$Do=B(s,this.renderRoot,this.renderOptions);}connectedCallback(){super.connectedCallback(),this._$Do?.setConnected(true);}disconnectedCallback(){super.disconnectedCallback(),this._$Do?.setConnected(false);}render(){return T}}r._$litElement$=true,r["finalized"]=true,globalThis.litElementHydrateSupport?.({LitElement:r});const i=globalThis.litElementPolyfillSupport;i?.({LitElement:r});(globalThis.litElementVersions??=[]).push("4.1.1");
+ */const s=globalThis;class i extends y$1{constructor(){super(...arguments),this.renderOptions={host:this},this._$Do=void 0;}createRenderRoot(){const t=super.createRenderRoot();return this.renderOptions.renderBefore??=t.firstChild,t}update(t){const r=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(t),this._$Do=D(r,this.renderRoot,this.renderOptions);}connectedCallback(){super.connectedCallback(),this._$Do?.setConnected(true);}disconnectedCallback(){super.disconnectedCallback(),this._$Do?.setConnected(false);}render(){return E}}i._$litElement$=true,i["finalized"]=true,s.litElementHydrateSupport?.({LitElement:i});const o=s.litElementPolyfillSupport;o?.({LitElement:i});(s.litElementVersions??=[]).push("4.2.2");
 
 /**
  * Shared utility methods for HaMapCard
@@ -14740,11 +14740,77 @@ class CircleConfig {
   
 }
 
+class GeoJsonConfig {
+  /** @type {boolean} */
+  enabled;
+  /** @type {string} */
+  attribute;
+  /** @type {string} */
+  color;
+  /** @type {number} */
+  weight;
+  /** @type {number} */
+  opacity;
+  /** @type {number} */
+  fillOpacity;
+  /** @type {boolean} */
+  hideMarker;
+
+  /**
+   * @param {object|string|boolean} config 
+   * @param {string} defaultColor 
+   */
+  constructor(config, defaultColor) {
+    // Handle disabled case
+    if (config === false || config === null || config === undefined) {
+      this.enabled = false;
+      return;
+    }
+
+    // Handle simple string case (just attribute name)
+    if (typeof config === 'string') {
+      this.enabled = true;
+      this.attribute = config;
+      this.color = defaultColor;
+      this.weight = 3;
+      this.opacity = 1.0;
+      this.fillOpacity = 0.2;
+      this.hideMarker = false;
+      return;
+    }
+
+    // Handle object configuration
+    if (typeof config === 'object') {
+      this.enabled = true;
+      this.attribute = config.attribute || 'geo_location';
+      this.color = config.color || defaultColor;
+      this.weight = config.weight !== undefined ? config.weight : 3;
+      this.opacity = config.opacity !== undefined ? config.opacity : 1.0;
+      this.fillOpacity = config.fill_opacity !== undefined ? config.fill_opacity : 0.2;
+      this.hideMarker = config.hide_marker !== undefined ? config.hide_marker : false;
+    } else {
+      this.enabled = false;
+    }
+
+    Logger.debug(
+      `[GeoJsonConfig]: created with enabled: ${this.enabled}, attribute: ${this.attribute}, color: ${this.color}, weight: ${this.weight}, opacity: ${this.opacity}, fillOpacity: ${this.fillOpacity}, hideMarker: ${this.hideMarker}`
+    );
+  }
+}
+
 class EntityConfig {
   /** @type {string} */
   id;
   /** @type {string} */
   display;
+  /** @type {string} */
+  attribute;
+  /** @type {string} */
+  prefix;
+  /** @type {string} */
+  suffix;
+  /** @type {string} */
+  label;
   /** @type {number} */
   size;
   /** @type {Date} */
@@ -14777,7 +14843,7 @@ class EntityConfig {
   css;
   // Cannot be set via config. Passed from parent
   historyManagedExternally;
-  
+
   /** @type {string} */
   picture;
   /** @type {string} */
@@ -14794,18 +14860,36 @@ class EntityConfig {
   zIndexOffset;
   /** @type {boolean} */
   useBaseEntityOnly;
-  
+  /** @type {number} */
+  positionUpdateThreshold;
+  /**
+   * @type {number} Min map zoom at which a `display: pill` marker shows the
+   * offset callout + leader line; below it the pill centers on the point.
+   */
+  pillCalloutMinZoom;
+
   /** @type {CircleConfig} */
   circleConfig;
+  /** @type {string} Entity ID containing distance value for tooltip display */
+  distanceEntity;
+  /** @type {string} Unit for distance display (km, mi, or auto) */
+  distanceUnit;
+
+  /** @type {GeoJsonConfig} */
+  geoJsonConfig;
 
   constructor(config, defaults) {
-    this.id = (typeof config === 'string' || config instanceof String)? config : config.entity;
+    this.id = (typeof config === 'string' || config instanceof String) ? config : config.entity;
     this.display = config.display ? config.display : "marker";
+    this.attribute = config.attribute ? config.attribute : "";
+    this.prefix = config.display === "attribute" ? (config.prefix ? config.prefix : "") : "";
+    this.suffix = config.display === "attribute" ? (config.suffix ? config.suffix : "") : "";
+    this.label = config.label ?? null;
     this.size = config.size ? config.size : 48;
     // If historyLineColor not set, inherit icon color
     this.color = config.color ?? this._generateRandomColor();
     this.gradualOpacity = config.gradual_opacity ? config.gradual_opacity : undefined;
-    
+
     // Get history value to use (normal of default)
     const historyStart = config.history_start ?? defaults.historyStart;
     const historyEnd = config.history_end ?? defaults.historyEnd;
@@ -14815,7 +14899,7 @@ class EntityConfig {
       this.historyStartEntity = historyStart['entity'] ?? historyStart;
       this.historyStartEntitySuffix = historyStart['suffix'];
     } else {
-        this.historyStart = historyStart ? HaMapUtilities.convertToAbsoluteDate(historyStart) : null;
+      this.historyStart = historyStart ? HaMapUtilities.convertToAbsoluteDate(historyStart) : null;
     }
 
     // If end is an entity, setup entity config
@@ -14841,22 +14925,29 @@ class EntityConfig {
     this.usingDateRangeManager = (!historyStart && !historyEnd) && defaults.dateRangeManagerEnabled;
 
     // Tap action defaults to standard more-info.
-    this.tapAction = (typeof config.tap_action == 'object') ? this.parseAction(config.tap_action) : {action: 'more-info'};
+    this.tapAction = (typeof config.tap_action == 'object') ? this.parseAction(config.tap_action) : { action: 'more-info' };
 
     this.focusOnFit = config.focus_on_fit ?? true;
     this.zIndexOffset = config.z_index_offset ? config.z_index_offset : 1;
 
     this.useBaseEntityOnly = config.use_base_entity_only ?? false;
+    this.positionUpdateThreshold = config.position_update_threshold ?? 10;
+    this.pillCalloutMinZoom = config.pill_callout_min_zoom ?? 15;
 
     this.circleConfig = new CircleConfig(config.circle, this.color);
+    this.geoJsonConfig = new GeoJsonConfig(config.geojson, this.color);
+
+    // Distance tooltip configuration
+    this.distanceEntity = config.distance_entity ?? null;
+    this.distanceUnit = config.distance_unit ?? 'auto';
+
     Logger.debug(
-      `[EntityConfig]: created with id: ${this.id}, display: ${this.display}, size: ${this.size}, historyStart: ${this.historyStart}, historyEnd: ${this.historyEnd}, historyStartEntity: ${this.historyStartEntity}, historyEndEntity: ${this.historyEndEntity}, historyLineColor: ${this.historyLineColor}, historyShowDots: ${this.historyShowDots}, historyShowLines: ${this.historyShowLines}, fixedX: ${this.fixedX}, fixedY: ${this.fixedY}, fallbackX: ${this.fallbackX}, fallbackY: ${this.fallbackY}, css: ${this.css}, picture: ${this.picture}, icon: ${this.icon}, color: ${this.color}, gradualOpacity: ${this.gradualOpacity}, tapAction: ${this.tapAction}, focusOnFit: ${this.focusOnFit}, zIndexOffset: ${this.zIndexOffset}, useBaseEntityOnly: ${this.useBaseEntityOnly}, circleConfig: ${this.circleConfig}`
+      `[EntityConfig]: created with id: ${this.id}, display: ${this.display}, attribute: ${this.attribute}, prefix: ${this.prefix}, suffix: ${this.suffix}, size: ${this.size}, historyStart: ${this.historyStart}, historyEnd: ${this.historyEnd}, historyStartEntity: ${this.historyStartEntity}, historyEndEntity: ${this.historyEndEntity}, historyLineColor: ${this.historyLineColor}, historyShowDots: ${this.historyShowDots}, historyShowLines: ${this.historyShowLines}, fixedX: ${this.fixedX}, fixedY: ${this.fixedY}, fallbackX: ${this.fallbackX}, fallbackY: ${this.fallbackY}, css: ${this.css}, picture: ${this.picture}, icon: ${this.icon}, color: ${this.color}, gradualOpacity: ${this.gradualOpacity}, tapAction: ${this.tapAction}, focusOnFit: ${this.focusOnFit}, zIndexOffset: ${this.zIndexOffset}, useBaseEntityOnly: ${this.useBaseEntityOnly}, circleConfig: ${this.circleConfig}, geoJsonConfig: ${this.geoJsonConfig}`
     );
   }
 
   // Get tap action_data
-  parseAction(tap_action)
-  {
+  parseAction(tap_action) {
     // No additional props
     if (['more-info', 'none'].includes(tap_action.action)) {
       return {
@@ -14866,7 +14957,7 @@ class EntityConfig {
 
     if (tap_action.action == 'navigate') {
       // Validate
-      if(!tap_action.navigation_path) throw new Error("'navigation_path' is required when using action 'navigate'");
+      if (!tap_action.navigation_path) throw new Error("'navigation_path' is required when using action 'navigate'");
 
       return {
         action: tap_action.action,
@@ -14875,11 +14966,11 @@ class EntityConfig {
     }
     if (tap_action.action == 'url') {
       // Validate
-      if(!tap_action.url_path) throw new Error("'url_path' is required when using action 'url'");
+      if (!tap_action.url_path) throw new Error("'url_path' is required when using action 'url'");
 
       return {
         action: tap_action.action,
-        url_path: tap_action.url_path 
+        url_path: tap_action.url_path
       };
     }
 
@@ -14887,10 +14978,10 @@ class EntityConfig {
       // Validate
       if (!tap_action.service) throw new Error("'service' is required when using action 'call-service'");
       return {
-        action:   tap_action.action,
-        service:  tap_action.service,
+        action: tap_action.action,
+        service: tap_action.service,
         // I belive this is truely optional.
-        data:     tap_action.data   
+        data: tap_action.data
       };
     }
 
@@ -14899,28 +14990,53 @@ class EntityConfig {
 
   get hasHistory() {
     return this.historyStart != null || this.historyStartEntity != null || this.usingDateRangeManager === true;
-  }  
+  }
 
   _generateRandomColor() {
-    return "#" + ((1 << 24) * Math.random() | 0).toString(16).padStart(6, "0");
+    // Generate pseudo-random color from provided entity id
+    let str = this.id;
+
+    // Generate a BigInt numeric hash of the string provided.
+    // 53-bit hash based on cyrb53 (c) 2018 bryc (github.com/bryc). 
+    // License: Public domain, https://github.com/bryc/code/blob/master/jshash/experimental/cyrb53.js
+    let h1 = 0xdeadbeef, h2 = 0x41c6ce57;
+    for (let i = 0, ch; i < str.length; i++) {
+      ch = str.charCodeAt(i);
+      h1 = Math.imul(h1 ^ ch, 2654435761);
+      h2 = Math.imul(h2 ^ ch, 1597334677);
+    }
+    h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507);
+    h1 ^= Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+    h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507);
+    h2 ^= Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+    let hash = 4294967296 * (2097151 & h2) + (h1 >>> 0);
+
+    // Now that we have a numeric hash, construct a CSS hsl() color with hue derived from the hash above (hash % 360), 95% saturation and 35% lightness.
+    // Unlike the simplified RGB approach (#RRGGBB) this method produces colors with similar saturation and lightness, resulting in a more aesthetically pleasing palette.
+    // N.B. hue value might be computed to a negative number which is not strictly allowed in HSL palette - but CSS handles these cases well.
+    let color = `hsl(${hash % 360}, 95%, 35%)`;
+    return color;
   }
 }
 
 class PluginConfig {
-  /** @type {string} */
+  /** @type {{module: string, file: string} | undefined} */
+  hacs;
+  /** @type {string | undefined} */
   url;
   /** @type {string} */
   name;
   /** @type {object} */
   options;
 
-  constructor(url, name, options) {
+  constructor(hacs, url, name, options) {
+    this.hacs = hacs,
     this.url = url;
     this.name = name;
     this.options = { ...options };
 
     Logger.debug(
-      `[PluginConfig]: created with url: ${this.url}, name: ${this.name}, options: ${this.options}`
+      `[PluginConfig]: created with hacs: ${this.hacs}, url: ${this.url}, name: ${this.name}, options: ${this.options}`
     );
   }
 }
@@ -14938,7 +15054,7 @@ class LayerConfig {
 
   constructor(url, options, historyConfig, attribution = null) {
     this.url = url;
-    this.options = {...{attribution: attribution}, ...options};
+    this.options = {...{attribution: attribution, referrerPolicy: "origin-when-cross-origin"}, ...options};
 
     // history: propName
     // history:
@@ -14969,6 +15085,59 @@ class LayerConfig {
 class TileLayerConfig extends LayerConfig {}
 
 class WmsLayerConfig extends LayerConfig {}
+
+/**
+ * Configuration for GeoJSON layers from Home Assistant entity attributes
+ */
+class GeoJsonLayerConfig {
+  /** @type {string} Entity ID containing GeoJSON data */
+  entity;
+  /** @type {string|null} Attribute path to GeoJSON data (supports dot notation and array access) */
+  attribute;
+  /** @type {string} Line/border color */
+  color;
+  /** @type {number} Line width */
+  width;
+  /** @type {string} Fill color for polygons */
+  fillColor;
+  /** @type {number} Fill opacity (0-1) */
+  fillOpacity;
+  /** @type {number} Line opacity (0-1) */
+  opacity;
+
+  /**
+   * @param {object} config - Configuration object
+   */
+  constructor(config) {
+    if (!config.entity) {
+      throw new Error("GeoJSON layer requires an 'entity' property");
+    }
+
+    this.entity = config.entity;
+    this.attribute = config.attribute || null;
+    this.color = config.color || '#3388ff';
+    this.width = config.width || 3;
+    this.fillColor = config.fill_color || config.color || '#3388ff';
+    this.fillOpacity = config.fill_opacity ?? 0.2;
+    this.opacity = config.opacity ?? 1.0;
+  }
+
+  /**
+   * Get Leaflet style object for this layer
+   * @returns {object} Leaflet style options
+   */
+  getStyle() {
+    return {
+      color: this.color,
+      weight: this.width,
+      fillColor: this.fillColor,
+      fillOpacity: this.fillOpacity,
+      opacity: this.opacity
+    };
+  }
+}
+
+/** @typedef {import('./Entity').default} Entity */
 
 class Circle {
 
@@ -15047,6 +15216,185 @@ class Circle {
       this.circle.setLatLng(this.entity.latLng);
       this.circle.setRadius(this.radius);
     }
+  }
+}
+
+/** @typedef {import('./Entity').default} Entity */
+
+class GeoJson {
+  /** @type {GeoJsonConfig} */
+  config;
+  /** @type {Entity} */
+  entity;
+  /** @type {L.GeoJSON} */
+  geoJsonLayer;
+
+  /**
+   * @param {GeoJsonConfig} config 
+   * @param {Entity} entity 
+   */
+  constructor(config, entity) {
+    this.config = config;
+    this.entity = entity;
+  }
+
+  setup() {
+    if (!this.config.enabled) {
+      return;
+    }
+
+    try {
+      const geoJsonData = this._getGeoJsonData();
+      if (geoJsonData) {
+        this._renderGeoJson(geoJsonData);
+      }
+    } catch (e) {
+      Logger.error(`[GeoJson]: Failed to setup GeoJSON for ${this.entity.id}`, e);
+    }
+  }
+
+  update() {
+    if (!this.config.enabled) {
+      return;
+    }
+
+    try {
+      // Remove existing layer
+      if (this.geoJsonLayer) {
+        this.entity.map.removeLayer(this.geoJsonLayer);
+        this.geoJsonLayer = null;
+      }
+
+      // Re-render with updated data
+      const geoJsonData = this._getGeoJsonData();
+      if (geoJsonData) {
+        this._renderGeoJson(geoJsonData);
+      }
+    } catch (e) {
+      Logger.error(`[GeoJson]: Failed to update GeoJSON for ${this.entity.id}`, e);
+    }
+  }
+
+  /**
+   * @private
+   * @returns {object|null}
+   */
+  _getGeoJsonData() {
+    // Always read live hass state. Entity.attributes prefers the latest
+    // history timeline entry, which typically only has lat/lng — so once
+    // history loads the GeoJSON attribute disappears and the layer is
+    // cleared (#204).
+    const liveAttrs = this.entity.hass?.states?.[this.entity.id]?.attributes;
+    const attrs = liveAttrs ?? this.entity.attributes ?? {};
+    const attributeValue = attrs[this.config.attribute];
+
+    if (!attributeValue) {
+      Logger.debug(`[GeoJson]: No data found in attribute '${this.config.attribute}' for ${this.entity.id}`);
+      return null;
+    }
+
+    // If it's a string, try to parse it as JSON
+    if (typeof attributeValue === 'string') {
+      try {
+        return JSON.parse(attributeValue);
+      } catch (e) {
+        Logger.error(`[GeoJson]: Failed to parse GeoJSON string from attribute '${this.config.attribute}' for ${this.entity.id}`, e);
+        return null;
+      }
+    }
+
+    // If it's already an object, use it directly
+    if (typeof attributeValue === 'object') {
+      return attributeValue;
+    }
+
+    Logger.warn(`[GeoJson]: Attribute '${this.config.attribute}' for ${this.entity.id} is not a valid GeoJSON object or string`);
+    return null;
+  }
+
+  /**
+   * @private
+   * @param {object} geoJsonData 
+   */
+  _renderGeoJson(geoJsonData) {
+    const style = {
+      color: this.config.color,
+      weight: this.config.weight,
+      opacity: this.config.opacity,
+      fillOpacity: this.config.fillOpacity
+    };
+
+    this.geoJsonLayer = L$2.geoJSON(geoJsonData, {
+      style: () => style,
+      pointToLayer: (feature, latlng) => {
+        // For point features, create a circle marker with the configured style
+        return L$2.circleMarker(latlng, {
+          radius: 6,
+          ...style,
+          fillOpacity: 0.8
+        });
+      },
+      onEachFeature: (feature, layer) => {
+        // Add tooltip if feature has properties
+        if (feature.properties) {
+          const tooltipContent = this._createTooltipContent(feature.properties);
+          if (tooltipContent) {
+            layer.bindTooltip(tooltipContent, { direction: 'top' });
+          }
+        }
+
+        // Make the layer clickable to show entity popup
+        layer.on('click', (e) => {
+          this._handleLayerClick(e);
+        });
+      }
+    });
+
+    this.geoJsonLayer.addTo(this.entity.map);
+    Logger.debug(`[GeoJson]: Rendered GeoJSON for ${this.entity.id}`);
+  }
+
+  /**
+   * @private
+   * @param {object} properties
+   * @returns {string}
+   */
+  _createTooltipContent(properties) {
+    // Create a simple tooltip from properties
+    const entries = Object.entries(properties)
+      .filter(([, value]) => value !== null && value !== undefined)
+      .map(([key, value]) => `${key}: ${value}`)
+      .slice(0, 5); // Limit to first 5 properties
+
+    return entries.length > 0 ? entries.join('<br>') : '';
+  }
+
+  /**
+   * Handle click on GeoJSON layer to show entity popup
+   * @private
+   * @param {L.LeafletMouseEvent} e
+   */
+  _handleLayerClick(e) {
+    // Stop propagation to prevent map click
+    L$2.DomEvent.stopPropagation(e);
+
+    // Create and dispatch hass-action event to show entity more-info dialog
+    const event = new CustomEvent('hass-action', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        config: {
+          entity: this.entity.id,
+          tap_action: this.entity.config.tapAction
+        },
+        action: 'tap'
+      }
+    });
+
+    // Dispatch from the map container to ensure it bubbles up to Home Assistant
+    this.entity.map.getContainer().dispatchEvent(event);
+
+    Logger.debug(`[GeoJson]: Clicked on GeoJSON for ${this.entity.id}`);
   }
 }
 
@@ -15162,6 +15510,9 @@ class EntityHistory {
             color: this.color,
             opacity,
             interactive: false,
+            // Round caps from adjacent segments stack on the shared vertex
+            // and make joints darker than the segments (#164).
+            lineCap: 'butt',
           })
         );
       }
@@ -15204,18 +15555,23 @@ class HaHistoryService {
       Logger.debug("[HaHistoryService]: tracking following entities " + trackerEntityIds + " for entity: " + entityId);
     }
 
-    let params = {  
-      type: 'history/stream',  
-      entity_ids: trackerEntityIds,
-      significant_changes_only: false,
-      start_time: start.toISOString()
-    };
-
-    if (end) {
-      params.end_time = end.toISOString();
-    }
-
     try {
+      if (!start || !(start instanceof Date) || isNaN(start.getTime())) {
+        Logger.error(`[HaHistoryService] Invalid start date for entity ${entityId}: ${start}`);
+        return;
+      }
+
+      let params = {  
+        type: 'history/stream',  
+        entity_ids: trackerEntityIds,
+        significant_changes_only: false,
+        start_time: start.toISOString()
+      };
+
+      if (end) {
+        params.end_time = end.toISOString();
+      }
+
       if(this.connection[entityId]) this.unsubscribeEntity(entityId);
 
       this.connection[entityId] = this.hass.connection.subscribeMessage(
@@ -15236,6 +15592,10 @@ class HaHistoryService {
           
         },
         params);
+      this.connection[entityId].catch((error) => {
+        Logger.error(`[HaHistoryService] Subscription rejected by server for entity ${entityId} (start_time: ${params.start_time}, end_time: ${params.end_time ?? 'now'}): ${JSON.stringify(error)}`, error);
+        this.connection[entityId] = undefined;
+      });
       Logger.debug(`[HaHistoryService] successfully subscribed to history from ${entityId} showing ${params.start_time} till ${params.end_time ?? 'now'}`);
       Logger.debug(`[HaHistoryService] ${entityId} is connected to ${trackerEntityIds.length} location sources.`);
     } catch (error) {        
@@ -15301,6 +15661,9 @@ class HaDateRangeService {
       if (this.hass.connection['_energy']) {
         energyCollection =  this.hass.connection['_energy'];
       }
+      if (this.hass.panelUrl && this.hass.connection['_energy_' + this.hass.panelUrl]) {
+        energyCollection =  this.hass.connection['_energy_'+ this.hass.panelUrl];
+      }
        
       if (energyCollection) {
         complete(energyCollection);
@@ -15344,6 +15707,9 @@ class HaLinkedEntityService {
     // Skip if already connected
     if (this.connections[entity]) return;
 
+    // Setup listeners array for entity before subscribing
+    if(!this.listeners[entity]) this.listeners[entity] = [];
+
     Logger.debug(`[HaLinkedEntityService] initializing connection for ${entity}`);
     const connection  = this.hass.connection.subscribeMessage(
         (message) => {
@@ -15359,9 +15725,11 @@ class HaLinkedEntityService {
             Logger.debug(`[HaLinkedEntityService] ${entity} state updated to ${state}`);
 
             // Hit callback for all listeners listing to entities changes
-            this.listeners[entity].forEach(function(callback) { 
-              callback(state);
-            }); 
+            if (this.listeners[entity] && this.listeners[entity].length > 0) {
+              this.listeners[entity].forEach(function(callback) {
+                callback(state);
+              });
+            } 
           }
         },
         {
@@ -15397,6 +15765,8 @@ class HaLinkedEntityService {
   }
 }
 
+/** @typedef {import('./Entity').default} Entity */
+
 class EntityHistoryManager {
   /** @type {Entity} */
   entity;
@@ -15414,7 +15784,9 @@ class EntityHistoryManager {
   linkedEntityService;
   /** @type {EntityHistory} */
   history;
-
+  /** @type {number|null} @private */
+  _updateTimeout;
+  
   constructor(entity, historyService, dateRangeManager, linkedEntityService) {
     this.entity = entity;
     this.historyService = historyService;
@@ -15478,8 +15850,23 @@ class EntityHistoryManager {
       this.currentHistoryEnd = this.entity.config.historyEnd;
     }
 
-    const historyStart = this.entity.config.historyStart ?? new Date(Date.now() - 10 * 1000);
-    this.subscribeHistory(historyStart, this.entity.config.historyEnd);    
+    // Only open history/stream when the user actually configured history.
+    // A 10s-ago fallback used to be sent for live marker updates; HA 2026.7+
+    // rejects that start_time, the subscribe fails, and the marker never moves
+    // (see #217). Live position now comes from hass.states on each render.
+    if (!this.hasHistory) {
+      Logger.debug(`[EntityHistoryManager] No history configured for ${this.entity.id}, skipping subscription`);
+      return;
+    }
+
+    // Skip the initial subscription when dates will be provided dynamically.
+    // The date range manager or linked entity callbacks will call refreshHistory()
+    // with the proper dates shortly after init.
+    if (!this.entity.config.usingDateRangeManager && !this.entity.config.historyStartEntity) {
+      this.subscribeHistory(this.currentHistoryStart, this.currentHistoryEnd);
+    } else {
+      Logger.debug(`[EntityHistoryManager] Skipping initial subscription for ${this.entity.id}, waiting for dynamic dates`);
+    }
 
   }
 
@@ -15489,15 +15876,20 @@ class EntityHistoryManager {
   }
 
   refreshHistory() {
+    if (!this.hasHistory) {
+      return;
+    }
     Logger.debug(`[EntityHistoryManager] Refreshing history for ${this.entity.id}: ${this.currentHistoryStart} -> ${this.currentHistoryEnd}`);
-    this.historyLayerGroup.clearLayers();
+    this.historyLayerGroup?.clearLayers();
     this.subscribeHistory(this.currentHistoryStart, this.currentHistoryEnd);
   }
 
   subscribeHistory(start, end) {
-    if(this.hasHistory) {
-      this.history = new EntityHistory(this.entity.id, this.entity.tooltip, this.entity.config.historyLineColor, this.entity.config.gradualOpacity, this.entity.config.historyShowDots, this.entity.config.historyShowLines);
+    if (!this.hasHistory) {
+      Logger.debug(`[EntityHistoryManager] Skipping history subscription for ${this.entity.id}; no history configured`);
+      return;
     }
+    this.history = new EntityHistory(this.entity.id, this.entity.tooltip, this.entity.config.historyLineColor, this.entity.config.gradualOpacity, this.entity.config.historyShowDots, this.entity.config.historyShowLines);
     this.historyService.subscribe(this.entity.id, start, end, this.react.bind(this), this.entity.config.useBaseEntityOnly);
   }
 
@@ -15509,6 +15901,8 @@ class EntityHistoryManager {
 
     if(this.hasHistory) {
       this.history.react(entry);
+      if (this._updateTimeout) clearTimeout(this._updateTimeout);
+      this._updateTimeout = setTimeout(() => this.update(), 100);
     }
     this.entity.react(entry);
   }
@@ -15522,6 +15916,7 @@ class EntityHistoryManager {
     this.history?.update().flat().forEach((marker) => {
       marker.addTo(this.historyLayerGroup);
     });
+    this.entity.updateMarkerPosition();
   }
 }
 
@@ -15553,14 +15948,19 @@ class Entity {
    * @type {boolean} 
    */
   darkMode;
-  /** 
+  /**
    * @private
-   * @type {Circle} 
+   * @type {Circle}
    */
   circle;
-  /** 
-   * @private 
-   * @type {EntityHistoryManager} 
+  /**
+   * @private
+   * @type {GeoJson}
+   */
+  geoJson;
+  /**
+   * @private
+   * @type {EntityHistoryManager}
    */
   historyManager;
   /** 
@@ -15568,11 +15968,16 @@ class Entity {
    * @type {TimelineEntry} 
    */
   currentTimelineEntry;
-  /** 
+  /**
    * @private
-   * @type {LatLng} 
+   * @type {LatLng}
    */
-  _currentLatLng;  
+  _currentLatLng;
+  /**
+   * @private
+   * @type {LatLng}
+   */
+  _lastSetLatLng;
 
   constructor(config, hass, map, historyService, dateRangeManager, linkedEntityService, darkMode) {
     this.config = config;
@@ -15580,10 +15985,11 @@ class Entity {
     this.map = map;
     this.darkMode = darkMode;
 
-    if(this.display == "state") {
+    if (this.display == "state" || this.display == "attribute") {
       this._currentTitle = this.title;
     }
     this.circle = new Circle(this.config.circleConfig, this);
+    this.geoJson = new GeoJson(this.config.geoJsonConfig, this);
     this.historyManager = new EntityHistoryManager(this, historyService, dateRangeManager, linkedEntityService);
   }
 
@@ -15604,7 +16010,7 @@ class Entity {
 
   /** @returns {{[key: string]: object}} */
   get attributes() {
-    return this.currentTimelineEntry?.state.a ?? this.hass.states[this.id].attributes;
+    return this.currentTimelineEntry?.state.a ?? this.hass.states[this.id]?.attributes ?? {};
   }
 
   /** 
@@ -15619,53 +16025,118 @@ class Entity {
   }
 
   /** @returns {LatLng} */
-  get latLng() {    
-    if(this.config.fixedX && this.config.fixedY) {
+  get latLng() {
+    if (this.config.fixedX && this.config.fixedY) {
       return new leafletSrcExports.LatLng(this.config.fixedX, this.config.fixedY);
     }
-    
-    if(this._currentLatLng) {
+
+    if (this._currentLatLng) {
       return this._currentLatLng;
     }
-    
+
     // Do we have Lng/Lat directly?
     if (this.attributes.latitude && this.attributes.longitude) {
       return new leafletSrcExports.LatLng(this.attributes.latitude, this.attributes.longitude);
     }
-    
+
     // Get Lat/Lng of entity. Some entities such as "person" define device_trackers allowing
     // multiple lat/lng sources to be used. This method will call down through these looking for a
     // lat/lng value if none is defined on the parent entity.
     // If any, see if we can get a lng/lat from one instead
     let subTrackerIds = this.attributes.device_trackers ?? [];
-    for(let t=0; t<subTrackerIds.length; t++) {
+    for (let t = 0; t < subTrackerIds.length; t++) {
       const entity = this.hass.states[subTrackerIds[t]];
-      if (entity.attributes.latitude && entity.attributes.longitude) {
+      if (entity?.attributes?.latitude && entity.attributes.longitude) {
         return new leafletSrcExports.LatLng(entity.attributes.latitude, entity.attributes.longitude);
       }
-    }    
-    
-    Logger.warn("Entity: " + this.id + " has no latitude & longitude");
-    if(this.config.fallbackX && this.config.fallbackY) {
+    }
+
+    if (this._lastSetLatLng) {
+      return this._lastSetLatLng;
+    }
+
+    if (this.config.fallbackX && this.config.fallbackY) {
       return new leafletSrcExports.LatLng(this.config.fallbackX, this.config.fallbackY);
     }
-    Logger.error("Entity: " + this.id + " has no fallback latitude & longitude");
-    throw Error("Entity: " + this.id + " has no latitude & longitude and no fallback configured")
+
+    Logger.warn("Entity: " + this.id + " has no latitude & longitude; skipping marker");
+    return null;
   }
 
-  setup() {
-    this.marker = this.createMapMarker();
-    this.marker.addTo(this.map);
+  setup(clusterGroup = null) {
+    // Only add marker if GeoJSON is not configured to hide it and we have a
+    // position. Missing/unknown coords used to throw here and abort the rest
+    // of the card (#91, #173).
+    if (!this.config.geoJsonConfig?.hideMarker && this.latLng) {
+      this.marker = this.createMapMarker();
+
+      // Bind distance tooltip if configured
+      if (this.config.distanceEntity) {
+        this.marker.bindTooltip('', {
+          permanent: true,
+          direction: 'top',
+          offset: [0, -this.config.size / 2 - 5],
+          className: 'distance-tooltip'
+        });
+        this.updateDistanceTooltip(this.hass);
+      }
+
+      if (clusterGroup) {
+        Logger.debug("[Entity] Adding marker for " + this.id + " to cluster group");
+        clusterGroup.addLayer(this.marker);
+      } else {
+        Logger.debug("[Entity] Adding marker for " + this.id + " directly to map");
+        this.marker.addTo(this.map);
+      }
+      // Initialize last set position to prevent immediate update
+      this._lastSetLatLng = this.latLng;
+      // Track the current place so update() can recreate the pill on zone change
+      this._currentPlaceIcon = this.placeIcon;
+      this._clusterGroup = clusterGroup;
+      // For `display: pill`, the offset callout + leader only show at/above
+      // pillCalloutMinZoom; recreate the marker when zoom crosses that boundary
+      // so it isn't obtrusive when zoomed out region-wide.
+      if (this.display == "pill") {
+        this._calloutActive = this.map.getZoom() >= this.config.pillCalloutMinZoom;
+        this._onZoomEnd = () => {
+          if (!this.marker) return;
+          const active = this.map.getZoom() >= this.config.pillCalloutMinZoom;
+          if (active !== this._calloutActive) {
+            this._calloutActive = active;
+            this._recreateMarker();
+          }
+        };
+        this.map.on("zoomend", this._onZoomEnd);
+      }
+    }
     this.historyManager.setup();
     this.circle.setup();
+    this.geoJson.setup();
   }
 
-  /** @param {TimelineEntry} entry */  
-  react(entry) {    
+  /**
+   * Remove and rebuild the marker in place (preserving cluster membership).
+   * @private
+   */
+  _recreateMarker() {
+    const cg = this._clusterGroup;
+    this.marker.remove();
+    this.marker = this.createMapMarker();
+    if (cg) {
+      cg.addLayer(this.marker);
+    } else {
+      this.marker.addTo(this.map);
+    }
+    this._currentTitle = this.title;
+    this._currentPlaceIcon = this.placeIcon;
+  }
+
+  /** @param {TimelineEntry} entry */
+  react(entry) {
     if (entry.entityId == this.id) {
       this.currentTimelineEntry = entry;
     }
-    this._currentLatLng = new leafletSrcExports.LatLng(entry.latitude, entry.longitude);    
+    this._currentLatLng = new leafletSrcExports.LatLng(entry.latitude, entry.longitude);
   }
 
   get friendlyName() {
@@ -15674,14 +16145,21 @@ class Entity {
 
   /** @returns {string} */
   get title() {
-    if(this.display == "state") {
+    // Use custom label if provided
+    if (this.config.label) {
+      return this.config.label;
+    }
+    if (this.display == "state") {
       return this.state;
     }
+    if (this.display == "attribute") {
+      return this.hass.formatEntityAttributeValue(this.hass.states[this.id], this.config.attribute);
+    }
     const title = this.friendlyName;
-    if(title.length < 5) {
+    if (title.length < 5) {
       return title;
     }
-    const regex = /[ _/-]/; 
+    const regex = /[ _/-]/;
     return title
       .split(regex)
       .map((part) => part[0])
@@ -15692,26 +16170,156 @@ class Entity {
 
   /** @returns {string} */
   get tooltip() {
+    // placeName only resolves in pill mode and when inside a zone.
+    const placeName = this.placeName;
+    if (placeName) {
+      // "<person> is at <place>" - strip a trailing tracker-ish suffix so
+      // "Mom Location" reads as "Mom is at Extended Family".
+      const who = (this.friendlyName ?? "").replace(/\s+(location|tracker|device|phone|gps)$/i, "");
+      return `${who} is at ${placeName}`;
+    }
     return this.friendlyName ?? "";
   }
 
   get icon() {
     return this.config.icon ?? this.attributes.icon;
-  }  
+  }
 
-  async update() {
-    if(this.display == "state") {
-      if(this.title != this._currentTitle) {
-        Logger.debug("[Entity] updating marker for " + this.id + " from " + this._currentTitle + " to " + this.state);
-        this.marker.remove();
-        this.marker = this.createMapMarker();
-        this.marker.addTo(this.map);
-        this._currentTitle = this.title;
+  /**
+   * The HA zone state object the entity is currently inside (a "named place"),
+   * or null when it isn't in one. Drives the place-pill marker. Matches the
+   * entity's RAW state against each zone's friendly_name (case-insensitive);
+   * the home zone reports state "home".
+   * @returns {object|null}
+   */
+  get zoneState() {
+    const raw = this.hass.states[this.id]?.state;
+    if (!raw || ["not_home", "away", "unknown", "unavailable"].includes(raw.toLowerCase())) {
+      return null;
+    }
+    const target = raw.toLowerCase();
+    for (const eid in this.hass.states) {
+      if (!eid.startsWith("zone.")) continue;
+      const fn = (this.hass.states[eid].attributes?.friendly_name ?? "").toLowerCase();
+      if (fn && fn === target) {
+        return this.hass.states[eid];
       }
     }
-    this.marker.setLatLng(this.latLng);
+    if (target === "home" && this.hass.states["zone.home"]) {
+      return this.hass.states["zone.home"];
+    }
+    return null;
+  }
+
+  /** @returns {string|null} mdi icon of the current named place (pill mode only). */
+  get placeIcon() {
+    if (this.display != "pill") return null;
+    const z = this.zoneState;
+    return z ? (z.attributes?.icon ?? "mdi:map-marker") : null;
+  }
+
+  /** @returns {string|null} friendly_name of the current named place (pill mode only). */
+  get placeName() {
+    if (this.display != "pill") return null;
+    const z = this.zoneState;
+    return z ? (z.attributes?.friendly_name ?? null) : null;
+  }
+
+  /**
+   * Format distance value for display
+   * @param {number} meters - Distance in meters
+   * @param {string} unit - Unit preference (km, mi, or auto)
+   * @returns {string} Formatted distance string
+   */
+  formatDistance(meters, unit) {
+    if (!meters || isNaN(meters)) return '';
+    const m = parseFloat(meters);
+    
+    if (unit === 'mi') {
+      const miles = m / 1609.344;
+      return miles < 0.1 ? Math.round(m * 3.28084) + ' ft' : miles.toFixed(1) + ' mi';
+    }
+    
+    // Default to km/m (metric)
+    if (unit === 'km' || unit === 'auto') {
+      return m >= 1000 ? (m / 1000).toFixed(1) + ' km' : Math.round(m) + ' m';
+    }
+    
+    // Fallback
+    if (m >= 1000) return (m / 1000).toFixed(1) + ' km';
+    return Math.round(m) + ' m';
+  }
+
+  /**
+   * Update the distance tooltip content from linked entity
+   * @param {object} hass - Home Assistant object
+   */
+  updateDistanceTooltip(hass) {
+    if (!this.config.distanceEntity || !this.marker) return;
+    
+    const entity = hass?.states?.[this.config.distanceEntity];
+    if (entity && entity.state) {
+      const distance = this.formatDistance(entity.state, this.config.distanceUnit);
+      if (distance) {
+        this.marker.setTooltipContent(distance);
+      }
+    }
+  }
+
+  async update(clusterGroup = null) {
+    // Entity recovered a position after being unknown/unavailable.
+    if (!this.marker && !this.config.geoJsonConfig?.hideMarker && this.latLng) {
+      this.marker = this.createMapMarker();
+      if (clusterGroup) {
+        clusterGroup.addLayer(this.marker);
+      } else {
+        this.marker.addTo(this.map);
+      }
+      this._lastSetLatLng = this.latLng;
+      this._currentPlaceIcon = this.placeIcon;
+    }
+
+    // Only update marker if it exists (not hidden by GeoJSON config)
+    if (this.marker) {
+      // Recreate the marker when the display title changes (state/attribute
+      // modes) OR when the entity enters/leaves a named place (place-pill).
+      const titleChanged = (this.display == "state" || this.display == "attribute") && this.title != this._currentTitle;
+      const placeIconChanged = this.placeIcon != this._currentPlaceIcon;
+      if (titleChanged || placeIconChanged) {
+        Logger.debug("[Entity] recreating marker for " + this.id + " (title/place change)");
+        // When recreating marker, we need to track if it was in a cluster
+        const wasInCluster = clusterGroup && clusterGroup.hasLayer(this.marker);
+        this.marker.remove();
+        this.marker = this.createMapMarker();
+        if (wasInCluster) {
+          clusterGroup.addLayer(this.marker);
+        } else if (clusterGroup) {
+          clusterGroup.addLayer(this.marker);
+        } else {
+          this.marker.addTo(this.map);
+        }
+        this._currentTitle = this.title;
+        this._currentPlaceIcon = this.placeIcon;
+      }
+
+      this.updateMarkerPosition();
+    }
+
     this.historyManager.update();
     this.circle.update();
+    this.geoJson.update();
+  }
+
+  updateMarkerPosition() {
+    if (!this.marker) return;
+    const newLatLng = this.latLng;
+    if (!newLatLng) return;
+    const threshold = this.config.positionUpdateThreshold;
+    // Update position only if it has changed significantly (configurable threshold in meters)
+    if (!this._lastSetLatLng || this.map.distance(this._lastSetLatLng, newLatLng) > threshold) {
+      this.marker.setLatLng(newLatLng);
+      this._lastSetLatLng = newLatLng;
+    }
   }
 
   /**
@@ -15722,25 +16330,49 @@ class Entity {
     Logger.debug("[MarkerEntity] Creating marker for " + this.id + " with display mode " + this.display);
     let icon = this.icon;
     let picture = this.picture;
-    if(this.display == "icon") {
+    if (this.display == "icon") {
       picture = null;
     }
-    if(this.display == "state") {
+    if (this.display == "state" || this.display == "attribute") {
       picture = null;
       icon = null;
     }
 
     const extraCssClasses = this.darkMode ? "dark" : "";
+    // Pill mode (opt-in via display: pill): zone icon + initials when the entity
+    // is in a named place; falls back to the normal initials marker otherwise.
+    // placeIcon already returns null unless display === "pill".
+    const placeIcon = this.placeIcon;
+    if (this.display == "pill") {
+      icon = null;
+    }
+    // Pill-callout geometry (must match MapCardEntityMarker's pill render): the
+    // pill sits up-left of the point with a short leader line down-right to a
+    // dot on the exact location, so it doesn't cover what's underneath. The
+    // callout only engages at/above pillCalloutMinZoom; zoomed out, the pill
+    // centers on the point with no leader (so it isn't obtrusive region-wide).
+    const s = this.config.size;
+    const pillW = 2 * s + 14;
+    const pillH = s + 8;
+    const off = Math.round(s * 0.7);
+    const boxW = pillW + off;
+    const boxH = pillH + off;
+    const callout = placeIcon != null && this.map.getZoom() >= this.config.pillCalloutMinZoom;
 
-    return new leafletSrcExports.Marker(this.latLng, {
+    const marker = new leafletSrcExports.Marker(this.latLng, {
       icon: new leafletSrcExports.DivIcon({
         html: `
           <map-card-entity-marker
             entity-id="${this.id}"
             title="${this.title}"
+            label="${this.config.label ?? ""}"
+            prefix="${this.config.prefix}"
+            suffix="${this.config.suffix}"
             tooltip="${this.tooltip}"
             icon="${icon ?? ""}"
             picture="${picture ?? ""}"
+            place-icon="${placeIcon ?? ""}"
+            callout="${callout}"
             color="${this.config.color}"
             style="${this.config.css}"
             size="${this.config.size}"
@@ -15748,26 +16380,44 @@ class Entity {
             tap-action='${JSON.stringify(this.config.tapAction)}'
           ></map-card-entity-marker>
         `,
-        iconSize: [this.config.size, this.config.size],
+        iconSize: placeIcon ? (callout ? [boxW, boxH] : [pillW, pillH]) : [s, s],
+        iconAnchor: placeIcon ? (callout ? [boxW - 2, boxH - 2] : [pillW / 2, pillH / 2]) : [s / 2, s / 2],
         className: ''
       }),
-      title: this.id,
       zIndexOffset: this.config.zIndexOffset
     });
+    // Instant hover label: a Leaflet tooltip opens on mouseover with no delay,
+    // unlike the native `title` attribute (which the browser holds ~1s). The
+    // distance feature (setup) rebinds a permanent tooltip when configured.
+    if (!this.config.distanceEntity) {
+      marker.bindTooltip(this.tooltip, {
+        direction: "top",
+        offset: [0, -this.config.size / 2 - 4]
+      });
+    }
+    return marker;
   }
 }
 
 class FocusFollowConfig {
 
-  /** 
-   * @type {string} 
+  /**
+   * @type {string}
    * @private
    */
   selection = "none";
 
-  constructor(config) {
+  /**
+   * @type {number}
+   * @private
+   */
+  pauseSeconds = 0;
+
+  constructor(config, pauseSeconds) {
     this.selection = ['refocus', 'contains', 'none' ].includes(config) ? config : "none";
-    Logger.debug(`[FocusFollowConfig]: Setting up focus follow config with selection ${this.selection}`);
+    const parsedPauseSeconds = Number(pauseSeconds);
+    this.pauseSeconds = (!isNaN(parsedPauseSeconds) && parsedPauseSeconds > 0) ? parsedPauseSeconds : 0;
+    Logger.debug(`[FocusFollowConfig]: Setting up focus follow config with selection ${this.selection}, pauseSeconds ${this.pauseSeconds}`);
   }
 
   get isRefocus() {
@@ -15780,6 +16430,14 @@ class FocusFollowConfig {
 
   get isContains() {
     return this.selection == "contains";
+  }
+
+  get hasPause() {
+    return this.pauseSeconds > 0;
+  }
+
+  get pauseMilliseconds() {
+    return this.pauseSeconds * 1000;
   }
 
 }
@@ -15800,6 +16458,8 @@ class MapConfig {
   entities;
   /** @type {[WmsLayerConfig]} */
   wms;
+  /** @type {[GeoJsonLayerConfig]} */
+  geojson;
   /** @type {[TileLayerConfig]} */
   tileLayers;
   /** @type {TileLayerConfig} */
@@ -15818,6 +16478,8 @@ class MapConfig {
   mapOptions;
   /** @type {FocusFollowConfig} */
   focusFollow;
+  /** @type {boolean} */
+  clusterMarkers;
 
   /** @type {boolean} */
   debug = false;
@@ -15825,17 +16487,20 @@ class MapConfig {
   constructor(inputConfig) {
     this.title = inputConfig.title;
     this.focusEntity = inputConfig.focus_entity;
-    this.focusFollow = new FocusFollowConfig(inputConfig.focus_follow);
+    this.focusFollow = new FocusFollowConfig(inputConfig.focus_follow, inputConfig.focus_follow_pause);
     this.x = inputConfig.x;
     this.y = inputConfig.y;
     this.zoom = this._setConfigWithDefault(inputConfig.zoom, 12);
     this.cardSize = this._setConfigWithDefault(inputConfig.card_size, 5);
-    this.mapOptions = this._setConfigWithDefault(inputConfig.map_options, {});
+    this.mapOptions = this._normalizeMapOptions(this._setConfigWithDefault(inputConfig.map_options, {}));
 
     // Get theme mode.
     this.themeMode = ['dark', 'light', 'auto'].includes(inputConfig.theme_mode) ? inputConfig.theme_mode : 'auto';
 
-    // Enable debug messaging. 
+    // Enable marker clustering (default: false)
+    this.clusterMarkers = this._setConfigWithDefault(inputConfig.cluster_markers, false);
+
+    // Enable debug messaging.
     // Card is quite chatty with this enabled.
     if (inputConfig.debug){
       Logger.enableDebug();
@@ -15843,7 +16508,7 @@ class MapConfig {
 
     // Default historyStart/historyEnd can be set at the top level.
     // Entities can override these dates on an individual basis.
-    // 
+    //
     // If historyDateSelection is true, this replaces top level date functionality (and any entities that don't provide their own dates will also use this)
     this.historyDateSelection = inputConfig.history_date_selection ? true : false;
     if (this.historyDateSelection) {
@@ -15872,6 +16537,12 @@ class MapConfig {
       return new WmsLayerConfig(wms.url, wms.options, wms.history);
     });
 
+    // GeoJSON layers from Home Assistant entity attributes
+    let geojson = this._setConfigWithDefault(inputConfig.geojson, []);
+    this.geojson = (this._setConfigWithDefault(Array.isArray(geojson) ? geojson : [geojson], [])).map((gj) => {
+      return new GeoJsonLayerConfig(gj);
+    });
+
     // Allow as none array
     let tile_layers = this._setConfigWithDefault(inputConfig.tile_layers, []);
     this.tileLayers = (this._setConfigWithDefault(Array.isArray(tile_layers) ? tile_layers : [tile_layers], [])).map((tile) => {
@@ -15881,15 +16552,18 @@ class MapConfig {
     // Allow as none array
     let plugins = this._setConfigWithDefault(inputConfig.plugins, []);
     this.plugins = (this._setConfigWithDefault(Array.isArray(plugins) ? plugins : [plugins], [])).map((plugin) => {
-      return new PluginConfig(plugin.url, plugin.name, plugin.options);
+      return new PluginConfig(plugin.hacs, plugin.url, plugin.name, plugin.options);
     });
 
-    this.tileLayer = new TileLayerConfig(
-      this._setConfigWithDefault(inputConfig.tile_layer_url, "https://tile.openstreetmap.org/{z}/{x}/{y}.png"),
-      this._setConfigWithDefault(inputConfig.tile_layer_options, {}),
-      null, // Default layer doesn't pass history by default.
-      this._setConfigWithDefault(inputConfig.tile_layer_attribution, '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>')
-    );
+    const tileLayerUrl = this._setConfigWithDefault(inputConfig.tile_layer_url, "https://tile.openstreetmap.org/{z}/{x}/{y}.png");
+    this.tileLayer = tileLayerUrl
+      ? new TileLayerConfig(
+          tileLayerUrl,
+          this._setConfigWithDefault(inputConfig.tile_layer_options, {}),
+          null, // Default layer doesn't pass history by default.
+          this._setConfigWithDefault(inputConfig.tile_layer_attribution, '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>')
+        )
+      : null;
     if(!(Number.isFinite(this.x) && Number.isFinite(this.y)) && this.focusEntity == null && this.entities.length == 0) {
       throw new Error("We need a map latitude & longitude; set at least [x, y], a focus_entity or have at least 1 entities defined.");
     }
@@ -15897,7 +16571,7 @@ class MapConfig {
   }
 
   _setConfigWithDefault(input, d = null) {
-    if (!input) {
+    if (input === undefined || input === null) {
       if (d == null) {
         throw new Error("Missing key ");
       }
@@ -15905,6 +16579,17 @@ class MapConfig {
     } else {
       return input;
     }
+  }
+
+  _normalizeMapOptions(mapOptions) {
+    if (mapOptions?.crs === 'simple') {
+      return {
+        ...mapOptions,
+        crs: L$2.CRS.Simple,
+      };
+    }
+
+    return mapOptions;
   }
 
   /** @returns {boolean} if there is a title */
@@ -15920,7 +16605,7 @@ class MapConfig {
       return (this.cardSize * 50) + 20;
     }
   }
-  
+
   /** @returns {[EntityConfig]} */
   get entitiesWithShowPath() {
     return this.entities.filter((ent) => ent.showPath);
@@ -16310,6 +16995,2727 @@ class TileLayersService {
   }
 }
 
+var leaflet_markerclusterSrc = {exports: {}};
+
+/*
+ * Leaflet.markercluster 1.5.3+master.e5124b2,
+ * Provides Beautiful Animated Marker Clustering functionality for Leaflet, a JS library for interactive maps.
+ * https://github.com/Leaflet/Leaflet.markercluster
+ * (c) 2012-2017, Dave Leaver, smartrak
+ */
+
+(function (module, exports$1) {
+	(function (global, factory) {
+		factory(exports$1) ;
+	}(commonjsGlobal, function (exports$1) {
+		/*
+		 * L.MarkerClusterGroup extends L.FeatureGroup by clustering the markers contained within
+		 */
+
+		var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
+
+			options: {
+				maxClusterRadius: 80, //A cluster will cover at most this many pixels from its center
+				iconCreateFunction: null,
+				clusterPane: L.Marker.prototype.options.pane,
+
+				spiderfyOnEveryZoom: false,
+				spiderfyOnMaxZoom: true,
+				showCoverageOnHover: true,
+				zoomToBoundsOnClick: true,
+				singleMarkerMode: false,
+
+				disableClusteringAtZoom: null,
+
+				// Setting this to false prevents the removal of any clusters outside of the viewpoint, which
+				// is the default behaviour for performance reasons.
+				removeOutsideVisibleBounds: true,
+
+				// Set to false to disable all animations (zoom and spiderfy).
+				// If false, option animateAddingMarkers below has no effect.
+				// If L.DomUtil.TRANSITION is falsy, this option has no effect.
+				animate: true,
+
+				//Whether to animate adding markers after adding the MarkerClusterGroup to the map
+				// If you are adding individual markers set to true, if adding bulk markers leave false for massive performance gains.
+				animateAddingMarkers: false,
+
+				// Make it possible to provide custom function to calculate spiderfy shape positions
+				spiderfyShapePositions: null,
+
+				//Increase to increase the distance away that spiderfied markers appear from the center
+				spiderfyDistanceMultiplier: 1,
+
+				// Make it possible to specify a polyline options on a spider leg
+				spiderLegPolylineOptions: { weight: 1.5, color: '#222', opacity: 0.5 },
+
+				// When bulk adding layers, adds markers in chunks. Means addLayers may not add all the layers in the call, others will be loaded during setTimeouts
+				chunkedLoading: false,
+				chunkInterval: 200, // process markers for a maximum of ~ n milliseconds (then trigger the chunkProgress callback)
+				chunkDelay: 50, // at the end of each interval, give n milliseconds back to system/browser
+				chunkProgress: null, // progress callback: function(processed, total, elapsed) (e.g. for a progress indicator)
+
+				//Options to pass to the L.Polygon constructor
+				polygonOptions: {}
+			},
+
+			initialize: function (options) {
+				L.Util.setOptions(this, options);
+				if (!this.options.iconCreateFunction) {
+					this.options.iconCreateFunction = this._defaultIconCreateFunction;
+				}
+
+				this._featureGroup = L.featureGroup();
+				this._featureGroup.addEventParent(this);
+
+				this._nonPointGroup = L.featureGroup();
+				this._nonPointGroup.addEventParent(this);
+
+				this._inZoomAnimation = 0;
+				this._needsClustering = [];
+				this._needsRemoving = []; //Markers removed while we aren't on the map need to be kept track of
+				//The bounds of the currently shown area (from _getExpandedVisibleBounds) Updated on zoom/move
+				this._currentShownBounds = null;
+
+				this._queue = [];
+
+				this._childMarkerEventHandlers = {
+					'dragstart': this._childMarkerDragStart,
+					'move': this._childMarkerMoved,
+					'dragend': this._childMarkerDragEnd,
+				};
+
+				// Hook the appropriate animation methods.
+				var animate = L.DomUtil.TRANSITION && this.options.animate;
+				L.extend(this, animate ? this._withAnimation : this._noAnimation);
+				// Remember which MarkerCluster class to instantiate (animated or not).
+				this._markerCluster = animate ? L.MarkerCluster : L.MarkerClusterNonAnimated;
+			},
+
+			addLayer: function (layer) {
+
+				if (layer instanceof L.LayerGroup) {
+					return this.addLayers([layer]);
+				}
+
+				//Don't cluster non point data
+				if (!layer.getLatLng) {
+					this._nonPointGroup.addLayer(layer);
+					this.fire('layeradd', { layer: layer });
+					return this;
+				}
+
+				if (!this._map) {
+					this._needsClustering.push(layer);
+					this.fire('layeradd', { layer: layer });
+					return this;
+				}
+
+				if (this.hasLayer(layer)) {
+					return this;
+				}
+
+
+				//If we have already clustered we'll need to add this one to a cluster
+
+				if (this._unspiderfy) {
+					this._unspiderfy();
+				}
+
+				this._addLayer(layer, this._maxZoom);
+				this.fire('layeradd', { layer: layer });
+
+				// Refresh bounds and weighted positions.
+				this._topClusterLevel._recalculateBounds();
+
+				this._refreshClustersIcons();
+
+				//Work out what is visible
+				var visibleLayer = layer,
+				    currentZoom = this._zoom;
+				if (layer.__parent) {
+					while (visibleLayer.__parent._zoom >= currentZoom) {
+						visibleLayer = visibleLayer.__parent;
+					}
+				}
+
+				if (this._currentShownBounds.contains(visibleLayer.getLatLng())) {
+					if (this.options.animateAddingMarkers) {
+						this._animationAddLayer(layer, visibleLayer);
+					} else {
+						this._animationAddLayerNonAnimated(layer, visibleLayer);
+					}
+				}
+				return this;
+			},
+
+			removeLayer: function (layer) {
+
+				if (layer instanceof L.LayerGroup) {
+					return this.removeLayers([layer]);
+				}
+
+				//Non point layers
+				if (!layer.getLatLng) {
+					this._nonPointGroup.removeLayer(layer);
+					this.fire('layerremove', { layer: layer });
+					return this;
+				}
+
+				if (!this._map) {
+					if (!this._arraySplice(this._needsClustering, layer) && this.hasLayer(layer)) {
+						this._needsRemoving.push({ layer: layer, latlng: layer._latlng });
+					}
+					this.fire('layerremove', { layer: layer });
+					return this;
+				}
+
+				if (!layer.__parent) {
+					return this;
+				}
+
+				if (this._unspiderfy) {
+					this._unspiderfy();
+					this._unspiderfyLayer(layer);
+				}
+
+				//Remove the marker from clusters
+				this._removeLayer(layer, true);
+				this.fire('layerremove', { layer: layer });
+
+				// Refresh bounds and weighted positions.
+				this._topClusterLevel._recalculateBounds();
+
+				this._refreshClustersIcons();
+
+				layer.off(this._childMarkerEventHandlers, this);
+
+				if (this._featureGroup.hasLayer(layer)) {
+					this._featureGroup.removeLayer(layer);
+					if (layer.clusterShow) {
+						layer.clusterShow();
+					}
+				}
+
+				return this;
+			},
+
+			//Takes an array of markers and adds them in bulk
+			addLayers: function (layersArray, skipLayerAddEvent) {
+				if (!L.Util.isArray(layersArray)) {
+					return this.addLayer(layersArray);
+				}
+
+				var fg = this._featureGroup,
+				    npg = this._nonPointGroup,
+				    chunked = this.options.chunkedLoading,
+				    chunkInterval = this.options.chunkInterval,
+				    chunkProgress = this.options.chunkProgress,
+				    l = layersArray.length,
+				    offset = 0,
+				    originalArray = true,
+				    m;
+
+				if (this._map) {
+					var started = (new Date()).getTime();
+					var process = L.bind(function () {
+						var start = (new Date()).getTime();
+
+						// Make sure to unspiderfy before starting to add some layers
+						if (this._map && this._unspiderfy) {
+							this._unspiderfy();
+						}
+
+						for (; offset < l; offset++) {
+							if (chunked && offset % 200 === 0) {
+								// every couple hundred markers, instrument the time elapsed since processing started:
+								var elapsed = (new Date()).getTime() - start;
+								if (elapsed > chunkInterval) {
+									break; // been working too hard, time to take a break :-)
+								}
+							}
+
+							m = layersArray[offset];
+
+							// Group of layers, append children to layersArray and skip.
+							// Side effects:
+							// - Total increases, so chunkProgress ratio jumps backward.
+							// - Groups are not included in this group, only their non-group child layers (hasLayer).
+							// Changing array length while looping does not affect performance in current browsers:
+							// http://jsperf.com/for-loop-changing-length/6
+							if (m instanceof L.LayerGroup) {
+								if (originalArray) {
+									layersArray = layersArray.slice();
+									originalArray = false;
+								}
+								this._extractNonGroupLayers(m, layersArray);
+								l = layersArray.length;
+								continue;
+							}
+
+							//Not point data, can't be clustered
+							if (!m.getLatLng) {
+								npg.addLayer(m);
+								if (!skipLayerAddEvent) {
+									this.fire('layeradd', { layer: m });
+								}
+								continue;
+							}
+
+							if (this.hasLayer(m)) {
+								continue;
+							}
+
+							this._addLayer(m, this._maxZoom);
+							if (!skipLayerAddEvent) {
+								this.fire('layeradd', { layer: m });
+							}
+
+							//If we just made a cluster of size 2 then we need to remove the other marker from the map (if it is) or we never will
+							if (m.__parent) {
+								if (m.__parent.getChildCount() === 2) {
+									var markers = m.__parent.getAllChildMarkers(),
+									    otherMarker = markers[0] === m ? markers[1] : markers[0];
+									fg.removeLayer(otherMarker);
+								}
+							}
+						}
+
+						if (chunkProgress) {
+							// report progress and time elapsed:
+							chunkProgress(offset, l, (new Date()).getTime() - started);
+						}
+
+						// Completed processing all markers.
+						if (offset === l) {
+
+							// Refresh bounds and weighted positions.
+							this._topClusterLevel._recalculateBounds();
+
+							this._refreshClustersIcons();
+
+							this._topClusterLevel._recursivelyAddChildrenToMap(null, this._zoom, this._currentShownBounds);
+						} else {
+							setTimeout(process, this.options.chunkDelay);
+						}
+					}, this);
+
+					process();
+				} else {
+					var needsClustering = this._needsClustering;
+
+					for (; offset < l; offset++) {
+						m = layersArray[offset];
+
+						// Group of layers, append children to layersArray and skip.
+						if (m instanceof L.LayerGroup) {
+							if (originalArray) {
+								layersArray = layersArray.slice();
+								originalArray = false;
+							}
+							this._extractNonGroupLayers(m, layersArray);
+							l = layersArray.length;
+							continue;
+						}
+
+						//Not point data, can't be clustered
+						if (!m.getLatLng) {
+							npg.addLayer(m);
+							continue;
+						}
+
+						if (this.hasLayer(m)) {
+							continue;
+						}
+
+						needsClustering.push(m);
+					}
+				}
+				return this;
+			},
+
+			//Takes an array of markers and removes them in bulk
+			removeLayers: function (layersArray) {
+				var i, m,
+				    l = layersArray.length,
+				    fg = this._featureGroup,
+				    npg = this._nonPointGroup,
+				    originalArray = true;
+
+				if (!this._map) {
+					for (i = 0; i < l; i++) {
+						m = layersArray[i];
+
+						// Group of layers, append children to layersArray and skip.
+						if (m instanceof L.LayerGroup) {
+							if (originalArray) {
+								layersArray = layersArray.slice();
+								originalArray = false;
+							}
+							this._extractNonGroupLayers(m, layersArray);
+							l = layersArray.length;
+							continue;
+						}
+
+						this._arraySplice(this._needsClustering, m);
+						npg.removeLayer(m);
+						if (this.hasLayer(m)) {
+							this._needsRemoving.push({ layer: m, latlng: m._latlng });
+						}
+						this.fire('layerremove', { layer: m });
+					}
+					return this;
+				}
+
+				if (this._unspiderfy) {
+					this._unspiderfy();
+
+					// Work on a copy of the array, so that next loop is not affected.
+					var layersArray2 = layersArray.slice(),
+					    l2 = l;
+					for (i = 0; i < l2; i++) {
+						m = layersArray2[i];
+
+						// Group of layers, append children to layersArray and skip.
+						if (m instanceof L.LayerGroup) {
+							this._extractNonGroupLayers(m, layersArray2);
+							l2 = layersArray2.length;
+							continue;
+						}
+
+						this._unspiderfyLayer(m);
+					}
+				}
+
+				for (i = 0; i < l; i++) {
+					m = layersArray[i];
+
+					// Group of layers, append children to layersArray and skip.
+					if (m instanceof L.LayerGroup) {
+						if (originalArray) {
+							layersArray = layersArray.slice();
+							originalArray = false;
+						}
+						this._extractNonGroupLayers(m, layersArray);
+						l = layersArray.length;
+						continue;
+					}
+
+					if (!m.__parent) {
+						npg.removeLayer(m);
+						this.fire('layerremove', { layer: m });
+						continue;
+					}
+
+					this._removeLayer(m, true, true);
+					this.fire('layerremove', { layer: m });
+
+					if (fg.hasLayer(m)) {
+						fg.removeLayer(m);
+						if (m.clusterShow) {
+							m.clusterShow();
+						}
+					}
+				}
+
+				// Refresh bounds and weighted positions.
+				this._topClusterLevel._recalculateBounds();
+
+				this._refreshClustersIcons();
+
+				//Fix up the clusters and markers on the map
+				this._topClusterLevel._recursivelyAddChildrenToMap(null, this._zoom, this._currentShownBounds);
+
+				return this;
+			},
+
+			//Removes all layers from the MarkerClusterGroup
+			clearLayers: function () {
+				//Need our own special implementation as the LayerGroup one doesn't work for us
+
+				//If we aren't on the map (yet), blow away the markers we know of
+				if (!this._map) {
+					this._needsClustering = [];
+					this._needsRemoving = [];
+					delete this._gridClusters;
+					delete this._gridUnclustered;
+				}
+
+				if (this._noanimationUnspiderfy) {
+					this._noanimationUnspiderfy();
+				}
+
+				//Remove all the visible layers
+				this._featureGroup.clearLayers();
+				this._nonPointGroup.clearLayers();
+
+				this.eachLayer(function (marker) {
+					marker.off(this._childMarkerEventHandlers, this);
+					delete marker.__parent;
+				}, this);
+
+				if (this._map) {
+					//Reset _topClusterLevel and the DistanceGrids
+					this._generateInitialClusters();
+				}
+
+				return this;
+			},
+
+			//Override FeatureGroup.getBounds as it doesn't work
+			getBounds: function () {
+				var bounds = new L.LatLngBounds();
+
+				if (this._topClusterLevel) {
+					bounds.extend(this._topClusterLevel._bounds);
+				}
+
+				for (var i = this._needsClustering.length - 1; i >= 0; i--) {
+					bounds.extend(this._needsClustering[i].getLatLng());
+				}
+
+				bounds.extend(this._nonPointGroup.getBounds());
+
+				return bounds;
+			},
+
+			//Overrides LayerGroup.eachLayer
+			eachLayer: function (method, context) {
+				var markers = this._needsClustering.slice(),
+					needsRemoving = this._needsRemoving,
+					thisNeedsRemoving, i, j;
+
+				if (this._topClusterLevel) {
+					this._topClusterLevel.getAllChildMarkers(markers);
+				}
+
+				for (i = markers.length - 1; i >= 0; i--) {
+					thisNeedsRemoving = true;
+
+					for (j = needsRemoving.length - 1; j >= 0; j--) {
+						if (needsRemoving[j].layer === markers[i]) {
+							thisNeedsRemoving = false;
+							break;
+						}
+					}
+
+					if (thisNeedsRemoving) {
+						method.call(context, markers[i]);
+					}
+				}
+
+				this._nonPointGroup.eachLayer(method, context);
+			},
+
+			//Overrides LayerGroup.getLayers
+			getLayers: function () {
+				var layers = [];
+				this.eachLayer(function (l) {
+					layers.push(l);
+				});
+				return layers;
+			},
+
+			//Overrides LayerGroup.getLayer, WARNING: Really bad performance
+			getLayer: function (id) {
+				var result = null;
+
+				id = parseInt(id, 10);
+
+				this.eachLayer(function (l) {
+					if (L.stamp(l) === id) {
+						result = l;
+					}
+				});
+
+				return result;
+			},
+
+			//Returns true if the given layer is in this MarkerClusterGroup
+			hasLayer: function (layer) {
+				if (!layer) {
+					return false;
+				}
+
+				var i, anArray = this._needsClustering;
+
+				for (i = anArray.length - 1; i >= 0; i--) {
+					if (anArray[i] === layer) {
+						return true;
+					}
+				}
+
+				anArray = this._needsRemoving;
+				for (i = anArray.length - 1; i >= 0; i--) {
+					if (anArray[i].layer === layer) {
+						return false;
+					}
+				}
+
+				return !!(layer.__parent && layer.__parent._group === this) || this._nonPointGroup.hasLayer(layer);
+			},
+
+			//Zoom down to show the given layer (spiderfying if necessary) then calls the callback
+			zoomToShowLayer: function (layer, callback) {
+
+				var map = this._map;
+
+				if (typeof callback !== 'function') {
+					callback = function () {};
+				}
+
+				var showMarker = function () {
+					// Assumes that map.hasLayer checks for direct appearance on map, not recursively calling
+					// hasLayer on Layer Groups that are on map (typically not calling this MarkerClusterGroup.hasLayer, which would always return true)
+					if ((map.hasLayer(layer) || map.hasLayer(layer.__parent)) && !this._inZoomAnimation) {
+						this._map.off('moveend', showMarker, this);
+						this.off('animationend', showMarker, this);
+
+						if (map.hasLayer(layer)) {
+							callback();
+						} else if (layer.__parent._icon) {
+							this.once('spiderfied', callback, this);
+							layer.__parent.spiderfy();
+						}
+					}
+				};
+
+				if (layer._icon && this._map.getBounds().contains(layer.getLatLng())) {
+					//Layer is visible ond on screen, immediate return
+					callback();
+				} else if (layer.__parent._zoom < Math.round(this._map._zoom)) {
+					//Layer should be visible at this zoom level. It must not be on screen so just pan over to it
+					this._map.on('moveend', showMarker, this);
+					this._map.panTo(layer.getLatLng());
+				} else {
+					this._map.on('moveend', showMarker, this);
+					this.on('animationend', showMarker, this);
+					layer.__parent.zoomToBounds();
+				}
+			},
+
+			//Overrides FeatureGroup.onAdd
+			onAdd: function (map) {
+				this._map = map;
+				var i, l, layer;
+
+				if (!isFinite(this._map.getMaxZoom())) {
+					throw "Map has no maxZoom specified";
+				}
+
+				this._featureGroup.addTo(map);
+				this._nonPointGroup.addTo(map);
+
+				if (!this._gridClusters) {
+					this._generateInitialClusters();
+				}
+
+				this._maxLat = map.options.crs.projection.MAX_LATITUDE;
+
+				//Restore all the positions as they are in the MCG before removing them
+				for (i = 0, l = this._needsRemoving.length; i < l; i++) {
+					layer = this._needsRemoving[i];
+					layer.newlatlng = layer.layer._latlng;
+					layer.layer._latlng = layer.latlng;
+				}
+				//Remove them, then restore their new positions
+				for (i = 0, l = this._needsRemoving.length; i < l; i++) {
+					layer = this._needsRemoving[i];
+					this._removeLayer(layer.layer, true);
+					layer.layer._latlng = layer.newlatlng;
+				}
+				this._needsRemoving = [];
+
+				//Remember the current zoom level and bounds
+				this._zoom = Math.round(this._map._zoom);
+				this._currentShownBounds = this._getExpandedVisibleBounds();
+
+				this._map.on('zoomend', this._zoomEnd, this);
+				this._map.on('moveend', this._moveEnd, this);
+
+				if (this._spiderfierOnAdd) { //TODO FIXME: Not sure how to have spiderfier add something on here nicely
+					this._spiderfierOnAdd();
+				}
+
+				this._bindEvents();
+
+				//Actually add our markers to the map:
+				l = this._needsClustering;
+				this._needsClustering = [];
+				this.addLayers(l, true);
+			},
+
+			//Overrides FeatureGroup.onRemove
+			onRemove: function (map) {
+				map.off('zoomend', this._zoomEnd, this);
+				map.off('moveend', this._moveEnd, this);
+
+				this._unbindEvents();
+
+				//In case we are in a cluster animation
+				this._map._mapPane.className = this._map._mapPane.className.replace(' leaflet-cluster-anim', '');
+
+				if (this._spiderfierOnRemove) { //TODO FIXME: Not sure how to have spiderfier add something on here nicely
+					this._spiderfierOnRemove();
+				}
+
+				delete this._maxLat;
+
+				//Clean up all the layers we added to the map
+				this._hideCoverage();
+				this._featureGroup.remove();
+				this._nonPointGroup.remove();
+
+				this._featureGroup.clearLayers();
+
+				this._map = null;
+			},
+
+			getVisibleParent: function (marker) {
+				var vMarker = marker;
+				while (vMarker && !vMarker._icon) {
+					vMarker = vMarker.__parent;
+				}
+				return vMarker || null;
+			},
+
+			//Remove the given object from the given array
+			_arraySplice: function (anArray, obj) {
+				for (var i = anArray.length - 1; i >= 0; i--) {
+					if (anArray[i] === obj) {
+						anArray.splice(i, 1);
+						return true;
+					}
+				}
+			},
+
+			/**
+			 * Removes a marker from all _gridUnclustered zoom levels, starting at the supplied zoom.
+			 * @param marker to be removed from _gridUnclustered.
+			 * @param z integer bottom start zoom level (included)
+			 * @private
+			 */
+			_removeFromGridUnclustered: function (marker, z) {
+				var map = this._map,
+				    gridUnclustered = this._gridUnclustered,
+					minZoom = Math.floor(this._map.getMinZoom());
+
+				for (; z >= minZoom; z--) {
+					if (!gridUnclustered[z].removeObject(marker, map.project(marker.getLatLng(), z))) {
+						break;
+					}
+				}
+			},
+
+			_childMarkerDragStart: function (e) {
+				e.target.__dragStart = e.target._latlng;
+			},
+
+			_childMarkerMoved: function (e) {
+				if (!this._ignoreMove && !e.target.__dragStart) {
+					var isPopupOpen = e.target._popup && e.target._popup.isOpen();
+
+					this._moveChild(e.target, e.oldLatLng, e.latlng);
+
+					if (isPopupOpen) {
+						e.target.openPopup();
+					}
+				}
+			},
+
+			_moveChild: function (layer, from, to) {
+				layer._latlng = from;
+				this.removeLayer(layer);
+
+				layer._latlng = to;
+				this.addLayer(layer);
+			},
+
+			_childMarkerDragEnd: function (e) {
+				var dragStart = e.target.__dragStart;
+				delete e.target.__dragStart;
+				if (dragStart) {
+					this._moveChild(e.target, dragStart, e.target._latlng);
+				}		
+			},
+
+
+			//Internal function for removing a marker from everything.
+			//dontUpdateMap: set to true if you will handle updating the map manually (for bulk functions)
+			_removeLayer: function (marker, removeFromDistanceGrid, dontUpdateMap) {
+				var gridClusters = this._gridClusters,
+					gridUnclustered = this._gridUnclustered,
+					fg = this._featureGroup,
+					map = this._map,
+					minZoom = Math.floor(this._map.getMinZoom());
+
+				//Remove the marker from distance clusters it might be in
+				if (removeFromDistanceGrid) {
+					this._removeFromGridUnclustered(marker, this._maxZoom);
+				}
+
+				//Work our way up the clusters removing them as we go if required
+				var cluster = marker.__parent,
+					markers = cluster._markers,
+					otherMarker;
+
+				//Remove the marker from the immediate parents marker list
+				this._arraySplice(markers, marker);
+
+				while (cluster) {
+					cluster._childCount--;
+					cluster._boundsNeedUpdate = true;
+
+					if (cluster._zoom < minZoom) {
+						//Top level, do nothing
+						break;
+					} else if (removeFromDistanceGrid && cluster._childCount <= 1) { //Cluster no longer required
+						//We need to push the other marker up to the parent
+						otherMarker = cluster._markers[0] === marker ? cluster._markers[1] : cluster._markers[0];
+
+						//Update distance grid
+						gridClusters[cluster._zoom].removeObject(cluster, map.project(cluster._cLatLng, cluster._zoom));
+						gridUnclustered[cluster._zoom].addObject(otherMarker, map.project(otherMarker.getLatLng(), cluster._zoom));
+
+						//Move otherMarker up to parent
+						this._arraySplice(cluster.__parent._childClusters, cluster);
+						cluster.__parent._markers.push(otherMarker);
+						otherMarker.__parent = cluster.__parent;
+
+						if (cluster._icon) {
+							//Cluster is currently on the map, need to put the marker on the map instead
+							fg.removeLayer(cluster);
+							if (!dontUpdateMap) {
+								fg.addLayer(otherMarker);
+							}
+						}
+					} else {
+						cluster._iconNeedsUpdate = true;
+					}
+
+					cluster = cluster.__parent;
+				}
+
+				delete marker.__parent;
+			},
+
+			_isOrIsParent: function (el, oel) {
+				while (oel) {
+					if (el === oel) {
+						return true;
+					}
+					oel = oel.parentNode;
+				}
+				return false;
+			},
+
+			//Override L.Evented.fire
+			fire: function (type, data, propagate) {
+				if (data && data.layer instanceof L.MarkerCluster) {
+					//Prevent multiple clustermouseover/off events if the icon is made up of stacked divs (Doesn't work in ie <= 8, no relatedTarget)
+					if (data.originalEvent && this._isOrIsParent(data.layer._icon, data.originalEvent.relatedTarget)) {
+						return;
+					}
+					type = 'cluster' + type;
+				}
+
+				L.FeatureGroup.prototype.fire.call(this, type, data, propagate);
+			},
+
+			//Override L.Evented.listens
+			listens: function (type, propagate) {
+				return L.FeatureGroup.prototype.listens.call(this, type, propagate) || L.FeatureGroup.prototype.listens.call(this, 'cluster' + type, propagate);
+			},
+
+			//Default functionality
+			_defaultIconCreateFunction: function (cluster) {
+				var childCount = cluster.getChildCount();
+
+				var c = ' marker-cluster-';
+				if (childCount < 10) {
+					c += 'small';
+				} else if (childCount < 100) {
+					c += 'medium';
+				} else {
+					c += 'large';
+				}
+
+				return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(40, 40) });
+			},
+
+			_bindEvents: function () {
+				var map = this._map,
+				    spiderfyOnMaxZoom = this.options.spiderfyOnMaxZoom,
+				    showCoverageOnHover = this.options.showCoverageOnHover,
+				    zoomToBoundsOnClick = this.options.zoomToBoundsOnClick,
+				    spiderfyOnEveryZoom = this.options.spiderfyOnEveryZoom;
+
+				//Zoom on cluster click or spiderfy if we are at the lowest level
+				if (spiderfyOnMaxZoom || zoomToBoundsOnClick || spiderfyOnEveryZoom) {
+					this.on('clusterclick clusterkeypress', this._zoomOrSpiderfy, this);
+				}
+
+				//Show convex hull (boundary) polygon on mouse over
+				if (showCoverageOnHover) {
+					this.on('clustermouseover', this._showCoverage, this);
+					this.on('clustermouseout', this._hideCoverage, this);
+					map.on('zoomend', this._hideCoverage, this);
+				}
+			},
+
+			_zoomOrSpiderfy: function (e) {
+				var cluster = e.layer,
+				    bottomCluster = cluster;
+
+				if (e.type === 'clusterkeypress' && e.originalEvent && e.originalEvent.keyCode !== 13) {
+					return;
+				}
+
+				while (bottomCluster._childClusters.length === 1) {
+					bottomCluster = bottomCluster._childClusters[0];
+				}
+
+				if (bottomCluster._zoom === this._maxZoom &&
+					bottomCluster._childCount === cluster._childCount &&
+					this.options.spiderfyOnMaxZoom) {
+
+					// All child markers are contained in a single cluster from this._maxZoom to this cluster.
+					cluster.spiderfy();
+				} else if (this.options.zoomToBoundsOnClick) {
+					cluster.zoomToBounds();
+				}
+
+				if (this.options.spiderfyOnEveryZoom) {
+					cluster.spiderfy();
+				}
+
+				// Focus the map again for keyboard users.
+				if (e.originalEvent && e.originalEvent.keyCode === 13) {
+					this._map._container.focus();
+				}
+			},
+
+			_showCoverage: function (e) {
+				var map = this._map;
+				if (this._inZoomAnimation) {
+					return;
+				}
+				if (this._shownPolygon) {
+					map.removeLayer(this._shownPolygon);
+				}
+				if (e.layer.getChildCount() > 2 && e.layer !== this._spiderfied) {
+					this._shownPolygon = new L.Polygon(e.layer.getConvexHull(), this.options.polygonOptions);
+					map.addLayer(this._shownPolygon);
+				}
+			},
+
+			_hideCoverage: function () {
+				if (this._shownPolygon) {
+					this._map.removeLayer(this._shownPolygon);
+					this._shownPolygon = null;
+				}
+			},
+
+			_unbindEvents: function () {
+				var spiderfyOnMaxZoom = this.options.spiderfyOnMaxZoom,
+					showCoverageOnHover = this.options.showCoverageOnHover,
+					zoomToBoundsOnClick = this.options.zoomToBoundsOnClick,
+					spiderfyOnEveryZoom = this.options.spiderfyOnEveryZoom,
+					map = this._map;
+
+				if (spiderfyOnMaxZoom || zoomToBoundsOnClick || spiderfyOnEveryZoom) {
+					this.off('clusterclick clusterkeypress', this._zoomOrSpiderfy, this);
+				}
+				if (showCoverageOnHover) {
+					this.off('clustermouseover', this._showCoverage, this);
+					this.off('clustermouseout', this._hideCoverage, this);
+					map.off('zoomend', this._hideCoverage, this);
+				}
+			},
+
+			_zoomEnd: function () {
+				if (!this._map) { //May have been removed from the map by a zoomEnd handler
+					return;
+				}
+				this._mergeSplitClusters();
+
+				this._zoom = Math.round(this._map._zoom);
+				this._currentShownBounds = this._getExpandedVisibleBounds();
+			},
+
+			_moveEnd: function () {
+				if (this._inZoomAnimation) {
+					return;
+				}
+
+				var newBounds = this._getExpandedVisibleBounds();
+
+				this._topClusterLevel._recursivelyRemoveChildrenFromMap(this._currentShownBounds, Math.floor(this._map.getMinZoom()), this._zoom, newBounds);
+				this._topClusterLevel._recursivelyAddChildrenToMap(null, Math.round(this._map._zoom), newBounds);
+
+				this._currentShownBounds = newBounds;
+				return;
+			},
+
+			_generateInitialClusters: function () {
+				var maxZoom = Math.ceil(this._map.getMaxZoom()),
+					minZoom = Math.floor(this._map.getMinZoom()),
+					radius = this.options.maxClusterRadius,
+					radiusFn = radius;
+
+				//If we just set maxClusterRadius to a single number, we need to create
+				//a simple function to return that number. Otherwise, we just have to
+				//use the function we've passed in.
+				if (typeof radius !== "function") {
+					radiusFn = function () { return radius; };
+				}
+
+				if (this.options.disableClusteringAtZoom !== null) {
+					maxZoom = this.options.disableClusteringAtZoom - 1;
+				}
+				this._maxZoom = maxZoom;
+				this._gridClusters = {};
+				this._gridUnclustered = {};
+
+				//Set up DistanceGrids for each zoom
+				for (var zoom = maxZoom; zoom >= minZoom; zoom--) {
+					this._gridClusters[zoom] = new L.DistanceGrid(radiusFn(zoom));
+					this._gridUnclustered[zoom] = new L.DistanceGrid(radiusFn(zoom));
+				}
+
+				// Instantiate the appropriate L.MarkerCluster class (animated or not).
+				this._topClusterLevel = new this._markerCluster(this, minZoom - 1);
+			},
+
+			//Zoom: Zoom to start adding at (Pass this._maxZoom to start at the bottom)
+			_addLayer: function (layer, zoom) {
+				var gridClusters = this._gridClusters,
+				    gridUnclustered = this._gridUnclustered,
+					minZoom = Math.floor(this._map.getMinZoom()),
+				    markerPoint, z;
+
+				if (this.options.singleMarkerMode) {
+					this._overrideMarkerIcon(layer);
+				}
+
+				layer.on(this._childMarkerEventHandlers, this);
+
+				//Find the lowest zoom level to slot this one in
+				for (; zoom >= minZoom; zoom--) {
+					markerPoint = this._map.project(layer.getLatLng(), zoom); // calculate pixel position
+
+					//Try find a cluster close by
+					var closest = gridClusters[zoom].getNearObject(markerPoint);
+					if (closest) {
+						closest._addChild(layer);
+						layer.__parent = closest;
+						return;
+					}
+
+					//Try find a marker close by to form a new cluster with
+					closest = gridUnclustered[zoom].getNearObject(markerPoint);
+					if (closest) {
+						var parent = closest.__parent;
+						if (parent) {
+							this._removeLayer(closest, false);
+						}
+
+						//Create new cluster with these 2 in it
+
+						var newCluster = new this._markerCluster(this, zoom, closest, layer);
+						gridClusters[zoom].addObject(newCluster, this._map.project(newCluster._cLatLng, zoom));
+						closest.__parent = newCluster;
+						layer.__parent = newCluster;
+
+						//First create any new intermediate parent clusters that don't exist
+						var lastParent = newCluster;
+						for (z = zoom - 1; z > parent._zoom; z--) {
+							lastParent = new this._markerCluster(this, z, lastParent);
+							gridClusters[z].addObject(lastParent, this._map.project(closest.getLatLng(), z));
+						}
+						parent._addChild(lastParent);
+
+						//Remove closest from this zoom level and any above that it is in, replace with newCluster
+						this._removeFromGridUnclustered(closest, zoom);
+
+						return;
+					}
+
+					//Didn't manage to cluster in at this zoom, record us as a marker here and continue upwards
+					gridUnclustered[zoom].addObject(layer, markerPoint);
+				}
+
+				//Didn't get in anything, add us to the top
+				this._topClusterLevel._addChild(layer);
+				layer.__parent = this._topClusterLevel;
+				return;
+			},
+
+			/**
+			 * Refreshes the icon of all "dirty" visible clusters.
+			 * Non-visible "dirty" clusters will be updated when they are added to the map.
+			 * @private
+			 */
+			_refreshClustersIcons: function () {
+				this._featureGroup.eachLayer(function (c) {
+					if (c instanceof L.MarkerCluster && c._iconNeedsUpdate) {
+						c._updateIcon();
+					}
+				});
+			},
+
+			//Enqueue code to fire after the marker expand/contract has happened
+			_enqueue: function (fn) {
+				this._queue.push(fn);
+				if (!this._queueTimeout) {
+					this._queueTimeout = setTimeout(L.bind(this._processQueue, this), 300);
+				}
+			},
+			_processQueue: function () {
+				for (var i = 0; i < this._queue.length; i++) {
+					this._queue[i].call(this);
+				}
+				this._queue.length = 0;
+				clearTimeout(this._queueTimeout);
+				this._queueTimeout = null;
+			},
+
+			//Merge and split any existing clusters that are too big or small
+			_mergeSplitClusters: function () {
+				var mapZoom = Math.round(this._map._zoom);
+
+				//In case we are starting to split before the animation finished
+				this._processQueue();
+
+				if (this._zoom < mapZoom && this._currentShownBounds.intersects(this._getExpandedVisibleBounds())) { //Zoom in, split
+					this._animationStart();
+					//Remove clusters now off screen
+					this._topClusterLevel._recursivelyRemoveChildrenFromMap(this._currentShownBounds, Math.floor(this._map.getMinZoom()), this._zoom, this._getExpandedVisibleBounds());
+
+					this._animationZoomIn(this._zoom, mapZoom);
+
+				} else if (this._zoom > mapZoom) { //Zoom out, merge
+					this._animationStart();
+
+					this._animationZoomOut(this._zoom, mapZoom);
+				} else {
+					this._moveEnd();
+				}
+			},
+
+			//Gets the maps visible bounds expanded in each direction by the size of the screen (so the user cannot see an area we do not cover in one pan)
+			_getExpandedVisibleBounds: function () {
+				if (!this.options.removeOutsideVisibleBounds) {
+					return this._mapBoundsInfinite;
+				} else if (L.Browser.mobile) {
+					return this._checkBoundsMaxLat(this._map.getBounds());
+				}
+
+				return this._checkBoundsMaxLat(this._map.getBounds().pad(1)); // Padding expands the bounds by its own dimensions but scaled with the given factor.
+			},
+
+			/**
+			 * Expands the latitude to Infinity (or -Infinity) if the input bounds reach the map projection maximum defined latitude
+			 * (in the case of Web/Spherical Mercator, it is 85.0511287798 / see https://en.wikipedia.org/wiki/Web_Mercator#Formulas).
+			 * Otherwise, the removeOutsideVisibleBounds option will remove markers beyond that limit, whereas the same markers without
+			 * this option (or outside MCG) will have their position floored (ceiled) by the projection and rendered at that limit,
+			 * making the user think that MCG "eats" them and never displays them again.
+			 * @param bounds L.LatLngBounds
+			 * @returns {L.LatLngBounds}
+			 * @private
+			 */
+			_checkBoundsMaxLat: function (bounds) {
+				var maxLat = this._maxLat;
+
+				if (maxLat !== undefined) {
+					if (bounds.getNorth() >= maxLat) {
+						bounds._northEast.lat = Infinity;
+					}
+					if (bounds.getSouth() <= -maxLat) {
+						bounds._southWest.lat = -Infinity;
+					}
+				}
+
+				return bounds;
+			},
+
+			//Shared animation code
+			_animationAddLayerNonAnimated: function (layer, newCluster) {
+				if (newCluster === layer) {
+					this._featureGroup.addLayer(layer);
+				} else if (newCluster._childCount === 2) {
+					newCluster._addToMap();
+
+					var markers = newCluster.getAllChildMarkers();
+					this._featureGroup.removeLayer(markers[0]);
+					this._featureGroup.removeLayer(markers[1]);
+				} else {
+					newCluster._updateIcon();
+				}
+			},
+
+			/**
+			 * Extracts individual (i.e. non-group) layers from a Layer Group.
+			 * @param group to extract layers from.
+			 * @param output {Array} in which to store the extracted layers.
+			 * @returns {*|Array}
+			 * @private
+			 */
+			_extractNonGroupLayers: function (group, output) {
+				var layers = group.getLayers(),
+				    i = 0,
+				    layer;
+
+				output = output || [];
+
+				for (; i < layers.length; i++) {
+					layer = layers[i];
+
+					if (layer instanceof L.LayerGroup) {
+						this._extractNonGroupLayers(layer, output);
+						continue;
+					}
+
+					output.push(layer);
+				}
+
+				return output;
+			},
+
+			/**
+			 * Implements the singleMarkerMode option.
+			 * @param layer Marker to re-style using the Clusters iconCreateFunction.
+			 * @returns {L.Icon} The newly created icon.
+			 * @private
+			 */
+			_overrideMarkerIcon: function (layer) {
+				var icon = layer.options.icon = this.options.iconCreateFunction({
+					getChildCount: function () {
+						return 1;
+					},
+					getAllChildMarkers: function () {
+						return [layer];
+					}
+				});
+
+				return icon;
+			}
+		});
+
+		// Constant bounds used in case option "removeOutsideVisibleBounds" is set to false.
+		L.MarkerClusterGroup.include({
+			_mapBoundsInfinite: new L.LatLngBounds(new L.LatLng(-Infinity, -Infinity), new L.LatLng(Infinity, Infinity))
+		});
+
+		L.MarkerClusterGroup.include({
+			_noAnimation: {
+				//Non Animated versions of everything
+				_animationStart: function () {
+					//Do nothing...
+				},
+				_animationZoomIn: function (previousZoomLevel, newZoomLevel) {
+					this._topClusterLevel._recursivelyRemoveChildrenFromMap(this._currentShownBounds, Math.floor(this._map.getMinZoom()), previousZoomLevel);
+					this._topClusterLevel._recursivelyAddChildrenToMap(null, newZoomLevel, this._getExpandedVisibleBounds());
+
+					//We didn't actually animate, but we use this event to mean "clustering animations have finished"
+					this.fire('animationend');
+				},
+				_animationZoomOut: function (previousZoomLevel, newZoomLevel) {
+					this._topClusterLevel._recursivelyRemoveChildrenFromMap(this._currentShownBounds, Math.floor(this._map.getMinZoom()), previousZoomLevel);
+					this._topClusterLevel._recursivelyAddChildrenToMap(null, newZoomLevel, this._getExpandedVisibleBounds());
+
+					//We didn't actually animate, but we use this event to mean "clustering animations have finished"
+					this.fire('animationend');
+				},
+				_animationAddLayer: function (layer, newCluster) {
+					this._animationAddLayerNonAnimated(layer, newCluster);
+				}
+			},
+
+			_withAnimation: {
+				//Animated versions here
+				_animationStart: function () {
+					this._map._mapPane.className += ' leaflet-cluster-anim';
+					this._inZoomAnimation++;
+				},
+
+				_animationZoomIn: function (previousZoomLevel, newZoomLevel) {
+					var bounds = this._getExpandedVisibleBounds(),
+					    fg = this._featureGroup,
+						minZoom = Math.floor(this._map.getMinZoom()),
+					    i;
+
+					this._ignoreMove = true;
+
+					//Add all children of current clusters to map and remove those clusters from map
+					this._topClusterLevel._recursively(bounds, previousZoomLevel, minZoom, function (c) {
+						var startPos = c._latlng,
+						    markers  = c._markers,
+						    m;
+
+						if (!bounds.contains(startPos)) {
+							startPos = null;
+						}
+
+						if (c._isSingleParent() && previousZoomLevel + 1 === newZoomLevel) { //Immediately add the new child and remove us
+							fg.removeLayer(c);
+							c._recursivelyAddChildrenToMap(null, newZoomLevel, bounds);
+						} else {
+							//Fade out old cluster
+							c.clusterHide();
+							c._recursivelyAddChildrenToMap(startPos, newZoomLevel, bounds);
+						}
+
+						//Remove all markers that aren't visible any more
+						//TODO: Do we actually need to do this on the higher levels too?
+						for (i = markers.length - 1; i >= 0; i--) {
+							m = markers[i];
+							if (!bounds.contains(m._latlng)) {
+								fg.removeLayer(m);
+							}
+						}
+
+					});
+
+					this._forceLayout();
+
+					//Update opacities
+					this._topClusterLevel._recursivelyBecomeVisible(bounds, newZoomLevel);
+					//TODO Maybe? Update markers in _recursivelyBecomeVisible
+					fg.eachLayer(function (n) {
+						if (!(n instanceof L.MarkerCluster) && n._icon) {
+							n.clusterShow();
+						}
+					});
+
+					//update the positions of the just added clusters/markers
+					this._topClusterLevel._recursively(bounds, previousZoomLevel, newZoomLevel, function (c) {
+						c._recursivelyRestoreChildPositions(newZoomLevel);
+					});
+
+					this._ignoreMove = false;
+
+					//Remove the old clusters and close the zoom animation
+					this._enqueue(function () {
+						//update the positions of the just added clusters/markers
+						this._topClusterLevel._recursively(bounds, previousZoomLevel, minZoom, function (c) {
+							fg.removeLayer(c);
+							c.clusterShow();
+						});
+
+						this._animationEnd();
+					});
+				},
+
+				_animationZoomOut: function (previousZoomLevel, newZoomLevel) {
+					this._animationZoomOutSingle(this._topClusterLevel, previousZoomLevel - 1, newZoomLevel);
+
+					//Need to add markers for those that weren't on the map before but are now
+					this._topClusterLevel._recursivelyAddChildrenToMap(null, newZoomLevel, this._getExpandedVisibleBounds());
+					//Remove markers that were on the map before but won't be now
+					this._topClusterLevel._recursivelyRemoveChildrenFromMap(this._currentShownBounds, Math.floor(this._map.getMinZoom()), previousZoomLevel, this._getExpandedVisibleBounds());
+				},
+
+				_animationAddLayer: function (layer, newCluster) {
+					var me = this,
+					    fg = this._featureGroup;
+
+					fg.addLayer(layer);
+					if (newCluster !== layer) {
+						if (newCluster._childCount > 2) { //Was already a cluster
+
+							newCluster._updateIcon();
+							this._forceLayout();
+							this._animationStart();
+
+							layer._setPos(this._map.latLngToLayerPoint(newCluster.getLatLng()));
+							layer.clusterHide();
+
+							this._enqueue(function () {
+								fg.removeLayer(layer);
+								layer.clusterShow();
+
+								me._animationEnd();
+							});
+
+						} else { //Just became a cluster
+							this._forceLayout();
+
+							me._animationStart();
+							me._animationZoomOutSingle(newCluster, this._map.getMaxZoom(), this._zoom);
+						}
+					}
+				}
+			},
+
+			// Private methods for animated versions.
+			_animationZoomOutSingle: function (cluster, previousZoomLevel, newZoomLevel) {
+				var bounds = this._getExpandedVisibleBounds(),
+					minZoom = Math.floor(this._map.getMinZoom());
+
+				//Animate all of the markers in the clusters to move to their cluster center point
+				cluster._recursivelyAnimateChildrenInAndAddSelfToMap(bounds, minZoom, previousZoomLevel + 1, newZoomLevel);
+
+				var me = this;
+
+				//Update the opacity (If we immediately set it they won't animate)
+				this._forceLayout();
+				cluster._recursivelyBecomeVisible(bounds, newZoomLevel);
+
+				//TODO: Maybe use the transition timing stuff to make this more reliable
+				//When the animations are done, tidy up
+				this._enqueue(function () {
+
+					//This cluster stopped being a cluster before the timeout fired
+					if (cluster._childCount === 1) {
+						var m = cluster._markers[0];
+						//If we were in a cluster animation at the time then the opacity and position of our child could be wrong now, so fix it
+						this._ignoreMove = true;
+						m.setLatLng(m.getLatLng());
+						this._ignoreMove = false;
+						if (m.clusterShow) {
+							m.clusterShow();
+						}
+					} else {
+						cluster._recursively(bounds, newZoomLevel, minZoom, function (c) {
+							c._recursivelyRemoveChildrenFromMap(bounds, minZoom, previousZoomLevel + 1);
+						});
+					}
+					me._animationEnd();
+				});
+			},
+
+			_animationEnd: function () {
+				if (this._map) {
+					this._map._mapPane.className = this._map._mapPane.className.replace(' leaflet-cluster-anim', '');
+				}
+				this._inZoomAnimation--;
+				this.fire('animationend');
+			},
+
+			//Force a browser layout of stuff in the map
+			// Should apply the current opacity and location to all elements so we can update them again for an animation
+			_forceLayout: function () {
+				//In my testing this works, infact offsetWidth of any element seems to work.
+				//Could loop all this._layers and do this for each _icon if it stops working
+
+				L.Util.falseFn(document.body.offsetWidth);
+			}
+		});
+
+		L.markerClusterGroup = function (options) {
+			return new L.MarkerClusterGroup(options);
+		};
+
+		var MarkerCluster = L.MarkerCluster = L.Marker.extend({
+			options: L.Icon.prototype.options,
+
+			initialize: function (group, zoom, a, b) {
+
+				L.Marker.prototype.initialize.call(this, a ? (a._cLatLng || a.getLatLng()) : new L.LatLng(0, 0),
+		            { icon: this, pane: group.options.clusterPane });
+
+				this._group = group;
+				this._zoom = zoom;
+
+				this._markers = [];
+				this._childClusters = [];
+				this._childCount = 0;
+				this._iconNeedsUpdate = true;
+				this._boundsNeedUpdate = true;
+
+				this._bounds = new L.LatLngBounds();
+
+				if (a) {
+					this._addChild(a);
+				}
+				if (b) {
+					this._addChild(b);
+				}
+			},
+
+			//Recursively retrieve all child markers of this cluster
+			getAllChildMarkers: function (storageArray, ignoreDraggedMarker) {
+				storageArray = storageArray || [];
+
+				for (var i = this._childClusters.length - 1; i >= 0; i--) {
+					this._childClusters[i].getAllChildMarkers(storageArray, ignoreDraggedMarker);
+				}
+
+				for (var j = this._markers.length - 1; j >= 0; j--) {
+					if (ignoreDraggedMarker && this._markers[j].__dragStart) {
+						continue;
+					}
+					storageArray.push(this._markers[j]);
+				}
+
+				return storageArray;
+			},
+
+			//Returns the count of how many child markers we have
+			getChildCount: function () {
+				return this._childCount;
+			},
+
+			//Zoom to the minimum of showing all of the child markers, or the extents of this cluster
+			zoomToBounds: function (fitBoundsOptions) {
+				var childClusters = this._childClusters.slice(),
+					map = this._group._map,
+					boundsZoom = map.getBoundsZoom(this._bounds),
+					zoom = this._zoom + 1,
+					mapZoom = map.getZoom(),
+					i;
+
+				//calculate how far we need to zoom down to see all of the markers
+				while (childClusters.length > 0 && boundsZoom > zoom) {
+					zoom++;
+					var newClusters = [];
+					for (i = 0; i < childClusters.length; i++) {
+						newClusters = newClusters.concat(childClusters[i]._childClusters);
+					}
+					childClusters = newClusters;
+				}
+
+				if (boundsZoom > zoom) {
+					this._group._map.setView(this._latlng, zoom);
+				} else if (boundsZoom <= mapZoom) { //If fitBounds wouldn't zoom us down, zoom us down instead
+					this._group._map.setView(this._latlng, mapZoom + 1);
+				} else {
+					this._group._map.fitBounds(this._bounds, fitBoundsOptions);
+				}
+			},
+
+			getBounds: function () {
+				var bounds = new L.LatLngBounds();
+				bounds.extend(this._bounds);
+				return bounds;
+			},
+
+			_updateIcon: function () {
+				this._iconNeedsUpdate = true;
+				if (this._icon) {
+					this.setIcon(this);
+				}
+			},
+
+			//Cludge for Icon, we pretend to be an icon for performance
+			createIcon: function () {
+				if (this._iconNeedsUpdate) {
+					this._iconObj = this._group.options.iconCreateFunction(this);
+					this._iconNeedsUpdate = false;
+				}
+				return this._iconObj.createIcon();
+			},
+			createShadow: function () {
+				return this._iconObj.createShadow();
+			},
+
+
+			_addChild: function (new1, isNotificationFromChild) {
+
+				this._iconNeedsUpdate = true;
+
+				this._boundsNeedUpdate = true;
+				this._setClusterCenter(new1);
+
+				if (new1 instanceof L.MarkerCluster) {
+					if (!isNotificationFromChild) {
+						this._childClusters.push(new1);
+						new1.__parent = this;
+					}
+					this._childCount += new1._childCount;
+				} else {
+					if (!isNotificationFromChild) {
+						this._markers.push(new1);
+					}
+					this._childCount++;
+				}
+
+				if (this.__parent) {
+					this.__parent._addChild(new1, true);
+				}
+			},
+
+			/**
+			 * Makes sure the cluster center is set. If not, uses the child center if it is a cluster, or the marker position.
+			 * @param child L.MarkerCluster|L.Marker that will be used as cluster center if not defined yet.
+			 * @private
+			 */
+			_setClusterCenter: function (child) {
+				if (!this._cLatLng) {
+					// when clustering, take position of the first point as the cluster center
+					this._cLatLng = child._cLatLng || child._latlng;
+				}
+			},
+
+			/**
+			 * Assigns impossible bounding values so that the next extend entirely determines the new bounds.
+			 * This method avoids having to trash the previous L.LatLngBounds object and to create a new one, which is much slower for this class.
+			 * As long as the bounds are not extended, most other methods would probably fail, as they would with bounds initialized but not extended.
+			 * @private
+			 */
+			_resetBounds: function () {
+				var bounds = this._bounds;
+
+				if (bounds._southWest) {
+					bounds._southWest.lat = Infinity;
+					bounds._southWest.lng = Infinity;
+				}
+				if (bounds._northEast) {
+					bounds._northEast.lat = -Infinity;
+					bounds._northEast.lng = -Infinity;
+				}
+			},
+
+			_recalculateBounds: function () {
+				var markers = this._markers,
+				    childClusters = this._childClusters,
+				    latSum = 0,
+				    lngSum = 0,
+				    totalCount = this._childCount,
+				    i, child, childLatLng, childCount;
+
+				// Case where all markers are removed from the map and we are left with just an empty _topClusterLevel.
+				if (totalCount === 0) {
+					return;
+				}
+
+				// Reset rather than creating a new object, for performance.
+				this._resetBounds();
+
+				// Child markers.
+				for (i = 0; i < markers.length; i++) {
+					childLatLng = markers[i]._latlng;
+
+					this._bounds.extend(childLatLng);
+
+					latSum += childLatLng.lat;
+					lngSum += childLatLng.lng;
+				}
+
+				// Child clusters.
+				for (i = 0; i < childClusters.length; i++) {
+					child = childClusters[i];
+
+					// Re-compute child bounds and weighted position first if necessary.
+					if (child._boundsNeedUpdate) {
+						child._recalculateBounds();
+					}
+
+					this._bounds.extend(child._bounds);
+
+					childLatLng = child._wLatLng;
+					childCount = child._childCount;
+
+					latSum += childLatLng.lat * childCount;
+					lngSum += childLatLng.lng * childCount;
+				}
+
+				this._latlng = this._wLatLng = new L.LatLng(latSum / totalCount, lngSum / totalCount);
+
+				// Reset dirty flag.
+				this._boundsNeedUpdate = false;
+			},
+
+			//Set our markers position as given and add it to the map
+			_addToMap: function (startPos) {
+				if (startPos) {
+					this._backupLatlng = this._latlng;
+					this.setLatLng(startPos);
+				}
+				this._group._featureGroup.addLayer(this);
+			},
+
+			_recursivelyAnimateChildrenIn: function (bounds, center, maxZoom) {
+				this._recursively(bounds, this._group._map.getMinZoom(), maxZoom - 1,
+					function (c) {
+						var markers = c._markers,
+							i, m;
+						for (i = markers.length - 1; i >= 0; i--) {
+							m = markers[i];
+
+							//Only do it if the icon is still on the map
+							if (m._icon) {
+								m._setPos(center);
+								m.clusterHide();
+							}
+						}
+					},
+					function (c) {
+						var childClusters = c._childClusters,
+							j, cm;
+						for (j = childClusters.length - 1; j >= 0; j--) {
+							cm = childClusters[j];
+							if (cm._icon) {
+								cm._setPos(center);
+								cm.clusterHide();
+							}
+						}
+					}
+				);
+			},
+
+			_recursivelyAnimateChildrenInAndAddSelfToMap: function (bounds, mapMinZoom, previousZoomLevel, newZoomLevel) {
+				this._recursively(bounds, newZoomLevel, mapMinZoom,
+					function (c) {
+						c._recursivelyAnimateChildrenIn(bounds, c._group._map.latLngToLayerPoint(c.getLatLng()).round(), previousZoomLevel);
+
+						//TODO: depthToAnimateIn affects _isSingleParent, if there is a multizoom we may/may not be.
+						//As a hack we only do a animation free zoom on a single level zoom, if someone does multiple levels then we always animate
+						if (c._isSingleParent() && previousZoomLevel - 1 === newZoomLevel) {
+							c.clusterShow();
+							c._recursivelyRemoveChildrenFromMap(bounds, mapMinZoom, previousZoomLevel); //Immediately remove our children as we are replacing them. TODO previousBounds not bounds
+						} else {
+							c.clusterHide();
+						}
+
+						c._addToMap();
+					}
+				);
+			},
+
+			_recursivelyBecomeVisible: function (bounds, zoomLevel) {
+				this._recursively(bounds, this._group._map.getMinZoom(), zoomLevel, null, function (c) {
+					c.clusterShow();
+				});
+			},
+
+			_recursivelyAddChildrenToMap: function (startPos, zoomLevel, bounds) {
+				this._recursively(bounds, this._group._map.getMinZoom() - 1, zoomLevel,
+					function (c) {
+						if (zoomLevel === c._zoom) {
+							return;
+						}
+
+						//Add our child markers at startPos (so they can be animated out)
+						for (var i = c._markers.length - 1; i >= 0; i--) {
+							var nm = c._markers[i];
+
+							if (!bounds.contains(nm._latlng)) {
+								continue;
+							}
+
+							if (startPos) {
+								nm._backupLatlng = nm.getLatLng();
+
+								nm.setLatLng(startPos);
+								if (nm.clusterHide) {
+									nm.clusterHide();
+								}
+							}
+
+							c._group._featureGroup.addLayer(nm);
+						}
+					},
+					function (c) {
+						c._addToMap(startPos);
+					}
+				);
+			},
+
+			_recursivelyRestoreChildPositions: function (zoomLevel) {
+				//Fix positions of child markers
+				for (var i = this._markers.length - 1; i >= 0; i--) {
+					var nm = this._markers[i];
+					if (nm._backupLatlng) {
+						nm.setLatLng(nm._backupLatlng);
+						delete nm._backupLatlng;
+					}
+				}
+
+				if (zoomLevel - 1 === this._zoom) {
+					//Reposition child clusters
+					for (var j = this._childClusters.length - 1; j >= 0; j--) {
+						this._childClusters[j]._restorePosition();
+					}
+				} else {
+					for (var k = this._childClusters.length - 1; k >= 0; k--) {
+						this._childClusters[k]._recursivelyRestoreChildPositions(zoomLevel);
+					}
+				}
+			},
+
+			_restorePosition: function () {
+				if (this._backupLatlng) {
+					this.setLatLng(this._backupLatlng);
+					delete this._backupLatlng;
+				}
+			},
+
+			//exceptBounds: If set, don't remove any markers/clusters in it
+			_recursivelyRemoveChildrenFromMap: function (previousBounds, mapMinZoom, zoomLevel, exceptBounds) {
+				var m, i;
+				this._recursively(previousBounds, mapMinZoom - 1, zoomLevel - 1,
+					function (c) {
+						//Remove markers at every level
+						for (i = c._markers.length - 1; i >= 0; i--) {
+							m = c._markers[i];
+							if (!exceptBounds || !exceptBounds.contains(m._latlng)) {
+								c._group._featureGroup.removeLayer(m);
+								if (m.clusterShow) {
+									m.clusterShow();
+								}
+							}
+						}
+					},
+					function (c) {
+						//Remove child clusters at just the bottom level
+						for (i = c._childClusters.length - 1; i >= 0; i--) {
+							m = c._childClusters[i];
+							if (!exceptBounds || !exceptBounds.contains(m._latlng)) {
+								c._group._featureGroup.removeLayer(m);
+								if (m.clusterShow) {
+									m.clusterShow();
+								}
+							}
+						}
+					}
+				);
+			},
+
+			//Run the given functions recursively to this and child clusters
+			// boundsToApplyTo: a L.LatLngBounds representing the bounds of what clusters to recurse in to
+			// zoomLevelToStart: zoom level to start running functions (inclusive)
+			// zoomLevelToStop: zoom level to stop running functions (inclusive)
+			// runAtEveryLevel: function that takes an L.MarkerCluster as an argument that should be applied on every level
+			// runAtBottomLevel: function that takes an L.MarkerCluster as an argument that should be applied at only the bottom level
+			_recursively: function (boundsToApplyTo, zoomLevelToStart, zoomLevelToStop, runAtEveryLevel, runAtBottomLevel) {
+				var childClusters = this._childClusters,
+				    zoom = this._zoom,
+				    i, c;
+
+				if (zoomLevelToStart <= zoom) {
+					if (runAtEveryLevel) {
+						runAtEveryLevel(this);
+					}
+					if (runAtBottomLevel && zoom === zoomLevelToStop) {
+						runAtBottomLevel(this);
+					}
+				}
+
+				if (zoom < zoomLevelToStart || zoom < zoomLevelToStop) {
+					for (i = childClusters.length - 1; i >= 0; i--) {
+						c = childClusters[i];
+						if (c._boundsNeedUpdate) {
+							c._recalculateBounds();
+						}
+						if (boundsToApplyTo.intersects(c._bounds)) {
+							c._recursively(boundsToApplyTo, zoomLevelToStart, zoomLevelToStop, runAtEveryLevel, runAtBottomLevel);
+						}
+					}
+				}
+			},
+
+			//Returns true if we are the parent of only one cluster and that cluster is the same as us
+			_isSingleParent: function () {
+				//Don't need to check this._markers as the rest won't work if there are any
+				return this._childClusters.length > 0 && this._childClusters[0]._childCount === this._childCount;
+			}
+		});
+
+		/*
+		* Extends L.Marker to include two extra methods: clusterHide and clusterShow.
+		* 
+		* They work as setOpacity(0) and setOpacity(1) respectively, but
+		* don't overwrite the options.opacity
+		* 
+		*/
+
+		L.Marker.include({
+			clusterHide: function () {
+				var backup = this.options.opacity;
+				this.setOpacity(0);
+				this.options.opacity = backup;
+				return this;
+			},
+			
+			clusterShow: function () {
+				return this.setOpacity(this.options.opacity);
+			}
+		});
+
+		L.DistanceGrid = function (cellSize) {
+			this._cellSize = cellSize;
+			this._sqCellSize = cellSize * cellSize;
+			this._grid = {};
+			this._objectPoint = { };
+		};
+
+		L.DistanceGrid.prototype = {
+
+			addObject: function (obj, point) {
+				var x = this._getCoord(point.x),
+				    y = this._getCoord(point.y),
+				    grid = this._grid,
+				    row = grid[y] = grid[y] || {},
+				    cell = row[x] = row[x] || [],
+				    stamp = L.Util.stamp(obj);
+
+				this._objectPoint[stamp] = point;
+
+				cell.push(obj);
+			},
+
+			updateObject: function (obj, point) {
+				this.removeObject(obj);
+				this.addObject(obj, point);
+			},
+
+			//Returns true if the object was found
+			removeObject: function (obj, point) {
+				var x = this._getCoord(point.x),
+				    y = this._getCoord(point.y),
+				    grid = this._grid,
+				    row = grid[y] = grid[y] || {},
+				    cell = row[x] = row[x] || [],
+				    i, len;
+
+				delete this._objectPoint[L.Util.stamp(obj)];
+
+				for (i = 0, len = cell.length; i < len; i++) {
+					if (cell[i] === obj) {
+
+						cell.splice(i, 1);
+
+						if (len === 1) {
+							delete row[x];
+						}
+
+						return true;
+					}
+				}
+
+			},
+
+			eachObject: function (fn, context) {
+				var i, j, k, len, row, cell, removed,
+				    grid = this._grid;
+
+				for (i in grid) {
+					row = grid[i];
+
+					for (j in row) {
+						cell = row[j];
+
+						for (k = 0, len = cell.length; k < len; k++) {
+							removed = fn.call(context, cell[k]);
+							if (removed) {
+								k--;
+								len--;
+							}
+						}
+					}
+				}
+			},
+
+			getNearObject: function (point) {
+				var x = this._getCoord(point.x),
+				    y = this._getCoord(point.y),
+				    i, j, k, row, cell, len, obj, dist,
+				    objectPoint = this._objectPoint,
+				    closestDistSq = this._sqCellSize,
+				    closest = null;
+
+				for (i = y - 1; i <= y + 1; i++) {
+					row = this._grid[i];
+					if (row) {
+
+						for (j = x - 1; j <= x + 1; j++) {
+							cell = row[j];
+							if (cell) {
+
+								for (k = 0, len = cell.length; k < len; k++) {
+									obj = cell[k];
+									dist = this._sqDist(objectPoint[L.Util.stamp(obj)], point);
+									if (dist < closestDistSq ||
+										dist <= closestDistSq && closest === null) {
+										closestDistSq = dist;
+										closest = obj;
+									}
+								}
+							}
+						}
+					}
+				}
+				return closest;
+			},
+
+			_getCoord: function (x) {
+				var coord = Math.floor(x / this._cellSize);
+				return isFinite(coord) ? coord : x;
+			},
+
+			_sqDist: function (p, p2) {
+				var dx = p2.x - p.x,
+				    dy = p2.y - p.y;
+				return dx * dx + dy * dy;
+			}
+		};
+
+		/* Copyright (c) 2012 the authors listed at the following URL, and/or
+		the authors of referenced articles or incorporated external code:
+		http://en.literateprograms.org/Quickhull_(Javascript)?action=history&offset=20120410175256
+
+		Permission is hereby granted, free of charge, to any person obtaining
+		a copy of this software and associated documentation files (the
+		"Software"), to deal in the Software without restriction, including
+		without limitation the rights to use, copy, modify, merge, publish,
+		distribute, sublicense, and/or sell copies of the Software, and to
+		permit persons to whom the Software is furnished to do so, subject to
+		the following conditions:
+
+		The above copyright notice and this permission notice shall be
+		included in all copies or substantial portions of the Software.
+
+		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+		EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+		MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+		IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+		CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+		TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+		SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+		Retrieved from: http://en.literateprograms.org/Quickhull_(Javascript)?oldid=18434
+		*/
+
+		(function () {
+			L.QuickHull = {
+
+				/*
+				 * @param {Object} cpt a point to be measured from the baseline
+				 * @param {Array} bl the baseline, as represented by a two-element
+				 *   array of latlng objects.
+				 * @returns {Number} an approximate distance measure
+				 */
+				getDistant: function (cpt, bl) {
+					var vY = bl[1].lat - bl[0].lat,
+						vX = bl[0].lng - bl[1].lng;
+					return (vX * (cpt.lat - bl[0].lat) + vY * (cpt.lng - bl[0].lng));
+				},
+
+				/*
+				 * @param {Array} baseLine a two-element array of latlng objects
+				 *   representing the baseline to project from
+				 * @param {Array} latLngs an array of latlng objects
+				 * @returns {Object} the maximum point and all new points to stay
+				 *   in consideration for the hull.
+				 */
+				findMostDistantPointFromBaseLine: function (baseLine, latLngs) {
+					var maxD = 0,
+						maxPt = null,
+						newPoints = [],
+						i, pt, d;
+
+					for (i = latLngs.length - 1; i >= 0; i--) {
+						pt = latLngs[i];
+						d = this.getDistant(pt, baseLine);
+
+						if (d > 0) {
+							newPoints.push(pt);
+						} else {
+							continue;
+						}
+
+						if (d > maxD) {
+							maxD = d;
+							maxPt = pt;
+						}
+					}
+
+					return { maxPoint: maxPt, newPoints: newPoints };
+				},
+
+
+				/*
+				 * Given a baseline, compute the convex hull of latLngs as an array
+				 * of latLngs.
+				 *
+				 * @param {Array} latLngs
+				 * @returns {Array}
+				 */
+				buildConvexHull: function (baseLine, latLngs) {
+					var convexHullBaseLines = [],
+						t = this.findMostDistantPointFromBaseLine(baseLine, latLngs);
+
+					if (t.maxPoint) { // if there is still a point "outside" the base line
+						convexHullBaseLines =
+							convexHullBaseLines.concat(
+								this.buildConvexHull([baseLine[0], t.maxPoint], t.newPoints)
+							);
+						convexHullBaseLines =
+							convexHullBaseLines.concat(
+								this.buildConvexHull([t.maxPoint, baseLine[1]], t.newPoints)
+							);
+						return convexHullBaseLines;
+					} else {  // if there is no more point "outside" the base line, the current base line is part of the convex hull
+						return [baseLine[0]];
+					}
+				},
+
+				/*
+				 * Given an array of latlngs, compute a convex hull as an array
+				 * of latlngs
+				 *
+				 * @param {Array} latLngs
+				 * @returns {Array}
+				 */
+				getConvexHull: function (latLngs) {
+					// find first baseline
+					var maxLat = false, minLat = false,
+						maxLng = false, minLng = false,
+						maxLatPt = null, minLatPt = null,
+						maxLngPt = null, minLngPt = null,
+						maxPt = null, minPt = null,
+						i;
+
+					for (i = latLngs.length - 1; i >= 0; i--) {
+						var pt = latLngs[i];
+						if (maxLat === false || pt.lat > maxLat) {
+							maxLatPt = pt;
+							maxLat = pt.lat;
+						}
+						if (minLat === false || pt.lat < minLat) {
+							minLatPt = pt;
+							minLat = pt.lat;
+						}
+						if (maxLng === false || pt.lng > maxLng) {
+							maxLngPt = pt;
+							maxLng = pt.lng;
+						}
+						if (minLng === false || pt.lng < minLng) {
+							minLngPt = pt;
+							minLng = pt.lng;
+						}
+					}
+					
+					if (minLat !== maxLat) {
+						minPt = minLatPt;
+						maxPt = maxLatPt;
+					} else {
+						minPt = minLngPt;
+						maxPt = maxLngPt;
+					}
+
+					var ch = [].concat(this.buildConvexHull([minPt, maxPt], latLngs),
+										this.buildConvexHull([maxPt, minPt], latLngs));
+					return ch;
+				}
+			};
+		}());
+
+		L.MarkerCluster.include({
+			getConvexHull: function () {
+				var childMarkers = this.getAllChildMarkers(),
+					points = [],
+					p, i;
+
+				for (i = childMarkers.length - 1; i >= 0; i--) {
+					p = childMarkers[i].getLatLng();
+					points.push(p);
+				}
+
+				return L.QuickHull.getConvexHull(points);
+			}
+		});
+
+		//This code is 100% based on https://github.com/jawj/OverlappingMarkerSpiderfier-Leaflet
+		//Huge thanks to jawj for implementing it first to make my job easy :-)
+
+		L.MarkerCluster.include({
+
+			_2PI: Math.PI * 2,
+			_circleFootSeparation: 25, //related to circumference of circle
+			_circleStartAngle: 0,
+
+			_spiralFootSeparation:  28, //related to size of spiral (experiment!)
+			_spiralLengthStart: 11,
+			_spiralLengthFactor: 5,
+
+			_circleSpiralSwitchover: 9, //show spiral instead of circle from this marker count upwards.
+										// 0 -> always spiral; Infinity -> always circle
+
+			spiderfy: function () {
+				if (this._group._spiderfied === this || this._group._inZoomAnimation) {
+					return;
+				}
+
+				var childMarkers = this.getAllChildMarkers(null, true),
+					group = this._group,
+					map = group._map,
+					center = map.latLngToLayerPoint(this._latlng),
+					positions;
+
+				this._group._unspiderfy();
+				this._group._spiderfied = this;
+
+				//TODO Maybe: childMarkers order by distance to center
+
+				if (this._group.options.spiderfyShapePositions) {
+					positions = this._group.options.spiderfyShapePositions(childMarkers.length, center);
+				} else if (childMarkers.length >= this._circleSpiralSwitchover) {
+					positions = this._generatePointsSpiral(childMarkers.length, center);
+				} else {
+					center.y += 10; // Otherwise circles look wrong => hack for standard blue icon, renders differently for other icons.
+					positions = this._generatePointsCircle(childMarkers.length, center);
+				}
+
+				this._animationSpiderfy(childMarkers, positions);
+			},
+
+			unspiderfy: function (zoomDetails) {
+				/// <param Name="zoomDetails">Argument from zoomanim if being called in a zoom animation or null otherwise</param>
+				if (this._group._inZoomAnimation) {
+					return;
+				}
+				this._animationUnspiderfy(zoomDetails);
+
+				this._group._spiderfied = null;
+			},
+
+			_generatePointsCircle: function (count, centerPt) {
+				var circumference = this._group.options.spiderfyDistanceMultiplier * this._circleFootSeparation * (2 + count),
+					legLength = circumference / this._2PI,  //radius from circumference
+					angleStep = this._2PI / count,
+					res = [],
+					i, angle;
+
+				legLength = Math.max(legLength, 35); // Minimum distance to get outside the cluster icon.
+
+				res.length = count;
+
+				for (i = 0; i < count; i++) { // Clockwise, like spiral.
+					angle = this._circleStartAngle + i * angleStep;
+					res[i] = new L.Point(centerPt.x + legLength * Math.cos(angle), centerPt.y + legLength * Math.sin(angle))._round();
+				}
+
+				return res;
+			},
+
+			_generatePointsSpiral: function (count, centerPt) {
+				var spiderfyDistanceMultiplier = this._group.options.spiderfyDistanceMultiplier,
+					legLength = spiderfyDistanceMultiplier * this._spiralLengthStart,
+					separation = spiderfyDistanceMultiplier * this._spiralFootSeparation,
+					lengthFactor = spiderfyDistanceMultiplier * this._spiralLengthFactor * this._2PI,
+					angle = 0,
+					res = [],
+					i;
+
+				res.length = count;
+
+				// Higher index, closer position to cluster center.
+				for (i = count; i >= 0; i--) {
+					// Skip the first position, so that we are already farther from center and we avoid
+					// being under the default cluster icon (especially important for Circle Markers).
+					if (i < count) {
+						res[i] = new L.Point(centerPt.x + legLength * Math.cos(angle), centerPt.y + legLength * Math.sin(angle))._round();
+					}
+					angle += separation / legLength + i * 0.0005;
+					legLength += lengthFactor / angle;
+				}
+				return res;
+			},
+
+			_noanimationUnspiderfy: function () {
+				var group = this._group,
+					map = group._map,
+					fg = group._featureGroup,
+					childMarkers = this.getAllChildMarkers(null, true),
+					m, i;
+
+				group._ignoreMove = true;
+
+				this.setOpacity(1);
+				for (i = childMarkers.length - 1; i >= 0; i--) {
+					m = childMarkers[i];
+
+					fg.removeLayer(m);
+
+					if (m._preSpiderfyLatlng) {
+						m.setLatLng(m._preSpiderfyLatlng);
+						delete m._preSpiderfyLatlng;
+					}
+					if (m.setZIndexOffset) {
+						m.setZIndexOffset(0);
+					}
+
+					if (m._spiderLeg) {
+						map.removeLayer(m._spiderLeg);
+						delete m._spiderLeg;
+					}
+				}
+
+				group.fire('unspiderfied', {
+					cluster: this,
+					markers: childMarkers
+				});
+				group._ignoreMove = false;
+				group._spiderfied = null;
+			}
+		});
+
+		//Non Animated versions of everything
+		L.MarkerClusterNonAnimated = L.MarkerCluster.extend({
+			_animationSpiderfy: function (childMarkers, positions) {
+				var group = this._group,
+					map = group._map,
+					fg = group._featureGroup,
+					legOptions = this._group.options.spiderLegPolylineOptions,
+					i, m, leg, newPos;
+
+				group._ignoreMove = true;
+
+				// Traverse in ascending order to make sure that inner circleMarkers are on top of further legs. Normal markers are re-ordered by newPosition.
+				// The reverse order trick no longer improves performance on modern browsers.
+				for (i = 0; i < childMarkers.length; i++) {
+					newPos = map.layerPointToLatLng(positions[i]);
+					m = childMarkers[i];
+
+					// Add the leg before the marker, so that in case the latter is a circleMarker, the leg is behind it.
+					leg = new L.Polyline([this._latlng, newPos], legOptions);
+					map.addLayer(leg);
+					m._spiderLeg = leg;
+
+					// Now add the marker.
+					m._preSpiderfyLatlng = m._latlng;
+					m.setLatLng(newPos);
+					if (m.setZIndexOffset) {
+						m.setZIndexOffset(1000000); //Make these appear on top of EVERYTHING
+					}
+
+					fg.addLayer(m);
+				}
+				this.setOpacity(0.3);
+
+				group._ignoreMove = false;
+				group.fire('spiderfied', {
+					cluster: this,
+					markers: childMarkers
+				});
+			},
+
+			_animationUnspiderfy: function () {
+				this._noanimationUnspiderfy();
+			}
+		});
+
+		//Animated versions here
+		L.MarkerCluster.include({
+
+			_animationSpiderfy: function (childMarkers, positions) {
+				var me = this,
+					group = this._group,
+					map = group._map,
+					fg = group._featureGroup,
+					thisLayerLatLng = this._latlng,
+					thisLayerPos = map.latLngToLayerPoint(thisLayerLatLng),
+					svg = L.Path.SVG,
+					legOptions = L.extend({}, this._group.options.spiderLegPolylineOptions), // Copy the options so that we can modify them for animation.
+					finalLegOpacity = legOptions.opacity,
+					i, m, leg, legPath, legLength, newPos;
+
+				if (finalLegOpacity === undefined) {
+					finalLegOpacity = L.MarkerClusterGroup.prototype.options.spiderLegPolylineOptions.opacity;
+				}
+
+				if (svg) {
+					// If the initial opacity of the spider leg is not 0 then it appears before the animation starts.
+					legOptions.opacity = 0;
+
+					// Add the class for CSS transitions.
+					legOptions.className = (legOptions.className || '') + ' leaflet-cluster-spider-leg';
+				} else {
+					// Make sure we have a defined opacity.
+					legOptions.opacity = finalLegOpacity;
+				}
+
+				group._ignoreMove = true;
+
+				// Add markers and spider legs to map, hidden at our center point.
+				// Traverse in ascending order to make sure that inner circleMarkers are on top of further legs. Normal markers are re-ordered by newPosition.
+				// The reverse order trick no longer improves performance on modern browsers.
+				for (i = 0; i < childMarkers.length; i++) {
+					m = childMarkers[i];
+
+					newPos = map.layerPointToLatLng(positions[i]);
+
+					// Add the leg before the marker, so that in case the latter is a circleMarker, the leg is behind it.
+					leg = new L.Polyline([thisLayerLatLng, newPos], legOptions);
+					map.addLayer(leg);
+					m._spiderLeg = leg;
+
+					// Explanations: https://jakearchibald.com/2013/animated-line-drawing-svg/
+					// In our case the transition property is declared in the CSS file.
+					if (svg) {
+						legPath = leg._path;
+						legLength = legPath.getTotalLength() + 0.1; // Need a small extra length to avoid remaining dot in Firefox.
+						legPath.style.strokeDasharray = legLength; // Just 1 length is enough, it will be duplicated.
+						legPath.style.strokeDashoffset = legLength;
+					}
+
+					// If it is a marker, add it now and we'll animate it out
+					if (m.setZIndexOffset) {
+						m.setZIndexOffset(1000000); // Make normal markers appear on top of EVERYTHING
+					}
+					if (m.clusterHide) {
+						m.clusterHide();
+					}
+					
+					// Vectors just get immediately added
+					fg.addLayer(m);
+
+					if (m._setPos) {
+						m._setPos(thisLayerPos);
+					}
+				}
+
+				group._forceLayout();
+				group._animationStart();
+
+				// Reveal markers and spider legs.
+				for (i = childMarkers.length - 1; i >= 0; i--) {
+					newPos = map.layerPointToLatLng(positions[i]);
+					m = childMarkers[i];
+
+					//Move marker to new position
+					m._preSpiderfyLatlng = m._latlng;
+					m.setLatLng(newPos);
+					
+					if (m.clusterShow) {
+						m.clusterShow();
+					}
+
+					// Animate leg (animation is actually delegated to CSS transition).
+					if (svg) {
+						leg = m._spiderLeg;
+						legPath = leg._path;
+						legPath.style.strokeDashoffset = 0;
+						//legPath.style.strokeOpacity = finalLegOpacity;
+						leg.setStyle({opacity: finalLegOpacity});
+					}
+				}
+				this.setOpacity(0.3);
+
+				group._ignoreMove = false;
+
+				setTimeout(function () {
+					group._animationEnd();
+					group.fire('spiderfied', {
+						cluster: me,
+						markers: childMarkers
+					});
+				}, 200);
+			},
+
+			_animationUnspiderfy: function (zoomDetails) {
+				var me = this,
+					group = this._group,
+					map = group._map,
+					fg = group._featureGroup,
+					thisLayerPos = zoomDetails ? map._latLngToNewLayerPoint(this._latlng, zoomDetails.zoom, zoomDetails.center) : map.latLngToLayerPoint(this._latlng),
+					childMarkers = this.getAllChildMarkers(null, true),
+					svg = L.Path.SVG,
+					m, i, leg, legPath, legLength, nonAnimatable;
+
+				group._ignoreMove = true;
+				group._animationStart();
+
+				//Make us visible and bring the child markers back in
+				this.setOpacity(1);
+				for (i = childMarkers.length - 1; i >= 0; i--) {
+					m = childMarkers[i];
+
+					//Marker was added to us after we were spiderfied
+					if (!m._preSpiderfyLatlng) {
+						continue;
+					}
+
+					//Close any popup on the marker first, otherwise setting the location of the marker will make the map scroll
+					m.closePopup();
+
+					//Fix up the location to the real one
+					m.setLatLng(m._preSpiderfyLatlng);
+					delete m._preSpiderfyLatlng;
+
+					//Hack override the location to be our center
+					nonAnimatable = true;
+					if (m._setPos) {
+						m._setPos(thisLayerPos);
+						nonAnimatable = false;
+					}
+					if (m.clusterHide) {
+						m.clusterHide();
+						nonAnimatable = false;
+					}
+					if (nonAnimatable) {
+						fg.removeLayer(m);
+					}
+
+					// Animate the spider leg back in (animation is actually delegated to CSS transition).
+					if (svg) {
+						leg = m._spiderLeg;
+						legPath = leg._path;
+						legLength = legPath.getTotalLength() + 0.1;
+						legPath.style.strokeDashoffset = legLength;
+						leg.setStyle({opacity: 0});
+					}
+				}
+
+				group._ignoreMove = false;
+
+				setTimeout(function () {
+					//If we have only <= one child left then that marker will be shown on the map so don't remove it!
+					var stillThereChildCount = 0;
+					for (i = childMarkers.length - 1; i >= 0; i--) {
+						m = childMarkers[i];
+						if (m._spiderLeg) {
+							stillThereChildCount++;
+						}
+					}
+
+
+					for (i = childMarkers.length - 1; i >= 0; i--) {
+						m = childMarkers[i];
+
+						if (!m._spiderLeg) { //Has already been unspiderfied
+							continue;
+						}
+
+						if (m.clusterShow) {
+							m.clusterShow();
+						}
+						if (m.setZIndexOffset) {
+							m.setZIndexOffset(0);
+						}
+
+						if (stillThereChildCount > 1) {
+							fg.removeLayer(m);
+						}
+
+						map.removeLayer(m._spiderLeg);
+						delete m._spiderLeg;
+					}
+					group._animationEnd();
+					group.fire('unspiderfied', {
+						cluster: me,
+						markers: childMarkers
+					});
+				}, 200);
+			}
+		});
+
+
+		L.MarkerClusterGroup.include({
+			//The MarkerCluster currently spiderfied (if any)
+			_spiderfied: null,
+
+			unspiderfy: function () {
+				this._unspiderfy.apply(this, arguments);
+			},
+
+			_spiderfierOnAdd: function () {
+				this._map.on('click', this._unspiderfyWrapper, this);
+
+				if (this._map.options.zoomAnimation) {
+					this._map.on('zoomstart', this._unspiderfyZoomStart, this);
+				}
+				//Browsers without zoomAnimation or a big zoom don't fire zoomstart
+				this._map.on('zoomend', this._noanimationUnspiderfy, this);
+
+				if (!L.Browser.touch) {
+					this._map.getRenderer(this);
+					//Needs to happen in the pageload, not after, or animations don't work in webkit
+					//  http://stackoverflow.com/questions/8455200/svg-animate-with-dynamically-added-elements
+					//Disable on touch browsers as the animation messes up on a touch zoom and isn't very noticable
+				}
+			},
+
+			_spiderfierOnRemove: function () {
+				this._map.off('click', this._unspiderfyWrapper, this);
+				this._map.off('zoomstart', this._unspiderfyZoomStart, this);
+				this._map.off('zoomanim', this._unspiderfyZoomAnim, this);
+				this._map.off('zoomend', this._noanimationUnspiderfy, this);
+
+				//Ensure that markers are back where they should be
+				// Use no animation to avoid a sticky leaflet-cluster-anim class on mapPane
+				this._noanimationUnspiderfy();
+			},
+
+			//On zoom start we add a zoomanim handler so that we are guaranteed to be last (after markers are animated)
+			//This means we can define the animation they do rather than Markers doing an animation to their actual location
+			_unspiderfyZoomStart: function () {
+				if (!this._map) { //May have been removed from the map by a zoomEnd handler
+					return;
+				}
+
+				this._map.on('zoomanim', this._unspiderfyZoomAnim, this);
+			},
+
+			_unspiderfyZoomAnim: function (zoomDetails) {
+				//Wait until the first zoomanim after the user has finished touch-zooming before running the animation
+				if (L.DomUtil.hasClass(this._map._mapPane, 'leaflet-touching')) {
+					return;
+				}
+
+				this._map.off('zoomanim', this._unspiderfyZoomAnim, this);
+				this._unspiderfy(zoomDetails);
+			},
+
+			_unspiderfyWrapper: function () {
+				/// <summary>_unspiderfy but passes no arguments</summary>
+				this._unspiderfy();
+			},
+
+			_unspiderfy: function (zoomDetails) {
+				if (this._spiderfied) {
+					this._spiderfied.unspiderfy(zoomDetails);
+				}
+			},
+
+			_noanimationUnspiderfy: function () {
+				if (this._spiderfied) {
+					this._spiderfied._noanimationUnspiderfy();
+				}
+			},
+
+			//If the given layer is currently being spiderfied then we unspiderfy it so it isn't on the map anymore etc
+			_unspiderfyLayer: function (layer) {
+				if (layer._spiderLeg) {
+					this._featureGroup.removeLayer(layer);
+
+					if (layer.clusterShow) {
+						layer.clusterShow();
+					}
+						//Position will be fixed up immediately in _animationUnspiderfy
+					if (layer.setZIndexOffset) {
+						layer.setZIndexOffset(0);
+					}
+
+					this._map.removeLayer(layer._spiderLeg);
+					delete layer._spiderLeg;
+				}
+			}
+		});
+
+		/**
+		 * Adds 1 public method to MCG and 1 to L.Marker to facilitate changing
+		 * markers' icon options and refreshing their icon and their parent clusters
+		 * accordingly (case where their iconCreateFunction uses data of childMarkers
+		 * to make up the cluster icon).
+		 */
+
+
+		L.MarkerClusterGroup.include({
+			/**
+			 * Updates the icon of all clusters which are parents of the given marker(s).
+			 * In singleMarkerMode, also updates the given marker(s) icon.
+			 * @param layers L.MarkerClusterGroup|L.LayerGroup|Array(L.Marker)|Map(L.Marker)|
+			 * L.MarkerCluster|L.Marker (optional) list of markers (or single marker) whose parent
+			 * clusters need to be updated. If not provided, retrieves all child markers of this.
+			 * @returns {L.MarkerClusterGroup}
+			 */
+			refreshClusters: function (layers) {
+				if (!layers) {
+					layers = this._topClusterLevel.getAllChildMarkers();
+				} else if (layers instanceof L.MarkerClusterGroup) {
+					layers = layers._topClusterLevel.getAllChildMarkers();
+				} else if (layers instanceof L.LayerGroup) {
+					layers = layers._layers;
+				} else if (layers instanceof L.MarkerCluster) {
+					layers = layers.getAllChildMarkers();
+				} else if (layers instanceof L.Marker) {
+					layers = [layers];
+				} // else: must be an Array(L.Marker)|Map(L.Marker)
+				this._flagParentsIconsNeedUpdate(layers);
+				this._refreshClustersIcons();
+
+				// In case of singleMarkerMode, also re-draw the markers.
+				if (this.options.singleMarkerMode) {
+					this._refreshSingleMarkerModeMarkers(layers);
+				}
+
+				return this;
+			},
+
+			/**
+			 * Simply flags all parent clusters of the given markers as having a "dirty" icon.
+			 * @param layers Array(L.Marker)|Map(L.Marker) list of markers.
+			 * @private
+			 */
+			_flagParentsIconsNeedUpdate: function (layers) {
+				var id, parent;
+
+				// Assumes layers is an Array or an Object whose prototype is non-enumerable.
+				for (id in layers) {
+					// Flag parent clusters' icon as "dirty", all the way up.
+					// Dumb process that flags multiple times upper parents, but still
+					// much more efficient than trying to be smart and make short lists,
+					// at least in the case of a hierarchy following a power law:
+					// http://jsperf.com/flag-nodes-in-power-hierarchy/2
+					parent = layers[id].__parent;
+					while (parent) {
+						parent._iconNeedsUpdate = true;
+						parent = parent.__parent;
+					}
+				}
+			},
+
+			/**
+			 * Re-draws the icon of the supplied markers.
+			 * To be used in singleMarkerMode only.
+			 * @param layers Array(L.Marker)|Map(L.Marker) list of markers.
+			 * @private
+			 */
+			_refreshSingleMarkerModeMarkers: function (layers) {
+				var id, layer;
+
+				for (id in layers) {
+					layer = layers[id];
+
+					// Make sure we do not override markers that do not belong to THIS group.
+					if (this.hasLayer(layer)) {
+						// Need to re-create the icon first, then re-draw the marker.
+						layer.setIcon(this._overrideMarkerIcon(layer));
+					}
+				}
+			}
+		});
+
+		L.Marker.include({
+			/**
+			 * Updates the given options in the marker's icon and refreshes the marker.
+			 * @param options map object of icon options.
+			 * @param directlyRefreshClusters boolean (optional) true to trigger
+			 * MCG.refreshClustersOf() right away with this single marker.
+			 * @returns {L.Marker}
+			 */
+			refreshIconOptions: function (options, directlyRefreshClusters) {
+				var icon = this.options.icon;
+
+				L.setOptions(icon, options);
+
+				this.setIcon(icon);
+
+				// Shortcut to refresh the associated MCG clusters right away.
+				// To be used when refreshing a single marker.
+				// Otherwise, better use MCG.refreshClusters() once at the end with
+				// the list of modified markers.
+				if (directlyRefreshClusters && this.__parent) {
+					this.__parent._group.refreshClusters(this);
+				}
+
+				return this;
+			}
+		});
+
+		exports$1.MarkerClusterGroup = MarkerClusterGroup;
+		exports$1.MarkerCluster = MarkerCluster;
+
+		Object.defineProperty(exports$1, '__esModule', { value: true });
+
+	}));
+	
+} (leaflet_markerclusterSrc, leaflet_markerclusterSrc.exports));
+
 class EntitiesRenderService {
 
   /** @type {[Entity]} */
@@ -16330,8 +19736,18 @@ class EntitiesRenderService {
   historyService;
   /** @type {FocusFollowConfig} */
   focusFollowConfig;
+  /** @type {L.MarkerClusterGroup} */
+  markerClusterGroup;
+  /** @type {boolean} */
+  clusterMarkers;
+  /** @type {boolean} */
+  isFollowPaused = false;
+  /** @type {number|null} */
+  _followPauseTimer = null;
+  /** @type {boolean} */
+  _isAutoFitting = false;
 
-  constructor(map, hass, focusFollowConfig, entityConfigs, linkedEntityService, dateRangeManager, historyService, isDarkMode) {
+  constructor(map, hass, focusFollowConfig, entityConfigs, linkedEntityService, dateRangeManager, historyService, isDarkMode, clusterMarkers = true) {
     this.map = map;
     this.hass = hass;
     this.focusFollowConfig = focusFollowConfig;
@@ -16340,15 +19756,27 @@ class EntitiesRenderService {
     this.dateRangeManager = dateRangeManager;
     this.historyService = historyService;
     this.isDarkMode = isDarkMode;
+    this.clusterMarkers = clusterMarkers;
   }
 
   setup() {
+    // Initialize marker cluster group if clustering is enabled
+    Logger.debug("[EntitiesRenderService] Clustering enabled: " + this.clusterMarkers);
+    if (this.clusterMarkers) {
+      this.markerClusterGroup = L$2.markerClusterGroup({
+        showCoverageOnHover: false,
+        removeOutsideVisibleBounds: false,
+      });
+      this.map.addLayer(this.markerClusterGroup);
+      Logger.debug("[EntitiesRenderService] Marker cluster group created and added to map");
+    }
+
     this.entities = this.entityConfigs.map((configEntity) => {
       // Attempt to setup entity. Skip on fail, so one bad entity does not affect others.
       try {
         const entity = new Entity(configEntity, this.hass, this.map, this.historyService, this.dateRangeManager, this.linkedEntityService, this.isDarkMode);
-        entity.setup();
-        return entity; 
+        entity.setup(this.markerClusterGroup);
+        return entity;
       } catch (e){
         Logger.error("Entity: " + configEntity.id + " skipped due to missing data", e);
         HaMapUtilities.renderWarningOnMap(this.map, "Entity: " + configEntity.id + " could not be loaded. See console for details.");
@@ -16358,17 +19786,118 @@ class EntitiesRenderService {
     // Remove skipped entities.
     .filter(v => v);
 
+    if (!this.focusFollowConfig.isNone && this.focusFollowConfig.hasPause) {
+      this._setupFollowPauseListeners();
+    }
   }
 
-  async render() {
+  _setupFollowPauseListeners() {
+    this._pauseFollow = () => {
+      if (this._isAutoFitting) { return; }
+      this.isFollowPaused = true;
+      if (this._followPauseTimer) {
+        clearTimeout(this._followPauseTimer);
+        this._followPauseTimer = null;
+      }
+    };
+
+    this._scheduleResume = () => {
+      if (this._isAutoFitting) { return; }
+      if (this._followPauseTimer) {
+        clearTimeout(this._followPauseTimer);
+      }
+      this._followPauseTimer = setTimeout(() => {
+        this.isFollowPaused = false;
+        this._followPauseTimer = null;
+        this.updateInitialView();
+      }, this.focusFollowConfig.pauseMilliseconds);
+    };
+
+    this.map.on('mousedown', this._pauseFollow);
+    this.map.on('dragstart', this._pauseFollow);
+    this.map.on('zoomstart', this._pauseFollow);
+    this.map.on('mouseup', this._scheduleResume);
+    this.map.on('dragend', this._scheduleResume);
+    this.map.on('zoomend', this._scheduleResume);
+  }
+
+  cleanup() {
+    if (this._followPauseTimer) {
+      clearTimeout(this._followPauseTimer);
+      this._followPauseTimer = null;
+    }
+    if (this._pauseFollow) {
+      this.map.off('mousedown', this._pauseFollow);
+      this.map.off('dragstart', this._pauseFollow);
+      this.map.off('zoomstart', this._pauseFollow);
+    }
+    if (this._scheduleResume) {
+      this.map.off('mouseup', this._scheduleResume);
+      this.map.off('dragend', this._scheduleResume);
+      this.map.off('zoomend', this._scheduleResume);
+    }
+  }
+
+  async render(hass) {
+    if (hass) {
+      this.hass = hass;
+    }
     this.entities.forEach((ent) => {
-      ent.update();
+      // Entity keeps the hass object from setup(); Lovelace replaces hass on
+      // every state change, so without this the marker reads a stale snapshot
+      // and never moves (#217).
+      try {
+        if (this.hass) {
+          ent.hass = this.hass;
+        }
+        ent.update(this.markerClusterGroup);
+      } catch (e) {
+        Logger.error("Entity: " + ent.id + " failed to update", e);
+      }
     });
     this.updateInitialView();
   }
 
+  toggleClustering() {
+    this.clusterMarkers = !this.clusterMarkers;
+
+    if (this.clusterMarkers) {
+      // Enable clustering
+      this.markerClusterGroup = L$2.markerClusterGroup({
+        showCoverageOnHover: false,
+        removeOutsideVisibleBounds: false,
+      });
+      this.map.addLayer(this.markerClusterGroup);
+
+      // Move all markers to cluster group
+      this.entities.forEach((entity) => {
+        if (entity.marker && this.map.hasLayer(entity.marker)) {
+          this.map.removeLayer(entity.marker);
+          this.markerClusterGroup.addLayer(entity.marker);
+        }
+      });
+    } else {
+      // Disable clustering
+      if (this.markerClusterGroup) {
+        this.markerClusterGroup.clearLayers();
+        this.map.removeLayer(this.markerClusterGroup);
+        this.markerClusterGroup = null;
+      }
+
+      // Add all markers directly to map
+      this.entities.forEach((entity) => {
+        if (entity.marker && !this.map.hasLayer(entity.marker)) {
+          entity.marker.addTo(this.map);
+        }
+      });
+    }
+  }
+
   updateInitialView() {
     if(this.focusFollowConfig.isNone) {
+      return;
+    }
+    if(this.isFollowPaused) {
       return;
     }
     const points = this.entities.filter(e => e.config.focusOnFit).map((e) => e.latLng);
@@ -16382,6 +19911,10 @@ class EntitiesRenderService {
         return;
       }
     }
+    this._isAutoFitting = true;
+    this.map.once('moveend', () => {
+      this._isAutoFitting = false;
+    });
     this.map.fitBounds(bounds);
     Logger.debug("[EntitiesRenderService.updateInitialView]: Updating bounds to: " + points.join(","));
   }
@@ -16392,7 +19925,11 @@ class EntitiesRenderService {
       return;
     }
     // If not, get bounds of all markers rendered
-    const bounds = (new leafletSrcExports.LatLngBounds(points)).pad(0.1);    
+    const bounds = (new leafletSrcExports.LatLngBounds(points)).pad(0.1);
+    this._isAutoFitting = true;
+    this.map.once('moveend', () => {
+      this._isAutoFitting = false;
+    });
     this.map.fitBounds(bounds);
     Logger.debug("[EntitiesRenderService.setInitialView]: Setting initial view to: " + points.join(","));
   }
@@ -16416,6 +19953,32 @@ class InitialViewRenderService {
 
   setup() {
     Logger.debug("[InitialViewRenderService] Setting up initial view");
+    const container = this.map?.getContainer();
+
+    if (!container) return;
+
+    // If the container is already sized, apply the view immediately. Otherwise,
+    // use a one-shot ResizeObserver to wait for the browser to lay out the
+    // container, then apply the view once real dimensions are available.
+    if (container.clientWidth > 0 && container.clientHeight > 0) {
+      this._applyInitialView();
+    } else {
+      const observer = new ResizeObserver(() => {
+        observer.disconnect();
+        try {
+          if (this.map?.getContainer()?.isConnected) {
+            this.map.invalidateSize();
+            this._applyInitialView();
+          }
+        } catch (e) {
+          Logger.debug("[InitialViewRenderService] Map no longer available, skipping initial view", e);
+        }
+      });
+      observer.observe(container);
+    }
+  }
+
+  _applyInitialView() {
     const latLng = this.getConfiguredLatLong(this.config, this.hass);
     
     if (latLng) {
@@ -16557,8 +20120,22 @@ class PluginsRenderService {
         return;
       }
 
+      let url = config.url;
+      if (url === undefined && config.hacs) {
+        const module = document.querySelectorAll("script[src][type='module']")
+            .values()
+            .find(m => new URL(m.src).pathname.includes(`/hacsfiles/${config.hacs.module}/${config.hacs.file}`));
+
+        if (!module) {
+          Logger.warn(`[PluginsRenderService] Could not find HACS file for plugin ${config.name}. Check your configuration.`);
+          return
+        }
+
+        url = module.src;
+      }
+
       // Dynamically import the plugin module from the URL
-      const module = await import(config.url);
+      const module = await import(url);
 
       const pluginFactory = module.default;
 
@@ -16618,7 +20195,212 @@ class PluginsRenderService {
 
 }
 
-class MapCard extends r {
+/**
+ * Service to render GeoJSON layers from Home Assistant entity data
+ */
+class GeoJsonRenderService {
+  /** @type {L.Map} */
+  map;
+  /** @type {object} Home Assistant object */
+  hass;
+  /** @type {[GeoJsonLayerConfig]} */
+  configs = [];
+  /** @type {Map<string, {layer: L.GeoJSON, config: GeoJsonLayerConfig}>} */
+  layers = new Map();
+
+  /**
+   * @param {L.Map} map - Leaflet map instance
+   * @param {object} hass - Home Assistant object
+   * @param {[GeoJsonLayerConfig]} configs - Array of GeoJSON layer configurations
+   */
+  constructor(map, hass, configs) {
+    this.map = map;
+    this.hass = hass;
+    this.configs = configs;
+  }
+
+  /**
+   * Initial setup - creates empty layers
+   */
+  setup() {
+    Logger.debug(`[GeoJsonRenderService]: Setting up ${this.configs.length} GeoJSON layers`);
+
+    this.configs.forEach((config) => {
+      try {
+        // Create an empty GeoJSON layer with styling
+        const layer = L$2.geoJSON(null, {
+          style: () => config.getStyle(),
+          pointToLayer: (feature, latlng) => {
+            return L$2.circleMarker(latlng, {
+              radius: 6,
+              ...config.getStyle()
+            });
+          }
+        });
+
+        layer.addTo(this.map);
+        this.layers.set(config.entity, { layer, config });
+        Logger.debug(`[GeoJsonRenderService]: Created layer for entity ${config.entity}`);
+      } catch (e) {
+        Logger.error(`[GeoJsonRenderService]: Failed to create layer for ${config.entity}`, e);
+      }
+    });
+  }
+
+  /**
+   * Render/update GeoJSON data from entity states
+   * @param {object} hass - Home Assistant object (optional, uses stored if not provided)
+   */
+  render(hass) {
+    if (hass) this.hass = hass;
+
+    this.layers.forEach(({ layer, config }, entityId) => {
+      try {
+        const geoJsonData = this._getGeoJsonFromEntity(config);
+
+        if (geoJsonData) {
+          // Clear existing data and add new
+          layer.clearLayers();
+          layer.addData(geoJsonData);
+          Logger.debug(`[GeoJsonRenderService]: Updated layer for ${entityId}`);
+        } else {
+          // No data available, clear the layer
+          layer.clearLayers();
+        }
+      } catch (e) {
+        Logger.error(`[GeoJsonRenderService]: Failed to update layer for ${entityId}`, e);
+      }
+    });
+  }
+
+  /**
+   * Extract GeoJSON data from a Home Assistant entity
+   * @param {GeoJsonLayerConfig} config - Layer configuration
+   * @returns {object|null} GeoJSON object or null if not available
+   */
+  _getGeoJsonFromEntity(config) {
+    const entityState = this.hass.states[config.entity];
+
+    if (!entityState) {
+      Logger.debug(`[GeoJsonRenderService]: Entity ${config.entity} not found`);
+      return null;
+    }
+
+    let data;
+
+    if (config.attribute) {
+      // Get data from a specific attribute path
+      data = this._getNestedValue(entityState.attributes, config.attribute);
+    } else {
+      // Try to use the entire attributes object or state as GeoJSON
+      data = entityState.attributes.geojson || entityState.attributes;
+    }
+
+    if (!data) {
+      Logger.debug(`[GeoJsonRenderService]: No data found for ${config.entity} at attribute ${config.attribute}`);
+      return null;
+    }
+
+    // Convert to proper GeoJSON format if needed
+    return this._normalizeGeoJson(data);
+  }
+
+  /**
+   * Get a nested value from an object using dot notation and array access
+   * Supports paths like "routes[0].geometry" or "data.coordinates"
+   * @param {object} obj - Object to traverse
+   * @param {string} path - Path string
+   * @returns {*} Value at path or undefined
+   */
+  _getNestedValue(obj, path) {
+    if (!obj || !path) return undefined;
+
+    // Parse path: handle both dot notation and array brackets
+    // "routes[0].geometry" -> ["routes", "0", "geometry"]
+    const parts = path.replace(/\[(\d+)\]/g, '.$1').split('.');
+
+    let current = obj;
+    for (const part of parts) {
+      if (current === undefined || current === null) {
+        return undefined;
+      }
+      current = current[part];
+    }
+
+    return current;
+  }
+
+  /**
+   * Normalize data to valid GeoJSON format
+   * @param {object} data - Raw data that might be GeoJSON
+   * @returns {object|null} Valid GeoJSON object or null
+   */
+  _normalizeGeoJson(data) {
+    if (!data) return null;
+
+    // If it's already a valid GeoJSON object
+    if (data.type && ['Feature', 'FeatureCollection', 'Point', 'LineString',
+        'Polygon', 'MultiPoint', 'MultiLineString', 'MultiPolygon',
+        'GeometryCollection'].includes(data.type)) {
+      return data;
+    }
+
+    // If it has coordinates directly (geometry without type wrapper)
+    if (data.coordinates && Array.isArray(data.coordinates)) {
+      // Try to infer the geometry type from coordinates structure
+      const coords = data.coordinates;
+      let type = 'Point';
+
+      if (Array.isArray(coords[0])) {
+        if (Array.isArray(coords[0][0])) {
+          type = 'Polygon';
+        } else {
+          type = 'LineString';
+        }
+      }
+
+      return {
+        type: 'Feature',
+        geometry: {
+          type: type,
+          coordinates: coords
+        },
+        properties: {}
+      };
+    }
+
+    // If it's an array of coordinates (simple line)
+    if (Array.isArray(data) && data.length > 0) {
+      // Check if it's an array of [lng, lat] pairs
+      if (Array.isArray(data[0]) && data[0].length >= 2 &&
+          typeof data[0][0] === 'number') {
+        return {
+          type: 'Feature',
+          geometry: {
+            type: 'LineString',
+            coordinates: data
+          },
+          properties: {}
+        };
+      }
+    }
+
+    Logger.debug(`[GeoJsonRenderService]: Could not normalize data to GeoJSON`, data);
+    return null;
+  }
+
+  /**
+   * Clean up layers when component is disconnected
+   */
+  cleanup() {
+    this.layers.forEach(({ layer }) => {
+      layer.remove();
+    });
+    this.layers.clear();
+  }
+}
+
+class MapCard extends i {
   static get properties() {
     return {
       hass: {},
@@ -16629,6 +20411,7 @@ class MapCard extends r {
   setupNeeded = true;
   /** @type {L.Map} */
   map;
+  /** @type {ResizeObserver} */
   resizeObserver;
   /** @type {HaHistoryService} */
   historyService;
@@ -16650,11 +20433,18 @@ class MapCard extends r {
   initialViewRenderService;
   /** @type {PluginsRenderService} */
   pluginsRenderService;
+  /** @type {GeoJsonRenderService} */
+  geoJsonRenderService;
   hasError = false;
   hadError = false;
 
   setup() {
     Logger.debug("[MapCard] Setting up map card");
+
+    // Clean up existing map instance before reinitializing (e.g. when setConfig triggers a re-setup)
+    if (this.map) {
+      this._teardown();
+    }
 
     this.themeMode = this._config.themeMode;
     this.map = this._setupMap();
@@ -16668,19 +20458,20 @@ class MapCard extends r {
       this.dateRangeManager = new HaDateRangeService(this.hass);
     }
     this.tileLayersService = new TileLayersService(this.map, this._config.tileLayers, this._config.wms, this.urlResolver, this.linkedEntityService, this.dateRangeManager);
-    this.entitiesRenderService = new EntitiesRenderService(this.map, this.hass, this._config.focusFollow, this._config.entities, this.linkedEntityService, this.dateRangeManager, this.historyService, this._isDarkMode());
+    this.entitiesRenderService = new EntitiesRenderService(this.map, this.hass, this._config.focusFollow, this._config.entities, this.linkedEntityService, this.dateRangeManager, this.historyService, this._isDarkMode(), this._config.clusterMarkers);
     this.initialViewRenderService = new InitialViewRenderService(this.map, this._config, this.hass, this.entitiesRenderService);
 
     this.pluginsRenderService = new PluginsRenderService(this.map, this._config.plugins);
+    this.geoJsonRenderService = new GeoJsonRenderService(this.map, this.hass, this._config.geojson);
 
     try {
       this.pluginsRenderService.setup();
       this.tileLayersService.setup();
+      this.geoJsonRenderService.setup();
       this.entitiesRenderService.setup();
       this.initialViewRenderService.setup();
 
       this.setupNeeded = false;
-      this.render();
       this.hasError = false;
     } catch (e) {
       this.hasError = true;
@@ -16692,18 +20483,22 @@ class MapCard extends r {
   }
 
   firstUpdated() {
-    this.setup();
+    if (this.hass) {
+      this.setup();
+    }
   };
 
   render() {
 
+    if (this.setupNeeded && this.hass && this.shadowRoot?.querySelector('#map')) {
+      this.setup();
+    }
+
     if (this.map) {
-      if (this.setupNeeded) {
-        this.setup();
-      }
       this.pluginsRenderService.render();
       this.tileLayersService.render();
-      this.entitiesRenderService.render();
+      this.geoJsonRenderService.render(this.hass);
+      this.entitiesRenderService.render(this.hass);
       this.initialViewRenderService.render();
 
       if (!this.hasError && this.hadError) {
@@ -16714,9 +20509,12 @@ class MapCard extends r {
 
     }
 
-    return x`
+    return b`
             <link rel="stylesheet" href="/static/images/leaflet/leaflet.css">
+            <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+            <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
             <ha-card header="${this._config.title}">
+              <div id="mapContainer" style="min-height: ${this._config.mapHeight}px">
                 <div id="map" style="min-height: ${this._config.mapHeight}px">
                   <ha-icon-button
                     label='Reset focus'
@@ -16726,13 +20524,28 @@ class MapCard extends r {
                   >
                     <ha-icon icon="mdi:image-filter-center-focus"></ha-icon>
                   </ha-icon-button>
+                  ${this._config.clusterMarkers ? b`
+                    <ha-icon-button
+                      label='Toggle grouping'
+                      style='${this._isDarkMode() ? "color:#ffffff;" : "color:#000000;"} position: absolute; top: 115px; left: 3px; z-index: 1;'
+                      @click=${this._toggleClustering}
+                      tabindex="0"
+                    >
+                      <ha-icon icon="mdi:group"></ha-icon>
+                    </ha-icon-button>
+                  ` : ''}
                 </div>
+              </div>
             </ha-card>
         `;
   }
 
   _fitMap() {
     this.initialViewRenderService.setup();
+  }
+
+  _toggleClustering() {
+    this.entitiesRenderService.toggleClustering();
   }
 
   _setupResizeObserver() {
@@ -16744,7 +20557,6 @@ class MapCard extends r {
       for (let entry of entries) {
         if (entry.target === this.map?.getContainer()) {
           this.map?.invalidateSize();
-          this.initialViewRenderService?.setup();
         }
       }
     });
@@ -16767,10 +20579,12 @@ class MapCard extends r {
     // Add dark class if darkmode
     this._isDarkMode() ? mapEl.classList.add('dark') : mapEl.classList.add('light');
 
-    let tileUrl = this.urlResolver.resolveUrl(this._config.tileLayer.url);
-    let layer = new TileLayer(tileUrl, this._config.tileLayer.options);
-    map.addLayer(layer);
-    this.urlResolver.registerLayer(layer, this._config.tileLayer.url);
+    if (this._config.tileLayer) {
+      let tileUrl = this.urlResolver.resolveUrl(this._config.tileLayer.url);
+      let layer = new TileLayer(tileUrl, this._config.tileLayer.options);
+      map.addLayer(layer);
+      this.urlResolver.registerLayer(layer, this._config.tileLayer.url);
+    }
     return map;
   }
 
@@ -16791,26 +20605,31 @@ class MapCard extends r {
   connectedCallback() {
     super.connectedCallback();
     Logger.debug("[MapCard.connectedCallback] called");
-    // Reinitialize the map when the card gets reloaded but it's still in view
-    if (this.shadowRoot.querySelector('#map')) {
-      this.setup();
+    if (this.setupNeeded) {
+      this.requestUpdate();
     }
+  }
+
+  _teardown() {
+    this.resizeObserver?.disconnect();
+    this.resizeObserver = undefined;
+    this.historyService?.unsubscribe();
+    this.dateRangeManager?.disconnect();
+    this.linkedEntityService?.disconnect();
+    this.pluginsRenderService?.cleanup();
+    this.geoJsonRenderService?.cleanup();
+    this.entitiesRenderService?.cleanup();
+    this.map.remove();
+    this.map = undefined;
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
     Logger.debug("[MapCard.disconnectedCallback] called");
     if (this.map) {
-      this.map.remove();
-      this.map = undefined;
+      this._teardown();
       this.setupNeeded = true;
     }
-
-    this.resizeObserver?.unobserve(this);
-    this.historyService?.unsubscribe();
-    this.dateRangeManager?.disconnect();
-    this.linkedEntityService?.disconnect();
-    this.pluginsRenderService?.cleanup();
   }
 
   _isDarkMode() {
@@ -16842,11 +20661,19 @@ class MapCard extends r {
       ha-card {
         height: 100%;
         display: flex;
+        width: 100%;
         flex-direction: column;
+        overflow: hidden;
+      }
+      #mapContainer {
+        border-radius: var(--ha-card-border-radius, 12px);
+        overflow: hidden;
+        z-index: 0;
+        height: 100%;
+        width: 100%;
       }
       #map {
         height: 100%;
-        border-radius: var(--ha-card-border-radius,12px);
       }
       .leaflet-pane {
         z-index: 0 !important;
@@ -16867,6 +20694,19 @@ class MapCard extends r {
         color: white !important;
         border-radius: 4px;
         box-shadow: none !important;
+      }
+      .distance-tooltip {
+        padding: 4px 8px;
+        font-size: 12px;
+        font-weight: bold;
+        background: rgba(0, 0, 0, 0.8) !important;
+        color: white !important;
+        border-radius: 12px;
+        border: none !important;
+        white-space: nowrap;
+      }
+      .distance-tooltip::before {
+        display: none;
       }
       #map.dark {
          background: #090909;
@@ -16900,14 +20740,31 @@ class MapCard extends r {
   }
 }
 
-class MapCardEntityMarker extends r {
+/**
+ * Picture markers only get a text overlay when the user asked for one.
+ * Auto-generated initials (title) must not cover entity pictures (#197).
+ * @param {string} prefix
+ * @param {string} suffix
+ * @param {string} label
+ * @returns {boolean}
+ */
+function shouldOverlayPictureLabel(prefix, suffix, label) {
+  return Boolean(prefix || suffix || (label && String(label).trim()));
+}
+
+class MapCardEntityMarker extends i {
   static get properties() {
     return {
       'entityId': {type: String, attribute: 'entity-id'},
       'title': {type: String, attribute: 'title'},
+      'label': {type: String, attribute: 'label'},
+      'prefix': {type: String, attribute: 'prefix'},
+      'suffix': {type: String, attribute: 'suffix'},
       'tooltip': {type: String, attribute: 'tooltip'},
       'picture': {type: String, attribute: 'picture'},
       'icon': {type: String, attribute: 'icon'},
+      'placeIcon': {type: String, attribute: 'place-icon'},
+      'callout': {type: String, attribute: 'callout'},
       'color': {type: String, attribute: 'color'},
       'size': {type: Number},
       'tapAction': {type: Object, attribute: 'tap-action'},
@@ -16916,12 +20773,56 @@ class MapCardEntityMarker extends r {
   }
 
   render() {
-    return x`
+    // When the entity is inside a named place, render a horizontal "pill":
+    // a stadium outline holding two circles - the zone icon (left) and the
+    // entity's initials (right). Otherwise fall back to the normal marker.
+    if (this.placeIcon) {
+      // Pill: zone icon (left) + initials (right). Geometry must match
+      // Entity.createMapMarker. When `callout` is on (zoomed in) the pill sits
+      // up-left of the point with a thin leader line down-right to a dot on the
+      // exact location; otherwise it just centers on the point (no leader).
+      const s = this.size;
+      const pillW = 2 * s + 14;
+      const pillH = s + 8;
+      const pill = b`
+        <div class="place-pill" style="border-color: ${this.color}; width: ${pillW}px; height: ${pillH}px;">
+          <div class="pill-badge" style="border-color: ${this.color}; width: ${s}px; height: ${s}px;">
+            <ha-icon icon="${this.placeIcon}" style="--icon-primary-color: ${this.color}; --mdc-icon-size: ${s - 14}px;"></ha-icon>
+          </div>
+          <div class="pill-badge pill-initials" style="border-color: ${this.color}; color: ${this.color}; width: ${s}px; height: ${s}px; font-size: ${Math.round(s * 0.5)}px;">
+            ${this.title}
+          </div>
+        </div>`;
+      if (this.callout !== "true") {
+        return b`
+          <div class="place-pill-wrap ${this.extraCssClasses ? this.extraCssClasses : ""}"
+               style="width: ${pillW}px; height: ${pillH}px;"
+               @click=${this._badgeTap}>
+            ${pill}
+          </div>`;
+      }
+      const off = Math.round(s * 0.7);
+      const boxW = pillW + off;
+      const boxH = pillH + off;
+      const dotX = boxW - 2, dotY = boxH - 2;
+      return b`
+        <div class="place-pill-wrap ${this.extraCssClasses ? this.extraCssClasses : ""}"
+             style="width: ${boxW}px; height: ${boxH}px;"
+             @click=${this._badgeTap}>
+          <svg class="pill-leader" width="${boxW}" height="${boxH}">
+            <line x1="${pillW - 2}" y1="${pillH - 2}" x2="${dotX}" y2="${dotY}"
+                  stroke="${this.color}" stroke-width="1.5"></line>
+            <circle cx="${dotX}" cy="${dotY}" r="2.5" fill="${this.color}"></circle>
+          </svg>
+          ${pill}
+        </div>
+      `;
+    }
+    return b`
         <div
           class="marker ${this.picture ? "picture" : ""}  ${this.extraCssClasses ? this.extraCssClasses : ""}"
           style="border-color: ${this.color}; height: ${this.size}px; width: ${this.size}px;"
           @click=${this._badgeTap}
-          title="${this.tooltip}"
           >
           ${this._inner()}
         </div>
@@ -16946,12 +20847,30 @@ class MapCardEntityMarker extends r {
 
   _inner() {
     if(this.picture) {
-      return x`<div class="entity-picture" style="background-image: url(${this.picture})"></div>`
+      const hasLabel = shouldOverlayPictureLabel(this.prefix, this.suffix, this.label);
+      return b`
+        <div class="entity-picture" style="background-image: url(${this.picture})"></div>
+        ${hasLabel ? b`
+          <div class="picture-label">
+            <span class="prefix" style="display: ${this.prefix ? 'initial' : 'none'}">${this.prefix}</span>
+            ${this.title}
+            <span class="suffix" style="display: ${this.suffix ? 'initial' : 'none'}">${this.suffix}</span>
+          </div>
+        ` : ''}
+      `;
     }
     if(this.icon) {
-      return x`<ha-icon icon="${this.icon}" style="--icon-primary-color: ${this.color}; --mdc-icon-size: ${this.size - 10}px;">icon</ha-icon>`
+      return b`<ha-icon icon="${this.icon}" style="color: ${this.color}; --icon-primary-color: ${this.color}; --mdc-icon-size: ${this.size - 10}px;">icon</ha-icon>`
     }
-    return this.title;
+    if (!this.prefix && !this.suffix) {
+      return this.title;
+    } else {
+      return b`
+        <span class="prefix" style="display: ${this.prefix ? 'initial' : 'none'}">${this.prefix}</span>
+        ${this.title}
+        <span class="suffix" style="display: ${this.suffix ? 'initial' : 'none'}">${this.suffix}</span>
+      `;
+    }
   }
 
   static get styles() {
@@ -16968,6 +20887,7 @@ class MapCardEntityMarker extends r {
         border: 1px solid var(--ha-marker-color, var(--primary-color));
         color: var(--primary-text-color);
         background-color: var(--card-background-color);
+        position: relative;
       }
       .marker.picture {
         overflow: hidden;
@@ -16977,7 +20897,74 @@ class MapCardEntityMarker extends r {
         height: 100%;
         width: 100%;
       }
+      .picture-label {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        padding: 2px 4px;
+        font-size: 0.7em;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
       .marker.dark {
+        color: #ffffff;
+        background: #1c1c1c;
+      }
+      .prefix {
+        margin-right: var(--ha-marker-prefix-margin, 2px);
+      }
+      .suffix {
+        margin-left: var(--ha-marker-suffix-margin, 2px);
+      }
+      .place-pill-wrap {
+        position: relative;
+      }
+      .pill-leader {
+        position: absolute;
+        left: 0;
+        top: 0;
+        overflow: visible;
+        pointer-events: none;
+      }
+      .place-pill {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        box-sizing: border-box;
+        padding: 3px 5px;
+        border-radius: 999px;
+        border: 1px solid var(--ha-marker-color, var(--primary-color));
+        background-color: var(--card-background-color);
+        font-size: var(--ha-marker-font-size, 1.5em);
+        white-space: nowrap;
+      }
+      .place-pill .pill-badge {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        border-radius: 50%;
+        border: 1px solid var(--ha-marker-color, var(--primary-color));
+        background-color: var(--card-background-color);
+        color: var(--primary-text-color);
+        flex: 0 0 auto;
+      }
+      .place-pill .pill-initials {
+        font-weight: 700;
+        text-align: center;
+        line-height: 1;
+      }
+      .place-pill.dark,
+      .place-pill.dark .pill-badge {
         color: #ffffff;
         background: #1c1c1c;
       }
@@ -16989,7 +20976,7 @@ if (!customElements.get("map-card")) {
   customElements.define("map-card", MapCard);
   customElements.define("map-card-entity-marker", MapCardEntityMarker);
   console.info(
-    `%cnathan-gs/ha-map-card: 1.13.1`,
+    `%cnathan-gs/ha-map-card: 1.16.0`,
     'color: orange; font-weight: bold; background: black'
   );
 }

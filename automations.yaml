@@ -1,481 +1,509 @@
-# DEAKTIVIERT: calendar.geburtstage und notify.notify_simon_mail existieren nicht mehr
-# - id: "1676043808975"
-#   alias: Benachrichtigung - Geburtstag
-#   description:
-#     Diese Automatisierung benachrichtigt zweimal am Tag darüber, wenn jemand
-#     Geburtstag hat.
-#   triggers:
-#     - trigger: time
-#       at: "12:00:00"
-#     - trigger: time
-#       at: "18:00:00"
-#   conditions:
-#     - condition: state
-#       entity_id: calendar.geburtstage
-#       state: "on"
-#   actions:
-#     - action: notify.notify_simon_mail
-#       data:
-#         title: Geburtstagserinnerung
-#         message: "{{ state_attr('calendar.geburtstage', 'message') }}."
-#         target: simon.hoerrle@gmail.com
-#   mode: single
-- id: "1676043951838"
+- id: '1676043951838'
   alias: System - Standardtheme bei Start setzen
   description: Stellt das standardmäßig zu verwendende HA Theme bei Systemstart  ein.
   triggers:
-    - event: start
-      trigger: homeassistant
+  - event: start
+    trigger: homeassistant
   conditions: []
   actions:
-    - data:
-        name: Material You
-      action: frontend.set_theme
+  - data:
+      name: Material You
+    action: frontend.set_theme
   mode: single
-- id: "1676044297753"
+- id: '1676044297753'
   alias: Beleuchtung - Lichter an wenn anwesend
   description: Schaltet primäre Lichter beim nach Hause kommen wieder an.
   triggers:
-    - trigger: state
-      entity_id:
-        - group.anwesenheit
-      to: home
+  - trigger: state
+    entity_id:
+    - group.anwesenheit
+    to: home
   conditions: []
   actions:
-    - action: light.turn_on
-      data: {}
-      target:
-        entity_id:
-          - light.deckenlampen_flur
-          - light.wohnzimmer_deckenleuchte
-          - light.kuche_esstischlampe
+  - action: light.turn_on
+    data: {}
+    target:
+      entity_id:
+      - light.og_flur_deckenlampen
+      - light.og_wohnzimmer_deckenlampe
+      - light.og_kuche_esstischlampe
   mode: single
-- id: "1676044401836"
+- id: '1676044401836'
   alias: Beleuchtung - Lichter aus wenn abwesend
-  description:
-    Schaltet die komplette Beleuchtung aus wenn alle Personen abwesend
+  description: Schaltet die komplette Beleuchtung aus wenn alle Personen abwesend
     sind.
   triggers:
-    - trigger: state
-      entity_id:
-        - group.anwesenheit
-      from: home
+  - trigger: state
+    entity_id:
+    - group.anwesenheit
+    from: home
   conditions: []
   actions:
-    - action: light.turn_off
-      data: {}
-      target:
-        entity_id: light.all_lights
+  - action: light.turn_off
+    data: {}
+    target:
+      entity_id: light.og_all_lights
   mode: single
-- id: "1676044763396"
+- id: '1676044763396'
   alias: Beleuchtung - Bad Spiegellampe schalten
   description: Schaltet die Spiegellampe im Bade mit der Deckenlampe an/aus.
   triggers:
-    - entity_id:
-        - switch.shelly_1pm_bad_deckenlampe
-      trigger: state
+  - entity_id:
+    - switch.shelly_1pm_bad_deckenlampe
+    trigger: state
   conditions: []
   actions:
-    - choose:
-        - conditions:
-            - condition: state
-              state: "on"
-              entity_id: switch.shelly_1pm_bad_deckenlampe
-          sequence:
-            - action: light.turn_on
-              data: {}
-              target:
-                entity_id: light.lisi_shelly_1pm_bad_spiegellampe
-        - conditions:
-            - condition: state
-              state: "off"
-              entity_id: switch.shelly_1pm_bad_deckenlampe
-          sequence:
-            - action: light.turn_off
-              data: {}
-              target:
-                entity_id: light.lisi_shelly_1pm_bad_spiegellampe
+  - choose:
+    - conditions:
+      - condition: state
+        state: 'on'
+        entity_id: switch.shelly_1pm_bad_deckenlampe
+      sequence:
+      - action: light.turn_on
+        data: {}
+        target:
+          entity_id: light.og_bad_badspiegel
+    - conditions:
+      - condition: state
+        state: 'off'
+        entity_id: switch.shelly_1pm_bad_deckenlampe
+      sequence:
+      - action: light.turn_off
+        data: {}
+        target:
+          entity_id: light.og_bad_badspiegel
   mode: single
-- id: "1676049396181"
-  alias: "Schalter - Notaus Steckdose Büro Tür"
-  description:
-    Schaltet die Steckdose an der Tür im Büro aus, wenn die durchschnittliche
+- id: '1676049396181'
+  alias: Schalter - Notaus Steckdose Büro Tür
+  description: Schaltet die Steckdose an der Tür im Büro aus, wenn die durchschnittliche
     Last der letzten 30 Minuten über einem Grenzwert lag.
   triggers:
-    - trigger: numeric_state
-      entity_id: sensor.shelly_1pm_buero_tuer_power_mean_over_last_30_minutes
-      above: 300
+  - trigger: numeric_state
+    entity_id: sensor.shelly_1pm_buero_tuer_power_mean_over_last_30_minutes
+    above: 300
   conditions: []
   actions:
-    - action: switch.turn_off
-      data: {}
-      target:
-        entity_id: switch.shelly_1pm_buero_tuer
-    # TODO: Benachrichtigung hinzufügen wenn neues Gerät eingerichtet
-    - action: persistent_notification.create
-      data:
-        title: Steckdose Büro Tür
-        message: Notaus aktiviert!
+  - action: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.shelly_1pm_buero_tuer
+  - action: persistent_notification.create
+    data:
+      title: Steckdose Büro Tür
+      message: Notaus aktiviert!
   mode: single
-- id: "1676055784332"
+- id: '1676055784332'
   alias: Media - Sonos System zurücksetzen
-  description:
-    Setzt das komplette Sonos Sytem jede Nacht auf einige Standard Einstellungen
+  description: Setzt das komplette Sonos Sytem jede Nacht auf einige Standard Einstellungen
     zurück.
   triggers:
-    - trigger: time
-      at: "04:30:00"
+  - trigger: time
+    at: 04:30:00
   conditions: []
   actions:
-    - action: media_player.unjoin
-      data: {}
-      target:
-        entity_id:
-          - media_player.lisi_sonoszp_bad
-          - media_player.lisi_sonoszp_buero
-          - media_player.lisi_sonoszp_schlafzimmer
-          - media_player.lisi_sonoszp_wohnzimmer_r
-          - media_player.lisi_sonoszp_kueche
-    - action: media_player.clear_playlist
-      data: {}
-      target:
-        entity_id:
-          - media_player.lisi_sonoszp_bad
-          - media_player.lisi_sonoszp_buero
-          - media_player.lisi_sonoszp_wohnzimmer_r
-          - media_player.lisi_sonoszp_schlafzimmer
-          - media_player.lisi_sonoszp_kueche
-    - action: media_player.volume_set
-      data:
-        volume_level: 0.15
-      target:
-        entity_id:
-          - media_player.lisi_sonoszp_bad
-          - media_player.lisi_sonoszp_buero
-          - media_player.lisi_sonoszp_schlafzimmer
-          - media_player.lisi_sonoszp_wohnzimmer_r
-          - media_player.lisi_sonoszp_kueche
+  - action: media_player.unjoin
+    data: {}
+    target:
+      entity_id:
+      - media_player.lisi_sonoszp_bad
+      - media_player.lisi_sonoszp_buero
+      - media_player.lisi_sonoszp_schlafzimmer
+      - media_player.lisi_sonoszp_wohnzimmer_r
+      - media_player.lisi_sonoszp_kueche
+  - action: media_player.clear_playlist
+    data: {}
+    target:
+      entity_id:
+      - media_player.lisi_sonoszp_bad
+      - media_player.lisi_sonoszp_buero
+      - media_player.lisi_sonoszp_wohnzimmer_r
+      - media_player.lisi_sonoszp_schlafzimmer
+      - media_player.lisi_sonoszp_kueche
+  - action: media_player.volume_set
+    data:
+      volume_level: 0.15
+    target:
+      entity_id:
+      - media_player.lisi_sonoszp_bad
+      - media_player.lisi_sonoszp_buero
+      - media_player.lisi_sonoszp_schlafzimmer
+      - media_player.lisi_sonoszp_wohnzimmer_r
+      - media_player.lisi_sonoszp_kueche
   mode: single
-- id: "1676055969325"
+- id: '1676055969325'
   alias: System - Purge Database
-  description:
-    Diese Automatisierung löscht jede Nacht alle Events die älter als 15
+  description: Diese Automatisierung löscht jede Nacht alle Events die älter als 15
     Tage sind aus der Datenbank. Zusätzlich wird die Datenbank komprimiert, um Platz
     einzusparen.
   triggers:
-    - trigger: time
-      at: "04:00:00"
+  - trigger: time
+    at: 04:00:00
   conditions: []
   actions:
-    - action: recorder.purge
-      data:
-        repack: true
-        keep_days: 15
+  - action: recorder.purge
+    data:
+      repack: true
+      keep_days: 15
   mode: single
-- id: "1676056195216"
+- id: '1676056195216'
   alias: System - Create Watchman Report
   description: Generiert jede Nacht einen Watchman Report über verwaiste Config Einträge.
   triggers:
-    - trigger: time
-      at: "04:00:00"
+  - trigger: time
+    at: 04:00:00
   conditions: []
   actions:
-    - action: watchman.report
-      data:
-        create_file: true
-        send_notification: false
-        parse_config: true
-        chunk_size: false
+  - action: watchman.report
+    data:
+      create_file: true
+      send_notification: false
+      parse_config: true
+      chunk_size: false
   mode: single
-- id: "1676056325991"
+- id: '1676056325991'
   alias: Staubsauger - Werktags reinigen
   description: Startet den Staubsaugroboter an Werktagen.
   triggers:
-    - trigger: time
-      at: "08:30:00"
+  - trigger: time
+    at: 08:30:00
   conditions:
-    - condition: state
-      entity_id: binary_sensor.workday_sensor
-      state: "on"
+  - condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'on'
   actions:
-    - action: vacuum.start
-      data: {}
-      target:
-        entity_id: vacuum.valetudo_falsescrawnyhornet
+  - action: vacuum.start
+    data: {}
+    target:
+      entity_id: vacuum.valetudo_falsescrawnyhornet
   mode: single
-- id: "1676056497026"
+- id: '1676056497026'
   alias: Staubsauger - Samstags reinigen
   description: Startet den Staubsauger an Samstagen.
   triggers:
-    - trigger: time
-      at: "09:30:00"
+  - trigger: time
+    at: 09:30:00
   conditions:
-    - condition: time
-      weekday:
-        - sat
+  - condition: time
+    weekday:
+    - sat
   actions:
-    - action: vacuum.start
-      data: {}
-      target:
-        entity_id: vacuum.valetudo_falsescrawnyhornet
+  - action: vacuum.start
+    data: {}
+    target:
+      entity_id: vacuum.valetudo_falsescrawnyhornet
   mode: single
-- id: "1676056983868"
+- id: '1676056983868'
   alias: System - Messe Strom (HUE)
   description: Messe Strom für verschieden HUE Werte mit Hilfe eines pyscripts.
   triggers:
-    - trigger: webhook
-      webhook_id: -8EApbeQ-yPKY0woS4oczY3wa
-      allowed_methods:
-        - POST
-        - PUT
-      local_only: true
+  - trigger: webhook
+    webhook_id: -8EApbeQ-yPKY0woS4oczY3wa
+    allowed_methods:
+    - POST
+    - PUT
+    local_only: true
   conditions: []
   actions:
-    - action: pyscript.measure_power_consumption_hs
-      data:
-        entity_id: light.wohnzimmer_lightstrip
-        powermeter: sensor.steckdose_wohnzimmer_leistung
-        manufacturer: Signify Netherlands B.V.
-        bulb: LST002
+  - action: pyscript.measure_power_consumption_hs
+    data:
+      entity_id: light.og_wohnzimmer_lightstrip
+      powermeter: sensor.steckdose_wohnzimmer_leistung
+      manufacturer: Signify Netherlands B.V.
+      bulb: LST002
   mode: single
-- id: "1700085757470"
-  alias: "Schalter - WLAN Gastzugang umschalten"
-  description: "Schaltet den WLAN Gastzugang morgens ein und abends aus."
+- id: '1700085757470'
+  alias: Schalter - WLAN Gastzugang umschalten
+  description: Schaltet den WLAN Gastzugang morgens ein und abends aus.
   triggers:
-    - trigger: time
-      at: "06:00:00"
-    - trigger: time
-      at: "23:00:00"
+  - trigger: time
+    at: 06:00:00
+  - trigger: time
+    at: '23:00:00'
   conditions: []
   actions:
-    - if:
-        - condition: time
-          before: "22:59:59"
-      then:
-        - action: switch.turn_on
-          data: {}
-          target:
-            entity_id: switch.fritz_box_6660_cable_wi_fi_goepferich_gastzugang
-      else:
-        - action: switch.turn_off
-          data: {}
-          target:
-            entity_id: switch.fritz_box_6660_cable_wi_fi_goepferich_gastzugang
+  - if:
+    - condition: time
+      before: '22:59:59'
+    then:
+    - action: switch.turn_on
+      data: {}
+      target:
+        entity_id: switch.fritz_box_6660_cable_wi_fi_goepferich_gastzugang
+    else:
+    - action: switch.turn_off
+      data: {}
+      target:
+        entity_id: switch.fritz_box_6660_cable_wi_fi_goepferich_gastzugang
   mode: single
-- id: "1700087353184"
-  alias: "Beleuchtung - Weihnachtsstern umschalten "
-  description: ""
+- id: '1700087353184'
+  alias: 'Beleuchtung - Weihnachtsstern umschalten '
+  description: ''
   triggers:
-    - event: sunrise
-      offset: 00:55:00
-      id: "Sonnenaufgang "
-      trigger: sun
-    - event: sunset
-      offset: -01:55:00
-      id: "Sonnenuntergang "
-      trigger: sun
+  - event: sunrise
+    offset: 00:55:00
+    id: 'Sonnenaufgang '
+    trigger: sun
+  - event: sunset
+    offset: -01:55:00
+    id: 'Sonnenuntergang '
+    trigger: sun
   conditions: []
   actions:
-    - if:
-        - condition: trigger
-          id:
-            - "Sonnenaufgang "
-      then:
-        - data: {}
-          target:
-            entity_id:
-              - light.wohnzimmer_weihnachtsstern_fenster
-              - light.kuche_weihnachtsstern_fenster
-              - light.wohnzimmer_weihnachtsstern
-          action: light.turn_off
-      else:
-        - data:
-            brightness_pct: 60
-            transition: 300
-          target:
-            entity_id:
-              - light.wohnzimmer_weihnachtsstern_fenster
-              - light.kuche_weihnachtsstern_fenster
-              - light.wohnzimmer_weihnachtsstern
-          action: light.turn_on
+  - if:
+    - condition: trigger
+      id:
+      - 'Sonnenaufgang '
+    then:
+    - data: {}
+      target:
+        entity_id:
+        - light.og_wohnzimmer_weihnachtsstern_fenster
+        - light.og_kuche_weihnachtsstern_fenster
+        - light.og_wohnzimmer_weihnachtsstern
+      action: light.turn_off
+    else:
+    - data:
+        brightness_pct: 60
+        transition: 300
+      target:
+        entity_id:
+        - light.og_wohnzimmer_weihnachtsstern_fenster
+        - light.og_kuche_weihnachtsstern_fenster
+        - light.og_wohnzimmer_weihnachtsstern
+      action: light.turn_on
   mode: single
-- id: "1718961814697"
+- id: '1718961814697'
   alias: System - Generate README.md
   description: Generiert jede Nacht eine aktualisierte README.md file.
   triggers:
-    - trigger: time
-      at: "01:00:00"
+  - trigger: time
+    at: 01:00:00
   conditions: []
   actions:
-    - action: readme.generate
-      data: {}
+  - action: readme.generate
+    data: {}
   mode: single
-- id: "1721243999628"
+- id: '1721243999628'
   alias: System - Purge old Fritz!Box Devices
-  description:
-    Diese Automatisierung bereinigt jede Nacht veraltete Fritz Box Geräte
+  description: Diese Automatisierung bereinigt jede Nacht veraltete Fritz Box Geräte
     Einträge.
   triggers:
-    - trigger: time
-      at: "03:00:00"
+  - trigger: time
+    at: 03:00:00
   conditions: []
   actions:
-    - action: button.press
-      metadata: {}
-      data: {}
-      target:
-        entity_id: button.fritz_box_6660_cable_aufraumen
+  - action: button.press
+    metadata: {}
+    data: {}
+    target:
+      entity_id: button.fritz_box_6660_cable_aufraumen
   mode: single
-- id: "1727814349127"
+- id: '1727814349127'
   alias: HomeMini zurücksetzen
-  description:
-    Setzten den Google Home Mini jede Nacht auf einige Standard Einstellungen
+  description: Setzten den Google Home Mini jede Nacht auf einige Standard Einstellungen
     zurück.
   triggers:
-    - at: 04:30:00
-      trigger: time
+  - at: 04:30:00
+    trigger: time
   conditions: []
   actions:
-    - data:
-        volume_level: 0.35
-      action: media_player.volume_set
-      target:
-        entity_id: media_player.homemini_wohnzimmer
+  - data:
+      volume_level: 0.45
+    action: media_player.volume_set
+    target:
+      entity_id: media_player.homemini_wohnzimmer
   mode: single
-# DEAKTIVIERT: light.active_light_group_living_room existiert nicht
-# - id: "1734518438391"
-#   alias: Beleuchtung - Szene Wohnzimmer setzen
-#   description: ""
-#   triggers:
-#     - trigger: state
-#       entity_id:
-#         - input_select.light_scene_living_room
-#   conditions: []
-#   actions:
-#     - data_template:
-#         entity_id: light.active_light_group_living_room
-#         profile:
-#           "{{ states.input_select.light_scene_living_room.state | replace('
-#           ', '_') | lower | string }}
-#
-#           "
-#       action: light.turn_on
-#   mode: single
 - id: shellies_announce
   alias: Shellies Announce
   triggers:
-    - trigger: homeassistant
-      event: start
-    - trigger: time_pattern
-      hours: /1
+  - trigger: homeassistant
+    event: start
+  - trigger: time_pattern
+    hours: /1
   actions:
-    - action: mqtt.publish
-      data:
-        topic: shellies/command
-        payload: announce
+  - action: mqtt.publish
+    data:
+      topic: shellies/command
+      payload: announce
 - id: shellies_discovery
   alias: Shellies Discovery
   mode: queued
   max: 999
   triggers:
-    - trigger: mqtt
-      topic: shellies/announce
+  - trigger: mqtt
+    topic: shellies/announce
   conditions:
-    - condition: template
-      value_template: "{{ trigger.payload_json.gen is not defined }}"
+  - condition: template
+    value_template: '{{ trigger.payload_json.gen is not defined }}'
   actions:
-    - action: python_script.shellies_discovery
-      data:
-        id: "{{ trigger.payload_json.id }}"
-        mac: "{{ trigger.payload_json.mac }}"
-        fw_ver: "{{ trigger.payload_json.fw_ver }}"
-        model: "{{ trigger.payload_json.model | default }}"
-        mode: "{{ trigger.payload_json.mode | default }}"
-        host: "{{ trigger.payload_json.ip }}"
+  - action: python_script.shellies_discovery
+    data:
+      id: '{{ trigger.payload_json.id }}'
+      mac: '{{ trigger.payload_json.mac }}'
+      fw_ver: '{{ trigger.payload_json.fw_ver }}'
+      model: '{{ trigger.payload_json.model | default }}'
+      mode: '{{ trigger.payload_json.mode | default }}'
+      host: '{{ trigger.payload_json.ip }}'
 - id: shellies_announce_gen2
   alias: Shellies Announce Gen2
   triggers:
-    - trigger: homeassistant
-      event: start
+  - trigger: homeassistant
+    event: start
   variables:
-    get_config_payload: "{{ {'id': 1, 'src': 'shellies_discovery', 'method':
-      'Shelly.GetConfig'} | to_json }}"
-    get_components_payload:
-      "{{ {'id': 1, 'src': 'shellies_discovery', 'method':'Shelly.GetComponents',
-      'params': {'include': ['config']}} | to_json }}"
+    get_config_payload: '{{ {''id'': 1, ''src'': ''shellies_discovery'', ''method'':
+      ''Shelly.GetConfig''} | to_json }}'
+    get_components_payload: '{{ {''id'': 1, ''src'': ''shellies_discovery'', ''method'':''Shelly.GetComponents'',
+      ''params'': {''include'': [''config'']}} | to_json }}'
     device_ids:
-      - shellyplus2pm-485519a1ff8c
-      - custom-prefix/shelly-kitchen
+    - shellyplus2pm-485519a1ff8c
+    - custom-prefix/shelly-kitchen
   actions:
-    - repeat:
-        for_each: "{{ device_ids }}"
-        sequence:
-          - action: mqtt.publish
-            data:
-              topic: "{{ repeat.item }}/rpc"
-              payload: "{{ get_config_payload }}"
-          - action: mqtt.publish
-            data:
-              topic: "{{ repeat.item }}/rpc"
-              payload: "{{ get_components_payload }}"
+  - repeat:
+      for_each: '{{ device_ids }}'
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: '{{ repeat.item }}/rpc'
+          payload: '{{ get_config_payload }}'
+      - action: mqtt.publish
+        data:
+          topic: '{{ repeat.item }}/rpc'
+          payload: '{{ get_components_payload }}'
 - id: shellies_discovery_gen2
   alias: Shellies Discovery Gen2
   mode: queued
   max: 999
   triggers:
-    - trigger: mqtt
-      topic: shellies_discovery/rpc
+  - trigger: mqtt
+    topic: shellies_discovery/rpc
   actions:
-    - action: python_script.shellies_discovery_gen2
-      data:
-        id: "{{ trigger.payload_json.src }}"
-        device_config: "{{ trigger.payload_json.result }}"
-    - condition: template
-      value_template: "{{ 'mqtt' in trigger.payload_json.result }}"
-    - action: mqtt.publish
-      data:
-        topic: "{{ trigger.payload_json.result.mqtt.topic_prefix }}/command"
-        payload: status_update
-- id: "1760816151586"
+  - action: python_script.shellies_discovery_gen2
+    data:
+      id: '{{ trigger.payload_json.src }}'
+      device_config: '{{ trigger.payload_json.result }}'
+  - condition: template
+    value_template: '{{ ''mqtt'' in trigger.payload_json.result }}'
+  - action: mqtt.publish
+    data:
+      topic: '{{ trigger.payload_json.result.mqtt.topic_prefix }}/command'
+      payload: status_update
+- id: '1760816151586'
   alias: Beleuchtung - Reset Adaptive Lightnings
-  description: ""
+  description: ''
   triggers:
-    - trigger: time
-      at: 04:30:00
+  - trigger: time
+    at: 04:30:00
   conditions: []
   actions:
-    - action: switch.turn_off
-      metadata: {}
-      data: {}
-      target:
-        entity_id:
-          - switch.adaptive_lighting_adapt_brightness_kaltweiss
-          - switch.adaptive_lighting_adapt_color_kaltweiss
-          - switch.adaptive_lighting_kaltweiss
-          - switch.adaptive_lighting_adapt_brightness_schlafzimmer
-          - switch.adaptive_lighting_adapt_color_schlafzimmer
-          - switch.adaptive_lighting_schlafzimmer
-          - switch.adaptive_lighting_adapt_brightness_warmweiss
-          - switch.adaptive_lighting_adapt_color_warmweiss
-          - switch.adaptive_lighting_warmweiss
-          - switch.adaptive_lighting_adapt_brightness_wohnzimmer
-          - switch.adaptive_lighting_adapt_color_wohnzimmer
-          - switch.adaptive_lighting_wohnzimmer
-    - action: switch.turn_on
-      metadata: {}
-      data: {}
-      target:
-        entity_id:
-          - switch.adaptive_lighting_adapt_brightness_kaltweiss
-          - switch.adaptive_lighting_adapt_color_kaltweiss
-          - switch.adaptive_lighting_kaltweiss
-          - switch.adaptive_lighting_adapt_brightness_schlafzimmer
-          - switch.adaptive_lighting_adapt_color_schlafzimmer
-          - switch.adaptive_lighting_schlafzimmer
-          - switch.adaptive_lighting_adapt_brightness_warmweiss
-          - switch.adaptive_lighting_adapt_color_warmweiss
-          - switch.adaptive_lighting_warmweiss
-          - switch.adaptive_lighting_adapt_brightness_wohnzimmer
-          - switch.adaptive_lighting_adapt_color_wohnzimmer
-          - switch.adaptive_lighting_wohnzimmer
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - switch.adaptive_lighting_adapt_brightness_kaltweiss
+      - switch.adaptive_lighting_adapt_color_kaltweiss
+      - switch.adaptive_lighting_kaltweiss
+      - switch.adaptive_lighting_adapt_brightness_schlafzimmer
+      - switch.adaptive_lighting_adapt_color_schlafzimmer
+      - switch.adaptive_lighting_schlafzimmer
+      - switch.adaptive_lighting_adapt_brightness_warmweiss
+      - switch.adaptive_lighting_adapt_color_warmweiss
+      - switch.adaptive_lighting_warmweiss
+      - switch.adaptive_lighting_adapt_brightness_wohnzimmer
+      - switch.adaptive_lighting_adapt_color_wohnzimmer
+      - switch.adaptive_lighting_wohnzimmer
+  - action: switch.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - switch.adaptive_lighting_adapt_brightness_kaltweiss
+      - switch.adaptive_lighting_adapt_color_kaltweiss
+      - switch.adaptive_lighting_kaltweiss
+      - switch.adaptive_lighting_adapt_brightness_schlafzimmer
+      - switch.adaptive_lighting_adapt_color_schlafzimmer
+      - switch.adaptive_lighting_schlafzimmer
+      - switch.adaptive_lighting_adapt_brightness_warmweiss
+      - switch.adaptive_lighting_adapt_color_warmweiss
+      - switch.adaptive_lighting_warmweiss
+      - switch.adaptive_lighting_adapt_brightness_wohnzimmer
+      - switch.adaptive_lighting_adapt_color_wohnzimmer
+      - switch.adaptive_lighting_wohnzimmer
   mode: single
+- id: '1778519851735'
+  alias: Kinderzimmer Nachttisch umschalten
+  description: ''
+  triggers:
+  - event: sunrise
+    offset: 00:20:00
+    id: 'Sonnenaufgang '
+    trigger: sun
+  - event: sunset
+    offset: -01:30:00
+    id: 'Sonnenuntergang '
+    trigger: sun
+  conditions: []
+  actions:
+  - if:
+    - condition: trigger
+      id:
+      - 'Sonnenaufgang '
+    then:
+    - data: {}
+      target:
+        entity_id:
+        - light.og_kinderzimmer_nachttisch
+      action: light.turn_off
+    else:
+    - data:
+        brightness_pct: 60
+        transition: 300
+      target:
+        entity_id:
+        - light.og_kinderzimmer_nachttisch
+      action: light.turn_on
+  mode: single
+- id: '1786358497770'
+  alias: AWTRIX NG DWD weather warnings ⛈️
+  description: ''
+  use_blueprint:
+    path: blueforcer/flow_SaKPUX8NBRR8.yaml
+    input:
+      awtrix:
+      - 554b36467c19aaed67299cb27ac2b2d8
+      weather_warning_vars:
+      - sensor.stadt_kraichtal_aktuelle_warnstufe
+      weather_preliminary_warning_vars:
+      - sensor.stadt_kraichtal_vorwarnstufe
+      show_details: true
+      play_beep: true
+      send_on_change_only: true
+      message_repeat: 1
+      full_day_names: true
+- id: '1786460149540'
+  alias: AWTRIX NG – Claude Usage
+  description: ''
+  use_blueprint:
+    path: tnusch/awtrix_ng_claude_usage.yaml
+    input:
+      usage_sensor: sensor.claude_usage_simon_extra_usage
+      awtrix: 554b36467c19aaed67299cb27ac2b2d8
+      suffix_text: ' '
+      scroll_speed: 80
+      duration: 8
+- id: '1786462138714'
+  alias: AWTRIX NG – Solar & Grid Monitor
+  description: ''
+  use_blueprint:
+    path: reedy/awtrix_ng_solar_power.yaml
+    input:
+      awtrix:
+      - 554b36467c19aaed67299cb27ac2b2d8
+      power_sensors:
+      - sensor.nous_a1t_smartplug_2_power
+      grid_sensors:
+      - sensor.esp_01s_stromzaehler_active_power
+      max_import: 6000
+      threshold_low: 60
+      duration: 15
+      skip_if_zero_watts: true

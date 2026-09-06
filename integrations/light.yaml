@@ -1,53 +1,187 @@
 ---
 # https://home-assistant.io/components/light/
 light:
+  # https://www.home-assistant.io/integrations/light.switch/
   # https://home-assistant.io/components/light.group/
+  ### OG
   - platform: "group"
-    name: "Deckenlampen Flur"
-    unique_id: "afcf7f7e-b51d-4057-b877-ab5aa359bba1"
+    name: "og_all_lights"
+    unique_id: "20c106e4-2562-4a79-85be-1ff341b14228"
     entities:
-      - "light.hue_color_lamp_1"
-      - "light.hue_color_lamp_1_2"
+      # Living Room
+      - "light.og_wohnzimmer_deckenlampe"
+      - "light.og_wohnzimmer_lightstrip"
+      - "light.og_wohnzimmer_stehlampe_rechts"
+      - "light.og_wohnzimmer_weihnachtsstern"
+      - "light.og_wohnzimmer_weihnachtsstern_fenster"
+      # Kitchen
+      - "light.og_kuche_esstischlampe"
+      - "light.og_kuche_herdlampe"
+      - "light.og_kuche_weihnachtsstern_fenster"
+      # Bed Room
+      - "light.og_schlafzimmer_deckenleuchte"
+      - "light.og_schlafzimmer_wickeltisch"
+      # Child Room
+      - "light.og_kinderzimmer_deckenleuchte"
+      - "light.og_kinderzimmer_nachttisch"
+      # Bath Room
+      - "light.og_bad_deckenlampe"
+      - "light.og_bad_badspiegel"
+      # Office
+      - "light.og_buro_deckenleuchte"
+      - "light.og_buro_schreibtisch"
+      # Staircase
+      - "light.og_treppenhaus_wandlampen"
+      # Hallway
+      - "light.og_flur_deckenlampen"
+  #### Living Room
   - platform: "group"
-    name: "Wandlampen Treppenhaus"
+    name: "og_wohnzimmer_deckenlampe"
+    unique_id: "3ccc805e-8e56-4d6f-9727-6ee203c9e366"
+    entities:
+      - "light.wohnzimmer_deckenleuchte"
+  - platform: "group"
+    name: "og_wohnzimmer_lightstrip"
+    unique_id: "e5caebe6-8621-4335-b698-8109e4ac0d5d"
+    entities:
+      - "light.wohnzimmer_lightstrip"
+  - platform: "group"
+    name: "og_wohnzimmer_stehlampe_rechts"
+    unique_id: "839c7743-d948-4ecf-8334-68b69c37f460"
+    entities:
+      - "light.wohnzimmer_stehlampe_rechts"
+  - platform: "group"
+    name: "og_wohnzimmer_weihnachtsstern"
+    unique_id: "c885517c-e67d-412a-8494-372042582fe4"
+    entities:
+      - "light.wohnzimmer_weihnachtsstern"
+  - platform: "group"
+    name: "og_wohnzimmer_weihnachtsstern_fenster"
+    unique_id: "b79e3d8c-c7b1-4427-be64-9deef1146215"
+    entities:
+      - "light.wohnzimmer_weihnachtsstern_fenster"
+  #### Kitchen
+  - platform: "group"
+    name: "og_kuche_esstischlampe"
+    unique_id: "b43d7fd4-e2c1-44a2-a02c-d9e02d2bf5b9"
+    entities:
+      - "light.kuche_esstischlampe"
+  - platform: "group"
+    name: "og_kuche_herdlampe"
+    unique_id: "8e636a6f-cbd3-4c2d-beff-7ea222af1ac3"
+    entities:
+      - "light.kuche_herdlampe"
+  - platform: "group"
+    name: "og_kuche_weihnachtsstern_fenster"
+    unique_id: "458d9c4c-2534-4e68-bb3d-f92020a08492"
+    entities:
+      - "light.kuche_weihnachtsstern_fenster"
+  #### Bed Room
+  - platform: "group"
+    name: "og_schlafzimmer_deckenleuchte"
+    unique_id: "6b05518d-dbf8-4574-88c0-bb36851f017a"
+    entities:
+      - "light.schlafzimmer_deckenleuchte"
+  - platform: "group"
+    name: "og_schlafzimmer_wickeltisch"
+    unique_id: "f6e1481f-2f9a-410a-b0b9-81d300826660"
+    entities:
+      - "light.schlafzimmer_wickeltisch"
+  #### Child Room
+  - platform: "group"
+    name: "og_kinderzimmer_deckenleuchte"
+    unique_id: "84656c32-d560-41f0-b86b-dd4f20cbe3b3"
+    entities:
+      - "light.kinderzimmer_deckenleuchte"
+  - platform: "group"
+    name: "og_kinderzimmer_nachttisch"
+    unique_id: "8d4a7e30-697e-4153-913c-88161eedab68"
+    entities:
+      - "light.kinderzimmer_nachttisch"
+  #### Bath Room
+  # unique_id wird von light.switch nicht unterstützt (HA generiert intern eine eigene)
+  - platform: "switch"
+    name: "og_bad_deckenlampe"
+    entity_id: "switch.shelly_1pm_bad_deckenlampe"
+  - platform: "switch"
+    name: "og_bad_badspiegel"
+    entity_id: "switch.shelly_1_e8db84d66665_relay_0"
+  #### Office
+  - platform: "group"
+    name: "og_buro_deckenleuchte"
+    unique_id: "64f3b809-6117-499b-ab71-bc94399e03ab"
+    entities:
+      - "light.buro_deckenleuchte"
+  - platform: "group"
+    name: "og_buro_schreibtisch"
+    unique_id: "4c708938-2904-49aa-a256-ae86580567a1"
+    entities:
+      - "light.buro_schreibtisch"
+  #### Staircase
+  - platform: "group"
+    name: "og_treppenhaus_wandlampen"
     unique_id: "4a91ac20-7375-4787-851d-6e04193f35b7"
     entities:
       - "light.treppenhaus_wandlampe_1"
       - "light.treppenhaus_wandlampe_2"
       - "light.treppenhaus_wandlampe_3"
+  #### Hallway
   - platform: "group"
-    name: "all_lights"
-    unique_id: "20c106e4-2562-4a79-85be-1ff341b14228"
+    name: "og_flur_deckenlampen"
+    unique_id: "afcf7f7e-b51d-4057-b877-ab5aa359bba1"
     entities:
-      # Living Room
-      - "light.wohnzimmer_deckenleuchte"
-      - "light.wohnzimmer_lightstrip"
-      - "light.wohnzimmer_weihnachtsstern"
-      - "light.wohnzimmer_weihnachtsstern_fenster"
-      # Kitchen
-      - "light.kuche_esstischlampe"
-      - "light.kuche_herdlampe"
-      - "light.kuche_weihnachtsstern_fenster"
-      # Bed Room
-      - "light.schlafzimmer_deckenleuchte"
-      # Child Room
-      - "light.kinderzimmer_deckenleuchte"
-      - "light.kinderzimmer_nachttisch"
-      # Bath Room
-      - "light.shelly_deckenlampe_bad"
-      - "light.shelly_badspiegel"
-      # Office
-      - "light.buro_deckenleuchte"
-      - "light.buro_schreibtisch"
+      - "light.flur_deckenlampe_1"
+      - "light.flur_deckenlampe_2"
+  ### EG
+  - platform: "group"
+    name: "eg_all_lights"
+    unique_id: "157efcce-1a01-4ea7-866a-c9e81e6c5068"
+    entities:
+      # Entrance
+      - "light.eg_eingangstur_decke"
+  #### Entrance
+  - platform: "group"
+    name: "eg_eingangstur_decke"
+    unique_id: "b7bc837a-928d-4b7f-82fa-85fd3aa593c7"
+    entities:
+      - "light.eingangstur_decke"
+  ### UG
+  - platform: "group"
+    name: "ug_all_lights"
+    unique_id: "0ca39c62-395b-4ba6-a559-f0b3ba647352"
+    entities:
+      # Staircase Cellar
+      - "light.ug_kellertreppe_wandlampen"
       # Office Cellar
+      - "light.ug_buero_keller_deckenlampen"
+      - "light.ug_buero_keller_wandlampe_links"
+      # HVAC Room
+      - "light.ug_heizraum_deckenlampe"
+  #### Staircase Cellar
+  - platform: "group"
+    name: "ug_kellertreppe_wandlampen"
+    unique_id: "40bb963e-2c96-45b9-b951-e3f362d25640"
+    entities:
+      - "light.hue_essential_lamp_1"
+      - "light.hue_essential_lamp_1_2"
+  #### Office Cellar
+  - platform: "group"
+    name: "ug_buero_keller_deckenlampen"
+    unique_id: "af822f36-819d-475c-a04d-0481cbd95ed6"
+    entities:
       - "light.buero_keller_deckenlampe_1"
       - "light.buero_keller_deckenlampe_2"
+  - platform: "group"
+    name: "ug_buero_keller_wandlampe_links"
+    unique_id: "33ccd665-f911-452f-a63b-664f7c410f1e"
+    entities:
       - "light.buero_keller_wandlampe_links"
+  #### HVAC Room
+  - platform: "group"
+    name: "ug_heizraum_deckenlampe"
+    unique_id: "dde118cd-9263-46bd-83a4-6ff598020201"
+    entities:
       - "light.buero_keller_wandlampe_rechts"
-      # Other
-      - "light.deckenlampen_flur"
-      - "light.wandlampen_treppenhaus"
-      - "light.eingangstur_decke"
 
   # https://community.home-assistant.io/t/rounded-dashboard-guide/543043/39?u=cm000n
   #- platform: "template"
@@ -350,14 +484,3 @@ light:
   #            entity_id: "{{ expand('group.light_group_office_cellar') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
   #          data:
   #            color_temp: "{{ color_temp }}"
-
-  # https://www.home-assistant.io/integrations/light.switch/
-  - platform: "switch"
-    name: "Shelly Deckenlampe Bad"
-    entity_id: "switch.shelly_1pm_bad_deckenlampe"
-  - platform: "switch"
-    name: "Shelly Badspiegel"
-    entity_id: "switch.shelly_1_e8db84d66665_relay_0"
-  - platform: "switch"
-    name: "Weihnachtsbaum"
-    entity_id: "switch.lisi_nous_a1t_smartplug_1_switch"

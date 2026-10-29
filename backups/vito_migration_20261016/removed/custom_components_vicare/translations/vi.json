@@ -1,0 +1,21 @@
+{
+  "config": {
+    "abort": {
+      "unknown": "L\u1ed7i kh\u00f4ng mong \u0111\u1ee3i"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "compressor_phase": {
+        "state": {
+          "cooling": "L\u00e0m m\u00e1t",
+          "defrost": "R\u00e3 \u0111\u00f4ng",
+          "heating": "S\u01b0\u1edfi \u1ea5m"
+        }
+      },
+      "zigbee_signal_strength": {
+        "name": "C\u01b0\u1eddng \u0111\u1ed9 t\u00edn hi\u1ec7u"
+      }
+    }
+  }
+}

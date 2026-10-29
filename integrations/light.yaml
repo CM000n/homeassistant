@@ -3,38 +3,35 @@
 light:
   # https://www.home-assistant.io/integrations/light.switch/
   # https://home-assistant.io/components/light.group/
-  ### OG
+
+  # Some lights in some groups are missing by intenstion
+  # because they are still registeres inside the HUE Bridge but not
+  # realy existent / in use anymore.
+
+  ####################
+  ### Obergeschoss ###
+  ####################
   - platform: "group"
     name: "og_all_lights"
     unique_id: "20c106e4-2562-4a79-85be-1ff341b14228"
     entities:
-      # Living Room
+      - "light.og_wohnzimmer_all_lights"
+      - "light.og_kuche_all_lights"
+      - "light.og_schlafzimmer_all_lights"
+      - "light.og_kinderzimmer_all_lights"
+      - "light.og_bad_all_lights"
+      - "light.og_buro_all_lights"
+      - "light.og_treppenhaus_all_lights"
+      - "light.og_flur_all_lights"
+  #### Wohnzimmer
+  - platform: "group"
+    name: "og_wohnzimmer_all_lights"
+    unique_id: "b26b7162-218a-4fb9-b9d0-61fe90f51e56"
+    entities:
       - "light.og_wohnzimmer_deckenlampe"
       - "light.og_wohnzimmer_lightstrip"
-      - "light.og_wohnzimmer_stehlampe_rechts"
       - "light.og_wohnzimmer_weihnachtsstern"
       - "light.og_wohnzimmer_weihnachtsstern_fenster"
-      # Kitchen
-      - "light.og_kuche_esstischlampe"
-      - "light.og_kuche_herdlampe"
-      - "light.og_kuche_weihnachtsstern_fenster"
-      # Bed Room
-      - "light.og_schlafzimmer_deckenleuchte"
-      - "light.og_schlafzimmer_wickeltisch"
-      # Child Room
-      - "light.og_kinderzimmer_deckenleuchte"
-      - "light.og_kinderzimmer_nachttisch"
-      # Bath Room
-      - "light.og_bad_deckenlampe"
-      - "light.og_bad_badspiegel"
-      # Office
-      - "light.og_buro_deckenleuchte"
-      - "light.og_buro_schreibtisch"
-      # Staircase
-      - "light.og_treppenhaus_wandlampen"
-      # Hallway
-      - "light.og_flur_deckenlampen"
-  #### Living Room
   - platform: "group"
     name: "og_wohnzimmer_deckenlampe"
     unique_id: "3ccc805e-8e56-4d6f-9727-6ee203c9e366"
@@ -60,7 +57,14 @@ light:
     unique_id: "b79e3d8c-c7b1-4427-be64-9deef1146215"
     entities:
       - "light.wohnzimmer_weihnachtsstern_fenster"
-  #### Kitchen
+  #### Küche
+  - platform: "group"
+    name: "og_kuche_all_lights"
+    unique_id: "64e78a2c-1efa-4910-ac06-b754bb5b495d"
+    entities:
+      - "light.og_kuche_esstischlampe"
+      - "light.og_kuche_herdlampe"
+      - "light.og_kuche_weihnachtsstern_fenster"
   - platform: "group"
     name: "og_kuche_esstischlampe"
     unique_id: "b43d7fd4-e2c1-44a2-a02c-d9e02d2bf5b9"
@@ -76,7 +80,12 @@ light:
     unique_id: "458d9c4c-2534-4e68-bb3d-f92020a08492"
     entities:
       - "light.kuche_weihnachtsstern_fenster"
-  #### Bed Room
+  #### Schlafzimmer
+  - platform: "group"
+    name: "og_schlafzimmer_all_lights"
+    unique_id: "19e04f12-3c86-49f4-a92a-54557b259e2e"
+    entities:
+      - "light.og_schlafzimmer_deckenleuchte"
   - platform: "group"
     name: "og_schlafzimmer_deckenleuchte"
     unique_id: "6b05518d-dbf8-4574-88c0-bb36851f017a"
@@ -87,7 +96,13 @@ light:
     unique_id: "f6e1481f-2f9a-410a-b0b9-81d300826660"
     entities:
       - "light.schlafzimmer_wickeltisch"
-  #### Child Room
+  #### Kinderzimmer
+  - platform: "group"
+    name: "og_kinderzimmer_all_lights"
+    unique_id: "ab6b7efb-a97d-4b3b-a98f-b4eac69abb45"
+    entities:
+      - "light.og_kinderzimmer_deckenleuchte"
+      - "light.og_kinderzimmer_nachttisch"
   - platform: "group"
     name: "og_kinderzimmer_deckenleuchte"
     unique_id: "84656c32-d560-41f0-b86b-dd4f20cbe3b3"
@@ -98,26 +113,39 @@ light:
     unique_id: "8d4a7e30-697e-4153-913c-88161eedab68"
     entities:
       - "light.kinderzimmer_nachttisch"
-  #### Bath Room
+  #### Badezimmer
   # unique_id wird von light.switch nicht unterstützt (HA generiert intern eine eigene)
+  - platform: "group"
+    name: "og_bad_all_lights"
+    unique_id: "f017dc46-7b7e-4722-b92c-af244536906f"
+    entities:
+      - "light.og_bad_deckenlampe"
+      - "light.og_bad_badspiegel"
   - platform: "switch"
     name: "og_bad_deckenlampe"
     entity_id: "switch.shelly_1pm_bad_deckenlampe"
-  - platform: "switch"
+  - platform: "group"
     name: "og_bad_badspiegel"
-    entity_id: "switch.shelly_1_e8db84d66665_relay_0"
-  #### Office
+    unique_id: "c0c3c327-016f-4e3d-83e0-599a65352c03"
+    entities:
+      - "light.shelly_1_gen1_bad_spiegel"
+  #### Büro
+  - platform: "group"
+    name: "og_buro_all_lights"
+    unique_id: "f3583f80-aefc-4c15-b1c3-d1a8629323e5"
+    entities:
+      - "light.og_buro_deckenleuchte"
   - platform: "group"
     name: "og_buro_deckenleuchte"
     unique_id: "64f3b809-6117-499b-ab71-bc94399e03ab"
     entities:
       - "light.buro_deckenleuchte"
+  #### Treppenhaus
   - platform: "group"
-    name: "og_buro_schreibtisch"
-    unique_id: "4c708938-2904-49aa-a256-ae86580567a1"
+    name: "og_treppenhaus_all_lights"
+    unique_id: "b8784b3a-f251-484e-b2f0-eb1cc4979bcb"
     entities:
-      - "light.buro_schreibtisch"
-  #### Staircase
+      - "light.og_treppenhaus_wandlampen"
   - platform: "group"
     name: "og_treppenhaus_wandlampen"
     unique_id: "4a91ac20-7375-4787-851d-6e04193f35b7"
@@ -125,46 +153,67 @@ light:
       - "light.treppenhaus_wandlampe_1"
       - "light.treppenhaus_wandlampe_2"
       - "light.treppenhaus_wandlampe_3"
-  #### Hallway
+  #### Flur
+  - platform: "group"
+    name: "og_flur_all_lights"
+    unique_id: "06596a82-5d33-4525-9b73-6f925cbe1168"
+    entities:
+      - "light.og_flur_deckenlampen"
   - platform: "group"
     name: "og_flur_deckenlampen"
     unique_id: "afcf7f7e-b51d-4057-b877-ab5aa359bba1"
     entities:
       - "light.flur_deckenlampe_1"
       - "light.flur_deckenlampe_2"
-  ### EG
+
+  ##################
+  ### Erdgeschoss ##
+  ##################
   - platform: "group"
     name: "eg_all_lights"
     unique_id: "157efcce-1a01-4ea7-866a-c9e81e6c5068"
     entities:
-      # Entrance
+      - "light.eg_eingangstur_all_lights"
+  #### Eingangstür
+  - platform: "group"
+    name: "eg_eingangstur_all_lights"
+    unique_id: "77f64b7e-c0ac-4b71-b42a-29d906ad98ca"
+    entities:
       - "light.eg_eingangstur_decke"
-  #### Entrance
   - platform: "group"
     name: "eg_eingangstur_decke"
     unique_id: "b7bc837a-928d-4b7f-82fa-85fd3aa593c7"
     entities:
       - "light.eingangstur_decke"
-  ### UG
+
+  #####################
+  ### Untergeschoss ###
+  #####################
   - platform: "group"
     name: "ug_all_lights"
     unique_id: "0ca39c62-395b-4ba6-a559-f0b3ba647352"
     entities:
-      # Staircase Cellar
+      - "light.ug_kellertreppe_all_lights"
+      - "light.ug_buero_keller_all_lights"
+      - "light.ug_heizraum_all_lights"
+  #### Kellertreppe
+  - platform: "group"
+    name: "ug_kellertreppe_all_lights"
+    unique_id: "86c53f07-48e3-4ae1-8a4c-dc5a8eb1624f"
+    entities:
       - "light.ug_kellertreppe_wandlampen"
-      # Office Cellar
-      - "light.ug_buero_keller_deckenlampen"
-      - "light.ug_buero_keller_wandlampe_links"
-      # HVAC Room
-      - "light.ug_heizraum_deckenlampe"
-  #### Staircase Cellar
   - platform: "group"
     name: "ug_kellertreppe_wandlampen"
     unique_id: "40bb963e-2c96-45b9-b951-e3f362d25640"
     entities:
-      - "light.hue_essential_lamp_1"
-      - "light.hue_essential_lamp_1_2"
-  #### Office Cellar
+      - "light.kellertreppe_wandlampe_1"
+      - "light.kellertreppe_wandlampe_2"
+  #### Büro Keller
+  - platform: "group"
+    name: "ug_buero_keller_all_lights"
+    unique_id: "a2d4c7e4-7e53-457a-93cf-31a522bd45ff"
+    entities:
+      - "light.ug_buero_keller_schreibtisch"
   - platform: "group"
     name: "ug_buero_keller_deckenlampen"
     unique_id: "af822f36-819d-475c-a04d-0481cbd95ed6"
@@ -176,311 +225,19 @@ light:
     unique_id: "33ccd665-f911-452f-a63b-664f7c410f1e"
     entities:
       - "light.buero_keller_wandlampe_links"
-  #### HVAC Room
+  - platform: "group"
+    name: "ug_buero_keller_schreibtisch"
+    unique_id: "5004da68-fa54-4e8e-ae23-2e07f853f272"
+    entities:
+      - "light.buro_schreibtisch"
+  #### Heizraum
+  - platform: "group"
+    name: "ug_heizraum_all_lights"
+    unique_id: "70ef972d-ce7e-455b-a7df-5ebd2b879796"
+    entities:
+      - "light.ug_heizraum_deckenlampe"
   - platform: "group"
     name: "ug_heizraum_deckenlampe"
     unique_id: "dde118cd-9263-46bd-83a4-6ff598020201"
     entities:
-      - "light.buero_keller_wandlampe_rechts"
-
-  # https://community.home-assistant.io/t/rounded-dashboard-guide/543043/39?u=cm000n
-  #- platform: "template"
-  #  lights:
-  #    active_light_group_living_room:
-  #      friendly_name: "Aktive Lampen Wohnzimmer"
-  #      unique_id: "dde917da-cff3-46d2-98f0-27b2d2b8e042"
-  #      level_template: >
-  #        {% set data = namespace(numbers=[]) %}
-  #        {% for s in state_attr('group.light_group_living_room', 'entity_id') %}
-  #          {% if is_state(s, 'on') %}
-  #            {% set data.numbers = [state_attr(s, "brightness")] + data.numbers %}
-  #          {% endif %}
-  #        {% endfor %}
-  #        {{data.numbers|average(0)|round(0)}}
-  #      value_template: >
-  #        {%- set data = namespace(res="off") -%}
-  #        {% for s in state_attr('group.light_group_living_room', 'entity_id') %}
-  #          {% if is_state(s, 'on') %}
-  #            {%- set data.res = "on" -%}
-  #          {% endif %}
-  #        {%- endfor -%}
-  #        {{data.res}}
-  #      temperature_template: >
-  #        {% set data = namespace(numbers=[]) %}
-  #        {% for s in state_attr('group.light_group_living_room', 'entity_id') %}
-  #          {% if state_attr(s, "color_temp") %}
-  #            {% set data.numbers = [state_attr(s, "color_temp")] + data.numbers %}
-  #          {% endif %}
-  #        {% endfor %}
-  #        {{data.numbers|average(155)|round(0)}}
-  #      turn_on:
-  #        - service: "light.turn_on"
-  #          data:
-  #            entity_id: "group.light_group_living_room"
-  #      turn_off:
-  #        - service: "light.turn_off"
-  #          data:
-  #            entity_id: "group.light_group_living_room"
-  #      set_level:
-  #        - service: "light.turn_on"
-  #          target:
-  #            # was tun wenn alles aus ist? If-Anweisung, um alles einzuschalten?
-  #            entity_id: "{{ expand('group.light_group_living_room') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
-  #          data:
-  #            brightness: "{{ brightness }}"
-  #      set_temperature:
-  #        - service: "light.turn_on"
-  #          target:
-  #            entity_id: "{{ expand('group.light_group_living_room') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
-  #          data:
-  #            color_temp: "{{ color_temp }}"
-  #- platform: "template"
-  #  lights:
-  #    active_light_group_kitchen:
-  #      friendly_name: "Aktive Lampen Küche"
-  #      unique_id: "32f59805-863b-42c7-986e-713de8b1b429"
-  #      level_template: >
-  #        {% set data = namespace(numbers=[]) %}
-  #        {% for s in state_attr('group.light_group_kitchen', 'entity_id') %}
-  #          {% if is_state(s, 'on') %}
-  #            {% set data.numbers = [state_attr(s, "brightness")] + data.numbers %}
-  #          {% endif %}
-  #        {% endfor %}
-  #        {{data.numbers|average(0)|round(0)}}
-  #      value_template: >
-  #        {%- set data = namespace(res="off") -%}
-  #        {% for s in state_attr('group.light_group_kitchen', 'entity_id') %}
-  #          {% if is_state(s, 'on') %}
-  #            {%- set data.res = "on" -%}
-  #          {% endif %}
-  #        {%- endfor -%}
-  #        {{data.res}}
-  #      temperature_template: >
-  #        {% set data = namespace(numbers=[]) %}
-  #        {% for s in state_attr('group.light_group_kitchen', 'entity_id') %}
-  #          {% if state_attr(s, "color_temp") %}
-  #            {% set data.numbers = [state_attr(s, "color_temp")] + data.numbers %}
-  #          {% endif %}
-  #        {% endfor %}
-  #        {{data.numbers|average(155)|round(0)}}
-  #      turn_on:
-  #        - service: "light.turn_on"
-  #          data:
-  #            entity_id: "group.light_group_kitchen"
-  #      turn_off:
-  #        - service: "light.turn_off"
-  #          data:
-  #            entity_id: "group.light_group_kitchen"
-  #      set_level:
-  #        - service: "light.turn_on"
-  #          target:
-  #            # was tun wenn alles aus ist? If-Anweisung, um alles einzuschalten?
-  #            entity_id: "{{ expand('group.light_group_kitchen') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
-  #          data:
-  #            brightness: "{{ brightness }}"
-  #      set_temperature:
-  #        - service: "light.turn_on"
-  #          target:
-  #            entity_id: "{{ expand('group.light_group_kitchen') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
-  #          data:
-  #            color_temp: "{{ color_temp }}"
-  #- platform: "template"
-  #  lights:
-  #    active_light_group_bed_room:
-  #      friendly_name: "Aktive Lampen Schlafzimmer"
-  #      unique_id: "b7068506-61a7-4b08-b066-286b7b23d1f0"
-  #      level_template: >
-  #        {% set data = namespace(numbers=[]) %}
-  #        {% for s in state_attr('group.light_group_bed_room', 'entity_id') %}
-  #          {% if is_state(s, 'on') %}
-  #            {% set data.numbers = [state_attr(s, "brightness")] + data.numbers %}
-  #          {% endif %}
-  #        {% endfor %}
-  #        {{data.numbers|average(0)|round(0)}}
-  #      value_template: >
-  #        {%- set data = namespace(res="off") -%}
-  #        {% for s in state_attr('group.light_group_bed_room', 'entity_id') %}
-  #          {% if is_state(s, 'on') %}
-  #            {%- set data.res = "on" -%}
-  #          {% endif %}
-  #        {%- endfor -%}
-  #        {{data.res}}
-  #      temperature_template: >
-  #        {% set data = namespace(numbers=[]) %}
-  #        {% for s in state_attr('group.light_group_bed_room', 'entity_id') %}
-  #          {% if state_attr(s, "color_temp") %}
-  #            {% set data.numbers = [state_attr(s, "color_temp")] + data.numbers %}
-  #          {% endif %}
-  #        {% endfor %}
-  #        {{data.numbers|average(155)|round(0)}}
-  #      turn_on:
-  #        - service: "light.turn_on"
-  #          data:
-  #            entity_id: "group.light_group_bed_room"
-  #      turn_off:
-  #        - service: "light.turn_off"
-  #          data:
-  #            entity_id: "group.light_group_bed_room"
-  #      set_level:
-  #        - service: "light.turn_on"
-  #          target:
-  #            # was tun wenn alles aus ist? If-Anweisung, um alles einzuschalten?
-  #            entity_id: "{{ expand('group.light_group_bed_room') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
-  #          data:
-  #            brightness: "{{ brightness }}"
-  #      set_temperature:
-  #        - service: "light.turn_on"
-  #          target:
-  #            entity_id: "{{ expand('group.light_group_bed_room') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
-  #          data:
-  #            color_temp: "{{ color_temp }}"
-  #- platform: "template"
-  #  lights:
-  #    active_light_group_child_room:
-  #      friendly_name: "Aktive Lampen Kinderzimmer"
-  #      unique_id: "009b093f-c3b0-476b-97aa-d50738bed140"
-  #      level_template: >
-  #        {% set data = namespace(numbers=[]) %}
-  #        {% for s in state_attr('group.light_group_child_room', 'entity_id') %}
-  #          {% if is_state(s, 'on') %}
-  #            {% set data.numbers = [state_attr(s, "brightness")] + data.numbers %}
-  #          {% endif %}
-  #        {% endfor %}
-  #        {{data.numbers|average(0)|round(0)}}
-  #      value_template: >
-  #        {%- set data = namespace(res="off") -%}
-  #        {% for s in state_attr('group.light_group_child_room', 'entity_id') %}
-  #          {% if is_state(s, 'on') %}
-  #            {%- set data.res = "on" -%}
-  #          {% endif %}
-  #        {%- endfor -%}
-  #        {{data.res}}
-  #      temperature_template: >
-  #        {% set data = namespace(numbers=[]) %}
-  #        {% for s in state_attr('group.light_group_child_room', 'entity_id') %}
-  #          {% if state_attr(s, "color_temp") %}
-  #            {% set data.numbers = [state_attr(s, "color_temp")] + data.numbers %}
-  #          {% endif %}
-  #        {% endfor %}
-  #        {{data.numbers|average(155)|round(0)}}
-  #      turn_on:
-  #        - service: "light.turn_on"
-  #          data:
-  #            entity_id: "group.light_group_child_room"
-  #      turn_off:
-  #        - service: "light.turn_off"
-  #          data:
-  #            entity_id: "group.light_group_child_room"
-  #      set_level:
-  #        - service: "light.turn_on"
-  #          target:
-  #            # was tun wenn alles aus ist? If-Anweisung, um alles einzuschalten?
-  #            entity_id: "{{ expand('group.light_group_child_room') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
-  #          data:
-  #            brightness: "{{ brightness }}"
-  #      set_temperature:
-  #        - service: "light.turn_on"
-  #          target:
-  #            entity_id: "{{ expand('group.light_group_child_room') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
-  #          data:
-  #            color_temp: "{{ color_temp }}"
-  #- platform: "template"
-  #  lights:
-  #    active_light_group_office:
-  #      friendly_name: "Aktive Lampen Büro"
-  #      unique_id: "115fc981-c6ba-413e-ad71-45b38dfb9f87"
-  #      level_template: >
-  #        {% set data = namespace(numbers=[]) %}
-  #        {% for s in state_attr('group.light_group_office', 'entity_id') %}
-  #          {% if is_state(s, 'on') %}
-  #            {% set data.numbers = [state_attr(s, "brightness")] + data.numbers %}
-  #          {% endif %}
-  #        {% endfor %}
-  #        {{data.numbers|average(0)|round(0)}}
-  #      value_template: >
-  #        {%- set data = namespace(res="off") -%}
-  #        {% for s in state_attr('group.light_group_office', 'entity_id') %}
-  #          {% if is_state(s, 'on') %}
-  #            {%- set data.res = "on" -%}
-  #          {% endif %}
-  #        {%- endfor -%}
-  #        {{data.res}}
-  #      temperature_template: >
-  #        {% set data = namespace(numbers=[]) %}
-  #        {% for s in state_attr('group.light_group_office', 'entity_id') %}
-  #          {% if state_attr(s, "color_temp") %}
-  #            {% set data.numbers = [state_attr(s, "color_temp")] + data.numbers %}
-  #          {% endif %}
-  #        {% endfor %}
-  #        {{data.numbers|average(155)|round(0)}}
-  #      turn_on:
-  #        - service: "light.turn_on"
-  #          data:
-  #            entity_id: "group.light_group_office"
-  #      turn_off:
-  #        - service: "light.turn_off"
-  #          data:
-  #            entity_id: "group.light_group_office"
-  #      set_level:
-  #        - service: "light.turn_on"
-  #          target:
-  #            # was tun wenn alles aus ist? If-Anweisung, um alles einzuschalten?
-  #            entity_id: "{{ expand('group.light_group_office') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
-  #          data:
-  #            brightness: "{{ brightness }}"
-  #      set_temperature:
-  #        - service: "light.turn_on"
-  #          target:
-  #            entity_id: "{{ expand('group.light_group_office') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
-  #          data:
-  #            color_temp: "{{ color_temp }}"
-  #- platform: "template"
-  #  lights:
-  #    active_light_group_office_cellar:
-  #      friendly_name: "Aktive Lampen Büro Keller"
-  #      unique_id: "64dfa389-17eb-435b-80b8-5996b854127e"
-  #      level_template: >
-  #        {% set data = namespace(numbers=[]) %}
-  #        {% for s in state_attr('group.light_group_office_cellar', 'entity_id') %}
-  #          {% if is_state(s, 'on') %}
-  #            {% set data.numbers = [state_attr(s, "brightness")] + data.numbers %}
-  #          {% endif %}
-  #        {% endfor %}
-  #        {{data.numbers|average(0)|round(0)}}
-  #      value_template: >
-  #        {%- set data = namespace(res="off") -%}
-  #        {% for s in state_attr('group.light_group_office_cellar', 'entity_id') %}
-  #          {% if is_state(s, 'on') %}
-  #            {%- set data.res = "on" -%}
-  #          {% endif %}
-  #        {%- endfor -%}
-  #        {{data.res}}
-  #      temperature_template: >
-  #        {% set data = namespace(numbers=[]) %}
-  #        {% for s in state_attr('group.light_group_office_cellar', 'entity_id') %}
-  #          {% if state_attr(s, "color_temp") %}
-  #            {% set data.numbers = [state_attr(s, "color_temp")] + data.numbers %}
-  #          {% endif %}
-  #        {% endfor %}
-  #        {{data.numbers|average(155)|round(0)}}
-  #      turn_on:
-  #        - service: "light.turn_on"
-  #          data:
-  #            entity_id: "group.light_group_office_cellar"
-  #      turn_off:
-  #        - service: "light.turn_off"
-  #          data:
-  #            entity_id: "group.light_group_office_cellar"
-  #      set_level:
-  #        - service: "light.turn_on"
-  #          target:
-  #            # was tun wenn alles aus ist? If-Anweisung, um alles einzuschalten?
-  #            entity_id: "{{ expand('group.light_group_office_cellar') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
-  #          data:
-  #            brightness: "{{ brightness }}"
-  #      set_temperature:
-  #        - service: "light.turn_on"
-  #          target:
-  #            entity_id: "{{ expand('group.light_group_office_cellar') | selectattr('state','eq','on') | map(attribute='entity_id') | join(',') }}"
-  #          data:
-  #            color_temp: "{{ color_temp }}"
+      - "light.heizraum_deckenlampe"

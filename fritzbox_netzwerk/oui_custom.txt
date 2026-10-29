@@ -1,0 +1,8 @@
+# Eigene Herstellerzuordnungen fuer fritzbox_netzwerk.
+# Eine Zeile je Eintrag: PRAEFIX:Name, z. B.
+#   A1B2C3:Mein Bastelgeraet
+#   A1B2C3D:Prototyp (7 Zeichen = MA-M)
+#   A1B2C3D4E:Prototyp (9 Zeichen = MA-S)
+# Diese Datei hat Vorrang vor der mitgelieferten und der aktualisierten
+# Liste und wird von Updates NICHT ueberschrieben. Aenderungen gelten
+# nach einem Neustart oder nach dem Dienst fritzbox_netzwerk.update_oui.

@@ -1,0 +1,119 @@
+# Eigene Einstellungen je Raum-Heizkörperthermostat (Bad, Büro) für Advanced Heating Control V5, benannt wie die Vitotronic-Entitäten.
+# Package: wird über `packages: !include_dir_named "integrations"` geladen. Doku: docs/advanced-heating-control.md im optolink-splitter-Fork.
+#
+# Die Räume folgen NICHT der Vitotronic: jedes Thermostat hat eigene Temperaturen und eigenen Komfort- / Sparbetrieb.
+#
+#   Entität (je Raum)                                       AHC-Eingang
+#   ------------------------------------------------------  ----------------------------------
+#   input_number.heizplan_<raum>_normaltemperatur        -> Comfort Temperature
+#   input_number.heizplan_<raum>_reduzierte_temperatur   -> Eco Temperature
+#   input_boolean.heizplan_<raum>_komfortbetrieb         -> Party mode, über binary_sensor.heizplan_<raum>_party
+#   input_number.heizplan_<raum>_komforttemperatur       -> Temperatur der Party (siehe unten)
+#   input_boolean.heizplan_<raum>_sparbetrieb            -> Force Eco Temperature
+#
+# Notlösung für die Party-Temperatur: AHC hat dafür keinen Eingang. Es liest die Zahl am Ende des Anzeigenamens der Party-Entität
+# ("Heizplan Bad Party 23"). Der Binärsensor baut seinen Namen aus der Komfort-Temperatur, ein input_boolean kann seinen Namen nicht
+# ändern. Ohne Zahl im Namen (Komfortbetrieb aus) gilt die Comfort-Temperatur.
+#
+# Wie in der Vitotronic schließen sich Komfort- und Sparbetrieb aus (Automation am Ende).
+# Kein `initial` bei den input_numbers: der letzte Wert wird nach einem Neustart wiederhergestellt. Werte nach dem Anlegen einmal setzen.
+
+input_number:
+  heizplan_bad_normaltemperatur:
+    name: "Bad Solltemperatur Normal"
+    min: 8
+    max: 28
+    step: 0.5
+    unit_of_measurement: "°C"
+    mode: box
+    icon: mdi:thermometer
+  heizplan_bad_reduzierte_temperatur:
+    name: "Bad Solltemperatur Reduziert"
+    min: 8
+    max: 28
+    step: 0.5
+    unit_of_measurement: "°C"
+    mode: box
+    icon: mdi:thermometer-low
+  heizplan_bad_komforttemperatur:
+    name: "Bad Solltemperatur Komfort"
+    min: 8
+    max: 28
+    step: 0.5
+    unit_of_measurement: "°C"
+    mode: box
+    icon: mdi:thermometer-high
+  heizplan_buero_normaltemperatur:
+    name: "Büro Solltemperatur Normal"
+    min: 8
+    max: 28
+    step: 0.5
+    unit_of_measurement: "°C"
+    mode: box
+    icon: mdi:thermometer
+  heizplan_buero_reduzierte_temperatur:
+    name: "Büro Solltemperatur Reduziert"
+    min: 8
+    max: 28
+    step: 0.5
+    unit_of_measurement: "°C"
+    mode: box
+    icon: mdi:thermometer-low
+  heizplan_buero_komforttemperatur:
+    name: "Büro Solltemperatur Komfort"
+    min: 8
+    max: 28
+    step: 0.5
+    unit_of_measurement: "°C"
+    mode: box
+    icon: mdi:thermometer-high
+
+input_boolean:
+  heizplan_bad_sparbetrieb:
+    name: "Bad Betrieb 1: Sparbetrieb"
+    icon: mdi:leaf
+  heizplan_bad_komfortbetrieb:
+    name: "Bad Betrieb 2: Komfortbetrieb"
+    icon: mdi:sofa
+  heizplan_buero_sparbetrieb:
+    name: "Büro Betrieb 1: Sparbetrieb"
+    icon: mdi:leaf
+  heizplan_buero_komfortbetrieb:
+    name: "Büro Betrieb 2: Komfortbetrieb"
+    icon: mdi:sofa
+
+template:
+  - binary_sensor:
+      - name: >-
+          {% set t = states('input_number.heizplan_bad_komforttemperatur') | float(none) -%}
+          {% set label = (t | int if t == (t | int) else t) if t is not none else '' -%}
+          Heizplan Bad Party{{ ' ' ~ label if label != '' and is_state('input_boolean.heizplan_bad_komfortbetrieb', 'on') else '' }}
+        unique_id: "7d3f9a52-8c14-4e6b-b0a7-1f2e5c8d9a31"
+        icon: mdi:party-popper
+        state: "{{ is_state('input_boolean.heizplan_bad_komfortbetrieb', 'on') }}"
+      - name: >-
+          {% set t = states('input_number.heizplan_buero_komforttemperatur') | float(none) -%}
+          {% set label = (t | int if t == (t | int) else t) if t is not none else '' -%}
+          Heizplan Büro Party{{ ' ' ~ label if label != '' and is_state('input_boolean.heizplan_buero_komfortbetrieb', 'on') else '' }}
+        unique_id: "a4b81c6e-2d59-47f3-9e08-5b7c1d3f6a92"
+        icon: mdi:party-popper
+        state: "{{ is_state('input_boolean.heizplan_buero_komfortbetrieb', 'on') }}"
+
+automation:
+  # Komfortbetrieb und Sparbetrieb schließen sich aus, der zuletzt eingeschaltete gewinnt (wie in der Vitotronic).
+  - id: heizplan_raeume_komfort_spar_ausschliessen
+    alias: "Heizplan: Komfort- und Sparbetrieb der Räume schließen sich aus"
+    mode: queued
+    triggers:
+      - trigger: state
+        entity_id:
+          - input_boolean.heizplan_bad_komfortbetrieb
+          - input_boolean.heizplan_bad_sparbetrieb
+          - input_boolean.heizplan_buero_komfortbetrieb
+          - input_boolean.heizplan_buero_sparbetrieb
+        to: "on"
+    actions:
+      - action: input_boolean.turn_off
+        target:
+          entity_id: >-
+            {{ trigger.entity_id.replace('komfortbetrieb', 'X').replace('sparbetrieb', 'komfortbetrieb').replace('X', 'sparbetrieb') }}

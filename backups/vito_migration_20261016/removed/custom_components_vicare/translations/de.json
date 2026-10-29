@@ -1,0 +1,859 @@
+{
+  "application_credentials": {
+    "description": "Das **Client-Geheimnis** wird ignoriert; gib einen beliebigen Wert ein. Befolge die [Einrichtungsanweisungen]({more_info_url}), um die Client-ID zu erhalten."
+  },
+  "config": {
+    "abort": {
+      "already_configured": "Gerät ist bereits konfiguriert",
+      "missing_configuration": "Die Komponente ist nicht konfiguriert. Bitte der Dokumentation folgen.",
+      "unknown": "Unerwarteter Fehler"
+    },
+    "create_entry": {
+      "default": "Erfolgreich authentifiziert"
+    },
+    "step": {
+      "pick_implementation": {
+        "title": "Authentifizierungsmethode wählen"
+      },
+      "reauth_confirm": {
+        "description": "Die ViCare-Integration muss dein Konto neu authentifizieren.",
+        "title": "Authentifizierung für {name} abgelaufen"
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "burner": {
+        "name": "Brenner"
+      },
+      "child_safety_lock_mode": {
+        "name": "Kindersicherung"
+      },
+      "circulation_pump": {
+        "name": "Heizkreisumwälzpumpe"
+      },
+      "compressor": {
+        "name": "Kompressor"
+      },
+      "domestic_hot_water_charging": {
+        "name": "WW-Aufladung"
+      },
+      "domestic_hot_water_circulation_pump": {
+        "name": "WW-Zirkulationspumpe"
+      },
+      "domestic_hot_water_pump": {
+        "name": "WW-Pumpe"
+      },
+      "frost_protection": {
+        "name": "Frostschutz"
+      },
+      "identification_mode": {
+        "name": "Identifikationsmodus"
+      },
+      "mounting_mode": {
+        "name": "Montagemodus"
+      },
+      "one_time_charge": {
+        "name": "Einmalige Ladung"
+      },
+      "solar_pump": {
+        "name": "Solarpumpe"
+      },
+      "valve": {
+        "name": "Ventil"
+      },
+      "ventilation_frost_protection": {
+        "name": "Lüftungsfrostschutz"
+      }
+    },
+    "button": {
+      "activate_onetimecharge": {
+        "name": "Einmalige Ladung aktivieren"
+      },
+      "deactivate_onetimecharge": {
+        "name": "Einmalige Ladung deaktivieren"
+      }
+    },
+    "climate": {
+      "heating": {
+        "name": "Heizung"
+      }
+    },
+    "fan": {
+      "ventilation": {
+        "name": "Belüftung",
+        "state_attributes": {
+          "preset_mode": {
+            "state": {
+              "permanent": "Permanent",
+              "sensor_driven": "Sensorgesteuert",
+              "sensor_override": "Zeitplan mit Sensor-Übersteuerung",
+              "standard": "Minimal",
+              "standby": "Standby",
+              "ventilation": "Zeitplan"
+            }
+          }
+        }
+      }
+    },
+    "number": {
+      "comfort_cooling_temperature": {
+        "name": "Komfort-Kühltemperatur"
+      },
+      "comfort_heating_temperature": {
+        "name": "Komfort-Heiztemperatur"
+      },
+      "comfort_temperature": {
+        "name": "Komforttemperatur"
+      },
+      "dhw_hysteresis_switch_off": {
+        "name": "WW-Hystereseschalter aus"
+      },
+      "dhw_hysteresis_switch_on": {
+        "name": "WW-Hystereseschalter ein"
+      },
+      "dhw_secondary_temperature": {
+        "name": "WW-Sekundärtemperatur"
+      },
+      "dhw_temperature": {
+        "name": "WW-Temperatur"
+      },
+      "heating_curve_shift": {
+        "name": "Verschiebung der Heizkurve"
+      },
+      "heating_curve_slope": {
+        "name": "Steigung der Heizkurve"
+      },
+      "normal_cooling_temperature": {
+        "name": "Normale Kühltemperatur"
+      },
+      "normal_heating_temperature": {
+        "name": "Normale Heiztemperatur"
+      },
+      "normal_temperature": {
+        "name": "Normaltemperatur"
+      },
+      "reduced_cooling_temperature": {
+        "name": "Reduzierte Kühltemperatur"
+      },
+      "reduced_heating_temperature": {
+        "name": "Reduzierte Heiztemperatur"
+      },
+      "reduced_temperature": {
+        "name": "Reduzierte Temperatur"
+      }
+    },
+    "select": {
+      "dhw_operating_mode": {
+        "name": "Warmwasser-Betriebsart",
+        "state": {
+          "efficient": "Effizient",
+          "efficient_with_min_comfort": "Effizient bei minimalem Komfort",
+          "off": "Aus"
+        }
+      },
+      "plus_operating_mode": {
+        "name": "Betriebsart",
+        "state": {
+          "dhw": "Nur Warmwasser",
+          "dhw_and_heating": "Heizen und Warmwasser",
+          "dhw_and_heating_cooling": "Warmwasser, Heizen und Kühlen",
+          "forced_normal": "Dauernd Normal",
+          "forced_reduced": "Dauernd Reduziert",
+          "heating": "Heizen",
+          "heating_cooling": "Heizen und Kühlen",
+          "standby": "Abschaltbetrieb",
+          "off": "Aus",
+          "cooling": "Kühlen"
+        }
+      }
+    },
+    "sensor": {
+      "active_mode": {
+        "name": "Modus",
+        "state": {
+          "cooling": "Kühlbetrieb",
+          "heating": "Heizbetrieb",
+          "standby": "Standby"
+        }
+      },
+      "boiler_supply_temperature": {
+        "name": "Kesselvorlauftemperatur"
+      },
+      "boiler_temperature": {
+        "name": "Kesseltemperatur"
+      },
+      "buffer_bottom_temperature": {
+        "name": "Puffertemperatur unten"
+      },
+      "buffer_main_temperature": {
+        "name": "Puffertemperatur"
+      },
+      "buffer_mid_bottom_temperature": {
+        "name": "Puffertemperatur Mitte-unten"
+      },
+      "buffer_mid_top_temperature": {
+        "name": "Puffertemperatur Mitte-oben"
+      },
+      "buffer_middle_temperature": {
+        "name": "Puffertemperatur Mitte"
+      },
+      "buffer_top_temperature": {
+        "name": "Puffertemperatur oben"
+      },
+      "burner_hours": {
+        "name": "Brennerbetriebsstunden"
+      },
+      "burner_modulation": {
+        "name": "Brennermodulation"
+      },
+      "burner_starts": {
+        "name": "Brennerstarts"
+      },
+      "collector_temperature": {
+        "name": "Solarkollektor-Temperatur"
+      },
+      "compressor_hours": {
+        "name": "Kompressorbetriebsstunden"
+      },
+      "compressor_hours_loadclass1": {
+        "name": "Kompressorstunden Lastklasse 1"
+      },
+      "compressor_hours_loadclass2": {
+        "name": "Kompressorstunden Lastklasse 2"
+      },
+      "compressor_hours_loadclass3": {
+        "name": "Kompressorstunden Lastklasse 3"
+      },
+      "compressor_hours_loadclass4": {
+        "name": "Kompressorstunden Lastklasse 4"
+      },
+      "compressor_hours_loadclass5": {
+        "name": "Kompressorstunden Lastklasse 5"
+      },
+      "compressor_inlet_pressure": {
+        "name": "Kompressoreinlassdruck (Sauggasdruck)"
+      },
+      "compressor_inlet_temperature": {
+        "name": "Kompressoreinlasstemperatur (Sauggastemperatur)"
+      },
+      "compressor_modulation": {
+        "name": "Verdichtermodulation"
+      },
+      "compressor_outlet_pressure": {
+        "name": "Kompressorauslassdruck (Heißgasdruck)"
+      },
+      "compressor_outlet_temperature": {
+        "name": "Kompressorauslasstemperatur (Heißgastemperatur)"
+      },
+      "compressor_phase": {
+        "name": "Kompressorphase",
+        "state": {
+          "cooling": "Kühlbetrieb",
+          "defrost": "Enteisung",
+          "heating": "Heizbetrieb",
+          "off": "Aus",
+          "passive_defrost": "Passives Abtauen",
+          "pause": "Leerlauf",
+          "preparing": "Vorbereitung",
+          "preparing_defrost": "Vorbereiten des Abtauens",
+          "ready": "Leerlauf"
+        }
+      },
+      "compressor_power": {
+        "name": "Verdichterleistung"
+      },
+      "compressor_starts": {
+        "name": "Kompressorstarts"
+      },
+      "condenser_liquid_temperature": {
+        "name": "Flüssigkeitstemperatur des Verflüssigers"
+      },
+      "condenser_subcooling_temperature": {
+        "name": "Unterkühlungstemperatur des Verflüssigers"
+      },
+      "cop_cooling": {
+        "name": "Leistungszahl - Kühlung"
+      },
+      "cop_dhw": {
+        "name": "Leistungszahl - Warmwasserbereitung"
+      },
+      "cop_heating": {
+        "name": "Leistungszahl - Heizung"
+      },
+      "cop_total": {
+        "name": "Leistungszahl"
+      },
+      "dhw_storage_bottom_temperature": {
+        "name": "WW-Speichertemperatur unten"
+      },
+      "dhw_storage_middle_temperature": {
+        "name": "WW-Speichertemperatur Mitte"
+      },
+      "dhw_storage_temperature": {
+        "name": "WW-Speichertemperatur"
+      },
+      "dhw_storage_top_temperature": {
+        "name": "WW-Speichertemperatur oben"
+      },
+      "energy_consumption_cooling_this_month": {
+        "name": "Kühlung-Stromverbrauch diesen Monat"
+      },
+      "energy_consumption_cooling_this_year": {
+        "name": "Kühlung-Stromverbrauch dieses Jahr"
+      },
+      "energy_consumption_cooling_today": {
+        "name": "Kühlung-Stromverbrauch heute"
+      },
+      "energy_consumption_dhw_this_year": {
+        "name": "Warmwasser-Energieverbrauch dieses Jahr"
+      },
+      "energy_consumption_heating_this_year": {
+        "name": "Heizenergieverbrauch dieses Jahr"
+      },
+      "energy_dhw_summary_consumption_heating_currentday": {
+        "name": "WW-Stromverbrauch heute"
+      },
+      "energy_dhw_summary_consumption_heating_currentmonth": {
+        "name": "WW-Stromverbrauch diesen Monat"
+      },
+      "energy_dhw_summary_consumption_heating_currentyear": {
+        "name": "WW-Stromverbrauch dieses Jahr"
+      },
+      "energy_summary_consumption_heating_currentday": {
+        "name": "Heizung-Stromverbrauch heute"
+      },
+      "energy_summary_consumption_heating_currentmonth": {
+        "name": "Heizung-Stromverbrauch diesen Monat"
+      },
+      "energy_summary_consumption_heating_currentyear": {
+        "name": "Heizung-Stromverbrauch dieses Jahr"
+      },
+      "energy_summary_consumption_heating_lastsevendays": {
+        "name": "Heizung-Stromverbrauch letzte 7 Tage"
+      },
+      "energy_summary_dhw_consumption_heating_lastsevendays": {
+        "name": "WW-Stromverbrauch letzte 7 Tage"
+      },
+      "ess_charge_total": {
+        "name": "Batterieladung insgesamt"
+      },
+      "ess_discharge_this_month": {
+        "name": "Batterieentladung diesen Monat"
+      },
+      "ess_discharge_this_week": {
+        "name": "Batterieentladung diese Woche"
+      },
+      "ess_discharge_this_year": {
+        "name": "Batterieentladung dieses Jahr"
+      },
+      "ess_discharge_today": {
+        "name": "Batterieentladung heute"
+      },
+      "ess_discharge_total": {
+        "name": "Batterieentladung insgesamt"
+      },
+      "ess_power_current": {
+        "name": "Batterieleistung"
+      },
+      "ess_state": {
+        "name": "Batteriestatus",
+        "state": {
+          "charge": "Wird geladen",
+          "discharge": "Wird entladen",
+          "standby": "Standby"
+        }
+      },
+      "evaporator_liquid_temperature": {
+        "name": "Temperatur der Verdampferflüssigkeit (Flüssiggastemperatur in °C)"
+      },
+      "evaporator_overheat_temperature": {
+        "name": "Überhitzungstemperatur des Verdampfers (Sauggasüberhitzung in K)"
+      },
+      "exhaust_humidity": {
+        "name": "Fortluft-Feuchtigkeit"
+      },
+      "exhaust_temperature": {
+        "name": "Fortluft-Temperatur"
+      },
+      "extract_humidity": {
+        "name": "Abluft-Feuchtigkeit"
+      },
+      "extract_temperature": {
+        "name": "Abluft-Temperatur"
+      },
+      "filter_hours": {
+        "name": "Filter-Betriebsstunden"
+      },
+      "filter_overdue_hours": {
+        "name": "Überfällige Filter-Betriebsstunden"
+      },
+      "filter_remaining_hours": {
+        "name": "Verbleibende Filter-Betriebsstunden"
+      },
+      "fuel_need": {
+        "name": "Brennstoffbedarf"
+      },
+      "gas_consumption_fuelcell_this_month": {
+        "name": "Brennstoffzellen-Gasverbrauch diesen Monat"
+      },
+      "gas_consumption_fuelcell_this_week": {
+        "name": "Brennstoffzellen-Gasverbrauch diese Woche"
+      },
+      "gas_consumption_fuelcell_this_year": {
+        "name": "Brennstoffzellen-Gasverbrauch dieses Jahr"
+      },
+      "gas_consumption_fuelcell_today": {
+        "name": "Brennstoffzellen-Gasverbrauch heute"
+      },
+      "gas_consumption_heating_this_month": {
+        "name": "Heizung-Gasverbrauch diesen Monat"
+      },
+      "gas_consumption_heating_this_week": {
+        "name": "Heizung-Gasverbrauch diese Woche"
+      },
+      "gas_consumption_heating_this_year": {
+        "name": "Heizung-Gasverbrauch dieses Jahr"
+      },
+      "gas_consumption_heating_today": {
+        "name": "Heizung-Gasverbrauch heute"
+      },
+      "gas_consumption_total_this_month": {
+        "name": "Gasverbrauch diesen Monat"
+      },
+      "gas_consumption_total_this_week": {
+        "name": "Gasverbrauch diese Woche"
+      },
+      "gas_consumption_total_this_year": {
+        "name": "Gasverbrauch dieses Jahr"
+      },
+      "gas_consumption_total_today": {
+        "name": "Gasverbrauch heute"
+      },
+      "gas_summary_consumption_heating_currentday": {
+        "name": "Heizung-Gasverbrauch heute"
+      },
+      "gas_summary_consumption_heating_currentmonth": {
+        "name": "Heizung-Gasverbrauch diesen Monat"
+      },
+      "gas_summary_consumption_heating_currentyear": {
+        "name": "Heizung-Gasverbrauch dieses Jahr"
+      },
+      "gas_summary_consumption_heating_lastsevendays": {
+        "name": "Heizung-Gasverbrauch letzte 7 Tage"
+      },
+      "heating_rod_hours": {
+        "name": "Heizstab-Stunden"
+      },
+      "heating_rod_starts": {
+        "name": "Heizstab-Starts"
+      },
+      "hot_gas_pressure": {
+        "name": "Heißgasdruck"
+      },
+      "hot_gas_temperature": {
+        "name": "Heißgastemperatur"
+      },
+      "hotwater_gas_consumption_heating_this_month": {
+        "name": "WW-Gasverbrauch diesen Monat"
+      },
+      "hotwater_gas_consumption_heating_this_week": {
+        "name": "WW-Gasverbrauch diese Woche"
+      },
+      "hotwater_gas_consumption_heating_this_year": {
+        "name": "WW-Gasverbrauch dieses Jahr"
+      },
+      "hotwater_gas_consumption_today": {
+        "name": "WW-Gasverbrauch heute"
+      },
+      "hotwater_gas_summary_consumption_heating_currentday": {
+        "name": "WW-Gasverbrauch heute"
+      },
+      "hotwater_gas_summary_consumption_heating_currentmonth": {
+        "name": "WW-Gasverbrauch diesen Monat"
+      },
+      "hotwater_gas_summary_consumption_heating_currentyear": {
+        "name": "WW-Gasverbrauch dieses Jahr"
+      },
+      "hotwater_gas_summary_consumption_heating_lastsevendays": {
+        "name": "WW-Gasverbrauch letzte 7 Tage"
+      },
+      "hotwater_max_temperature": {
+        "name": "WW-Höchsttemperatur"
+      },
+      "hotwater_min_temperature": {
+        "name": "WW-Mindesttemperatur"
+      },
+      "hotwater_out_temperature": {
+        "name": "WW-Austrittstemperatur"
+      },
+      "hydraulic_separator_temperature": {
+        "name": "Temperatur der hydraulischen Weiche"
+      },
+      "inverter_current": {
+        "name": "Wechselrichter-Stromstärke"
+      },
+      "inverter_power": {
+        "name": "Wechselrichter-Leistung"
+      },
+      "inverter_temperature": {
+        "name": "Wechselrichter-Temperatur"
+      },
+      "liquid_gas_temperature": {
+        "name": "Flüssiggastemperatur"
+      },
+      "outside_humidity": {
+        "name": "Außenluftfeuchtigkeit"
+      },
+      "outside_temperature": {
+        "name": "Außentemperatur"
+      },
+      "pcc_energy_consumption": {
+        "name": "Energie Netzbezug"
+      },
+      "pcc_energy_feed_in": {
+        "name": "Energie Netzeinspeisung"
+      },
+      "pcc_transfer_power_exchange": {
+        "name": "Netzbezug und -einspeisung"
+      },
+      "photovoltaic_energy_production_this_month": {
+        "name": "PV-Erzeugung diesen Monat"
+      },
+      "photovoltaic_energy_production_this_week": {
+        "name": "PV-Erzeugung diese Woche"
+      },
+      "photovoltaic_energy_production_this_year": {
+        "name": "PV-Erzeugung dieses Jahr"
+      },
+      "photovoltaic_energy_production_today": {
+        "name": "PV-Erzeugung heute"
+      },
+      "photovoltaic_energy_production_total": {
+        "name": "PV-Erzeugung gesamt"
+      },
+      "photovoltaic_power_production_current": {
+        "name": "PV-Leistung"
+      },
+      "photovoltaic_status": {
+        "name": "PV-Zustand",
+        "state": {
+          "production": "Erzeugung",
+          "ready": "Standby"
+        }
+      },
+      "power_consumption_this_month": {
+        "name": "Stromverbrauch diesen Monat"
+      },
+      "power_consumption_this_week": {
+        "name": "Stromverbrauch diese Woche"
+      },
+      "power_consumption_this_year": {
+        "name": "Stromverbrauch dieses Jahr"
+      },
+      "power_consumption_today": {
+        "name": "Stromverbrauch heute"
+      },
+      "power_production_current": {
+        "name": "Aktuelle Erzeugungsleistung"
+      },
+      "power_production_this_month": {
+        "name": "Energieerzeugung diesen Monat"
+      },
+      "power_production_this_week": {
+        "name": "Energieerzeugung diese Woche"
+      },
+      "power_production_this_year": {
+        "name": "Energieerzeugung dieses Jahr"
+      },
+      "power_production_today": {
+        "name": "Energieerzeugung heute"
+      },
+      "primary_circuit_pump_rotation": {
+        "name": "Drehung Primärkreislaufpumpe"
+      },
+      "primary_circuit_return_temperature": {
+        "name": "Primärkreis-Rücklauftemperatur"
+      },
+      "primary_circuit_supply_temperature": {
+        "name": "Primärkreis-Vorlauftemperatur"
+      },
+      "return_temperature": {
+        "name": "Rücklauftemperatur"
+      },
+      "secondary_circuit_return_temperature": {
+        "name": "Sekundärkreis-Rücklauftemperatur"
+      },
+      "secondary_circuit_supply_temperature": {
+        "name": "Sekundärkreis-Vorlauftemperatur"
+      },
+      "solar_power_production_this_month": {
+        "name": "Solarenergie-Erzeugung diesen Monat"
+      },
+      "solar_power_production_this_week": {
+        "name": "Solarenergie-Erzeugung diese Woche"
+      },
+      "solar_power_production_this_year": {
+        "name": "Solarenergie-Erzeugung dieses Jahr"
+      },
+      "solar_power_production_today": {
+        "name": "Solarenergie-Erzeugung heute"
+      },
+      "solar_storage_temperature": {
+        "name": "Solarspeicher-Temperatur"
+      },
+      "spf_dhw": {
+        "name": "Saisonale Arbeitszahl - Warmwasser"
+      },
+      "spf_heating": {
+        "name": "Saisonale Arbeitszahl - Heizung"
+      },
+      "spf_total": {
+        "name": "Saisonale Arbeitszahl"
+      },
+      "suction_gas_pressure": {
+        "name": "Sauggasdruck"
+      },
+      "suction_gas_temperature": {
+        "name": "Sauggastemperatur"
+      },
+      "supply_fan_hours": {
+        "name": "Zuluftventilator-Betriebsstunden"
+      },
+      "supply_fan_speed": {
+        "name": "Zuluftventilator-Drehzahl"
+      },
+      "supply_humidity": {
+        "name": "Zuluftfeuchtigkeit"
+      },
+      "supply_pressure": {
+        "name": "Vorlaufdruck"
+      },
+      "supply_temperature": {
+        "name": "Vorlauftemperatur"
+      },
+      "target_temperature": {
+        "name": "Solltemperatur"
+      },
+      "valve_position": {
+        "name": "Ventilstellung"
+      },
+      "ventilation_input_volumeflow": {
+        "name": "Volumenstrom der Zuluft"
+      },
+      "ventilation_level": {
+        "name": "Lüftungsstufe",
+        "state": {
+          "levelfour": "4",
+          "levelone": "1",
+          "levelthree": "3",
+          "leveltwo": "2",
+          "standby": "Standby"
+        }
+      },
+      "ventilation_output_volumeflow": {
+        "name": "Volumenstrom der Abluft"
+      },
+      "ventilation_reason": {
+        "name": "Lüftungsgrund",
+        "state": {
+          "forcedlevelfour": "Boost",
+          "permanent": "Permanent",
+          "schedule": "Zeitplan",
+          "sensordriven": "Sensorgesteuert",
+          "sensoroverride": "Sensor-Übersteuerung",
+          "silent": "Leise",
+          "standby": "Standby"
+        }
+      },
+      "volumetric_flow": {
+        "name": "Volumenstrom"
+      },
+      "zigbee_signal_strength": {
+        "name": "Signalstärke"
+      }
+    },
+    "switch": {
+      "quickmode_comfort": {
+        "name": "Intensiv"
+      },
+      "quickmode_eco": {
+        "name": "Eco"
+      },
+      "quickmode_forced_level_four": {
+        "name": "Boost"
+      },
+      "quickmode_silent": {
+        "name": "Leise"
+      }
+    },
+    "water_heater": {
+      "domestic_hot_water": {
+        "name": "Warmwasser"
+      }
+    }
+  },
+  "exceptions": {
+    "program_not_activated": {
+      "message": "Das ViCare-Programm {program} kann nicht aktiviert werden"
+    },
+    "program_not_deactivated": {
+      "message": "Das ViCare-Programm {program} kann nicht deaktiviert werden"
+    },
+    "program_unknown": {
+      "message": "Voreinstellung {preset} kann nicht in ein gültiges ViCare-Programm übersetzt werden"
+    },
+    "quickmode_not_activated": {
+      "message": "Die ViCare-Schnellauswahl {quickmode} kann nicht aktiviert werden. Es kann jeweils nur eine Schnellauswahl aktiv sein; möglicherweise ist bereits eine andere in Betrieb."
+    }
+  },
+  "issues": {
+    "update_redirect_uri": {
+      "description": "ViCare wurde auf OAuth2-Authentifizierung umgestellt. Deine bestehende Sitzung funktioniert weiterhin, aber falls eine erneute Authentifizierung erforderlich wird, musst du deinem API-Client zuerst eine Redirect-URI hinzufügen.\n\nGehe zum [Viessmann Developer Portal]({viessmann_developer_portal}) und füge die folgende Redirect-URI zu deinem API-Client hinzu:\n\n`{redirect_url}`\n\nDies ist nicht dringend, aber wir empfehlen, es bald zu tun.",
+      "title": "Aktualisiere deinen API-Client im Viessmann Developer Portal"
+    }
+  },
+  "services": {
+    "set_vicare_mode": {
+      "description": "Stellt den von Viessmann definierten Modus des Klimageräts ein.",
+      "fields": {
+        "vicare_mode": {
+          "description": "Die unterstützten Werte sind dem Attribut `vicare_modes` der Klima-Entität zu entnehmen.",
+          "name": "ViCare-Modus"
+        }
+      },
+      "name": "ViCare-Modus einstellen"
+    },
+    "execute_command": {
+      "name": "API-Befehl ausführen",
+      "description": "Führt einen beliebigen Befehl aus, den die ViCare API für ein Feature anbietet. Mit get_features lässt sich nachsehen, was verfügbar ist.",
+      "fields": {
+        "device_id": {
+          "name": "Gerät",
+          "description": "ViCare-Gerät. Optional, wenn nur ein Gerät existiert."
+        },
+        "feature": {
+          "name": "Feature",
+          "description": "Name des API-Features."
+        },
+        "command": {
+          "name": "Befehl",
+          "description": "Name des Befehls des Features."
+        },
+        "params": {
+          "name": "Parameter",
+          "description": "Parameter des Befehls als Mapping."
+        }
+      }
+    },
+    "get_features": {
+      "name": "API-Features abrufen",
+      "description": "Liefert alle Features des Geräts inklusive Eigenschaften und Befehlen.",
+      "fields": {
+        "device_id": {
+          "name": "Gerät",
+          "description": "ViCare-Gerät. Optional, wenn nur ein Gerät existiert."
+        },
+        "filter": {
+          "name": "Filter",
+          "description": "Nur Features, deren Name diesen Text enthält."
+        }
+      }
+    },
+    "set_holiday": {
+      "name": "Urlaubsprogramm setzen",
+      "description": "Plant das Urlaubsprogramm der Heizungsanlage.",
+      "fields": {
+        "device_id": {
+          "name": "Gerät",
+          "description": "ViCare-Gerät. Optional, wenn nur ein Gerät existiert."
+        },
+        "start": {
+          "name": "Beginn",
+          "description": "Erster Urlaubstag."
+        },
+        "end": {
+          "name": "Ende",
+          "description": "Letzter Urlaubstag."
+        }
+      }
+    },
+    "end_holiday": {
+      "name": "Urlaubsprogramm beenden",
+      "description": "Bricht das geplante oder aktive Urlaubsprogramm ab.",
+      "fields": {
+        "device_id": {
+          "name": "Gerät",
+          "description": "ViCare-Gerät. Optional, wenn nur ein Gerät existiert."
+        }
+      }
+    },
+    "set_schedule": {
+      "name": "Zeitprogramm setzen",
+      "description": "Schreibt ein Zeitprogramm. Entweder eine komplette Woche als schedule oder einen einzelnen Tag mit entries übergeben.",
+      "fields": {
+        "schedule": {
+          "name": "Zeitprogramm",
+          "description": "Zuordnung von Wochentagen zu Listen von Einträgen mit start, end und optional mode."
+        },
+        "day": {
+          "name": "Tag",
+          "description": "Zu ändernder Wochentag bei Verwendung von entries."
+        },
+        "entries": {
+          "name": "Einträge",
+          "description": "Einträge des gewählten Tages."
+        }
+      }
+    },
+    "reset_schedule": {
+      "name": "Zeitprogramm zurücksetzen",
+      "description": "Setzt das Zeitprogramm oder einen einzelnen Tag auf die Werkseinstellung zurück.",
+      "fields": {
+        "day": {
+          "name": "Tag",
+          "description": "Nur diesen Wochentag zurücksetzen."
+        }
+      }
+    },
+    "schedule_boost": {
+      "name": "Zeitprogramm-Boost",
+      "description": "Aktiviert das Zeitprogramm ab jetzt für die angegebene Dauer und stellt danach das ursprüngliche Programm wieder her.",
+      "fields": {
+        "duration": {
+          "name": "Dauer",
+          "description": "Wie lange das Programm aktiv sein soll (höchstens bis Mitternacht)."
+        },
+        "mode": {
+          "name": "Modus",
+          "description": "Zu verwendender Modus, standardmäßig der aktive Modus des Programms."
+        }
+      }
+    },
+    "schedule_restore": {
+      "name": "Zeitprogramm wiederherstellen",
+      "description": "Beendet einen Boost oder eine Daueraktivierung und stellt das ursprüngliche Zeitprogramm wieder her.",
+      "fields": {}
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "ViCare Plus Optionen",
+        "description": "Die Viessmann API erlaubt etwa 1450 Abfragen pro Tag. Jede Aktualisierung kostet eine Abfrage pro Gateway.",
+        "data": {
+          "scan_interval": "Abfrageintervall",
+          "cycling_threshold": "Brennerstarts pro Stunde ab denen Takten erkannt wird",
+          "sync_schedules": "Zeitprogramme als Zeitplan-Helfer synchronisieren",
+          "return_temperature_entity": "Externer Rücklauftemperatur-Sensor"
+        },
+        "data_description": {
+          "scan_interval": "Sekunden zwischen zwei Aktualisierungen (60 = Standard, ~1440 Abfragen pro Tag).",
+          "cycling_threshold": "Ab dieser Anzahl Brennerstarts in der letzten Stunde schaltet der Takt-Sensor ein.",
+          "sync_schedules": "Legt für jedes Zeitprogramm der Anlage einen schedule-Helfer an und hält beide in beide Richtungen synchron. Änderungen am Helfer werden an die Heizung übertragen.",
+          "return_temperature_entity": "Optional. Die Anlage meldet keinen Rücklauf; ein Anlegefühler am Rücklauf ermöglicht den Sensor Spreizung Vorlauf/Rücklauf."
+        }
+      }
+    }
+  }
+}

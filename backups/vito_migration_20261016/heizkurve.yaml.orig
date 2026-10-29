@@ -1,0 +1,420 @@
+# Heizkurven-Optimierung (HK2 Heizkörper) — Beratungsmodus + optionale Automatik.
+# Package: wird über `packages: !include_dir_named "integrations"` geladen.
+#
+# Ablauf:
+#   1. Durchschnitt der Raumsensoren (Steckdosen WZ/SZ/Ankleide + TIMMERFLOTTE als Referenz)
+#   2. Abweichung zur Zieltemperatur, 72 h zeitgewichtet gemittelt
+#   3. sensor.heizkurve_empfehlung bewertet das (anheben/absenken/halten/warten/...)
+#   4. Täglich 07:10: Benachrichtigung (Beratung) bzw. Anpassung, wenn der Hauptschalter an ist
+#
+# Die ViCare-Verschiebung kennt nur ganze Kelvin -> Schrittweite 1 K, lange Wartezeit.
+# Die Steigung wird nie automatisch geändert, nur als Hinweis ausgegeben.
+
+input_number:
+  heizkurve_zieltemperatur:
+    name: "Heizkurve Zieltemperatur"
+    min: 18
+    max: 24
+    step: 0.5
+    unit_of_measurement: "°C"
+    mode: box
+    icon: mdi:target
+  heizkurve_offset_wohnzimmer:
+    name: "Heizkurve Offset Wohnzimmer"
+    min: -5
+    max: 5
+    step: 0.1
+    unit_of_measurement: "K"
+    mode: box
+    icon: mdi:thermometer-plus
+  heizkurve_offset_schlafzimmer:
+    name: "Heizkurve Offset Schlafzimmer"
+    min: -5
+    max: 5
+    step: 0.1
+    unit_of_measurement: "K"
+    mode: box
+    icon: mdi:thermometer-plus
+  heizkurve_offset_ankleide:
+    name: "Heizkurve Offset Ankleide"
+    min: -5
+    max: 5
+    step: 0.1
+    unit_of_measurement: "K"
+    mode: box
+    icon: mdi:thermometer-plus
+  heizkurve_totzone:
+    name: "Heizkurve Totzone"
+    min: 0.2
+    max: 2
+    step: 0.1
+    unit_of_measurement: "K"
+    mode: box
+    icon: mdi:arrow-collapse-vertical
+  heizkurve_wartezeit_tage:
+    name: "Heizkurve Wartezeit nach Änderung"
+    min: 1
+    max: 14
+    step: 1
+    unit_of_measurement: "d"
+    mode: box
+    icon: mdi:timer-sand
+  heizkurve_verschiebung_min:
+    name: "Heizkurve Verschiebung Minimum"
+    min: -13
+    max: 10
+    step: 1
+    unit_of_measurement: "K"
+    mode: box
+  heizkurve_verschiebung_max:
+    name: "Heizkurve Verschiebung Maximum"
+    min: -5
+    max: 20
+    step: 1
+    unit_of_measurement: "K"
+    mode: box
+  heizkurve_max_brennerstarts:
+    name: "Heizkurve Max. Brennerstarts pro 24 h"
+    min: 10
+    max: 200
+    step: 5
+    mode: box
+    icon: mdi:fire-alert
+  # Werte, die die tägliche SQL-Auswertung schreibt (nicht von Hand ändern)
+  heizkurve_kaelte_effekt:
+    name: "Heizkurve Kälteeffekt (mild minus kalt)"
+    min: -10
+    max: 10
+    step: 0.01
+    unit_of_measurement: "K"
+    mode: box
+    icon: mdi:snowflake-thermometer
+  heizkurve_kaelte_stichprobe:
+    name: "Heizkurve Kälteeffekt Stichprobe"
+    min: 0
+    max: 100000
+    step: 1
+    unit_of_measurement: "h"
+    mode: box
+
+input_boolean:
+  heizkurve_automatik:
+    name: "Heizkurve Automatik (schreibt Verschiebung)"
+    icon: mdi:robot
+
+input_datetime:
+  heizkurve_letzte_anpassung:
+    name: "Heizkurve letzte Änderung (Steigung/Verschiebung)"
+    has_date: true
+    has_time: true
+
+sensor:
+  # Zeitgewichteter Mittelwert der Abweichung über 72 h
+  - platform: statistics
+    name: "Heizkurve Raumabweichung 72h Mittel"
+    unique_id: "5a6c1e4e-6a1f-4d9b-9b7e-0c1d2a7f3b11"
+    entity_id: sensor.heizkurve_raumabweichung
+    state_characteristic: average_step
+    max_age:
+      hours: 72
+    sampling_size: 5000
+    precision: 2
+  # Brennerstarts der letzten 24 h (Takt-Wächter)
+  - platform: statistics
+    name: "Heizkurve Brennerstarts 24h"
+    unique_id: "b02f9d2c-3f0e-4f43-8b1a-6f7a5d1c9e22"
+    entity_id: sensor.vicare_burner_starts
+    state_characteristic: change
+    max_age:
+      hours: 24
+    sampling_size: 500
+    precision: 0
+
+template:
+  - sensor:
+      - name: "Heizkurve Raumtemperatur Durchschnitt"
+        unique_id: "c7e1a6d0-52b4-4c6e-a3f8-1d9b0e4f6a33"
+        unit_of_measurement: "°C"
+        device_class: temperature
+        state_class: measurement
+        icon: mdi:home-thermometer
+        availability: >-
+          {% set raw = [
+            (states('sensor.steckdose_wohnzimmer_temperatur'), states('input_number.heizkurve_offset_wohnzimmer')),
+            (states('sensor.steckdose_schlafzimmer_temperatur'), states('input_number.heizkurve_offset_schlafzimmer')),
+            (states('sensor.steckdose_ankleide_temperatur'), states('input_number.heizkurve_offset_ankleide')),
+            (states('sensor.timmerflotte_temp_hmd_sensor_temperatur'), '0')] %}
+          {% set ns = namespace(n=0) %}
+          {% for t, o in raw %}{% set x = t | float(none) %}{% if x is not none and 10 < x < 32 %}{% set ns.n = ns.n + 1 %}{% endif %}{% endfor %}
+          {{ ns.n >= 2 }}
+        state: >-
+          {% set raw = [
+            (states('sensor.steckdose_wohnzimmer_temperatur'), states('input_number.heizkurve_offset_wohnzimmer')),
+            (states('sensor.steckdose_schlafzimmer_temperatur'), states('input_number.heizkurve_offset_schlafzimmer')),
+            (states('sensor.steckdose_ankleide_temperatur'), states('input_number.heizkurve_offset_ankleide')),
+            (states('sensor.timmerflotte_temp_hmd_sensor_temperatur'), '0')] %}
+          {% set ns = namespace(v=[]) %}
+          {% for t, o in raw %}{% set x = t | float(none) %}{% if x is not none and 10 < x < 32 %}{% set ns.v = ns.v + [x + (o | float(0))] %}{% endif %}{% endfor %}
+          {% set s = ns.v | sort %}
+          {% set n = s | count %}
+          {% set med = s[n // 2] if n % 2 else (s[n // 2 - 1] + s[n // 2]) / 2 %}
+          {% set good = s | select('ge', med - 3) | select('le', med + 3) | list %}
+          {{ (good | sum / good | count) | round(2) }}
+        attributes:
+          # Rohwerte ohne Offset, zur Fehlersuche
+          wohnzimmer: "{{ states('sensor.steckdose_wohnzimmer_temperatur') }}"
+          schlafzimmer: "{{ states('sensor.steckdose_schlafzimmer_temperatur') }}"
+          ankleide: "{{ states('sensor.steckdose_ankleide_temperatur') }}"
+          referenz_timmerflotte: "{{ states('sensor.timmerflotte_temp_hmd_sensor_temperatur') }}"
+
+      - name: "Heizkurve Raumabweichung"
+        unique_id: "d41b8e7a-9c3f-4e52-b6a0-2e8f1c7d5b44"
+        unit_of_measurement: "K"
+        state_class: measurement
+        icon: mdi:thermometer-alert
+        availability: >-
+          {{ states('sensor.heizkurve_raumtemperatur_durchschnitt') | is_number
+             and states('input_number.heizkurve_zieltemperatur') | is_number }}
+        state: >-
+          {{ (states('sensor.heizkurve_raumtemperatur_durchschnitt') | float
+              - states('input_number.heizkurve_zieltemperatur') | float) | round(2) }}
+
+      # Zeigt, wie weit die Steckdosen-Sensoren (mit Offset) vom Referenzsensor abweichen
+      - name: "Heizkurve Referenz minus Steckdosen"
+        unique_id: "e95c2f8b-0d4a-4f63-87b1-3f9a2d8e6c55"
+        unit_of_measurement: "K"
+        icon: mdi:compare-vertical
+        availability: >-
+          {{ states('sensor.timmerflotte_temp_hmd_sensor_temperatur') | is_number
+             and (states('sensor.steckdose_wohnzimmer_temperatur') | is_number
+                  or states('sensor.steckdose_schlafzimmer_temperatur') | is_number
+                  or states('sensor.steckdose_ankleide_temperatur') | is_number) }}
+        state: >-
+          {% set raw = [
+            (states('sensor.steckdose_wohnzimmer_temperatur'), states('input_number.heizkurve_offset_wohnzimmer')),
+            (states('sensor.steckdose_schlafzimmer_temperatur'), states('input_number.heizkurve_offset_schlafzimmer')),
+            (states('sensor.steckdose_ankleide_temperatur'), states('input_number.heizkurve_offset_ankleide'))] %}
+          {% set ns = namespace(v=[]) %}
+          {% for t, o in raw %}{% set x = t | float(none) %}{% if x is not none and 10 < x < 32 %}{% set ns.v = ns.v + [x + (o | float(0))] %}{% endif %}{% endfor %}
+          {{ (states('sensor.timmerflotte_temp_hmd_sensor_temperatur') | float - (ns.v | sum / ns.v | count)) | round(2) }}
+
+      # Entscheidungslogik (eigener Sensor, damit Empfehlung/Automation nie einen veralteten Wert lesen)
+      - name: "Heizkurve Aktion"
+        unique_id: "f06d3a9c-1e5b-4a74-98c2-4a0b3e9f7d66"
+        icon: mdi:chart-bell-curve-cumulative
+        state: >-
+          {% set cur = states('number.vscotho1_72_verschiebung_der_heizkurve_2') | float(none) %}
+          {% set dev = states('sensor.heizkurve_raumabweichung_72h_mittel') | float(none) %}
+          {% set cov = state_attr('sensor.heizkurve_raumabweichung_72h_mittel', 'age_coverage_ratio') | float(0) %}
+          {% set db = states('input_number.heizkurve_totzone') | float(0.7) %}
+          {% set mn = states('input_number.heizkurve_verschiebung_min') | float(-2) %}
+          {% set mx = states('input_number.heizkurve_verschiebung_max') | float(5) %}
+          {% set wait = states('input_number.heizkurve_wartezeit_tage') | float(3) %}
+          {% set days = (now().timestamp() - as_timestamp(states('input_datetime.heizkurve_letzte_anpassung'), 0)) / 86400 %}
+          {% set starts = states('sensor.heizkurve_brennerstarts_24h') | float(0) %}
+          {% set maxs = states('input_number.heizkurve_max_brennerstarts') | float(40) %}
+          {% set heiz = is_state('binary_sensor.heizperiode_freigabe', 'on') %}
+          {% if cur is none or dev is none %}keine_daten
+          {% elif not heiz %}inaktiv
+          {% elif cov < 0.9 %}sammle_daten
+          {% elif days < wait %}warten
+          {% elif dev < -db %}{{ 'gesperrt' if starts > maxs else ('grenze' if cur >= mx else 'anheben') }}
+          {% elif dev > db %}{{ 'grenze' if cur <= mn else 'absenken' }}
+          {% else %}halten{% endif %}
+
+      - name: "Heizkurve Empfehlung"
+        unique_id: "0a17b4ad-2f6c-4b85-a9d3-5b1c4f0a8e77"
+        icon: mdi:chart-bell-curve-cumulative
+        state: "{{ states('sensor.heizkurve_aktion') }}"
+        attributes:
+          aktuelle_verschiebung: "{{ states('number.vscotho1_72_verschiebung_der_heizkurve_2') }}"
+          empfohlene_verschiebung: >-
+            {% set cur = states('number.vscotho1_72_verschiebung_der_heizkurve_2') | float(none) %}
+            {% set a = states('sensor.heizkurve_aktion') %}
+            {% if cur is none %}{{ none }}{% elif a == 'anheben' %}{{ cur + 1 }}{% elif a == 'absenken' %}{{ cur - 1 }}{% else %}{{ cur }}{% endif %}
+          abweichung_72h: "{{ states('sensor.heizkurve_raumabweichung_72h_mittel') }}"
+          abdeckung_72h: "{{ state_attr('sensor.heizkurve_raumabweichung_72h_mittel', 'age_coverage_ratio') }}"
+          tage_seit_aenderung: >-
+            {{ ((now().timestamp() - as_timestamp(states('input_datetime.heizkurve_letzte_anpassung'), 0)) / 86400) | round(1) }}
+          brennerstarts_24h: "{{ states('sensor.heizkurve_brennerstarts_24h') }}"
+          steigung_aktuell: "{{ states('number.vscotho1_72_steigung_der_heizkurve_2') }}"
+          steigungshinweis: >-
+            {% set d = states('input_number.heizkurve_kaelte_effekt') | float(0) %}
+            {% set n = states('input_number.heizkurve_kaelte_stichprobe') | float(0) %}
+            {% if n < 24 %}Noch zu wenig Daten für eine Steigungs-Auswertung.
+            {% elif d > 0.7 %}Räume sind bei Kälte im Mittel {{ d }} K kälter als bei mildem Wetter: Steigung um 0,1 bis 0,2 erhöhen.
+            {% elif d < -0.3 %}Räume sind bei Kälte im Mittel {{ -d }} K wärmer als bei mildem Wetter: Steigung um 0,1 bis 0,2 senken.
+            {% else %}Steigung passt (Kälteeffekt {{ d }} K).{% endif %}
+
+script:
+  heizkurve_sensor_kalibrieren:
+    alias: "Heizkurve: Steckdosen-Sensor am Referenzsensor kalibrieren"
+    icon: mdi:tune
+    description: >-
+      TIMMERFLOTTE für mindestens 30 Minuten direkt neben den gewählten Steckdosen-Sensor legen,
+      dann ausführen. Der Offset wird so gesetzt, dass der Sensor den Wert des Referenzsensors anzeigt.
+    fields:
+      sensor:
+        name: Sensor
+        required: true
+        selector:
+          select:
+            options:
+              - wohnzimmer
+              - schlafzimmer
+              - ankleide
+    sequence:
+      - variables:
+          ref: "{{ states('sensor.timmerflotte_temp_hmd_sensor_temperatur') | float(none) }}"
+          plug: "{{ states('sensor.steckdose_' ~ sensor ~ '_temperatur') | float(none) }}"
+      - condition: template
+        value_template: "{{ ref is number and plug is number }}"
+      - action: input_number.set_value
+        target:
+          entity_id: "input_number.heizkurve_offset_{{ sensor }}"
+        data:
+          value: "{{ [[(ref - plug) | round(1), -5] | max, 5] | min }}"
+      - action: persistent_notification.create
+        data:
+          notification_id: "heizkurve_kalibrierung_{{ sensor }}"
+          title: "Heizkurve: Sensor kalibriert"
+          message: >-
+            {{ sensor | capitalize }}: Referenz {{ ref }} °C, Sensor {{ plug }} °C
+            -> Offset {{ [[(ref - plug) | round(1), -5] | max, 5] | min }} K.
+
+automation:
+  # Jede Änderung von Steigung oder Verschiebung (auch von Hand in der ViCare-App) startet die Wartezeit
+  - id: heizkurve_aenderung_merken
+    alias: "Heizkurve: Änderung merken"
+    mode: queued
+    triggers:
+      - trigger: state
+        entity_id:
+          - number.vscotho1_72_verschiebung_der_heizkurve_2
+          - number.vscotho1_72_steigung_der_heizkurve_2
+        not_from: [unavailable, unknown]
+        not_to: [unavailable, unknown]
+    conditions:
+      - condition: template
+        value_template: "{{ trigger.from_state.state != trigger.to_state.state }}"
+    actions:
+      - action: input_datetime.set_datetime
+        target:
+          entity_id: input_datetime.heizkurve_letzte_anpassung
+        data:
+          datetime: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
+
+  # Kälteeffekt je Sensor (mild minus kalt), unabhängig von Sensor-Offsets
+  - id: heizkurve_kaelteeffekt_auswerten
+    alias: "Heizkurve: Kälteeffekt auswerten"
+    mode: single
+    triggers:
+      - trigger: time
+        at: "07:05:00"
+      - trigger: homeassistant
+        event: start
+    actions:
+      - delay: "00:02:00"
+      - action: sql.query
+        response_variable: res
+        data:
+          query: >-
+            WITH d AS (
+              SELECT rm.statistic_id AS sid,
+                     avg(CASE WHEN o.mean < 4 THEN r.mean END) AS cold,
+                     avg(CASE WHEN o.mean >= 9 THEN r.mean END) AS mild,
+                     count(CASE WHEN o.mean < 4 THEN 1 END) AS nc,
+                     count(CASE WHEN o.mean >= 9 THEN 1 END) AS nm
+              FROM statistics r
+              JOIN statistics_meta rm ON rm.id = r.metadata_id
+                AND rm.statistic_id IN ('sensor.steckdose_wohnzimmer_temperatur',
+                                        'sensor.steckdose_schlafzimmer_temperatur',
+                                        'sensor.steckdose_ankleide_temperatur')
+              JOIN statistics o ON o.start_ts = r.start_ts
+              JOIN statistics_meta om ON om.id = o.metadata_id
+                AND om.statistic_id = 'sensor.vicare_outside_temperature'
+              WHERE r.start_ts > extract(epoch from now()) - 200 * 86400 AND o.mean < 15
+              GROUP BY rm.statistic_id)
+            SELECT round(avg(mild - cold)::numeric, 2) AS diff, min(nc) AS n_cold, min(nm) AS n_mild
+            FROM d WHERE nc >= 24 AND nm >= 24
+      - variables:
+          row: "{{ (res.result | first) if res.result else {} }}"
+      - action: input_number.set_value
+        target:
+          entity_id: input_number.heizkurve_kaelte_effekt
+        data:
+          value: "{{ row.diff | float(0) }}"
+      - action: input_number.set_value
+        target:
+          entity_id: input_number.heizkurve_kaelte_stichprobe
+        data:
+          value: "{{ [row.n_cold | int(0), row.n_mild | int(0)] | min }}"
+
+  # Täglich: Beratung per Benachrichtigung bzw. Anpassung der Verschiebung (Hauptschalter)
+  - id: heizkurve_empfehlung_taeglich
+    alias: "Heizkurve: Empfehlung / Anpassung täglich"
+    mode: single
+    triggers:
+      - trigger: time
+        at: "07:10:00"
+    actions:
+      - variables:
+          aktion: "{{ states('sensor.heizkurve_aktion') }}"
+          cur: "{{ state_attr('sensor.heizkurve_empfehlung', 'aktuelle_verschiebung') | float(none) }}"
+          neu: "{{ state_attr('sensor.heizkurve_empfehlung', 'empfohlene_verschiebung') | float(none) }}"
+          dev: "{{ state_attr('sensor.heizkurve_empfehlung', 'abweichung_72h') }}"
+          hinweis: "{{ state_attr('sensor.heizkurve_empfehlung', 'steigungshinweis') }}"
+          auto: "{{ is_state('input_boolean.heizkurve_automatik', 'on') }}"
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ aktion in ['anheben', 'absenken'] and auto and cur is number and neu is number }}"
+            sequence:
+              - action: number.set_value
+                target:
+                  entity_id: number.vscotho1_72_verschiebung_der_heizkurve_2
+                data:
+                  value: "{{ neu }}"
+              - wait_template: "{{ states('number.vscotho1_72_verschiebung_der_heizkurve_2') | float(none) == neu }}"
+                timeout: "00:03:00"
+                continue_on_timeout: true
+              - action: input_datetime.set_datetime
+                target:
+                  entity_id: input_datetime.heizkurve_letzte_anpassung
+                data:
+                  datetime: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
+              - action: persistent_notification.create
+                data:
+                  notification_id: heizkurve_empfehlung
+                  title: "Heizkurve angepasst"
+                  message: >-
+                    Verschiebung HK2: {{ cur | int }} K -> {{ neu | int }} K
+                    (Raumabweichung 72 h: {{ dev }} K, Ziel {{ states('input_number.heizkurve_zieltemperatur') }} °C).
+                    {{ hinweis }}
+          - conditions:
+              - condition: template
+                value_template: "{{ aktion in ['anheben', 'absenken'] and not auto }}"
+            sequence:
+              - action: persistent_notification.create
+                data:
+                  notification_id: heizkurve_empfehlung
+                  title: "Heizkurve: Empfehlung"
+                  message: >-
+                    Empfehlung: Verschiebung HK2 von {{ cur | int }} K auf {{ neu | int }} K
+                    ({{ aktion }}). Raumabweichung 72 h: {{ dev }} K, Ziel
+                    {{ states('input_number.heizkurve_zieltemperatur') }} °C.
+                    {{ hinweis }}
+                    Die Automatik ist aus (input_boolean.heizkurve_automatik).
+          - conditions:
+              - condition: template
+                value_template: "{{ aktion in ['gesperrt', 'grenze'] }}"
+            sequence:
+              - action: persistent_notification.create
+                data:
+                  notification_id: heizkurve_empfehlung
+                  title: "Heizkurve: keine Änderung möglich"
+                  message: >-
+                    {% if aktion == 'gesperrt' %}Anhebung gesperrt: {{ states('sensor.heizkurve_brennerstarts_24h') }} Brennerstarts in 24 h
+                    (Limit {{ states('input_number.heizkurve_max_brennerstarts') }}).
+                    {% else %}Verschiebungsgrenze erreicht ({{ cur | int }} K).{% endif %}
+                    Raumabweichung 72 h: {{ dev }} K. {{ hinweis }}

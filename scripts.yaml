@@ -1,20 +1,18 @@
-# TODO: notify.mobile_app_pixel_7a existiert nicht mehr - neues Gerät einrichten
 ring_simon_phone:
   alias: Simon Handy klingeln lassen
   sequence:
     - action: persistent_notification.create
       data:
         title: Home Assistant
-        message: "Handy-Suche für Simon angefordert. Bitte notify-Service konfigurieren."
+        message: Handy-Suche für Simon angefordert. Bitte notify-Service konfigurieren.
   mode: single
-# TODO: notify.mobile_app_lisa_note12pro existiert nicht mehr - neues Gerät einrichten
 ring_lisa_phone:
   alias: Lisa Handy klingeln lassen
   sequence:
     - action: persistent_notification.create
       data:
         title: Home Assistant
-        message: "Handy-Suche für Lisa angefordert. Bitte notify-Service konfigurieren."
+        message: Handy-Suche für Lisa angefordert. Bitte notify-Service konfigurieren.
   mode: single
 lina_schlafenszeit:
   alias: Lina Schlafenszeit
@@ -174,3 +172,686 @@ erhalte_wettervorhersagen:
       weather_entity: weather.kraichtal_gochsheim
   alias: Erhalte Wettervorhersagen
   description: ""
+waldfeen_party_start:
+  alias: Waldfeen Party – Start
+  icon: mdi:pine-tree
+  mode: restart
+  sequence:
+    - parallel:
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.og_wohnzimmer_deckenlampe
+                    data:
+                      transition: "{{ range(3,7) | random }}"
+                      brightness: "{{ [35, 40, 45, 50, 55, 60, 65, 70, 150] | random }}"
+                      hs_color:
+                        "{{ [[100, 85], [120, 75], [120, 75], [165, 70], [270, 70],
+                        [270, 70], [285, 60], [320, 55], [40, 85]] | random }}"
+                  - delay:
+                      seconds: "{{ range(6,14) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.og_wohnzimmer_lightstrip
+                    data:
+                      transition: "{{ range(3,7) | random }}"
+                      brightness: "{{ [35, 40, 45, 50, 55, 60, 65, 70, 150] | random }}"
+                      hs_color:
+                        "{{ [[100, 85], [120, 75], [120, 75], [165, 70], [270, 70],
+                        [270, 70], [285, 60], [320, 55], [40, 85]] | random }}"
+                  - delay:
+                      seconds: "{{ range(6,14) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.og_wohnzimmer_weihnachtsstern
+                    data:
+                      transition: "{{ range(3,7) | random }}"
+                      brightness: "{{ [35, 40, 45, 50, 55, 60, 65, 70, 150] | random }}"
+                      hs_color:
+                        "{{ [[100, 85], [120, 75], [120, 75], [165, 70], [270, 70],
+                        [270, 70], [285, 60], [320, 55], [40, 85]] | random }}"
+                  - delay:
+                      seconds: "{{ range(6,14) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.og_wohnzimmer_weihnachtsstern_fenster
+                    data:
+                      transition: "{{ range(3,7) | random }}"
+                      brightness: "{{ [35, 40, 45, 50, 55, 60, 65, 70, 150] | random }}"
+                      hs_color:
+                        "{{ [[100, 85], [120, 75], [120, 75], [165, 70], [270, 70],
+                        [270, 70], [285, 60], [320, 55], [40, 85]] | random }}"
+                  - delay:
+                      seconds: "{{ range(6,14) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.og_kuche_herdlampe
+                    data:
+                      transition: "{{ range(3,7) | random }}"
+                      brightness: "{{ [35, 40, 45, 50, 55, 60, 65, 70, 150] | random }}"
+                      hs_color:
+                        "{{ [[100, 85], [120, 75], [120, 75], [165, 70], [270, 70],
+                        [270, 70], [285, 60], [320, 55], [40, 85]] | random }}"
+                  - delay:
+                      seconds: "{{ range(6,14) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.og_kuche_weihnachtsstern_fenster
+                    data:
+                      transition: "{{ range(3,7) | random }}"
+                      brightness: "{{ [35, 40, 45, 50, 55, 60, 65, 70, 150] | random }}"
+                      hs_color:
+                        "{{ [[100, 85], [120, 75], [120, 75], [165, 70], [270, 70],
+                        [270, 70], [285, 60], [320, 55], [40, 85]] | random }}"
+                  - delay:
+                      seconds: "{{ range(6,14) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.og_schlafzimmer_deckenleuchte
+                    data:
+                      transition: "{{ range(3,7) | random }}"
+                      brightness: "{{ [35, 40, 45, 50, 55, 60, 65, 70, 150] | random }}"
+                      hs_color:
+                        "{{ [[100, 85], [120, 75], [120, 75], [165, 70], [270, 70],
+                        [270, 70], [285, 60], [320, 55], [40, 85]] | random }}"
+                  - delay:
+                      seconds: "{{ range(6,14) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.og_schlafzimmer_wickeltisch
+                    data:
+                      transition: "{{ range(3,7) | random }}"
+                      brightness: "{{ [35, 40, 45, 50, 55, 60, 65, 70, 150] | random }}"
+                      hs_color:
+                        "{{ [[100, 85], [120, 75], [120, 75], [165, 70], [270, 70],
+                        [270, 70], [285, 60], [320, 55], [40, 85]] | random }}"
+                  - delay:
+                      seconds: "{{ range(6,14) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.og_kinderzimmer_deckenleuchte
+                    data:
+                      transition: "{{ range(3,7) | random }}"
+                      brightness: "{{ [35, 40, 45, 50, 55, 60, 65, 70, 150] | random }}"
+                      hs_color:
+                        "{{ [[100, 85], [120, 75], [120, 75], [165, 70], [270, 70],
+                        [270, 70], [285, 60], [320, 55], [40, 85]] | random }}"
+                  - delay:
+                      seconds: "{{ range(6,14) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.og_kinderzimmer_nachttisch
+                    data:
+                      transition: "{{ range(3,7) | random }}"
+                      brightness: "{{ [35, 40, 45, 50, 55, 60, 65, 70, 150] | random }}"
+                      hs_color:
+                        "{{ [[100, 85], [120, 75], [120, 75], [165, 70], [270, 70],
+                        [270, 70], [285, 60], [320, 55], [40, 85]] | random }}"
+                  - delay:
+                      seconds: "{{ range(6,14) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.og_buro_deckenleuchte
+                    data:
+                      transition: "{{ range(3,7) | random }}"
+                      brightness: "{{ [35, 40, 45, 50, 55, 60, 65, 70, 150] | random }}"
+                      hs_color:
+                        "{{ [[100, 85], [120, 75], [120, 75], [165, 70], [270, 70],
+                        [270, 70], [285, 60], [320, 55], [40, 85]] | random }}"
+                  - delay:
+                      seconds: "{{ range(6,14) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.flur_deckenlampe_1
+                    data:
+                      transition: "{{ range(3,7) | random }}"
+                      brightness: "{{ [35, 40, 45, 50, 55, 60, 65, 70, 150] | random }}"
+                      hs_color:
+                        "{{ [[100, 85], [120, 75], [120, 75], [165, 70], [270, 70],
+                        [270, 70], [285, 60], [320, 55], [40, 85]] | random }}"
+                  - delay:
+                      seconds: "{{ range(6,14) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.flur_deckenlampe_2
+                    data:
+                      transition: "{{ range(3,7) | random }}"
+                      brightness: "{{ [35, 40, 45, 50, 55, 60, 65, 70, 150] | random }}"
+                      hs_color:
+                        "{{ [[100, 85], [120, 75], [120, 75], [165, 70], [270, 70],
+                        [270, 70], [285, 60], [320, 55], [40, 85]] | random }}"
+                  - delay:
+                      seconds: "{{ range(6,14) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.og_wohnzimmer_stehlampe_rechts
+                    data:
+                      transition: "{{ range(3,7) | random }}"
+                      brightness: "{{ [35, 40, 45, 50, 55, 60, 150] | random }}"
+                      color_temp_kelvin: "{{ [2000, 2200, 2400, 4000, 4300] | random }}"
+                  - delay:
+                      seconds: "{{ range(6,14) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.og_kuche_esstischlampe
+                    data:
+                      transition: "{{ range(3,7) | random }}"
+                      brightness: "{{ [35, 40, 45, 50, 55, 60, 150] | random }}"
+                      color_temp_kelvin: "{{ [2000, 2200, 2400, 4000, 4300] | random }}"
+                  - delay:
+                      seconds: "{{ range(6,14) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.treppenhaus_wandlampe_1
+                    data:
+                      transition: "{{ range(3,7) | random }}"
+                      brightness: "{{ [35, 40, 45, 50, 55, 60, 150] | random }}"
+                      color_temp_kelvin: "{{ [2000, 2200, 2400, 4000, 4300] | random }}"
+                  - delay:
+                      seconds: "{{ range(6,14) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.treppenhaus_wandlampe_2
+                    data:
+                      transition: "{{ range(3,7) | random }}"
+                      brightness: "{{ [35, 40, 45, 50, 55, 60, 150] | random }}"
+                      color_temp_kelvin: "{{ [2000, 2200, 2400, 4000, 4300] | random }}"
+                  - delay:
+                      seconds: "{{ range(6,14) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.treppenhaus_wandlampe_3
+                    data:
+                      transition: "{{ range(3,7) | random }}"
+                      brightness: "{{ [35, 40, 45, 50, 55, 60, 150] | random }}"
+                      color_temp_kelvin: "{{ [2000, 2200, 2400, 4000, 4300] | random }}"
+                  - delay:
+                      seconds: "{{ range(6,14) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - choose:
+                      - conditions:
+                          - condition: template
+                            value_template: "{{ (range(0,100) | random) < 75 }}"
+                        sequence:
+                          - action: light.turn_on
+                            target:
+                              entity_id: light.og_bad_deckenlampe
+                    default:
+                      - action: light.turn_off
+                        target:
+                          entity_id: light.og_bad_deckenlampe
+                  - delay:
+                      seconds: "{{ range(10,20) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - choose:
+                      - conditions:
+                          - condition: template
+                            value_template: "{{ (range(0,100) | random) < 75 }}"
+                        sequence:
+                          - action: light.turn_on
+                            target:
+                              entity_id: light.og_bad_badspiegel
+                    default:
+                      - action: light.turn_off
+                        target:
+                          entity_id: light.og_bad_badspiegel
+                  - delay:
+                      seconds: "{{ range(10,20) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - choose:
+                      - conditions:
+                          - condition: template
+                            value_template: "{{ (range(0,100) | random) < 8 }}"
+                        sequence:
+                          - action: light.turn_on
+                            target:
+                              entity_id: light.flur_deckenlampe_1
+                            data:
+                              transition: 0.4
+                              brightness: 190
+                              hs_color:
+                                - 42
+                                - 90
+                          - action: light.turn_on
+                            target:
+                              entity_id: light.flur_deckenlampe_2
+                            data:
+                              transition: 0.4
+                              brightness: 190
+                              hs_color:
+                                - 42
+                                - 90
+                          - delay:
+                              seconds: 0.4
+                          - action: light.turn_on
+                            target:
+                              entity_id: light.treppenhaus_wandlampe_1
+                            data:
+                              transition: 0.4
+                              brightness: 190
+                              color_temp_kelvin: 2000
+                          - action: light.turn_on
+                            target:
+                              entity_id: light.treppenhaus_wandlampe_2
+                            data:
+                              transition: 0.4
+                              brightness: 190
+                              color_temp_kelvin: 2000
+                          - action: light.turn_on
+                            target:
+                              entity_id: light.treppenhaus_wandlampe_3
+                            data:
+                              transition: 0.4
+                              brightness: 190
+                              color_temp_kelvin: 2000
+                          - delay:
+                              seconds: 0.4
+                          - action: light.turn_on
+                            target:
+                              entity_id: light.og_wohnzimmer_deckenlampe
+                            data:
+                              transition: 0.4
+                              brightness: 190
+                              hs_color:
+                                - 42
+                                - 90
+                          - delay:
+                              seconds: 0.4
+                          - action: light.turn_on
+                            target:
+                              entity_id: light.og_kuche_herdlampe
+                            data:
+                              transition: 0.4
+                              brightness: 190
+                              hs_color:
+                                - 42
+                                - 90
+                          - delay:
+                              seconds: 0.4
+                          - action: light.turn_on
+                            target:
+                              entity_id: light.og_schlafzimmer_deckenleuchte
+                            data:
+                              transition: 0.4
+                              brightness: 190
+                              hs_color:
+                                - 42
+                                - 90
+                          - delay:
+                              seconds: 0.4
+                          - action: light.turn_on
+                            target:
+                              entity_id: light.og_buro_deckenleuchte
+                            data:
+                              transition: 0.4
+                              brightness: 190
+                              hs_color:
+                                - 42
+                                - 90
+                          - delay:
+                              seconds: 0.5
+                          - action: light.turn_on
+                            target:
+                              entity_id: light.og_kinderzimmer_deckenleuchte
+                            data:
+                              transition: 0.6
+                              brightness: 255
+                              hs_color:
+                                - 45
+                                - 85
+                          - action: light.turn_on
+                            target:
+                              entity_id: light.og_kinderzimmer_nachttisch
+                            data:
+                              transition: 0.6
+                              brightness: 255
+                              hs_color:
+                                - 45
+                                - 85
+                          - delay:
+                              seconds: 3
+                  - delay:
+                      seconds: 15
+waldfeen_party_stop:
+  alias: Waldfeen Party – Stop
+  icon: mdi:pine-tree-box
+  sequence:
+    - action: script.turn_off
+      target:
+        entity_id: script.waldfeen_party_start
+geraete_melden:
+  alias: "Geräte: Meldung senden"
+  description:
+    Sendet Live-/Fertig-Meldungen für ein Haushaltsgerät (wird von den
+    Automationen aufgerufen).
+  mode: queued
+  max: 20
+  fields:
+    geraet:
+      description: Schlüssel aus variables.geraete
+      example: waschmaschine
+    aktion:
+      description:
+        live (Fortschritt aktualisieren), fertig (Fertig-Meldung + Ansage),
+        aufraeumen (Live-Meldung entfernen)
+      example: live
+    dauer_min:
+      description: Laufzeit in Minuten (nur bei fertig)
+      example: 112
+    programm:
+      description: Programmname (nur bei fertig)
+      example: Baumwolle
+    test_empfaenger:
+      description:
+        "Nur zum Testen: kommagetrennte notify-Dienste statt der konfigurierten
+        Empfänger (die Ansage entfällt dann)"
+      example: mobile_app_simons_pixel_9a
+    erzwingen:
+      description:
+        "Nur zum Testen: Live-Meldung auch senden, wenn das Gerät nicht
+        läuft"
+      example: false
+  variables:
+    tts_ruhe_von: 22
+    tts_ruhe_bis: 7
+    tts_lautsprecher: media_player.homemini_wohnzimmer_2
+    geraete:
+      waschmaschine:
+        name: Waschmaschine
+        satz: Die Waschmaschine ist fertig.
+        icon: mdi:washing-machine
+        farbe: "#2196F3"
+        aktiv_sensor: sensor.waschmaschine_state
+        aktiv_zustaende:
+          - running
+          - paused
+          - user_paused
+          - ending
+        fortschritt: sensor.waschmaschine_progress
+        restzeit: sensor.waschmaschine_time_remaining
+        restzeit_faktor: 1
+        programm: sensor.waschmaschine_program
+        empfaenger:
+          - mobile_app_simons_pixel_9a
+          - mobile_app_lisas_pixel_9a
+          - mobile_app_2201117ty
+      trockner:
+        name: Trockner
+        satz: Der Trockner ist fertig.
+        icon: mdi:tumble-dryer
+        farbe: "#FF9800"
+        aktiv_sensor: sensor.trockner_state
+        aktiv_zustaende:
+          - running
+          - paused
+          - user_paused
+          - ending
+        fortschritt: sensor.trockner_progress
+        restzeit: sensor.trockner_time_remaining
+        restzeit_faktor: 1
+        programm: sensor.trockner_program
+        empfaenger:
+          - mobile_app_simons_pixel_9a
+          - mobile_app_lisas_pixel_9a
+          - mobile_app_2201117ty
+      geschirrspueler:
+        name: Spülmaschine
+        satz: Die Spülmaschine ist fertig.
+        icon: mdi:dishwasher
+        farbe: "#009688"
+        aktiv_sensor: sensor.obergeschoss_kuche_geschirrspuler_betriebszustand
+        aktiv_zustaende:
+          - run
+          - pause
+        fortschritt: sensor.obergeschoss_kuche_geschirrspuler_programmfortschritt
+        restzeit: sensor.obergeschoss_kuche_geschirrspuler_verbleibende_programmlaufzeit
+        restzeit_faktor: 60
+        programm: sensor.geschirrspuler_programm
+        empfaenger:
+          - mobile_app_simons_pixel_9a
+          - mobile_app_lisas_pixel_9a
+  sequence:
+    - variables:
+        g: "{{ geraete[geraet] }}"
+        live_tag: "{{ geraet }}_live"
+        fertig_tag: "{{ geraet }}_fertig"
+        empfaenger:
+          "{{ (test_empfaenger | default('', true)).split(',') | map('trim')
+          | list if test_empfaenger | default('', true) else g.empfaenger }}"
+        senden_an:
+          "{% set ns = namespace(l=[]) %} {% for r in empfaenger %}\n  {% if
+          test_empfaenger | default('', true)\n     or as_timestamp(states('input_datetime.geraete_stumm_bis_'
+          ~ r ~ '_' ~ geraet), 0) <= as_timestamp(now()) %}\n    {% set ns.l = ns.l
+          + [r] %}\n  {% endif %}\n{% endfor %} {{ ns.l }}"
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: "{{ aktion == 'live' }}"
+          sequence:
+            - condition: template
+              value_template:
+                "{{ erzwingen | default(false) or states(g.aktiv_sensor) in
+                g.aktiv_zustaende }}"
+            - variables:
+                pct: "{{ states(g.fortschritt) | float(none) }}"
+                rest_roh: "{{ states(g.restzeit) | float(none) }}"
+                rest:
+                  "{{ (rest_roh * g.restzeit_faktor) if rest_roh is not none else none
+                  }}"
+                prog_roh: "{{ states(g.programm) }}"
+                prog:
+                  "{{ '' if prog_roh in ['unknown', 'unavailable', 'off', 'none',
+                  'detecting...', 'restored...'] else prog_roh }}"
+                teile:
+                  "{% set t = [] %} {% if prog %}{% set t = t + [prog] %}{% endif %}
+                  {% if rest is not none %}{% set t = t + ['noch ' ~ (rest | round(0)
+                  | int) ~ ' min'] %}{% endif %} {% if pct is not none %}{% set t = t
+                  + [(pct | round(0) | int) ~ ' %'] %}{% endif %} {{ t }}"
+                live_data:
+                  "{% set d = {\n  'tag': live_tag,\n  'channel': 'Geräte-Fortschritt',\n
+                  \ 'importance': 'low',\n  'alert_once': true,\n  'live_update': true,\n
+                  \ 'sticky': true,\n  'persistent': true,\n  'notification_icon': g.icon,\n
+                  \ 'color': g.farbe\n} %} {% if pct is not none %}\n  {% set d = dict(d,
+                  progress=(pct | round(0) | int), progress_max=100, critical_text=((pct
+                  | round(0) | int) ~ ' %')) %}\n{% endif %} {% if rest is not none %}\n
+                  \ {% set d = dict(d, chronometer=true, when=((rest * 60) | round(0) |
+                  int), when_relative=true) %}\n{% endif %} {{ d }}"
+            - repeat:
+                for_each: "{{ senden_an }}"
+                sequence:
+                  - action: notify.{{ repeat.item }}
+                    continue_on_error: true
+                    data:
+                      title: "{{ g.name }} läuft"
+                      message: "{{ teile | join(' · ') if teile else 'Läuft' }}"
+                      data:
+                        "{{ dict(live_data, actions=[\n  {'action': 'GERAETE_STUMM_2H_'
+                        ~ geraet ~ '_' ~ repeat.item, 'title': '\U0001F515 2 h'},\n  {'action':
+                        'GERAETE_STUMM_8H_' ~ geraet ~ '_' ~ repeat.item, 'title': '\U0001F515
+                        8 h'},\n  {'action': 'GERAETE_STUMM_8H_alle_' ~ repeat.item, 'title':
+                        '\U0001F515 Alle 8h'}\n]) }}"
+        - conditions:
+            - condition: template
+              value_template: "{{ aktion == 'aufraeumen' }}"
+          sequence:
+            - repeat:
+                for_each: "{{ empfaenger }}"
+                sequence:
+                  - action: notify.{{ repeat.item }}
+                    continue_on_error: true
+                    data:
+                      message: clear_notification
+                      data:
+                        tag: "{{ live_tag }}"
+        - conditions:
+            - condition: template
+              value_template: "{{ aktion == 'fertig' }}"
+          sequence:
+            - variables:
+                m: "{{ dauer_min | int(0) }}"
+                dauer_text:
+                  "{{ ((m // 60) ~ ' h ' ~ (m % 60) ~ ' min') if m >= 60 else
+                  (m ~ ' min') }}"
+                prog_text:
+                  "{{ '' if programm | default('', true) in ['', 'unknown',
+                  'off', 'none', 'detecting...', 'restored...'] else programm }}"
+                fertig_teile:
+                  "{% set t = [] %} {% if prog_text %}{% set t = t + [prog_text]
+                  %}{% endif %} {% if m > 0 %}{% set t = t + ['Dauer ' ~ dauer_text] %}{%
+                  endif %} {{ t }}"
+            - repeat:
+                for_each: "{{ senden_an }}"
+                sequence:
+                  - action: notify.{{ repeat.item }}
+                    continue_on_error: true
+                    data:
+                      message: clear_notification
+                      data:
+                        tag: "{{ live_tag }}"
+                  - action: notify.{{ repeat.item }}
+                    continue_on_error: true
+                    data:
+                      title: "{{ g.name }} ist fertig"
+                      message:
+                        "{{ fertig_teile | join(' · ') if fertig_teile else 'Das
+                        Programm ist beendet.' }}"
+                      data:
+                        tag: "{{ fertig_tag }}"
+                        channel: Geräte-Fertig
+                        importance: high
+                        notification_icon: "{{ g.icon }}"
+                        color: "{{ g.farbe }}"
+            - condition: template
+              value_template:
+                "{{ not test_empfaenger | default('', true) and not (now().hour
+                >= tts_ruhe_von or now().hour < tts_ruhe_bis) }}"
+            - action: music_assistant.play_announcement
+              continue_on_error: true
+              target:
+                entity_id: "{{ tts_lautsprecher }}"
+              data:
+                message: "{{ g.satz }}"
+                tts_entity_id: tts.google_ubersetzer_de_de_google_translate_de_de
+                use_pre_announce: false

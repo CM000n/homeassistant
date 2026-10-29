@@ -1,0 +1,766 @@
+- id: '1676043951838'
+  alias: System - Standardtheme bei Start setzen
+  description: Stellt das standardmäßig zu verwendende HA Theme bei Systemstart  ein.
+  triggers:
+  - event: start
+    trigger: homeassistant
+  conditions: []
+  actions:
+  - data:
+      name: Material You
+    action: frontend.set_theme
+  mode: single
+- id: '1676044297753'
+  alias: Beleuchtung - Lichter an wenn anwesend
+  description: Schaltet primäre Lichter beim nach Hause kommen wieder an.
+  triggers:
+  - trigger: state
+    entity_id:
+    - group.anwesenheit
+    to: home
+  conditions: []
+  actions:
+  - action: light.turn_on
+    data: {}
+    target:
+      entity_id:
+      - light.og_flur_deckenlampen
+      - light.og_wohnzimmer_deckenlampe
+      - light.og_kuche_esstischlampe
+  mode: single
+- id: '1676044401836'
+  alias: Beleuchtung - Lichter aus wenn abwesend
+  description: Schaltet die komplette Beleuchtung aus wenn alle Personen abwesend
+    sind.
+  triggers:
+  - trigger: state
+    entity_id:
+    - group.anwesenheit
+    from: home
+  conditions: []
+  actions:
+  - action: light.turn_off
+    data: {}
+    target:
+      entity_id: light.og_all_lights
+  mode: single
+- id: '1676044763396'
+  alias: Beleuchtung - Bad Spiegellampe schalten
+  description: Schaltet die Spiegellampe im Bade mit der Deckenlampe an/aus.
+  triggers:
+  - entity_id:
+    - switch.shelly_1pm_bad_deckenlampe
+    trigger: state
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: state
+        state: 'on'
+        entity_id: switch.shelly_1pm_bad_deckenlampe
+      sequence:
+      - action: light.turn_on
+        data: {}
+        target:
+          entity_id: light.og_bad_badspiegel
+    - conditions:
+      - condition: state
+        state: 'off'
+        entity_id: switch.shelly_1pm_bad_deckenlampe
+      sequence:
+      - action: light.turn_off
+        data: {}
+        target:
+          entity_id: light.og_bad_badspiegel
+  mode: single
+- id: '1676049396181'
+  alias: Schalter - Notaus Steckdose Büro Tür
+  description: Schaltet die Steckdose an der Tür im Büro aus, wenn die durchschnittliche
+    Last der letzten 30 Minuten über einem Grenzwert lag.
+  triggers:
+  - trigger: numeric_state
+    entity_id: sensor.shelly_1pm_buero_tuer_power_mean_over_last_30_minutes
+    above: 300
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.shelly_1pm_buero_tuer
+  - action: persistent_notification.create
+    data:
+      title: Steckdose Büro Tür
+      message: Notaus aktiviert!
+  mode: single
+- id: '1676055784332'
+  alias: Media - Sonos System zurücksetzen
+  description: Setzt das komplette Sonos Sytem jede Nacht auf einige Standard Einstellungen
+    zurück.
+  triggers:
+  - trigger: time
+    at: 04:30:00
+  conditions: []
+  actions:
+  - action: media_player.unjoin
+    data: {}
+    target:
+      entity_id:
+      - media_player.lisi_sonoszp_bad
+      - media_player.lisi_sonoszp_buero
+      - media_player.lisi_sonoszp_schlafzimmer
+      - media_player.lisi_sonoszp_wohnzimmer_r
+      - media_player.lisi_sonoszp_kueche
+  - action: media_player.clear_playlist
+    data: {}
+    target:
+      entity_id:
+      - media_player.lisi_sonoszp_bad
+      - media_player.lisi_sonoszp_buero
+      - media_player.lisi_sonoszp_wohnzimmer_r
+      - media_player.lisi_sonoszp_schlafzimmer
+      - media_player.lisi_sonoszp_kueche
+  - action: media_player.volume_set
+    data:
+      volume_level: 0.15
+    target:
+      entity_id:
+      - media_player.lisi_sonoszp_bad
+      - media_player.lisi_sonoszp_buero
+      - media_player.lisi_sonoszp_schlafzimmer
+      - media_player.lisi_sonoszp_wohnzimmer_r
+      - media_player.lisi_sonoszp_kueche
+  mode: single
+- id: '1676055969325'
+  alias: System - Purge Database
+  description: Diese Automatisierung löscht jede Nacht alle Events die älter als 15
+    Tage sind aus der Datenbank. Zusätzlich wird die Datenbank komprimiert, um Platz
+    einzusparen.
+  triggers:
+  - trigger: time
+    at: 04:00:00
+  conditions: []
+  actions:
+  - action: recorder.purge
+    data:
+      repack: true
+      keep_days: 15
+  mode: single
+- id: '1676056195216'
+  alias: System - Create Watchman Report
+  description: Generiert jede Nacht einen Watchman Report über verwaiste Config Einträge.
+  triggers:
+  - trigger: time
+    at: 04:00:00
+  conditions: []
+  actions:
+  - action: watchman.report
+    data:
+      create_file: true
+      send_notification: false
+      parse_config: true
+      chunk_size: false
+  mode: single
+- id: '1676056325991'
+  alias: Staubsauger - Werktags reinigen
+  description: Startet den Staubsaugroboter an Werktagen.
+  triggers:
+  - trigger: time
+    at: 08:30:00
+  conditions:
+  - condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'on'
+  actions:
+  - action: vacuum.start
+    data: {}
+    target:
+      entity_id: vacuum.valetudo_falsescrawnyhornet
+  mode: single
+- id: '1676056497026'
+  alias: Staubsauger - Samstags reinigen
+  description: Startet den Staubsauger an Samstagen.
+  triggers:
+  - trigger: time
+    at: 09:30:00
+  conditions:
+  - condition: time
+    weekday:
+    - sat
+  actions:
+  - action: vacuum.start
+    data: {}
+    target:
+      entity_id: vacuum.valetudo_falsescrawnyhornet
+  mode: single
+- id: '1676056983868'
+  alias: System - Messe Strom (HUE)
+  description: Messe Strom für verschieden HUE Werte mit Hilfe eines pyscripts.
+  triggers:
+  - trigger: webhook
+    webhook_id: -8EApbeQ-yPKY0woS4oczY3wa
+    allowed_methods:
+    - POST
+    - PUT
+    local_only: true
+  conditions: []
+  actions:
+  - action: pyscript.measure_power_consumption_hs
+    data:
+      entity_id: light.og_wohnzimmer_lightstrip
+      powermeter: sensor.steckdose_wohnzimmer_leistung
+      manufacturer: Signify Netherlands B.V.
+      bulb: LST002
+  mode: single
+- id: '1700085757470'
+  alias: Schalter - WLAN Gastzugang umschalten
+  description: Schaltet den WLAN Gastzugang morgens ein und abends aus.
+  triggers:
+  - trigger: time
+    at: 06:00:00
+  - trigger: time
+    at: '23:00:00'
+  conditions: []
+  actions:
+  - if:
+    - condition: time
+      before: '22:59:59'
+    then:
+    - action: switch.turn_on
+      data: {}
+      target:
+        entity_id: switch.fritz_box_6660_cable_wi_fi_goepferich_gastzugang
+    else:
+    - action: switch.turn_off
+      data: {}
+      target:
+        entity_id: switch.fritz_box_6660_cable_wi_fi_goepferich_gastzugang
+  mode: single
+- id: '1700087353184'
+  alias: 'Beleuchtung - Weihnachtsstern umschalten '
+  description: ''
+  triggers:
+  - event: sunrise
+    offset: 00:55:00
+    id: 'Sonnenaufgang '
+    trigger: sun
+  - event: sunset
+    offset: -01:55:00
+    id: 'Sonnenuntergang '
+    trigger: sun
+  conditions: []
+  actions:
+  - if:
+    - condition: trigger
+      id:
+      - 'Sonnenaufgang '
+    then:
+    - data: {}
+      target:
+        entity_id:
+        - light.og_wohnzimmer_weihnachtsstern_fenster
+        - light.og_kuche_weihnachtsstern_fenster
+        - light.og_wohnzimmer_weihnachtsstern
+      action: light.turn_off
+    else:
+    - data:
+        brightness_pct: 60
+        transition: 300
+      target:
+        entity_id:
+        - light.og_wohnzimmer_weihnachtsstern_fenster
+        - light.og_kuche_weihnachtsstern_fenster
+        - light.og_wohnzimmer_weihnachtsstern
+      action: light.turn_on
+  mode: single
+- id: '1718961814697'
+  alias: System - Generate README.md
+  description: Generiert jede Nacht eine aktualisierte README.md file.
+  triggers:
+  - trigger: time
+    at: 01:00:00
+  conditions: []
+  actions:
+  - action: readme.generate
+    data: {}
+  mode: single
+- id: '1721243999628'
+  alias: System - Purge old Fritz!Box Devices
+  description: Diese Automatisierung bereinigt jede Nacht veraltete Fritz Box Geräte
+    Einträge.
+  triggers:
+  - trigger: time
+    at: 03:00:00
+  conditions: []
+  actions:
+  - action: button.press
+    metadata: {}
+    data: {}
+    target:
+      entity_id: button.fritz_box_6660_cable_aufraumen
+  mode: single
+- id: '1727814349127'
+  alias: HomeMini zurücksetzen
+  description: Setzten den Google Home Mini jede Nacht auf einige Standard Einstellungen
+    zurück.
+  triggers:
+  - at: 04:30:00
+    trigger: time
+  conditions: []
+  actions:
+  - data:
+      volume_level: 0.45
+    action: media_player.volume_set
+    target:
+      entity_id: media_player.homemini_wohnzimmer
+  mode: single
+- id: shellies_announce
+  alias: Shellies Announce
+  triggers:
+  - trigger: homeassistant
+    event: start
+  - trigger: time_pattern
+    hours: /1
+  actions:
+  - action: mqtt.publish
+    data:
+      topic: shellies/command
+      payload: announce
+- id: shellies_discovery
+  alias: Shellies Discovery
+  mode: queued
+  max: 999
+  triggers:
+  - trigger: mqtt
+    topic: shellies/announce
+  conditions:
+  - condition: template
+    value_template: '{{ trigger.payload_json.gen is not defined }}'
+  actions:
+  - action: python_script.shellies_discovery
+    data:
+      id: '{{ trigger.payload_json.id }}'
+      mac: '{{ trigger.payload_json.mac }}'
+      fw_ver: '{{ trigger.payload_json.fw_ver }}'
+      model: '{{ trigger.payload_json.model | default }}'
+      mode: '{{ trigger.payload_json.mode | default }}'
+      host: '{{ trigger.payload_json.ip }}'
+- id: shellies_announce_gen2
+  alias: Shellies Announce Gen2
+  triggers:
+  - trigger: homeassistant
+    event: start
+  actions:
+  - repeat:
+      for_each: '{{ device_ids }}'
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: '{{ repeat.item }}/rpc'
+          payload: '{{ get_config_payload }}'
+      - action: mqtt.publish
+        data:
+          topic: '{{ repeat.item }}/rpc'
+          payload: '{{ get_components_payload }}'
+  variables:
+    get_config_payload: '{{ {''id'': 1, ''src'': ''shellies_discovery'', ''method'':
+      ''Shelly.GetConfig''} | to_json }}'
+    get_components_payload: '{{ {''id'': 1, ''src'': ''shellies_discovery'', ''method'':''Shelly.GetComponents'',
+      ''params'': {''include'': [''config'']}} | to_json }}'
+    device_ids:
+    - shellyplugmg3-08927257fa74
+    - shellyplugmg3-70af09e284cc
+    - shellyplugmg3-70af09e624e4
+    - shellyplugmg3-907069508a78
+- id: shellies_discovery_gen2
+  alias: Shellies Discovery Gen2
+  mode: queued
+  max: 999
+  triggers:
+  - trigger: mqtt
+    topic: shellies_discovery/rpc
+  actions:
+  - action: python_script.shellies_discovery_gen2
+    data:
+      id: '{{ trigger.payload_json.src }}'
+      device_config: '{{ trigger.payload_json.result }}'
+  - condition: template
+    value_template: '{{ ''mqtt'' in trigger.payload_json.result }}'
+  - action: mqtt.publish
+    data:
+      topic: '{{ trigger.payload_json.result.mqtt.topic_prefix }}/command'
+      payload: status_update
+- id: '1760816151586'
+  alias: Beleuchtung - Reset Adaptive Lightnings
+  description: ''
+  triggers:
+  - trigger: time
+    at: 04:30:00
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - switch.adaptive_lighting_adapt_brightness_kaltweiss
+      - switch.adaptive_lighting_adapt_color_kaltweiss
+      - switch.adaptive_lighting_kaltweiss
+      - switch.adaptive_lighting_adapt_brightness_schlafzimmer
+      - switch.adaptive_lighting_adapt_color_schlafzimmer
+      - switch.adaptive_lighting_schlafzimmer
+      - switch.adaptive_lighting_adapt_brightness_warmweiss
+      - switch.adaptive_lighting_adapt_color_warmweiss
+      - switch.adaptive_lighting_warmweiss
+      - switch.adaptive_lighting_adapt_brightness_wohnzimmer
+      - switch.adaptive_lighting_adapt_color_wohnzimmer
+      - switch.adaptive_lighting_wohnzimmer
+  - action: switch.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - switch.adaptive_lighting_adapt_brightness_kaltweiss
+      - switch.adaptive_lighting_adapt_color_kaltweiss
+      - switch.adaptive_lighting_kaltweiss
+      - switch.adaptive_lighting_adapt_brightness_schlafzimmer
+      - switch.adaptive_lighting_adapt_color_schlafzimmer
+      - switch.adaptive_lighting_schlafzimmer
+      - switch.adaptive_lighting_adapt_brightness_warmweiss
+      - switch.adaptive_lighting_adapt_color_warmweiss
+      - switch.adaptive_lighting_warmweiss
+      - switch.adaptive_lighting_adapt_brightness_wohnzimmer
+      - switch.adaptive_lighting_adapt_color_wohnzimmer
+      - switch.adaptive_lighting_wohnzimmer
+  mode: single
+- id: '1778519851735'
+  alias: Kinderzimmer Nachttisch umschalten
+  description: ''
+  triggers:
+  - event: sunrise
+    offset: 00:20:00
+    id: 'Sonnenaufgang '
+    trigger: sun
+  - event: sunset
+    offset: -01:30:00
+    id: 'Sonnenuntergang '
+    trigger: sun
+  conditions: []
+  actions:
+  - if:
+    - condition: trigger
+      id:
+      - 'Sonnenaufgang '
+    then:
+    - data: {}
+      target:
+        entity_id:
+        - light.og_kinderzimmer_nachttisch
+      action: light.turn_off
+    else:
+    - data:
+        brightness_pct: 60
+        transition: 300
+      target:
+        entity_id:
+        - light.og_kinderzimmer_nachttisch
+      action: light.turn_on
+  mode: single
+- id: '1786358497770'
+  alias: AWTRIX NG DWD weather warnings ⛈️
+  description: ''
+  use_blueprint:
+    path: blueforcer/flow_SaKPUX8NBRR8.yaml
+    input:
+      awtrix:
+      - 554b36467c19aaed67299cb27ac2b2d8
+      weather_warning_vars:
+      - sensor.stadt_kraichtal_aktuelle_warnstufe
+      weather_preliminary_warning_vars:
+      - sensor.stadt_kraichtal_vorwarnstufe
+      show_details: true
+      play_beep: true
+      send_on_change_only: true
+      message_repeat: 1
+      full_day_names: true
+- id: '1786460149540'
+  alias: AWTRIX NG – Claude Usage
+  description: ''
+  use_blueprint:
+    path: tnusch/awtrix_ng_claude_usage.yaml
+    input:
+      usage_sensor: sensor.claude_usage_simon_extra_usage
+      awtrix: 554b36467c19aaed67299cb27ac2b2d8
+      suffix_text: ' '
+      scroll_speed: 80
+      duration: 8
+- id: '1786462138714'
+  alias: AWTRIX NG – Solar & Grid Monitor
+  description: ''
+  use_blueprint:
+    path: reedy/awtrix_ng_solar_power.yaml
+    input:
+      awtrix:
+      - 554b36467c19aaed67299cb27ac2b2d8
+      power_sensors:
+      - sensor.nous_a1t_smartplug_2_power
+      grid_sensors:
+      - sensor.esp_01s_stromzaehler_active_power
+      max_import: 6000
+      threshold_low: 60
+      duration: 15
+      skip_if_zero_watts: true
+- id: waldfeen_party_cleanup
+  alias: Waldfeen Party – Aufräumen
+  description: Fahr alle OG-Lichter sauber runter, sobald die Waldfeen-Szene endet
+    (egal wie sie gestoppt wurde).
+  triggers:
+  - trigger: state
+    entity_id: script.waldfeen_party_start
+    from: 'on'
+    to: 'off'
+  conditions: []
+  actions:
+  - action: light.turn_off
+    target:
+      entity_id:
+      - light.og_wohnzimmer_deckenlampe
+      - light.og_wohnzimmer_lightstrip
+      - light.og_wohnzimmer_weihnachtsstern
+      - light.og_wohnzimmer_weihnachtsstern_fenster
+      - light.og_kuche_herdlampe
+      - light.og_kuche_weihnachtsstern_fenster
+      - light.og_schlafzimmer_deckenleuchte
+      - light.og_schlafzimmer_wickeltisch
+      - light.og_kinderzimmer_deckenleuchte
+      - light.og_kinderzimmer_nachttisch
+      - light.og_buro_deckenleuchte
+      - light.flur_deckenlampe_1
+      - light.flur_deckenlampe_2
+      - light.og_wohnzimmer_stehlampe_rechts
+      - light.og_kuche_esstischlampe
+      - light.treppenhaus_wandlampe_1
+      - light.treppenhaus_wandlampe_2
+      - light.treppenhaus_wandlampe_3
+      - light.og_bad_deckenlampe
+      - light.og_bad_badspiegel
+    data:
+      transition: 3
+  mode: single
+- id: '1789973931601'
+  alias: Kühlgerät-Wächter – Kühlschrank
+  description: ''
+  use_blueprint:
+    path: local/appliance_energy_watchdog.yaml
+    input:
+      device_name: Kühlschrank
+      power_sensor: sensor.lisi_nous_a1t_smartplug_3_power
+      daily_energy_sensor: sensor.nous_a1t_smartplug_3_daily_energy
+      min_daily_kwh: 0.35
+      max_daily_kwh: 1.4
+      daily_check_time: '23:55:00'
+      running_power_threshold: 10
+      max_continuous_runtime:
+        hours: 1
+        minutes: 30
+        seconds: 0
+      repeat_interval:
+        hours: 0
+        minutes: 30
+        seconds: 0
+      min_idle_power: 5
+      no_power_duration:
+        hours: 3
+        minutes: 0
+        seconds: 0
+      notify_target:
+      - notify.simons_pixel_9a
+- id: '1789973932944'
+  alias: Kühlgerät-Wächter – Gefriertruhe
+  description: ''
+  use_blueprint:
+    path: local/appliance_energy_watchdog.yaml
+    input:
+      device_name: Gefriertruhe
+      power_sensor: sensor.steckdose_gefriertruhe_leistung
+      daily_energy_sensor: sensor.gefriertruhe_stromverbrauch_taglich
+      min_daily_kwh: 1.3
+      max_daily_kwh: 2.3
+      daily_check_time: '23:55:00'
+      running_power_threshold: 10
+      max_continuous_runtime:
+        hours: 18
+        minutes: 0
+        seconds: 0
+      repeat_interval:
+        hours: 1
+        minutes: 0
+        seconds: 0
+      min_idle_power: 5
+      no_power_duration:
+        hours: 3
+        minutes: 0
+        seconds: 0
+      notify_target:
+      - notify.simons_pixel_9a
+- id: '1790446724329'
+  alias: Dachfenster - Warnung bei Regen und Abwesenheit
+  description: Benachrichtigt Lisa und Simon in einer konsolidierten Nachricht, wenn
+    Dachfenster offen sind, die Regenwahrscheinlichkeit über 40% liegt und beide nicht
+    zuhause sind.
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.myggbett_door_window_sensor_tur
+    - binary_sensor.myggbett_door_window_sensor_tur_2
+    to: 'on'
+  - trigger: numeric_state
+    entity_id: sensor.kraichtal_gochsheim_niederschlagswahrscheinlichkeit
+    above: 40
+  - trigger: state
+    entity_id:
+    - person.simon
+    - person.lisa
+    from: home
+  conditions:
+  - condition: not
+    conditions:
+    - condition: state
+      entity_id: person.simon
+      state: home
+  - condition: not
+    conditions:
+    - condition: state
+      entity_id: person.lisa
+      state: home
+  - condition: numeric_state
+    entity_id: sensor.kraichtal_gochsheim_niederschlagswahrscheinlichkeit
+    above: 40
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: binary_sensor.myggbett_door_window_sensor_tur
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.myggbett_door_window_sensor_tur_2
+      state: 'on'
+  actions:
+  - variables:
+      offene_fenster: '{% set ns = namespace(items=[]) %}{% if states(''binary_sensor.myggbett_door_window_sensor_tur'')
+        == ''on'' %}{% set ns.items = ns.items + [''Büro''] %}{% endif %}{% if states(''binary_sensor.myggbett_door_window_sensor_tur_2'')
+        == ''on'' %}{% set ns.items = ns.items + [''Bad''] %}{% endif %}{{ ns.items
+        | join('', '') }}'
+      regenwahrscheinlichkeit: '{{ states(''sensor.kraichtal_gochsheim_niederschlagswahrscheinlichkeit'')
+        }}'
+  - action: notify.mobile_app_simons_pixel_9a
+    data:
+      title: "\U0001F327️ Dachfenster offen – Regen möglich"
+      message: 'Regenwahrscheinlichkeit {{ regenwahrscheinlichkeit }}%. Offene Dachfenster:
+        {{ offene_fenster }}. Bitte schließen!'
+  - action: notify.mobile_app_lisas_pixel_9a
+    data:
+      title: "\U0001F327️ Dachfenster offen – Regen möglich"
+      message: 'Regenwahrscheinlichkeit {{ regenwahrscheinlichkeit }}%. Offene Dachfenster:
+        {{ offene_fenster }}. Bitte schließen!'
+  - action: notify.mobile_app_simon_ipad
+    data:
+      title: "\U0001F327️ Dachfenster offen – Regen möglich"
+      message: 'Regenwahrscheinlichkeit {{ regenwahrscheinlichkeit }}%. Offene Dachfenster:
+        {{ offene_fenster }}. Bitte schließen!'
+  mode: single
+- id: '1790965685771'
+  alias: Heizplan OG Badezimmer
+  description: ''
+  use_blueprint:
+    path: panhans/advanced_heating_control.yaml
+    input:
+      input_trvs:
+      - climate.comet_dect_6
+      input_temperature_sensor: sensor.comet_dect_6_temperatur
+      input_temperature_comfort_static: 22
+      input_temperature_eco_static: 18
+      input_schedulers:
+      - schedule.heizplan
+      input_persons:
+      - person.lisa
+      - person.simon
+      input_off_if_above_room_temperature: true
+      input_off_if_nobody_home: false
+      input_windows:
+      - binary_sensor.myggbett_door_window_sensor_tur_2
+      input_mode_winter: binary_sensor.heizperiode_freigabe
+      input_proximity: d78946fd4e65320e4e5455edffe5c9d0
+      input_proximity_distance: 3500
+- id: '1791011593797'
+  alias: Heizplan OG Büro
+  description: ''
+  use_blueprint:
+    path: panhans/advanced_heating_control.yaml
+    input:
+      input_trvs:
+      - climate.comet_dect_7
+      input_temperature_sensor: sensor.comet_dect_7_temperatur
+      input_temperature_comfort_static: 22
+      input_temperature_eco_static: 18
+      input_schedulers:
+      - schedule.heizplan
+      input_persons:
+      - person.lisa
+      - person.simon
+      input_off_if_above_room_temperature: true
+      input_off_if_nobody_home: false
+      input_windows:
+      - binary_sensor.myggbett_door_window_sensor_tur
+      input_mode_winter: binary_sensor.heizperiode_freigabe
+      input_mode_room_temperature_threshold: 18
+      input_proximity_distance: 3500
+      input_proximity: d78946fd4e65320e4e5455edffe5c9d0
+- id: '1791144140743'
+  alias: Heizplan Haus Heizkörper
+  description: ''
+  use_blueprint:
+    path: panhans/advanced_heating_control.yaml
+    input:
+      input_trvs:
+      - climate.vicare_heating_2
+      input_temperature_sensor: sensor.vicare_outside_temperature
+      input_temperature_comfort_static: 22
+      input_temperature_eco_static: 18
+      input_schedulers:
+      - schedule.heizplan
+      input_persons:
+      - person.lisa
+      - person.simon
+      - person.andrea
+      - person.jurgen
+      input_off_if_above_room_temperature: false
+      input_off_if_nobody_home: false
+      input_windows: []
+      input_mode_winter: binary_sensor.heizperiode_freigabe
+      input_hvac_mode_comfort: auto
+      input_hvac_mode_eco: auto
+      input_min_instead_of_off: true
+      input_frost_protection_temp: 3
+      input_temperature_off: 3
+      input_fallback_outside_temperature_unavailable: false
+- id: '1791998632227'
+  alias: 'Benachrichtigung: Solltemperatur geändert'
+  description: Sendet eine Benachrichtigung bei Änderung von Komfort-, Normal- oder
+    Reduzierter Temperatur.
+  triggers:
+  - entity_id:
+    - number.vscotho1_72_komforttemperatur_2
+    - number.vscotho1_72_normaltemperatur_2
+    - number.vscotho1_72_reduzierte_temperatur_2
+    trigger: state
+  conditions:
+  - condition: template
+    value_template: '{{ trigger.from_state.state not in [''unknown'', ''unavailable'',
+      ''''] and trigger.to_state.state not in [''unknown'', ''unavailable'', '''']
+      }}'
+  actions:
+  - action: notify.mobile_app_simons_pixel_9a
+    data:
+      title: "\U0001F321️ Temperaturanpassung"
+      message: '{{ trigger.to_state.attributes.friendly_name | default(trigger.entity_id)
+        }} wurde geändert: von {{ trigger.from_state.state }} °C auf {{ trigger.to_state.state
+        }} °C.'

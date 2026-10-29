@@ -1,0 +1,267 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "El dispositiu ja est\u00e0 configurat",
+      "missing_configuration": "El component no est\u00e0 configurat. Mira'n la documentaci\u00f3.",
+      "unknown": "Error inesperat"
+    },
+    "create_entry": {
+      "default": "Autenticaci\u00f3 exitosa"
+    },
+    "step": {
+      "pick_implementation": {
+        "title": "Selecciona el m\u00e8tode d'autenticaci\u00f3"
+      },
+      "reauth_confirm": {
+        "title": "L'autenticaci\u00f3 de {name} ha caducat"
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "domestic_hot_water_charging": {
+        "name": "C\u00e0rrega d'ACS"
+      },
+      "domestic_hot_water_circulation_pump": {
+        "name": "Bomba de circulaci\u00f3 d'ACS"
+      },
+      "domestic_hot_water_pump": {
+        "name": "Bomba d'ACS"
+      },
+      "frost_protection": {
+        "name": "Protecci\u00f3 contra gelades"
+      }
+    },
+    "fan": {
+      "ventilation": {
+        "name": "Ventilaci\u00f3",
+        "state_attributes": {
+          "preset_mode": {
+            "state": {
+              "standby": "En espera"
+            }
+          }
+        }
+      }
+    },
+    "number": {
+      "comfort_heating_temperature": {
+        "name": "Temperatura d'escalfament confort"
+      },
+      "dhw_hysteresis_switch_off": {
+        "name": "Punt d'apagada per hist\u00e8resi de l'ACS"
+      },
+      "dhw_hysteresis_switch_on": {
+        "name": "Punt d'encesa per hist\u00e8resi de l'ACS"
+      },
+      "dhw_secondary_temperature": {
+        "name": "Temperatura secund\u00e0ria de l'ACS"
+      },
+      "dhw_temperature": {
+        "name": "Temperatura de l'ACS"
+      },
+      "normal_heating_temperature": {
+        "name": "Temperatura d'escalfament normal"
+      },
+      "reduced_heating_temperature": {
+        "name": "Temperatura d'escalfament redu\u00efda"
+      }
+    },
+    "select": {
+      "dhw_operating_mode": {
+        "name": "Mode de funcionament de l'ACS",
+        "state": {
+          "efficient": "Eficient",
+          "efficient_with_min_comfort": "Eficient amb el m\u00ednim confort",
+          "off": "OFF"
+        }
+      }
+    },
+    "sensor": {
+      "active_mode": {
+        "name": "Mode",
+        "state": {
+          "cooling": "Refredant",
+          "heating": "Escalfant",
+          "standby": "En espera"
+        }
+      },
+      "boiler_temperature": {
+        "name": "Temperatura de la caldera"
+      },
+      "compressor_phase": {
+        "state": {
+          "cooling": "Refredant",
+          "defrost": "Descongelant",
+          "heating": "Escalfant",
+          "off": "OFF",
+          "pause": "Inactiu",
+          "ready": "Inactiu"
+        }
+      },
+      "cop_dhw": {
+        "name": "Coeficient de rendiment - aigua calenta sanit\u00e0ria"
+      },
+      "dhw_storage_bottom_temperature": {
+        "name": "Temperatura inferior del dip\u00f2sit d'ACS"
+      },
+      "dhw_storage_middle_temperature": {
+        "name": "Temperatura mitjana del dip\u00f2sit d'ACS"
+      },
+      "dhw_storage_temperature": {
+        "name": "Temperatura del dip\u00f2sit d'ACS"
+      },
+      "dhw_storage_top_temperature": {
+        "name": "Temperatura superior del dip\u00f2sit d'ACS"
+      },
+      "energy_consumption_dhw_this_year": {
+        "name": "Consum d'energia de l'ACS d'aquest any"
+      },
+      "energy_dhw_summary_consumption_heating_currentday": {
+        "name": "Consum el\u00e8ctric de l'ACS d'avui"
+      },
+      "energy_dhw_summary_consumption_heating_currentmonth": {
+        "name": "Consum el\u00e8ctric de l'ACS d'aquest mes"
+      },
+      "energy_dhw_summary_consumption_heating_currentyear": {
+        "name": "Consum el\u00e8ctric de l'ACS d'aquest any"
+      },
+      "energy_summary_dhw_consumption_heating_lastsevendays": {
+        "name": "Consum el\u00e8ctric de l'ACS dels \u00faltims set dies"
+      },
+      "ess_discharge_this_month": {
+        "name": "Descarregat de bateria aquest mes"
+      },
+      "ess_discharge_this_week": {
+        "name": "Descarregat de bateria aquesta setmana"
+      },
+      "ess_discharge_this_year": {
+        "name": "Descarregat de bateria aquest any"
+      },
+      "ess_discharge_today": {
+        "name": "Descarregat de la bateria d'avui"
+      },
+      "ess_discharge_total": {
+        "name": "Total descarregat de la bateria"
+      },
+      "ess_power_current": {
+        "name": "Pot\u00e8ncia de bateria"
+      },
+      "ess_state": {
+        "name": "Estat de la bateria",
+        "state": {
+          "charge": "Carregant",
+          "discharge": "Descarregant",
+          "standby": "En espera"
+        }
+      },
+      "hotwater_gas_consumption_heating_this_month": {
+        "name": "Consum de gas de l'ACS d'aquest mes"
+      },
+      "hotwater_gas_consumption_heating_this_week": {
+        "name": "Consum de gas de l'ACS d'aquesta setmana"
+      },
+      "hotwater_gas_consumption_heating_this_year": {
+        "name": "Consum de gas de l'ACS d'aquest any"
+      },
+      "hotwater_gas_consumption_today": {
+        "name": "Consum de gas de l'ACS d'avui"
+      },
+      "hotwater_gas_summary_consumption_heating_currentday": {
+        "name": "Consum de gas de l'ACS d'avui"
+      },
+      "hotwater_gas_summary_consumption_heating_currentmonth": {
+        "name": "Consum de gas de l'ACS d'aquest mes"
+      },
+      "hotwater_gas_summary_consumption_heating_currentyear": {
+        "name": "Consum de gas de l'ACS d'aquest any"
+      },
+      "hotwater_gas_summary_consumption_heating_lastsevendays": {
+        "name": "Consum de gas de l'ACS dels \u00faltims set dies"
+      },
+      "hotwater_max_temperature": {
+        "name": "Temperatura m\u00e0xima de l'ACS"
+      },
+      "hotwater_min_temperature": {
+        "name": "Temperatura m\u00ednima de l'ACS"
+      },
+      "hotwater_out_temperature": {
+        "name": "Temperatura de sortida de l'ACS"
+      },
+      "outside_temperature": {
+        "name": "Temperatura exterior"
+      },
+      "pcc_transfer_power_exchange": {
+        "name": "Intercanvi d'energia ambla  xarxa"
+      },
+      "photovoltaic_status": {
+        "state": {
+          "production": "Produint",
+          "ready": "En espera"
+        }
+      },
+      "power_production_this_month": {
+        "name": "Producci\u00f3 d'energia, aquest mes"
+      },
+      "power_production_this_week": {
+        "name": "Producci\u00f3 d'energia, aquesta setmana"
+      },
+      "power_production_this_year": {
+        "name": "Producci\u00f3 d'energia, aquest any"
+      },
+      "power_production_today": {
+        "name": "Producci\u00f3 d'energia, avui"
+      },
+      "return_temperature": {
+        "name": "Temperatura de retorn"
+      },
+      "solar_power_production_this_month": {
+        "name": "Producci\u00f3 d'energia solar, aquest mes"
+      },
+      "solar_power_production_this_week": {
+        "name": "Producci\u00f3 d'energia solar, aquesta setmana"
+      },
+      "solar_power_production_this_year": {
+        "name": "Producci\u00f3 d'energia solar, aquest any"
+      },
+      "solar_power_production_today": {
+        "name": "Producci\u00f3 d'energia solar, avui"
+      },
+      "spf_dhw": {
+        "name": "Factor de rendiment estacional - aigua calenta sanit\u00e0ria"
+      },
+      "ventilation_level": {
+        "name": "Nivell de ventilaci\u00f3",
+        "state": {
+          "levelfour": "4",
+          "levelone": "1",
+          "levelthree": "3",
+          "leveltwo": "2",
+          "standby": "En espera"
+        }
+      },
+      "ventilation_reason": {
+        "name": "Motiu de ventilaci\u00f3",
+        "state": {
+          "forcedlevelfour": "Incrementat",
+          "permanent": "Permanent",
+          "schedule": "Programaci\u00f3",
+          "sensordriven": "Senyal de sensor",
+          "silent": "Silenci\u00f3s",
+          "standby": "En espera"
+        }
+      },
+      "volumetric_flow": {
+        "name": "Cabal volum\u00e8tric"
+      },
+      "zigbee_signal_strength": {
+        "name": "Pot\u00e8ncia del senyal"
+      }
+    }
+  },
+  "exceptions": {
+    "program_unknown": {
+      "message": "No es pot convertir la preconfiguraci\u00f3 {preset} a un programa ViCare v\u00e0lid"
+    }
+  }
+}

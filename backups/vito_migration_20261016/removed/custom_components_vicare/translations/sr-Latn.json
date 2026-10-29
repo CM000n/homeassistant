@@ -1,0 +1,713 @@
+{
+  "application_credentials": {
+    "description": "Oznaka client secret se ignori\u0161e, unesite bilo koju vrednost. Pratite [uputstva za pode\u0161avanje]({more_info_url}) da biste dobili Client ID."
+  },
+  "config": {
+    "abort": {
+      "already_configured": "Ure\u0111aj je ve\u0107 pode\u0161en",
+      "missing_configuration": "Komponenta nije pode\u0161ena. Molimo pratite uputstva u dokumentaciji.",
+      "unknown": "Neo\u010dekivana gre\u0161ka"
+    },
+    "create_entry": {
+      "default": "Uspe\u0161na prijava"
+    },
+    "step": {
+      "pick_implementation": {
+        "title": "Izbor na\u010dina prijave"
+      },
+      "reauth_confirm": {
+        "description": "ViCare integracija zahteva da se ponovo prijavite na va\u0161 nalog.",
+        "title": "Prijava je istekla za {name}"
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "burner": {
+        "name": "Gorionik"
+      },
+      "child_safety_lock_mode": {
+        "name": "De\u010dija sigurnosna brava"
+      },
+      "circulation_pump": {
+        "name": "Cirkulaciona pumpa"
+      },
+      "compressor": {
+        "name": "Kompresor"
+      },
+      "domestic_hot_water_charging": {
+        "name": "Punjenje tople vode"
+      },
+      "domestic_hot_water_circulation_pump": {
+        "name": "Cirkulaciona pumpa tople vode"
+      },
+      "domestic_hot_water_pump": {
+        "name": "Pumpa tople vode"
+      },
+      "frost_protection": {
+        "name": "Za\u0161tita od smrzavanja"
+      },
+      "identification_mode": {
+        "name": "Re\u017eim identifikacije"
+      },
+      "mounting_mode": {
+        "name": "Re\u017eim monta\u017ee"
+      },
+      "one_time_charge": {
+        "name": "Jednokratno zagrevanje"
+      },
+      "solar_pump": {
+        "name": "Solarna pumpa"
+      },
+      "valve": {
+        "name": "Ventil"
+      },
+      "ventilation_frost_protection": {
+        "name": "Za\u0161tita ventilacije od smrzavanja"
+      }
+    },
+    "button": {
+      "activate_onetimecharge": {
+        "name": "Aktiviraj jednokratno zagrevanje"
+      },
+      "deactivate_onetimecharge": {
+        "name": "Deaktiviraj jednokratno zagrevanje"
+      }
+    },
+    "climate": {
+      "heating": {
+        "name": "Grejanje"
+      }
+    },
+    "fan": {
+      "ventilation": {
+        "name": "Ventilacija",
+        "state_attributes": {
+          "preset_mode": {
+            "state": {
+              "permanent": "Stalno",
+              "sensor_driven": "Vo\u0111eno senzorom",
+              "sensor_override": "Raspored sa senzorskim premo\u0161\u0107avanjem",
+              "standard": "Minimalno",
+              "standby": "Pripravnost",
+              "ventilation": "Raspored"
+            }
+          }
+        }
+      }
+    },
+    "number": {
+      "comfort_cooling_temperature": {
+        "name": "Komforna temperatura hla\u0111enja"
+      },
+      "comfort_heating_temperature": {
+        "name": "Komforna temperatura grejanja"
+      },
+      "comfort_temperature": {
+        "name": "Komforna temperatura"
+      },
+      "dhw_hysteresis_switch_off": {
+        "name": "Isklju\u010denje tople vode (histerezis)"
+      },
+      "dhw_hysteresis_switch_on": {
+        "name": "Uklju\u010denje tople vode (histerezis)"
+      },
+      "dhw_secondary_temperature": {
+        "name": "Temperatura sekundara tople vode"
+      },
+      "dhw_temperature": {
+        "name": "Temperatura tople vode"
+      },
+      "heating_curve_shift": {
+        "name": "Pomeraj krive grejanja"
+      },
+      "heating_curve_slope": {
+        "name": "Nagib krive grejanja"
+      },
+      "normal_cooling_temperature": {
+        "name": "Normalna temperatura hla\u0111enja"
+      },
+      "normal_heating_temperature": {
+        "name": "Normalna temperatura grejanja"
+      },
+      "normal_temperature": {
+        "name": "Normalna temperatura"
+      },
+      "reduced_cooling_temperature": {
+        "name": "Smanjena temperatura hla\u0111enja"
+      },
+      "reduced_heating_temperature": {
+        "name": "Sni\u017eena temperatura grejanja"
+      },
+      "reduced_temperature": {
+        "name": "Sni\u017eena temperatura"
+      }
+    },
+    "select": {
+      "dhw_operating_mode": {
+        "name": "Re\u017eim rada tople vode",
+        "state": {
+          "efficient": "Efikasan",
+          "efficient_with_min_comfort": "Efikasan uz minimalnu udobnost",
+          "off": "Isklju\u010deno"
+        }
+      }
+    },
+    "sensor": {
+      "active_mode": {
+        "name": "Re\u017eim",
+        "state": {
+          "cooling": "Hla\u0111enje",
+          "heating": "Grejanje",
+          "standby": "Pripravnost"
+        }
+      },
+      "boiler_supply_temperature": {
+        "name": "Temperatura polaza kotla"
+      },
+      "boiler_temperature": {
+        "name": "Temperatura kotla"
+      },
+      "buffer_bottom_temperature": {
+        "name": "Temperatura dna bafera"
+      },
+      "buffer_main_temperature": {
+        "name": "Glavna temperatura bafera"
+      },
+      "buffer_mid_bottom_temperature": {
+        "name": "Temperatura donje sredine bafera"
+      },
+      "buffer_mid_top_temperature": {
+        "name": "Temperatura gornje sredine bafera"
+      },
+      "buffer_middle_temperature": {
+        "name": "Temperatura sredine bafera"
+      },
+      "buffer_top_temperature": {
+        "name": "Temperatura vrha bafera"
+      },
+      "burner_hours": {
+        "name": "Radni sati gorionika"
+      },
+      "burner_modulation": {
+        "name": "Modulacija gorionika"
+      },
+      "burner_starts": {
+        "name": "Broj uklju\u010divanja gorionika"
+      },
+      "collector_temperature": {
+        "name": "Temperatura solarnog kolektora"
+      },
+      "compressor_hours": {
+        "name": "Radni sati kompresora"
+      },
+      "compressor_hours_loadclass1": {
+        "name": "Radni sati kompresora \u2013 klasa optere\u0107enja 1"
+      },
+      "compressor_hours_loadclass2": {
+        "name": "Radni sati kompresora \u2013 klasa optere\u0107enja 2"
+      },
+      "compressor_hours_loadclass3": {
+        "name": "Radni sati kompresora \u2013 klasa optere\u0107enja 3"
+      },
+      "compressor_hours_loadclass4": {
+        "name": "Radni sati kompresora \u2013 klasa optere\u0107enja 4"
+      },
+      "compressor_hours_loadclass5": {
+        "name": "Radni sati kompresora \u2013 klasa optere\u0107enja 5"
+      },
+      "compressor_inlet_pressure": {
+        "name": "Pritisak na ulazu kompresora"
+      },
+      "compressor_inlet_temperature": {
+        "name": "Temperatura na ulazu kompresora"
+      },
+      "compressor_modulation": {
+        "name": "Modulacija kompresora"
+      },
+      "compressor_outlet_pressure": {
+        "name": "Pritisak na izlazu kompresora"
+      },
+      "compressor_outlet_temperature": {
+        "name": "Temperatura na izlazu kompresora"
+      },
+      "compressor_phase": {
+        "name": "Faza rada kompresora",
+        "state": {
+          "cooling": "Hla\u0111enje",
+          "defrost": "Odmrzavanje",
+          "heating": "Grejanje",
+          "off": "Isklju\u010deno",
+          "passive_defrost": "Pasivno odmrzavanje",
+          "pause": "Mirovanje",
+          "preparing": "Priprema",
+          "preparing_defrost": "Priprema odmrzavanja",
+          "ready": "Mirovanje"
+        }
+      },
+      "compressor_power": {
+        "name": "Snaga kompresora"
+      },
+      "compressor_starts": {
+        "name": "Kompresor se pokre\u0107e"
+      },
+      "condenser_liquid_temperature": {
+        "name": "Temperatura te\u010dnosti u kondenzatoru"
+      },
+      "condenser_subcooling_temperature": {
+        "name": "Temperatura podhla\u0111ivanja kondenzatora"
+      },
+      "cop_cooling": {
+        "name": "Koeficijent u\u010dinka \u2013 hla\u0111enje"
+      },
+      "cop_dhw": {
+        "name": "Koeficijent u\u010dinka \u2013 sanitarna topla voda"
+      },
+      "cop_heating": {
+        "name": "Koeficijent u\u010dinka \u2013 grejanje"
+      },
+      "cop_total": {
+        "name": "Koeficijent u\u010dinka"
+      },
+      "dhw_storage_bottom_temperature": {
+        "name": "Donja temperatura tople vode"
+      },
+      "dhw_storage_middle_temperature": {
+        "name": "Srednja temperatura tople vode"
+      },
+      "dhw_storage_temperature": {
+        "name": "Temperatura tople vode u rezervoaru"
+      },
+      "dhw_storage_top_temperature": {
+        "name": "Gornja temperatura tople vode"
+      },
+      "energy_consumption_cooling_this_month": {
+        "name": "Potro\u0161nja struje za hla\u0111enje ovog meseca"
+      },
+      "energy_consumption_cooling_this_year": {
+        "name": "Potro\u0161nja struje za hla\u0111enje ove godine"
+      },
+      "energy_consumption_cooling_today": {
+        "name": "Potro\u0161nja struje za hla\u0111enje danas"
+      },
+      "energy_consumption_dhw_this_year": {
+        "name": "Potro\u0161nja energije za toplu vodu ove godine"
+      },
+      "energy_consumption_heating_this_year": {
+        "name": "Potro\u0161nja energije za grejanje ove godine"
+      },
+      "energy_dhw_summary_consumption_heating_currentday": {
+        "name": "Potro\u0161nja struje za toplu vodu danas"
+      },
+      "energy_dhw_summary_consumption_heating_currentmonth": {
+        "name": "Potro\u0161nja struje za toplu vodu ovog meseca"
+      },
+      "energy_dhw_summary_consumption_heating_currentyear": {
+        "name": "Potro\u0161nja struje za toplu vodu ove godine"
+      },
+      "energy_summary_consumption_heating_currentday": {
+        "name": "Potro\u0161nja struje za grejanje danas"
+      },
+      "energy_summary_consumption_heating_currentmonth": {
+        "name": "Potro\u0161nja struje za grejanje ovog meseca"
+      },
+      "energy_summary_consumption_heating_currentyear": {
+        "name": "Potro\u0161nja struje za grejanje ove godine"
+      },
+      "energy_summary_consumption_heating_lastsevendays": {
+        "name": "Potro\u0161nja struje za grejanje u poslednjih sedam dana"
+      },
+      "energy_summary_dhw_consumption_heating_lastsevendays": {
+        "name": "Potro\u0161nja struje za toplu vodu u poslednjih sedam dana"
+      },
+      "ess_charge_total": {
+        "name": "Ukupno punjenje baterije"
+      },
+      "ess_discharge_this_month": {
+        "name": "Pra\u017enjenje baterije ovog meseca"
+      },
+      "ess_discharge_this_week": {
+        "name": "Pra\u017enjenje baterije ove nedelje"
+      },
+      "ess_discharge_this_year": {
+        "name": "Pra\u017enjenje baterije ove godine"
+      },
+      "ess_discharge_today": {
+        "name": "Pra\u017enjenje baterije danas"
+      },
+      "ess_discharge_total": {
+        "name": "Ukupno pra\u017enjenje baterije"
+      },
+      "ess_power_current": {
+        "name": "Snaga baterije"
+      },
+      "ess_state": {
+        "name": "Stanje baterije",
+        "state": {
+          "charge": "Punjenje",
+          "discharge": "Pra\u017enjenje",
+          "standby": "Pripravnost"
+        }
+      },
+      "evaporator_liquid_temperature": {
+        "name": "Temperatura te\u010dnosti u ispariva\u010du"
+      },
+      "evaporator_overheat_temperature": {
+        "name": "Temperatura pregrevanja ispariva\u010da"
+      },
+      "exhaust_humidity": {
+        "name": "Vla\u017enost izduvnog vazduha"
+      },
+      "exhaust_temperature": {
+        "name": "Temperatura izduvnog vazduha"
+      },
+      "extract_humidity": {
+        "name": "Vla\u017enost odlaznog vazduha"
+      },
+      "extract_temperature": {
+        "name": "Temperatura odlaznog vazduha"
+      },
+      "filter_hours": {
+        "name": "Radni sati filtera"
+      },
+      "filter_overdue_hours": {
+        "name": "Prekora\u010deni radni sati filtera"
+      },
+      "filter_remaining_hours": {
+        "name": "Preostali radni sati filtera"
+      },
+      "fuel_need": {
+        "name": "Potreba za gorivom"
+      },
+      "gas_consumption_fuelcell_this_month": {
+        "name": "Mese\u010dna potro\u0161nja gasa gorivne \u0107elije"
+      },
+      "gas_consumption_fuelcell_this_week": {
+        "name": "Nedeljna potro\u0161nja gasa gorivne \u0107elije"
+      },
+      "gas_consumption_fuelcell_this_year": {
+        "name": "Godi\u0161nja potro\u0161nja gasa gorivne \u0107elije"
+      },
+      "gas_consumption_fuelcell_today": {
+        "name": "Dnevna potro\u0161nja gasa gorivne \u0107elije"
+      },
+      "gas_consumption_heating_this_month": {
+        "name": "Mese\u010dna potro\u0161nja gasa za grejanje"
+      },
+      "gas_consumption_heating_this_week": {
+        "name": "Nedeljna potro\u0161nja gasa za grejanje"
+      },
+      "gas_consumption_heating_this_year": {
+        "name": "Godi\u0161nja potro\u0161nja gasa za grejanje"
+      },
+      "gas_consumption_heating_today": {
+        "name": "Dnevna potro\u0161nja gasa za grejanje"
+      },
+      "gas_consumption_total_this_month": {
+        "name": "Mese\u010dna potro\u0161nja gasa"
+      },
+      "gas_consumption_total_this_week": {
+        "name": "Nedeljna potro\u0161nja gasa"
+      },
+      "gas_consumption_total_this_year": {
+        "name": "Godi\u0161nja potro\u0161nja gasa"
+      },
+      "gas_consumption_total_today": {
+        "name": "Dnevna potro\u0161nja gasa"
+      },
+      "gas_summary_consumption_heating_currentday": {
+        "name": "Dnevna potro\u0161nja gasa za grejanje"
+      },
+      "gas_summary_consumption_heating_currentmonth": {
+        "name": "Mese\u010dna potro\u0161nja gasa za grejanje"
+      },
+      "gas_summary_consumption_heating_currentyear": {
+        "name": "Godi\u0161nja potro\u0161nja gasa za grejanje"
+      },
+      "gas_summary_consumption_heating_lastsevendays": {
+        "name": "Potro\u0161nja gasa za grejanje u poslednjih sedam dana"
+      },
+      "heating_rod_hours": {
+        "name": "Radni sati greja\u010da"
+      },
+      "heating_rod_starts": {
+        "name": "Uklju\u010divanja greja\u010da"
+      },
+      "hot_gas_pressure": {
+        "name": "Pritisak vrelog gasa"
+      },
+      "hot_gas_temperature": {
+        "name": "Temperatura vrelog gasa"
+      },
+      "hotwater_gas_consumption_heating_this_month": {
+        "name": "Mese\u010dna potro\u0161nja gasa za toplu vodu"
+      },
+      "hotwater_gas_consumption_heating_this_week": {
+        "name": "Nedeljna potro\u0161nja gasa za toplu vodu"
+      },
+      "hotwater_gas_consumption_heating_this_year": {
+        "name": "Godi\u0161nja potro\u0161nja gasa za toplu vodu"
+      },
+      "hotwater_gas_consumption_today": {
+        "name": "Dnevna potro\u0161nja gasa za toplu vodu"
+      },
+      "hotwater_gas_summary_consumption_heating_currentday": {
+        "name": "Dnevna potro\u0161nja gasa za toplu vodu"
+      },
+      "hotwater_gas_summary_consumption_heating_currentmonth": {
+        "name": "Mese\u010dna potro\u0161nja gasa za toplu vodu"
+      },
+      "hotwater_gas_summary_consumption_heating_currentyear": {
+        "name": "Godi\u0161nja potro\u0161nja gasa za toplu vodu"
+      },
+      "hotwater_gas_summary_consumption_heating_lastsevendays": {
+        "name": "Potro\u0161nja gasa za toplu vodu u poslednjih sedam dana"
+      },
+      "hotwater_max_temperature": {
+        "name": "Maksimalna temperatura tople vode"
+      },
+      "hotwater_min_temperature": {
+        "name": "Minimalna temperatura tople vode"
+      },
+      "hotwater_out_temperature": {
+        "name": "Izlazna temperatura tople vode"
+      },
+      "hydraulic_separator_temperature": {
+        "name": "Temperatura hidrauli\u010dnog separatora"
+      },
+      "inverter_current": {
+        "name": "Struja invertera"
+      },
+      "inverter_power": {
+        "name": "Snaga invertera"
+      },
+      "inverter_temperature": {
+        "name": "Temperatura invertera"
+      },
+      "liquid_gas_temperature": {
+        "name": "Temperatura te\u010dnog gasa"
+      },
+      "outside_humidity": {
+        "name": "Spolja\u0161nja vla\u017enost"
+      },
+      "outside_temperature": {
+        "name": "Spolja\u0161nja temperatura"
+      },
+      "pcc_energy_consumption": {
+        "name": "Energija preuzeta iz mre\u017ee"
+      },
+      "pcc_energy_feed_in": {
+        "name": "Energija predata mre\u017ei"
+      },
+      "pcc_transfer_power_exchange": {
+        "name": "Razmena snage sa mre\u017eom"
+      },
+      "photovoltaic_energy_production_this_month": {
+        "name": "Mese\u010dna proizvodnja PV energije"
+      },
+      "photovoltaic_energy_production_this_week": {
+        "name": "Nedeljna proizvodnja PV energije"
+      },
+      "photovoltaic_energy_production_this_year": {
+        "name": "Godi\u0161nja proizvodnja PV energije"
+      },
+      "photovoltaic_energy_production_today": {
+        "name": "Dnevna proizvodnja PV energije"
+      },
+      "photovoltaic_energy_production_total": {
+        "name": "Ukupna proizvodnja PV energije"
+      },
+      "photovoltaic_power_production_current": {
+        "name": "PV snaga"
+      },
+      "photovoltaic_status": {
+        "name": "PV status",
+        "state": {
+          "production": "Proizvodnja",
+          "ready": "Pripravnost"
+        }
+      },
+      "power_consumption_this_month": {
+        "name": "Mese\u010dna potro\u0161nja struje"
+      },
+      "power_consumption_this_week": {
+        "name": "Nedeljna potro\u0161nja struje"
+      },
+      "power_consumption_this_year": {
+        "name": "Godi\u0161nja potro\u0161nja struje"
+      },
+      "power_consumption_today": {
+        "name": "Dnevna potro\u0161nja struje"
+      },
+      "power_production_current": {
+        "name": "Trenutna snaga proizvodnje"
+      },
+      "power_production_this_month": {
+        "name": "Mese\u010dna proizvodnja energije"
+      },
+      "power_production_this_week": {
+        "name": "Nedeljna proizvodnja energije"
+      },
+      "power_production_this_year": {
+        "name": "Godi\u0161nja proizvodnja energije"
+      },
+      "power_production_today": {
+        "name": "Dnevna proizvodnja energije"
+      },
+      "primary_circuit_pump_rotation": {
+        "name": "Rotacija pumpe primarnog kola"
+      },
+      "primary_circuit_return_temperature": {
+        "name": "Povratna temperatura primarnog kruga"
+      },
+      "primary_circuit_supply_temperature": {
+        "name": "Temperatura polaza primarnog kruga"
+      },
+      "return_temperature": {
+        "name": "Temperatura povrata"
+      },
+      "secondary_circuit_return_temperature": {
+        "name": "Temperatura povrata drugog kruga"
+      },
+      "secondary_circuit_supply_temperature": {
+        "name": "Temperatura polaza drugog kruga"
+      },
+      "solar_power_production_this_month": {
+        "name": "Mese\u010dna solarna proizvodnja"
+      },
+      "solar_power_production_this_week": {
+        "name": "Nedeljna solarna proizvodnja"
+      },
+      "solar_power_production_this_year": {
+        "name": "Godi\u0161nja solarna proizvodnja"
+      },
+      "solar_power_production_today": {
+        "name": "Dnevna solarna proizvodnja"
+      },
+      "solar_storage_temperature": {
+        "name": "Temperatura solarnog rezervoara"
+      },
+      "spf_dhw": {
+        "name": "Sezonski faktor pripreme tople vode"
+      },
+      "spf_heating": {
+        "name": "Sezonski faktor grejanja"
+      },
+      "spf_total": {
+        "name": "Sezonski faktor efikasnosti"
+      },
+      "suction_gas_pressure": {
+        "name": "Pritisak usisnog gasa"
+      },
+      "suction_gas_temperature": {
+        "name": "Temperatura usisnog gasa"
+      },
+      "supply_fan_hours": {
+        "name": "Radni sati dovodnog ventilatora"
+      },
+      "supply_fan_speed": {
+        "name": "Brzina dovodnog ventilatora"
+      },
+      "supply_humidity": {
+        "name": "Vla\u017enost dovodnog vazduha"
+      },
+      "supply_pressure": {
+        "name": "Pritisak polaza"
+      },
+      "supply_temperature": {
+        "name": "Temperatura polaza"
+      },
+      "target_temperature": {
+        "name": "Ciljana temperatura"
+      },
+      "valve_position": {
+        "name": "Polo\u017eaj ventila"
+      },
+      "ventilation_input_volumeflow": {
+        "name": "Protok vazduha na ulazu ventilacije"
+      },
+      "ventilation_level": {
+        "name": "Nivo ventilacije",
+        "state": {
+          "levelfour": "4",
+          "levelone": "1",
+          "levelthree": "3",
+          "leveltwo": "2",
+          "standby": "Pripravnost"
+        }
+      },
+      "ventilation_output_volumeflow": {
+        "name": "Protok vazduha na izlazu ventilacije"
+      },
+      "ventilation_reason": {
+        "name": "Razlog ventilacije",
+        "state": {
+          "forcedlevelfour": "Forsirano zagrevanje",
+          "permanent": "Stalno",
+          "schedule": "Raspored",
+          "sensordriven": "Vo\u0111eno senzorom",
+          "sensoroverride": "Premo\u0161\u0107avanje senzorom",
+          "silent": "Ne\u010dujno",
+          "standby": "Pripravnost"
+        }
+      },
+      "volumetric_flow": {
+        "name": "Zapreminski protok"
+      },
+      "zigbee_signal_strength": {
+        "name": "Ja\u010dina signala"
+      }
+    },
+    "switch": {
+      "quickmode_comfort": {
+        "name": "Intenzivno"
+      },
+      "quickmode_eco": {
+        "name": "Eko"
+      },
+      "quickmode_forced_level_four": {
+        "name": "Poja\u010dano"
+      },
+      "quickmode_silent": {
+        "name": "Tiho"
+      }
+    },
+    "water_heater": {
+      "domestic_hot_water": {
+        "name": "Topla voda"
+      }
+    }
+  },
+  "exceptions": {
+    "program_not_activated": {
+      "message": "Nije mogu\u0107e aktivirati ViCare program {program}"
+    },
+    "program_not_deactivated": {
+      "message": "Nije mogu\u0107e deaktivirati ViCare program {program}"
+    },
+    "program_unknown": {
+      "message": "Nije mogu\u0107e prevesti re\u017eim {preset} u va\u017ee\u0107i ViCare program"
+    },
+    "quickmode_not_activated": {
+      "message": "Nije mogu\u0107e aktivirati ViCare brzi re\u017eim {quickmode}. Samo jedan brzi re\u017eim mo\u017ee biti aktivan u isto vreme; drugi je mo\u017eda ve\u0107 pokrenut."
+    }
+  },
+  "issues": {
+    "update_redirect_uri": {
+      "description": "ViCare je pre\u0161ao na OAuth2 autentifikaciju. Va\u0161a postoje\u0107a sesija \u0107e nastaviti da radi, ali ako ikada bude potrebna ponovna autentifikacija, morate prvo dodati URI za preusmeravanje (redirect URI) svom API klijentu.\n\nIdite na [Viessmann Developer Portal]({viessmann_developer_portal}) i dodajte slede\u0107i redirect URI svom API klijentu:\n\n`{redirect_url}`\n\nOvo nije hitno, ali preporu\u010dujemo da to uradite uskoro.",
+      "title": "A\u017euriranje API klijenta na Viessmann Developer portalu"
+    }
+  },
+  "services": {
+    "set_vicare_mode": {
+      "description": "Postavlja re\u017eim rada klima ure\u0111aja prema definiciji kompanije Viessmann.",
+      "fields": {
+        "vicare_mode": {
+          "description": "Za podr\u017eane vrednosti, pogledajte atribut vicare_modes entiteta klime.",
+          "name": "ViCare re\u017eim"
+        }
+      },
+      "name": "Podesi ViCare re\u017eim"
+    }
+  }
+}

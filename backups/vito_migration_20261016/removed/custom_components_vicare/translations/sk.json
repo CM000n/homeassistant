@@ -1,0 +1,713 @@
+{
+  "application_credentials": {
+    "description": "**Tajn\u00fd k\u00f3d klienta** sa ignoruje, zadajte \u013eubovo\u013en\u00fa hodnotu. Postupujte pod\u013ea [pokynov na nastavenie]({more_info_url}) na z\u00edskanie ID klienta."
+  },
+  "config": {
+    "abort": {
+      "already_configured": "Zariadenie u\u017e je nakonfigurovan\u00e9",
+      "missing_configuration": "Komponent nie je nakonfigurovan\u00fd. Postupujte pod\u013ea dokument\u00e1cie.",
+      "unknown": "Neo\u010dak\u00e1van\u00e1 chyba"
+    },
+    "create_entry": {
+      "default": "\u00daspe\u0161ne overen\u00e9"
+    },
+    "step": {
+      "pick_implementation": {
+        "title": "Vyberte met\u00f3du overenia"
+      },
+      "reauth_confirm": {
+        "description": "Integr\u00e1cia ViCare vy\u017eaduje op\u00e4tovn\u00e9 overenie v\u00e1\u0161ho \u00fa\u010dtu.",
+        "title": "Vypr\u0161ala platnos\u0165 overenia pre {name}"
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "burner": {
+        "name": "Hor\u00e1k"
+      },
+      "child_safety_lock_mode": {
+        "name": "Detsk\u00e1 bezpe\u010dnostn\u00e1 poistka"
+      },
+      "circulation_pump": {
+        "name": "Obehov\u00e9 \u010derpadlo"
+      },
+      "compressor": {
+        "name": "Kompresor"
+      },
+      "domestic_hot_water_charging": {
+        "name": "Nab\u00edjanie T\u00daV"
+      },
+      "domestic_hot_water_circulation_pump": {
+        "name": "Obehov\u00e9 \u010derpadlo T\u00daV"
+      },
+      "domestic_hot_water_pump": {
+        "name": "\u010cerpadlo T\u00daV"
+      },
+      "frost_protection": {
+        "name": "Ochrana proti mrazu"
+      },
+      "identification_mode": {
+        "name": "Re\u017eim identifik\u00e1cie"
+      },
+      "mounting_mode": {
+        "name": "Re\u017eim mont\u00e1\u017ee"
+      },
+      "one_time_charge": {
+        "name": "Jednorazov\u00fd poplatok"
+      },
+      "solar_pump": {
+        "name": "Sol\u00e1rne \u010derpadlo"
+      },
+      "valve": {
+        "name": "Ventil"
+      },
+      "ventilation_frost_protection": {
+        "name": "Ochrana vetrania pred mrazom"
+      }
+    },
+    "button": {
+      "activate_onetimecharge": {
+        "name": "Aktivujte jednorazov\u00e9 nab\u00edjanie"
+      },
+      "deactivate_onetimecharge": {
+        "name": "Deaktiv\u00e1cia jednorazov\u00e9ho poplatku"
+      }
+    },
+    "climate": {
+      "heating": {
+        "name": "Vykurovanie"
+      }
+    },
+    "fan": {
+      "ventilation": {
+        "name": "Vetranie",
+        "state_attributes": {
+          "preset_mode": {
+            "state": {
+              "permanent": "Trval\u00fd",
+              "sensor_driven": "Sn\u00edma\u010dom riaden\u00e9",
+              "sensor_override": "Pl\u00e1n s potla\u010den\u00edm sn\u00edma\u010da",
+              "standard": "Minim\u00e1lne",
+              "standby": "Pohotovostn\u00fd re\u017eim",
+              "ventilation": "Pl\u00e1novanie"
+            }
+          }
+        }
+      }
+    },
+    "number": {
+      "comfort_cooling_temperature": {
+        "name": "Komfortn\u00e1 teplota chladenia"
+      },
+      "comfort_heating_temperature": {
+        "name": "Komfortn\u00e1 teplota vykurovania"
+      },
+      "comfort_temperature": {
+        "name": "Komfortn\u00e1 teplota"
+      },
+      "dhw_hysteresis_switch_off": {
+        "name": "Vypnutie hyster\u00e9zy T\u00daV"
+      },
+      "dhw_hysteresis_switch_on": {
+        "name": "Zapnutie hyster\u00e9zie T\u00daV"
+      },
+      "dhw_secondary_temperature": {
+        "name": "Sekund\u00e1rna teplota T\u00daV"
+      },
+      "dhw_temperature": {
+        "name": "Teplota T\u00daV"
+      },
+      "heating_curve_shift": {
+        "name": "Posun vykurovacej krivky"
+      },
+      "heating_curve_slope": {
+        "name": "Sklon vykurovacej krivky"
+      },
+      "normal_cooling_temperature": {
+        "name": "Norm\u00e1lna teplota chladenia"
+      },
+      "normal_heating_temperature": {
+        "name": "Norm\u00e1lna teplota vykurovania"
+      },
+      "normal_temperature": {
+        "name": "Norm\u00e1lna teplota"
+      },
+      "reduced_cooling_temperature": {
+        "name": "Zn\u00ed\u017een\u00e1 teplota chladenia"
+      },
+      "reduced_heating_temperature": {
+        "name": "Zn\u00ed\u017een\u00e1 teplota vykurovania"
+      },
+      "reduced_temperature": {
+        "name": "Zn\u00ed\u017een\u00e1 teplota"
+      }
+    },
+    "select": {
+      "dhw_operating_mode": {
+        "name": "Prev\u00e1dzkov\u00fd re\u017eim T\u00daV",
+        "state": {
+          "efficient": "Efekt\u00edvne",
+          "efficient_with_min_comfort": "Efekt\u00edvne s minim\u00e1lnym komfortom",
+          "off": "Neakt\u00edvny"
+        }
+      }
+    },
+    "sensor": {
+      "active_mode": {
+        "name": "Re\u017eim",
+        "state": {
+          "cooling": "Chladenie",
+          "heating": "K\u00farenie",
+          "standby": "Pohotovostn\u00fd re\u017eim"
+        }
+      },
+      "boiler_supply_temperature": {
+        "name": "Teplota pr\u00edvodu kotla"
+      },
+      "boiler_temperature": {
+        "name": "Teplota kotla"
+      },
+      "buffer_bottom_temperature": {
+        "name": "Teplota dna z\u00e1sobn\u00edka"
+      },
+      "buffer_main_temperature": {
+        "name": "Hlavn\u00e1 teplota z\u00e1sobn\u00edka"
+      },
+      "buffer_mid_bottom_temperature": {
+        "name": "Stredn\u00e1 teplota z\u00e1sobn\u00edka"
+      },
+      "buffer_mid_top_temperature": {
+        "name": "Stredn\u00e1 horn\u00e1 teplota z\u00e1sobn\u00edka"
+      },
+      "buffer_middle_temperature": {
+        "name": "Stredn\u00e1 teplota z\u00e1sobn\u00edka"
+      },
+      "buffer_top_temperature": {
+        "name": "Horn\u00e1 teplota z\u00e1sobn\u00edka"
+      },
+      "burner_hours": {
+        "name": "Hodiny hor\u00e1ka"
+      },
+      "burner_modulation": {
+        "name": "Modul\u00e1cia hor\u00e1ka"
+      },
+      "burner_starts": {
+        "name": "Po\u010det \u0161tartov hor\u00e1ka"
+      },
+      "collector_temperature": {
+        "name": "Teplota sol\u00e1rneho kolektora"
+      },
+      "compressor_hours": {
+        "name": "Motohodiny kompresora"
+      },
+      "compressor_hours_loadclass1": {
+        "name": "Trieda za\u0165a\u017eenia kompresora v hodin\u00e1ch 1"
+      },
+      "compressor_hours_loadclass2": {
+        "name": "Trieda za\u0165a\u017eenia kompresora v hodin\u00e1ch 2"
+      },
+      "compressor_hours_loadclass3": {
+        "name": "Trieda za\u0165a\u017eenia kompresora v hodin\u00e1ch 3"
+      },
+      "compressor_hours_loadclass4": {
+        "name": "Trieda za\u0165a\u017eenia kompresora v hodin\u00e1ch 4"
+      },
+      "compressor_hours_loadclass5": {
+        "name": "Trieda za\u0165a\u017eenia kompresora v hodin\u00e1ch 5"
+      },
+      "compressor_inlet_pressure": {
+        "name": "Vstupn\u00fd tlak kompresora"
+      },
+      "compressor_inlet_temperature": {
+        "name": "Vstupn\u00e1 teplota kompresora"
+      },
+      "compressor_modulation": {
+        "name": "Modul\u00e1cia kompresora"
+      },
+      "compressor_outlet_pressure": {
+        "name": "V\u00fdstupn\u00fd tlak kompresora"
+      },
+      "compressor_outlet_temperature": {
+        "name": "V\u00fdstupn\u00e1 teplota kompresora"
+      },
+      "compressor_phase": {
+        "name": "F\u00e1za kompresora",
+        "state": {
+          "cooling": "Chladenie",
+          "defrost": "Rozmrazovanie",
+          "heating": "Vykurovanie",
+          "off": "Neakt\u00edvny",
+          "passive_defrost": "Pas\u00edvne odmrazovanie",
+          "pause": "Ne\u010dinn\u00fd",
+          "preparing": "Pr\u00edprava",
+          "preparing_defrost": "Pr\u00edprava rozmrazovania",
+          "ready": "Ne\u010dinn\u00fd"
+        }
+      },
+      "compressor_power": {
+        "name": "V\u00fdkon kompresora"
+      },
+      "compressor_starts": {
+        "name": "Po\u010det \u0161tartov kompresora"
+      },
+      "condenser_liquid_temperature": {
+        "name": "Teplota kvapaliny kondenz\u00e1tora"
+      },
+      "condenser_subcooling_temperature": {
+        "name": "Teplota podchladenia kondenz\u00e1tora"
+      },
+      "cop_cooling": {
+        "name": "Koeficient v\u00fdkonu - chladenie"
+      },
+      "cop_dhw": {
+        "name": "Koeficient v\u00fdkonu - tepl\u00e1 \u00fa\u017eitkov\u00e1 voda"
+      },
+      "cop_heating": {
+        "name": "Koeficient v\u00fdkonu - vykurovanie"
+      },
+      "cop_total": {
+        "name": "Koeficient v\u00fdkonnosti"
+      },
+      "dhw_storage_bottom_temperature": {
+        "name": "Spodn\u00e1 teplota z\u00e1sobn\u00edka T\u00daV"
+      },
+      "dhw_storage_middle_temperature": {
+        "name": "Stredn\u00e1 teplota z\u00e1sobn\u00edka T\u00daV"
+      },
+      "dhw_storage_temperature": {
+        "name": "Teplota z\u00e1sobn\u00edka T\u00daV"
+      },
+      "dhw_storage_top_temperature": {
+        "name": "Horn\u00e1 teplota z\u00e1sobn\u00edka T\u00daV"
+      },
+      "energy_consumption_cooling_this_month": {
+        "name": "Spotreba elektrickej energie pri chladen\u00ed v tomto mesiaci"
+      },
+      "energy_consumption_cooling_this_year": {
+        "name": "Spotreba elektrickej energie na chladenie v tomto roku"
+      },
+      "energy_consumption_cooling_today": {
+        "name": "Spotreba elektrickej energie pri chladen\u00ed dnes"
+      },
+      "energy_consumption_dhw_this_year": {
+        "name": "Spotreba energie T\u00daV v tomto roku"
+      },
+      "energy_consumption_heating_this_year": {
+        "name": "Spotreba energie na vykurovanie v tomto roku"
+      },
+      "energy_dhw_summary_consumption_heating_currentday": {
+        "name": "Dne\u0161n\u00e1 spotreba elektriny T\u00daV"
+      },
+      "energy_dhw_summary_consumption_heating_currentmonth": {
+        "name": "Spotreba elektriny T\u00daV tento mesiac"
+      },
+      "energy_dhw_summary_consumption_heating_currentyear": {
+        "name": "Spotreba elektriny T\u00daV v tomto roku"
+      },
+      "energy_summary_consumption_heating_currentday": {
+        "name": "Spotreba elektrickej energie na vykurovanie dnes"
+      },
+      "energy_summary_consumption_heating_currentmonth": {
+        "name": "Spotreba elektriny na vykurovanie v tomto mesiaci"
+      },
+      "energy_summary_consumption_heating_currentyear": {
+        "name": "Spotreba elektriny na vykurovanie v tomto roku"
+      },
+      "energy_summary_consumption_heating_lastsevendays": {
+        "name": "Spotreba elektrickej energie na vykurovanie trv\u00e1 sedem dn\u00ed"
+      },
+      "energy_summary_dhw_consumption_heating_lastsevendays": {
+        "name": "Spotreba elektriny T\u00daV za posledn\u00fdch sedem dn\u00ed"
+      },
+      "ess_charge_total": {
+        "name": "Celkov\u00e9 nabitie bat\u00e9rie"
+      },
+      "ess_discharge_this_month": {
+        "name": "Vyb\u00edjanie bat\u00e9rie v tomto mesiaci"
+      },
+      "ess_discharge_this_week": {
+        "name": "Vyb\u00edjanie bat\u00e9rie tento t\u00fd\u017ede\u0148"
+      },
+      "ess_discharge_this_year": {
+        "name": "Vybitie bat\u00e9rie v tomto roku"
+      },
+      "ess_discharge_today": {
+        "name": "Vybitie bat\u00e9rie dnes"
+      },
+      "ess_discharge_total": {
+        "name": "Celkov\u00e9 vybitie bat\u00e9rie"
+      },
+      "ess_power_current": {
+        "name": "V\u00fdkon bat\u00e9rie"
+      },
+      "ess_state": {
+        "name": "Stav bat\u00e9rie",
+        "state": {
+          "charge": "Nab\u00edja sa",
+          "discharge": "Vyb\u00edjanie",
+          "standby": "Pohotovostn\u00fd re\u017eim"
+        }
+      },
+      "evaporator_liquid_temperature": {
+        "name": "Teplota kvapaliny v\u00fdparn\u00edka"
+      },
+      "evaporator_overheat_temperature": {
+        "name": "Teplota prehriatia v\u00fdparn\u00edka"
+      },
+      "exhaust_humidity": {
+        "name": "Vlhkos\u0165 v\u00fdfukov\u00fdch plynov"
+      },
+      "exhaust_temperature": {
+        "name": "Teplota v\u00fdfukov\u00fdch plynov"
+      },
+      "extract_humidity": {
+        "name": "Ods\u00e1vanie vlhkosti"
+      },
+      "extract_temperature": {
+        "name": "Teplota extraktu"
+      },
+      "filter_hours": {
+        "name": "Hodiny filtra"
+      },
+      "filter_overdue_hours": {
+        "name": "Hodiny prekro\u010denia filtru"
+      },
+      "filter_remaining_hours": {
+        "name": "Zost\u00e1vaj\u00face hodiny filtra"
+      },
+      "fuel_need": {
+        "name": "Potreba paliva"
+      },
+      "gas_consumption_fuelcell_this_month": {
+        "name": "Spotreba plynu v palivov\u00fdch \u010dl\u00e1nkoch tento mesiac"
+      },
+      "gas_consumption_fuelcell_this_week": {
+        "name": "Spotreba plynu v palivov\u00fdch \u010dl\u00e1nkoch tento t\u00fd\u017ede\u0148"
+      },
+      "gas_consumption_fuelcell_this_year": {
+        "name": "Spotreba plynu palivov\u00fdch \u010dl\u00e1nkov v tomto roku"
+      },
+      "gas_consumption_fuelcell_today": {
+        "name": "Dne\u0161n\u00e1 spotreba plynu v palivov\u00fdch \u010dl\u00e1nkoch"
+      },
+      "gas_consumption_heating_this_month": {
+        "name": "Spotreba plynu na k\u00farenie v tomto mesiaci"
+      },
+      "gas_consumption_heating_this_week": {
+        "name": "Spotreba vykurovacieho plynu tento t\u00fd\u017ede\u0148"
+      },
+      "gas_consumption_heating_this_year": {
+        "name": "Spotreba vykurovacieho plynu v tomto roku"
+      },
+      "gas_consumption_heating_today": {
+        "name": "Spotreba vykurovacieho plynu dnes"
+      },
+      "gas_consumption_total_this_month": {
+        "name": "Spotreba plynu v tomto mesiaci"
+      },
+      "gas_consumption_total_this_week": {
+        "name": "Spotreba plynu tento t\u00fd\u017ede\u0148"
+      },
+      "gas_consumption_total_this_year": {
+        "name": "Spotreba plynu v tomto roku"
+      },
+      "gas_consumption_total_today": {
+        "name": "Spotreba plynu dnes"
+      },
+      "gas_summary_consumption_heating_currentday": {
+        "name": "Spotreba vykurovacieho plynu dnes"
+      },
+      "gas_summary_consumption_heating_currentmonth": {
+        "name": "Spotreba plynu na k\u00farenie v tomto mesiaci"
+      },
+      "gas_summary_consumption_heating_currentyear": {
+        "name": "Spotreba vykurovacieho plynu v tomto roku"
+      },
+      "gas_summary_consumption_heating_lastsevendays": {
+        "name": "Spotreba vykurovacieho plynu za posledn\u00fdch sedem dn\u00ed"
+      },
+      "heating_rod_hours": {
+        "name": "Hodiny vykurovacej ty\u010de"
+      },
+      "heating_rod_starts": {
+        "name": "Spust\u00ed sa vykurovacia ty\u010d"
+      },
+      "hot_gas_pressure": {
+        "name": "Tlak hor\u00faceho plynu"
+      },
+      "hot_gas_temperature": {
+        "name": "Teplota hor\u00faceho plynu"
+      },
+      "hotwater_gas_consumption_heating_this_month": {
+        "name": "Spotreba plynu T\u00daV tento mesiac"
+      },
+      "hotwater_gas_consumption_heating_this_week": {
+        "name": "Spotreba plynu T\u00daV tento t\u00fd\u017ede\u0148"
+      },
+      "hotwater_gas_consumption_heating_this_year": {
+        "name": "Spotreba plynu T\u00daV v tomto roku"
+      },
+      "hotwater_gas_consumption_today": {
+        "name": "Spotreba plynu T\u00daV dnes"
+      },
+      "hotwater_gas_summary_consumption_heating_currentday": {
+        "name": "Spotreba plynu T\u00daV dnes"
+      },
+      "hotwater_gas_summary_consumption_heating_currentmonth": {
+        "name": "Spotreba plynu T\u00daV tento mesiac"
+      },
+      "hotwater_gas_summary_consumption_heating_currentyear": {
+        "name": "Spotreba plynu T\u00daV v tomto roku"
+      },
+      "hotwater_gas_summary_consumption_heating_lastsevendays": {
+        "name": "Spotreba plynu na pr\u00edpravu teplej vody za posledn\u00fdch sedem dn\u00ed"
+      },
+      "hotwater_max_temperature": {
+        "name": "Maxim\u00e1lna teplota T\u00daV"
+      },
+      "hotwater_min_temperature": {
+        "name": "Minim\u00e1lna teplota T\u00daV"
+      },
+      "hotwater_out_temperature": {
+        "name": "Teplota v\u00fdstupu T\u00daV"
+      },
+      "hydraulic_separator_temperature": {
+        "name": "Teplota hydraulick\u00e9ho separ\u00e1tora"
+      },
+      "inverter_current": {
+        "name": "Pr\u00fad meni\u010da"
+      },
+      "inverter_power": {
+        "name": "V\u00fdkon meni\u010da"
+      },
+      "inverter_temperature": {
+        "name": "Teplota meni\u010da"
+      },
+      "liquid_gas_temperature": {
+        "name": "Teplota kvapaln\u00e9ho plynu"
+      },
+      "outside_humidity": {
+        "name": "Vonkaj\u0161ia vlhkos\u0165"
+      },
+      "outside_temperature": {
+        "name": "Vonkaj\u0161ia teplota"
+      },
+      "pcc_energy_consumption": {
+        "name": "Import energie zo siete"
+      },
+      "pcc_energy_feed_in": {
+        "name": "Export energie do siete"
+      },
+      "pcc_transfer_power_exchange": {
+        "name": "V\u00fdmena energie so sie\u0165ou"
+      },
+      "photovoltaic_energy_production_this_month": {
+        "name": "V\u00fdroba FV energie tento mesiac"
+      },
+      "photovoltaic_energy_production_this_week": {
+        "name": "V\u00fdroba FV energie tento t\u00fd\u017ede\u0148"
+      },
+      "photovoltaic_energy_production_this_year": {
+        "name": "V\u00fdroba FV energie v tomto roku"
+      },
+      "photovoltaic_energy_production_today": {
+        "name": "V\u00fdroba FV energie dnes"
+      },
+      "photovoltaic_energy_production_total": {
+        "name": "V\u00fdroba FV energie spolu"
+      },
+      "photovoltaic_power_production_current": {
+        "name": "FV v\u00fdkon"
+      },
+      "photovoltaic_status": {
+        "name": "Stav FV",
+        "state": {
+          "production": "V\u00fdroba",
+          "ready": "Pohotovostn\u00fd re\u017eim"
+        }
+      },
+      "power_consumption_this_month": {
+        "name": "Spotreba elektriny v tomto mesiaci"
+      },
+      "power_consumption_this_week": {
+        "name": "Spotreba elektriny tento t\u00fd\u017ede\u0148"
+      },
+      "power_consumption_this_year": {
+        "name": "Spotreba elektriny v tomto roku"
+      },
+      "power_consumption_today": {
+        "name": "Dne\u0161n\u00e1 spotreba elektriny"
+      },
+      "power_production_current": {
+        "name": "V\u00fdroba energie aktu\u00e1lna"
+      },
+      "power_production_this_month": {
+        "name": "V\u00fdroba energie tento mesiac"
+      },
+      "power_production_this_week": {
+        "name": "V\u00fdroba energie tento t\u00fd\u017ede\u0148"
+      },
+      "power_production_this_year": {
+        "name": "V\u00fdroba energie v tomto roku"
+      },
+      "power_production_today": {
+        "name": "V\u00fdroba energie dnes"
+      },
+      "primary_circuit_pump_rotation": {
+        "name": "Ot\u00e1\u010danie \u010derpadla prim\u00e1rneho okruhu"
+      },
+      "primary_circuit_return_temperature": {
+        "name": "Teplota spiato\u010dky prim\u00e1rneho okruhu"
+      },
+      "primary_circuit_supply_temperature": {
+        "name": "Teplota pr\u00edvodu prim\u00e1rneho okruhu"
+      },
+      "return_temperature": {
+        "name": "Teplota spiato\u010dky"
+      },
+      "secondary_circuit_return_temperature": {
+        "name": "Teplota spiato\u010dky sekund\u00e1rneho okruhu"
+      },
+      "secondary_circuit_supply_temperature": {
+        "name": "Teplota pr\u00edvodu sekund\u00e1rneho okruhu"
+      },
+      "solar_power_production_this_month": {
+        "name": "V\u00fdroba slne\u010dnej energie tento mesiac"
+      },
+      "solar_power_production_this_week": {
+        "name": "V\u00fdroba slne\u010dnej energie tento t\u00fd\u017ede\u0148"
+      },
+      "solar_power_production_this_year": {
+        "name": "V\u00fdroba sol\u00e1rnej energie v tomto roku"
+      },
+      "solar_power_production_today": {
+        "name": "V\u00fdroba sol\u00e1rnej energie dnes"
+      },
+      "solar_storage_temperature": {
+        "name": "Teplota sol\u00e1rneho akumul\u00e1tora"
+      },
+      "spf_dhw": {
+        "name": "Sez\u00f3nny faktor v\u00fdkonu - tepl\u00e1 \u00fa\u017eitkov\u00e1 voda"
+      },
+      "spf_heating": {
+        "name": "Sez\u00f3nny faktor v\u00fdkonu - k\u00farenie"
+      },
+      "spf_total": {
+        "name": "Sez\u00f3nny faktor v\u00fdkonu"
+      },
+      "suction_gas_pressure": {
+        "name": "Tlak nas\u00e1van\u00e9ho plynu"
+      },
+      "suction_gas_temperature": {
+        "name": "Teplota nas\u00e1van\u00e9ho plynu"
+      },
+      "supply_fan_hours": {
+        "name": "Hodiny pr\u00edvodn\u00e9ho ventil\u00e1tora"
+      },
+      "supply_fan_speed": {
+        "name": "Ot\u00e1\u010dky nap\u00e1jacieho ventil\u00e1tora"
+      },
+      "supply_humidity": {
+        "name": "Pr\u00edvodn\u00e1 vlhkos\u0165"
+      },
+      "supply_pressure": {
+        "name": "Pr\u00edvodn\u00fd tlak"
+      },
+      "supply_temperature": {
+        "name": "Teplota pr\u00edvodu"
+      },
+      "target_temperature": {
+        "name": "Cie\u013eov\u00e1 teplota"
+      },
+      "valve_position": {
+        "name": "Poloha ventilu"
+      },
+      "ventilation_input_volumeflow": {
+        "name": "Vstupn\u00fd objemov\u00fd prietok vetrania"
+      },
+      "ventilation_level": {
+        "name": "\u00darove\u0148 vetrania",
+        "state": {
+          "levelfour": "4",
+          "levelone": "1",
+          "levelthree": "3",
+          "leveltwo": "2",
+          "standby": "Pohotovostn\u00fd re\u017eim"
+        }
+      },
+      "ventilation_output_volumeflow": {
+        "name": "Objemov\u00fd prietok ventila\u010dn\u00e9ho v\u00fdstupu"
+      },
+      "ventilation_reason": {
+        "name": "D\u00f4vod vetrania",
+        "state": {
+          "forcedlevelfour": "Zosilnenie",
+          "permanent": "Trval\u00fd",
+          "schedule": "Pl\u00e1novanie",
+          "sensordriven": "Sn\u00edma\u010dom riaden\u00e9",
+          "sensoroverride": "Potla\u010denie sn\u00edma\u010da",
+          "silent": "Tich\u00fd",
+          "standby": "Pohotovostn\u00fd re\u017eim"
+        }
+      },
+      "volumetric_flow": {
+        "name": "Objemov\u00fd prietok"
+      },
+      "zigbee_signal_strength": {
+        "name": "Sila sign\u00e1lu"
+      }
+    },
+    "switch": {
+      "quickmode_comfort": {
+        "name": "Intenz\u00edvny"
+      },
+      "quickmode_eco": {
+        "name": "Eko"
+      },
+      "quickmode_forced_level_four": {
+        "name": "Zosilnenie"
+      },
+      "quickmode_silent": {
+        "name": "Tich\u00fd"
+      }
+    },
+    "water_heater": {
+      "domestic_hot_water": {
+        "name": "Tepl\u00e1 voda pre dom\u00e1cnos\u0165"
+      }
+    }
+  },
+  "exceptions": {
+    "program_not_activated": {
+      "message": "Ned\u00e1 sa aktivova\u0165 program ViCare {program}"
+    },
+    "program_not_deactivated": {
+      "message": "Ned\u00e1 sa deaktivova\u0165 program ViCare {program}"
+    },
+    "program_unknown": {
+      "message": "Nie je mo\u017en\u00e9 prelo\u017ei\u0165 predvo\u013ebu {preset} do platn\u00e9ho programu ViCare"
+    },
+    "quickmode_not_activated": {
+      "message": "Nie je mo\u017en\u00e9 aktivova\u0165 r\u00fdchly re\u017eim ViCare {quickmode}Naraz m\u00f4\u017ee by\u0165 akt\u00edvny iba jeden r\u00fdchly re\u017eim; in\u00fd u\u017e m\u00f4\u017ee by\u0165 spusten\u00fd."
+    }
+  },
+  "issues": {
+    "update_redirect_uri": {
+      "description": "ViCare bol migrovan\u00fd na overovanie OAuth2. Va\u0161a existuj\u00faca rel\u00e1cia bude na\u010falej fungova\u0165, ale ak bude niekedy potrebn\u00e9 op\u00e4tovn\u00e9 overenie, mus\u00edte najprv do svojho klienta API prida\u0165 URI presmerovania.\n\nPrejdite na [Port\u00e1l pre v\u00fdvoj\u00e1rov Viessmann]({viessmann_developer_portal}) a pridajte nasleduj\u00faci identifik\u00e1tor URI presmerovania do svojho klienta API:\n\n`{redirect_url}`\n\nNie je to urgentn\u00e9, ale odpor\u00fa\u010dame to urobi\u0165 \u010doskoro.",
+      "title": "Aktualizujte svojho API klienta na port\u00e1li pre v\u00fdvoj\u00e1rov Viessmann"
+    }
+  },
+  "services": {
+    "set_vicare_mode": {
+      "description": "Nastav\u00ed re\u017eim klimatiza\u010dn\u00e9ho zariadenia pod\u013ea defin\u00edcie spolo\u010dnosti Viessmann.",
+      "fields": {
+        "vicare_mode": {
+          "description": "Podporovan\u00e9 hodnoty n\u00e1jdete v atrib\u00fate `vicare_modes` klimatickej entity.",
+          "name": "Re\u017eim ViCare"
+        }
+      },
+      "name": "Nastavenie re\u017eimu ViCare"
+    }
+  }
+}

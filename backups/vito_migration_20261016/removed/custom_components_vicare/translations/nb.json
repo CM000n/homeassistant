@@ -1,0 +1,35 @@
+{
+  "config": {
+    "abort": {
+      "unknown": "Uventet feil"
+    }
+  },
+  "entity": {
+    "number": {
+      "comfort_temperature": {
+        "name": "Komforttemperatur"
+      },
+      "normal_temperature": {
+        "name": "Normal temperatur"
+      },
+      "reduced_temperature": {
+        "name": "Redusert temperatur"
+      }
+    },
+    "sensor": {
+      "compressor_phase": {
+        "state": {
+          "off": "Av"
+        }
+      },
+      "zigbee_signal_strength": {
+        "name": "Signalstyrke"
+      }
+    }
+  },
+  "issues": {
+    "update_redirect_uri": {
+      "description": "ViCare har blitt migrert til OAuth2-autentisering. Den eksisterende \u00f8kten din vil fortsette \u00e5 fungere, men hvis det blir behov for ny autentisering, m\u00e5 du f\u00f8rst legge til en omdirigerings-URI i API-klienten din.\n\nG\u00e5 til [Viessmann Developer Portal]({viessmann_developer_portal}) og legg til f\u00f8lgende omdirigerings-URI i API-klienten din:\n\n`{redirect_url}`\n\nDette haster ikke, men vi anbefaler \u00e5 gj\u00f8re det snart."
+    }
+  }
+}

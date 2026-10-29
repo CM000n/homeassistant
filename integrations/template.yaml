@@ -1,6 +1,88 @@
 ---
 # https://www.home-assistant.io/integrations/template/
 template:
+  - trigger:
+      # Logik im Überblick
+      # Mai bis September (Monate 5–9): Der Sensor schaltet fest auf off.
+      # Oktober bis April (Monate 10–4):
+      # Einschalten (off -> on): 24h-Außentemperatur-Mittelwert < Schwelle und maximale Prognosetemperatur der nächsten 24h < Schwelle.
+      # Ausschalten (on -> off): 24h-Außentemperatur-Mittelwert > Schwelle oder maximale Prognosetemperatur der nächsten 24h > Schwelle.
+      # Schwellen (Standard 13,5 / 15,0 / 15,5 / 17,0 °C) sind input_number-Helfer, siehe integrations/heizperiode.yaml.
+      - platform: time_pattern
+        hours: "/1"
+      - platform: homeassistant
+        event: start
+      - platform: state
+        entity_id:
+          - input_number.heizperiode_ein_schnitt_24h
+          - input_number.heizperiode_ein_prognose_max
+          - input_number.heizperiode_aus_schnitt_24h
+          - input_number.heizperiode_aus_prognose_max
+          - input_number.heizperiode_heizgrenze
+    action:
+      - action: weather.get_forecasts
+        data:
+          type: hourly
+        target:
+          entity_id: weather.kraichtal_gochsheim
+        response_variable: forecast_data
+    binary_sensor:
+      - name: "Heizperiode Freigabe"
+        unique_id: heizperiode_freigabe
+        icon: mdi:radiator
+        state: >
+          {% set month = now().month %}
+          {% set is_heating_months = month >= 10 or month <= 4 %}
+
+          {% if not is_heating_months %}
+            false
+          {% else %}
+            {% set weather_entity = 'weather.kraichtal_gochsheim' %}
+            {% set avg_temp = states('sensor.vito_aussentemperatur_24h_mittel') | float(99) %}
+            {% set forecast_list = forecast_data[weather_entity].forecast[:24] | map(attribute='temperature') | list %}
+
+            {% if forecast_list | length > 0 and avg_temp != 99 %}
+              {% set forecast_max = forecast_list | max %}
+
+              {% if is_state('binary_sensor.heizperiode_freigabe', 'off') %}
+                {{ avg_temp < states('input_number.heizperiode_ein_schnitt_24h') | float(13.5)
+                   and forecast_max < states('input_number.heizperiode_ein_prognose_max') | float(15.0) }}
+              {% else %}
+                {{ not (avg_temp > states('input_number.heizperiode_aus_schnitt_24h') | float(15.5)
+                        or forecast_max > states('input_number.heizperiode_aus_prognose_max') | float(17.0)) }}
+              {% endif %}
+            {% else %}
+              {{ states('binary_sensor.heizperiode_freigabe') }}
+            {% endif %}
+          {% endif %}
+        attributes:
+          avg_temp: >
+            {{ states('sensor.vito_aussentemperatur_24h_mittel') | float(none) }}
+          forecast_max: >
+            {% set weather_entity = 'weather.kraichtal_gochsheim' %}
+            {% set forecast_list = forecast_data[weather_entity].forecast[:24] | map(attribute='temperature') | list %}
+            {{ forecast_list | max if forecast_list | length > 0 else none }}
+          # Shadow-Signale: laufen nur mit und beeinflussen den Schaltzustand NICHT (Auswertung: Plotly-Karte
+          # "Prognose-Signale" im Dashboard Heizung/Regelung).
+          forecast_mean_24h: >
+            {% set l = forecast_data['weather.kraichtal_gochsheim'].forecast[:24] | map(attribute='temperature') | list %}
+            {{ (l | sum / l | length) | round(2) if l | length > 0 else none }}
+          forecast_min_24h: >
+            {% set l = forecast_data['weather.kraichtal_gochsheim'].forecast[:24] | map(attribute='temperature') | list %}
+            {{ l | min if l | length > 0 else none }}
+          # 24 h Rückblick (gemessen) + 24 h Prognose, zu einem Mittel verrechnet
+          window_mean_48h: >
+            {% set l = forecast_data['weather.kraichtal_gochsheim'].forecast[:24] | map(attribute='temperature') | list %}
+            {% set past = states('sensor.vito_aussentemperatur_24h_mittel') | float(none) %}
+            {{ ((past + l | sum / l | length) / 2) | round(2) if l | length > 0 and past is not none else none }}
+          # mittleres Heizdefizit der nächsten 24 h in K: Ø max(0, Heizgrenze - T_Stunde)
+          forecast_heat_deficit: >
+            {% set l = forecast_data['weather.kraichtal_gochsheim'].forecast[:24] | map(attribute='temperature') | list %}
+            {% set hg = states('input_number.heizperiode_heizgrenze') | float(15.5) %}
+            {% set ns = namespace(s=0) %}
+            {% for t in l %}{% set ns.s = ns.s + ([hg - t, 0] | max) %}{% endfor %}
+            {{ (ns.s / l | length) | round(2) if l | length > 0 else none }}
+
   - fan:
       - turn_on:
           - entity_id:
@@ -117,6 +199,10 @@ template:
         unit_of_measurement: "m³"
         device_class: "energy"
         state_class: "total_increasing"
+        # unavailable (instead of 0) while the source is missing; otherwise the
+        # recorder books the jump 0 -> full meter reading as consumption
+        availability: >-
+          {{ states('sensor.vicare_burner_load_intensity') | float(0) > 0 }}
         state: >-
           {{ states('sensor.vicare_burner_load_intensity') | float(0) * 0.44164 | round(4) }}
       # converting m³-consumption into kWh, using "Z-Zahl" 0.9574 and "Brennwert" 11.54:
@@ -125,6 +211,8 @@ template:
         unit_of_measurement: "kWh"
         device_class: "energy"
         state_class: "total_increasing"
+        availability: >-
+          {{ states('sensor.viessman_gasverbrauch_m3') | float(0) > 0 }}
         state: >-
           {{ states('sensor.viessman_gasverbrauch_m3') | float(0) * 0.9574 * 11.54 | round(4) }}
 
@@ -229,31 +317,56 @@ template:
         device_class: "duration"
         state_class: "total_increasing"
 
-      # Other Templates
-      #- name: "current_lights_on"
-      #  unique_id: "b7372bb0b1d511edaeb2af87d8ff0b2f"
-      #  state: >-
-      #    {{ states.light | selectattr('state', 'eq', 'on') | rejectattr('attributes.is_hue_group', 'eq', true) | list | count }}
       - name: "current_lights_on"
         unique_id: "b7372bb0b1d511edaeb2af87d8ff0b2f"
         icon: mdi:lightbulb-group
-        state: "{{ expand('light.og_all_lights') | selectattr('state','eq','on') | list | count }}"
-        attributes:
-          Lichter: >-
-            {% set entities = expand('light.og_all_lights') | selectattr('state','eq','on') | map(attribute='name') | list | join(', ') %}
-            {%- for s in entities -%}
-            {{ s }}
-            {%- endfor %}
+        state: >-
+          {{ ['light.og_wohnzimmer_deckenlampe'
+              ,'light.og_wohnzimmer_lightstrip'
+              ,'light.og_wohnzimmer_weihnachtsstern'
+              ,'light.og_wohnzimmer_weihnachtsstern_fenster'
+              ,'light.weihnachtsbaum'
+              ,'light.og_kuche_esstischlampe'
+              ,'light.og_kuche_herdlampe'
+              ,'light.og_kuche_weihnachtsstern_fenster'
+              ,'light.og_schlafzimmer_deckenleuchte'
+              ,'light.og_kinderzimmer_deckenleuchte'
+              ,'light.og_kinderzimmer_nachttisch'
+              ,'light.og_bad_deckenlampe'
+              ,'light.og_bad_badspiegel'
+              ,'light.og_buro_deckenleuchte'
+              ,'light.og_flur_deckenlampen'
+              ,'light.og_treppenhaus_wandlampen'
+              ,'light.eg_eingangstur_decke'
+              ,'light.ug_buero_keller_schreibtisch'
+              ,'light.ug_heizraum_deckenlampe'
+              ,'light.ug_kellertreppe_wandlampen']
+             | expand
+             | selectattr('state', 'eq', 'on')
+             | list
+             | count }}
 
       - name: "current_mediaplayers_playing"
         unique_id: "eb5346f4-7eda-4e0a-8aaf-b804d23a3ee5"
         state: >-
-          {{ states.media_player | selectattr('state', 'eq', 'playing') | list | count }}
+          {{ ['media_player.wohnzimmer',
+              'media_player.googletv_streamer',
+              'media_player.homemini_wohnzimmer_2',
+              'media_player.kuche',
+              'media_player.schlafzimmer',
+              'media_player.bad',
+              'media_player.buro']
+             | expand
+             | selectattr('state', 'in', ['playing', 'on'])
+             | list
+             | count }}
+
       - name: "dayoftheweek"
         unique_id: "bc10ee50b1d511ed90171b0f7a30ae2f"
         state: >-
           {% set x = states('sensor.time') %}
           {{ now().strftime("%A") | lower }}
+
       - name: "deckenlampe_bad_temp_offset"
         unique_id: "bfdf3460b1d511edaeb2af87d8ff0b2f"
         state: >-

@@ -49,6 +49,8 @@ glances/
 storage
 *.db-journal
 *.pid
+.cache
+cache
 tts
 deps
 lib

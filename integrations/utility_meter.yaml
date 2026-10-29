@@ -73,3 +73,9 @@ utility_meter:
     name: "CO2 Einsparung Solar jährlich neu"
     delta_values: false
     cycle: "yearly"
+  steckdose_gefriertruhe_daily_energy:
+    unique_id: "868c4285-d5b0-4819-81a5-a4ca0a561eff"
+    source: "sensor.steckdose_gefriertruhe_energie"
+    name: "Gefriertruhe Stromverbrauch täglich"
+    delta_values: false
+    cycle: "daily"

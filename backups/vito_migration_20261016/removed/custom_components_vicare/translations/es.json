@@ -1,0 +1,713 @@
+{
+  "application_credentials": {
+    "description": "El **secreto del cliente** se ignora; introduce cualquier valor. Sigue las [instrucciones de configuraci\u00f3n]({more_info_url}) para obtener el ID de cliente."
+  },
+  "config": {
+    "abort": {
+      "already_configured": "El dispositivo ya est\u00e1 configurado",
+      "missing_configuration": "El componente no est\u00e1 configurado. Por favor, sigue la documentaci\u00f3n.",
+      "unknown": "Error inesperado"
+    },
+    "create_entry": {
+      "default": "Autenticado correctamente"
+    },
+    "step": {
+      "pick_implementation": {
+        "title": "Selecciona el m\u00e9todo de autenticaci\u00f3n"
+      },
+      "reauth_confirm": {
+        "description": "La integraci\u00f3n con ViCare necesita volver a autenticar tu cuenta.",
+        "title": "Autenticaci\u00f3n caducada para {name}"
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "burner": {
+        "name": "Quemador"
+      },
+      "child_safety_lock_mode": {
+        "name": "Bloqueo de seguridad para ni\u00f1os"
+      },
+      "circulation_pump": {
+        "name": "Bomba de circulaci\u00f3n"
+      },
+      "compressor": {
+        "name": "Compresor"
+      },
+      "domestic_hot_water_charging": {
+        "name": "Carga de ACS"
+      },
+      "domestic_hot_water_circulation_pump": {
+        "name": "Bomba de circulaci\u00f3n de ACS"
+      },
+      "domestic_hot_water_pump": {
+        "name": "Bomba de ACS"
+      },
+      "frost_protection": {
+        "name": "Protecci\u00f3n contra las heladas"
+      },
+      "identification_mode": {
+        "name": "Modo de identificaci\u00f3n"
+      },
+      "mounting_mode": {
+        "name": "Modo de montaje"
+      },
+      "one_time_charge": {
+        "name": "Cargo \u00fanico"
+      },
+      "solar_pump": {
+        "name": "Bomba solar"
+      },
+      "valve": {
+        "name": "V\u00e1lvula"
+      },
+      "ventilation_frost_protection": {
+        "name": "Protecci\u00f3n contra heladas de la ventilaci\u00f3n"
+      }
+    },
+    "button": {
+      "activate_onetimecharge": {
+        "name": "Activar carga \u00fanica"
+      },
+      "deactivate_onetimecharge": {
+        "name": "Desactivar carga \u00fanica"
+      }
+    },
+    "climate": {
+      "heating": {
+        "name": "Calefacci\u00f3n"
+      }
+    },
+    "fan": {
+      "ventilation": {
+        "name": "Ventilaci\u00f3n",
+        "state_attributes": {
+          "preset_mode": {
+            "state": {
+              "permanent": "Permanente",
+              "sensor_driven": "Controlado por sensores",
+              "sensor_override": "Programaci\u00f3n con anulaci\u00f3n de sensor",
+              "standard": "M\u00ednimo",
+              "standby": "En espera",
+              "ventilation": "Programaci\u00f3n"
+            }
+          }
+        }
+      }
+    },
+    "number": {
+      "comfort_cooling_temperature": {
+        "name": "Temperatura de refrigeraci\u00f3n de confort"
+      },
+      "comfort_heating_temperature": {
+        "name": "Temperatura de calefacci\u00f3n de confort"
+      },
+      "comfort_temperature": {
+        "name": "Temperatura de confort"
+      },
+      "dhw_hysteresis_switch_off": {
+        "name": "Interruptor de hist\u00e9resis de ACS apagado"
+      },
+      "dhw_hysteresis_switch_on": {
+        "name": "Interruptor de hist\u00e9resis de ACS activado"
+      },
+      "dhw_secondary_temperature": {
+        "name": "Temperatura secundaria de ACS"
+      },
+      "dhw_temperature": {
+        "name": "Temperatura ACS"
+      },
+      "heating_curve_shift": {
+        "name": "Desplazamiento de la curva de calefacci\u00f3n"
+      },
+      "heating_curve_slope": {
+        "name": "Pendiente de la curva de calefacci\u00f3n"
+      },
+      "normal_cooling_temperature": {
+        "name": "Temperatura normal de refrigeraci\u00f3n"
+      },
+      "normal_heating_temperature": {
+        "name": "Temperatura normal de calefacci\u00f3n"
+      },
+      "normal_temperature": {
+        "name": "Temperatura normal"
+      },
+      "reduced_cooling_temperature": {
+        "name": "Temperatura de refrigeraci\u00f3n reducida"
+      },
+      "reduced_heating_temperature": {
+        "name": "Temperatura de calefacci\u00f3n reducida"
+      },
+      "reduced_temperature": {
+        "name": "Temperatura reducida"
+      }
+    },
+    "select": {
+      "dhw_operating_mode": {
+        "name": "Modo de funcionamiento ACS",
+        "state": {
+          "efficient": "Eficiente",
+          "efficient_with_min_comfort": "Eficiente con el confort m\u00ednimo",
+          "off": "Apagado"
+        }
+      }
+    },
+    "sensor": {
+      "active_mode": {
+        "name": "Modo",
+        "state": {
+          "cooling": "Refrigeraci\u00f3n",
+          "heating": "Calefacci\u00f3n",
+          "standby": "En espera"
+        }
+      },
+      "boiler_supply_temperature": {
+        "name": "Temperatura de suministro de la caldera"
+      },
+      "boiler_temperature": {
+        "name": "Temperatura de la caldera"
+      },
+      "buffer_bottom_temperature": {
+        "name": "Temperatura inferior del buffer"
+      },
+      "buffer_main_temperature": {
+        "name": "Temperatura principal del b\u00fafer"
+      },
+      "buffer_mid_bottom_temperature": {
+        "name": "Temperatura media inferior del buffer"
+      },
+      "buffer_mid_top_temperature": {
+        "name": "Temperatura media superior del buffer"
+      },
+      "buffer_middle_temperature": {
+        "name": "Temperatura media del buffer"
+      },
+      "buffer_top_temperature": {
+        "name": "Temperatura superior del b\u00fafer"
+      },
+      "burner_hours": {
+        "name": "Horas del quemador"
+      },
+      "burner_modulation": {
+        "name": "Modulaci\u00f3n del quemador"
+      },
+      "burner_starts": {
+        "name": "Arranques del quemador"
+      },
+      "collector_temperature": {
+        "name": "Temperatura del colector solar"
+      },
+      "compressor_hours": {
+        "name": "Horas del compresor"
+      },
+      "compressor_hours_loadclass1": {
+        "name": "Horas de carga del compresor clase 1"
+      },
+      "compressor_hours_loadclass2": {
+        "name": "Horas de carga del compresor clase 2"
+      },
+      "compressor_hours_loadclass3": {
+        "name": "Horas de carga del compresor clase 3"
+      },
+      "compressor_hours_loadclass4": {
+        "name": "Horas de carga del compresor clase 4"
+      },
+      "compressor_hours_loadclass5": {
+        "name": "Horas de carga del compresor clase 5"
+      },
+      "compressor_inlet_pressure": {
+        "name": "Presi\u00f3n de entrada del compresor"
+      },
+      "compressor_inlet_temperature": {
+        "name": "Temperatura de entrada del compresor"
+      },
+      "compressor_modulation": {
+        "name": "Modulaci\u00f3n del compresor"
+      },
+      "compressor_outlet_pressure": {
+        "name": "Presi\u00f3n de salida del compresor"
+      },
+      "compressor_outlet_temperature": {
+        "name": "Temperatura de salida del compresor"
+      },
+      "compressor_phase": {
+        "name": "Fase del compresor",
+        "state": {
+          "cooling": "Refrigeraci\u00f3n",
+          "defrost": "Antihielo",
+          "heating": "Calefacci\u00f3n",
+          "off": "Apagado",
+          "passive_defrost": "Descongelaci\u00f3n pasiva",
+          "pause": "Inactivo",
+          "preparing": "Preparaci\u00f3n",
+          "preparing_defrost": "Preparar la descongelaci\u00f3n",
+          "ready": "Inactivo"
+        }
+      },
+      "compressor_power": {
+        "name": "Potencia del compresor"
+      },
+      "compressor_starts": {
+        "name": "Arranques del compresor"
+      },
+      "condenser_liquid_temperature": {
+        "name": "Temperatura del l\u00edquido del condensador"
+      },
+      "condenser_subcooling_temperature": {
+        "name": "Temperatura de subenfriamiento del condensador"
+      },
+      "cop_cooling": {
+        "name": "Coeficiente de rendimiento - refrigeraci\u00f3n"
+      },
+      "cop_dhw": {
+        "name": "Coeficiente de rendimiento - agua caliente sanitaria"
+      },
+      "cop_heating": {
+        "name": "Coeficiente de rendimiento - calefacci\u00f3n"
+      },
+      "cop_total": {
+        "name": "Coeficiente de rendimiento"
+      },
+      "dhw_storage_bottom_temperature": {
+        "name": "Temperatura inferior del acumulador de ACS"
+      },
+      "dhw_storage_middle_temperature": {
+        "name": "Temperatura media del almacenamiento de ACS"
+      },
+      "dhw_storage_temperature": {
+        "name": "Temperatura de almacenamiento de ACS"
+      },
+      "dhw_storage_top_temperature": {
+        "name": "Temperatura m\u00e1xima del acumulador de ACS"
+      },
+      "energy_consumption_cooling_this_month": {
+        "name": "Consumo de electricidad para refrigeraci\u00f3n este mes"
+      },
+      "energy_consumption_cooling_this_year": {
+        "name": "Consumo de electricidad para refrigeraci\u00f3n este a\u00f1o"
+      },
+      "energy_consumption_cooling_today": {
+        "name": "Consumo de electricidad para refrigeraci\u00f3n hoy"
+      },
+      "energy_consumption_dhw_this_year": {
+        "name": "Consumo de energ\u00eda de ACS este a\u00f1o"
+      },
+      "energy_consumption_heating_this_year": {
+        "name": "Consumo de energ\u00eda para calefacci\u00f3n este a\u00f1o"
+      },
+      "energy_dhw_summary_consumption_heating_currentday": {
+        "name": "Consumo de electricidad de ACS hoy"
+      },
+      "energy_dhw_summary_consumption_heating_currentmonth": {
+        "name": "Consumo de electricidad de ACS este mes"
+      },
+      "energy_dhw_summary_consumption_heating_currentyear": {
+        "name": "Consumo de electricidad de ACS este a\u00f1o"
+      },
+      "energy_summary_consumption_heating_currentday": {
+        "name": "Consumo de electricidad para calefacci\u00f3n hoy"
+      },
+      "energy_summary_consumption_heating_currentmonth": {
+        "name": "Consumo de electricidad para calefacci\u00f3n este mes"
+      },
+      "energy_summary_consumption_heating_currentyear": {
+        "name": "Consumo de electricidad para calefacci\u00f3n este a\u00f1o"
+      },
+      "energy_summary_consumption_heating_lastsevendays": {
+        "name": "Consumo de electricidad para calefacci\u00f3n en los \u00faltimos siete d\u00edas"
+      },
+      "energy_summary_dhw_consumption_heating_lastsevendays": {
+        "name": "Consumo de electricidad de ACS en los \u00faltimos siete d\u00edas"
+      },
+      "ess_charge_total": {
+        "name": "Carga total de la bater\u00eda"
+      },
+      "ess_discharge_this_month": {
+        "name": "Descarga de bater\u00eda este mes"
+      },
+      "ess_discharge_this_week": {
+        "name": "Descarga de bater\u00eda esta semana"
+      },
+      "ess_discharge_this_year": {
+        "name": "Descarga de bater\u00eda este a\u00f1o"
+      },
+      "ess_discharge_today": {
+        "name": "Descarga de bater\u00eda hoy"
+      },
+      "ess_discharge_total": {
+        "name": "Total de descarga de bater\u00eda"
+      },
+      "ess_power_current": {
+        "name": "Energ\u00eda de la bater\u00eda"
+      },
+      "ess_state": {
+        "name": "Estado de la bater\u00eda",
+        "state": {
+          "charge": "Cargando",
+          "discharge": "Descargando",
+          "standby": "En espera"
+        }
+      },
+      "evaporator_liquid_temperature": {
+        "name": "Temperatura del l\u00edquido del evaporador"
+      },
+      "evaporator_overheat_temperature": {
+        "name": "Temperatura de sobrecalentamiento del evaporador"
+      },
+      "exhaust_humidity": {
+        "name": "Humedad de escape"
+      },
+      "exhaust_temperature": {
+        "name": "Temperatura de escape"
+      },
+      "extract_humidity": {
+        "name": "Humedad extra\u00edda"
+      },
+      "extract_temperature": {
+        "name": "Temperatura extra\u00edda"
+      },
+      "filter_hours": {
+        "name": "Horas de filtrado"
+      },
+      "filter_overdue_hours": {
+        "name": "Horas de vencimiento del filtro"
+      },
+      "filter_remaining_hours": {
+        "name": "Horas restantes del filtro"
+      },
+      "fuel_need": {
+        "name": "Necesidad de combustible"
+      },
+      "gas_consumption_fuelcell_this_month": {
+        "name": "Consumo de gas de las pilas de combustible este mes"
+      },
+      "gas_consumption_fuelcell_this_week": {
+        "name": "Consumo de gas de las pilas de combustible esta semana"
+      },
+      "gas_consumption_fuelcell_this_year": {
+        "name": "Consumo de gas de las pilas de combustible este a\u00f1o"
+      },
+      "gas_consumption_fuelcell_today": {
+        "name": "Consumo actual de gas de las pilas de combustible"
+      },
+      "gas_consumption_heating_this_month": {
+        "name": "Consumo de gas de calefacci\u00f3n este mes"
+      },
+      "gas_consumption_heating_this_week": {
+        "name": "Consumo de gas de calefacci\u00f3n esta semana"
+      },
+      "gas_consumption_heating_this_year": {
+        "name": "Consumo de gas de calefacci\u00f3n este a\u00f1o"
+      },
+      "gas_consumption_heating_today": {
+        "name": "Consumo de gas de calefacci\u00f3n hoy"
+      },
+      "gas_consumption_total_this_month": {
+        "name": "Consumo de gas este mes"
+      },
+      "gas_consumption_total_this_week": {
+        "name": "Consumo de gas esta semana"
+      },
+      "gas_consumption_total_this_year": {
+        "name": "Consumo de gas este a\u00f1o"
+      },
+      "gas_consumption_total_today": {
+        "name": "Consumo de gas hoy"
+      },
+      "gas_summary_consumption_heating_currentday": {
+        "name": "Consumo de gas de calefacci\u00f3n hoy"
+      },
+      "gas_summary_consumption_heating_currentmonth": {
+        "name": "Consumo de gas de calefacci\u00f3n este mes"
+      },
+      "gas_summary_consumption_heating_currentyear": {
+        "name": "Consumo de gas de calefacci\u00f3n este a\u00f1o"
+      },
+      "gas_summary_consumption_heating_lastsevendays": {
+        "name": "Consumo de gas de calefacci\u00f3n los \u00faltimos siete d\u00edas"
+      },
+      "heating_rod_hours": {
+        "name": "Horas de funcionamiento de la varilla calefactora"
+      },
+      "heating_rod_starts": {
+        "name": "La varilla calefactora se pone en marcha"
+      },
+      "hot_gas_pressure": {
+        "name": "Presi\u00f3n del gas caliente"
+      },
+      "hot_gas_temperature": {
+        "name": "Temperatura del gas caliente"
+      },
+      "hotwater_gas_consumption_heating_this_month": {
+        "name": "Consumo de gas ACS este mes"
+      },
+      "hotwater_gas_consumption_heating_this_week": {
+        "name": "Consumo de gas ACS esta semana"
+      },
+      "hotwater_gas_consumption_heating_this_year": {
+        "name": "Consumo de gas ACS este a\u00f1o"
+      },
+      "hotwater_gas_consumption_today": {
+        "name": "Consumo de gas ACS hoy"
+      },
+      "hotwater_gas_summary_consumption_heating_currentday": {
+        "name": "Consumo de gas ACS hoy"
+      },
+      "hotwater_gas_summary_consumption_heating_currentmonth": {
+        "name": "Consumo de gas ACS este mes"
+      },
+      "hotwater_gas_summary_consumption_heating_currentyear": {
+        "name": "Consumo de gas ACS este a\u00f1o"
+      },
+      "hotwater_gas_summary_consumption_heating_lastsevendays": {
+        "name": "Consumo de gas ACS en los \u00faltimos siete d\u00edas"
+      },
+      "hotwater_max_temperature": {
+        "name": "Temperatura m\u00e1xima de ACS"
+      },
+      "hotwater_min_temperature": {
+        "name": "Temperatura m\u00ednima de ACS"
+      },
+      "hotwater_out_temperature": {
+        "name": "Temperatura de salida de ACS"
+      },
+      "hydraulic_separator_temperature": {
+        "name": "Temperatura del separador hidr\u00e1ulico"
+      },
+      "inverter_current": {
+        "name": "Corriente del inversor"
+      },
+      "inverter_power": {
+        "name": "Potencia del inversor"
+      },
+      "inverter_temperature": {
+        "name": "Temperatura del inversor"
+      },
+      "liquid_gas_temperature": {
+        "name": "Temperatura del gas l\u00edquido"
+      },
+      "outside_humidity": {
+        "name": "Humedad exterior"
+      },
+      "outside_temperature": {
+        "name": "Temperatura exterior"
+      },
+      "pcc_energy_consumption": {
+        "name": "Importaci\u00f3n de energ\u00eda desde la red"
+      },
+      "pcc_energy_feed_in": {
+        "name": "Exportaci\u00f3n de energ\u00eda a la red"
+      },
+      "pcc_transfer_power_exchange": {
+        "name": "Intercambio de energ\u00eda con la red."
+      },
+      "photovoltaic_energy_production_this_month": {
+        "name": "Producci\u00f3n de energ\u00eda fotovoltaica este mes"
+      },
+      "photovoltaic_energy_production_this_week": {
+        "name": "Producci\u00f3n de energ\u00eda fotovoltaica esta semana"
+      },
+      "photovoltaic_energy_production_this_year": {
+        "name": "Producci\u00f3n de energ\u00eda fotovoltaica este a\u00f1o"
+      },
+      "photovoltaic_energy_production_today": {
+        "name": "Producci\u00f3n actual de energ\u00eda fotovoltaica"
+      },
+      "photovoltaic_energy_production_total": {
+        "name": "Producci\u00f3n total de energ\u00eda fotovoltaica"
+      },
+      "photovoltaic_power_production_current": {
+        "name": "Energ\u00eda fotovoltaica"
+      },
+      "photovoltaic_status": {
+        "name": "Estado fotovoltaico",
+        "state": {
+          "production": "Generando",
+          "ready": "En espera"
+        }
+      },
+      "power_consumption_this_month": {
+        "name": "Consumo de electricidad este mes"
+      },
+      "power_consumption_this_week": {
+        "name": "Consumo de electricidad esta semana"
+      },
+      "power_consumption_this_year": {
+        "name": "Consumo de electricidad este a\u00f1o"
+      },
+      "power_consumption_today": {
+        "name": "Consumo de electricidad hoy"
+      },
+      "power_production_current": {
+        "name": "Corriente de producci\u00f3n de energ\u00eda"
+      },
+      "power_production_this_month": {
+        "name": "Producci\u00f3n de energ\u00eda este mes"
+      },
+      "power_production_this_week": {
+        "name": "Producci\u00f3n de energ\u00eda esta semana"
+      },
+      "power_production_this_year": {
+        "name": "Producci\u00f3n de energ\u00eda este a\u00f1o"
+      },
+      "power_production_today": {
+        "name": "Producci\u00f3n de energ\u00eda hoy"
+      },
+      "primary_circuit_pump_rotation": {
+        "name": "Rotaci\u00f3n de la bomba del circuito primario"
+      },
+      "primary_circuit_return_temperature": {
+        "name": "Temperatura del circuito de retorno primario"
+      },
+      "primary_circuit_supply_temperature": {
+        "name": "Temperatura del circuito de alimentaci\u00f3n primario"
+      },
+      "return_temperature": {
+        "name": "Temperatura de retorno"
+      },
+      "secondary_circuit_return_temperature": {
+        "name": "Temperatura del circuito de retorno secundario"
+      },
+      "secondary_circuit_supply_temperature": {
+        "name": "Temperatura del circuito de alimentaci\u00f3n secundario"
+      },
+      "solar_power_production_this_month": {
+        "name": "Producci\u00f3n de energ\u00eda solar este mes"
+      },
+      "solar_power_production_this_week": {
+        "name": "Producci\u00f3n de energ\u00eda solar esta semana"
+      },
+      "solar_power_production_this_year": {
+        "name": "Producci\u00f3n de energ\u00eda solar este a\u00f1o."
+      },
+      "solar_power_production_today": {
+        "name": "Producci\u00f3n de energ\u00eda solar hoy"
+      },
+      "solar_storage_temperature": {
+        "name": "Temperatura de almacenamiento solar"
+      },
+      "spf_dhw": {
+        "name": "Factor de rendimiento estacional: agua caliente sanitaria"
+      },
+      "spf_heating": {
+        "name": "Factor de rendimiento estacional: calefacci\u00f3n"
+      },
+      "spf_total": {
+        "name": "Factor de rendimiento estacional"
+      },
+      "suction_gas_pressure": {
+        "name": "Presi\u00f3n del gas aspirado"
+      },
+      "suction_gas_temperature": {
+        "name": "Temperatura del gas aspirado"
+      },
+      "supply_fan_hours": {
+        "name": "Horas del ventilador de suministro"
+      },
+      "supply_fan_speed": {
+        "name": "Velocidad del ventilador de suministro"
+      },
+      "supply_humidity": {
+        "name": "Humedad de suministro"
+      },
+      "supply_pressure": {
+        "name": "Presi\u00f3n de suministro"
+      },
+      "supply_temperature": {
+        "name": "Temperatura de suministro"
+      },
+      "target_temperature": {
+        "name": "Temperatura deseada"
+      },
+      "valve_position": {
+        "name": "Posici\u00f3n de la v\u00e1lvula"
+      },
+      "ventilation_input_volumeflow": {
+        "name": "Caudal de entrada de ventilaci\u00f3n"
+      },
+      "ventilation_level": {
+        "name": "Nivel de ventilaci\u00f3n",
+        "state": {
+          "levelfour": "4",
+          "levelone": "1",
+          "levelthree": "3",
+          "leveltwo": "2",
+          "standby": "En espera"
+        }
+      },
+      "ventilation_output_volumeflow": {
+        "name": "Caudal de salida de ventilaci\u00f3n"
+      },
+      "ventilation_reason": {
+        "name": "Motivo de la ventilaci\u00f3n",
+        "state": {
+          "forcedlevelfour": "Impulso",
+          "permanent": "Permanente",
+          "schedule": "Programaci\u00f3n",
+          "sensordriven": "Controlado por sensores",
+          "sensoroverride": "Anulaci\u00f3n del sensor",
+          "silent": "Silencioso",
+          "standby": "En espera"
+        }
+      },
+      "volumetric_flow": {
+        "name": "Caudal volum\u00e9trico"
+      },
+      "zigbee_signal_strength": {
+        "name": "Intensidad de se\u00f1al"
+      }
+    },
+    "switch": {
+      "quickmode_comfort": {
+        "name": "Intensivo"
+      },
+      "quickmode_eco": {
+        "name": "Eco"
+      },
+      "quickmode_forced_level_four": {
+        "name": "Impulso"
+      },
+      "quickmode_silent": {
+        "name": "Silencioso"
+      }
+    },
+    "water_heater": {
+      "domestic_hot_water": {
+        "name": "Agua caliente sanitaria"
+      }
+    }
+  },
+  "exceptions": {
+    "program_not_activated": {
+      "message": "No se puede activar el programa ViCare {program}"
+    },
+    "program_not_deactivated": {
+      "message": "No se puede desactivar el programa ViCare {program}"
+    },
+    "program_unknown": {
+      "message": "No se puede traducir el valor preestablecido {preset} a un programa ViCare v\u00e1lido"
+    },
+    "quickmode_not_activated": {
+      "message": "No se ha podido activar el modo r\u00e1pido de ViCare {quickmode}. Solo puede haber un modo r\u00e1pido activo a la vez; es posible que ya haya otro en ejecuci\u00f3n."
+    }
+  },
+  "issues": {
+    "update_redirect_uri": {
+      "description": "ViCare ha migrado a la autenticaci\u00f3n OAuth2. Tu sesi\u00f3n actual seguir\u00e1 funcionando, pero si necesitas volver a autenticarte, primero debes a\u00f1adir una URI de redirecci\u00f3n a tu cliente API.\n\nDir\u00edgete al [Portal para desarrolladores de Viessmann]({viessmann_developer_portal}) y a\u00f1ade la siguiente URI de redirecci\u00f3n a tu cliente API:\n\n`{redirect_url}`\n\nNo es urgente, pero recomendamos hacerlo pronto.",
+      "title": "Actualiza tu cliente API en el Portal para desarrolladores de Viessmann."
+    }
+  },
+  "services": {
+    "set_vicare_mode": {
+      "description": "Establece el modo del dispositivo clim\u00e1tico seg\u00fan lo definido por Viessmann.",
+      "fields": {
+        "vicare_mode": {
+          "description": "Para conocer los valores admitidos, consulta el atributo `vicare_modes` de la entidad clim\u00e1tica.",
+          "name": "Modo ViCare"
+        }
+      },
+      "name": "Establecer el modo ViCare"
+    }
+  }
+}

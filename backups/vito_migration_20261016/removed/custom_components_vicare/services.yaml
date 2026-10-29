@@ -1,0 +1,116 @@
+set_vicare_mode:
+  target:
+    entity:
+      integration: vicare
+      domain: climate
+  fields:
+    vicare_mode:
+      required: true
+      selector:
+        select:
+          options:
+            - "dhw"
+            - "dhwAndHeating"
+            - "dhwAndHeatingCooling"
+            - "forcedNormal"
+            - "forcedReduced"
+            - "heating"
+            - "standby"
+execute_command:
+  fields:
+    device_id:
+      selector:
+        device:
+          integration: vicare
+    feature:
+      required: true
+      example: "heating.circuits.0.operating.modes.active"
+      selector:
+        text:
+    command:
+      required: true
+      example: "setMode"
+      selector:
+        text:
+    params:
+      example: '{"mode": "dhwAndHeating"}'
+      selector:
+        object:
+get_features:
+  fields:
+    device_id:
+      selector:
+        device:
+          integration: vicare
+    filter:
+      example: "pump"
+      selector:
+        text:
+set_holiday:
+  fields:
+    device_id:
+      selector:
+        device:
+          integration: vicare
+    start:
+      required: true
+      selector:
+        date:
+    end:
+      required: true
+      selector:
+        date:
+end_holiday:
+  fields:
+    device_id:
+      selector:
+        device:
+          integration: vicare
+set_schedule:
+  target:
+    entity:
+      integration: vicare
+      domain: sensor
+  fields:
+    schedule:
+      example: '{"mon": [{"start": "05:30", "end": "22:00", "mode": "on"}]}'
+      selector:
+        object:
+    day:
+      selector:
+        select:
+          options: ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
+    entries:
+      example: '[{"start": "06:00", "end": "08:00"}, {"start": "17:00", "end": "21:00"}]'
+      selector:
+        object:
+reset_schedule:
+  target:
+    entity:
+      integration: vicare
+      domain: sensor
+  fields:
+    day:
+      selector:
+        select:
+          options: ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
+schedule_boost:
+  target:
+    entity:
+      integration: vicare
+      domain: sensor
+  fields:
+    duration:
+      default:
+        minutes: 30
+      selector:
+        duration:
+    mode:
+      example: "on"
+      selector:
+        text:
+schedule_restore:
+  target:
+    entity:
+      integration: vicare
+      domain: sensor

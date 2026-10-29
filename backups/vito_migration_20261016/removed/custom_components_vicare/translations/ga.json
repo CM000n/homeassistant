@@ -1,0 +1,712 @@
+{
+  "application_credentials": {
+    "description": "D\u00e9antar neamhaird den **r\u00fan cliaint**, cuir isteach aon luach. Lean na [treoracha socraithe]({more_info_url}) chun an ID Cliant a fh\u00e1il."
+  },
+  "config": {
+    "abort": {
+      "already_configured": "T\u00e1 an gl\u00e9as cumraithe cheana f\u00e9in",
+      "missing_configuration": "N\u00edl an chomhph\u00e1irt cumraithe. Lean an doicim\u00e9ad\u00fa le do thoil.",
+      "unknown": "Earr\u00e1id gan choinne"
+    },
+    "create_entry": {
+      "default": "F\u00edordheimhnithe go rath\u00fail"
+    },
+    "step": {
+      "pick_implementation": {
+        "title": "Roghnaigh modh f\u00edordheimhnithe"
+      },
+      "reauth_confirm": {
+        "title": "T\u00e1 an f\u00edordheimhni\u00fa imithe in \u00e9ag do {name}"
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "burner": {
+        "name": "D\u00f3ire"
+      },
+      "child_safety_lock_mode": {
+        "name": "Glas s\u00e1bh\u00e1ilteachta leana\u00ed"
+      },
+      "circulation_pump": {
+        "name": "Caid\u00e9al c\u00farsa\u00edochta"
+      },
+      "compressor": {
+        "name": "Comhbhr\u00faiteoir"
+      },
+      "domestic_hot_water_charging": {
+        "name": "Muirear\u00fa DHW"
+      },
+      "domestic_hot_water_circulation_pump": {
+        "name": "Caid\u00e9al c\u00farsa\u00edochta DHW"
+      },
+      "domestic_hot_water_pump": {
+        "name": "Caid\u00e9al DHW"
+      },
+      "frost_protection": {
+        "name": "Cosaint sioc"
+      },
+      "identification_mode": {
+        "name": "Modh aitheantais"
+      },
+      "mounting_mode": {
+        "name": "Modh gl\u00e9asta"
+      },
+      "one_time_charge": {
+        "name": "Muirear aonuaire"
+      },
+      "solar_pump": {
+        "name": "Caid\u00e9al gr\u00e9ine"
+      },
+      "valve": {
+        "name": "Comhla"
+      },
+      "ventilation_frost_protection": {
+        "name": "Cosaint sioc aer\u00e1la"
+      }
+    },
+    "button": {
+      "activate_onetimecharge": {
+        "name": "Gn\u00edomhachtaigh muirear aonuaire"
+      },
+      "deactivate_onetimecharge": {
+        "name": "D\u00edghn\u00edomhachtaigh an muirear aonuaire"
+      }
+    },
+    "climate": {
+      "heating": {
+        "name": "T\u00e9amh"
+      }
+    },
+    "fan": {
+      "ventilation": {
+        "name": "Aer\u00e1il",
+        "state_attributes": {
+          "preset_mode": {
+            "state": {
+              "permanent": "Buan",
+              "sensor_driven": "Tiom\u00e1inte ag braiteoir\u00ed",
+              "sensor_override": "Sceideal le s\u00e1r\u00fa braiteora",
+              "standard": "\u00cdosmh\u00e9id",
+              "standby": "Fuireachas",
+              "ventilation": "Sceideal"
+            }
+          }
+        }
+      }
+    },
+    "number": {
+      "comfort_cooling_temperature": {
+        "name": "Teocht fuaraithe chompordach"
+      },
+      "comfort_heating_temperature": {
+        "name": "Teocht t\u00e9imh chompord"
+      },
+      "comfort_temperature": {
+        "name": "Teocht chompord"
+      },
+      "dhw_hysteresis_switch_off": {
+        "name": "M\u00fachadh hist\u00e9ir\u00e9ise uisce te"
+      },
+      "dhw_hysteresis_switch_on": {
+        "name": "Lasc hist\u00e9ir\u00e9ise uisce te air"
+      },
+      "dhw_secondary_temperature": {
+        "name": "Teocht t\u00e1naisteach DHW"
+      },
+      "dhw_temperature": {
+        "name": "Teocht DHW"
+      },
+      "heating_curve_shift": {
+        "name": "Aistri\u00fa cuar t\u00e9imh"
+      },
+      "heating_curve_slope": {
+        "name": "F\u00e1na cuar t\u00e9imh"
+      },
+      "normal_cooling_temperature": {
+        "name": "Teocht fuaraithe gn\u00e1th"
+      },
+      "normal_heating_temperature": {
+        "name": "Teocht t\u00e9imh gn\u00e1th"
+      },
+      "normal_temperature": {
+        "name": "Teocht gn\u00e1th"
+      },
+      "reduced_cooling_temperature": {
+        "name": "Teocht fuaraithe laghdaithe"
+      },
+      "reduced_heating_temperature": {
+        "name": "Teocht t\u00e9imh laghdaithe"
+      },
+      "reduced_temperature": {
+        "name": "Teocht laghdaithe"
+      }
+    },
+    "select": {
+      "dhw_operating_mode": {
+        "name": "M\u00f3d oibri\u00fach\u00e1in uisce te",
+        "state": {
+          "efficient": "\u00c9ifeachtach",
+          "efficient_with_min_comfort": "\u00c9ifeachtach le compord \u00edosta",
+          "off": "As"
+        }
+      }
+    },
+    "sensor": {
+      "active_mode": {
+        "name": "M\u00f3d",
+        "state": {
+          "cooling": "Fuar\u00fa",
+          "heating": "T\u00e9amh",
+          "standby": "Fuireachas"
+        }
+      },
+      "boiler_supply_temperature": {
+        "name": "Teocht sol\u00e1thair an choire"
+      },
+      "boiler_temperature": {
+        "name": "Teocht an choire"
+      },
+      "buffer_bottom_temperature": {
+        "name": "Teocht bun an mhaol\u00e1in"
+      },
+      "buffer_main_temperature": {
+        "name": "Pr\u00edomhtheocht maol\u00e1in"
+      },
+      "buffer_mid_bottom_temperature": {
+        "name": "Teocht l\u00e1r-bhun maol\u00e1in"
+      },
+      "buffer_mid_top_temperature": {
+        "name": "Teocht l\u00e1r-uachtair maol\u00e1in"
+      },
+      "buffer_middle_temperature": {
+        "name": "Teocht l\u00e1r maol\u00e1nach"
+      },
+      "buffer_top_temperature": {
+        "name": "Teocht barr maol\u00e1in"
+      },
+      "burner_hours": {
+        "name": "Uaireanta an d\u00f3ire"
+      },
+      "burner_modulation": {
+        "name": "Modhn\u00fa d\u00f3ire"
+      },
+      "burner_starts": {
+        "name": "Tosa\u00edonn an d\u00f3ire"
+      },
+      "collector_temperature": {
+        "name": "Teocht bhailitheora gr\u00e9ine"
+      },
+      "compressor_hours": {
+        "name": "Uaireanta an chomhbhr\u00faiteora"
+      },
+      "compressor_hours_loadclass1": {
+        "name": "Ualach uaireanta comhbhr\u00faiteora rang 1"
+      },
+      "compressor_hours_loadclass2": {
+        "name": "Ualach uaireanta comhbhr\u00faiteora rang 2"
+      },
+      "compressor_hours_loadclass3": {
+        "name": "Ualach uaireanta comhbhr\u00faiteora rang 3"
+      },
+      "compressor_hours_loadclass4": {
+        "name": "Ualach uaireanta comhbhr\u00faiteora rang 4"
+      },
+      "compressor_hours_loadclass5": {
+        "name": "Ualach uaireanta comhbhr\u00faiteora rang 5"
+      },
+      "compressor_inlet_pressure": {
+        "name": "Br\u00fa ionraoin an chomhbhr\u00faiteora"
+      },
+      "compressor_inlet_temperature": {
+        "name": "Teocht ionraoin an chomhbhr\u00faiteora"
+      },
+      "compressor_modulation": {
+        "name": "Modhn\u00fa comhbhr\u00faiteora"
+      },
+      "compressor_outlet_pressure": {
+        "name": "Br\u00fa asraon an chomhbhr\u00faiteora"
+      },
+      "compressor_outlet_temperature": {
+        "name": "Teocht asraon an chomhbhr\u00faiteora"
+      },
+      "compressor_phase": {
+        "name": "C\u00e9im an chomhbhr\u00faiteora",
+        "state": {
+          "cooling": "Fuar\u00fa",
+          "defrost": "D\u00edreoite",
+          "heating": "T\u00e9amh",
+          "off": "As",
+          "passive_defrost": "D\u00edreoite \u00e9ighn\u00edomhach",
+          "pause": "D\u00edomhaoin",
+          "preparing": "Ag ullmh\u00fa",
+          "preparing_defrost": "D\u00edreoite a ullmh\u00fa",
+          "ready": "D\u00edomhaoin"
+        }
+      },
+      "compressor_power": {
+        "name": "Cumhacht an chomhbhr\u00faiteora"
+      },
+      "compressor_starts": {
+        "name": "Tosa\u00edonn an comhbhr\u00faiteoir"
+      },
+      "condenser_liquid_temperature": {
+        "name": "Teocht leachtach comhdhl\u00fathad\u00e1in"
+      },
+      "condenser_subcooling_temperature": {
+        "name": "Teocht fho-fhuaraithe an chomhdhl\u00fathad\u00e1in"
+      },
+      "cop_cooling": {
+        "name": "Comh\u00e9ifeacht feidhm\u00edochta - fuaraithe"
+      },
+      "cop_dhw": {
+        "name": "Comh\u00e9ifeacht feidhm\u00edochta - uisce te t\u00ed"
+      },
+      "cop_heating": {
+        "name": "Comh\u00e9ifeacht feidhm\u00edochta - t\u00e9imh"
+      },
+      "cop_total": {
+        "name": "Comh\u00e9ifeacht feidhm\u00edochta"
+      },
+      "dhw_storage_bottom_temperature": {
+        "name": "Teocht bun st\u00f3r\u00e1la uisce te"
+      },
+      "dhw_storage_middle_temperature": {
+        "name": "Teocht l\u00e1r st\u00f3r\u00e1la uisce te"
+      },
+      "dhw_storage_temperature": {
+        "name": "Teocht st\u00f3r\u00e1la uisce te"
+      },
+      "dhw_storage_top_temperature": {
+        "name": "Teocht uasta st\u00f3r\u00e1la uisce te"
+      },
+      "energy_consumption_cooling_this_month": {
+        "name": "Tomhaltas leictreachais fuaraithe an mh\u00ed seo"
+      },
+      "energy_consumption_cooling_this_year": {
+        "name": "Tomhaltas leictreachais fuaraithe i mbliana"
+      },
+      "energy_consumption_cooling_today": {
+        "name": "Tomhaltas leictreachais fuaraithe inniu"
+      },
+      "energy_consumption_dhw_this_year": {
+        "name": "Tomhaltas fuinnimh uisce te i mbliana"
+      },
+      "energy_consumption_heating_this_year": {
+        "name": "Tomhaltas fuinnimh t\u00e9imh i mbliana"
+      },
+      "energy_dhw_summary_consumption_heating_currentday": {
+        "name": "Tomhaltas leictreachais uisce te (DHW) inniu"
+      },
+      "energy_dhw_summary_consumption_heating_currentmonth": {
+        "name": "Tomhaltas leictreachais uisce te an mh\u00ed seo"
+      },
+      "energy_dhw_summary_consumption_heating_currentyear": {
+        "name": "Tomhaltas leictreachais uisce te i mbliana"
+      },
+      "energy_summary_consumption_heating_currentday": {
+        "name": "Tomhaltas leictreachais t\u00e9imh inniu"
+      },
+      "energy_summary_consumption_heating_currentmonth": {
+        "name": "Tomhaltas leictreachais t\u00e9imh an mh\u00ed seo"
+      },
+      "energy_summary_consumption_heating_currentyear": {
+        "name": "Tomhaltas leictreachais t\u00e9imh i mbliana"
+      },
+      "energy_summary_consumption_heating_lastsevendays": {
+        "name": "Tomhaltas leictreachais t\u00e9imh le seacht l\u00e1 anuas"
+      },
+      "energy_summary_dhw_consumption_heating_lastsevendays": {
+        "name": "Tomhaltas leictreachais DHW le seacht l\u00e1 anuas"
+      },
+      "ess_charge_total": {
+        "name": "Ioml\u00e1n muirir ceallra\u00ed"
+      },
+      "ess_discharge_this_month": {
+        "name": "D\u00edlucht\u00fa ceallra\u00ed an mh\u00ed seo"
+      },
+      "ess_discharge_this_week": {
+        "name": "D\u00edlucht\u00fa ceallra\u00ed an tseachtain seo"
+      },
+      "ess_discharge_this_year": {
+        "name": "Scaoileadh ceallra\u00ed i mbliana"
+      },
+      "ess_discharge_today": {
+        "name": "D\u00edlucht\u00fa ceallra\u00ed inniu"
+      },
+      "ess_discharge_total": {
+        "name": "Ioml\u00e1n urscaoilte ceallra\u00ed"
+      },
+      "ess_power_current": {
+        "name": "Cumhacht ceallra\u00ed"
+      },
+      "ess_state": {
+        "name": "Staid na ceallra\u00ed",
+        "state": {
+          "charge": "Muirear\u00fa",
+          "discharge": "Ag urscaoileadh",
+          "standby": "Fuireachas"
+        }
+      },
+      "evaporator_liquid_temperature": {
+        "name": "Teocht leachtach an ghalaitheora"
+      },
+      "evaporator_overheat_temperature": {
+        "name": "Teocht r\u00f3th\u00e9imh an ghalaitheora"
+      },
+      "exhaust_humidity": {
+        "name": "Taise sceite"
+      },
+      "exhaust_temperature": {
+        "name": "Teocht sceite"
+      },
+      "extract_humidity": {
+        "name": "Taise east\u00f3sctha"
+      },
+      "extract_temperature": {
+        "name": "Teocht sliocht"
+      },
+      "filter_hours": {
+        "name": "Scagair\u00ed uaireanta"
+      },
+      "filter_overdue_hours": {
+        "name": "Scag uaireanta thar t\u00e9arma"
+      },
+      "filter_remaining_hours": {
+        "name": "Scag na huaireanta at\u00e1 f\u00e1gtha"
+      },
+      "fuel_need": {
+        "name": "Riachtanas breosla"
+      },
+      "gas_consumption_fuelcell_this_month": {
+        "name": "Tomhaltas g\u00e1is cealla breosla an mh\u00ed seo"
+      },
+      "gas_consumption_fuelcell_this_week": {
+        "name": "Tomhaltas g\u00e1is cealla breosla an tseachtain seo"
+      },
+      "gas_consumption_fuelcell_this_year": {
+        "name": "Tomhaltas g\u00e1is cealla breosla i mbliana"
+      },
+      "gas_consumption_fuelcell_today": {
+        "name": "Tomhaltas g\u00e1is cealla breosla inniu"
+      },
+      "gas_consumption_heating_this_month": {
+        "name": "Tomhaltas g\u00e1is t\u00e9imh an mh\u00ed seo"
+      },
+      "gas_consumption_heating_this_week": {
+        "name": "Tomhaltas g\u00e1is t\u00e9imh an tseachtain seo"
+      },
+      "gas_consumption_heating_this_year": {
+        "name": "Tomhaltas g\u00e1is t\u00e9imh i mbliana"
+      },
+      "gas_consumption_heating_today": {
+        "name": "Tomhaltas g\u00e1is t\u00e9imh inniu"
+      },
+      "gas_consumption_total_this_month": {
+        "name": "Tomhaltas g\u00e1is an mh\u00ed seo"
+      },
+      "gas_consumption_total_this_week": {
+        "name": "Tomhaltas g\u00e1is an tseachtain seo"
+      },
+      "gas_consumption_total_this_year": {
+        "name": "Tomhaltas g\u00e1is i mbliana"
+      },
+      "gas_consumption_total_today": {
+        "name": "Tomhaltas g\u00e1is inniu"
+      },
+      "gas_summary_consumption_heating_currentday": {
+        "name": "Tomhaltas g\u00e1is t\u00e9imh inniu"
+      },
+      "gas_summary_consumption_heating_currentmonth": {
+        "name": "Tomhaltas g\u00e1is t\u00e9imh an mh\u00ed seo"
+      },
+      "gas_summary_consumption_heating_currentyear": {
+        "name": "Tomhaltas g\u00e1is t\u00e9imh i mbliana"
+      },
+      "gas_summary_consumption_heating_lastsevendays": {
+        "name": "Tomhaltas g\u00e1is t\u00e9imh le seacht l\u00e1 anuas"
+      },
+      "heating_rod_hours": {
+        "name": "Uaireanta slat t\u00e9imh"
+      },
+      "heating_rod_starts": {
+        "name": "Tosa\u00edonn slat t\u00e9imh"
+      },
+      "hot_gas_pressure": {
+        "name": "Br\u00fa g\u00e1is te"
+      },
+      "hot_gas_temperature": {
+        "name": "Teocht an gh\u00e1is the"
+      },
+      "hotwater_gas_consumption_heating_this_month": {
+        "name": "Tomhaltas g\u00e1is uisce te an mh\u00ed seo"
+      },
+      "hotwater_gas_consumption_heating_this_week": {
+        "name": "Tomhaltas g\u00e1is uisce te an tseachtain seo"
+      },
+      "hotwater_gas_consumption_heating_this_year": {
+        "name": "Tomhaltas g\u00e1is uisce te (DHW) i mbliana"
+      },
+      "hotwater_gas_consumption_today": {
+        "name": "Tomhaltas g\u00e1is uisce te (DHW) inniu"
+      },
+      "hotwater_gas_summary_consumption_heating_currentday": {
+        "name": "Tomhaltas g\u00e1is uisce te (DHW) inniu"
+      },
+      "hotwater_gas_summary_consumption_heating_currentmonth": {
+        "name": "Tomhaltas g\u00e1is uisce te an mh\u00ed seo"
+      },
+      "hotwater_gas_summary_consumption_heating_currentyear": {
+        "name": "Tomhaltas g\u00e1is uisce te (DHW) i mbliana"
+      },
+      "hotwater_gas_summary_consumption_heating_lastsevendays": {
+        "name": "Tomhaltas g\u00e1is uisce te (DHW) le seacht l\u00e1 anuas"
+      },
+      "hotwater_max_temperature": {
+        "name": "Uasteocht an uisce te"
+      },
+      "hotwater_min_temperature": {
+        "name": "Teocht \u00edosta uisce te"
+      },
+      "hotwater_out_temperature": {
+        "name": "Teocht amach uisce te"
+      },
+      "hydraulic_separator_temperature": {
+        "name": "Teocht an deighilteora hiodr\u00e1laigh"
+      },
+      "inverter_current": {
+        "name": "Sruth inbh\u00e9art\u00f3ra"
+      },
+      "inverter_power": {
+        "name": "Cumhacht inbh\u00e9art\u00f3ra"
+      },
+      "inverter_temperature": {
+        "name": "Teocht an inbh\u00e9art\u00f3ra"
+      },
+      "liquid_gas_temperature": {
+        "name": "Teocht g\u00e1is leachta"
+      },
+      "outside_humidity": {
+        "name": "Taise lasmuigh"
+      },
+      "outside_temperature": {
+        "name": "Teocht lasmuigh"
+      },
+      "pcc_energy_consumption": {
+        "name": "Allmhairi\u00fa fuinnimh \u00f3n eangach"
+      },
+      "pcc_energy_feed_in": {
+        "name": "Onnmhairi\u00fa fuinnimh chuig an eangach"
+      },
+      "pcc_transfer_power_exchange": {
+        "name": "Malart\u00fa cumhachta leis an eangach"
+      },
+      "photovoltaic_energy_production_this_month": {
+        "name": "T\u00e1irgeadh fuinnimh PV an mh\u00ed seo"
+      },
+      "photovoltaic_energy_production_this_week": {
+        "name": "T\u00e1irgeadh fuinnimh PV an tseachtain seo"
+      },
+      "photovoltaic_energy_production_this_year": {
+        "name": "T\u00e1irgeadh fuinnimh PV i mbliana"
+      },
+      "photovoltaic_energy_production_today": {
+        "name": "T\u00e1irgeadh fuinnimh PV inniu"
+      },
+      "photovoltaic_energy_production_total": {
+        "name": "Ioml\u00e1n t\u00e1irgeachta fuinnimh PV"
+      },
+      "photovoltaic_power_production_current": {
+        "name": "Cumhacht PV"
+      },
+      "photovoltaic_status": {
+        "name": "St\u00e1das PV",
+        "state": {
+          "production": "Ag t\u00e1irgeadh",
+          "ready": "Fuireachas"
+        }
+      },
+      "power_consumption_this_month": {
+        "name": "Tomhaltas leictreachais an mh\u00ed seo"
+      },
+      "power_consumption_this_week": {
+        "name": "Tomhaltas leictreachais an tseachtain seo"
+      },
+      "power_consumption_this_year": {
+        "name": "Tomhaltas leictreachais i mbliana"
+      },
+      "power_consumption_today": {
+        "name": "Tomhaltas leictreachais inniu"
+      },
+      "power_production_current": {
+        "name": "Sruth t\u00e1irgthe cumhachta"
+      },
+      "power_production_this_month": {
+        "name": "T\u00e1irgeadh fuinnimh an mh\u00ed seo"
+      },
+      "power_production_this_week": {
+        "name": "T\u00e1irgeadh fuinnimh an tseachtain seo"
+      },
+      "power_production_this_year": {
+        "name": "T\u00e1irgeadh fuinnimh i mbliana"
+      },
+      "power_production_today": {
+        "name": "T\u00e1irgeadh fuinnimh inniu"
+      },
+      "primary_circuit_pump_rotation": {
+        "name": "Rothl\u00fa caid\u00e9il chiorcaid phr\u00edomh\u00fail"
+      },
+      "primary_circuit_return_temperature": {
+        "name": "Teocht fillte an chiorcaid phr\u00edomh\u00fail"
+      },
+      "primary_circuit_supply_temperature": {
+        "name": "Teocht sol\u00e1thair an chiorcaid phr\u00edomh\u00fail"
+      },
+      "return_temperature": {
+        "name": "Teocht fillte"
+      },
+      "secondary_circuit_return_temperature": {
+        "name": "Teocht fillte an chiorcaid th\u00e1naisteach"
+      },
+      "secondary_circuit_supply_temperature": {
+        "name": "Teocht sol\u00e1thair an chiorcaid th\u00e1naistigh"
+      },
+      "solar_power_production_this_month": {
+        "name": "T\u00e1irgeadh fuinnimh gr\u00e9ine an mh\u00ed seo"
+      },
+      "solar_power_production_this_week": {
+        "name": "T\u00e1irgeadh fuinnimh gr\u00e9ine an tseachtain seo"
+      },
+      "solar_power_production_this_year": {
+        "name": "T\u00e1irgeadh fuinnimh gr\u00e9ine i mbliana"
+      },
+      "solar_power_production_today": {
+        "name": "T\u00e1irgeadh fuinnimh gr\u00e9ine inniu"
+      },
+      "solar_storage_temperature": {
+        "name": "Teocht st\u00f3r\u00e1la gr\u00e9ine"
+      },
+      "spf_dhw": {
+        "name": "Facht\u00f3ir feidhm\u00edochta s\u00e9as\u00farach - uisce te t\u00ed"
+      },
+      "spf_heating": {
+        "name": "Facht\u00f3ir feidhm\u00edochta s\u00e9as\u00farach - t\u00e9amh"
+      },
+      "spf_total": {
+        "name": "Facht\u00f3ir feidhm\u00edochta s\u00e9as\u00farach"
+      },
+      "suction_gas_pressure": {
+        "name": "Br\u00fa g\u00e1is sh\u00fach\u00e1n"
+      },
+      "suction_gas_temperature": {
+        "name": "Teocht g\u00e1is sh\u00fach\u00e1n"
+      },
+      "supply_fan_hours": {
+        "name": "Uaireanta fean sol\u00e1thair"
+      },
+      "supply_fan_speed": {
+        "name": "Luas sol\u00e1thair fean"
+      },
+      "supply_humidity": {
+        "name": "Taise sol\u00e1thair"
+      },
+      "supply_pressure": {
+        "name": "Br\u00fa sol\u00e1thair"
+      },
+      "supply_temperature": {
+        "name": "Teocht an tsol\u00e1thair"
+      },
+      "target_temperature": {
+        "name": "Teocht sprice"
+      },
+      "valve_position": {
+        "name": "Seasamh comhla"
+      },
+      "ventilation_input_volumeflow": {
+        "name": "Sreabhadh toirte ionchuir aer\u00e1la"
+      },
+      "ventilation_level": {
+        "name": "Leibh\u00e9al aer\u00e1la",
+        "state": {
+          "levelfour": "4",
+          "levelone": "1",
+          "levelthree": "3",
+          "leveltwo": "2",
+          "standby": "Fuireachas"
+        }
+      },
+      "ventilation_output_volumeflow": {
+        "name": "Sreabhadh toirte aschuir aer\u00e1la"
+      },
+      "ventilation_reason": {
+        "name": "C\u00fais aer\u00e1la",
+        "state": {
+          "forcedlevelfour": "Borradh",
+          "permanent": "Buan",
+          "schedule": "Sceideal",
+          "sensordriven": "Tiom\u00e1inte ag braiteoir\u00ed",
+          "sensoroverride": "S\u00e1r\u00fa braiteora",
+          "silent": "Ci\u00fain",
+          "standby": "Fuireachas"
+        }
+      },
+      "volumetric_flow": {
+        "name": "Sreabhadh toirtmh\u00e9adrach"
+      },
+      "zigbee_signal_strength": {
+        "name": "Neart comhartha"
+      }
+    },
+    "switch": {
+      "quickmode_comfort": {
+        "name": "Dian"
+      },
+      "quickmode_eco": {
+        "name": "\u00c9icea"
+      },
+      "quickmode_forced_level_four": {
+        "name": "Borradh"
+      },
+      "quickmode_silent": {
+        "name": "Ci\u00fain"
+      }
+    },
+    "water_heater": {
+      "domestic_hot_water": {
+        "name": "Uisce te t\u00ed"
+      }
+    }
+  },
+  "exceptions": {
+    "program_not_activated": {
+      "message": "N\u00ed f\u00e9idir cl\u00e1r ViCare {program} a ghn\u00edomhacht\u00fa"
+    },
+    "program_not_deactivated": {
+      "message": "N\u00ed f\u00e9idir cl\u00e1r ViCare {program} a dh\u00edghn\u00edomhacht\u00fa"
+    },
+    "program_unknown": {
+      "message": "N\u00ed f\u00e9idir r\u00e9amhshocr\u00fa {preset} a aistri\u00fa go cl\u00e1r bail\u00ed ViCare"
+    },
+    "quickmode_not_activated": {
+      "message": "N\u00ed f\u00e9idir m\u00f3d tapa ViCare {quickmode} a ghn\u00edomhacht\u00fa. N\u00ed f\u00e9idir ach m\u00f3d tapa amh\u00e1in a bheith gn\u00edomhach ag an am c\u00e9anna; b'fh\u00e9idir go bhfuil ceann eile ag rith cheana f\u00e9in."
+    }
+  },
+  "issues": {
+    "update_redirect_uri": {
+      "description": "T\u00e1 ViCare aistrithe go f\u00edordheimhni\u00fa OAuth2. Leanfaidh do sheisi\u00fan reatha ag obair, ach m\u00e1 bh\u00edonn g\u00e1 le hath-fh\u00edordheimhni\u00fa riamh, n\u00ed m\u00f3r duit URI atreoraithe a chur le do chliant API ar dt\u00fas.\n\nT\u00e9igh go dt\u00ed [Viessmann Developer Portal]({viessmann_developer_portal}) agus cuir an URI atreoraithe seo a leanas le do chliant API:\n\n`{redirect_url}`\n\nN\u00edl s\u00e9 seo pr\u00e1inneach, ach molaimid duit \u00e9 a dh\u00e9anamh go luath.",
+      "title": "Nuashonraigh do chliant API i dTairseach Forbr\u00f3ir\u00ed Viessmann"
+    }
+  },
+  "services": {
+    "set_vicare_mode": {
+      "description": "Socra\u00edonn s\u00e9 modh an fheiste aer\u00e1ide mar at\u00e1 sainmh\u00ednithe ag Viessmann.",
+      "fields": {
+        "vicare_mode": {
+          "description": "Le haghaidh luachanna tacaithe, f\u00e9ach ar an tr\u00e9ith `vicare_modes` den eintiteas aer\u00e1ide.",
+          "name": "M\u00f3d ViCare"
+        }
+      },
+      "name": "Socraigh m\u00f3d ViCare"
+    }
+  }
+}

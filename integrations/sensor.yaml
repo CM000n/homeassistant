@@ -195,7 +195,7 @@ sensor:
   # https://community.home-assistant.io/t/viessmann-component/77873/760
   - platform: "integration"
     unique_id: "a3ad19c0b1de11edaeb2af87d8ff0b2f"
-    source: "sensor.vicare_burner_modulation"
+    source: "sensor.vito_brennermodulation"
     name: "vicare_burner_load_intensity"
     method: "left"
     round: 4

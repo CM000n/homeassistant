@@ -1,0 +1,713 @@
+{
+  "application_credentials": {
+    "description": "Kliento slaptasis raktas ignoruojamas, \u012fveskite bet koki\u0105 reik\u0161m\u0119. Vykdykite [s\u0105rankos instrukcijas]({more_info_url}), kad gautum\u0117te kliento ID."
+  },
+  "config": {
+    "abort": {
+      "already_configured": "Prietaisas jau sukonfig\u016bruotas",
+      "missing_configuration": "Komponentas nesukonfig\u016bruotas. Pra\u0161ome vadovautis dokumentacija.",
+      "unknown": "Netik\u0117ta klaida"
+    },
+    "create_entry": {
+      "default": "S\u0117kmingai autentifikuota"
+    },
+    "step": {
+      "pick_implementation": {
+        "title": "Pasirinkite autentifikavimo metod\u0105"
+      },
+      "reauth_confirm": {
+        "description": "ViCare integracijai reikia i\u0161 naujo autentifikuoti j\u016bs\u0173 paskyr\u0105.",
+        "title": "Baig\u0117si {name} autentifikavimo galiojimas"
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "burner": {
+        "name": "Degiklis"
+      },
+      "child_safety_lock_mode": {
+        "name": "Vaik\u0173 apsaugos u\u017eraktas"
+      },
+      "circulation_pump": {
+        "name": "Cirkuliacinis siurblys"
+      },
+      "compressor": {
+        "name": "Kompresorius"
+      },
+      "domestic_hot_water_charging": {
+        "name": "DHW \u012fkrovimas"
+      },
+      "domestic_hot_water_circulation_pump": {
+        "name": "DHW cirkuliacinis siurblys"
+      },
+      "domestic_hot_water_pump": {
+        "name": "DHW siurblys"
+      },
+      "frost_protection": {
+        "name": "Apsauga nuo u\u017e\u0161alimo"
+      },
+      "identification_mode": {
+        "name": "Identifikavimo re\u017eimas"
+      },
+      "mounting_mode": {
+        "name": "Montavimo re\u017eimas"
+      },
+      "one_time_charge": {
+        "name": "Vienkartinis mokestis"
+      },
+      "solar_pump": {
+        "name": "Saul\u0117s siurblys"
+      },
+      "valve": {
+        "name": "Vo\u017etuvas"
+      },
+      "ventilation_frost_protection": {
+        "name": "V\u0117dinimo apsauga nuo u\u017e\u0161alimo"
+      }
+    },
+    "button": {
+      "activate_onetimecharge": {
+        "name": "Suaktyvinkite vienkartin\u012f apmokestinim\u0105"
+      },
+      "deactivate_onetimecharge": {
+        "name": "I\u0161jungti vienkartin\u012f mokest\u012f"
+      }
+    },
+    "climate": {
+      "heating": {
+        "name": "\u0160ildoma"
+      }
+    },
+    "fan": {
+      "ventilation": {
+        "name": "V\u0117dinimas",
+        "state_attributes": {
+          "preset_mode": {
+            "state": {
+              "permanent": "Nuolatinis",
+              "sensor_driven": "Jutikliais valdomas",
+              "sensor_override": "Tvarkara\u0161tis su jutiklio nepaisymu",
+              "standard": "Minimalus",
+              "standby": "Bud\u0117jimo re\u017eimas",
+              "ventilation": "Tvarkara\u0161tis"
+            }
+          }
+        }
+      }
+    },
+    "number": {
+      "comfort_cooling_temperature": {
+        "name": "Komforti\u0161ka v\u0117sinimo temperat\u016bra"
+      },
+      "comfort_heating_temperature": {
+        "name": "Komforti\u0161ka \u0161ildymo temperat\u016bra"
+      },
+      "comfort_temperature": {
+        "name": "Komforti\u0161ka temperat\u016bra"
+      },
+      "dhw_hysteresis_switch_off": {
+        "name": "I\u0161jungtas DHW histerez\u0117s jungiklis"
+      },
+      "dhw_hysteresis_switch_on": {
+        "name": "\u012ejungtas DHW histerez\u0117s jungiklis"
+      },
+      "dhw_secondary_temperature": {
+        "name": "DHW antrin\u0117 temperat\u016bra"
+      },
+      "dhw_temperature": {
+        "name": "DHW temperat\u016bra"
+      },
+      "heating_curve_shift": {
+        "name": "\u0160ildymo kreiv\u0117s poslinkis"
+      },
+      "heating_curve_slope": {
+        "name": "\u0160ildymo kreiv\u0117s nuolydis"
+      },
+      "normal_cooling_temperature": {
+        "name": "Normali v\u0117sinimo temperat\u016bra"
+      },
+      "normal_heating_temperature": {
+        "name": "Normali \u0161ildymo temperat\u016bra"
+      },
+      "normal_temperature": {
+        "name": "Normali temperat\u016bra"
+      },
+      "reduced_cooling_temperature": {
+        "name": "Suma\u017einta v\u0117sinimo temperat\u016bra"
+      },
+      "reduced_heating_temperature": {
+        "name": "Suma\u017einta \u0161ildymo temperat\u016bra"
+      },
+      "reduced_temperature": {
+        "name": "Suma\u017einta temperat\u016bra"
+      }
+    },
+    "select": {
+      "dhw_operating_mode": {
+        "name": "Kar\u0161to vandens ruo\u0161imo re\u017eimas",
+        "state": {
+          "efficient": "Efektyvus",
+          "efficient_with_min_comfort": "Efektyvus ir su minimaliu komfortu",
+          "off": "I\u0161jungta"
+        }
+      }
+    },
+    "sensor": {
+      "active_mode": {
+        "name": "Re\u017eimas",
+        "state": {
+          "cooling": "Au\u0161inimas",
+          "heating": "\u0160ildymas",
+          "standby": "Bud\u0117jimo re\u017eimas"
+        }
+      },
+      "boiler_supply_temperature": {
+        "name": "Katilo tiekimo temperat\u016bra"
+      },
+      "boiler_temperature": {
+        "name": "Katilo temperat\u016bra"
+      },
+      "buffer_bottom_temperature": {
+        "name": "Buferio dugno temperat\u016bra"
+      },
+      "buffer_main_temperature": {
+        "name": "Buferio pagrindin\u0117 temperat\u016bra"
+      },
+      "buffer_mid_bottom_temperature": {
+        "name": "Buferio vidurin\u0117 apatin\u0117 temperat\u016bra"
+      },
+      "buffer_mid_top_temperature": {
+        "name": "Buferis vidutin\u0117s vir\u0161utin\u0117s temperat\u016bros"
+      },
+      "buffer_middle_temperature": {
+        "name": "Buferio vidutin\u0117 temperat\u016bra"
+      },
+      "buffer_top_temperature": {
+        "name": "Buferio vir\u0161utin\u0117 temperat\u016bra"
+      },
+      "burner_hours": {
+        "name": "Degimo valandos"
+      },
+      "burner_modulation": {
+        "name": "Degiklio moduliavimas"
+      },
+      "burner_starts": {
+        "name": "Degiklis \u012fsijungia"
+      },
+      "collector_temperature": {
+        "name": "Saul\u0117s kolektoriaus temperat\u016bra"
+      },
+      "compressor_hours": {
+        "name": "Kompresoriaus valandos"
+      },
+      "compressor_hours_loadclass1": {
+        "name": "Kompresoriaus valand\u0173 apkrovos klas\u0117 1"
+      },
+      "compressor_hours_loadclass2": {
+        "name": "Kompresoriaus valand\u0173 apkrovos klas\u0117 2"
+      },
+      "compressor_hours_loadclass3": {
+        "name": "Kompresoriaus valand\u0173 apkrovos klas\u0117 3"
+      },
+      "compressor_hours_loadclass4": {
+        "name": "Kompresoriaus valand\u0173 apkrovos klas\u0117 4"
+      },
+      "compressor_hours_loadclass5": {
+        "name": "Kompresoriaus valand\u0173 apkrovos klas\u0117 5"
+      },
+      "compressor_inlet_pressure": {
+        "name": "Kompresoriaus \u012fleidimo sl\u0117gis"
+      },
+      "compressor_inlet_temperature": {
+        "name": "Kompresoriaus \u012fleidimo temperat\u016bra"
+      },
+      "compressor_modulation": {
+        "name": "Kompresoriaus moduliacija"
+      },
+      "compressor_outlet_pressure": {
+        "name": "Kompresoriaus i\u0161leidimo sl\u0117gis"
+      },
+      "compressor_outlet_temperature": {
+        "name": "Kompresoriaus i\u0161leidimo angos temperat\u016bra"
+      },
+      "compressor_phase": {
+        "name": "Kompresoriaus faz\u0117",
+        "state": {
+          "cooling": "V\u0117sinimas",
+          "defrost": "Atitirpinimas",
+          "heating": "\u0160ildoma",
+          "off": "I\u0161jungta",
+          "passive_defrost": "Pasyvus atitirpinimas",
+          "pause": "Nedaroma nieko",
+          "preparing": "Ruo\u0161iama",
+          "preparing_defrost": "Atitirpinimo paruo\u0161imas",
+          "ready": "Nedaroma nieko"
+        }
+      },
+      "compressor_power": {
+        "name": "Kompresoriaus galia"
+      },
+      "compressor_starts": {
+        "name": "Kompresorius paleid\u017eiamas"
+      },
+      "condenser_liquid_temperature": {
+        "name": "Kondensatoriaus skys\u010dio temperat\u016bra"
+      },
+      "condenser_subcooling_temperature": {
+        "name": "Kondensatoriaus per\u0161aldymo temperat\u016bra"
+      },
+      "cop_cooling": {
+        "name": "Na\u0161umo koeficientas \u2013 au\u0161inimas"
+      },
+      "cop_dhw": {
+        "name": "Kar\u0161to vandens na\u0161umo koeficientas"
+      },
+      "cop_heating": {
+        "name": "\u0160ildymo efektyvumo koeficientas"
+      },
+      "cop_total": {
+        "name": "Na\u0161umo koeficientas"
+      },
+      "dhw_storage_bottom_temperature": {
+        "name": "Kar\u0161to vandens laikymo apatin\u0117 temperat\u016bra"
+      },
+      "dhw_storage_middle_temperature": {
+        "name": "Vidutin\u0117 kar\u0161to vandens laikymo temperat\u016bra"
+      },
+      "dhw_storage_temperature": {
+        "name": "Kar\u0161to vandens laikymo temperat\u016bra"
+      },
+      "dhw_storage_top_temperature": {
+        "name": "Kar\u0161to vandens laikymo auk\u0161\u010diausia temperat\u016bra"
+      },
+      "energy_consumption_cooling_this_month": {
+        "name": "V\u0117sinimo elektros suvartojimas \u0161\u012f m\u0117nes\u012f"
+      },
+      "energy_consumption_cooling_this_year": {
+        "name": "\u0160iais metais suvartotas elektros energijos kiekis v\u0117sinant"
+      },
+      "energy_consumption_cooling_today": {
+        "name": "V\u0117sinimo elektros suvartojimas \u0161iandien"
+      },
+      "energy_consumption_dhw_this_year": {
+        "name": "\u0160i\u0173 met\u0173 kar\u0161to vandens energijos suvartojimas"
+      },
+      "energy_consumption_heating_this_year": {
+        "name": "\u0160ilumos energijos suvartojimas \u0161iais metais"
+      },
+      "energy_dhw_summary_consumption_heating_currentday": {
+        "name": "\u0160iandien sunaudojamos elektros energijos kiekis kar\u0161tam vandeniui ruo\u0161ti"
+      },
+      "energy_dhw_summary_consumption_heating_currentmonth": {
+        "name": "\u0160\u012f m\u0117nes\u012f suvartotos elektros energijos kiekis kar\u0161tam vandeniui ruo\u0161ti"
+      },
+      "energy_dhw_summary_consumption_heating_currentyear": {
+        "name": "\u0160iais metais suvartotas elektros energijos kiekis kar\u0161tam vandeniui ruo\u0161ti"
+      },
+      "energy_summary_consumption_heating_currentday": {
+        "name": "Elektros energijos suvartojimas \u0161ildymui \u0161iandien"
+      },
+      "energy_summary_consumption_heating_currentmonth": {
+        "name": "\u0160\u012f m\u0117nes\u012f suvartotas elektros energijos kiekis \u0161ildymui"
+      },
+      "energy_summary_consumption_heating_currentyear": {
+        "name": "Elektros energijos suvartojimas \u0161ildymui \u0161iais metais"
+      },
+      "energy_summary_consumption_heating_lastsevendays": {
+        "name": "Elektros energijos suvartojimas \u0161ildymui per pastar\u0105sias septynias dienas"
+      },
+      "energy_summary_dhw_consumption_heating_lastsevendays": {
+        "name": "Per paskutines septynias dienas suvartotos elektros energijos kiekis kar\u0161tam vandeniui ruo\u0161ti"
+      },
+      "ess_charge_total": {
+        "name": "Bendras akumuliatoriaus \u012fkrovos lygis"
+      },
+      "ess_discharge_this_month": {
+        "name": "Baterija i\u0161sikrov\u0117 \u0161\u012f m\u0117nes\u012f"
+      },
+      "ess_discharge_this_week": {
+        "name": "Baterija i\u0161sikrov\u0117 \u0161i\u0105 savait\u0119"
+      },
+      "ess_discharge_this_year": {
+        "name": "Baterija i\u0161sikrov\u0117 \u0161iais metais"
+      },
+      "ess_discharge_today": {
+        "name": "\u0160iandien i\u0161sikrov\u0117 baterija"
+      },
+      "ess_discharge_total": {
+        "name": "Bendras akumuliatoriaus i\u0161sikrovimas"
+      },
+      "ess_power_current": {
+        "name": "Baterijos galia"
+      },
+      "ess_state": {
+        "name": "Baterijos b\u016bsena",
+        "state": {
+          "charge": "\u012ekrovimas",
+          "discharge": "I\u0161sikrovimas",
+          "standby": "Bud\u0117jimo re\u017eimas"
+        }
+      },
+      "evaporator_liquid_temperature": {
+        "name": "Garintuvo skys\u010dio temperat\u016bra"
+      },
+      "evaporator_overheat_temperature": {
+        "name": "Garintuvo perkaitimo temperat\u016bra"
+      },
+      "exhaust_humidity": {
+        "name": "I\u0161metam\u0173j\u0173 duj\u0173 dr\u0117gm\u0117"
+      },
+      "exhaust_temperature": {
+        "name": "I\u0161metam\u0173j\u0173 duj\u0173 temperat\u016bra"
+      },
+      "extract_humidity": {
+        "name": "I\u0161traukiama dr\u0117gm\u0117"
+      },
+      "extract_temperature": {
+        "name": "I\u0161traukiamojo oro temperat\u016bra"
+      },
+      "filter_hours": {
+        "name": "Filtruoti valandas"
+      },
+      "filter_overdue_hours": {
+        "name": "Filtruoti pradelstas valandas"
+      },
+      "filter_remaining_hours": {
+        "name": "Filtruoti likusias valandas"
+      },
+      "fuel_need": {
+        "name": "Kuro poreikis"
+      },
+      "gas_consumption_fuelcell_this_month": {
+        "name": "Kuro element\u0173 duj\u0173 suvartojimas \u0161\u012f m\u0117nes\u012f"
+      },
+      "gas_consumption_fuelcell_this_week": {
+        "name": "Kuro element\u0173 duj\u0173 suvartojimas \u0161i\u0105 savait\u0119"
+      },
+      "gas_consumption_fuelcell_this_year": {
+        "name": "Kuro element\u0173 duj\u0173 suvartojimas \u0161iais metais"
+      },
+      "gas_consumption_fuelcell_today": {
+        "name": "Kuro element\u0173 duj\u0173 suvartojimas \u0161iandien"
+      },
+      "gas_consumption_heating_this_month": {
+        "name": "\u0160ildymo duj\u0173 suvartojimas \u0161\u012f m\u0117nes\u012f"
+      },
+      "gas_consumption_heating_this_week": {
+        "name": "\u0160ildymo duj\u0173 suvartojimas \u0161i\u0105 savait\u0119"
+      },
+      "gas_consumption_heating_this_year": {
+        "name": "\u0160ildymo duj\u0173 suvartojimas \u0161iais metais"
+      },
+      "gas_consumption_heating_today": {
+        "name": "\u0160ildymo duj\u0173 suvartojimas \u0161iandien"
+      },
+      "gas_consumption_total_this_month": {
+        "name": "Duj\u0173 suvartojimas \u0161\u012f m\u0117nes\u012f"
+      },
+      "gas_consumption_total_this_week": {
+        "name": "Duj\u0173 suvartojimas \u0161i\u0105 savait\u0119"
+      },
+      "gas_consumption_total_this_year": {
+        "name": "Duj\u0173 suvartojimas \u0161iemet"
+      },
+      "gas_consumption_total_today": {
+        "name": "Duj\u0173 suvartojimas \u0161iandien"
+      },
+      "gas_summary_consumption_heating_currentday": {
+        "name": "\u0160ildymo duj\u0173 suvartojimas \u0161iandien"
+      },
+      "gas_summary_consumption_heating_currentmonth": {
+        "name": "\u0160ildymo duj\u0173 suvartojimas \u0161\u012f m\u0117nes\u012f"
+      },
+      "gas_summary_consumption_heating_currentyear": {
+        "name": "\u0160ildymo duj\u0173 suvartojimas \u0161iais metais"
+      },
+      "gas_summary_consumption_heating_lastsevendays": {
+        "name": "\u0160ildymo duj\u0173 suvartojimas trunka septynias dienas"
+      },
+      "heating_rod_hours": {
+        "name": "\u0160ildymo strypo valandos"
+      },
+      "heating_rod_starts": {
+        "name": "\u012esijungia \u0161ildymo strypas"
+      },
+      "hot_gas_pressure": {
+        "name": "Kar\u0161t\u0173 duj\u0173 sl\u0117gis"
+      },
+      "hot_gas_temperature": {
+        "name": "Kar\u0161t\u0173 duj\u0173 temperat\u016bra"
+      },
+      "hotwater_gas_consumption_heating_this_month": {
+        "name": "DHW duj\u0173 suvartojimas \u0161\u012f m\u0117nes\u012f"
+      },
+      "hotwater_gas_consumption_heating_this_week": {
+        "name": "DHW dujos sunaudotos \u0161i\u0105 savait\u0119"
+      },
+      "hotwater_gas_consumption_heating_this_year": {
+        "name": "DHW duj\u0173 suvartojimas \u0161iais metais"
+      },
+      "hotwater_gas_consumption_today": {
+        "name": "DHW duj\u0173 suvartojimas \u0161iandien"
+      },
+      "hotwater_gas_summary_consumption_heating_currentday": {
+        "name": "Duj\u0173 suvartojimas kar\u0161tam vandeniui ruo\u0161ti \u0161iandien"
+      },
+      "hotwater_gas_summary_consumption_heating_currentmonth": {
+        "name": "\u0160\u012f m\u0117nes\u012f suvartotos dujos kar\u0161tam vandeniui ruo\u0161ti"
+      },
+      "hotwater_gas_summary_consumption_heating_currentyear": {
+        "name": "\u0160iais metais suvartotos dujos kar\u0161tam vandeniui ruo\u0161ti"
+      },
+      "hotwater_gas_summary_consumption_heating_lastsevendays": {
+        "name": "DHW duj\u0173 suvartojimas trunka septynias dienas"
+      },
+      "hotwater_max_temperature": {
+        "name": "DHW max temperat\u016bra"
+      },
+      "hotwater_min_temperature": {
+        "name": "DHW min temperat\u016bra"
+      },
+      "hotwater_out_temperature": {
+        "name": "DHW i\u0161\u0117jimo temperat\u016bra"
+      },
+      "hydraulic_separator_temperature": {
+        "name": "Hidraulinio separatoriaus temperat\u016bra"
+      },
+      "inverter_current": {
+        "name": "Inverterio srov\u0117"
+      },
+      "inverter_power": {
+        "name": "Inverterio galia"
+      },
+      "inverter_temperature": {
+        "name": "Inverterio temperat\u016bra"
+      },
+      "liquid_gas_temperature": {
+        "name": "Suskystint\u0173 duj\u0173 temperat\u016bra"
+      },
+      "outside_humidity": {
+        "name": "Lauko dr\u0117gm\u0117"
+      },
+      "outside_temperature": {
+        "name": "Lauko temperat\u016bra"
+      },
+      "pcc_energy_consumption": {
+        "name": "Energijos importas i\u0161 tinklo"
+      },
+      "pcc_energy_feed_in": {
+        "name": "Energijos eksportas \u012f tinkl\u0105"
+      },
+      "pcc_transfer_power_exchange": {
+        "name": "Elektros energijos mainai su tinklu"
+      },
+      "photovoltaic_energy_production_this_month": {
+        "name": "PV gamyba \u0161\u012f m\u0117nes\u012f"
+      },
+      "photovoltaic_energy_production_this_week": {
+        "name": "PV gamyba \u0161i\u0105 savait\u0119"
+      },
+      "photovoltaic_energy_production_this_year": {
+        "name": "PV gamyba \u0161iais metais"
+      },
+      "photovoltaic_energy_production_today": {
+        "name": "PV energijos gamyba \u0161iandien"
+      },
+      "photovoltaic_energy_production_total": {
+        "name": "PV gamyba i\u0161 viso"
+      },
+      "photovoltaic_power_production_current": {
+        "name": "PV galia"
+      },
+      "photovoltaic_status": {
+        "name": "PV b\u016bsena",
+        "state": {
+          "production": "Gaminant",
+          "ready": "Bud\u0117jimo re\u017eimas"
+        }
+      },
+      "power_consumption_this_month": {
+        "name": "Elektros suvartojimas \u0161\u012f m\u0117nes\u012f"
+      },
+      "power_consumption_this_week": {
+        "name": "Elektros suvartojimas \u0161i\u0105 savait\u0119"
+      },
+      "power_consumption_this_year": {
+        "name": "Elektros suvartojimas \u0161iais metais"
+      },
+      "power_consumption_today": {
+        "name": "Elektros suvartojimas \u0161iandien"
+      },
+      "power_production_current": {
+        "name": "Energijos gamybos srov\u0117"
+      },
+      "power_production_this_month": {
+        "name": "Energijos gamyba \u0161\u012f m\u0117nes\u012f"
+      },
+      "power_production_this_week": {
+        "name": "Energijos gamyba \u0161i\u0105 savait\u0119"
+      },
+      "power_production_this_year": {
+        "name": "Energijos gamyba \u0161iais metais"
+      },
+      "power_production_today": {
+        "name": "Energijos gamyba \u0161iandien"
+      },
+      "primary_circuit_pump_rotation": {
+        "name": "Pirminio kont\u016bro siurblio sukimasis"
+      },
+      "primary_circuit_return_temperature": {
+        "name": "Pirmin\u0117s grandin\u0117s gr\u0105\u017einimo temperat\u016bra"
+      },
+      "primary_circuit_supply_temperature": {
+        "name": "Pirmin\u0117s grandin\u0117s tiekimo temperat\u016bra"
+      },
+      "return_temperature": {
+        "name": "Gr\u0105\u017einimo temperat\u016bra"
+      },
+      "secondary_circuit_return_temperature": {
+        "name": "Antrin\u0117s grandin\u0117s gr\u0105\u017einimo temperat\u016bra"
+      },
+      "secondary_circuit_supply_temperature": {
+        "name": "Antrin\u0117s grandin\u0117s tiekimo temperat\u016bra"
+      },
+      "solar_power_production_this_month": {
+        "name": "Saul\u0117s energijos gamyba \u0161\u012f m\u0117nes\u012f"
+      },
+      "solar_power_production_this_week": {
+        "name": "Saul\u0117s energijos gamyba \u0161i\u0105 savait\u0119"
+      },
+      "solar_power_production_this_year": {
+        "name": "Saul\u0117s energijos gamyba \u0161iais metais"
+      },
+      "solar_power_production_today": {
+        "name": "Saul\u0117s energijos gamyba \u0161iandien"
+      },
+      "solar_storage_temperature": {
+        "name": "Saul\u0117s energijos saugojimo temperat\u016bra"
+      },
+      "spf_dhw": {
+        "name": "Sezoninis na\u0161umo faktorius \u2013 kar\u0161tas buitinis vanduo"
+      },
+      "spf_heating": {
+        "name": "Sezoninis na\u0161umo faktorius \u2013 \u0161ildymas"
+      },
+      "spf_total": {
+        "name": "Sezoninis na\u0161umo faktorius"
+      },
+      "suction_gas_pressure": {
+        "name": "Siurbimo duj\u0173 sl\u0117gis"
+      },
+      "suction_gas_temperature": {
+        "name": "Siurbiam\u0173j\u0173 duj\u0173 temperat\u016bra"
+      },
+      "supply_fan_hours": {
+        "name": "Tiekiamo ventiliatoriaus valandos"
+      },
+      "supply_fan_speed": {
+        "name": "Tiekiamo ventiliatoriaus greitis"
+      },
+      "supply_humidity": {
+        "name": "Tiekiamo oro dr\u0117gm\u0117"
+      },
+      "supply_pressure": {
+        "name": "Tiekimo sl\u0117gis"
+      },
+      "supply_temperature": {
+        "name": "Tiekimo temperat\u016bra"
+      },
+      "target_temperature": {
+        "name": "Tikslin\u0117 temperat\u016bra"
+      },
+      "valve_position": {
+        "name": "Vo\u017etuvo pad\u0117tis"
+      },
+      "ventilation_input_volumeflow": {
+        "name": "V\u0117dinimo \u012fvesties t\u016brinis srautas"
+      },
+      "ventilation_level": {
+        "name": "V\u0117dinimo lygis",
+        "state": {
+          "levelfour": "4",
+          "levelone": "1",
+          "levelthree": "3",
+          "leveltwo": "2",
+          "standby": "Bud\u0117jimo re\u017eimas"
+        }
+      },
+      "ventilation_output_volumeflow": {
+        "name": "V\u0117dinimo i\u0161\u0117jimo t\u016brinis srautas"
+      },
+      "ventilation_reason": {
+        "name": "V\u0117dinimo prie\u017eastis",
+        "state": {
+          "forcedlevelfour": "Padidinti",
+          "permanent": "Nuolatinis",
+          "schedule": "Tvarkara\u0161tis",
+          "sensordriven": "Jutikliais valdomas",
+          "sensoroverride": "Jutiklio nepaisymas",
+          "silent": "Tyli",
+          "standby": "Bud\u0117jimo re\u017eimas"
+        }
+      },
+      "volumetric_flow": {
+        "name": "Vandens srautas"
+      },
+      "zigbee_signal_strength": {
+        "name": "Signalo stiprumas"
+      }
+    },
+    "switch": {
+      "quickmode_comfort": {
+        "name": "Intensyvus"
+      },
+      "quickmode_eco": {
+        "name": "Eko"
+      },
+      "quickmode_forced_level_four": {
+        "name": "Padidinti"
+      },
+      "quickmode_silent": {
+        "name": "Tyli"
+      }
+    },
+    "water_heater": {
+      "domestic_hot_water": {
+        "name": "Buitinis kar\u0161tas vanduo"
+      }
+    }
+  },
+  "exceptions": {
+    "program_not_activated": {
+      "message": "Nepavyko suaktyvinti \u201eViCare\u201c programos {program}"
+    },
+    "program_not_deactivated": {
+      "message": "Nepavyko i\u0161jungti \u201eViCare\u201c programos {program}"
+    },
+    "program_unknown": {
+      "message": "Negalima i\u0161versti i\u0161ankstinio nustatymo {preset} \u012f galiojan\u010di\u0105 \u201eViCare\u201c program\u0105"
+    },
+    "quickmode_not_activated": {
+      "message": "Nepavyksta \u012fjungti ViCare greitojo re\u017eimo {quickmode}Vienu metu gali b\u016bti aktyvus tik vienas greitasis re\u017eimas; kitas jau gali veikti."
+    }
+  },
+  "issues": {
+    "update_redirect_uri": {
+      "description": "ViCare buvo perkelta \u012f OAuth2 autentifikavim\u0105. J\u016bs\u0173 esama sesija veiks ir toliau, bet jei kada nors reik\u0117s pakartotinio autentifikavimo, pirmiausia turite prid\u0117ti peradresavimo URI prie savo API kliento.\n\nEikite \u012f [Viessmann k\u016br\u0117j\u0173 portal\u0105]({viessmann_developer_portal}) ir prid\u0117kite \u0161\u012f peradresavimo URI prie savo API kliento:\n\n`{redirect_url}`\n\nTai n\u0117ra skubu, bet rekomenduojame tai padaryti kuo grei\u010diau.",
+      "title": "Atnaujinkite API klient\u0105 Viessmann k\u016br\u0117jo portale"
+    }
+  },
+  "services": {
+    "set_vicare_mode": {
+      "description": "Nustato klimato \u012frenginio re\u017eim\u0105, kur\u012f apibr\u0117\u017e\u0117 Viessmann.",
+      "fields": {
+        "vicare_mode": {
+          "description": "D\u0117l palaikom\u0173 ver\u010di\u0173 \u017er. klimato objekto atribut\u0105 'vicare_modes'.",
+          "name": "ViCare re\u017eimas"
+        }
+      },
+      "name": "Nustatykite ViCare re\u017eim\u0105"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+# Corolla: Tank und Reichweite als ein Wert, fuer den Chip auf dem Home-Dashboard
+# https://www.home-assistant.io/integrations/template/
+template:
+  - sensor:
+      - name: "Corolla Tank und Reichweite"
+        unique_id: corolla_tank_und_reichweite
+        icon: mdi:gas-station
+        state: >
+          {% set tank = states('sensor.corolla_kraftstoffstand') %}
+          {% set reichweite = states('sensor.corolla_tankreichweite') %}
+          {% if tank | is_number and reichweite | is_number %}
+            {{ tank | float | round(0) | int }} % · {{ reichweite | float | round(0) | int }} km
+          {% else %}
+            unknown
+          {% endif %}

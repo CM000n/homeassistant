@@ -7,7 +7,7 @@
   conditions: []
   actions:
     - data:
-        name: Material You
+        name: Fluvy
       action: frontend.set_theme
   mode: single
 - id: "1676044297753"

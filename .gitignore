@@ -66,7 +66,7 @@ venv
 .venv
 .HA_VERSION
 known_hosts
-.ha_run_lock
+.ha_run.lock
 
 # Log files
 home-assistant.log

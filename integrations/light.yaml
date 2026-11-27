@@ -65,6 +65,7 @@ light:
       - "light.og_kuche_esstischlampe"
       - "light.og_kuche_herdlampe"
       - "light.og_kuche_weihnachtsstern_fenster"
+      - "light.og_kuche_weihnachtssterne_kette"
   - platform: "group"
     name: "og_kuche_esstischlampe"
     unique_id: "b43d7fd4-e2c1-44a2-a02c-d9e02d2bf5b9"
@@ -80,6 +81,9 @@ light:
     unique_id: "458d9c4c-2534-4e68-bb3d-f92020a08492"
     entities:
       - "light.kuche_weihnachtsstern_fenster"
+  - platform: "switch"
+    name: "og_kuche_weihnachtssterne_kette"
+    entity_id: "switch.obergeschoss_kuche_shellyplugmg3_70af09e624e4"
   #### Kinderzimmer Johann
   - platform: "group"
     name: "og_kinderzimmer_johann_all_lights"

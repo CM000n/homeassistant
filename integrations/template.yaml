@@ -144,6 +144,26 @@ template:
         icon: mdi:biohazard
 
   - sensor:
+      - name: "Abfuhr Restabfall"
+        unique_id: "b1c2d3e4-1111-4a5b-9c6d-0a1b2c3d4e51"
+        state: >
+          {% set d = states("sensor.tage_bis_restabfallabholung") | int(-1) %}
+          {% if d == 0 %}Heute{% elif d == 1 %}Morgen{% elif d > 1 %}In {{ d }} Tagen{% else %}unbekannt{% endif %}
+        icon: mdi:trash-can-outline
+      - name: "Abfuhr Wertstoffe"
+        unique_id: "b1c2d3e4-2222-4a5b-9c6d-0a1b2c3d4e52"
+        state: >
+          {% set d = states("sensor.tage_bis_wertstoffabholung") | int(-1) %}
+          {% if d == 0 %}Heute{% elif d == 1 %}Morgen{% elif d > 1 %}In {{ d }} Tagen{% else %}unbekannt{% endif %}
+        icon: mdi:recycle
+      - name: "Abfuhr Schadstoffe"
+        unique_id: "b1c2d3e4-3333-4a5b-9c6d-0a1b2c3d4e53"
+        state: >
+          {% set d = states("sensor.tage_bis_mobile_schadstoffsammlung") | int(-1) %}
+          {% if d == 0 %}Heute{% elif d == 1 %}Morgen{% elif d > 1 %}In {{ d }} Tagen{% else %}unbekannt{% endif %}
+        icon: mdi:biohazard
+
+  - sensor:
       - name: "Nächster Bus nach Münzesheim"
         unique_id: "f0dbc9f5-ed89-4c63-bada-f865282b6e1f"
         icon: mdi:bus-clock

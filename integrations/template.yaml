@@ -150,8 +150,12 @@ template:
         unit_of_measurement: "min"
         device_class: "duration"
         state_class: "measurement"
+        availability: >-
+          {% set d = state_attr("sensor.oberacker_rathaus_kraichtal_departures_via_munzesheim_bahnhof_kraicht", "next_departures") %}
+          {{ d is not none and d is not string and d | count > 0 }}
         state: >-
-          {{ state_attr("sensor.oberacker_rathaus_kraichtal_departures_via_munzesheim_bahnhof_kraicht", "next_departures")[0]['countdown'] | int }}
+          {% set d = state_attr("sensor.oberacker_rathaus_kraichtal_departures_via_munzesheim_bahnhof_kraicht", "next_departures") or [] %}
+          {{ d[0]['countdown'] | int(0) if d | count > 0 else none }}
       - name: "weather_temperature"
         unique_id: "a52ce6ac-05eb-11ee-be56-0242ac120002"
         unit_of_measurement: "°C"

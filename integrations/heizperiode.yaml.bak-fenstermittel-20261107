@@ -1,0 +1,44 @@
+---
+# Schwellwerte der Heizperiode-Freigabe (binary_sensor.heizperiode_freigabe, siehe template.yaml).
+# Kein `initial`: der zuletzt gesetzte Wert wird beim Neustart wiederhergestellt.
+input_number:
+  heizperiode_ein_schnitt_24h:
+    name: "Einschalten: 24h-Schnitt unter"
+    icon: mdi:thermometer-chevron-down
+    min: 5
+    max: 25
+    step: 0.5
+    unit_of_measurement: "°C"
+    mode: box
+  heizperiode_ein_prognose_max:
+    name: "Einschalten: Prognose Max unter"
+    icon: mdi:thermometer-chevron-down
+    min: 5
+    max: 25
+    step: 0.5
+    unit_of_measurement: "°C"
+    mode: box
+  heizperiode_aus_schnitt_24h:
+    name: "Ausschalten: 24h-Schnitt über"
+    icon: mdi:thermometer-chevron-up
+    min: 5
+    max: 30
+    step: 0.5
+    unit_of_measurement: "°C"
+    mode: box
+  heizperiode_aus_prognose_max:
+    name: "Ausschalten: Prognose Max über"
+    icon: mdi:thermometer-chevron-up
+    min: 5
+    max: 30
+    step: 0.5
+    unit_of_measurement: "°C"
+    mode: box
+  heizperiode_heizgrenze:
+    name: "Heizgrenze (nur Shadow-Signal Heizdefizit)"
+    icon: mdi:thermometer-lines
+    min: 8
+    max: 22
+    step: 0.5
+    unit_of_measurement: "°C"
+    mode: box

@@ -2,7 +2,10 @@
 # Package: wird über `packages: !include_dir_named "integrations"` geladen.
 #
 # Ablauf:
-#   1. Durchschnitt der Raumsensoren (Steckdosen WZ/SZ/Ankleide + TIMMERFLOTTE als Referenz)
+#   1. Durchschnitt der Regelraum-Sensoren (Steckdosen Wohnzimmer/Kinderzimmer Johann/Ankleide + TIMMERFLOTTE als Referenz).
+#      Das Schlafzimmer (OG, climate.comet_dect_7) gehört bewusst NICHT dazu: sein Ziel ist mit Komfort 14 / Eco 10 °C
+#      deutlich niedriger als das Ziel der übrigen Räume und würde die Abweichung verfälschen.
+#      Neue Räume mit eigenem Ziel nicht in die Liste aufnehmen, sondern separat anzeigen.
 #   2. Abweichung zur Zieltemperatur, 72 h zeitgewichtet gemittelt
 #   3. sensor.heizkurve_empfehlung bewertet das (anheben/absenken/halten/warten/...)
 #   4. Täglich 07:10: Benachrichtigung (Beratung) bzw. Anpassung, wenn der Hauptschalter an ist
@@ -28,7 +31,7 @@ input_number:
     mode: box
     icon: mdi:thermometer-plus
   heizkurve_offset_schlafzimmer:
-    name: "Heizkurve Offset Schlafzimmer"
+    name: "Heizkurve Offset Kinderzimmer Johann"
     min: -5
     max: 5
     step: 0.1
@@ -141,7 +144,7 @@ template:
         availability: >-
           {% set raw = [
             (states('sensor.steckdose_wohnzimmer_temperatur'), states('input_number.heizkurve_offset_wohnzimmer')),
-            (states('sensor.steckdose_schlafzimmer_temperatur'), states('input_number.heizkurve_offset_schlafzimmer')),
+            (states('sensor.steckdose_kinderzimmer_johann_temperatur'), states('input_number.heizkurve_offset_kinderzimmer_johann')),
             (states('sensor.steckdose_ankleide_temperatur'), states('input_number.heizkurve_offset_ankleide')),
             (states('sensor.timmerflotte_temp_hmd_sensor_temperatur'), '0')] %}
           {% set ns = namespace(n=0) %}
@@ -150,7 +153,7 @@ template:
         state: >-
           {% set raw = [
             (states('sensor.steckdose_wohnzimmer_temperatur'), states('input_number.heizkurve_offset_wohnzimmer')),
-            (states('sensor.steckdose_schlafzimmer_temperatur'), states('input_number.heizkurve_offset_schlafzimmer')),
+            (states('sensor.steckdose_kinderzimmer_johann_temperatur'), states('input_number.heizkurve_offset_kinderzimmer_johann')),
             (states('sensor.steckdose_ankleide_temperatur'), states('input_number.heizkurve_offset_ankleide')),
             (states('sensor.timmerflotte_temp_hmd_sensor_temperatur'), '0')] %}
           {% set ns = namespace(v=[]) %}
@@ -163,7 +166,7 @@ template:
         attributes:
           # Rohwerte ohne Offset, zur Fehlersuche
           wohnzimmer: "{{ states('sensor.steckdose_wohnzimmer_temperatur') }}"
-          schlafzimmer: "{{ states('sensor.steckdose_schlafzimmer_temperatur') }}"
+          kinderzimmer_johann: "{{ states('sensor.steckdose_kinderzimmer_johann_temperatur') }}"
           ankleide: "{{ states('sensor.steckdose_ankleide_temperatur') }}"
           referenz_timmerflotte: "{{ states('sensor.timmerflotte_temp_hmd_sensor_temperatur') }}"
 
@@ -187,12 +190,12 @@ template:
         availability: >-
           {{ states('sensor.timmerflotte_temp_hmd_sensor_temperatur') | is_number
              and (states('sensor.steckdose_wohnzimmer_temperatur') | is_number
-                  or states('sensor.steckdose_schlafzimmer_temperatur') | is_number
+                  or states('sensor.steckdose_kinderzimmer_johann_temperatur') | is_number
                   or states('sensor.steckdose_ankleide_temperatur') | is_number) }}
         state: >-
           {% set raw = [
             (states('sensor.steckdose_wohnzimmer_temperatur'), states('input_number.heizkurve_offset_wohnzimmer')),
-            (states('sensor.steckdose_schlafzimmer_temperatur'), states('input_number.heizkurve_offset_schlafzimmer')),
+            (states('sensor.steckdose_kinderzimmer_johann_temperatur'), states('input_number.heizkurve_offset_kinderzimmer_johann')),
             (states('sensor.steckdose_ankleide_temperatur'), states('input_number.heizkurve_offset_ankleide'))] %}
           {% set ns = namespace(v=[]) %}
           {% for t, o in raw %}{% set x = t | float(none) %}{% if x is not none and 10 < x < 32 %}{% set ns.v = ns.v + [x + (o | float(0))] %}{% endif %}{% endfor %}
@@ -261,7 +264,7 @@ script:
           select:
             options:
               - wohnzimmer
-              - schlafzimmer
+              - kinderzimmer_johann
               - ankleide
     sequence:
       - variables:
@@ -328,7 +331,7 @@ automation:
               FROM statistics r
               JOIN statistics_meta rm ON rm.id = r.metadata_id
                 AND rm.statistic_id IN ('sensor.steckdose_wohnzimmer_temperatur',
-                                        'sensor.steckdose_schlafzimmer_temperatur',
+                                        'sensor.steckdose_kinderzimmer_johann_temperatur',
                                         'sensor.steckdose_ankleide_temperatur')
               JOIN statistics o ON o.start_ts = r.start_ts
               JOIN statistics_meta om ON om.id = o.metadata_id

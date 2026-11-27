@@ -14,25 +14,6 @@ ring_lisa_phone:
         title: Home Assistant
         message: Handy-Suche für Lisa angefordert. Bitte notify-Service konfigurieren.
   mode: single
-lina_schlafenszeit:
-  alias: Lina Schlafenszeit
-  icon: mdi:human-baby-changing-table
-  sequence:
-    - action: light.turn_off
-      data: {}
-      target:
-        entity_id:
-          - light.og_schlafzimmer_deckenleuchte
-          - light.og_kinderzimmer_deckenleuchte
-    - action: light.turn_on
-      data:
-        entity_id:
-          - light.og_kinderzimmer_nachttisch
-    - action: media_player.select_source
-      data:
-        source: 90 Minutes Womb Sounds (Baby-Einschlafhilfe)
-        entity_id: media_player.lisi_sonoszp_schlafzimmer
-  mode: single
 simon_pc_aufwecken:
   alias: Simon PC - Aufwecken
   sequence:
@@ -288,75 +269,75 @@ waldfeen_party_start:
                 sequence:
                   - action: light.turn_on
                     target:
+                      entity_id: light.og_kinderzimmer_johann_deckenleuchte
+                    data:
+                      transition: "{{ range(3,7) | random }}"
+                      brightness: "{{ [35, 40, 45, 50, 55, 60, 65, 70, 150] | random }}"
+                      hs_color:
+                        "{{ [[100, 85], [120, 75], [120, 75], [165, 70], [270, 70],
+                        [270, 70], [285, 60], [320, 55], [40, 85]] | random }}"
+                  - delay:
+                      seconds: "{{ range(6,14) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.og_kinderzimmer_johann_wickeltisch
+                    data:
+                      transition: "{{ range(3,7) | random }}"
+                      brightness: "{{ [35, 40, 45, 50, 55, 60, 65, 70, 150] | random }}"
+                      hs_color:
+                        "{{ [[100, 85], [120, 75], [120, 75], [165, 70], [270, 70],
+                        [270, 70], [285, 60], [320, 55], [40, 85]] | random }}"
+                  - delay:
+                      seconds: "{{ range(6,14) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.og_kinderzimmer_lina_deckenleuchte
+                    data:
+                      transition: "{{ range(3,7) | random }}"
+                      brightness: "{{ [35, 40, 45, 50, 55, 60, 65, 70, 150] | random }}"
+                      hs_color:
+                        "{{ [[100, 85], [120, 75], [120, 75], [165, 70], [270, 70],
+                        [270, 70], [285, 60], [320, 55], [40, 85]] | random }}"
+                  - delay:
+                      seconds: "{{ range(6,14) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.og_kinderzimmer_lina_nachttisch
+                    data:
+                      transition: "{{ range(3,7) | random }}"
+                      brightness: "{{ [35, 40, 45, 50, 55, 60, 65, 70, 150] | random }}"
+                      hs_color:
+                        "{{ [[100, 85], [120, 75], [120, 75], [165, 70], [270, 70],
+                        [270, 70], [285, 60], [320, 55], [40, 85]] | random }}"
+                  - delay:
+                      seconds: "{{ range(6,14) | random }}"
+        - sequence:
+            - repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ true }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
                       entity_id: light.og_schlafzimmer_deckenleuchte
-                    data:
-                      transition: "{{ range(3,7) | random }}"
-                      brightness: "{{ [35, 40, 45, 50, 55, 60, 65, 70, 150] | random }}"
-                      hs_color:
-                        "{{ [[100, 85], [120, 75], [120, 75], [165, 70], [270, 70],
-                        [270, 70], [285, 60], [320, 55], [40, 85]] | random }}"
-                  - delay:
-                      seconds: "{{ range(6,14) | random }}"
-        - sequence:
-            - repeat:
-                while:
-                  - condition: template
-                    value_template: "{{ true }}"
-                sequence:
-                  - action: light.turn_on
-                    target:
-                      entity_id: light.og_schlafzimmer_wickeltisch
-                    data:
-                      transition: "{{ range(3,7) | random }}"
-                      brightness: "{{ [35, 40, 45, 50, 55, 60, 65, 70, 150] | random }}"
-                      hs_color:
-                        "{{ [[100, 85], [120, 75], [120, 75], [165, 70], [270, 70],
-                        [270, 70], [285, 60], [320, 55], [40, 85]] | random }}"
-                  - delay:
-                      seconds: "{{ range(6,14) | random }}"
-        - sequence:
-            - repeat:
-                while:
-                  - condition: template
-                    value_template: "{{ true }}"
-                sequence:
-                  - action: light.turn_on
-                    target:
-                      entity_id: light.og_kinderzimmer_deckenleuchte
-                    data:
-                      transition: "{{ range(3,7) | random }}"
-                      brightness: "{{ [35, 40, 45, 50, 55, 60, 65, 70, 150] | random }}"
-                      hs_color:
-                        "{{ [[100, 85], [120, 75], [120, 75], [165, 70], [270, 70],
-                        [270, 70], [285, 60], [320, 55], [40, 85]] | random }}"
-                  - delay:
-                      seconds: "{{ range(6,14) | random }}"
-        - sequence:
-            - repeat:
-                while:
-                  - condition: template
-                    value_template: "{{ true }}"
-                sequence:
-                  - action: light.turn_on
-                    target:
-                      entity_id: light.og_kinderzimmer_nachttisch
-                    data:
-                      transition: "{{ range(3,7) | random }}"
-                      brightness: "{{ [35, 40, 45, 50, 55, 60, 65, 70, 150] | random }}"
-                      hs_color:
-                        "{{ [[100, 85], [120, 75], [120, 75], [165, 70], [270, 70],
-                        [270, 70], [285, 60], [320, 55], [40, 85]] | random }}"
-                  - delay:
-                      seconds: "{{ range(6,14) | random }}"
-        - sequence:
-            - repeat:
-                while:
-                  - condition: template
-                    value_template: "{{ true }}"
-                sequence:
-                  - action: light.turn_on
-                    target:
-                      entity_id: light.og_buro_deckenleuchte
                     data:
                       transition: "{{ range(3,7) | random }}"
                       brightness: "{{ [35, 40, 45, 50, 55, 60, 65, 70, 150] | random }}"
@@ -592,7 +573,7 @@ waldfeen_party_start:
                               seconds: 0.4
                           - action: light.turn_on
                             target:
-                              entity_id: light.og_schlafzimmer_deckenleuchte
+                              entity_id: light.og_kinderzimmer_johann_deckenleuchte
                             data:
                               transition: 0.4
                               brightness: 190
@@ -603,7 +584,7 @@ waldfeen_party_start:
                               seconds: 0.4
                           - action: light.turn_on
                             target:
-                              entity_id: light.og_buro_deckenleuchte
+                              entity_id: light.og_schlafzimmer_deckenleuchte
                             data:
                               transition: 0.4
                               brightness: 190
@@ -614,7 +595,7 @@ waldfeen_party_start:
                               seconds: 0.5
                           - action: light.turn_on
                             target:
-                              entity_id: light.og_kinderzimmer_deckenleuchte
+                              entity_id: light.og_kinderzimmer_lina_deckenleuchte
                             data:
                               transition: 0.6
                               brightness: 255
@@ -623,7 +604,7 @@ waldfeen_party_start:
                                 - 85
                           - action: light.turn_on
                             target:
-                              entity_id: light.og_kinderzimmer_nachttisch
+                              entity_id: light.og_kinderzimmer_lina_nachttisch
                             data:
                               transition: 0.6
                               brightness: 255

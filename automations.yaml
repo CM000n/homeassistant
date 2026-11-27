@@ -75,23 +75,23 @@
                 entity_id: light.og_bad_badspiegel
   mode: single
 - id: "1676049396181"
-  alias: Schalter - Notaus Steckdose Büro Tür
+  alias: Schalter - Notaus Steckdose Schlafzimmer Tür
   description:
-    Schaltet die Steckdose an der Tür im Büro aus, wenn die durchschnittliche
+    Schaltet die Steckdose an der Tür im Schlafzimmer aus, wenn die durchschnittliche
     Last der letzten 30 Minuten über einem Grenzwert lag.
   triggers:
     - trigger: numeric_state
-      entity_id: sensor.shelly_1pm_buero_tuer_power_mean_over_last_30_minutes
+      entity_id: sensor.shelly_1pm_schlafzimmer_tuer_power_mean_over_last_30_minutes
       above: 300
   conditions: []
   actions:
     - action: switch.turn_off
       data: {}
       target:
-        entity_id: switch.shelly_1pm_buero_tuer
+        entity_id: switch.shelly_1pm_schlafzimmer_tuer
     - action: persistent_notification.create
       data:
-        title: Steckdose Büro Tür
+        title: Steckdose Schlafzimmer Tür
         message: Notaus aktiviert!
   mode: single
 - id: "1676055784332"
@@ -266,9 +266,7 @@
               - light.og_wohnzimmer_weihnachtsstern
           action: light.turn_off
       else:
-        - data:
-            brightness_pct: 60
-            transition: 300
+        - data: {}
           target:
             entity_id:
               - light.og_wohnzimmer_weihnachtsstern_fenster
@@ -319,128 +317,8 @@
       target:
         entity_id: media_player.homemini_wohnzimmer
   mode: single
-- id: shellies_announce
-  alias: Shellies Announce
-  triggers:
-    - trigger: homeassistant
-      event: start
-    - trigger: time_pattern
-      hours: /1
-  actions:
-    - action: mqtt.publish
-      data:
-        topic: shellies/command
-        payload: announce
-- id: shellies_discovery
-  alias: Shellies Discovery
-  mode: queued
-  max: 999
-  triggers:
-    - trigger: mqtt
-      topic: shellies/announce
-  conditions:
-    - condition: template
-      value_template: "{{ trigger.payload_json.gen is not defined }}"
-  actions:
-    - action: python_script.shellies_discovery
-      data:
-        id: "{{ trigger.payload_json.id }}"
-        mac: "{{ trigger.payload_json.mac }}"
-        fw_ver: "{{ trigger.payload_json.fw_ver }}"
-        model: "{{ trigger.payload_json.model | default }}"
-        mode: "{{ trigger.payload_json.mode | default }}"
-        host: "{{ trigger.payload_json.ip }}"
-- id: shellies_announce_gen2
-  alias: Shellies Announce Gen2
-  triggers:
-    - trigger: homeassistant
-      event: start
-  actions:
-    - repeat:
-        for_each: "{{ device_ids }}"
-        sequence:
-          - action: mqtt.publish
-            data:
-              topic: "{{ repeat.item }}/rpc"
-              payload: "{{ get_config_payload }}"
-          - action: mqtt.publish
-            data:
-              topic: "{{ repeat.item }}/rpc"
-              payload: "{{ get_components_payload }}"
-  variables:
-    get_config_payload: "{{ {'id': 1, 'src': 'shellies_discovery', 'method':
-      'Shelly.GetConfig'} | to_json }}"
-    get_components_payload:
-      "{{ {'id': 1, 'src': 'shellies_discovery', 'method':'Shelly.GetComponents',
-      'params': {'include': ['config']}} | to_json }}"
-    device_ids:
-      - shellyplugmg3-08927257fa74
-      - shellyplugmg3-70af09e284cc
-      - shellyplugmg3-70af09e624e4
-      - shellyplugmg3-907069508a78
-- id: shellies_discovery_gen2
-  alias: Shellies Discovery Gen2
-  mode: queued
-  max: 999
-  triggers:
-    - trigger: mqtt
-      topic: shellies_discovery/rpc
-  actions:
-    - action: python_script.shellies_discovery_gen2
-      data:
-        id: "{{ trigger.payload_json.src }}"
-        device_config: "{{ trigger.payload_json.result }}"
-    - condition: template
-      value_template: "{{ 'mqtt' in trigger.payload_json.result }}"
-    - action: mqtt.publish
-      data:
-        topic: "{{ trigger.payload_json.result.mqtt.topic_prefix }}/command"
-        payload: status_update
-- id: "1760816151586"
-  alias: Beleuchtung - Reset Adaptive Lightnings
-  description: ""
-  triggers:
-    - trigger: time
-      at: 04:30:00
-  conditions: []
-  actions:
-    - action: switch.turn_off
-      metadata: {}
-      data: {}
-      target:
-        entity_id:
-          - switch.adaptive_lighting_adapt_brightness_kaltweiss
-          - switch.adaptive_lighting_adapt_color_kaltweiss
-          - switch.adaptive_lighting_kaltweiss
-          - switch.adaptive_lighting_adapt_brightness_schlafzimmer
-          - switch.adaptive_lighting_adapt_color_schlafzimmer
-          - switch.adaptive_lighting_schlafzimmer
-          - switch.adaptive_lighting_adapt_brightness_warmweiss
-          - switch.adaptive_lighting_adapt_color_warmweiss
-          - switch.adaptive_lighting_warmweiss
-          - switch.adaptive_lighting_adapt_brightness_wohnzimmer
-          - switch.adaptive_lighting_adapt_color_wohnzimmer
-          - switch.adaptive_lighting_wohnzimmer
-    - action: switch.turn_on
-      metadata: {}
-      data: {}
-      target:
-        entity_id:
-          - switch.adaptive_lighting_adapt_brightness_kaltweiss
-          - switch.adaptive_lighting_adapt_color_kaltweiss
-          - switch.adaptive_lighting_kaltweiss
-          - switch.adaptive_lighting_adapt_brightness_schlafzimmer
-          - switch.adaptive_lighting_adapt_color_schlafzimmer
-          - switch.adaptive_lighting_schlafzimmer
-          - switch.adaptive_lighting_adapt_brightness_warmweiss
-          - switch.adaptive_lighting_adapt_color_warmweiss
-          - switch.adaptive_lighting_warmweiss
-          - switch.adaptive_lighting_adapt_brightness_wohnzimmer
-          - switch.adaptive_lighting_adapt_color_wohnzimmer
-          - switch.adaptive_lighting_wohnzimmer
-  mode: single
 - id: "1778519851735"
-  alias: Kinderzimmer Nachttisch umschalten
+  alias: Kinderzimmer Lina Nachttisch umschalten
   description: ""
   triggers:
     - event: sunrise
@@ -461,15 +339,13 @@
         - data: {}
           target:
             entity_id:
-              - light.og_kinderzimmer_nachttisch
+              - light.og_kinderzimmer_lina_nachttisch
           action: light.turn_off
       else:
-        - data:
-            brightness_pct: 60
-            transition: 300
+        - data: {}
           target:
             entity_id:
-              - light.og_kinderzimmer_nachttisch
+              - light.og_kinderzimmer_lina_nachttisch
           action: light.turn_on
   mode: single
 - id: "1786358497770"
@@ -537,11 +413,11 @@
           - light.og_wohnzimmer_weihnachtsstern_fenster
           - light.og_kuche_herdlampe
           - light.og_kuche_weihnachtsstern_fenster
+          - light.og_kinderzimmer_johann_deckenleuchte
+          - light.og_kinderzimmer_johann_wickeltisch
+          - light.og_kinderzimmer_lina_deckenleuchte
+          - light.og_kinderzimmer_lina_nachttisch
           - light.og_schlafzimmer_deckenleuchte
-          - light.og_schlafzimmer_wickeltisch
-          - light.og_kinderzimmer_deckenleuchte
-          - light.og_kinderzimmer_nachttisch
-          - light.og_buro_deckenleuchte
           - light.flur_deckenlampe_1
           - light.flur_deckenlampe_2
           - light.og_wohnzimmer_stehlampe_rechts
@@ -652,13 +528,18 @@
         - condition: state
           entity_id: binary_sensor.myggbett_door_window_sensor_tur_2
           state: "on"
+        - condition: state
+          entity_id: binary_sensor.obergeschoss_treppenhaus_myggbett_door_window_sensor_3_tur
+          state:
+            - "on"
   actions:
     - variables:
         offene_fenster:
           "{% set ns = namespace(items=[]) %}{% if states('binary_sensor.myggbett_door_window_sensor_tur')
-          == 'on' %}{% set ns.items = ns.items + ['Büro'] %}{% endif %}{% if states('binary_sensor.myggbett_door_window_sensor_tur_2')
-          == 'on' %}{% set ns.items = ns.items + ['Bad'] %}{% endif %}{{ ns.items
-          | join(', ') }}"
+          == 'on' %}{% set ns.items = ns.items + ['Schlafzimmer'] %}{% endif %}{%
+          if states('binary_sensor.myggbett_door_window_sensor_tur_2') == 'on' %}{%
+          set ns.items = ns.items + ['Bad'] %}{% endif %}{{ ns.items | join(', ')
+          }}"
         regenwahrscheinlichkeit:
           "{{ states('sensor.kraichtal_gochsheim_niederschlagswahrscheinlichkeit')
           }}"
@@ -681,57 +562,6 @@
           "Regenwahrscheinlichkeit {{ regenwahrscheinlichkeit }}%. Offene Dachfenster:
           {{ offene_fenster }}. Bitte schließen!"
   mode: single
-- id: "1790965685771"
-  alias: Heizplan OG Badezimmer
-  description: ""
-  use_blueprint:
-    path: local/advanced_heating_control_entities.yaml
-    input:
-      input_trvs:
-        - climate.comet_dect_6
-      input_temperature_sensor: sensor.comet_dect_6_temperatur
-      input_temperature_comfort_static: 22
-      input_temperature_eco_static: 18
-      input_schedulers:
-        - schedule.vito_heizkreis_2_heizkorper_zeitprogramm
-      input_persons:
-        - person.lisa
-        - person.simon
-      input_off_if_above_room_temperature: true
-      input_off_if_nobody_home: false
-      input_windows:
-        - binary_sensor.myggbett_door_window_sensor_tur_2
-      input_mode_winter: binary_sensor.heizperiode_freigabe
-      input_proximity: d78946fd4e65320e4e5455edffe5c9d0
-      input_proximity_distance: 3500
-      input_temperature_comfort: sensor.comet_dect_6_komfort_temperatur
-      input_temperature_eco: sensor.comet_dect_6_eco_temperatur
-- id: "1791011593797"
-  alias: Heizplan OG Büro
-  description: ""
-  use_blueprint:
-    path: local/advanced_heating_control_entities.yaml
-    input:
-      input_trvs:
-        - climate.comet_dect_7
-      input_temperature_sensor: sensor.comet_dect_7_temperatur
-      input_temperature_comfort_static: 22
-      input_temperature_eco_static: 18
-      input_schedulers:
-        - schedule.vito_heizkreis_2_heizkorper_zeitprogramm
-      input_persons:
-        - person.lisa
-        - person.simon
-      input_off_if_above_room_temperature: true
-      input_off_if_nobody_home: false
-      input_windows:
-        - binary_sensor.myggbett_door_window_sensor_tur
-      input_mode_winter: binary_sensor.heizperiode_freigabe
-      input_mode_room_temperature_threshold: 18
-      input_proximity_distance: 3500
-      input_proximity: d78946fd4e65320e4e5455edffe5c9d0
-      input_temperature_comfort: sensor.comet_dect_7_komfort_temperatur
-      input_temperature_eco: sensor.comet_dect_7_eco_temperatur
 - id: "1791144140743"
   alias: Heizplan Haus Heizkörper
   description: ""
@@ -792,7 +622,7 @@
           }} wurde geändert: von {{ trigger.from_state.state }} °C auf {{ trigger.to_state.state
           }} °C."
 - id: 85bda8f6d6ad49cbb471bb5cc13bee0e
-  alias: Büro Lighting
+  alias: Schlafzimmer Lighting
   description: Created by FLARE.
   use_blueprint:
     path: flare/flare.yaml
@@ -800,7 +630,12 @@
       schedule: b4cbac78287699813aca9fd49ef0cd5b
       zone: 904a852e139c474ed65dd3a8d53549c4
       room_target:
-        area_id: buro
+        device_id: b22602e02283922cbfd6bbfb3a9a7350
+        entity_id: light.og_schlafzimmer_deckenleuchte
+      rgb_phases:
+        - Evening
+        - Night
+      stored_traces: 30
 - id: e01e33d873b7488c8e06b763c526fd5e
   alias: Flur Lighting
   description: Created by FLARE.
@@ -810,9 +645,17 @@
       schedule: b4cbac78287699813aca9fd49ef0cd5b
       zone: 3eed0f67c637185b4dc6b2403c6732b2
       room_target:
-        area_id: flur
+        device_id: 24ed905424a06a1b0edb1557ce819451
+        entity_id:
+          - light.flur_deckenlampe_1
+          - light.flur_deckenlampe_2
+      rgb_phases:
+        - Evening
+        - Night
+      stored_traces: 30
+      override_protection: false
 - id: 427285c9c6ab4472a4217129289996d3
-  alias: Kinderzimmer Lighting
+  alias: Kinderzimmer Lina Lighting
   description: Created by FLARE.
   use_blueprint:
     path: flare/flare.yaml
@@ -821,10 +664,14 @@
       zone: f06425965b20912fcaaab1281f743632
       room_target:
         entity_id:
-          - light.og_kinderzimmer_deckenleuchte
-          - light.og_kinderzimmer_nachttisch
+          - light.og_kinderzimmer_lina_deckenleuchte
+        device_id: e1b69dffdc29619a60e6c72b777e83a9
+      rgb_phases:
+        - Evening
+        - Night
+      stored_traces: 30
 - id: 1bf576d3ef984d2dbd4ede0cd4f1d292
-  alias: Schlafzimmer Lighting
+  alias: Kinderzimmer Johann Lighting
   description: Created by FLARE.
   use_blueprint:
     path: flare/flare.yaml
@@ -832,7 +679,8 @@
       schedule: b4cbac78287699813aca9fd49ef0cd5b
       zone: cd5e5ba3d7b8af2f6697bdfc07c313ec
       room_target:
-        entity_id: light.og_schlafzimmer_deckenleuchte
+        entity_id: light.og_kinderzimmer_johann_deckenleuchte
+        device_id: 1b4e5293ac5efc674b43ec01490235fc
 - id: a7dfd152aa4d435e9105b3db6bddfc8a
   alias: Treppenhaus Lighting
   description: Created by FLARE.
@@ -842,7 +690,10 @@
       schedule: b4cbac78287699813aca9fd49ef0cd5b
       zone: e46dd6cc408092cd19c69fadc5dfae42
       room_target:
-        entity_id: light.og_treppenhaus_wandlampen
+        entity_id:
+          - light.og_treppenhaus_wandlampen
+        device_id: c6912d01448dceb87300e672f8770b45
+      override_protection: false
 - id: 0a6116870221416dad9d36fba0d058c9
   alias: Wohnzimmer Lighting
   description: Created by FLARE.
@@ -855,5 +706,21 @@
         entity_id:
           - light.og_wohnzimmer_deckenlampe
           - light.og_wohnzimmer_lightstrip
-          - light.og_wohnzimmer_weihnachtsstern
-          - light.og_wohnzimmer_weihnachtsstern_fenster
+        device_id: 86a018fab94d4489e588657d7c1e7eac
+- id: fluvy_done_11de91676f2db3d01f47681136e0f530
+  alias: "Waschmaschine: benachrichtigen, wenn fertig"
+  triggers:
+    - trigger: state
+      entity_id: sensor.waschmaschine_state
+      to:
+        - finished
+      not_from:
+        - unavailable
+        - unknown
+  conditions: []
+  actions:
+    - action: notify.mobile_app_simons_pixel_9a
+      data:
+        title: Waschmaschine
+        message: Waschmaschine ist fertig.
+  mode: single

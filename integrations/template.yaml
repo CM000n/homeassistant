@@ -4,20 +4,19 @@ template:
   - trigger:
       # Logik im Überblick
       # Mai bis September (Monate 5–9): Der Sensor schaltet fest auf off.
-      # Oktober bis April (Monate 10–4):
-      # Einschalten (off -> on): 24h-Außentemperatur-Mittelwert < Schwelle und maximale Prognosetemperatur der nächsten 24h < Schwelle.
-      # Ausschalten (on -> off): 24h-Außentemperatur-Mittelwert > Schwelle oder maximale Prognosetemperatur der nächsten 24h > Schwelle.
-      # Schwellen (Standard 13,5 / 15,0 / 15,5 / 17,0 °C) sind input_number-Helfer, siehe integrations/heizperiode.yaml.
+      # Oktober bis April (Monate 10–4): Steuergröße ist das Fenster-Mittel = (24h-Außentemperatur-Mittel +
+      # Prognose-Mittel der nächsten 24h) / 2.
+      # Einschalten (off -> on): Fenster-Mittel < Einschaltschwelle.
+      # Ausschalten (on -> off): Fenster-Mittel > Ausschaltschwelle (dazwischen bleibt der Zustand).
+      # Schwellen (Standard 12,5 / 14,5 °C) sind input_number-Helfer, siehe integrations/heizperiode.yaml.
       - platform: time_pattern
         hours: "/1"
       - platform: homeassistant
         event: start
       - platform: state
         entity_id:
-          - input_number.heizperiode_ein_schnitt_24h
-          - input_number.heizperiode_ein_prognose_max
-          - input_number.heizperiode_aus_schnitt_24h
-          - input_number.heizperiode_aus_prognose_max
+          - input_number.heizperiode_ein_fenster_mittel
+          - input_number.heizperiode_aus_fenster_mittel
           - input_number.heizperiode_heizgrenze
     action:
       - action: weather.get_forecasts
@@ -42,14 +41,12 @@ template:
             {% set forecast_list = forecast_data[weather_entity].forecast[:24] | map(attribute='temperature') | list %}
 
             {% if forecast_list | length > 0 and avg_temp != 99 %}
-              {% set forecast_max = forecast_list | max %}
+              {% set window_mean = (avg_temp + forecast_list | sum / forecast_list | length) / 2 %}
 
               {% if is_state('binary_sensor.heizperiode_freigabe', 'off') %}
-                {{ avg_temp < states('input_number.heizperiode_ein_schnitt_24h') | float(13.5)
-                   and forecast_max < states('input_number.heizperiode_ein_prognose_max') | float(15.0) }}
+                {{ window_mean < states('input_number.heizperiode_ein_fenster_mittel') | float(12.5) }}
               {% else %}
-                {{ not (avg_temp > states('input_number.heizperiode_aus_schnitt_24h') | float(15.5)
-                        or forecast_max > states('input_number.heizperiode_aus_prognose_max') | float(17.0)) }}
+                {{ not (window_mean > states('input_number.heizperiode_aus_fenster_mittel') | float(14.5)) }}
               {% endif %}
             {% else %}
               {{ states('binary_sensor.heizperiode_freigabe') }}
@@ -62,15 +59,15 @@ template:
             {% set weather_entity = 'weather.kraichtal_gochsheim' %}
             {% set forecast_list = forecast_data[weather_entity].forecast[:24] | map(attribute='temperature') | list %}
             {{ forecast_list | max if forecast_list | length > 0 else none }}
-          # Shadow-Signale: laufen nur mit und beeinflussen den Schaltzustand NICHT (Auswertung: Plotly-Karte
-          # "Prognose-Signale" im Dashboard Heizung/Regelung).
+          # Zusatzsignale: beeinflussen den Schaltzustand NICHT (Vergleich: Plotly-Karte "Prognose-Signale" im
+          # Dashboard Heizung/Regelung). window_mean_48h unten ist die Steuergröße (siehe state).
           forecast_mean_24h: >
             {% set l = forecast_data['weather.kraichtal_gochsheim'].forecast[:24] | map(attribute='temperature') | list %}
             {{ (l | sum / l | length) | round(2) if l | length > 0 else none }}
           forecast_min_24h: >
             {% set l = forecast_data['weather.kraichtal_gochsheim'].forecast[:24] | map(attribute='temperature') | list %}
             {{ l | min if l | length > 0 else none }}
-          # 24 h Rückblick (gemessen) + 24 h Prognose, zu einem Mittel verrechnet
+          # Steuergröße: 24 h Rückblick (gemessen) + 24 h Prognose, zu einem Mittel verrechnet
           window_mean_48h: >
             {% set l = forecast_data['weather.kraichtal_gochsheim'].forecast[:24] | map(attribute='temperature') | list %}
             {% set past = states('sensor.vito_aussentemperatur_24h_mittel') | float(none) %}
@@ -86,17 +83,18 @@ template:
   - fan:
       - turn_on:
           - entity_id:
-              - switch.lisi_nous_a1t_smartplug_1_switch
+              - switch.lisi_nous_a1t_smartplug_3_switch
             action: switch.turn_on
         turn_off:
           - entity_id:
-              - switch.lisi_nous_a1t_smartplug_1_switch
+              - switch.lisi_nous_a1t_smartplug_3_switch
             action: switch.turn_off
         default_entity_id: fan.wohnzimmer
         name: Ventilator
+        unique_id: "6f1d1e2a-5c1b-4d3e-9f3a-2f7a0d6b8c11"
         state:
-          "{{ 'off' if is_state('switch.lisi_nous_a1t_smartplug_1_switch', 'unavailable')
-          else states('switch.lisi_nous_a1t_smartplug_1_switch') }}"
+          "{{ 'off' if is_state('switch.lisi_nous_a1t_smartplug_3_switch', 'unavailable')
+          else states('switch.lisi_nous_a1t_smartplug_3_switch') }}"
 
   # https://community.home-assistant.io/t/days-until-x-sensors-based-on-single-local-calendar/651560/4
   - trigger:
@@ -325,16 +323,17 @@ template:
               ,'light.og_wohnzimmer_lightstrip'
               ,'light.og_wohnzimmer_weihnachtsstern'
               ,'light.og_wohnzimmer_weihnachtsstern_fenster'
-              ,'light.weihnachtsbaum'
+              ,'light.obergeschoss_wohnzimmer_rgbwic_string_lights'
               ,'light.og_kuche_esstischlampe'
               ,'light.og_kuche_herdlampe'
               ,'light.og_kuche_weihnachtsstern_fenster'
-              ,'light.og_schlafzimmer_deckenleuchte'
-              ,'light.og_kinderzimmer_deckenleuchte'
-              ,'light.og_kinderzimmer_nachttisch'
+              ,'light.og_kinderzimmer_johann_deckenleuchte'
+              ,'light.og_kinderzimmer_johann_wickeltisch'
+              ,'light.og_kinderzimmer_lina_deckenleuchte'
+              ,'light.og_kinderzimmer_lina_nachttisch'
               ,'light.og_bad_deckenlampe'
               ,'light.og_bad_badspiegel'
-              ,'light.og_buro_deckenleuchte'
+              ,'light.og_schlafzimmer_deckenleuchte'
               ,'light.og_flur_deckenlampen'
               ,'light.og_treppenhaus_wandlampen'
               ,'light.eg_eingangstur_decke'
@@ -358,6 +357,11 @@ template:
               'media_player.buro']
              | expand
              | selectattr('state', 'in', ['playing', 'on'])
+             | list
+             | count
+             + ['media_player.linas_toniebox']
+             | expand
+             | selectattr('state', 'eq', 'playing')
              | list
              | count }}
 
@@ -446,10 +450,10 @@ template:
           {% set lights = [
             states.sensor.deckenlampe_ankleide_an_jahr,
             states.sensor.deckenlampe_bad_an_jahr,
-            states.sensor.deckenlampe_buro_an_jahr,
+            states.sensor.deckenlampe_schlafzimmer_an_jahr,
             states.sensor.deckenlampen_flur_an_jahr,
             states.sensor.deckenlampe_herd_an_jahr,
-            states.sensor.deckenlampe_schlafzimmer_an_jahr,
+            states.sensor.deckenlampe_kinderzimmer_johann_an_jahr,
             states.sensor.deckenlampe_wohnzimmer_an_jahr,
             states.sensor.lightstrip_wohnzimmer_an_jahr,
             states.sensor.nachttischlampe_lisa_an_jahr,
@@ -464,10 +468,10 @@ template:
             {% set sensors = [
               ('Ankleide', states('sensor.deckenlampe_ankleide_an_jahr') | float(0)),
               ('Bad', states('sensor.deckenlampe_bad_an_jahr') | float(0)),
-              ('Büro', states('sensor.deckenlampe_buro_an_jahr') | float(0)),
+              ('Schlafzimmer', states('sensor.deckenlampe_schlafzimmer_an_jahr') | float(0)),
               ('Flur', states('sensor.deckenlampen_flur_an_jahr') | float(0)),
               ('Herd', states('sensor.deckenlampe_herd_an_jahr') | float(0)),
-              ('Schlafzimmer', states('sensor.deckenlampe_schlafzimmer_an_jahr') | float(0)),
+              ('Kinderzimmer Johann', states('sensor.deckenlampe_kinderzimmer_johann_an_jahr') | float(0)),
               ('Wohnzimmer', states('sensor.deckenlampe_wohnzimmer_an_jahr') | float(0)),
               ('Lightstrip', states('sensor.lightstrip_wohnzimmer_an_jahr') | float(0)),
               ('Nachttisch Lisa', states('sensor.nachttischlampe_lisa_an_jahr') | float(0)),

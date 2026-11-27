@@ -1,8 +1,9 @@
 /*
- * Schedule Helper Card — weekly schedules for any device, with optional Shabbat and Jewish holiday modes.
+ * Schedule Helper Card — weekly schedules for any device, with modes: vacation, and optional Shabbat and Jewish holidays.
  *
  *   type: custom:schedule-helper-card
- *   type: custom:schedule-helper-shabbat-card
+ *   type: custom:schedule-helper-modes-card      (vacation, and optionally Shabbat and chag)
+ *   type: custom:schedule-helper-shabbat-card    (the same card, Shabbat and chag only; before 2.5)
  *
  * Until 2.0 the cards were `custom:beit-schedule-card` and `custom:beit-shabbat-card`; those types still work.
  *
@@ -13,7 +14,7 @@
  * Custom elements are registered only where `customElements` exists.
  */
 
-export const VERSION = '2.3.0';
+export const VERSION = '2.5.1';
 
 // ---------------------------------------------------------------------------- week model
 
@@ -233,13 +234,76 @@ export function schedulesIn(config, states = null) {
   return states ? ids.filter((id) => id in states) : ids;
 }
 
+const asList = (v) => (v == null ? [] : Array.isArray(v) ? v : [v]);
+
+/**
+ * What an automation does when a schedule it follows turns off, as service calls `{domain, service, data, target}`:
+ * the `choose` branch picked by a trigger to "off" on that schedule, or by a condition that the schedule is off. The
+ * card's own shape and the common hand-written one both read this way. `[]` when nothing happens at the end (no
+ * trigger fires then); null when it cannot be read plainly (templates, waits, nested logic).
+ */
+export function scheduleOffSteps(config, scheduleEntityId) {
+  const onSchedule = (x) => asList(x?.entity_id).includes(scheduleEntityId);
+  const firesAtOff = asList(config?.triggers ?? config?.trigger)
+    .filter((t) => (t.trigger ?? t.platform) === 'state' && onSchedule(t) &&
+      (t.to == null ? !asList(t.from).includes('off') : asList(t.to).includes('off')));
+  if (!firesAtOff.length) return [];
+  const offIds = firesAtOff.map((t) => t.id).filter((id) => id != null);
+  const picksOff = (c) => (c?.condition === 'trigger' && asList(c.id).some((id) => offIds.includes(id))) ||
+    (c?.condition === 'state' && onSchedule(c) && asList(c.state).includes('off'));
+  const actions = asList(config?.actions ?? config?.action);
+  if (actions.length !== 1 || !actions[0]?.choose) return null;
+  const branch = asList(actions[0].choose).find((o) => {
+    const conds = asList(o.conditions);
+    return conds.length === 1 && picksOff(conds[0]);
+  });
+  if (!branch) return null;
+  const steps = asList(branch.sequence);
+  if (JSON.stringify(steps).includes('{{')) return null;
+  const calls = [];
+  for (const s of steps) {
+    const [domain, service, ...rest] = String(s?.action ?? s?.service ?? '').split('.');
+    if (!domain || !service || rest.length || Object.keys(s).some((k) => !['action', 'service', 'data', 'target', 'alias', 'metadata'].includes(k))) return null;
+    calls.push({ domain, service, data: s.data || {}, target: s.target || {} });
+  }
+  return calls;
+}
+
 // ---------------------------------------------------------------------------- modes
 
-export const MODES = ['שבת', 'חג'];
-export const MODE_LABEL_STYLE = {
-  שבת: { icon: 'mdi:candle', color: 'amber' },
-  חג: { icon: 'mdi:star-david', color: 'indigo' },
+/**
+ * A mode is a set of automations (and the schedules they follow) switched on together for a stretch of time: an HA
+ * label names its members. Vacation is the mode every home has; Shabbat and chag are the same idea with a Jewish
+ * calendar deciding the stretch. A label is found by any of its `names`; a missing one is created with the name in the
+ * user's language.
+ */
+export const MODE_DEFS = {
+  vacation: { names: ['Vacation', 'חופשה'], labelName: { en: 'Vacation', he: 'חופשה' }, icon: 'mdi:airplane', color: 'teal', jewish: false },
+  שבת: { names: ['שבת'], labelName: { en: 'שבת', he: 'שבת' }, icon: 'mdi:candle', color: 'amber', jewish: true },
+  חג: { names: ['חג'], labelName: { en: 'חג', he: 'חג' }, icon: 'mdi:star-david', color: 'indigo', jewish: true },
 };
+export const MODES = Object.keys(MODE_DEFS);
+export const JEWISH_MODES = MODES.filter((m) => MODE_DEFS[m].jewish);
+export const MODE_LABEL_STYLE = Object.fromEntries(MODES.map((m) => [m, { icon: MODE_DEFS[m].icon, color: MODE_DEFS[m].color }]));
+
+const MODE_ALIASES = { shabbat: 'שבת', chag: 'חג', vacation: 'vacation', 'חופשה': 'vacation' };
+/** The mode a config names: its key, a label name, or a Latin alias (shabbat, chag). Null when it is none. */
+export function modeKey(name) {
+  if (name == null) return null;
+  const s = String(name).trim();
+  if (MODE_DEFS[s]) return s;
+  return MODE_ALIASES[s.toLowerCase()] || MODES.find((m) => MODE_DEFS[m].names.includes(s)) || null;
+}
+
+/** A mode's label in a registry (`{labels}`), or in a plain label list. */
+export function modeLabel(registryOrLabels, mode) {
+  const labels = Array.isArray(registryOrLabels) ? registryOrLabels : registryOrLabels?.labels;
+  const names = MODE_DEFS[modeKey(mode)]?.names || [mode];
+  return (labels || []).find((l) => names.includes(l?.name)) || null;
+}
+
+/** The CSS class of a mode's chip and section. */
+export const modeClass = (mode) => ({ vacation: 'vacation', שבת: 'shabbat', חג: 'chag' })[mode] || 'mode-other';
 
 /** A mode's switch: 'on' when every member automation is on, 'partial' when some are, 'off' when none, 'empty'. */
 export function modeState(members) {
@@ -276,6 +340,7 @@ export function findCalendar(states) {
     candleLighting: jc('sensor', 'upcoming_candle_lighting'),
     shabbatCandleLighting: jc('sensor', 'upcoming_shabbat_candle_lighting'),
     havdalah: jc('sensor', 'upcoming_havdalah'),
+    shabbatHavdalah: jc('sensor', 'upcoming_shabbat_havdalah'),
     date: jc('sensor', 'date'),
     parasha: jc('sensor', 'weekly_torah_portion'),
     holiday: jc('sensor', 'holiday'),
@@ -295,14 +360,14 @@ export function findCalendar(states) {
 // ---------------------------------------------------------------------------- automatic modes
 
 /** One automation per mode switches the mode on before it begins and off after it ends. Recognised by alias. */
-export const AUTO_ALIAS = { שבת: 'Beit · מצב שבת אוטומטי', חג: 'Beit · מצב חג אוטומטי' };
+export const AUTO_ALIAS = { vacation: 'Beit · Automatic vacation', שבת: 'Beit · מצב שבת אוטומטי', חג: 'Beit · מצב חג אוטומטי' };
 export const AUTO_SHABBAT_ALIAS = AUTO_ALIAS['שבת'];
 export const isAutoAlias = (name) => Object.values(AUTO_ALIAS).includes(name);
 
 /** When a mode switches on: `{at: 'HH:MM'}` on the day, or `{hoursBefore: n}` before candle lighting (Jewish Calendar). */
 export const DEFAULT_AUTO_START = { at: '12:00' };
-const START_ID = { שבת: 'erev_shabbat', חג: 'erev_chag' };
-const END_ID = { שבת: 'motzei_shabbat', חג: 'motzei_chag' };
+const START_ID = { vacation: 'vacation_start', שבת: 'erev_shabbat', חג: 'erev_chag' };
+const END_ID = { vacation: 'vacation_end', שבת: 'motzei_shabbat', חג: 'motzei_chag' };
 // Longer than any Shabbat on its own (about 25-26 hours from candle lighting to havdalah), shorter than Shabbat plus a
 // day of chag (about 49): on a Friday, a longer stretch ahead means a chag is next to this Shabbat.
 const LONG_REST_SECONDS = 36 * 3600;
@@ -355,10 +420,23 @@ function outsideTemplate(mode, cal) {
  * Whether a mode should be off right now by the calendar: true (outside it), false (in it, or about to begin), or null
  * when the house has no calendar or its sensors are not readable (e.g. right after a restart).
  */
-export function modeOutsideNow(mode, states, now = new Date()) {
-  const o = outsideFacts(mode, findCalendar(states));
+export function modeOutsideNow(mode, states, now = new Date(), range = null) {
+  // Vacation has no calendar: outside, unless an automatic vacation's dates say it is on now.
+  if (mode === 'vacation') return range ? vacationPhase(range, now) !== 'during' : true;
+  const cal = findCalendar(states);
+  const o = outsideFacts(mode, cal);
   if (!o || o.facts.some(([id]) => !usable(states?.[id]))) return null;
-  return o.facts.every(([id, st]) => states[id].state === st) && !(o.friday && now.getDay() === 5);
+  const outside = o.facts.every(([id, st]) => states[id].state === st) && !(o.friday && now.getDay() === 5);
+  return outside || mode !== 'חג' ? outside : shabbatOnly(cal, states);
+}
+
+/**
+ * Jewish Calendar's issur melacha and erev sensors are on for every Shabbat too. True when what is on now is Shabbat
+ * alone: the coming end (or start) is the same as Shabbat's, so no chag is in it. False when unknown.
+ */
+function shabbatOnly(cal, states) {
+  const same = (a, b) => !!(a && b && usable(states[a]) && usable(states[b]) && states[a].state === states[b].state);
+  return states[cal.issur]?.state === 'on' ? same(cal.havdalah, cal.shabbatHavdalah) : same(cal.candleLighting, cal.shabbatCandleLighting);
 }
 
 /** Home Assistant's own "add an integration" page for Jewish Calendar (the path my.home-assistant.io redirects to). */
@@ -366,6 +444,7 @@ export const ADD_JEWISH_CALENDAR = '/_my_redirect/config_flow_start?domain=jewis
 
 /** Whether this house can run the automatic mode at all. */
 export function autoAvailable(mode, cal) {
+  if (mode === 'vacation') return true;
   if (mode === 'שבת') return !!autoShabbatEndTrigger(cal);
   return !!(cal?.issur && cal?.erev && cal?.candleLighting && cal?.havdalah);
 }
@@ -403,6 +482,40 @@ export function startText(start, lang = 'en') {
   return lang === 'he' ? `ב-${start?.at ?? DEFAULT_AUTO_START.at}` : `at ${start?.at ?? DEFAULT_AUTO_START.at}`;
 }
 
+/**
+ * When automatic Shabbat next switches the mode on: the coming Friday at `at`, or `hoursBefore` before the upcoming
+ * Shabbat candle lighting. Null for chag (its date is the calendar's), or when the sensor cannot be read.
+ */
+export function nextAutoStart(mode, start, states, cal, now = new Date()) {
+  if (mode !== 'שבת') return null;
+  if (start?.hoursBefore != null) {
+    const sensor = cal?.shabbatCandleLighting || cal?.candleLighting;
+    const lighting = new Date(states?.[sensor]?.state ?? NaN);
+    if (isNaN(lighting)) return null;
+    const at = new Date(lighting.getTime() - Number(start.hoursBefore) * 3600000);
+    return at > now ? at : null; // during Shabbat the sensor may still name this one; next week's time is not known yet
+  }
+  const at = parseTimeInput(start?.at ?? DEFAULT_AUTO_START.at) ?? 720;
+  const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + ((5 - now.getDay() + 7) % 7), Math.floor(at / 60), at % 60);
+  if (d <= now) d.setDate(d.getDate() + 7);
+  return d;
+}
+
+/**
+ * Friday ranges of Shabbat schedules that begin before the mode comes on at `startDate`: their automations are still
+ * off when the range begins, so they do not run it. `[{entityId, start}]`, start in minutes.
+ */
+export function startsBeforeMode(weeks, startDate) {
+  if (!startDate) return [];
+  const at = startDate.getHours() * 60 + startDate.getMinutes();
+  const early = [];
+  for (const [entityId, week] of Object.entries(weeks || {})) {
+    const first = (week?.days?.friday || []).filter((b) => b.start < at).sort((a, b) => a.start - b.start)[0];
+    if (first) early.push({ entityId, start: first.start });
+  }
+  return early;
+}
+
 /** On a Friday, only when Shabbat is joined by a chag; any other erev (Jewish Calendar's sensor) is erev chag. */
 function erevChagTemplate(cal) {
   return `{% set cl = as_datetime(states('${cal.candleLighting}'), none) %}{% set hv = as_datetime(states('${cal.havdalah}'), none) %}` +
@@ -431,11 +544,7 @@ export function buildAutoModeAutomation({ id, mode, labelId, start = DEFAULT_AUT
   const onConditions = mode === 'שבת'
     ? [{ condition: 'time', weekday: ['fri'] }]
     : [{ condition: 'template', value_template: erevChagTemplate(cal) }];
-  const waitForSchedules = {
-    wait_template: `{{ label_entities('${labelId}') | select('match', 'schedule\\\\.') | select('is_state', 'on') | list | count == 0 }}`,
-    timeout: '06:00:00',
-    continue_on_timeout: true,
-  };
+  const waitForSchedules = waitForModeSchedules(labelId);
   const turnOff = { action: 'automation.turn_off', target, data: { stop_actions: false } };
   // A restart drops a run waiting for the schedules to end, and an end that came while HA was down never fires: on
   // start, once the calendar can be read, a mode that is over is switched off the same way.
@@ -477,6 +586,103 @@ export function buildAutoModeAutomation({ id, mode, labelId, start = DEFAULT_AUT
     ],
     mode: 'single',
   };
+}
+
+/** Waits (6 h at most) until no schedule of the mode is on, so turning the mode off does not cut a range short. */
+function waitForModeSchedules(labelId) {
+  return {
+    wait_template: `{{ label_entities('${labelId}') | select('match', 'schedule\\\\.') | select('is_state', 'on') | list | count == 0 }}`,
+    timeout: '06:00:00',
+    continue_on_timeout: true,
+  };
+}
+
+// ---- automatic vacation: a range of dates the user picks ----
+
+const NOW_MINUTE = "now().strftime('%Y-%m-%d %H:%M')";
+const RANGE_RE = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/;
+
+/** "YYYY-MM-DD HH:MM" in local time, the form vacation dates are stored in (and HA's templates compare as text). */
+export function localStamp(date) {
+  return `${date.getFullYear()}-${pad2(date.getMonth() + 1)}-${pad2(date.getDate())} ${pad2(date.getHours())}:${pad2(date.getMinutes())}`;
+}
+
+/** A stamp back to a local Date; null when it is not one. */
+export function parseStamp(stamp) {
+  const m = String(stamp ?? '').trim().replace('T', ' ').match(/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})$/);
+  if (!m) return null;
+  const d = new Date(+m[1], +m[2] - 1, +m[3], +m[4], +m[5]);
+  return isNaN(d) || d.getMonth() !== +m[2] - 1 ? null : d;
+}
+
+/** Where `now` is relative to a vacation `{from, to}`: 'before', 'during' or 'after'. */
+export function vacationPhase(range, now = new Date()) {
+  const n = localStamp(now);
+  if (n < range.from) return 'before';
+  return n < range.to ? 'during' : 'after';
+}
+
+/** Why a vacation range cannot be used, in words; null when it can. A range that has already ended is refused. */
+export function vacationRangeError(range, lang = 'en', now = new Date()) {
+  const t = STRINGS[lang] || STRINGS.en;
+  if (!RANGE_RE.test(range?.from ?? '') || !RANGE_RE.test(range?.to ?? '') || !parseStamp(range.from) || !parseStamp(range.to)) return t.errVacationDates;
+  if (range.to <= range.from) return t.errVacationOrder;
+  if (range.to <= localStamp(now)) return t.errVacationPast;
+  return null;
+}
+
+/**
+ * The automatic-vacation automation (contract §3b): the mode's label on from `range.from` to `range.to`, then off once
+ * its schedules have ended, and then the automation switches itself off, so the mode is back to manual after the trip.
+ * A restart in the middle catches up: inside the dates the mode goes on, after them it goes off.
+ */
+export function buildVacationAutomation({ id, labelId, range }) {
+  const target = { label_id: labelId };
+  const time = (stamp) => `${stamp.slice(11, 16)}:00`;
+  const inside = `{{ vacation_from <= ${NOW_MINUTE} and ${NOW_MINUTE} < vacation_to }}`;
+  const after = `{{ ${NOW_MINUTE} >= vacation_to }}`;
+  return {
+    id,
+    alias: AUTO_ALIAS.vacation,
+    description: `${BEIT_MARKER} — מדליק את כל האוטומציות במצב חופשה מ-${range.from} עד ${range.to}, ` +
+      'ומכבה אותן בסוף, אחרי שכל תזמוני החופשה הסתיימו. אחר כך האוטומציה מכבה את עצמה (חזרה למצב ידני).',
+    variables: { vacation_from: range.from, vacation_to: range.to },
+    triggers: [
+      { trigger: 'time', at: time(range.from), id: START_ID.vacation },
+      { trigger: 'time', at: time(range.to), id: END_ID.vacation },
+      { trigger: 'homeassistant', event: 'start', id: CATCH_UP_ID },
+    ],
+    conditions: [],
+    actions: [
+      {
+        choose: [
+          {
+            conditions: [{ condition: 'trigger', id: [START_ID.vacation, CATCH_UP_ID] }, { condition: 'template', value_template: inside }],
+            sequence: [{ action: 'automation.turn_on', target }],
+          },
+          {
+            conditions: [{ condition: 'trigger', id: [END_ID.vacation, CATCH_UP_ID] }, { condition: 'template', value_template: after }],
+            sequence: [
+              waitForModeSchedules(labelId),
+              { action: 'automation.turn_off', target, data: { stop_actions: false } },
+              { action: 'automation.turn_off', target: { entity_id: '{{ this.entity_id }}' }, data: { stop_actions: false } },
+            ],
+          },
+        ],
+      },
+    ],
+    mode: 'single',
+  };
+}
+
+/** Reads the dates back from an automatic-vacation config: `{from, to, labelId}`; null unless it is exactly that shape. */
+export function parseVacationAutomation(config) {
+  if (!isOurs(config) || config?.id == null) return null;
+  const from = config.variables?.vacation_from;
+  const to = config.variables?.vacation_to;
+  const labelId = config.actions?.[0]?.choose?.[0]?.sequence?.[0]?.target?.label_id;
+  if (!RANGE_RE.test(from ?? '') || !RANGE_RE.test(to ?? '') || !labelId) return null;
+  return sameConfig(buildVacationAutomation({ id: config.id, labelId, range: { from, to } }), config) ? { from, to, labelId } : null;
 }
 
 /** The automatic-Shabbat automation with the default start (kept for callers of 1.0). */
@@ -703,8 +909,35 @@ export async function renameScheduleAutomations(hass, automationEntityIds, oldNa
   return renamed;
 }
 
-export const setAutomationEnabled = (hass, automationEntityId, enabled) =>
-  hass.callService('automation', enabled ? 'turn_on' : 'turn_off', {}, { entity_id: automationEntityId });
+/**
+ * Switches automations off, and ends each range still running: a schedule that is on would otherwise leave its device
+ * on, since the automation that turns it off at the end no longer runs. Returns the automations whose end could not
+ * be read (their devices may still be on).
+ */
+export async function turnOffAutomations(hass, automationEntityIds) {
+  const running = [];
+  for (const id of automationEntityIds) {
+    if (hass.states?.[id]?.state !== 'on') continue;
+    const config = await automationConfig(hass, id).catch(() => null);
+    const on = schedulesIn(config, hass.states).filter((s) => hass.states[s]?.state === 'on');
+    if (on.length) running.push({ id, config, schedules: on });
+  }
+  await hass.callService('automation', 'turn_off', {}, { entity_id: automationEntityIds });
+  const unclear = [];
+  for (const { id, config, schedules } of running) {
+    const steps = schedules.map((s) => scheduleOffSteps(config, s));
+    if (steps.some((x) => x === null)) {
+      unclear.push(id);
+      continue;
+    }
+    for (const c of steps.flat()) await hass.callService(c.domain, c.service, c.data, c.target);
+  }
+  return unclear;
+}
+
+export const setAutomationEnabled = (hass, automationEntityId, enabled) => (enabled
+  ? hass.callService('automation', 'turn_on', {}, { entity_id: automationEntityId }).then(() => [])
+  : turnOffAutomations(hass, [automationEntityId]));
 
 // ---- modes: an HA label names the automations (and schedules) of a mode ----
 
@@ -719,12 +952,17 @@ export async function loadRegistry(hass) {
 
 export const labelNamed = (registry, name) => registry?.labels?.find((l) => l.name === name) || null;
 
-export async function ensureLabel(hass, name) {
+/**
+ * A mode's label, created when it is missing: with the contract's icon and colour, and for vacation named in the
+ * user's language (`Vacation` / `חופשה`; either is recognised).
+ */
+export async function ensureLabel(hass, mode, lang = langOf(hass)) {
   const labels = await hass.callWS({ type: 'config/label_registry/list' });
-  const existing = labels.find((l) => l.name === name);
+  const existing = modeLabel(labels, mode);
   if (existing) return existing;
-  const style = MODE_LABEL_STYLE[name] || {};
-  return hass.callWS({ type: 'config/label_registry/create', name, ...style });
+  const def = MODE_DEFS[modeKey(mode)];
+  if (!def) return hass.callWS({ type: 'config/label_registry/create', name: mode });
+  return hass.callWS({ type: 'config/label_registry/create', name: def.labelName[lang] || def.names[0], icon: def.icon, color: def.color });
 }
 
 /**
@@ -734,7 +972,7 @@ export async function ensureLabel(hass, name) {
 export async function setModeMembership(hass, labelName, entityIds, member) {
   const label = member
     ? await ensureLabel(hass, labelName)
-    : (await hass.callWS({ type: 'config/label_registry/list' })).find((l) => l.name === labelName);
+    : modeLabel(await hass.callWS({ type: 'config/label_registry/list' }), labelName);
   if (!label) return null; // nothing to take away
   for (const id of entityIds) {
     // The entity's own entry: list_for_display leaves out disabled entities, and a replaced list would lose labels.
@@ -766,7 +1004,7 @@ export async function setAutomationInMode(hass, labelName, automationId, member)
 
 /** The entities of a mode, by name, sorted by their display name. */
 export function modeMembers(states, registry, labelName, domain = 'automation') {
-  const label = labelNamed(registry, labelName);
+  const label = modeLabel(registry, labelName);
   if (!label) return [];
   return Object.values(states || {})
     .filter((e) => e.entity_id.startsWith(`${domain}.`) && (registry.entityLabels[e.entity_id] || []).includes(label.label_id))
@@ -789,23 +1027,38 @@ export async function alignWithMode(hass, labelName, automationIds) {
     const state = modeState(others);
     if (state === 'partial') return; // nothing clear to follow
     if (state === 'empty') {
-      const outside = modeOutsideNow(labelName, hass.states);
+      const outside = modeOutsideNow(labelName, hass.states, new Date(), await vacationRangeNow(hass, labelName));
       if (outside === null) return;
       on = !outside;
     } else on = state === 'on';
   }
   const change = automationIds.filter((id) => (hass.states?.[id]?.state === 'on') !== on);
-  if (change.length) await hass.callService('automation', on ? 'turn_on' : 'turn_off', {}, { entity_id: change });
+  if (!change.length) return;
+  if (on) await hass.callService('automation', 'turn_on', {}, { entity_id: change });
+  else await turnOffAutomations(hass, change);
+}
+
+/** The dates of an automatic vacation that is switched on; null for another mode, or when there is none. */
+async function vacationRangeNow(hass, mode) {
+  if (mode !== 'vacation') return null;
+  const auto = await findAuto(hass, 'vacation').catch(() => null);
+  return auto && hass.states?.[auto.entityId]?.state === 'on' ? parseVacationAutomation(auto.config) : null;
 }
 
 /** Whether a home uses Shabbat or chag at all: a label named for either exists. */
-export const hasModeLabels = (labels) => (labels || []).some((l) => MODES.includes(l?.name));
+export const hasModeLabels = (labels) => JEWISH_MODES.some((m) => modeLabel(labels, m));
+
+/** Whether a home keeps Shabbat or chag: their labels, or a Jewish calendar integration. */
+export const keepsJewishModes = (labels, states) => hasModeLabels(labels) || !!findCalendar(states).source;
 
 /** Switches every automation of a mode on or off in one call. */
 export async function setModeEnabled(hass, registry, labelName, enabled) {
   const members = modeMembers(hass.states, registry, labelName).filter((m) => !isAutoAlias(m.attributes?.friendly_name));
-  if (!members.length) return;
-  await hass.callService('automation', enabled ? 'turn_on' : 'turn_off', {}, { entity_id: members.map((m) => m.entity_id) });
+  if (!members.length) return [];
+  const ids = members.map((m) => m.entity_id);
+  if (!enabled) return turnOffAutomations(hass, ids);
+  await hass.callService('automation', 'turn_on', {}, { entity_id: ids });
+  return [];
 }
 
 // ---- automatic modes ----
@@ -821,7 +1074,7 @@ export async function findAuto(hass, mode) {
   // Renamed in HA, it is still the automation that targets the mode's label: search finds those.
   let byLabel = [];
   try {
-    const label = (await hass.callWS({ type: 'config/label_registry/list' })).find((l) => l.name === mode);
+    const label = modeLabel(await hass.callWS({ type: 'config/label_registry/list' }), mode);
     if (label) byLabel = (await hass.callWS({ type: 'search/related', item_type: 'label', item_id: label.label_id }))?.automation || [];
   } catch {
     /* alias only */
@@ -837,8 +1090,12 @@ export async function findAuto(hass, mode) {
   return fallback;
 }
 
-/** Turns an automatic mode on: switches an existing one on, or creates the one automation. Never a second one. */
-export async function enableAuto(hass, mode, { start = DEFAULT_AUTO_START, waitOptions } = {}) {
+/**
+ * Turns an automatic mode on: switches an existing one on, or creates the one automation. Never a second one.
+ * Vacation takes `range` (`{from, to}`): an existing automatic vacation is rewritten with the new dates first.
+ */
+export async function enableAuto(hass, mode, { start = DEFAULT_AUTO_START, range, waitOptions } = {}) {
+  if (mode === 'vacation') return enableAutoVacation(hass, range, { waitOptions });
   const existing = await findAuto(hass, mode);
   if (existing) {
     if (hass.states?.[existing.entityId]?.state !== 'on') await setAutomationEnabled(hass, existing.entityId, true);
@@ -851,6 +1108,26 @@ export async function enableAuto(hass, mode, { start = DEFAULT_AUTO_START, waitO
   const label = await ensureLabel(hass, mode);
   const id = String(Date.now());
   await hass.callApi('POST', `config/automation/config/${id}`, buildAutoModeAutomation({ id, mode, labelId: label.label_id, start, cal }));
+  const entity = await waitForEntity(hass, (e) => e.entity_id.startsWith('automation.') && String(e.attributes?.id) === id, waitOptions);
+  return entity.entity_id;
+}
+
+async function enableAutoVacation(hass, range, { waitOptions } = {}) {
+  const t = STRINGS[langOf(hass)];
+  const problem = vacationRangeError(range, langOf(hass));
+  if (problem) throw new Error(problem);
+  const existing = await findAuto(hass, 'vacation');
+  if (existing) {
+    const parsed = parseVacationAutomation(existing.config);
+    if (!existing.ours || !parsed) throw new Error(t.autoShabbatNotOurs);
+    const next = buildVacationAutomation({ id: existing.config.id, labelId: parsed.labelId, range });
+    if (!sameConfig(next, existing.config)) await hass.callApi('POST', `config/automation/config/${existing.config.id}`, next);
+    if (hass.states?.[existing.entityId]?.state !== 'on') await setAutomationEnabled(hass, existing.entityId, true);
+    return existing.entityId;
+  }
+  const label = await ensureLabel(hass, 'vacation');
+  const id = String(Date.now());
+  await hass.callApi('POST', `config/automation/config/${id}`, buildVacationAutomation({ id, labelId: label.label_id, range }));
   const entity = await waitForEntity(hass, (e) => e.entity_id.startsWith('automation.') && String(e.attributes?.id) === id, waitOptions);
   return entity.entity_id;
 }
@@ -894,6 +1171,7 @@ export async function setAutoStart(hass, mode, start) {
  * True when it was rewritten.
  */
 export async function upgradeAuto(hass, mode, existing) {
+  if (mode === 'vacation') return false; // written with its catch-up from the start
   const cfg = existing?.config;
   if (!existing?.ours || cfg?.id == null || (cfg.triggers || []).some((x) => x?.id === CATCH_UP_ID)) return false;
   const startTrigger = (cfg.triggers || []).find((x) => x?.id === START_ID[mode]);
@@ -921,10 +1199,15 @@ export const DASHBOARD = { url_path: 'schedule-helper', view: 'schedules', title
 // Where the dashboard lived before the card was renamed (1.2.x): found too, so it is never made twice.
 const LEGACY_DASHBOARD_PATHS = ['beit-schedules'];
 
-export function dashboardConfig() {
+/**
+ * The new dashboard's content. The Modes card shows vacation by default; in a home that keeps Shabbat and chag (`jewish`)
+ * it is set to show them too.
+ */
+export function dashboardConfig({ jewish = false } = {}) {
+  const modes = { type: 'custom:schedule-helper-modes-card', ...(jewish ? { modes: [...MODES] } : {}) };
   return {
     title: DASHBOARD.title,
-    views: [{ title: DASHBOARD.title, path: DASHBOARD.view, cards: [{ type: 'custom:schedule-helper-card', show_modes: true }, { type: 'custom:schedule-helper-shabbat-card' }] }],
+    views: [{ title: DASHBOARD.title, path: DASHBOARD.view, cards: [{ type: 'custom:schedule-helper-card' }, modes] }],
   };
 }
 
@@ -951,7 +1234,9 @@ export async function createDashboard(hass) {
     mode: 'storage',
   });
   try {
-    await hass.callWS({ type: 'lovelace/config/save', url_path: DASHBOARD.url_path, config: dashboardConfig() });
+    const labels = await hass.callWS({ type: 'config/label_registry/list' }).catch(() => []);
+    const config = dashboardConfig({ jewish: keepsJewishModes(labels, hass.states) });
+    await hass.callWS({ type: 'lovelace/config/save', url_path: DASHBOARD.url_path, config });
   } catch (err) {
     await hass.callWS({ type: 'lovelace/dashboards/delete', dashboard_id: created.id }).catch(() => {});
     throw err;
@@ -1078,12 +1363,12 @@ export const STRINGS = {
     retry: 'נסה שוב',
     loading: 'טוען…',
     readOnly: 'צפייה בלבד — רק מנהל יכול לערוך',
-    modeName: { שבת: 'שבת', חג: 'חג' },
+    modeName: { vacation: 'חופשה', שבת: 'שבת', חג: 'חג' },
     editSchedule: 'עריכת תזמון',
     name: 'שם התזמון',
     type: 'סוג',
     regular: 'רגיל',
-    modeHint: (m) => `יופעל ויכובה יחד עם שאר תזמוני ה${m}, מכרטיס "שבת וחג".`,
+    modeHint: (m) => `יופעל ויכובה יחד עם שאר תזמוני ה${m}, מכרטיס "מצבים".`,
     device: 'מכשיר',
     chooseDevice: 'בחר מכשיר',
     changeDevice: 'החלף',
@@ -1132,10 +1417,12 @@ export const STRINGS = {
     removeRange: 'מחיקת טווח',
     hvac: { cool: 'קירור', heat: 'חימום', heat_cool: 'אוטומטי', auto: 'אוטומטי', dry: 'ייבוש', fan_only: 'מאוורר' },
     shabbatAndChag: 'שבת וחג',
+    modesTitle: 'מצבים',
     modeTitle: (m) => `מצב ${m}`,
     modeEmpty: 'אין עדיין אוטומציות במצב הזה',
     modeOn: (n) => `פעיל — ${n} אוטומציות`,
     modeOff: 'כבוי',
+    leftRunning: (names) => `כובה, אבל לא ברור מה ${names} עושה בסוף הטווח, אז המכשיר שלה נשאר כפי שהוא. כבו אותו ידנית אם צריך.`,
     modePartial: (on, n) => `פעיל חלקית — ${on} מתוך ${n}`,
     modeSwitch: (m) => `הפעלת מצב ${m}`,
     scheduleList: 'תזמונים',
@@ -1144,12 +1431,24 @@ export const STRINGS = {
     searchAutomation: 'חיפוש אוטומציה',
     noAutomations: 'לא נמצאו אוטומציות',
     autoShabbat: 'שבת אוטומטית',
-    autoTitle: { שבת: 'שבת אוטומטית', חג: 'חג אוטומטי' },
-    autoHint: (mode) => (mode === 'שבת'
+    autoTitle: { vacation: 'חופשה אוטומטית', שבת: 'שבת אוטומטית', חג: 'חג אוטומטי' },
+    autoHint: (mode) => (mode === 'vacation'
+      ? 'מדליק את מצב החופשה בתחילת החופשה ומכבה אותו בסופה, אחרי שכל תזמוני החופשה הסתיימו. אחר כך המצב חוזר לידני.'
+      : mode === 'שבת'
       ? 'מדליק את מצב השבת בשישי, לפני התזמונים, ומכבה אחרי צאת השבת כשכל תזמוני השבת הסתיימו.'
       : 'מדליק את מצב החג בערב חג, לפני התזמונים, ומכבה אחרי צאת החג כשכל תזמוני החג הסתיימו. חג שחל בשבת מכוסה במצב שבת.'),
+    runBy: 'איך המצב מופעל',
+    runManual: 'ידני',
+    runAuto: 'אוטומטי',
+    manualHint: (m) => `רק אתם מדליקים ומכבים את מצב ה${m}. שום דבר לא ידליק אותו לבד.`,
+    nextOn: (when) => `יידלק ${when}`,
+    autoLocked: 'במצב אוטומטי המתגים נעולים. כדי להדליק או לכבות בעצמכם, בחרו "ידני".',
+    lockedByAuto: 'נשלט על ידי המצב האוטומטי',
+    manualStaysOn: (m) => `מצב ה${m} דלוק, ובמצב ידני הוא לא ייכבה לבד. כבו אותו כשתרצו, או חזרו ל"אוטומטי".`,
+    startsEarly: (name, time, start) => `${name} מתחיל בשישי ב-${time}, לפני שמצב השבת נדלק (${start}), ולכן באותו טווח הוא לא יפעל.`,
     saved: 'התזמון נשמר',
     createdPartly: (e) => `התזמון והאוטומציה נוצרו, אבל השלב האחרון נכשל: ${e}. פתחו את התזמון כדי לבדוק את הסוג שלו.`,
+    attachedPartly: (e) => `האוטומציה נוצרה, אבל השלב האחרון נכשל: ${e}. פתחו את התזמון כדי לבדוק את הסוג שלו.`,
     created: 'התזמון נוצר',
     namePlaceholder: 'יתמלא משם המכשיר',
     atStart: 'בתחילת הטווח',
@@ -1159,6 +1458,12 @@ export const STRINGS = {
     startAtLabel: 'בשעה',
     hoursBeforeLabel: 'שעות לפני הדלקת הנרות',
     errHours: 'מספר שעות בין חצי שעה ל-12',
+    vacationDates: 'תאריכי החופשה',
+    vacationLine: (from, to) => `חופשה: ${from} – ${to}`,
+    vacationUntil: (when) => `פעיל עד ${when}`,
+    errVacationDates: 'בחרו תאריך ושעה להתחלה ולסיום',
+    errVacationOrder: 'הסיום צריך להיות אחרי ההתחלה',
+    errVacationPast: 'מועד הסיום כבר עבר',
     autoShabbatNotOurs: 'אוטומציה בשם הזה נכתבה ידנית — הכרטיס רק מדליק ומכבה אותה.',
     calToday: 'היום',
     calParasha: 'פרשה',
@@ -1166,12 +1471,12 @@ export const STRINGS = {
     calCandles: 'הדלקת נרות',
     calHavdalah: 'הבדלה',
     calInEffect: 'שבת / חג עכשיו',
-    selfExcluded: 'האוטומציות של שבת וחג אוטומטיים לא יכולות להיות חלק ממצב — הן היו מכבות את עצמן.',
+    selfExcluded: 'האוטומציות של המצבים האוטומטיים (חופשה, שבת, חג) לא יכולות להיות חלק ממצב — הן היו מכבות את עצמן.',
     edGeneral: 'כללי',
     edTitle: 'כותרת',
     edShowAdd: 'כפתור "תזמון חדש"',
-    edShowModes: 'הצגת שבת וחג',
-    edShowModesHint: 'לכל תזמון יוצג המצב שלו, ואפשר יהיה לבחור אותו בעריכה. כברירת מחדל: מופעל רק אם בבית כבר יש תווית "שבת" או "חג".',
+    edShowModes: 'הצגת מצבים (חופשה, שבת, חג)',
+    edShowModesHint: 'לכל תזמון יוצג המצב שלו, ואפשר יהיה לבחור אותו בעריכה: חופשה תמיד, ושבת וחג בבית שמשתמש בהם (יש בו תווית "שבת" או "חג", או לוח שנה עברי).',
     edDeviceDomains: 'סוגי מכשירים לתזמון',
     edDeviceDomainsHint: 'רק הסוגים המסומנים יופיעו בבחירת מכשיר.',
     allTypes: 'הכול',
@@ -1187,7 +1492,7 @@ export const STRINGS = {
     edModes: 'מצבים',
     edShowCalendar: 'הצגת זמני השבת והחג',
     edDashboard: 'דשבורד Schedule Helper בסרגל הצד',
-    edDashboardHint: 'יוצר דשבורד חדש בשם Schedule Helper עם שני הכרטיסים. דשבורדים קיימים לא משתנים.',
+    edDashboardHint: 'יוצר דשבורד חדש בשם Schedule Helper עם כרטיס התזמונים וכרטיס המצבים. דשבורדים קיימים לא משתנים.',
     edDashboardCreate: 'צור דשבורד Schedule Helper',
     edDashboardExists: 'הדשבורד כבר קיים.',
     edDashboardCreated: 'הדשבורד נוצר ומופיע בסרגל הצד.',
@@ -1227,12 +1532,12 @@ export const STRINGS = {
     retry: 'Try again',
     loading: 'Loading…',
     readOnly: 'View only — only an administrator can edit',
-    modeName: { שבת: 'Shabbat', חג: 'Chag' },
+    modeName: { vacation: 'Vacation', שבת: 'Shabbat', חג: 'Chag' },
     editSchedule: 'Edit schedule',
     name: 'Schedule name',
     type: 'Type',
     regular: 'Regular',
-    modeHint: (m) => `Switched on and off together with the other ${m} schedules, from the Shabbat & chag card.`,
+    modeHint: (m) => `Switched on and off together with the other ${m} schedules, from the Modes card.`,
     device: 'Device',
     chooseDevice: 'Choose a device',
     changeDevice: 'Change',
@@ -1281,10 +1586,12 @@ export const STRINGS = {
     removeRange: 'Remove range',
     hvac: { cool: 'Cool', heat: 'Heat', heat_cool: 'Auto', auto: 'Auto', dry: 'Dry', fan_only: 'Fan' },
     shabbatAndChag: 'Shabbat & chag (Jewish holidays)',
+    modesTitle: 'Modes',
     modeTitle: (m) => (m === 'Chag' ? 'Chag (Jewish holiday) mode' : `${m} mode`),
     modeEmpty: 'No automations in this mode yet',
     modeOn: (n) => `On — ${n} automations`,
     modeOff: 'Off',
+    leftRunning: (names) => `Switched off, but it is not clear what ${names} does at the end of its range, so its device was left as it is. Turn it off by hand if needed.`,
     modePartial: (on, n) => `Partly on — ${on} of ${n}`,
     modeSwitch: (m) => `${m} mode`,
     scheduleList: 'Schedules',
@@ -1293,12 +1600,24 @@ export const STRINGS = {
     searchAutomation: 'Search automations',
     noAutomations: 'No automations found',
     autoShabbat: 'Automatic Shabbat',
-    autoTitle: { שבת: 'Automatic Shabbat', חג: 'Automatic chag' },
-    autoHint: (mode) => (mode === 'שבת'
+    autoTitle: { vacation: 'Automatic vacation', שבת: 'Automatic Shabbat', חג: 'Automatic chag' },
+    autoHint: (mode) => (mode === 'vacation'
+      ? 'Turns vacation mode on when your vacation starts and off when it ends, once every vacation schedule has finished. Then the mode goes back to Manual.'
+      : mode === 'שבת'
       ? 'Turns Shabbat mode on on Friday, before its schedules, and off after Shabbat ends once every Shabbat schedule has finished.'
       : 'Turns chag (Jewish holiday) mode on on erev chag, before its schedules, and off after the chag ends once every chag schedule has finished. A chag on Shabbat is covered by Shabbat mode.'),
+    runBy: 'How the mode is switched',
+    runManual: 'Manual',
+    runAuto: 'Automatic',
+    manualHint: (m) => `Only you switch ${m} mode on and off. Nothing switches it on by itself.`,
+    nextOn: (when) => `Comes on ${when}`,
+    autoLocked: 'While automatic, the switches are locked. To switch it yourself, choose Manual.',
+    lockedByAuto: 'switched by the automatic mode',
+    manualStaysOn: (m) => `${m} mode is on, and while manual it does not switch off by itself. Switch it off when you want, or go back to Automatic.`,
+    startsEarly: (name, time, start) => `${name} starts on Friday at ${time}, before Shabbat mode comes on (${start}), so it will not run that range.`,
     saved: 'Schedule saved',
     createdPartly: (e) => `The schedule and its automation were created, but the last step failed: ${e}. Open the schedule to check its type.`,
+    attachedPartly: (e) => `The automation was created, but the last step failed: ${e}. Open the schedule to check its type.`,
     created: 'Schedule created',
     namePlaceholder: "Filled in from the device's name",
     atStart: 'When a range starts',
@@ -1308,6 +1627,12 @@ export const STRINGS = {
     startAtLabel: 'At',
     hoursBeforeLabel: 'hours before candle lighting',
     errHours: 'A number of hours from 0.5 to 12',
+    vacationDates: 'Vacation dates',
+    vacationLine: (from, to) => `Vacation: ${from} – ${to}`,
+    vacationUntil: (when) => `On until ${when}`,
+    errVacationDates: 'Choose a date and time for the start and the end',
+    errVacationOrder: 'The end must be after the start',
+    errVacationPast: 'The end has already passed',
     autoShabbatNotOurs: 'An automation with this name was written by hand; the card only switches it on and off.',
     calToday: 'Today',
     calParasha: 'Parasha',
@@ -1315,12 +1640,12 @@ export const STRINGS = {
     calCandles: 'Candle lighting',
     calHavdalah: 'Havdalah',
     calInEffect: 'Shabbat / chag now',
-    selfExcluded: 'The automatic Shabbat and chag automations cannot be part of a mode: they would switch themselves off.',
+    selfExcluded: 'The automatic mode automations (vacation, Shabbat, chag) cannot be part of a mode: they would switch themselves off.',
     edGeneral: 'General',
     edTitle: 'Title',
     edShowAdd: '"New schedule" button',
-    edShowModes: 'Show Shabbat and chag (Jewish holidays)',
-    edShowModesHint: 'The card shows each schedule\'s mode and lets you choose it when editing. By default, on only if your home already has a "שבת" or "חג" label.',
+    edShowModes: 'Show modes (vacation, Shabbat, chag)',
+    edShowModesHint: 'The card shows each schedule\'s mode and lets you choose it when editing: vacation always, and Shabbat and chag (Jewish holidays) in a home that uses them (a "שבת" or "חג" label, or a Jewish calendar).',
     edDeviceDomains: 'Device types to schedule',
     edDeviceDomainsHint: 'Only the ticked types appear when choosing a device.',
     allTypes: 'All',
@@ -1336,7 +1661,7 @@ export const STRINGS = {
     edModes: 'Modes',
     edShowCalendar: 'Show Shabbat and Jewish holiday times',
     edDashboard: 'A Schedule Helper dashboard in the sidebar',
-    edDashboardHint: 'Creates a new dashboard named Schedule Helper with both cards. Existing dashboards are not changed.',
+    edDashboardHint: 'Creates a new dashboard named Schedule Helper with the Schedules and Modes cards. Existing dashboards are not changed.',
     edDashboardCreate: 'Create the Schedule Helper dashboard',
     edDashboardExists: 'The dashboard already exists.',
     edDashboardCreated: 'The dashboard was created; it is in the sidebar.',
@@ -1368,6 +1693,15 @@ export function formatWhen(date, now = new Date(), lang = 'en') {
   const days = Math.round((midnight(date) - midnight(now)) / 86400000);
   const when = days === 0 ? t.today : days === 1 ? t.tomorrow : t.onDay(DAY_NAMES[lang][date.getDay()]);
   return t.at(when, time);
+}
+
+/** Like formatWhen within the coming week; further away, the date itself ("Sun, 20 Dec at 08:00"). */
+export function formatDateTime(date, now = new Date(), lang = 'en') {
+  const midnight = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime();
+  const days = Math.round((midnight(date) - midnight(now)) / 86400000);
+  if (days >= 0 && days < 7) return formatWhen(date, now, lang);
+  const day = date.toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+  return STRINGS[lang].at(day, `${pad2(date.getHours())}:${pad2(date.getMinutes())}`);
 }
 
 // ---------------------------------------------------------------------------- UI helpers
@@ -1415,6 +1749,7 @@ const BASE_STYLE = `
   .hint { color: var(--secondary-text-color); font-size: 13px; padding: 8px 16px 16px; }
   .chip { display: inline-flex; align-items: center; gap: 4px; padding: 1px 8px; border-radius: 10px; font-size: 12px; line-height: 18px;
     background: color-mix(in srgb, var(--chip-color, var(--primary-color)) 16%, transparent); color: var(--primary-text-color); white-space: nowrap; }
+  .chip.vacation { --chip-color: #009688; }
   .chip.shabbat { --chip-color: #ffa000; }
   .chip.chag { --chip-color: #5c6bc0; }
   .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--disabled-text-color, #9e9e9e); flex: none; }
@@ -1461,6 +1796,12 @@ class CardBase extends Base {
       get states() {
         return self._hass?.states || {};
       },
+      get locale() {
+        return self._hass?.locale;
+      },
+      get language() {
+        return self._hass?.language;
+      },
     };
     this._labels = null;
     this._displayLabels = null;
@@ -1496,11 +1837,26 @@ class CardBase extends Base {
     return p.state;
   }
 
+  /**
+   * Whether an automation belongs to a mode that is automatic right now: its switch is then the automatic mode's, and
+   * one flipped by hand would be overruled at the mode's next start or end. Found by alias, which every user can read.
+   */
+  _lockedByAuto(automationId) {
+    const reg = this._registry();
+    const mine = reg.entityLabels[automationId] || [];
+    return MODES.some((m) => {
+      const label = modeLabel(reg, m);
+      return label && mine.includes(label.label_id) && Object.values(this._hass?.states || {})
+        .some((e) => e.entity_id.startsWith('automation.') && e.attributes?.friendly_name === AUTO_ALIAS[m] && e.state === 'on');
+    });
+  }
+
   /** Flips automations on or off, showing the new position at once and taking it back if the call fails. */
   async _flip(ids, on, call) {
     this._expect(ids, on);
     const ok = await this._run(async () => {
-      await call();
+      const unclear = await call();
+      if (unclear?.length) this._toast(this._t.leftRunning(unclear.map((id) => entityName(this._hass.states[id])).join(', ')), 12000);
       return true;
     });
     if (!ok) this._forget(ids);
@@ -1553,7 +1909,7 @@ class CardBase extends Base {
   _modeOf(entityId, reg = this._registry()) {
     const own = reg.entityLabels[entityId] || [];
     return MODES.find((m) => {
-      const l = labelNamed(reg, m);
+      const l = modeLabel(reg, m);
       return l && own.includes(l.label_id);
     }) || null;
   }
@@ -1740,11 +2096,19 @@ class ScheduleHelperCard extends CardBase {
     return this._ids?.[entityId] ?? entityId.slice('schedule.'.length);
   }
 
-  /** Shabbat and chag: as `show_modes` says, or, when it is not set, only in a home that already has their labels. */
-  _showModes() {
+  /**
+   * The modes this card shows and offers: none with `show_modes: false`, all with `true`; unset, vacation, and Shabbat
+   * and chag in a home that uses them (their labels, or a Jewish calendar).
+   */
+  _shownModes() {
     const v = this._config?.show_modes;
-    if (typeof v === 'boolean') return v;
-    return hasModeLabels(this._labels);
+    if (v === false) return [];
+    if (v === true) return [...MODES];
+    return ['vacation', ...(keepsJewishModes(this._labels, this._hass?.states) ? JEWISH_MODES : [])];
+  }
+
+  _showModes() {
+    return this._shownModes().length > 0;
   }
 
   _visible() {
@@ -1755,7 +2119,7 @@ class ScheduleHelperCard extends CardBase {
     return Object.values(this._hass?.states || {})
       .filter((e) => e.entity_id.startsWith('schedule.'))
       .filter((e) => (!only || only.includes(e.entity_id)) && !hide.includes(e.entity_id))
-      .filter((e) => !c.mode || this._modeOf(e.entity_id, reg) === c.mode)
+      .filter((e) => !c.mode || this._modeOf(e.entity_id, reg) === modeKey(c.mode))
       .sort((a, b) => entityName(a).localeCompare(entityName(b), this._lang));
   }
 
@@ -1801,7 +2165,8 @@ class ScheduleHelperCard extends CardBase {
     const editableWeek = this._weeks?.[id];
     const week = editableWeek || this._readWeeks?.[e.entity_id];
     const yaml = e.attributes?.editable === false || (this._weeks && !week);
-    const mode = this._showModes() ? this._modeOf(e.entity_id, reg) : null;
+    const own = this._modeOf(e.entity_id, reg);
+    const mode = own && (this._shownModes().includes(own) || this._config.show_modes !== false) ? own : null;
     const on = e.state === 'on';
     const next = e.attributes?.next_event ? new Date(e.attributes.next_event) : null;
     const editable = canEdit && !yaml && !!editableWeek;
@@ -1814,7 +2179,7 @@ class ScheduleHelperCard extends CardBase {
         <div class="line">
           <span class="dot" title="${esc(label)}"></span>
           <span class="name">${esc(entityName(e))}</span>
-          ${mode ? `<span class="chip ${mode === 'שבת' ? 'shabbat' : 'chag'}">${esc(t.modeName[mode])}</span>` : ''}
+          ${mode ? `<span class="chip ${modeClass(mode)}">${esc(t.modeName[mode])}</span>` : ''}
           <span class="spacer"></span>
           <span class="state idle" title="${esc(t.wontRun)}">${esc(label)}</span>
         </div>
@@ -1828,7 +2193,7 @@ class ScheduleHelperCard extends CardBase {
         <div class="line">
           <span class="dot ${on ? 'on' : ''}" title="${esc(on ? t.onNow : t.offNow)}"></span>
           <span class="name">${esc(entityName(e))}</span>
-          ${mode ? `<span class="chip ${mode === 'שבת' ? 'shabbat' : 'chag'}">${esc(t.modeName[mode])}</span>` : ''}
+          ${mode ? `<span class="chip ${modeClass(mode)}">${esc(t.modeName[mode])}</span>` : ''}
           <span class="spacer"></span>
           <span class="state ${on ? 'on' : ''}">${esc(on ? t.onNow : t.offNow)}</span>
         </div>
@@ -1959,6 +2324,7 @@ class ScheduleEditor {
     this.mode = entityId ? card._modeOf(entityId) : null;
     this.originalMode = this.mode;
     this.originalName = this.week.name;
+    this.base = JSON.stringify(this.week.toHA()); // the version saved in HA when this dialog opened
     this.view = 'main'; // 'picker' | 'confirmDelete'
     this.device = null;
     this.hvacMode = null;
@@ -2048,6 +2414,38 @@ class ScheduleEditor {
     }
   }
 
+  /**
+   * Puts the open range panel's times into the week and closes it; false (the panel showing why) when they are not
+   * valid. `onlyIfChanged`: a panel left as it opened is just closed (Save with an untouched "add range" open).
+   */
+  applyRange({ onlyIfChanged = false } = {}) {
+    const w = this.week;
+    const from = this.dlg.querySelector('#from')?.value ?? this.rangeEdit.from ?? '';
+    const to = this.dlg.querySelector('#to')?.value ?? this.rangeEdit.to ?? '';
+    const d = DAYS[this.rangeEdit.day];
+    const old = this.rangeEdit.index != null ? w.days[d][this.rangeEdit.index] : null;
+    const shown = old ?? { start: 8 * 60, end: 9 * 60 }; // what the panel opens with
+    if (onlyIfChanged && from === hm(shown.start) && to === hm(shown.end)) {
+      this.rangeEdit = null;
+      return true;
+    }
+    Object.assign(this.rangeEdit, { from, to }); // kept if the panel is drawn again with an error
+    const start = parseTimeInput(from);
+    let end = parseTimeInput(to);
+    if (end === 0) end = 1440; // "until midnight"
+    const error = start == null || end == null || start >= 1440 ? this.t.errTime : end <= start ? this.t.errRange : null;
+    if (error) {
+      this.rangeEdit.error = error;
+      this.focusPanel = true;
+      return false;
+    }
+    const next = w.days[d].filter((_, k) => k !== this.rangeEdit.index);
+    next.push({ ...(old?.data ? { data: old.data } : {}), start, end });
+    w.days[d] = next.sort(byStart);
+    this.rangeEdit = null;
+    return true;
+  }
+
   /** An existing schedule that no automation uses: choosing a device creates the automation for it. */
   get attachable() {
     return !this.isNew && Array.isArray(this.automations) && !this.automations.length && !this.automationsUnknown;
@@ -2106,7 +2504,9 @@ class ScheduleEditor {
     }
     const t = this.t;
     const root = this.card._root();
-    const focusKey = root.activeElement?.dataset?.focus;
+    // A panel that closed hands the focus back to the button that opened it, not to the page.
+    const focusKey = this.focusNext ?? root.activeElement?.dataset?.focus;
+    this.focusNext = null;
     const scroller = this.dlg.querySelector('.dlg-body');
     const scrollTop = scroller?.scrollTop ?? 0;
     this.dlg.setAttribute('dir', this.card._dirAttr());
@@ -2142,7 +2542,9 @@ class ScheduleEditor {
   changedElsewhere(change) {
     if (this.saving || !this.dlg?.open) return; // our own write coming back, or already closing
     // Or it already says what this dialog says (our own write arriving late, or the same edit made twice).
-    if (change.item && JSON.stringify(WeekSchedule.fromHA(change.item).toHA()) === JSON.stringify(this.week.toHA())) return;
+    // Or the version this dialog opened with, sent again: after a reconnect HA sends the whole list once more.
+    const theirs = change.item && JSON.stringify(WeekSchedule.fromHA(change.item).toHA());
+    if (theirs && (theirs === JSON.stringify(this.week.toHA()) || theirs === this.base)) return;
     this.remote = change;
     if (this.view === 'main') this.render();
   }
@@ -2157,7 +2559,9 @@ class ScheduleEditor {
 
   mainHtml() {
     const t = this.t;
-    const seg = [[null, t.regular], ...MODES.map((m) => [m, t.modeName[m]])];
+    // The modes the card offers, and the one this schedule is in even if the card would not offer it.
+    const offered = MODES.filter((m) => this.card._shownModes().includes(m) || m === this.originalMode);
+    const seg = [[null, t.regular], ...offered.map((m) => [m, t.modeName[m]])];
     return `
       ${this.remoteHtml()}
       ${this.error ? `<div class="error" role="alert"><span>${esc(this.error)}</span></div>` : ''}
@@ -2232,9 +2636,10 @@ class ScheduleEditor {
     else {
       inner = autos.map((a) => {
         const on = this.card._stateOf(a) === 'on';
+        const locked = this.card._lockedByAuto(a);
         return `<div class="opt"><div class="grow"><div>${esc(entityName(states[a]) || a)}</div>
-          <div class="muted small">${esc(on ? t.autoOn : t.autoOff)}</div></div>
-          ${switchHtml({ checked: on, label: entityName(states[a]) || a, attrs: `data-field="auto" data-id="${esc(a)}" data-focus="auto-${esc(a)}"` })}</div>`;
+          <div class="muted small">${esc(on ? t.autoOn : t.autoOff)}${locked ? ` · ${esc(t.lockedByAuto)}` : ''}</div></div>
+          ${switchHtml({ checked: on, disabled: locked, label: entityName(states[a]) || a, attrs: `data-field="auto" data-id="${esc(a)}" data-focus="auto-${esc(a)}"` })}</div>`;
       }).join('');
     }
     return `<div class="label">${esc(t.drives)}</div>${inner}`;
@@ -2243,7 +2648,7 @@ class ScheduleEditor {
   renderLinked() {
     const el = this.dlg?.querySelector('.linked');
     if (!el) return;
-    const sig = JSON.stringify([this.automations, (this.automations || []).map((a) => this.card._stateOf(a))]);
+    const sig = JSON.stringify([this.automations, (this.automations || []).map((a) => [this.card._stateOf(a), this.card._lockedByAuto(a)])]);
     if (sig === this._linkedSig) return;
     this._linkedSig = sig;
     const focusKey = this.card._root().activeElement?.dataset?.focus;
@@ -2350,6 +2755,7 @@ class ScheduleEditor {
         if (this.remote?.item) {
           this.week = WeekSchedule.fromHA(this.remote.item);
           this.originalName = this.week.name;
+          this.base = JSON.stringify(this.week.toHA());
         }
         this.remote = null;
         this.rangeEdit = this.copyFrom = null;
@@ -2387,38 +2793,19 @@ class ScheduleEditor {
       case 'add': this.rangeEdit = { day, index: null }; this.copyFrom = null; this.focusPanel = true; break;
       case 'edit': this.rangeEdit = { day, index }; this.copyFrom = null; this.focusPanel = true; break;
       case 'remove': w.days[DAYS[day]] = w.days[DAYS[day]].filter((_, k) => k !== index); this.rangeEdit = null; break;
-      case 'rangeCancel': this.rangeEdit = null; break;
+      case 'rangeCancel': this.focusNext = `add-${this.rangeEdit.day}`; this.rangeEdit = null; break;
       case 'rangeOk': {
-        const from = this.dlg.querySelector('#from').value;
-        const to = this.dlg.querySelector('#to').value;
-        Object.assign(this.rangeEdit, { from, to }); // kept if the panel is drawn again with an error
-        const start = parseTimeInput(from);
-        let end = parseTimeInput(to);
-        if (end === 0) end = 1440; // "until midnight"
-        if (start == null || end == null || start >= 1440) {
-          this.rangeEdit.error = this.t.errTime;
-          this.focusPanel = true;
-          break;
-        }
-        if (end <= start) {
-          this.rangeEdit.error = this.t.errRange;
-          this.focusPanel = true;
-          break;
-        }
-        const d = DAYS[this.rangeEdit.day];
-        const old = this.rangeEdit.index != null ? w.days[d][this.rangeEdit.index] : null;
-        const next = w.days[d].filter((_, k) => k !== this.rangeEdit.index);
-        next.push({ ...(old?.data ? { data: old.data } : {}), start, end });
-        w.days[d] = next.sort(byStart);
-        this.rangeEdit = null;
+        const d = this.rangeEdit.day;
+        if (this.applyRange()) this.focusNext = `add-${d}`;
         break;
       }
       case 'copyOpen': this.copyFrom = { day, chosen: new Set() }; this.rangeEdit = null; this.focusPanel = true; break;
       case 'copyPreset': for (const k of el.dataset.v === 'weekdays' ? [0, 1, 2, 3, 4] : [0, 1, 2, 3, 4, 5, 6]) this.copyFrom.chosen.add(k); break;
-      case 'copyCancel': this.copyFrom = null; break;
+      case 'copyCancel': this.focusNext = `copy-${this.copyFrom.day}`; this.copyFrom = null; break;
       case 'copyOk': {
         const from = w.days[DAYS[this.copyFrom.day]];
         for (const k of this.copyFrom.chosen) if (k !== this.copyFrom.day) w.days[DAYS[k]] = from.map((b) => ({ ...b }));
+        this.focusNext = `copy-${this.copyFrom.day}`;
         this.copyFrom = null;
         break;
       }
@@ -2481,6 +2868,8 @@ class ScheduleEditor {
   async save() {
     const t = this.t;
     this.syncName();
+    // Times typed into an open range panel are part of what is saved, not dropped.
+    if (this.rangeEdit && !this.applyRange({ onlyIfChanged: true })) return this.render();
     const problem = this.week.validate(this.lang) ?? (this.week.isEmpty ? t.errEmpty : null) ?? (this.isNew && !this.device ? t.errDevice : null);
     if (problem) {
       this.error = problem;
@@ -2502,6 +2891,7 @@ class ScheduleEditor {
         if (this.attachable && this.device) {
           // The mode it already has (or the one just chosen): the new automation joins it.
           await addScheduleAutomation(h, this.entityId, this.week.name, this.currentTarget(), { labelName: this.mode });
+          this.attached = true;
         }
         if (this.driven) {
           // Read again: it may have been edited by hand in HA since this dialog opened, and is then left alone.
@@ -2529,11 +2919,11 @@ class ScheduleEditor {
       this.card._toast(this.isNew ? t.created : t.saved, 3000);
     } catch (err) {
       this.saving = false;
-      if (err?.created) {
-        // The schedule and its automation were created; only a later step failed. Saving again would duplicate them.
+      if (err?.created || err?.posted || this.attached) {
+        // The automation (and a new schedule) were created; only a later step failed. Saving again would duplicate them.
         this.card._afterWrite();
         this.close();
-        this.card._toast(t.createdPartly(errorText(err)), 12000);
+        this.card._toast((this.isNew ? t.createdPartly : t.attachedPartly)(errorText(err)), 12000);
         return;
       }
       this.error = t.saveFailed(errorText(err));
@@ -2703,18 +3093,37 @@ export function calendarRows(states, cal, lang = 'en', now = new Date()) {
   };
 }
 
-class ScheduleHelperShabbatCard extends CardBase {
+/**
+ * The Modes card: vacation first, then Shabbat and chag in a home that keeps them. Each mode has a master switch, its
+ * members, and Manual / Automatic. `custom:schedule-helper-shabbat-card` is the same card showing Shabbat and chag only.
+ */
+class ScheduleHelperModesCard extends CardBase {
   static getStubConfig() {
-    return { modes: [...MODES], show_calendar: true };
+    return {};
   }
 
   static getConfigElement() {
-    return document.createElement('schedule-helper-shabbat-card-editor');
+    return document.createElement('schedule-helper-modes-card-editor');
+  }
+
+  /** The modes shown when the config names none: vacation. Shabbat and chag are added with `modes`. */
+  _defaultModes() {
+    return ['vacation'];
+  }
+
+  get _defaultTitle() {
+    return this._t.modesTitle;
+  }
+
+  /** The modes this card shows, in the config's order, each once. */
+  _modes() {
+    if (Array.isArray(this._config?.modes)) return [...new Set(this._config.modes.map(modeKey).filter(Boolean))];
+    return this._defaultModes();
   }
 
   setConfig(config) {
     if (config?.modes && !Array.isArray(config.modes)) throw new Error('modes must be a list');
-    this._config = { modes: [...MODES], show_calendar: true, ...config };
+    this._config = { show_calendar: true, ...config };
     this._sig = null;
     this._autoSig = null; // the modes shown may have changed
     this._render();
@@ -2725,7 +3134,6 @@ class ScheduleHelperShabbatCard extends CardBase {
     this._hass = hass;
     if (first) this._loadLabels();
     else this._checkLabels();
-    if (this._autoSig !== this._automationIds()) this._loadAuto();
     this._render();
     this._members?.render();
   }
@@ -2735,7 +3143,7 @@ class ScheduleHelperShabbatCard extends CardBase {
   }
 
   getCardSize() {
-    return 3 + this._config.modes.length * 3;
+    return 3 + this._modes().length * 3;
   }
 
   getGridOptions() {
@@ -2764,14 +3172,14 @@ class ScheduleHelperShabbatCard extends CardBase {
   _automationIds() {
     const states = this._hass?.states || {};
     const autos = Object.values(this._auto || {}).filter(Boolean).map((a) => `${a.entityId}@${states[a.entityId]?.last_updated}`);
-    return [Object.keys(states).filter((id) => id.startsWith('automation.')).join('|'), ...autos].join('#');
+    return [this._modes().join(','), Object.keys(states).filter((id) => id.startsWith('automation.')).join('|'), ...autos].join('#');
   }
 
   /** Finds each mode's automatic automation. Its config is admin-only; others see it by alias alone. */
   async _loadAuto() {
     this._autoSig = this._automationIds();
     const auto = {};
-    for (const mode of this._config.modes.filter((m) => MODES.includes(m))) {
+    for (const mode of this._modes()) {
       if (!this._isAdmin) {
         const hit = Object.values(this._hass.states).find((e) => e.entity_id.startsWith('automation.') && e.attributes?.friendly_name === AUTO_ALIAS[mode]);
         auto[mode] = hit ? { entityId: hit.entity_id, ours: true, config: null } : null;
@@ -2794,20 +3202,28 @@ class ScheduleHelperShabbatCard extends CardBase {
 
   _render(force = false) {
     if (!this._config || !this._hass) return;
+    // The automatic automations are read again when the set of automations, or of modes shown, changes.
+    if (this._autoSig !== this._automationIds()) this._loadAuto();
     const states = this._hass.states;
     const reg = this._registry();
     const cal = findCalendar(states);
-    const modes = this._config.modes.filter((m) => MODES.includes(m));
+    const modes = this._modes();
     const members = Object.fromEntries(modes.map((m) => [m, {
       automations: modeMembers(states, reg, m).filter((e) => !isAutoAlias(e.attributes?.friendly_name))
         .map((e) => ({ ...e, state: this._stateOf(e.entity_id) })),
       schedules: modeMembers(states, reg, m, 'schedule'),
     }]));
+    const schedIds = [...new Set(modes.flatMap((m) => members[m].schedules.map((e) => e.entity_id)))];
+    const weeksSig = modes.flatMap((m) => members[m].schedules.map((e) => `${e.entity_id}@${e.last_updated}`)).join('|');
+    if (weeksSig !== this._weeksSig) {
+      this._weeksSig = weeksSig;
+      readSchedules(this._h, schedIds).then((w) => { this._weeks = w; this._render(true); }).catch(() => {});
+    }
     const calIds = [cal.issur, cal.candleLighting, cal.havdalah, cal.date, cal.parasha, cal.holiday, ...Object.values(cal.hebcal)].filter(Boolean);
     const sig = JSON.stringify([
-      this._lang, this._isAdmin, this._config, new Date().toDateString(), new Date().getHours(), this._busy,
+      this._lang, this._isAdmin, this._config, modes, new Date().toDateString(), new Date().getHours(), this._busy,
       calIds.map((id) => states[id]?.state), this._labels?.length, this._auto, this._start,
-      this._startEdit && [this._startEdit.mode, this._startEdit.kind, this._startEdit.error], // not what is typed
+      this._startEdit && [this._startEdit.mode, this._startEdit.kind, this._startEdit.error], this._autoChoice, // not what is typed
       Object.values(this._auto || {}).map((a) => a && states[a.entityId]?.state),
       modes.map((m) => [members[m].automations.map((e) => [e.entity_id, e.state]), members[m].schedules.map((e) => [e.entity_id, e.last_updated])]),
     ]);
@@ -2827,13 +3243,20 @@ class ScheduleHelperShabbatCard extends CardBase {
       });
     }
     const t = this._t;
-    const focusId = root.activeElement?.id;
+    const active = root.activeElement;
+    const focusId = active?.id;
+    // A redraw while typing a start time keeps the caret where it was, not at the start of the field.
+    const caret = typeof active?.selectionStart === 'number' ? [active.selectionStart, active.selectionEnd] : null;
+    // The Jewish calendar sits just above the first of Shabbat and chag; a home with vacation alone never sees it.
+    const firstJewish = modes.find((m) => JEWISH_MODES.includes(m));
+    const calendar = firstJewish && this._config.show_calendar !== false ? this._calendarHtml(states, cal) : '';
     this._paint(
-      this._config.title !== '' ? `<div class="header"><h2>${esc(this._config.title ?? t.shabbatAndChag)}</h2></div>` : '',
-      `${this._config.show_calendar !== false ? this._calendarHtml(states, cal) : ''}
-      ${modes.map((m) => this._modeHtml(m, members[m], cal)).join('')}`,
+      this._config.title !== '' ? `<div class="header"><h2>${esc(this._config.title ?? this._defaultTitle)}</h2></div>` : '',
+      modes.map((m) => `${m === firstJewish ? calendar : ''}${this._modeHtml(m, members[m], cal)}`).join(''),
     );
-    if (focusId) root.getElementById?.(focusId)?.focus();
+    const again = focusId && root.getElementById?.(focusId);
+    again?.focus();
+    if (again && caret) again.setSelectionRange?.(...caret);
   }
 
   _calendarHtml(states, cal) {
@@ -2852,22 +3275,25 @@ class ScheduleHelperShabbatCard extends CardBase {
     const onCount = automations.filter((a) => a.state === 'on').length;
     const status = state === 'empty' ? t.modeEmpty : state === 'on' ? t.modeOn(automations.length) : state === 'off' ? t.modeOff : t.modePartial(onCount, automations.length);
     const busy = this._busy === mode;
+    // An automatic mode is switched by its automation; switching by hand would only be overruled at its next start.
+    const auto = this._auto?.[mode];
+    const locked = !!auto && this._hass.states[auto.entityId]?.state === 'on';
     const now = new Date();
-    return `<section class="mode ${mode === 'שבת' ? 'shabbat' : 'chag'} ${state}">
+    return `<section class="mode ${modeClass(mode)} ${state}">
       <div class="mode-head">
         <div class="grow"><div class="mode-title">${esc(t.modeTitle(name))}</div><div class="muted small">${esc(status)}</div></div>
-        ${switchHtml({ checked: state === 'on', partial: state === 'partial', disabled: state === 'empty' || busy, label: t.modeSwitch(name), attrs: `data-master="${esc(mode)}" id="master-${esc(mode)}"` })}
+        ${switchHtml({ checked: state === 'on', partial: state === 'partial', disabled: state === 'empty' || busy || locked, label: t.modeSwitch(name), attrs: `data-master="${esc(mode)}" id="master-${esc(mode)}"` })}
       </div>
       ${automations.length ? `<div class="members">${automations.map((a) => `
         <div class="member"><span class="grow">${esc(entityName(a))}</span>
-          ${switchHtml({ checked: a.state === 'on', label: entityName(a), attrs: `data-auto="${esc(a.entity_id)}" id="member-${esc(a.entity_id)}"` })}</div>`).join('')}</div>` : ''}
+          ${switchHtml({ checked: a.state === 'on', disabled: locked, label: entityName(a), attrs: `data-auto="${esc(a.entity_id)}" id="member-${esc(a.entity_id)}"` })}</div>`).join('')}</div>` : ''}
       ${schedules.length ? `<div class="scheds"><div class="label muted small">${esc(t.scheduleList)}</div>${schedules.map((s) => {
         const next = s.attributes?.next_event ? new Date(s.attributes.next_event) : null;
         const on = s.state === 'on';
         return `<div class="sched"><span class="dot ${on ? 'on' : ''}"></span><span class="grow">${esc(entityName(s))}</span>
           ${next && !isNaN(next) ? `<span class="muted small">${esc(`${on ? t.ends : t.starts} ${formatWhen(next, now, this._lang)}`)}</span>` : ''}</div>`;
       }).join('')}</div>` : ''}
-      ${this._autoHtml(mode, cal)}
+      ${this._autoHtml(mode, cal, state)}
       ${this._isAdmin ? `<div class="mode-foot"><button class="btn" data-act="members" data-mode="${esc(mode)}">${esc(t.chooseAutomations)}</button></div>` : ''}
     </section>`;
   }
@@ -2878,28 +3304,133 @@ class ScheduleHelperShabbatCard extends CardBase {
     return (auto?.config && parseAutoStart(auto.config)) || this._start?.[mode] || DEFAULT_AUTO_START;
   }
 
-  _autoHtml(mode, cal) {
+  _autoHtml(mode, cal, state) {
+    if (mode === 'vacation') return this._vacationHtml(state);
     const t = this._t;
     const auto = this._auto?.[mode];
     const on = !!auto && this._hass.states[auto.entityId]?.state === 'on';
     const unavailable = !auto && !autoAvailable(mode, cal);
-    const disabled = !this._isAdmin || !this._autoLoaded || this._busy === `auto-${mode}` || unavailable;
+    // Anyone may switch an existing automatic mode on or off (an automation service); creating one is for admins.
+    const disabled = (!this._isAdmin && !auto) || !this._autoLoaded || this._busy === `auto-${mode}` || unavailable;
+    const chosen = this._autoChoice?.[mode] ?? on; // shown at once, while the switch is written
     const start = this._currentStart(mode);
     const canEditStart = this._isAdmin && this._autoLoaded && !unavailable && (!auto || (auto.ours && parseAutoStart(auto.config)));
     const hint = unavailable ? (mode === 'שבת' ? t.errNoCalendar : t.errNoJewishCalendar)
-      : auto && !auto.ours ? t.autoShabbatNotOurs : t.autoHint(mode);
+      : auto && !auto.ours ? t.autoShabbatNotOurs : on ? t.autoHint(mode) : t.manualHint(t.modeName[mode]);
+    const now = new Date();
+    // Only a start read from the automation itself: without its config (non-admins, one changed by hand) it is not known.
+    const known = auto?.config ? parseAutoStart(auto.config) : null;
+    const next = on && known ? nextAutoStart(mode, known, this._hass.states, cal, now) : null;
+    const weeks = Object.fromEntries(modeMembers(this._hass.states, this._registry(), mode, 'schedule')
+      .filter((e) => this._weeks?.[e.entity_id]).map((e) => [e.entity_id, this._weeks[e.entity_id]]));
+    const early = startsBeforeMode(weeks, next);
+    const radio = (value, label, checked) => `<label class="seg-opt"><input type="radio" name="automode-${esc(mode)}" value="${value}"
+      data-automode="${esc(mode)}" id="auto-${esc(mode)}-${value}" ${checked ? 'checked' : ''} ${disabled ? 'disabled' : ''}><span>${esc(label)}</span></label>`;
     // Jewish Calendar is part of Home Assistant, but has to be added once; an admin can do it from here.
     const addCalendar = unavailable && this._isAdmin && !cal?.issur
       ? `<div class="small"><a class="link" href="${ADD_JEWISH_CALENDAR}" target="_top">${esc(t.addJewishCalendar)}</a></div>` : '';
     return `<div class="auto">
-      <div class="grow"><div>${esc(t.autoTitle[mode])}</div>
-        <div class="muted small">${esc(hint)}</div>
-        ${addCalendar}
-        ${canEditStart && this._startEdit?.mode !== mode ? `<div class="small start-line">${esc(t.startLabel)}: ${esc(startText(start, this._lang))} ·
-          <button class="link" data-act="startEdit" data-mode="${esc(mode)}">${esc(t.change)}</button></div>` : ''}</div>
-      ${switchHtml({ checked: on, disabled, label: t.autoTitle[mode], attrs: `data-automode="${esc(mode)}" id="auto-${esc(mode)}"` })}
+      <div class="seg" role="radiogroup" aria-label="${esc(t.runBy)}">${radio('manual', t.runManual, !chosen)}${radio('auto', t.runAuto, chosen)}</div>
+      <div class="muted small">${esc(hint)}</div>
+      ${addCalendar}
+      ${next ? `<div class="small next-line">${esc(t.nextOn(formatWhen(next, now, this._lang)))}</div>` : ''}
+      ${on ? `<div class="muted small">${esc(t.autoLocked)}</div>` : ''}
+      ${!on && (state === 'on' || state === 'partial') ? `<div class="warn small" role="note">${esc(t.manualStaysOn(t.modeName[mode]))}</div>` : ''}
+      ${canEditStart && this._startEdit?.mode !== mode ? `<div class="small start-line">${esc(t.startLabel)}: ${esc(startText(start, this._lang))} ·
+        <button class="link" data-act="startEdit" data-mode="${esc(mode)}">${esc(t.change)}</button></div>` : ''}
+      ${early.map((e) => `<div class="warn small" role="note">${esc(t.startsEarly(entityName(this._hass.states[e.entityId]), hm(e.start),
+        formatWhen(next, now, this._lang)))}</div>`).join('')}
     </div>
     ${this._startEdit?.mode === mode ? this._startPanelHtml(mode, cal) : ''}`;
+  }
+
+  /** Automatic vacation: Manual / Automatic, the dates, and a panel to choose them. */
+  _vacationHtml(state) {
+    const t = this._t;
+    const mode = 'vacation';
+    const auto = this._auto?.vacation;
+    const on = !!auto && this._hass.states[auto.entityId]?.state === 'on';
+    // Dates have to be written into the automation: only an admin can choose Automatic here.
+    const disabled = !this._isAdmin || !this._autoLoaded || this._busy === `auto-${mode}`;
+    const chosen = this._autoChoice?.[mode] ?? on;
+    const range = auto?.config ? parseVacationAutomation(auto.config) : null;
+    const now = new Date();
+    const hint = auto && !auto.ours ? t.autoShabbatNotOurs : chosen ? t.autoHint(mode) : t.manualHint(t.modeName[mode]);
+    const radio = (value, label, checked) => `<label class="seg-opt"><input type="radio" name="automode-${mode}" value="${value}"
+      data-automode="${mode}" id="auto-${mode}-${value}" ${checked ? 'checked' : ''} ${disabled ? 'disabled' : ''}><span>${esc(label)}</span></label>`;
+    let when = '';
+    if (on && range) {
+      const from = parseStamp(range.from);
+      const to = parseStamp(range.to);
+      const phase = vacationPhase(range, now);
+      when = `<div class="small next-line">${esc(phase === 'before' ? t.nextOn(formatDateTime(from, now, this._lang)) : t.vacationUntil(formatDateTime(to, now, this._lang)))}</div>
+        <div class="small start-line">${esc(t.vacationLine(formatDateTime(from, now, this._lang), formatDateTime(to, now, this._lang)))}
+        ${this._isAdmin && this._startEdit?.mode !== mode ? ` · <button class="link" data-act="startEdit" data-mode="${mode}">${esc(t.change)}</button>` : ''}</div>`;
+    }
+    return `<div class="auto">
+      <div class="seg" role="radiogroup" aria-label="${esc(t.runBy)}">${radio('manual', t.runManual, !chosen)}${radio('auto', t.runAuto, chosen)}</div>
+      <div class="muted small">${esc(hint)}</div>
+      ${when}
+      ${on ? `<div class="muted small">${esc(t.autoLocked)}</div>` : ''}
+      ${!on && (state === 'on' || state === 'partial') ? `<div class="warn small" role="note">${esc(t.manualStaysOn(t.modeName[mode]))}</div>` : ''}
+    </div>
+    ${this._startEdit?.mode === mode ? this._vacationPanelHtml() : ''}`;
+  }
+
+  _vacationPanelHtml() {
+    const t = this._t;
+    const e = this._startEdit;
+    return `<div class="panel start-panel vacation-panel" role="group" aria-label="${esc(t.vacationDates)}">
+      <div class="label">${esc(t.vacationDates)}</div>
+      <label class="check"><span>${esc(t.from)}</span>
+        <input type="datetime-local" id="vac-from" data-start-field="from" value="${esc(e.from)}"></label>
+      <label class="check"><span>${esc(t.to)}</span>
+        <input type="datetime-local" id="vac-to" data-start-field="to" value="${esc(e.to)}"></label>
+      ${e.error ? `<div class="error small" role="alert">${esc(e.error)}</div>` : ''}
+      <div class="actions"><button class="btn" data-act="startCancel">${esc(t.cancel)}</button>
+        <button class="btn primary" data-act="startSave" data-mode="vacation" ${this._busy ? 'disabled' : ''}>${esc(t.save)}</button></div>
+    </div>`;
+  }
+
+  /** Opens the dates panel: with the current dates while they are still to come, otherwise tomorrow for a week. */
+  _openVacationPanel() {
+    const auto = this._auto?.vacation;
+    const range = auto?.config ? parseVacationAutomation(auto.config) : null;
+    const now = new Date();
+    const asInput = (stamp) => stamp.replace(' ', 'T');
+    let from;
+    let to;
+    if (range && vacationPhase(range, now) !== 'after') [from, to] = [range.from, range.to];
+    else {
+      const start = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 8, 0);
+      const end = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 8, 18, 0);
+      [from, to] = [localStamp(start), localStamp(end)];
+    }
+    this._startEdit = { mode: 'vacation', kind: 'range', from: asInput(from), to: asInput(to) };
+    this._render(true);
+    this._root().getElementById?.('vac-from')?.focus();
+  }
+
+  /** Writes the vacation dates (creating or rewriting the automation) and puts the members where the dates say. */
+  async _saveVacation() {
+    const e = this._startEdit;
+    const range = { from: String(e.from ?? '').replace('T', ' '), to: String(e.to ?? '').replace('T', ' ') };
+    const problem = vacationRangeError(range, this._lang);
+    if (problem) return this._startError(problem);
+    this._busy = 'auto-vacation';
+    this._render(true);
+    const ok = await this._run(async () => {
+      await enableAuto(this._h, 'vacation', { range });
+      await setModeEnabled(this._h, this._registry(), 'vacation', vacationPhase(range) === 'during');
+      return true;
+    });
+    this._busy = null;
+    if (ok) {
+      this._startEdit = null;
+      if (this._autoChoice) delete this._autoChoice.vacation;
+    }
+    await this._loadAuto();
+    this._loadLabels();
   }
 
   _startPanelHtml(mode, cal) {
@@ -2922,6 +3453,7 @@ class ScheduleHelperShabbatCard extends CardBase {
   }
 
   async _saveStart(mode) {
+    if (mode === 'vacation') return this._saveVacation();
     const t = this._t;
     const e = this._startEdit;
     let start;
@@ -2959,6 +3491,8 @@ class ScheduleHelperShabbatCard extends CardBase {
     if (act === 'members' && !this._members) {
       this._members = new MembershipDialog(this, el.dataset.mode);
       this._members.open();
+    } else if (act === 'startEdit' && el.dataset.mode === 'vacation') {
+      this._openVacationPanel();
     } else if (act === 'startEdit') {
       const start = this._currentStart(el.dataset.mode);
       this._startEdit = {
@@ -2970,39 +3504,77 @@ class ScheduleHelperShabbatCard extends CardBase {
       this._render(true);
       this._root().getElementById?.(this._startEdit.kind === 'at' ? 'start-at' : 'start-hb')?.focus();
     } else if (act === 'startCancel') {
+      if (this._startEdit?.mode === 'vacation' && this._autoChoice) delete this._autoChoice.vacation;
       this._startEdit = null;
       this._render(true);
     } else if (act === 'startSave') this._saveStart(el.dataset.mode);
+  }
+
+  /** The mode's switch: every member on or off. */
+  async _switchMode(mode, on) {
+    const ids = modeMembers(this._hass.states, this._registry(), mode)
+      .filter((m) => !isAutoAlias(m.attributes?.friendly_name)).map((m) => m.entity_id);
+    this._expect(ids, on); // before the busy redraw, so the switch stays where it was flipped to
+    this._busy = mode;
+    this._render(true);
+    await this._flip(ids, on, () => setModeEnabled(this._h, this._registry(), mode, on));
+    this._busy = null;
+    this._render(true);
   }
 
   async _onChange(e) {
     const d = e.target.dataset || {};
     const on = e.target.checked;
     if (d.master) {
-      const ids = modeMembers(this._hass.states, this._registry(), d.master)
-        .filter((m) => !isAutoAlias(m.attributes?.friendly_name)).map((m) => m.entity_id);
-      this._expect(ids, on); // before the busy redraw, so the switch stays where it was flipped to
-      this._busy = d.master;
-      this._render(true);
-      await this._flip(ids, on, () => setModeEnabled(this._h, this._registry(), d.master, on));
-      this._busy = null;
-      this._render(true);
+      await this._switchMode(d.master, on);
     } else if (d.auto) {
       await this._flip([d.auto], on, () => setAutomationEnabled(this._h, d.auto, on));
       this._render(true);
     } else if (d.automode) {
       const mode = d.automode;
+      const auto = e.target.value === 'auto';
+      this._autoChoice = { ...this._autoChoice, [mode]: auto };
+      // Automatic vacation needs its dates first: the panel writes it on Save.
+      if (mode === 'vacation' && auto) return this._openVacationPanel();
+      if (mode === 'vacation' && this._startEdit?.mode === 'vacation') this._startEdit = null;
       this._busy = `auto-${mode}`;
       this._render(true);
-      await this._run(() => (on ? enableAuto(this._h, mode, { start: this._currentStart(mode) }) : disableAuto(this._h, mode)));
+      await this._run(async () => {
+        if (!auto) return disableAuto(this._h, mode);
+        await enableAuto(this._h, mode, { start: this._currentStart(mode) });
+        // The switches lock now: they must not stay on all week, or off through Shabbat, until the next start or end.
+        const outside = modeOutsideNow(mode, this._hass.states);
+        if (outside !== null) await setModeEnabled(this._h, this._registry(), mode, !outside);
+      });
       this._busy = null;
       await this._loadAuto();
+      delete this._autoChoice[mode];
+      this._render(true);
       this._loadLabels();
     } else if (d.startKind !== undefined && this._startEdit) {
       this._startEdit.kind = e.target.value;
       this._startEdit.error = null;
       this._render(true);
     }
+  }
+}
+
+/** The card as it was before 2.5: Shabbat and chag only, under their own title. Dashboards that use it are unchanged. */
+class ScheduleHelperShabbatCard extends ScheduleHelperModesCard {
+  static getStubConfig() {
+    return { modes: [...JEWISH_MODES], show_calendar: true };
+  }
+
+  static getConfigElement() {
+    return document.createElement('schedule-helper-shabbat-card-editor');
+  }
+
+  _defaultModes() {
+    return [...JEWISH_MODES];
+  }
+
+  get _defaultTitle() {
+    return this._t.shabbatAndChag;
   }
 }
 
@@ -3059,8 +3631,10 @@ class MembershipDialog {
     if (sig === this._sig) return; // hass changes many times a second; a rebuilt list swallows clicks
     this._sig = sig;
     const q = this.query.trim().toLowerCase();
+    // Neither automatic automation may join a mode (it would switch itself off), renamed ones included.
+    const automatic = new Set(Object.values(this.card._auto || {}).filter(Boolean).map((a) => a.entityId));
     const autos = Object.values(states)
-      .filter((e) => e.entity_id.startsWith('automation.') && !isAutoAlias(e.attributes?.friendly_name))
+      .filter((e) => e.entity_id.startsWith('automation.') && !isAutoAlias(e.attributes?.friendly_name) && !automatic.has(e.entity_id))
       .filter((e) => !q || entityName(e).toLowerCase().includes(q) || e.entity_id.includes(q))
       .sort((a, b) => entityName(a).localeCompare(entityName(b), this.card._lang));
     const list = this.dlg.querySelector('.checklist');
@@ -3108,11 +3682,26 @@ const SHABBAT_STYLE = `
   .member, .auto { display: flex; align-items: center; gap: 8px; min-height: 36px; }
   .sched { display: flex; align-items: center; gap: 8px; min-height: 26px; font-size: 14px; }
   .sched .grow { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .auto { margin-top: 8px; padding: 8px 10px 8px 12px; border-radius: 10px; background: var(--secondary-background-color, rgba(127,127,127,.08)); }
+  .auto { margin-top: 8px; padding: 10px 12px; border-radius: 10px; background: var(--secondary-background-color, rgba(127,127,127,.08));
+    flex-direction: column; align-items: stretch; gap: 4px; }
+  .seg { display: inline-flex; align-self: flex-start; border: 1px solid var(--divider-color); border-radius: 999px; overflow: hidden; margin-bottom: 2px; }
+  .seg-opt { position: relative; cursor: pointer; }
+  .seg-opt input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+  .seg-opt span { display: block; padding: 6px 16px; font-size: 14px; }
+  .seg-opt input:checked + span { background: var(--primary-color); color: var(--text-primary-color, #fff); }
+  .seg-opt input:focus-visible + span { outline: 2px solid var(--primary-color); outline-offset: -2px; }
+  .seg-opt input:disabled { cursor: default; }
+  .seg-opt input:disabled + span { opacity: .5; }
+  .next-line { color: var(--primary-text-color); font-weight: 500; }
+  .auto .warn { margin-top: 4px; }
   .start-line { margin-top: 4px; color: var(--secondary-text-color); }
   .start-panel { margin: 8px 0 0; }
   .start-panel .check { flex-wrap: wrap; }
   .start-panel .check.off { opacity: .5; }
+  /* Not the 18px box of a checkbox in a .check row. */
+  .vacation-panel .check input[type=datetime-local] { width: auto; height: auto; min-width: 0; max-width: 100%; font: inherit; padding: 6px 8px;
+    border-radius: 8px; border: 1px solid var(--divider-color); background: var(--card-background-color); color: var(--primary-text-color); }
+  .vacation-panel .check span { min-width: 2.5em; }
   .start-panel input[type=text] { font: inherit; width: 5.5em; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--divider-color);
     background: var(--card-background-color); color: var(--primary-text-color); text-align: center; font-variant-numeric: tabular-nums; }
   .mode-foot { display: flex; justify-content: flex-end; margin-top: 8px; }
@@ -3223,9 +3812,9 @@ class ScheduleHelperCardEditor extends EditorBase {
     const first = !this._hass;
     super.hass = hass;
     if (first) {
-      // What "Show Shabbat and chag" means when it is not set: whether the home has their labels.
+      // Which modes the card offers when show_modes is not set: vacation, and Shabbat and chag where the home uses them.
       hass.callWS({ type: 'config/label_registry/list' }).then((labels) => {
-        this._modesInHome = hasModeLabels(labels);
+        this._jewishInHome = keepsJewishModes(labels, hass.states);
         this._render();
       }, () => {});
     }
@@ -3239,7 +3828,8 @@ class ScheduleHelperCardEditor extends EditorBase {
     if (!this._config) return;
     const t = this._t;
     const c = this._config;
-    const showModes = typeof c.show_modes === 'boolean' ? c.show_modes : !!this._modesInHome;
+    const showModes = c.show_modes !== false;
+    const offered = c.show_modes === true || this._jewishInHome ? MODES : ['vacation'];
     const schedules = Object.values(this._hass?.states || {})
       .filter((e) => e.entity_id.startsWith('schedule.'))
       .sort((a, b) => entityName(a).localeCompare(entityName(b), langOf(this._hass)));
@@ -3255,7 +3845,7 @@ class ScheduleHelperCardEditor extends EditorBase {
         <p class="hint">${esc(t.edShowModesHint)}</p>
         ${showModes ? `<label class="field"><span>${esc(t.edModeFilter)}</span><select data-key="mode">
           <option value="" ${!c.mode ? 'selected' : ''}>${esc(t.edAllSchedules)}</option>
-          ${MODES.map((m) => `<option value="${esc(m)}" ${c.mode === m ? 'selected' : ''}>${esc(t.edOnlyMode(t.modeName[m]))}</option>`).join('')}
+          ${MODES.filter((m) => offered.includes(m) || modeKey(c.mode) === m).map((m) => `<option value="${esc(m)}" ${modeKey(c.mode) === m ? 'selected' : ''}>${esc(t.edOnlyMode(t.modeName[m]))}</option>`).join('')}
         </select></label>` : ''}
       </section>
       <section>
@@ -3275,9 +3865,8 @@ class ScheduleHelperCardEditor extends EditorBase {
     root.querySelectorAll('[data-bool]').forEach((el) => el.addEventListener('change', () => {
       const config = { ...this._config, [el.dataset.bool]: el.checked };
       if (el.dataset.bool === 'show_modes' && !el.checked) delete config.mode;
-      // Store only what differs from the default: show_add is on; show_modes follows the home's labels.
-      const byDefault = el.dataset.bool === 'show_add' ? true : !!this._modesInHome;
-      if (el.checked === byDefault) delete config[el.dataset.bool];
+      // Store only what differs from the default: both are on (show_modes: true, every mode, is for YAML).
+      if (el.checked) delete config[el.dataset.bool];
       this._emit(config);
       if (el.dataset.bool === 'show_modes') this._render();
     }));
@@ -3311,32 +3900,45 @@ class ScheduleHelperCardEditor extends EditorBase {
   }
 }
 
-class ScheduleHelperShabbatCardEditor extends EditorBase {
+class ScheduleHelperModesCardEditor extends EditorBase {
+  /** The modes shown when the config names none (the card's own default). */
+  _defaultModes() {
+    return ['vacation'];
+  }
+
+  get _defaultTitle() {
+    return this._t.modesTitle;
+  }
+
   _render() {
     if (!this._config) return;
     const t = this._t;
     const c = this._config;
-    const modes = c.modes || MODES;
+    const modes = Array.isArray(c.modes) ? c.modes.map(modeKey) : this._defaultModes();
     const root = this._shell(`
       <section>
         <h3>${esc(t.edGeneral)}</h3>
-        <label class="field"><span>${esc(t.edTitle)}</span><input data-key="title" value="${esc(c.title ?? '')}" placeholder="${esc(t.shabbatAndChag)}"></label>
+        <label class="field"><span>${esc(t.edTitle)}</span><input data-key="title" value="${esc(c.title ?? '')}" placeholder="${esc(this._defaultTitle)}"></label>
         <label class="field"><span>${esc(t.edHeight)}</span><input data-key="height" value="${esc(c.height ?? '')}" placeholder="${esc(t.edHeightHint)}"></label>
-        <label class="chk"><input type="checkbox" data-bool="show_calendar" ${c.show_calendar !== false ? 'checked' : ''}><span>${esc(t.edShowCalendar)}</span></label>
       </section>
       <section>
         <h3>${esc(t.edModes)}</h3>
         ${MODES.map((m) => `<label class="chk"><input type="checkbox" data-mode="${esc(m)}" ${modes.includes(m) ? 'checked' : ''}><span>${esc(t.modeTitle(t.modeName[m]))}</span></label>`).join('')}
+        ${modes.some((m) => JEWISH_MODES.includes(m)) ? `<label class="chk"><input type="checkbox" data-bool="show_calendar" ${c.show_calendar !== false ? 'checked' : ''}><span>${esc(t.edShowCalendar)}</span></label>` : ''}
       </section>`);
     this._fields(root);
-    root.querySelector('[data-bool]').addEventListener('change', (e) => {
+    root.querySelector('[data-bool]')?.addEventListener('change', (e) => {
       const config = { ...this._config, show_calendar: e.target.checked };
       if (e.target.checked) delete config.show_calendar;
       this._emit(config);
     });
     root.querySelectorAll('[data-mode]').forEach((el) => el.addEventListener('change', () => {
       const chosen = [...root.querySelectorAll('[data-mode]')].filter((b) => b.checked).map((b) => b.dataset.mode);
-      this._emit({ ...this._config, modes: chosen });
+      const config = { ...this._config, modes: chosen };
+      // The default needs no line in the YAML.
+      if (chosen.join() === this._defaultModes().join()) delete config.modes;
+      this._emit(config);
+      this._render(); // the calendar option follows Shabbat and chag
     }));
   }
 }
@@ -3367,9 +3969,20 @@ const CONFIG_EDITOR_STYLE = `
   .actions button { font: inherit; font-size: 12px; color: var(--primary-color); background: none; border: 0; padding: 0; cursor: pointer; }
 `;
 
-export { ScheduleHelperCardEditor, ScheduleHelperShabbatCardEditor };
+/** The editor of the Shabbat card type (before 2.5): Shabbat and chag by default. */
+class ScheduleHelperShabbatCardEditor extends ScheduleHelperModesCardEditor {
+  _defaultModes() {
+    return [...JEWISH_MODES];
+  }
 
-export { ScheduleHelperCard, ScheduleHelperShabbatCard, CardBase };
+  get _defaultTitle() {
+    return this._t.shabbatAndChag;
+  }
+}
+
+export { ScheduleHelperCardEditor, ScheduleHelperModesCardEditor, ScheduleHelperShabbatCardEditor };
+
+export { ScheduleHelperCard, ScheduleHelperModesCard, ScheduleHelperShabbatCard, CardBase };
 
 if (typeof customElements !== 'undefined') {
   console.info(`%c SCHEDULE-HELPER-CARD %c ${VERSION} `, 'background:#03a9f4;color:#fff;font-weight:600', 'background:#333;color:#fff');
@@ -3377,8 +3990,10 @@ if (typeof customElements !== 'undefined') {
     if (!customElements.get(name)) customElements.define(name, cls);
   };
   define('schedule-helper-card', ScheduleHelperCard);
+  define('schedule-helper-modes-card', ScheduleHelperModesCard);
   define('schedule-helper-shabbat-card', ScheduleHelperShabbatCard);
   define('schedule-helper-card-editor', ScheduleHelperCardEditor);
+  define('schedule-helper-modes-card-editor', ScheduleHelperModesCardEditor);
   define('schedule-helper-shabbat-card-editor', ScheduleHelperShabbatCardEditor);
   // The names before 2.0, so dashboards made with them keep working. Not offered in the card picker.
   define('beit-schedule-card', class extends ScheduleHelperCard {});
@@ -3388,15 +4003,16 @@ if (typeof customElements !== 'undefined') {
     window.customCards.push({
       type: 'schedule-helper-card',
       name: 'Schedule Helper Card',
-      description: 'Weekly schedules for any device, in any home; optional Shabbat and Jewish holiday modes. תזמון שבועי לכל מכשיר.',
+      description: 'Weekly schedules for any device, in any home, with modes such as vacation. תזמון שבועי לכל מכשיר.',
       preview: true,
     });
   }
-  if (!window.customCards.some((c) => c.type === 'schedule-helper-shabbat-card')) {
+  // The Shabbat card type (before 2.5) still works, but the Modes card is the one offered: vacation, Shabbat and chag.
+  if (!window.customCards.some((c) => c.type === 'schedule-helper-modes-card')) {
     window.customCards.push({
-      type: 'schedule-helper-shabbat-card',
-      name: 'Schedule Helper — Shabbat & Jewish holidays (שבת וחג)',
-      description: 'Optional: Shabbat and Jewish holiday (chag) modes, automatic Shabbat and chag, and the times. מצבי שבת וחג.',
+      type: 'schedule-helper-modes-card',
+      name: 'Schedule Helper — Modes (vacation, Shabbat & holidays)',
+      description: 'Switch groups of schedules together: vacation by date, and optional Shabbat and Jewish holiday (chag) modes with their times. מצבים: חופשה, שבת וחג.',
       preview: true,
     });
   }

@@ -17,10 +17,10 @@ light:
     entities:
       - "light.og_wohnzimmer_all_lights"
       - "light.og_kuche_all_lights"
-      - "light.og_schlafzimmer_all_lights"
-      - "light.og_kinderzimmer_all_lights"
+      - "light.og_kinderzimmer_johann_all_lights"
+      - "light.og_kinderzimmer_lina_all_lights"
       - "light.og_bad_all_lights"
-      - "light.og_buro_all_lights"
+      - "light.og_schlafzimmer_all_lights"
       - "light.og_treppenhaus_all_lights"
       - "light.og_flur_all_lights"
   #### Wohnzimmer
@@ -80,39 +80,39 @@ light:
     unique_id: "458d9c4c-2534-4e68-bb3d-f92020a08492"
     entities:
       - "light.kuche_weihnachtsstern_fenster"
-  #### Schlafzimmer
+  #### Kinderzimmer Johann
   - platform: "group"
-    name: "og_schlafzimmer_all_lights"
+    name: "og_kinderzimmer_johann_all_lights"
     unique_id: "19e04f12-3c86-49f4-a92a-54557b259e2e"
     entities:
-      - "light.og_schlafzimmer_deckenleuchte"
+      - "light.og_kinderzimmer_johann_deckenleuchte"
   - platform: "group"
-    name: "og_schlafzimmer_deckenleuchte"
+    name: "og_kinderzimmer_johann_deckenleuchte"
     unique_id: "6b05518d-dbf8-4574-88c0-bb36851f017a"
     entities:
-      - "light.schlafzimmer_deckenleuchte"
+      - "light.kinderzimmer_johann_deckenleuchte"
   - platform: "group"
-    name: "og_schlafzimmer_wickeltisch"
+    name: "og_kinderzimmer_johann_wickeltisch"
     unique_id: "f6e1481f-2f9a-410a-b0b9-81d300826660"
     entities:
-      - "light.schlafzimmer_wickeltisch"
-  #### Kinderzimmer
+      - "light.kinderzimmer_johann_wickeltisch"
+  #### Kinderzimmer Lina
   - platform: "group"
-    name: "og_kinderzimmer_all_lights"
+    name: "og_kinderzimmer_lina_all_lights"
     unique_id: "ab6b7efb-a97d-4b3b-a98f-b4eac69abb45"
     entities:
-      - "light.og_kinderzimmer_deckenleuchte"
-      - "light.og_kinderzimmer_nachttisch"
+      - "light.og_kinderzimmer_lina_deckenleuchte"
+      - "light.og_kinderzimmer_lina_nachttisch"
   - platform: "group"
-    name: "og_kinderzimmer_deckenleuchte"
+    name: "og_kinderzimmer_lina_deckenleuchte"
     unique_id: "84656c32-d560-41f0-b86b-dd4f20cbe3b3"
     entities:
-      - "light.kinderzimmer_deckenleuchte"
+      - "light.kinderzimmer_lina_deckenleuchte"
   - platform: "group"
-    name: "og_kinderzimmer_nachttisch"
+    name: "og_kinderzimmer_lina_nachttisch"
     unique_id: "8d4a7e30-697e-4153-913c-88161eedab68"
     entities:
-      - "light.kinderzimmer_nachttisch"
+      - "light.kinderzimmer_lina_nachttisch"
   #### Badezimmer
   # unique_id wird von light.switch nicht unterstützt (HA generiert intern eine eigene)
   - platform: "group"
@@ -129,17 +129,17 @@ light:
     unique_id: "c0c3c327-016f-4e3d-83e0-599a65352c03"
     entities:
       - "light.shelly_1_gen1_bad_spiegel"
-  #### Büro
+  #### Schlafzimmer
   - platform: "group"
-    name: "og_buro_all_lights"
+    name: "og_schlafzimmer_all_lights"
     unique_id: "f3583f80-aefc-4c15-b1c3-d1a8629323e5"
     entities:
-      - "light.og_buro_deckenleuchte"
+      - "light.og_schlafzimmer_deckenleuchte"
   - platform: "group"
-    name: "og_buro_deckenleuchte"
+    name: "og_schlafzimmer_deckenleuchte"
     unique_id: "64f3b809-6117-499b-ab71-bc94399e03ab"
     entities:
-      - "light.buro_deckenleuchte"
+      - "light.schlafzimmer_deckenleuchte"
   #### Treppenhaus
   - platform: "group"
     name: "og_treppenhaus_all_lights"

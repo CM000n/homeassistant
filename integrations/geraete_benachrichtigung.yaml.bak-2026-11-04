@@ -1,0 +1,450 @@
+# Benachrichtigungen für Spülmaschine, Waschmaschine und Trockner.
+#
+# Datenquellen: Waschmaschine und Trockner kommen von WashData (Zustand, Fortschritt, Restzeit,
+# Programm, Ereignis `ha_washdata_cycle_ended`). Die Spülmaschine nutzt Home Connect für
+# Zustand, Fortschritt, Restzeit und Programmende (exakter und sofort; WashData beendet den
+# Spülzyklus erst ~20 min später), WashData nur für den Programmnamen.
+# Versendet wird ausschließlich hier: in WashData sind notify_start/live/finish_services
+# bewusst leer, `notify_fire_events` muss eingeschaltet bleiben.
+#
+# - Live-Meldung: eine dauerhafte Meldung pro Gerät (gleicher `tag`, wird jede Minute
+#   aktualisiert) mit Fortschrittsbalken und Countdown. Android 16+ zeigt sie als Live Update.
+# - Fertig-Meldung: ersetzt die Live-Meldung und sagt zusätzlich auf dem Google Home Mini an
+#   (über Music Assistant, damit laufende Musik pausiert und danach fortgesetzt wird).
+# - Geräte, Empfänger und Texte stehen gesammelt in `script.geraete_melden` (variables.geraete).
+# - Stummschalten: pro Empfänger und Gerät gibt es
+#   `input_datetime.geraete_stumm_bis_<notify-Dienst>_<gerät>`. Liegt der Zeitpunkt in der
+#   Zukunft, bekommt dieser Empfänger für dieses Gerät weder Live- noch Fertig-Meldung.
+#   Bedienung: Buttons an der Live-Meldung (dieses Gerät 2 h / 8 h, alle Geräte 8 h; Titel kurz halten, Android kürzt sie),
+#   `script.geraete_stumm` (geraet: leer = alle, stunden: 0 hebt auf) oder die
+#   input_datetime direkt (z. B. im Dashboard).
+#   Die Ansage auf dem Google Home Mini bleibt davon unberührt (hat eigene Ruhezeit).
+
+input_datetime:
+  geraete_stumm_bis_mobile_app_simons_pixel_9a_waschmaschine:
+    name: "Stumm bis (Simon, Waschmaschine)"
+    has_date: true
+    has_time: true
+  geraete_stumm_bis_mobile_app_simons_pixel_9a_trockner:
+    name: "Stumm bis (Simon, Trockner)"
+    has_date: true
+    has_time: true
+  geraete_stumm_bis_mobile_app_simons_pixel_9a_geschirrspueler:
+    name: "Stumm bis (Simon, Spülmaschine)"
+    has_date: true
+    has_time: true
+  geraete_stumm_bis_mobile_app_lisas_pixel_9a_waschmaschine:
+    name: "Stumm bis (Lisa, Waschmaschine)"
+    has_date: true
+    has_time: true
+  geraete_stumm_bis_mobile_app_lisas_pixel_9a_trockner:
+    name: "Stumm bis (Lisa, Trockner)"
+    has_date: true
+    has_time: true
+  geraete_stumm_bis_mobile_app_lisas_pixel_9a_geschirrspueler:
+    name: "Stumm bis (Lisa, Spülmaschine)"
+    has_date: true
+    has_time: true
+  geraete_stumm_bis_mobile_app_2201117ty_waschmaschine:
+    name: "Stumm bis (Jürgen, Waschmaschine)"
+    has_date: true
+    has_time: true
+  geraete_stumm_bis_mobile_app_2201117ty_trockner:
+    name: "Stumm bis (Jürgen, Trockner)"
+    has_date: true
+    has_time: true
+  geraete_stumm_bis_mobile_app_2201117ty_geschirrspueler:
+    name: "Stumm bis (Jürgen, Spülmaschine)"
+    has_date: true
+    has_time: true
+
+script:
+  geraete_melden:
+    alias: "Geräte: Meldung senden"
+    description: "Sendet Live-/Fertig-Meldungen für ein Haushaltsgerät (wird von den Automationen aufgerufen)."
+    mode: queued
+    max: 20
+    fields:
+      geraet:
+        description: "Schlüssel aus variables.geraete"
+        example: waschmaschine
+      aktion:
+        description: "live (Fortschritt aktualisieren), fertig (Fertig-Meldung + Ansage), aufraeumen (Live-Meldung entfernen)"
+        example: live
+      dauer_min:
+        description: "Laufzeit in Minuten (nur bei fertig)"
+        example: 112
+      programm:
+        description: "Programmname (nur bei fertig)"
+        example: Baumwolle
+      test_empfaenger:
+        description: "Nur zum Testen: kommagetrennte notify-Dienste statt der konfigurierten Empfänger (die Ansage entfällt dann)"
+        example: mobile_app_simons_pixel_9a
+      erzwingen:
+        description: "Nur zum Testen: Live-Meldung auch senden, wenn das Gerät nicht läuft"
+        example: false
+    variables:
+      # Ansage nur außerhalb dieser Ruhezeit (Stunden, von inklusive bis exklusive)
+      tts_ruhe_von: 22
+      tts_ruhe_bis: 7
+      tts_lautsprecher: media_player.homemini_wohnzimmer_2
+      geraete:
+        waschmaschine:
+          name: Waschmaschine
+          satz: "Die Waschmaschine ist fertig."
+          icon: mdi:washing-machine
+          farbe: "#2196F3"
+          aktiv_sensor: sensor.waschmaschine_state
+          aktiv_zustaende: [running, paused, user_paused, ending]
+          fortschritt: sensor.waschmaschine_progress
+          restzeit: sensor.waschmaschine_time_remaining
+          restzeit_faktor: 1
+          programm: sensor.waschmaschine_program
+          empfaenger:
+            [
+              mobile_app_simons_pixel_9a,
+              mobile_app_lisas_pixel_9a,
+              mobile_app_2201117ty,
+            ]
+        trockner:
+          name: Trockner
+          satz: "Der Trockner ist fertig."
+          icon: mdi:tumble-dryer
+          farbe: "#FF9800"
+          aktiv_sensor: sensor.trockner_state
+          aktiv_zustaende: [running, paused, user_paused, ending]
+          fortschritt: sensor.trockner_progress
+          restzeit: sensor.trockner_time_remaining
+          restzeit_faktor: 1
+          programm: sensor.trockner_program
+          empfaenger:
+            [
+              mobile_app_simons_pixel_9a,
+              mobile_app_lisas_pixel_9a,
+              mobile_app_2201117ty,
+            ]
+        geschirrspueler:
+          name: Spülmaschine
+          satz: "Die Spülmaschine ist fertig."
+          icon: mdi:dishwasher
+          farbe: "#009688"
+          aktiv_sensor: sensor.obergeschoss_kuche_geschirrspuler_betriebszustand
+          aktiv_zustaende: [run, pause]
+          fortschritt: sensor.obergeschoss_kuche_geschirrspuler_programmfortschritt
+          # Home Connect liefert die Restzeit in Stunden
+          restzeit: sensor.obergeschoss_kuche_geschirrspuler_verbleibende_programmlaufzeit
+          restzeit_faktor: 60
+          programm: sensor.geschirrspuler_programm
+          # Jürgen bekommt für die Spülmaschine nichts
+          empfaenger: [mobile_app_simons_pixel_9a, mobile_app_lisas_pixel_9a]
+    sequence:
+      - variables:
+          g: "{{ geraete[geraet] }}"
+          live_tag: "{{ geraet }}_live"
+          fertig_tag: "{{ geraet }}_fertig"
+          empfaenger: "{{ (test_empfaenger | default('', true)).split(',') | map('trim') | list if test_empfaenger | default('', true) else g.empfaenger }}"
+          # stummgeschaltete Empfänger überspringen (Test-Empfänger nie)
+          senden_an: >-
+            {% set ns = namespace(l=[]) %}
+            {% for r in empfaenger %}
+              {% if test_empfaenger | default('', true)
+                 or as_timestamp(states('input_datetime.geraete_stumm_bis_' ~ r ~ '_' ~ geraet), 0) <= as_timestamp(now()) %}
+                {% set ns.l = ns.l + [r] %}
+              {% endif %}
+            {% endfor %}
+            {{ ns.l }}
+      - choose:
+          # ---- Fortschritt aktualisieren ------------------------------------------
+          - conditions: "{{ aktion == 'live' }}"
+            sequence:
+              - condition: template
+                value_template: "{{ erzwingen | default(false) or states(g.aktiv_sensor) in g.aktiv_zustaende }}"
+              - variables:
+                  pct: "{{ states(g.fortschritt) | float(none) }}"
+                  rest_roh: "{{ states(g.restzeit) | float(none) }}"
+                  rest: "{{ (rest_roh * g.restzeit_faktor) if rest_roh is not none else none }}"
+                  prog_roh: "{{ states(g.programm) }}"
+                  prog: "{{ '' if prog_roh in ['unknown', 'unavailable', 'off', 'none', 'detecting...', 'restored...'] else prog_roh }}"
+                  teile: >-
+                    {% set t = [] %}
+                    {% if prog %}{% set t = t + [prog] %}{% endif %}
+                    {% if rest is not none %}{% set t = t + ['noch ' ~ (rest | round(0) | int) ~ ' min'] %}{% endif %}
+                    {% if pct is not none %}{% set t = t + [(pct | round(0) | int) ~ ' %'] %}{% endif %}
+                    {{ t }}
+                  live_data: >-
+                    {% set d = {
+                      'tag': live_tag,
+                      'channel': 'Geräte-Fortschritt',
+                      'importance': 'low',
+                      'alert_once': true,
+                      'live_update': true,
+                      'sticky': true,
+                      'persistent': true,
+                      'notification_icon': g.icon,
+                      'color': g.farbe
+                    } %}
+                    {% if pct is not none %}
+                      {% set d = dict(d, progress=(pct | round(0) | int), progress_max=100, critical_text=((pct | round(0) | int) ~ ' %')) %}
+                    {% endif %}
+                    {% if rest is not none %}
+                      {% set d = dict(d, chronometer=true, when=((rest * 60) | round(0) | int), when_relative=true) %}
+                    {% endif %}
+                    {{ d }}
+              - repeat:
+                  for_each: "{{ senden_an }}"
+                  sequence:
+                    - action: "notify.{{ repeat.item }}"
+                      continue_on_error: true
+                      data:
+                        title: "{{ g.name }} läuft"
+                        message: "{{ teile | join(' · ') if teile else 'Läuft' }}"
+                        data: >-
+                          {{ dict(live_data, actions=[
+                            {'action': 'GERAETE_STUMM_2H_' ~ geraet ~ '_' ~ repeat.item, 'title': '🔕 2 h'},
+                            {'action': 'GERAETE_STUMM_8H_' ~ geraet ~ '_' ~ repeat.item, 'title': '🔕 8 h'},
+                            {'action': 'GERAETE_STUMM_8H_alle_' ~ repeat.item, 'title': '🔕 Alle 8h'}
+                          ]) }}
+          # ---- Live-Meldung entfernen (Zyklus abgebrochen/ohne Fertig-Ereignis) ----
+          - conditions: "{{ aktion == 'aufraeumen' }}"
+            sequence:
+              - repeat:
+                  for_each: "{{ empfaenger }}"
+                  sequence:
+                    - action: "notify.{{ repeat.item }}"
+                      continue_on_error: true
+                      data:
+                        message: clear_notification
+                        data:
+                          tag: "{{ live_tag }}"
+          # ---- Fertig ---------------------------------------------------------------
+          - conditions: "{{ aktion == 'fertig' }}"
+            sequence:
+              - variables:
+                  m: "{{ dauer_min | int(0) }}"
+                  dauer_text: "{{ ((m // 60) ~ ' h ' ~ (m % 60) ~ ' min') if m >= 60 else (m ~ ' min') }}"
+                  prog_text: "{{ '' if programm | default('', true) in ['', 'unknown', 'off', 'none', 'detecting...', 'restored...'] else programm }}"
+                  fertig_teile: >-
+                    {% set t = [] %}
+                    {% if prog_text %}{% set t = t + [prog_text] %}{% endif %}
+                    {% if m > 0 %}{% set t = t + ['Dauer ' ~ dauer_text] %}{% endif %}
+                    {{ t }}
+              - repeat:
+                  for_each: "{{ senden_an }}"
+                  sequence:
+                    - action: "notify.{{ repeat.item }}"
+                      continue_on_error: true
+                      data:
+                        message: clear_notification
+                        data:
+                          tag: "{{ live_tag }}"
+                    - action: "notify.{{ repeat.item }}"
+                      continue_on_error: true
+                      data:
+                        title: "{{ g.name }} ist fertig"
+                        message: "{{ fertig_teile | join(' · ') if fertig_teile else 'Das Programm ist beendet.' }}"
+                        data:
+                          tag: "{{ fertig_tag }}"
+                          channel: Geräte-Fertig
+                          importance: high
+                          notification_icon: "{{ g.icon }}"
+                          color: "{{ g.farbe }}"
+              - condition: template
+                value_template: "{{ not test_empfaenger | default('', true) and not (now().hour >= tts_ruhe_von or now().hour < tts_ruhe_bis) }}"
+              # Music Assistant pausiert/dämpft die laufende Wiedergabe und setzt sie danach fort
+              - action: music_assistant.play_announcement
+                continue_on_error: true
+                target:
+                  entity_id: "{{ tts_lautsprecher }}"
+                data:
+                  message: "{{ g.satz }}"
+                  tts_entity_id: tts.piper
+                  use_pre_announce: false
+
+  geraete_stumm:
+    alias: "Geräte: Meldungen stummschalten"
+    description: "Schaltet die Meldungen für einen Empfänger und ein Gerät (oder alle) für eine Zeit stumm (stunden: 0 hebt die Stummschaltung auf)."
+    mode: queued
+    fields:
+      empfaenger:
+        description: "notify-Dienst des Handys (ohne 'notify.')"
+        example: mobile_app_simons_pixel_9a
+      geraet:
+        description: "waschmaschine, trockner, geschirrspueler oder leer/alle für alle Geräte"
+        example: trockner
+      stunden:
+        description: "Dauer in Stunden, 0 = Stummschaltung aufheben"
+        example: 2
+    sequence:
+      - variables:
+          alle_geraete:
+            waschmaschine: Waschmaschine
+            trockner: Trockner
+            geschirrspueler: Spülmaschine
+          ziele: "{{ [geraet] if geraet | default('alle', true) in alle_geraete else alle_geraete.keys() | list }}"
+          h: "{{ stunden | float(0) }}"
+          bis_ts: "{{ as_timestamp(now()) + h * 3600 }}"
+          bis_text: "{{ ('morgen ' if (bis_ts | timestamp_custom('%Y-%m-%d')) != (as_timestamp(now()) | timestamp_custom('%Y-%m-%d')) else '') ~ (bis_ts | timestamp_custom('%H:%M')) }}"
+          ziel_text: "{{ alle_geraete[geraet] if geraet | default('alle', true) in alle_geraete else 'Alle Geräte' }}"
+          ziel_key: "{{ geraet if geraet | default('alle', true) in alle_geraete else 'alle' }}"
+      - repeat:
+          for_each: "{{ ziele }}"
+          sequence:
+            - action: input_datetime.set_datetime
+              target:
+                entity_id: "input_datetime.geraete_stumm_bis_{{ empfaenger }}_{{ repeat.item }}"
+              data:
+                datetime: "{{ bis_ts | timestamp_custom('%Y-%m-%d %H:%M:%S') if h > 0 else '2000-01-01 00:00:00' }}"
+            # laufende Live-Meldung dieses Geräts sofort entfernen
+            - condition: template
+              value_template: "{{ h > 0 }}"
+            - action: "notify.{{ empfaenger }}"
+              continue_on_error: true
+              data:
+                message: clear_notification
+                data:
+                  tag: "{{ repeat.item }}_live"
+      - choose:
+          # Bestätigung mit Aufheben-Button, verschwindet von selbst zum Ende der Stummschaltung
+          - conditions: "{{ h > 0 }}"
+            sequence:
+              - action: "notify.{{ empfaenger }}"
+                continue_on_error: true
+                data:
+                  title: "{{ ziel_text }}: Meldungen stumm"
+                  message: "Bis {{ bis_text }} Uhr kommen keine Meldungen."
+                  data:
+                    tag: "geraete_stumm_{{ ziel_key }}"
+                    channel: Geräte-Hinweis
+                    importance: low
+                    timeout: "{{ (h * 3600) | int }}"
+                    notification_icon: mdi:bell-off
+                    actions:
+                      - action: "GERAETE_STUMM_0H_{{ ziel_key }}_{{ empfaenger }}"
+                        title: Aufheben
+          - conditions: "{{ h <= 0 }}"
+            sequence:
+              - action: "notify.{{ empfaenger }}"
+                continue_on_error: true
+                data:
+                  message: clear_notification
+                  data:
+                    tag: "geraete_stumm_{{ ziel_key }}"
+
+automation:
+  - id: geraete_live_fortschritt
+    alias: "Geräte: Live-Fortschritt"
+    description: "Aktualisiert jede Minute die dauerhafte Fortschrittsmeldung laufender Geräte."
+    mode: queued
+    max: 5
+    triggers:
+      - trigger: time_pattern
+        minutes: "/1"
+      - trigger: state
+        entity_id:
+          - sensor.waschmaschine_state
+          - sensor.trockner_state
+        to: running
+      - trigger: state
+        entity_id: sensor.obergeschoss_kuche_geschirrspuler_betriebszustand
+        to: run
+    actions:
+      - repeat:
+          for_each: [waschmaschine, trockner, geschirrspueler]
+          sequence:
+            - action: script.geraete_melden
+              data:
+                geraet: "{{ repeat.item }}"
+                aktion: live
+
+  - id: geraete_fertig
+    alias: "Geräte: Fertig-Meldung"
+    description: "Fertig-Meldung auf den Handys und Ansage auf dem Google Home Mini, sobald WashData einen Zyklus beendet hat."
+    mode: queued
+    max: 10
+    triggers:
+      - trigger: event
+        event_type: ha_washdata_cycle_ended
+        event_data:
+          entry_id: 01KFDXA0XDER1G45GC488B15MZ
+        id: waschmaschine
+      - trigger: event
+        event_type: ha_washdata_cycle_ended
+        event_data:
+          entry_id: 01KFDX7X0RNYZE1HF9Q2DQV0SQ
+        id: trockner
+      # Spülmaschine: Home Connect meldet das Programmende sofort (WashData erst ~20 min später)
+      - trigger: state
+        entity_id: binary_sensor.obergeschoss_kuche_geschirrspuler_programm_beendet
+        from: "off"
+        to: "on"
+        id: geschirrspueler
+    conditions:
+      # abgebrochene/falsch erkannte Zyklen sind nicht "fertig"
+      - condition: template
+        value_template: >-
+          {{ trigger.id == 'geschirrspueler'
+             or (trigger.event.data.cycle_data | default({})).get('status', '') != 'interrupted' }}
+    actions:
+      - variables:
+          ist_spuelmaschine: "{{ trigger.id == 'geschirrspueler' }}"
+          dauer_s: >-
+            {{ states('sensor.geschirrspuler_verstrichene_zeit') | float(0)
+               if ist_spuelmaschine else trigger.event.data.duration | float(0) }}
+          programm_name: >-
+            {{ states('sensor.geschirrspuler_programm')
+               if ist_spuelmaschine else trigger.event.data.program }}
+      - action: script.geraete_melden
+        data:
+          geraet: "{{ trigger.id }}"
+          aktion: fertig
+          dauer_min: "{{ (dauer_s / 60) | round(0) | int }}"
+          programm: "{{ programm_name }}"
+
+  - id: geraete_live_aufraeumen
+    alias: "Geräte: Live-Meldung entfernen"
+    description: "Entfernt die Fortschrittsmeldung, wenn ein Gerät dauerhaft nicht mehr läuft (z. B. Abbruch)."
+    mode: queued
+    max: 10
+    triggers:
+      - trigger: state
+        entity_id: sensor.waschmaschine_state
+        from: [running, paused, user_paused, ending]
+        for: "00:03:00"
+        id: waschmaschine
+      - trigger: state
+        entity_id: sensor.trockner_state
+        from: [running, paused, user_paused, ending]
+        for: "00:03:00"
+        id: trockner
+      - trigger: state
+        entity_id: sensor.obergeschoss_kuche_geschirrspuler_betriebszustand
+        from: [run, pause]
+        for: "00:03:00"
+        id: geschirrspueler
+    conditions:
+      - condition: template
+        value_template: "{{ trigger.to_state.state not in ['running', 'paused', 'user_paused', 'ending', 'run', 'pause'] }}"
+    actions:
+      - action: script.geraete_melden
+        data:
+          geraet: "{{ trigger.id }}"
+          aktion: aufraeumen
+
+  - id: geraete_stumm_button
+    alias: "Geräte: Stumm-Button"
+    description: "Reagiert auf die Stumm-/Aufheben-Buttons an den Geräte-Meldungen."
+    mode: queued
+    max: 10
+    triggers:
+      - trigger: event
+        event_type: mobile_app_notification_action
+    conditions:
+      - condition: template
+        value_template: "{{ trigger.event.data.action | default('') is match('GERAETE_STUMM_\\d+H_') }}"
+    actions:
+      # Aktionsname: GERAETE_STUMM_<stunden>H_<gerät|alle>_<notify-Dienst>
+      - action: script.geraete_stumm
+        data:
+          stunden: "{{ trigger.event.data.action.split('_')[2] | replace('H', '') | int(0) }}"
+          geraet: "{{ trigger.event.data.action.split('_', 4)[3] }}"
+          empfaenger: "{{ trigger.event.data.action.split('_', 4)[4] }}"

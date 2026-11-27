@@ -1,33 +1,18 @@
 ---
 # Schwellwerte der Heizperiode-Freigabe (binary_sensor.heizperiode_freigabe, siehe template.yaml).
+# Steuergröße ist das Fenster-Mittel = (24h-Außentemperatur-Mittel + Prognose-Mittel der nächsten 24 h) / 2.
 # Kein `initial`: der zuletzt gesetzte Wert wird beim Neustart wiederhergestellt.
 input_number:
-  heizperiode_ein_schnitt_24h:
-    name: "Einschalten: 24h-Schnitt unter"
+  heizperiode_ein_fenster_mittel:
+    name: "Einschalten: Fenster-Mittel unter"
     icon: mdi:thermometer-chevron-down
     min: 5
     max: 25
     step: 0.5
     unit_of_measurement: "°C"
     mode: box
-  heizperiode_ein_prognose_max:
-    name: "Einschalten: Prognose Max unter"
-    icon: mdi:thermometer-chevron-down
-    min: 5
-    max: 25
-    step: 0.5
-    unit_of_measurement: "°C"
-    mode: box
-  heizperiode_aus_schnitt_24h:
-    name: "Ausschalten: 24h-Schnitt über"
-    icon: mdi:thermometer-chevron-up
-    min: 5
-    max: 30
-    step: 0.5
-    unit_of_measurement: "°C"
-    mode: box
-  heizperiode_aus_prognose_max:
-    name: "Ausschalten: Prognose Max über"
+  heizperiode_aus_fenster_mittel:
+    name: "Ausschalten: Fenster-Mittel über"
     icon: mdi:thermometer-chevron-up
     min: 5
     max: 30
@@ -35,10 +20,51 @@ input_number:
     unit_of_measurement: "°C"
     mode: box
   heizperiode_heizgrenze:
-    name: "Heizgrenze (nur Shadow-Signal Heizdefizit)"
+    name: "Heizgrenze (nur Zusatzsignal Heizdefizit)"
     icon: mdi:thermometer-lines
     min: 8
     max: 22
     step: 0.5
     unit_of_measurement: "°C"
     mode: box
+
+automation:
+  # Smart Heating Control (SHC) richtet sich nach der Freigabe: Freigabe aus -> Modus Sommer, Freigabe an -> Modus Auto.
+  # Nur diese beiden Modi werden umgeschaltet. Steht SHC auf Urlaub, Abwesend oder Aus, bleibt das unberührt.
+  # Ausgelöst bei jeder Änderung der Freigabe, beim Start von Home Assistant und wenn SHC wieder verfügbar wird.
+  - id: heizperiode_shc_modus
+    alias: "Heizperiode: Smart Heating Control folgt der Freigabe"
+    mode: queued
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.heizperiode_freigabe
+        to: ["on", "off"]
+      - trigger: homeassistant
+        event: start
+      - trigger: state
+        entity_id: select.system_home_modus
+        from: ["unavailable", "unknown"]
+    actions:
+      - delay: "00:00:30"
+      - variables:
+          freigabe: "{{ states('binary_sensor.heizperiode_freigabe') }}"
+          modus: "{{ states('select.system_home_modus') }}"
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ freigabe == 'on' and modus == 'summer' }}"
+            sequence:
+              - action: select.select_option
+                target:
+                  entity_id: select.system_home_modus
+                data:
+                  option: auto
+          - conditions:
+              - condition: template
+                value_template: "{{ freigabe == 'off' and modus == 'auto' }}"
+            sequence:
+              - action: select.select_option
+                target:
+                  entity_id: select.system_home_modus
+                data:
+                  option: summer

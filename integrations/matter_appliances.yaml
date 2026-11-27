@@ -1,0 +1,27 @@
+# Haushaltsgeräte für die Matter Bridge (Home Assistant Matter Hub).
+#
+# Die Bridge bildet Waschmaschine und Geschirrspüler nur dann als Gerätetyp "Laundry Washer" /
+# "Dishwasher" ab, wenn die Entity ein `switch` ist (Gerätetyp im Entity Mapping der Bridge
+# überschreiben). Der Zustand kommt hier aus den vorhandenen Sensoren. Ein Switch ist "an",
+# solange das Gerät ein Programm fährt (läuft oder pausiert). Die Schalter sind reine
+# Statusanzeigen: Ein- und Ausschalten tut bewusst nichts.
+#
+# Die Bridge meldet daraus Programmstart und Programmende an Google Home (nur in der App).
+# Der Trockner fehlt, weil Google Home diesen Gerätetyp nicht unterstützt.
+
+template:
+  - switch:
+      - name: "Waschmaschine (Matter)"
+        unique_id: "matter_waschmaschine_status"
+        state: >-
+          {{ states('sensor.waschmaschine_state')
+             in ['starting', 'running', 'paused', 'user_paused', 'ending'] }}
+        turn_on: []
+        turn_off: []
+      - name: "Spülmaschine (Matter)"
+        unique_id: "matter_spuelmaschine_status"
+        state: >-
+          {{ states('sensor.obergeschoss_kuche_geschirrspuler_betriebszustand')
+             in ['run', 'pause'] }}
+        turn_on: []
+        turn_off: []

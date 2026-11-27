@@ -21,8 +21,8 @@ utility_meter:
   #   cycle: "yearly"
   shelly_1pm_buero_tuer_yearly_energy:
     unique_id: "ad33f4276e5e43da9534211253ad5708"
-    source: "sensor.shelly_1pm_buero_tuer_daily_energy"
-    name: "Büro Tür Stromverbrauch jährlich"
+    source: "sensor.shelly_1pm_schlafzimmer_tuer_daily_energy"
+    name: "Schlafzimmer Tür Stromverbrauch jährlich"
     delta_values: false
     cycle: "yearly"
   esp_01s_stromzaehler_total_energy_in_yearly:

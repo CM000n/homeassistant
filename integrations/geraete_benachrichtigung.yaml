@@ -333,23 +333,31 @@ script:
 automation:
   - id: geraete_live_fortschritt
     alias: "Geräte: Live-Fortschritt"
-    description: "Aktualisiert jede Minute die dauerhafte Fortschrittsmeldung laufender Geräte."
+    description: "Aktualisiert alle 5 Minuten die dauerhafte Fortschrittsmeldung laufender Geräte. Der Countdown läuft lokal auf dem Handy, deshalb reicht der Takt. Ein Zustandswechsel aktualisiert nur das betroffene Gerät, und zwar erst, wenn der Zustand eine Minute gehalten hat (verhindert Zusatz-Läufe bei running/paused-Flattern)."
     mode: queued
     max: 5
     triggers:
       - trigger: time_pattern
-        minutes: "/1"
+        minutes: "/5"
+        id: takt
       - trigger: state
-        entity_id:
-          - sensor.waschmaschine_state
-          - sensor.trockner_state
+        entity_id: sensor.waschmaschine_state
         to: running
+        for: "00:01:00"
+        id: waschmaschine
+      - trigger: state
+        entity_id: sensor.trockner_state
+        to: running
+        for: "00:01:00"
+        id: trockner
       - trigger: state
         entity_id: sensor.obergeschoss_kuche_geschirrspuler_betriebszustand
         to: run
+        for: "00:01:00"
+        id: geschirrspueler
     actions:
       - repeat:
-          for_each: [waschmaschine, trockner, geschirrspueler]
+          for_each: "{{ ['waschmaschine', 'trockner', 'geschirrspueler'] if trigger.id == 'takt' else [trigger.id] }}"
           sequence:
             - action: script.geraete_melden
               data:

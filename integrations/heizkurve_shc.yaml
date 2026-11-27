@@ -1,0 +1,139 @@
+---
+# Kopplung Smart Heating Control (SHC) -> Heizkurven-Optimierung (nur lesend, schaltet nichts).
+# SHC steuert die Heizkörperthermostate der Räume, die Vitotronic regelt ihre Heizkreise selbst.
+# Hier werden nur Kennzahlen gebildet, wie lange Räume Wärme anfordern und ob der Heizkreis dazu passt.
+# Die Hinweise sind Beratung und gehen NICHT in sensor.heizkurve_empfehlung ein (siehe heizkurve.yaml).
+# Hinweis: SHC deckt aktuell nur Bad und Schlafzimmer ab. Die Aussagekraft wächst mit jedem Raum, der dazukommt.
+
+template:
+  - binary_sensor:
+      # Der Heizkreis 2 pumpt, aber kein SHC-Raum fordert Wärme an
+      - name: "SHC HK2-Pumpe ohne Raumbedarf"
+        unique_id: "shc_hk2_pumpe_ohne_raumbedarf"
+        icon: mdi:pump
+        availability: >-
+          {{ states('binary_sensor.vito_hk2_pumpe') in ['on', 'off']
+             and states('binary_sensor.system_home_warmebedarf') in ['on', 'off'] }}
+        state: >-
+          {{ is_state('binary_sensor.vito_hk2_pumpe', 'on') and is_state('binary_sensor.system_home_warmebedarf', 'off') }}
+      # Ein SHC-Raum fordert Wärme an, aber der Heizkreis 2 pumpt nicht
+      - name: "SHC Raumbedarf ohne HK2-Pumpe"
+        unique_id: "shc_raumbedarf_ohne_hk2_pumpe"
+        icon: mdi:radiator-off
+        availability: >-
+          {{ states('binary_sensor.vito_hk2_pumpe') in ['on', 'off']
+             and states('binary_sensor.system_home_warmebedarf') in ['on', 'off'] }}
+        state: >-
+          {{ is_state('binary_sensor.vito_hk2_pumpe', 'off') and is_state('binary_sensor.system_home_warmebedarf', 'on') }}
+
+  - sensor:
+      # Mittlere Abweichung der SHC-Räume von IHREM eigenen Soll (Räume mit offenem Fenster oder
+      # manueller Änderung zählen nicht). Negativ = Räume sind zu kalt.
+      - name: "SHC Raumabweichung"
+        unique_id: "shc_raumabweichung"
+        unit_of_measurement: "K"
+        state_class: measurement
+        icon: mdi:thermometer-alert
+        availability: >-
+          {% set rooms = [
+            ('sensor.obergeschoss_bad_bdezimmer_raumtemperatur', 'sensor.obergeschoss_bad_bdezimmer_zieltemperatur',
+             'binary_sensor.obergeschoss_bad_bdezimmer_fenster_offen', 'binary_sensor.obergeschoss_bad_bdezimmer_manuelle_anderung'),
+            ('sensor.obergeschoss_schlafzimmer_schlafzimmer_raumtemperatur', 'sensor.obergeschoss_schlafzimmer_schlafzimmer_zieltemperatur',
+             'binary_sensor.obergeschoss_schlafzimmer_schlafzimmer_fenster_offen', 'binary_sensor.obergeschoss_schlafzimmer_schlafzimmer_manuelle_anderung')] %}
+          {% set ns = namespace(n=0) %}
+          {% for t, z, w, m in rooms %}{% if (states(t) | float(none)) is not none and (states(z) | float(none)) is not none and is_state(w, 'off') and is_state(m, 'off') %}{% set ns.n = ns.n + 1 %}{% endif %}{% endfor %}
+          {{ ns.n > 0 }}
+        state: >-
+          {% set rooms = [
+            ('sensor.obergeschoss_bad_bdezimmer_raumtemperatur', 'sensor.obergeschoss_bad_bdezimmer_zieltemperatur',
+             'binary_sensor.obergeschoss_bad_bdezimmer_fenster_offen', 'binary_sensor.obergeschoss_bad_bdezimmer_manuelle_anderung'),
+            ('sensor.obergeschoss_schlafzimmer_schlafzimmer_raumtemperatur', 'sensor.obergeschoss_schlafzimmer_schlafzimmer_zieltemperatur',
+             'binary_sensor.obergeschoss_schlafzimmer_schlafzimmer_fenster_offen', 'binary_sensor.obergeschoss_schlafzimmer_schlafzimmer_manuelle_anderung')] %}
+          {% set ns = namespace(v=[]) %}
+          {% for t, z, w, m in rooms %}{% set tt = states(t) | float(none) %}{% set zz = states(z) | float(none) %}{% if tt is not none and zz is not none and is_state(w, 'off') and is_state(m, 'off') %}{% set ns.v = ns.v + [tt - zz] %}{% endif %}{% endfor %}
+          {{ (ns.v | sum / ns.v | count) | round(2) }}
+
+      # Einschätzung der Heizkurve aus Sicht der Räume (experimentell, nur Anzeige)
+      - name: "Heizkurve SHC Hinweis"
+        unique_id: "heizkurve_shc_hinweis"
+        icon: mdi:chart-bell-curve-cumulative
+        state: >-
+          {% set heiz = is_state('binary_sensor.heizperiode_freigabe', 'on') %}
+          {% set d = states('sensor.shc_haus_warmebedarf_anteil_24h') | float(none) %}
+          {% set po = states('sensor.shc_hk2_pumpe_ohne_raumbedarf_anteil_24h') | float(none) %}
+          {% set dev = states('sensor.shc_raumabweichung_24h_mittel') | float(none) %}
+          {% set cov = state_attr('sensor.shc_raumabweichung_24h_mittel', 'age_coverage_ratio') | float(0) %}
+          {% if not heiz %}inaktiv
+          {% elif d is none or po is none or dev is none or cov < 0.9 %}sammle_daten
+          {% elif d > 70 and dev < -0.5 %}eher_zu_niedrig
+          {% elif po > 40 and dev > -0.3 %}eher_zu_hoch
+          {% else %}passt{% endif %}
+        attributes:
+          bedarf_haus_24h: "{{ states('sensor.shc_haus_warmebedarf_anteil_24h') }}"
+          pumpe_ohne_bedarf_24h: "{{ states('sensor.shc_hk2_pumpe_ohne_raumbedarf_anteil_24h') }}"
+          raumabweichung_24h: "{{ states('sensor.shc_raumabweichung_24h_mittel') }}"
+          abdeckung_24h: "{{ state_attr('sensor.shc_raumabweichung_24h_mittel', 'age_coverage_ratio') }}"
+          regeln: >-
+            eher_zu_niedrig: Bedarf > 70 % der Zeit und Räume im Mittel mehr als 0,5 K unter ihrem Soll.
+            eher_zu_hoch: HK2-Pumpe läuft > 40 % der Zeit ohne Raumbedarf und Räume nicht unter Soll.
+            Nur Bad und Schlafzimmer sind in SHC, die Aussage ist daher grob.
+
+sensor:
+  - platform: history_stats
+    name: "SHC Haus Wärmebedarf Anteil 24h"
+    unique_id: "shc_haus_waermebedarf_anteil_24h"
+    entity_id: binary_sensor.system_home_warmebedarf
+    state: "on"
+    type: ratio
+    start: "{{ now() - timedelta(hours=24) }}"
+    end: "{{ now() }}"
+  - platform: history_stats
+    name: "SHC Bad Wärmebedarf Anteil 24h"
+    unique_id: "shc_bad_waermebedarf_anteil_24h"
+    entity_id: binary_sensor.obergeschoss_bad_bdezimmer_warmebedarf
+    state: "on"
+    type: ratio
+    start: "{{ now() - timedelta(hours=24) }}"
+    end: "{{ now() }}"
+  - platform: history_stats
+    name: "SHC Schlafzimmer Wärmebedarf Anteil 24h"
+    unique_id: "shc_schlafzimmer_waermebedarf_anteil_24h"
+    entity_id: binary_sensor.obergeschoss_schlafzimmer_schlafzimmer_warmebedarf
+    state: "on"
+    type: ratio
+    start: "{{ now() - timedelta(hours=24) }}"
+    end: "{{ now() }}"
+  - platform: history_stats
+    name: "SHC HK2-Pumpe Anteil 24h"
+    unique_id: "shc_hk2_pumpe_anteil_24h"
+    entity_id: binary_sensor.vito_hk2_pumpe
+    state: "on"
+    type: ratio
+    start: "{{ now() - timedelta(hours=24) }}"
+    end: "{{ now() }}"
+  - platform: history_stats
+    name: "SHC HK2-Pumpe ohne Raumbedarf Anteil 24h"
+    unique_id: "shc_hk2_pumpe_ohne_raumbedarf_anteil_24h"
+    entity_id: binary_sensor.shc_hk2_pumpe_ohne_raumbedarf
+    state: "on"
+    type: ratio
+    start: "{{ now() - timedelta(hours=24) }}"
+    end: "{{ now() }}"
+  - platform: history_stats
+    name: "SHC Raumbedarf ohne HK2-Pumpe Anteil 24h"
+    unique_id: "shc_raumbedarf_ohne_hk2_pumpe_anteil_24h"
+    entity_id: binary_sensor.shc_raumbedarf_ohne_hk2_pumpe
+    state: "on"
+    type: ratio
+    start: "{{ now() - timedelta(hours=24) }}"
+    end: "{{ now() }}"
+  # 24 h zeitgewichteter Mittelwert der Abweichung (wie bei der 72h-Abweichung in heizkurve.yaml)
+  - platform: statistics
+    name: "SHC Raumabweichung 24h Mittel"
+    unique_id: "shc_raumabweichung_24h_mittel"
+    entity_id: sensor.shc_raumabweichung
+    state_characteristic: average_step
+    max_age:
+      hours: 24
+    sampling_size: 2000
+    precision: 2

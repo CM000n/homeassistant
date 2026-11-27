@@ -14,8 +14,8 @@ sensor:
   # https://www.home-assistant.io/integrations/statistics/
   - platform: "statistics"
     unique_id: "d15b0520b1df11ed90171b0f7a30ae2f"
-    name: "shelly_1pm_buero_tuer_power mean over last 30 minutes"
-    entity_id: "sensor.shelly_1pm_buero_tuer_power"
+    name: "shelly_1pm_schlafzimmer_tuer_power mean over last 30 minutes"
+    entity_id: "sensor.shelly_1pm_schlafzimmer_tuer_power"
     state_characteristic: "mean"
     max_age:
       minutes: 30
@@ -54,7 +54,7 @@ sensor:
   # Definiere den Jahreszeitraum einmal als Anker
   - platform: "history_stats"
     name: "Deckenlampe Ankleide AN Jahr"
-    entity_id: "light.og_kinderzimmer_deckenleuchte"
+    entity_id: "light.og_kinderzimmer_lina_deckenleuchte"
     state: "on"
     type: "time"
     start: &jahr_start "{{ now().replace(month=1, day=1, hour=0, minute=0, second=0, microsecond=0) }}"
@@ -69,8 +69,8 @@ sensor:
     end: *jahr_end
 
   - platform: "history_stats"
-    name: "Deckenlampe Büro AN Jahr"
-    entity_id: "light.og_buro_deckenleuchte"
+    name: "Deckenlampe Schlafzimmer AN Jahr"
+    entity_id: "light.og_schlafzimmer_deckenleuchte"
     state: "on"
     type: "time"
     start: *jahr_start
@@ -93,8 +93,8 @@ sensor:
     end: *jahr_end
 
   - platform: "history_stats"
-    name: "Deckenlampe Schlafzimmer AN Jahr"
-    entity_id: "light.og_schlafzimmer_deckenleuchte"
+    name: "Deckenlampe Kinderzimmer Johann AN Jahr"
+    entity_id: "light.og_kinderzimmer_johann_deckenleuchte"
     state: "on"
     type: "time"
     start: *jahr_start
@@ -118,7 +118,7 @@ sensor:
 
   - platform: "history_stats"
     name: "Nachttischlampe Lisa AN Jahr"
-    entity_id: "light.og_schlafzimmer_wickeltisch"
+    entity_id: "light.og_kinderzimmer_johann_wickeltisch"
     state: "on"
     type: "time"
     start: *jahr_start

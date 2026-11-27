@@ -1,0 +1,29 @@
+---
+# Schwellwerte der Heizperiode-Freigabe (binary_sensor.heizperiode_freigabe, siehe template.yaml).
+# Steuergröße ist das Fenster-Mittel = (24h-Außentemperatur-Mittel + Prognose-Mittel der nächsten 24 h) / 2.
+# Kein `initial`: der zuletzt gesetzte Wert wird beim Neustart wiederhergestellt.
+input_number:
+  heizperiode_ein_fenster_mittel:
+    name: "Einschalten: Fenster-Mittel unter"
+    icon: mdi:thermometer-chevron-down
+    min: 5
+    max: 25
+    step: 0.5
+    unit_of_measurement: "°C"
+    mode: box
+  heizperiode_aus_fenster_mittel:
+    name: "Ausschalten: Fenster-Mittel über"
+    icon: mdi:thermometer-chevron-up
+    min: 5
+    max: 30
+    step: 0.5
+    unit_of_measurement: "°C"
+    mode: box
+  heizperiode_heizgrenze:
+    name: "Heizgrenze (nur Zusatzsignal Heizdefizit)"
+    icon: mdi:thermometer-lines
+    min: 8
+    max: 22
+    step: 0.5
+    unit_of_measurement: "°C"
+    mode: box

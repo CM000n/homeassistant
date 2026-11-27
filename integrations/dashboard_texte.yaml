@@ -1,0 +1,26 @@
+# Texte für Dashboard-Badges.
+#
+# Die Badges auf der Home-Ansicht zeigen statt der Restlaufzeit in Stunden (z. B. "4,67 h")
+# die Uhrzeit, zu der das Gerät fertig ist. Liefert die Quelle keine Restzeit, steht "läuft"
+# da. Sichtbar sind die Badges nur, solange das Gerät läuft (Bedingung im Dashboard).
+
+template:
+  - sensor:
+      - name: "Geschirrspüler fertig um"
+        unique_id: "2378238b-f68a-4d50-8fb1-e328e2bc68c2"
+        icon: mdi:dishwasher
+        state: >-
+          {% set r = states("sensor.obergeschoss_kuche_geschirrspuler_verbleibende_programmlaufzeit") | float(none) %}
+          {% if r is not none and r > 0 %}fertig um {{ (now() + timedelta(hours=r)).strftime("%H:%M") }}{% else %}läuft{% endif %}
+      - name: "Waschmaschine fertig um"
+        unique_id: "34b9f033-00de-4885-81f2-aa85daa9f400"
+        icon: mdi:washing-machine
+        state: >-
+          {% set r = states("sensor.waschmaschine_time_remaining") | float(none) %}
+          {% if r is not none and r > 0 %}fertig um {{ (now() + timedelta(hours=r)).strftime("%H:%M") }}{% else %}läuft{% endif %}
+      - name: "Trockner fertig um"
+        unique_id: "5f2d657e-6955-49aa-bb1b-0bd0d1ef401d"
+        icon: mdi:tumble-dryer
+        state: >-
+          {% set r = states("sensor.trockner_time_remaining") | float(none) %}
+          {% if r is not none and r > 0 %}fertig um {{ (now() + timedelta(hours=r)).strftime("%H:%M") }}{% else %}läuft{% endif %}

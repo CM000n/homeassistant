@@ -47,9 +47,5 @@ panel_custom:
 # https://www.home-assistant.io/lovelace/
 lovelace:
 
-# https://home-assistant.io/docs/ha_configuration/splitting_ha_configuration/
-google_assistant: !include "google_assistant/google_assistant.yaml"
-
 # https://www.home-assistant.io/integrations/my
 my:
-
